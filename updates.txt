@@ -1,0 +1,53 @@
+_________________________
+v1.0.7 - 4 january 2015  |
+-------------------------|
+- Changed javascript code
+- Updated html
+_________________________
+v1.0.6 - 31 december 2014|
+-------------------------|
+
+- Changed log position
+- Added new tabs, inventory, equipments(still in development)
+- Changed html file, fixed many bugs
+- Potions are used automatically(more max health you have, a better potion will be used)
+_________________________
+v1.0.5 - 30 december 2014|
+-------------------------|
+
+- Added tabs to the game, which contain addition game info, as well a shop, options menu etc.
+- Total of 32 monsters, including bosses(all of it require balance changes)
+- New damage system(Will be changed again soon)
+- Can fuse godly orbs with 30% chance to obtain "Black Orb" which gives 5000 exp and gold per second
+- Potion shop where you can spend some gold
+_________________________
+v1.0.4 - 28 december 2014|
+-------------------------|
+
+- Added exp and health progress bar at the top
+- More monsters, also they have their own stats i.e. health/strength/defense
+_________________________
+v1.0.3 - 27 december 2014|
+-------------------------|
+
+- Added experience, gold, fusion orbs which let you gain exp/gold per second
+- Added more info in character page
+- Added colors to item rarity
+- Updated a website to work on all resolutions, should work even on mobile devices
+
+_________________________
+v1.0.2 - 26 december 2014|
+-------------------------|
+- Changed "Sell  all button" to sell all orbs at once(all quality) 
+- Added Level up system, 5 stats per level, health regeneration, Defense, Strength
+- New monsters, changed weapon requirement to fight them
+
+_________________________
+v1.0.1 - 25 december 2014|
+-------------------------|
+- Added "Sell all button" for a single orb
+
+_________________________
+v1.0 - 25 december 2014|
+-----------------------|
+- Initial Release
