@@ -429,17 +429,18 @@ function usempot() {
 }
 
 function Log(data) {
+    var i;
     if (logData.length < maxLogLines) {
         logData[logData.length] = data;
         logData.length++;
     } else {
-        for (var i = 0; i < logData.length - 1; i++) {
+        for (i = 0; i < logData.length - 1; i++) {
             logData[i] = logData[i + 1];
         }
         logData[logData.length - 1] = data;
     }
     var logTemp = "";
-    for (i = 0; i < logData.length; i++) {
+    for (i = logData.length -1; i >= 0; i--) {
         logTemp += "<center>" + logData[i] + "</center>";
     }
     document.getElementById('logConsole').innerHTML = logTemp;
