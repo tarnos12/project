@@ -45,106 +45,72 @@
             <div class=".col-sm-3 col-md-3 .col-lg-3">
                <div class="container">
                   <ul class="nav nav-tabs">
-                     <li class="active"><a href="#tab_a" data-toggle="tab">Gold and items</a></li>
-                     <li><a href="#tab_b" data-toggle="tab">Fusion</a></li>
+                     <li class="active"><a href="#tab_a" data-toggle="tab">Player Stats</a></li>
+                     <li><a href="#tab_b" data-toggle="tab">Secondary Stats</a></li>
                   </ul>
                   <div class="tab-content">
-                     <div class="tab-pane active" id="tab_a">
-                        <div class="c3">
-                           <h4>Gold and Orbs</h4>
-                        </div>
-                        <table class="table">
-                           <tr>
+                      <div class=".col-sm-7 col-md-7 .col-lg-7 tab-pane active" id="tab_a">
+                          <div class="c3">
+                              <h4>Player Stats</h4>
+                          </div>
+                          <table class="table">
+
+                              <td>
+                                  Level: <span id="level">1</span><br />
+                                  Exp: <span id="experience">0</span>/<span id="maxexperience">100</span><br />
+                                  Damage: <span id="mindamage">1</span>-<span id="maxdamage">4</span><br />
+                                  Strength: <span id="strength">1</span><br />
+                                  Endurance: <span id="endurance">0</span><br />
+                                  Agility: <span id="agility">1</span> <br />
+                                  Dexterity: <span id="strength">1</span> <br />
+                                  Intelligence: <span id="strength">1</span><br />
+                                  Wisdom: <span id="strength">1</span><br />
+                                  Luck: <span id="strength">1</span><br>
+                                  Stat Points: <span id="stats">0</span><br />
+
+                              </td>
+                              <td>
+                                  <br />
+                                  <br />
+                                  <br />
+                                  <input name="submit" id="vis" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();"><br />
+                                  <input name="submit" id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();"><br />
+                                  <input name="submit" id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();"><br />
+                                  <input name="submit" id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity();"><br />
+                                  <input name="submit" id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence();"><br />
+                                  <input name="submit" id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom();"><br />
+                                  <input name="submit" id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck();"><br />
+                              </td>
+
+
+
+
                               <td><img src="images/gold.jpg" alt="Gold Coin"><span id="gold">0</span></td>
-                              <td><button type="button" onclick="sellall(1)">Sell All items</button></td>
-                           </tr>
-                           <tr>
-                              <td>Common fusion orb:<span id="common">0</span><br>
-                                 Common gold orb:<span id="commongold">0</span><br>
-                                 Common exp orb:<span id="commonexp">0</span>
-                              </td>
-                              <td><button onclick="sellallcommon()">Sell All</button>10<img src="images/gold.jpg" alt="Gold Coin"> each</td>
-                           </tr>
-                           <tr>
-                              <td>Rare fusion orb:<span id="rare">0</span><br>
-                                 Rare gold orb:<span id="raregold">0</span><br>
-                                 Rare exp orb:<span id="rareexp">0</span>
-                              </td>
-                              <td><button onclick="sellallrare()">Sell All</button>30<img src="images/gold.jpg" alt="Gold Coin"> each</td>
-                           </tr>
-                           <tr>
-                              <td>Unique fusion orb:<span id="unique">0</span><br>
-                                 Unique gold orb:<span id="uniquegold">0</span><br>
-                                 Unique exp orb:<span id="uniqueexp">0</span>
-                              </td>
-                              <td><button onclick="sellallunique()">Sell All</button>50<img src="images/gold.jpg" alt="Gold Coin"> each</td>
-                           </tr>
-                           <tr>
-                              <td>Epic fusion orb:<span id="epic">0</span><br>
-                                 Epic gold orb:<span id="epicgold">0</span><br>
-                                 Epic exp orb:<span id="epicexp">0</span>
-                              </td>
-                              <td><button onclick="sellallepic()">Sell All</button>70<img src="images/gold.jpg" alt="Gold Coin"> each</td>
-                           </tr>
-                           <tr>
-                              <td>Legendary fusion orb:<span id="legendary">0</span><br>
-                                 Legendary gold orb:<span id="legendarygold">0</span><br>
-                                 Legendary exp orb:<span id="legendaryexp">0</span>
-                              </td>
-                              <td><button onclick="sellalllegendary()">Sell All</button>120<img src="images/gold.jpg" alt="Gold Coin"> each</td>
-                           </tr>
-                           <tr>
-                              <td>Godly fusion orb:<span id="god">0</span><br>
-                                 Godly gold orb:<span id="godgold">0</span><br>
-                                 Godly exp orb:<span id="godexp">0</span>
-                              </td>
-                              <td><button onclick="sellallgod()">Sell All</button>200<img src="images/gold.jpg" alt="Gold Coin"> each</td>
-                           </tr>
-                           <tr>
-                              <td colspan ="2">Black orb:<span id="blackorb">0</span><br>
-                                 30% to success, req 1 godly fusion / exp / gold orb
-                              </td>
-                           </tr>
-                        </table>
-                     </div>
+                              <tr>
+                                  <td>
+                                      <img src="images/hp.jpg" alt="Health Potion">(20hp): <span id="pot">0</span><input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();"><br />
+                                      <img src="images/hp1.jpg" alt="Super Potion">(100hp):<span id="spot">0</span><input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();"><br />
+                                      <img src="images/hp2.jpg" alt="Mega Potion">(500hp):<span id="mpot">0</span><input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
+                                  </td>
+                              </tr>
+                          </table>
+
+
+                      </div>
                      <div class="tab-pane" id="tab_b">
                         <div class="c3">
-                           <h4>Fusion</h4>
+                           <h4>Secondary Stats</h4>
+                            
                         </div>
-                        Fuse one exp and gold orb and create one of each with higher quality. Chance to fail: 10% for common, increasing by 10% for each next quality level
-                        <div class="c3">Common Exp Orb <input name="submit" id="submitme" type="image" src="images/plus.jpg" alt="plus" onclick="usecommonexp();"><br>
-                           Common Gold Orb <input name="submit" id="submitme1" type="image" src="images/plus.jpg" alt="plus" onclick="usecommongold();"><br>
-                           Fuse Common Orbs <input name="submit" id="submitme2" type="image" src="images/plus.jpg" alt="plus" onclick="fusecommon();"><br>
-                           <br>
-                           Rare Exp Orb <input name="submit" id="submitme3" type="image" src="images/plus.jpg" alt="plus" onclick="userareexp();"><br>
-                           Rare Gold Orb <input name="submit" id="submitme4" type="image" src="images/plus.jpg" alt="plus" onclick="useraregold();"><br>
-                           Fuse Rare Orbs <input name="submit" id="submitme5" type="image" src="images/plus.jpg" alt="plus" onclick="fuserare();"><br>
-                           <br>
-                           Unique Exp Orb <input name="submit" id="submitme6" type="image" src="images/plus.jpg" alt="plus" onclick="useuniqueexp();"><br>
-                           Unique Gold Orb <input name="submit" id="submitme7" type="image" src="images/plus.jpg" alt="plus" onclick="useuniquegold();"><br>
-                           Fuse Unique Orbs <input name="submit" id="submitme8" type="image" src="images/plus.jpg" alt="plus" onclick="fuseunique();"><br>
-                           <br>
-                           Epic Exp Orb <input name="submit" id="submitme9" type="image" src="images/plus.jpg" alt="plus" onclick="useepicexp();"><br>
-                           Epic Gold Orb <input name="submit" id="submitme10" type="image" src="images/plus.jpg" alt="plus" onclick="useepicgold();"><br>
-                           Fuse Epic Orb <input name="submit" id="submitme11" type="image" src="images/plus.jpg" alt="plus" onclick="fuseepic();"><br>
-                           <br>
-                           Legendary Exp Orb <input name="submit" id="submitme12" type="image" src="images/plus.jpg" alt="plus" onclick="uselegendaryexp();"><br>
-                           Legendary Gold Orb <input name="submit" id="submitme13" type="image" src="images/plus.jpg" alt="plus" onclick="uselegendarygold();"><br>
-                           Fuse Legendary Orb <input name="submit" id="submitme14" type="image" src="images/plus.jpg" alt="plus" onclick="fuselegendary();"><br>
-                           <br>
-                           Godly Exp Orb <input name="submit" id="submitme15" type="image" src="images/plus.jpg" alt="plus" onclick="usegodexp();"><br>
-                           Godly Gold Orb <input name="submit" id="submitme16" type="image" src="images/plus.jpg" alt="plus" onclick="usegodgold();"><br>
-                           Fuse Godly Orb <input name="submit" id="submitme17" type="image" src="images/plus.jpg" alt="plus" onclick="fusegod();"><br>
-                           <br>
-                           Use Black Orb <input name="submit" id="submitme18" type="image" src="images/plus.jpg" alt="plus" onclick="useblackorb();"><br>
-                           <br>
-                        </div>
+                         Health Regen:(<span id="hpregen">2</span>/s)<br />
+                         Defense: <span id="defense">0</span><br />
                      </div>           
                   </div>
                   <!-- tab content -->
                </div>
                <!-- end of container -->
             </div>
+
             <div class=".col-sm-5 col-md-5 .col-lg-5">
                <div class="container">
                   <ul class="nav nav-tabs">
@@ -165,7 +131,6 @@
                                     Def:0<br>
                                     <span class="hp">10</span>/<span id="maxHp">10</span><br>
                                     <img src="images/monster1.jpg" alt="Attack"><br>
-                                    Killed:<span class="killed">0</span>
                                  </div>
                               </td>
                               <td>
@@ -173,7 +138,7 @@
                                     Def:2<br>
                                     <span class="hp">30</span>/<span id="maxHp">30</span><br>
                                     <img src="images/monster2.jpg" alt="Attack"><br>
-                                    Killed:<span class="killed">0</span>
+                                   
                                  </div>
                               </td>
                               <td>
@@ -181,7 +146,7 @@
                                     Def:4<br>
                                     <span class="hp">70</span>/<span id="maxHp">70</span><br>
                                     <img src="images/monster3.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                   
                                  </div>
                               </td>
                               <td>
@@ -189,7 +154,7 @@
                                     Def:6<br>
                                     <span class="hp">130</span>/<span id="maxHp">130</span><br>
                                     <img src="images/monster4.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                            </tr>
@@ -217,7 +182,7 @@
                                     Def:9<br>
                                     <span class="hp">190</span>/<span id="maxHp">190</span><br>
                                     <img src="images/monster5.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -225,7 +190,7 @@
                                     Def:13<br>
                                     <span class="hp">280</span>/<span id="maxHp">280</span><br>
                                     <img src="images/monster6.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -233,7 +198,7 @@
                                     Def:18<br>
                                     <span class="hp">380</span>/<span id="maxHp">380</span><br>
                                     <img src="images/monster7.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -241,7 +206,7 @@
                                     Def:25<br>
                                     <span class="hp">500</span>/<span id="maxHp">500</span><br>
                                     <img src="images/monster8.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                            </tr>
@@ -276,7 +241,7 @@
                                     Def:30<br>
                                     <span class="hp">700</span>/<span id="maxHp">700</span><br>
                                     <img src="images/monster9.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -284,7 +249,7 @@
                                     Def:38<br>
                                     <span class="hp">900</span>/<span id="maxHp">900</span><br>
                                     <img src="images/monster10.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -292,7 +257,7 @@
                                     Def:45<br>
                                     <span class="hp">1300</span>/<span id="maxHp">1300</span><br>
                                     <img src="images/monster11.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -300,7 +265,7 @@
                                     Def:53<br>
                                     <span class="hp">1600</span>/<span id="maxHp">1600</span><br>
                                     <img src="images/monster12.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                            </tr>
@@ -328,7 +293,7 @@
                                     Def:65<br>
                                     <span class="hp">2200</span>/<span id="maxHp">2200</span><br>
                                     <img src="images/monster13.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -336,7 +301,7 @@
                                     Def:75<br>
                                     <span class="hp">2600</span>/<span id="maxHp">2600</span><br>
                                     <img src="images/monster14.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -344,7 +309,7 @@
                                     Def:88<br>
                                     <span class="hp">3000</span>/<span id="maxHp">3000</span><br>
                                     <img src="images/monster15.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -352,7 +317,7 @@
                                     Def:95<br>
                                     <span class="hp">4000</span>/<span id="maxHp">4000</span><br>
                                     <img src="images/monster16.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                            </tr>
@@ -387,7 +352,7 @@
                                     Def:120<br>
                                     <span class="hp">5000</span>/<span id="maxHp">5000</span><br>
                                     <img src="images/monster17.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -395,7 +360,7 @@
                                     Def:140<br>
                                     <span class="hp">7000</span>/<span id="maxHp">7000</span><br>
                                     <img src="images/monster18.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -403,7 +368,7 @@
                                     Def:170<br>
                                     <span class="hp">9000</span>/<span id="maxHp">9000</span><br>
                                     <img src="images/monster19.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -411,7 +376,7 @@
                                     Def:200<br>
                                     <span class="hp">12000</span>/<span id="maxHp">12000</span><br>
                                     <img src="images/monster20.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                            </tr>
@@ -439,7 +404,7 @@
                                     Def:220<br>
                                     <span class="hp">15000</span>/<span id="maxHp">15000</span><br>
                                     <img src="images/monster21.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -447,7 +412,7 @@
                                     Def:250<br>
                                     <span class="hp">18000</span>/<span id="maxHp">18000</span><br>
                                     <img src="images/monster22.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -455,7 +420,7 @@
                                     Def:300<br>
                                     <span class="hp">22000</span>/<span id="maxHp">22000</span><br>
                                     <img src="images/monster23.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -463,7 +428,7 @@
                                     Def:400<br>
                                     <span class="hp">28000</span>/<span id="maxHp">28000</span><br>
                                     <img src="images/monster24.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                            </tr>
@@ -498,7 +463,7 @@
                                     Def:500<br>
                                     <span class="hp">34000</span>/<span id="maxHp">34000</span><br>
                                     <img src="images/monster25.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -506,7 +471,7 @@
                                     Def:700<br>
                                     <span class="hp">40000</span>/<span id="maxHp">40000</span><br>
                                     <img src="images/monster26.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -514,7 +479,7 @@
                                     Def:1000<br>
                                     <span class="hp">48000</span>/<span id="maxHp">48000</span><br>
                                     <img src="images/monster27.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -522,7 +487,7 @@
                                     Def:1200<br>
                                     <span class="hp">57000</span>/<span id="maxHp">57000</span><br>
                                     <img src="images/monster28.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                            </tr>
@@ -550,7 +515,7 @@
                                     Def:1500<br>
                                     <span class="hp">65000</span>/<span id="maxHp">65000</span><br>
                                     <img src="images/monster29.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -558,7 +523,7 @@
                                     Def:2000<br>
                                     <span class="hp">72000</span>/<span id="maxHp">72000</span><br>
                                     <img src="images/monster30.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -566,7 +531,7 @@
                                     Def:2500<br>
                                     <span class="hp">80000</span>/<span id="maxHp">80000</span><br>
                                     <img src="images/monster31.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                               <td>
@@ -574,7 +539,7 @@
                                     Def:3000<br>
                                     <span class="hp">88000</span>/<span id="maxHp">88000</span><br>
                                     <img src="images/monster32.jpg" alt="Attack"><br>
-                                    Killed:<span id="killed">0</span>
+                                    
                                  </div>
                               </td>
                            </tr>
@@ -646,7 +611,7 @@
                         <table class="table">
                            
                               <td>Level: <span id="level">1</span><br>
-                                 Exp: <span id="experience">0</span>/<span id="maxexperience">100</span> (<span id="expgain">0</span>/s)<br>
+                                 Exp: <span id="experience">0</span>/<span id="maxexperience">100</span><br>
                                  Health Regen:(<span id="hpregen">2</span>/s)<br>
                                  Damage: <span id="mindamage">1</span>-<span id="maxdamage">4</span><br>
                                  Strength: <span id="strength">1</span> <input name="submit" id="vis" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();"><br>
