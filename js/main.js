@@ -47,23 +47,23 @@ window.setInterval(function () {
 }, 100);
 window.setInterval(function () {
     if (stats >= 1) {
-        document.getElementById("vis").style.visibility = "visible"
-        document.getElementById("vis1").style.visibility = "visible"
-        document.getElementById("vis2").style.visibility = "visible"
-        document.getElementById("vis3").style.visibility = "visible"
-        document.getElementById("vis4").style.visibility = "visible"
-        document.getElementById("vis5").style.visibility = "visible"
-        document.getElementById("vis6").style.visibility = "visible"
-        document.getElementById("vis7").style.visibility = "visible"
+        document.getElementById("vis").style.visibility = "visible";
+        document.getElementById("vis1").style.visibility = "visible";
+        document.getElementById("vis2").style.visibility = "visible";
+        document.getElementById("vis3").style.visibility = "visible";
+        document.getElementById("vis4").style.visibility = "visible";
+        document.getElementById("vis5").style.visibility = "visible";
+        document.getElementById("vis6").style.visibility = "visible";
+        document.getElementById("vis7").style.visibility = "visible";
     } else {
-        document.getElementById("vis").style.visibility = "hidden"
-        document.getElementById("vis1").style.visibility = "hidden"
-        document.getElementById("vis2").style.visibility = "hidden"
-        document.getElementById("vis3").style.visibility = "hidden"
-        document.getElementById("vis4").style.visibility = "hidden"
-        document.getElementById("vis5").style.visibility = "hidden"
-        document.getElementById("vis6").style.visibility = "hidden"
-        document.getElementById("vis7").style.visibility = "hidden"
+        document.getElementById("vis").style.visibility = "hidden";
+        document.getElementById("vis1").style.visibility = "hidden";
+        document.getElementById("vis2").style.visibility = "hidden";
+        document.getElementById("vis3").style.visibility = "hidden";
+        document.getElementById("vis4").style.visibility = "hidden";
+        document.getElementById("vis5").style.visibility = "hidden";
+        document.getElementById("vis6").style.visibility = "hidden";
+        document.getElementById("vis7").style.visibility = "hidden";
     }
 }, 1);
 
@@ -242,8 +242,8 @@ var dagger = [
 ];
 
 
-var arm = [0, 0, 0, 0, 0, 0, 0]		 //Amount of armors in player inventory
-var acc = [0, 0, 0, 0, 0, 0, 0]		 //Amount of accessories in player inventory
+var arm = [0, 0, 0, 0, 0, 0, 0];		 //Amount of armors in player inventory
+var acc = [0, 0, 0, 0, 0, 0, 0];	 //Amount of accessories in player inventory
 
 
 function weaponUnequip() {
@@ -382,7 +382,7 @@ function usepot() {
         Log("Your health is full!");
     } else if (health + 20 >= maxhealth & pot >= 1) {
         pot = pot - 1;
-        health = maxhealth
+        health = maxhealth;
         document.getElementById('pot').innerHTML = pot;
         document.getElementById('health').innerHTML = health;
         Log("You heal for 20 <span style=\"color:green\">health!</span>");
@@ -399,7 +399,7 @@ function usespot() {
         Log("Your health is full!");
     } else if (health + 100 >= maxhealth & mpot >= 1) {
         spot = spot - 1;
-        health = maxhealth
+        health = maxhealth;
         document.getElementById('spot').innerHTML = spot;
         document.getElementById('health').innerHTML = health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
@@ -416,7 +416,7 @@ function usempot() {
         Log("Your health is full!");
     } else if (health + 500 >= maxhealth & mpot >= 1) {
         mpot = mpot - 1;
-        health = maxhealth
+        health = maxhealth;
         document.getElementById('mpot').innerHTML = mpot;
         document.getElementById('health').innerHTML = health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
@@ -433,7 +433,7 @@ function Log(data) {
         logData[logData.length] = data;
         logData.length++;
     } else {
-        for (i = 0; i < logData.length - 1; i++) {
+        for (var i = 0; i < logData.length - 1; i++) {
             logData[i] = logData[i + 1];
         }
         logData[logData.length - 1] = data;
