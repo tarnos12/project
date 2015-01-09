@@ -49,51 +49,125 @@
                      <li><a href="#tab_b" data-toggle="tab">Secondary Stats</a></li>
                   </ul>
                   <div class="tab-content">
-                      <div class=".col-sm-7 col-md-7 .col-lg-7 tab-pane active" id="tab_a">
+                      <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_a">
                           <div class="c3">
                               <h4>Player Stats</h4>
                           </div>
                           <table class="table">
-
-                              <td>
-                                  Level: <span id="level">1</span><br />
-                                  Exp: <span id="experience">0</span>/<span id="maxexperience">100</span><br />
-                                  Damage: <span id="mindamage">1</span>-<span id="maxdamage">4</span><br />
-                                  Strength: <span id="strength">1</span><br />
-                                  Endurance: <span id="endurance">0</span><br />
-                                  Agility: <span id="agility">1</span> <br />
-                                  Dexterity: <span id="strength">1</span> <br />
-                                  Intelligence: <span id="strength">1</span><br />
-                                  Wisdom: <span id="strength">1</span><br />
-                                  Luck: <span id="strength">1</span><br>
-                                  Stat Points: <span id="stats">0</span><br />
-
-                              </td>
-                              <td>
-                                  <br />
-                                  <br />
-                                  <br />
-                                  <input name="submit" id="vis" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();"><br />
-                                  <input name="submit" id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();"><br />
-                                  <input name="submit" id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();"><br />
-                                  <input name="submit" id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity();"><br />
-                                  <input name="submit" id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence();"><br />
-                                  <input name="submit" id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom();"><br />
-                                  <input name="submit" id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck();"><br />
-                              </td>
-
-
-
-
-                              <td><img src="images/gold.jpg" alt="Gold Coin"><span id="gold">0</span></td>
                               <tr>
-                                  <td>
-                                      <img src="images/hp.jpg" alt="Health Potion">(20hp): <span id="pot">0</span><input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();"><br />
-                                      <img src="images/hp1.jpg" alt="Super Potion">(100hp):<span id="spot">0</span><input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();"><br />
-                                      <img src="images/hp2.jpg" alt="Mega Potion">(500hp):<span id="mpot">0</span><input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
+                                  <td class="col-md-3">
+                                      Level
+                                  </td>
+                                  <td colspan="2">
+                                      :<span id="level">1</span>
                                   </td>
                               </tr>
-                          </table>
+                              <tr>
+                                  <td>
+                                      Exp
+                                  </td>
+                                  <td colspan="2">
+                                      :<span id="experience">0</span>/<span id="maxexperience">100</span>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      Damage
+                                  </td>
+                                  <td colspan="2">
+                                      :<span id="mindamage">1</span>-<span id="maxdamage">4</span>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      Strength
+                                  </td>
+                                  <td>
+                                      :<span id="strength">1</span><br />
+                                  </td>
+                                  <td>
+                                      <input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();">
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      Endurance
+                                  </td>
+                                  <td>
+                                      :<span id="endurance">0</span><br />
+                                  </td>
+                                  <td>
+                                      <input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();">
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      Agility
+                                  </td>
+                                  <td>
+                                      :<span id="agility">1</span><br />
+                                  </td>
+                                  <td>
+                                      <input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();">
+                                  </td>
+                              </tr>
+                             <tr>
+                                  <td>
+                                      <img src="images/gold.jpg" alt="Gold Coin">
+                                  </td>
+                                  <td colspan="2">
+                                      :<span id="gold">0</span>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td colspan="2">
+                                      <img src="images/hp.jpg" alt="Health Potion">(20hp): <span id="pot">0</span>
+                                  </td>
+                                  <td>
+                                      <input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();">
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td colspan="2">
+                                      <img src="images/hp1.jpg" alt="Super Potion">(100hp):<span id="spot">0</span>
+                                  </td>
+                                  <td>
+                                      <input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();">
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td colspan="2">
+                                      <img src="images/hp2.jpg" alt="Mega Potion">(500hp):<span id="mpot">0</span>
+                                  </td>
+                                  <td>
+                                      <input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
+                                  </td>
+                              </tr>
+                              <!--
+        <td>
+            Strength: <span id="strength">1</span><br />
+            Endurance: <span id="endurance">0</span><br />
+            Agility: <span id="agility">1</span> <br />
+            Dexterity: <span id="strength">1</span> <br />
+            Intelligence: <span id="strength">1</span><br />
+            Wisdom: <span id="strength">1</span><br />
+            Luck: <span id="strength">1</span><br>
+            Stat Points: <span id="stats">0</span><br />
+
+        </td>
+        <td>
+            <br />
+            <br />
+            <br />
+            <input name="submit" id="vis" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();"><br />
+            <input name="submit" id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();"><br />
+            <input name="submit" id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();"><br />
+            <input name="submit" id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity();"><br />
+            <input name="submit" id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence();"><br />
+            <input name="submit" id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom();"><br />
+            <input name="submit" id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck();"><br />
+        </td>-->
+                        </table>
 
 
                       </div>
