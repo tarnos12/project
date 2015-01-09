@@ -1,52 +1,52 @@
 window.setInterval(function () {
     var hppercent = 100;
-    hppercent = (Math.floor((health / maxhealth) * 100));
-    if (maxhealth <= 30 & pot >= 1) {
+    hppercent = (Math.floor((player.health / player.maxhealth) * 100));
+    if (player.maxhealth <= 30 & pot >= 1) {
         if (hppercent <= 30) {
-            if (health + pot >= maxhealth) {
-                health = maxhealth;
+            if (player.health + pot >= player.maxhealth) {
+                player.health = player.maxhealth;
                 pot -= 1;
-                document.getElementById("health").innerHTML = health;
+                document.getElementById("health").innerHTML = player.health;
                 document.getElementById("pot").innerHTML = pot;
             } else {
-                health += pot;
+                player.health += pot;
                 pot -= 1;
-                document.getElementById("health").innerHTML = health;
+                document.getElementById("health").innerHTML = player.health;
                 document.getElementById("pot").innerHTML = pot;
             }
         }
-    } else if (maxhealth <= 100 & mpot >= 1) {
+    } else if (player.maxhealth <= 100 & mpot >= 1) {
         if (hppercent <= 30) {
-            if (health + mpot >= maxhealth) {
-                health = maxhealth;
+            if (player.health + mpot >= player.maxhealth) {
+                player.health = player.maxhealth;
                 mpot -= 1;
-                document.getElementById("health").innerHTML = health;
+                document.getElementById("health").innerHTML = player.health;
                 document.getElementById("mpot").innerHTML = mpot;
             } else {
-                health += mpot;
+                player.health += mpot;
                 mpot -= 1;
-                document.getElementById("health").innerHTML = health;
+                document.getElementById("health").innerHTML = player.health;
                 document.getElementById("mpot").innerHTML = mpot;
             }
         }
     } else {
         if (hppercent <= 30 & spot >= 1) {
-            if (health + spot >= maxhealth) {
-                health = maxhealth;
+            if (player.health + spot >= player.maxhealth) {
+                player.health = player.maxhealth;
                 spot -= 1;
-                document.getElementById("health").innerHTML = health;
+                document.getElementById("health").innerHTML = player.health;
                 document.getElementById("spot").innerHTML = spot;
             } else {
-                health += spot;
+                player.health += spot;
                 spot -= 1;
-                document.getElementById("health").innerHTML = health;
+                document.getElementById("health").innerHTML = player.health;
                 document.getElementById("spot").innerHTML = spot;
             }
         }
     } { }
 }, 100);
 window.setInterval(function () {
-    if (stats >= 1) {
+    if (player.stats >= 1) {
         document.getElementById("vis").style.visibility = "visible";
         document.getElementById("vis1").style.visibility = "visible";
         document.getElementById("vis2").style.visibility = "visible";
@@ -237,8 +237,37 @@ var dagger = [
         id: 'd4',
         name: 'dagger4',
         agility: 25,
-        dexterity: 10
+        dexterity: 10,
+        luck:5
     }
+];
+
+var axe = [
+      {
+        id: 'a1',
+        name: 'axe1',
+        strength: 5,
+        agility: -1
+    },
+
+    {
+        id: 'a2',
+        name: 'axe2',
+        agility: 3,
+        dexterity: 0
+    },
+    {
+    id: 'a3',
+        name: 'axe3',
+        agility: 3,
+        dexterity: 0
+    },
+    {
+        id: 'a4',
+        name: 'axe4',
+        agility: 3,
+        dexterity: 0
+    },
 ];
 
 
@@ -307,124 +336,124 @@ function equipDagger() {
 
 
 window.setInterval(function () {
-    gold = gold + goldgain;
-    document.getElementById("gold").innerHTML = gold;
+    player.gold = player.gold + player.goldgain;
+    document.getElementById("gold").innerHTML = player.gold;
 }, 1000);
 window.setInterval(function () {
-    if (experience < maxexperience) {
-        experience = Math.floor(experience + expgain);
-        if (experience >= maxexperience) {
-            level += 1;
-            stats += 2;
-            experience = 0;
-            maxexperience = Math.floor(maxexperience * 1.2);
-            Log("You leveled up! Your current level is: " + level);
-            document.getElementById("maxexperience").innerHTML = maxexperience;
-            document.getElementById("level").innerHTML = level;
-            document.getElementById("stats").innerHTML = stats;
-            document.getElementById("experience").innerHTML = experience;
-        } else if (expgain >= 1) {
-            document.getElementById("experience").innerHTML = experience;
+    if (player.experience < player.maxexperience) {
+        player.experience = Math.floor(player.experience + player.expgain);
+        if (player.experience >= player.maxexperience) {
+            player.level += 1;
+            player.stats += 2;
+            player.experience = 0;
+            player.maxexperience = Math.floor(player.maxexperience * 1.2);
+            Log("You leveled up! Your current level is: " + player.level);
+            document.getElementById("maxexperience").innerHTML = player.maxexperience;
+            document.getElementById("level").innerHTML = player.level;
+            document.getElementById("stats").innerHTML = player.stats;
+            document.getElementById("experience").innerHTML = player.experience;
+        } else if (player.expgain >= 1) {
+            document.getElementById("experience").innerHTML = player.experience;
         }
     }
 }, 1000);
 window.setInterval(function () {
     var exppercent = 0;
-    exppercent = (Math.floor((experience / maxexperience) * 100));
+    exppercent = (Math.floor((player.experience / player.maxexperience) * 100));
     document.getElementById("exppercent").innerHTML = exppercent;
 }, 1000);
 window.setInterval(function () {
-    if (health < maxhealth) health += hpregen;
-    if (health > maxhealth) health = maxhealth;
-    document.getElementById('health').innerHTML = health;
+    if (player.health < player.maxhealth) player.health += player.hpregen;
+    if (player.health > player.maxhealth) player.health = player.maxhealth;
+    document.getElementById('health').innerHTML = player.health;
 }, 1000);
 
 function upgradeEndurance() {
-    if (stats >= 1) {
-        maxhealth = maxhealth + 10;
-        hpregen = hpregen + 1;
-        stats = stats - 1;
-        endurance += 1;
-        Log("Your maximal health is now: " + maxhealth + "!");
-        Log("Your health regen increased by: " + hpregen + "!");
-        document.getElementById("maxhealth").innerHTML = maxhealth;
-        document.getElementById("hpregen").innerHTML = hpregen;
-        document.getElementById("stats").innerHTML = stats;
-        document.getElementById("endurance").innerHTML = endurance;
+    if (player.stats >= 1) {
+        player.maxhealth = player.maxhealth + 10;
+        player.hpregen = player.hpregen + 1;
+        player.stats = player.stats - 1;
+        player.endurance += 1;
+        Log("Your maximal health is now: " + player.maxhealth + "!");
+        Log("Your health regen increased by: " + player.hpregen + "!");
+        document.getElementById("maxhealth").innerHTML = player.maxhealth;
+        document.getElementById("hpregen").innerHTML = player.hpregen;
+        document.getElementById("stats").innerHTML = player.stats;
+        document.getElementById("endurance").innerHTML = player.endurance;
     }
 }
 
 function upgradeStrength() {
-    if (stats >= 1) {
-        stats = stats - 1;
-        strength += 1;
-        mindamage = Math.floor(strength * 1.5);
-        maxdamage = Math.floor(strength * 2.5);
-        document.getElementById('stats').innerHTML = stats;
-        document.getElementById('mindamage').innerHTML = mindamage;
-        document.getElementById('maxdamage').innerHTML = maxdamage;
-        document.getElementById('strength').innerHTML = strength;
+    if (player.stats >= 1) {
+        player.stats = player.stats - 1;
+        player.strength += 1;
+        player.mindamage = Math.floor(player.strength * 1.5);
+        player.maxdamage = Math.floor(player.strength * 2.5);
+        document.getElementById('stats').innerHTML = player.stats;
+        document.getElementById('mindamage').innerHTML = player.mindamage;
+        document.getElementById('maxdamage').innerHTML = player.maxdamage;
+        document.getElementById('strength').innerHTML = player.strength;
     }
 }
 
 function upgradeDefense() {
-    if (stats >= 1) {
-        stats = stats - 1;
-        defense += 1;
-        Log("Your defense is now: " + defense + "!");
-        document.getElementById('stats').innerHTML = stats;
-        document.getElementById('defense').innerHTML = defense;
+    if (player.stats >= 1) {
+        player.stats = player.stats - 1;
+        player.defense += 1;
+        Log("Your defense is now: " + player.defense + "!");
+        document.getElementById('stats').innerHTML = player.stats;
+        document.getElementById('defense').innerHTML = player.defense;
     }
 }
 
 function usepot() {
-    if (health == maxhealth) {
+    if (player.health == player.maxhealth) {
         Log("Your health is full!");
-    } else if (health + 20 >= maxhealth & pot >= 1) {
+    } else if (player.health + 20 >= player.maxhealth & pot >= 1) {
         pot = pot - 1;
-        health = maxhealth;
+        player.health = player.maxhealth;
         document.getElementById('pot').innerHTML = pot;
-        document.getElementById('health').innerHTML = health;
+        document.getElementById('health').innerHTML = player.health;
         Log("You heal for 20 <span style=\"color:green\">health!</span>");
-    } else if (health + 20 < maxhealth & pot >= 1) {
+    } else if (player.health + 20 < player.maxhealth & pot >= 1) {
         pot = pot - 1;
-        health = health + 20;
+        player.health = player.health + 20;
         document.getElementById('pot').innerHTML = pot;
-        document.getElementById('health').innerHTML = health;
+        document.getElementById('health').innerHTML = player.health;
     }
 }
 
 function usespot() {
-    if (health == maxhealth) {
+    if (player.health == player.maxhealth) {
         Log("Your health is full!");
-    } else if (health + 100 >= maxhealth & mpot >= 1) {
+    } else if (player.health + 100 >= player.maxhealth & mpot >= 1) {
         spot = spot - 1;
-        health = maxhealth;
+        player.health = player.maxhealth;
         document.getElementById('spot').innerHTML = spot;
-        document.getElementById('health').innerHTML = health;
+        document.getElementById('health').innerHTML = player.health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
-    } else if (health + 100 < maxhealth & mpot >= 1) {
+    } else if (player.health + 100 < player.maxhealth & mpot >= 1) {
         spot = spot - 1;
-        health = health + 100;
+        player.health = player.health + 100;
         document.getElementById('spot').innerHTML = spot;
-        document.getElementById('health').innerHTML = health;
+        document.getElementById('health').innerHTML = player.health;
     }
 }
 
 function usempot() {
-    if (health == maxhealth) {
+    if (player.health == player.maxhealth) {
         Log("Your health is full!");
-    } else if (health + 500 >= maxhealth & mpot >= 1) {
+    } else if (player.health + 500 >= player.maxhealth & mpot >= 1) {
         mpot = mpot - 1;
-        health = maxhealth;
+        player.health = player.maxhealth;
         document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('health').innerHTML = health;
+        document.getElementById('health').innerHTML = player.health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
-    } else if (health + 500 < maxhealth & mpot >= 1) {
+    } else if (player.health + 500 < player.maxhealth & mpot >= 1) {
         mpot = mpot - 1;
-        health = health + 500;
+        player.health = player.health + 500;
         document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('health').innerHTML = health;
+        document.getElementById('health').innerHTML = player.health;
     }
 }
 
@@ -447,28 +476,28 @@ function Log(data) {
 }
 
 //PLAYER STATS
-
-var stats = 0;
-var level = 1;
-var strength = 1;
-var endurance = 0;
-var agility = 0;
-var dexterity = 0;
-var intelligence = 0;
-var wisdom = 0;
-var luck = 0;
-var mindamage = 1;
-var maxdamage = 4;
-var defense = 0;
-var experience = 0;
-var maxexperience = 100;
-var expgain = 0;
-var goldgain = 0;
-var gold = 0;
-var health = 30;
-var maxhealth = 30;
-var hpregen = 2;
-
+var player = {
+    stats: 0,
+    level: 1,
+    strength: 1,
+    endurance: 0,
+    agility: 0,
+    dexterity: 0,
+    intelligence: 0,
+    wisdom: 0,
+    luck: 0,
+    mindamage: 1,
+    maxdamage: 4,
+    defense: 0,
+    experience: 0,
+    maxexperience: 100,
+    expgain: 0,
+    goldgain: 0,
+    gold: 0,
+    health: 30,
+    maxhealth: 30,
+    hpregen: 2
+}
 
 var maxLogLines = 16;
 var logData = {
@@ -572,7 +601,7 @@ function attack(monster, id) {
 
 
 function playerDamage(monster, id) {
-    var damage = Math.floor(Math.random() * (maxdamage - mindamage + 1)) + mindamage;
+    var damage = Math.floor(Math.random() * (player.maxdamage - player.mindamage + 1)) + player.mindamage;
     damage = Math.floor(damage - monster.def * 1.2);
     if (damage > 1) {
         playerDamageDeal(damage, monster, id);
@@ -595,7 +624,7 @@ function playerDamageDeal(damage, monster, id) {
 
 function monsterDamage(monster, id) {
     var dmg = Math.floor(Math.random() * (monster.maxDmg - monster.minDmg + 1)) + monster.minDmg;
-    dmg = Math.floor(dmg - defense * 1.2);
+    dmg = Math.floor(dmg - player.defense * 1.2);
     if (dmg > 1) {
         monsterDamageDeal(dmg, monster, id);
     }
@@ -604,10 +633,10 @@ function monsterDamage(monster, id) {
     }
 }
 function monsterDamageDeal(dmg, monster, id) {
-    health = health - dmg;
-    document.getElementById("health").innerHTML = health;
+    player.health = player.health - dmg;
+    document.getElementById("health").innerHTML = player.health;
     Log("Enemy hit you for " + dmg + " <span style=\"color:red\">damage</span>");
-    if (health < 1) {
+    if (player.health < 1) {
         playerDead(monster, id);
     }
 }
@@ -616,9 +645,9 @@ function monsterDamageDeal(dmg, monster, id) {
 
 function playerDead(monster, id) {
 
-    health = maxhealth;
+    player.health = player.maxhealth;
     monster.hp = monster.maxHp;
-    document.getElementById("health").innerHTML = health;
+    document.getElementById("health").innerHTML = player.health;
     document.getElementById("monster" + id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     Log("<span style=\"color:red\">You have died!</span>");
 
@@ -634,21 +663,21 @@ function monsterKilled(monster, id) {
 }
 function monsterExperience(monster, id) {
 
-    var expgain = monster.baseExp / (level / 5);
-    if (experience < maxexperience) {
-        experience = Math.floor(experience + expgain);
-        if (experience >= maxexperience) {
-            level += 1;
-            stats += 2;
-            experience = experience - maxexperience;
-            maxexperience = Math.floor(maxexperience * 1.2);
-            Log("You leveled up! Your current level is: " + level);
-            document.getElementById("maxexperience").innerHTML = maxexperience;
-            document.getElementById("level").innerHTML = level;
-            document.getElementById("stats").innerHTML = stats;
-            document.getElementById("experience").innerHTML = experience;
+    var expgain = monster.baseExp / (player.level / 5);
+    if (player.experience < player.maxexperience) {
+        player.experience = Math.floor(player.experience + expgain);
+        if (player.experience >= player.maxexperience) {
+            player.level += 1;
+            player.stats += 2;
+            player.experience = player.experience - player.maxexperience;
+            player.maxexperience = Math.floor(player.maxexperience * 1.2);
+            Log("You leveled up! Your current player.level is: " + player.level);
+            document.getElementById("maxexperience").innerHTML = player.maxexperience;
+            document.getElementById("level").innerHTML = player.level;
+            document.getElementById("stats").innerHTML = player.stats;
+            document.getElementById("experience").innerHTML = player.experience;
         } else Log("You gain: " + Math.floor(expgain) + "experience!");
-        document.getElementById("experience").innerHTML = experience;
+        document.getElementById("experience").innerHTML = player.experience;
     }
     monsterGold(monster, id);
 }
@@ -658,19 +687,19 @@ function monsterGold(monster, id) {
     var golddrop = Math.floor((Math.random() * 100) + 1);
     if (golddrop > 95) {
         golddrop = Math.floor((Math.random() * 20) + 1);
-        gold = gold + golddrop;
+        player.gold = player.gold + golddrop;
         Log("You loot: " + golddrop + "gold!");
-        document.getElementById("gold").innerHTML = gold;
+        document.getElementById("gold").innerHTML = player.gold;
     } else if (golddrop >= 75) {
         golddrop = Math.floor((Math.random() * 10) + 1);
-        gold = gold + golddrop;
+        player.gold = player.gold + golddrop;
         Log("You loot: " + golddrop + "gold!");
-        document.getElementById("gold").innerHTML = gold;
+        document.getElementById("gold").innerHTML = player.gold;
     } else if (golddrop >= 60) {
         golddrop = Math.floor((Math.random() * 5) + 1);
-        gold = gold + golddrop;
+        player.gold = player.gold + golddrop;
         Log("You loot: " + golddrop + "gold!");
-        document.getElementById("gold").innerHTML = gold;
+        document.getElementById("gold").innerHTML = player.gold;
     }
     monsterItemDrop(monster, id);
 }
@@ -769,68 +798,68 @@ button32.addEventListener("click", bindAttack(monsters[31], 31));
 
 
 function buypot() {
-    if (gold >= 20) {
+    if (player.gold >= 20) {
         pot += 1;
-        gold -= 20;
+        player.gold -= 20;
         document.getElementById('pot').innerHTML = pot;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
     }
 }
 
 function buypot10() {
-    if (gold >= 200) {
+    if (player.gold >= 200) {
         pot += 10;
-        gold -= 200;
+        player.gold -= 200;
         document.getElementById('pot').innerHTML = pot;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
     }
 }
 
 function buyspot() {
-    if (gold >= 100) {
+    if (player.gold >= 100) {
         spot += 1;
-        gold -= 100;
+        player.gold -= 100;
         document.getElementById('spot').innerHTML = spot;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
     }
 }
 
 function buyspot10() {
-    if (gold >= 1000) {
+    if (player.gold >= 1000) {
         spot += 10;
-        gold -= 1000;
+        player.gold -= 1000;
         document.getElementById('spot').innerHTML = spot;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
     }
 }
 
 function buympot() {
-    if (gold >= 500) {
+    if (player.gold >= 500) {
         mpot += 1;
-        gold -= 500;
+        player.gold -= 500;
         document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
     }
 }
 
 function buympot10() {
-    if (gold >= 5000) {
+    if (player.gold >= 5000) {
         mpot += 10;
-        gold -= 5000;
+        player.gold -= 5000;
         document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
     }
 }
 
 function sellallcommon() {
     if (common >= 1 || commonexp >= 1 || commongold >= 1) {
-        gold = common * 10 + gold;
-        gold = commongold * 10 + gold;
-        gold = commonexp * 10 + gold;
+        player.gold = common * 10 + player.gold;
+        player.gold = commongold * 10 + player.gold;
+        player.gold = commonexp * 10 + player.gold;
         common = common - common;
         commongold = commongold - commongold;
         commonexp = commonexp - commonexp;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
         document.getElementById('common').innerHTML = common;
         document.getElementById('commonexp').innerHTML = commonexp;
         document.getElementById('commongold').innerHTML = commongold;
@@ -839,13 +868,13 @@ function sellallcommon() {
 
 function sellallrare() {
     if (rare >= 1 || raregold >= 1 || rareexp >= 1) {
-        gold = rare * 30 + gold;
-        gold = raregold * 30 + gold;
-        gold = rareexp * 30 + gold;
+        player.gold = rare * 30 + player.gold;
+        player.gold = raregold * 30 + player.gold;
+        player.gold = rareexp * 30 + player.gold;
         rare = rare - rare;
         raregold = raregold - raregold;
         rareexp = rareexp - rareexp;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
         document.getElementById('rare').innerHTML = rare;
         document.getElementById('rareexp').innerHTML = rareexp;
         document.getElementById('raregold').innerHTML = raregold;
@@ -854,13 +883,13 @@ function sellallrare() {
 
 function sellallunique() {
     if (unique >= 1 || uniquegold >= 1 || uniqueexp >= 1) {
-        gold = unique * 50 + gold;
-        gold = uniquegold * 50 + gold;
-        gold = uniqueexp * 50 + gold;
+        player.gold = unique * 50 + player.gold;
+        player.gold = uniquegold * 50 + player.gold;
+        player.gold = uniqueexp * 50 + player.gold;
         unique = unique - unique;
         uniquegold = uniquegold - uniquegold;
         uniqueexp = uniqueexp - uniqueexp;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
         document.getElementById('unique').innerHTML = unique;
         document.getElementById('uniqueexp').innerHTML = uniqueexp;
         document.getElementById('uniquegold').innerHTML = uniquegold;
@@ -869,13 +898,13 @@ function sellallunique() {
 
 function sellallepic() {
     if (epic >= 1 || epicgold >= 1 || epicexp >= 1) {
-        gold = epic * 70 + gold;
-        gold = epicgold * 70 + gold;
-        gold = epicexp * 70 + gold;
+        player.gold = epic * 70 + player.gold;
+        player.gold = epicgold * 70 + player.gold;
+        player.gold = epicexp * 70 + player.gold;
         epic = epic - epic;
         epicgold = epicgold - epicgold;
         epicexp = epicexp - epicexp;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
         document.getElementById('epic').innerHTML = epic;
         document.getElementById('epicgold').innerHTML = epicgold;
         document.getElementById('epicexp').innerHTML = epicexp;
@@ -884,13 +913,13 @@ function sellallepic() {
 
 function sellalllegendary() {
     if (legendary >= 1 || legendarygold >= 1 || legendaryexp >= 1) {
-        gold = legendary * 120 + gold;
-        gold = legendarygold * 120 + gold;
-        gold = legendaryexp * 120 + gold;
+        player.gold = legendary * 120 + player.gold;
+        player.gold = legendarygold * 120 + player.gold;
+        player.gold = legendaryexp * 120 + player.gold;
         legendary = legendary - legendary;
         legendarygold = legendarygold - legendarygold;
         legendaryexp = legendaryexp - legendaryexp;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
         document.getElementById('legendary').innerHTML = legendary;
         document.getElementById('legendarygold').innerHTML = legendarygold;
         document.getElementById('legendaryexp').innerHTML = legendaryexp;
@@ -899,13 +928,13 @@ function sellalllegendary() {
 
 function sellallgod() {
     if (god >= 1 || godgold >= 1 || godexp >= 1) {
-        gold = god * 200 + gold;
-        gold = godgold * 200 + gold;
-        gold = godexp * 200 + gold;
+        player.gold = god * 200 + player.gold;
+        player.gold = godgold * 200 + player.gold;
+        player.gold = godexp * 200 + player.gold;
         god = god - god;
         godgold = godgold - godgold;
         godexp = godexp - godexp;
-        document.getElementById('gold').innerHTML = gold;
+        document.getElementById('gold').innerHTML = player.gold;
         document.getElementById('god').innerHTML = god;
         document.getElementById('godexp').innerHTML = godexp;
         document.getElementById('godgold').innerHTML = godgold;
@@ -913,11 +942,11 @@ function sellallgod() {
 }
 
 function sellall() {
-    gold = gold + (god * 200) + (legendary * 120) + (epic * 70) + (unique * 50) +
+    player.gold = player.gold + (god * 200) + (legendary * 120) + (epic * 70) + (unique * 50) +
 		(rare * 30) + (common * 10);
-    gold = gold + (godexp * 200) + (legendaryexp * 120) + (epicexp * 70) + (
+    player.gold = player.gold + (godexp * 200) + (legendaryexp * 120) + (epicexp * 70) + (
 		uniqueexp * 50) + (rareexp * 30) + (commonexp * 10);
-    gold = gold + (godgold * 200) + (legendarygold * 120) + (epicgold * 70) + (
+    player.gold = player.gold + (godgold * 200) + (legendarygold * 120) + (epicgold * 70) + (
 		uniquegold * 50) + (raregold * 30) + (commongold * 10);
     god = 0;
     legendary = 0;
@@ -937,7 +966,7 @@ function sellall() {
     uniquegold = 0;
     raregold = 0;
     commongold = 0;
-    document.getElementById('gold').innerHTML = gold;
+    document.getElementById('gold').innerHTML = player.gold;
     document.getElementById('common').innerHTML = common;
     document.getElementById('rare').innerHTML = rare;
     document.getElementById('unique').innerHTML = unique;
@@ -960,19 +989,19 @@ function sellall() {
 
 function usecommonexp() {
     if (commonexp >= 1) {
-        expgain += 1;
+        player.expgain += 1;
         commonexp = commonexp - 1;
         document.getElementById('commonexp').innerHTML = commonexp;
-        document.getElementById('expgain').innerHTML = expgain;
+        document.getElementById('expgain').innerHTML = player.expgain;
     }
 }
 
 function usecommongold() {
     if (commongold >= 1) {
         commongold = commongold - 1;
-        goldgain = goldgain + 1;
+        player.goldgain = player.goldgain + 1;
         document.getElementById('commongold').innerHTML = commongold;
-        document.getElementById('goldgain').innerHTML = goldgain;
+        document.getElementById('goldgain').innerHTML = player.goldgain;
     }
 }
 
@@ -1005,19 +1034,19 @@ function fusecommon() {
 
 function userareexp() {
     if (rareexp >= 1) {
-        expgain += 3;
+        player.expgain += 3;
         rareexp = rareexp - 1;
         document.getElementById('rareexp').innerHTML = rareexp;
-        document.getElementById('expgain').innerHTML = expgain;
+        document.getElementById('expgain').innerHTML = player.expgain;
     }
 }
 
 function useraregold() {
     if (raregold >= 1) {
         raregold = raregold - 1;
-        goldgain = goldgain + 3;
+        player.goldgain = player.goldgain + 3;
         document.getElementById('raregold').innerHTML = raregold;
-        document.getElementById('goldgain').innerHTML = goldgain;
+        document.getElementById('goldgain').innerHTML = player.goldgain;
     }
 }
 
@@ -1050,19 +1079,19 @@ function fuserare() {
 
 function useuniqueexp() {
     if (uniqueexp >= 1) {
-        expgain += 10;
+        player.expgain += 10;
         uniqueexp = uniqueexp - 1;
         document.getElementById('uniqueexp').innerHTML = uniqueexp;
-        document.getElementById('expgain').innerHTML = expgain;
+        document.getElementById('expgain').innerHTML = player.expgain;
     }
 }
 
 function useuniquegold() {
     if (uniquegold >= 1) {
         uniquegold = uniquegold - 1;
-        goldgain = goldgain + 10;
+        player.goldgain = player.goldgain + 10;
         document.getElementById('uniquegold').innerHTML = uniquegold;
-        document.getElementById('goldgain').innerHTML = goldgain;
+        document.getElementById('goldgain').innerHTML = player.goldgain;
     }
 }
 
@@ -1095,19 +1124,19 @@ function fuseunique() {
 
 function useepicexp() {
     if (epicexp >= 1) {
-        expgain += 50;
+        player.expgain += 50;
         epicexp = epicexp - 1;
         document.getElementById('epicexp').innerHTML = epicexp;
-        document.getElementById('expgain').innerHTML = expgain;
+        document.getElementById('expgain').innerHTML = player.expgain;
     }
 }
 
 function useepicgold() {
     if (epicgold >= 1) {
         epicgold = epicgold - 1;
-        goldgain = goldgain + 50;
+        player.goldgain = player.goldgain + 50;
         document.getElementById('epicgold').innerHTML = epicgold;
-        document.getElementById('goldgain').innerHTML = goldgain;
+        document.getElementById('goldgain').innerHTML = player.goldgain;
     }
 }
 
@@ -1140,19 +1169,19 @@ function fuseepic() {
 
 function uselegendaryexp() {
     if (legendaryexp >= 1) {
-        expgain += 150;
+        player.expgain += 150;
         legendaryexp = legendaryexp - 1;
         document.getElementById('legendaryexp').innerHTML = legendaryexp;
-        document.getElementById('expgain').innerHTML = expgain;
+        document.getElementById('expgain').innerHTML = player.expgain;
     }
 }
 
 function uselegendarygold() {
     if (legendarygold >= 1) {
         legendarygold = legendarygold - 1;
-        goldgain = goldgain + 150;
+        player.goldgain = player.goldgain + 150;
         document.getElementById('legendarygold').innerHTML = legendarygold;
-        document.getElementById('goldgain').innerHTML = goldgain;
+        document.getElementById('goldgain').innerHTML = player.goldgain;
     }
 }
 
@@ -1185,19 +1214,19 @@ function fuselegendary() {
 
 function usegodexp() {
     if (godexp >= 1) {
-        expgain += 1500;
+        player.expgain += 1500;
         godexp = godexp - 1;
         document.getElementById('godexp').innerHTML = godexp;
-        document.getElementById('expgain').innerHTML = expgain;
+        document.getElementById('expgain').innerHTML = player.expgain;
     }
 }
 
 function usegodgold() {
     if (godgold >= 1) {
         godgold = godgold - 1;
-        goldgain = goldgain + 1500;
+        player.goldgain = player.goldgain + 1500;
         document.getElementById('godgold').innerHTML = godgold;
-        document.getElementById('goldgain').innerHTML = goldgain;
+        document.getElementById('goldgain').innerHTML = player.goldgain;
     }
 }
 
@@ -1228,19 +1257,19 @@ function fusegod() {
 function useblackorb() {
     if (blackorb >= 1) {
         blackorb = blackorb - 1;
-        goldgain = goldgain + 5000;
-        expgain = expgain + 5000;
+        player.goldgain = player.goldgain + 5000;
+        player.expgain = player.expgain + 5000;
         document.getElementById('blackorb').innerHTML = blackorb;
-        document.getElementById('goldgain').innerHTML = goldgain;
-        document.getElementById('expgain').innerHTML = expgain;
+        document.getElementById('goldgain').innerHTML = player.goldgain;
+        document.getElementById('expgain').innerHTML = player.expgain;
     }
 }
 
 function save() {
     var save = {
-        gold: gold,
-        goldgain: goldgain,
-        expgain: expgain,
+        playerGold: player.gold,
+        playerGoldgain: player.goldgain,
+        playerExpgain: player.expgain,
         common: common,
         commongold: commongold,
         commonexp: commonexp,
@@ -1260,19 +1289,19 @@ function save() {
         godgold: godgold,
         godexp: godexp,
         blackorb: blackorb,
-        health: health,
-        maxhealth: maxhealth,
-        stats: stats,
-        level: level,
-        defense: defense,
-        strength: strength,
-        endurance: endurance,
-        experience: experience,
-        maxexperience: maxexperience,
-        hpregen: hpregen,
+        playerHealth: player.health,
+        playerMaxhealth: player.maxhealth,
+        playerStats: player.stats,
+        playerLevel: player.level,
+        playerDefense: player.defense,
+        playerStrength: player.strength,
+        playerEndurance: player.endurance,
+        playerExperience: player.experience,
+        playerMaxexperience: player.maxexperience,
+        playerHpregen: player.hpregen,
         killed: killed,
-        mindamage: mindamage,
-        maxdamage: maxdamage,
+        playerMindamage: player.mindamage,
+        playerMaxdamage: player.maxdamage,
         pot: pot,
         spot: spot,
         mpot: mpot,
@@ -1282,21 +1311,21 @@ function save() {
 
 function load() {
     var savegame = JSON.parse(localStorage.getItem("save"));
-    if (typeof savegame.gold !== "undefined") gold = savegame.gold;
+    if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.common !== "undefined") common = savegame.common;
     if (typeof savegame.rare !== "undefined") rare = savegame.rare;
     if (typeof savegame.unique !== "undefined") unique = savegame.unique;
     if (typeof savegame.epic !== "undefined") epic = savegame.epic;
     if (typeof savegame.legendary !== "undefined") legendary = savegame.legendary;
     if (typeof savegame.god !== "undefined") god = savegame.god;
-    if (typeof savegame.health !== "undefined") health = savegame.health;
-    if (typeof savegame.maxhealth !== "undefined") maxhealth = savegame.maxhealth;
-    if (typeof savegame.stats !== "undefined") stats = savegame.stats;
-    if (typeof savegame.level !== "undefined") level = savegame.level;
-    if (typeof savegame.defense !== "undefined") defense = savegame.defense;
-    if (typeof savegame.experience !== "undefined") experience = savegame.experience;
-    if (typeof savegame.maxexperience !== "undefined") maxexperience = savegame.maxexperience;
-    if (typeof savegame.hpregen !== "undefined") hpregen = savegame.hpregen;
+    if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
+    if (typeof savegame.playerMaxhealth !== "undefined") player.maxhealth = savegame.playerMaxhealth;
+    if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
+    if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
+    if (typeof savegame.playerDefense !== "undefined") player.defense = savegame.playerDefense;
+    if (typeof savegame.playerExperience !== "undefined") player.experience = savegame.playerExperience;
+    if (typeof savegame.playerMaxexperience !== "undefined") player.maxexperience = savegame.playerMaxexperience;
+    if (typeof savegame.playerHpregen !== "undefined") player.hpregen = savegame.playerHpregen;
     if (typeof savegame.killed[0] !== "undefined") killed[0] = savegame.killed[0];
     if (typeof savegame.killed[1] !== "undefined") killed[1] = savegame.killed[1];
     if (typeof savegame.killed[2] !== "undefined") killed[2] = savegame.killed[2];
@@ -1363,31 +1392,31 @@ function load() {
     if (typeof savegame.legendaryexp !== "undefined") legendaryexp = savegame.legendaryexp;
     if (typeof savegame.godgold !== "undefined") godgold = savegame.godgold;
     if (typeof savegame.godexp !== "undefined") godexp = savegame.godexp;
-    if (typeof savegame.strength !== "undefined") strength = savegame.strength;
-    if (typeof savegame.endurance !== "undefined") endurance = savegame.endurance;
-    if (typeof savegame.goldgain !== "undefined") goldgain = savegame.goldgain;
-    if (typeof savegame.expgain !== "undefined") expgain = savegame.expgain;
+    if (typeof savegame.playerStrength !== "undefined") player.strength = savegame.playerStrength;
+    if (typeof savegame.playerEndurance !== "undefined") player.endurance = savegame.playerEndurance;
+    if (typeof savegame.playerGoldgain !== "undefined") player.goldgain = savegame.playerGoldgain;
+    if (typeof savegame.playerExpgain !== "undefined") player.expgain = savegame.playerExpgain;
     if (typeof savegame.godexp !== "undefined") godexp = savegame.godexp;
-    if (typeof savegame.maxdamage !== "undefined") maxdamage = savegame.maxdamage;
-    if (typeof savegame.mindamage !== "undefined") mindamage = savegame.mindamage;
+    if (typeof savegame.playerMaxdamage !== "undefined") player.maxdamage = savegame.playerMaxdamage;
+    if (typeof savegame.playerMindamage !== "undefined") player.mindamage = savegame.playerMindamage;
     if (typeof savegame.pot !== "undefined") pot = savegame.pot;
     if (typeof savegame.spot !== "undefined") spot = savegame.spot;
     if (typeof savegame.blackorb !== "undefined") blackorb = savegame.blackorb;
-    document.getElementById('gold').innerHTML = gold;
+    document.getElementById('gold').innerHTML = playerGold;
     document.getElementById('common').innerHTML = common;
     document.getElementById('rare').innerHTML = rare;
     document.getElementById('unique').innerHTML = unique;
     document.getElementById('epic').innerHTML = epic;
     document.getElementById('legendary').innerHTML = legendary;
     document.getElementById('god').innerHTML = god;
-    document.getElementById('health').innerHTML = health;
-    document.getElementById('maxhealth').innerHTML = maxhealth;
-    document.getElementById('stats').innerHTML = stats;
-    document.getElementById('level').innerHTML = level;
-    document.getElementById('defense').innerHTML = defense;
-    document.getElementById('experience').innerHTML = experience;
-    document.getElementById('maxexperience').innerHTML = maxexperience;
-    document.getElementById('hpregen').innerHTML = hpregen;
+    document.getElementById('health').innerHTML = playerHealth;
+    document.getElementById('maxhealth').innerHTML = playerMaxhealth;
+    document.getElementById('stats').innerHTML = playerStats;
+    document.getElementById('level').innerHTML = playerLevel;
+    document.getElementById('defense').innerHTML = playerDefense;
+    document.getElementById('experience').innerHTML = playerExperience;
+    document.getElementById('maxexperience').innerHTML = playerMaxexperience;
+    document.getElementById('hpregen').innerHTML = player.Hpregen;
     document.getElementById('kills1').innerHTML = killed[0];
     document.getElementById('kills2').innerHTML = killed[1];
     document.getElementById('kills3').innerHTML = killed[2];
@@ -1432,12 +1461,12 @@ function load() {
     document.getElementById('legendaryexp').innerHTML = legendaryexp;
     document.getElementById('godgold').innerHTML = godgold;
     document.getElementById('godexp').innerHTML = godexp;
-    document.getElementById('strength').innerHTML = strength;
-    document.getElementById('endurance').innerHTML = endurance;
-    document.getElementById('goldgain').innerHTML = goldgain;
-    document.getElementById('expgain').innerHTML = expgain;
-    document.getElementById('maxdamage').innerHTML = maxdamage;
-    document.getElementById('mindamage').innerHTML = mindamage;
+    document.getElementById('strength').innerHTML = playerStrength;
+    document.getElementById('endurance').innerHTML = playerEndurance;
+    document.getElementById('goldgain').innerHTML = playerGoldgain;
+    document.getElementById('expgain').innerHTML = playerExpgain;
+    document.getElementById('maxdamage').innerHTML = playerMaxdamage;
+    document.getElementById('mindamage').innerHTML = playerMindamage;
     document.getElementById('blackorb').innerHTML = blackorb;
     document.getElementById('pot').innerHTML = pot;
     document.getElementById('spot').innerHTML = spot;
@@ -1446,9 +1475,9 @@ function load() {
 
 function reset() {
     localStorage.removeItem("save");
-    gold = 0;
-    goldgain = 0;
-    expgain = 0;
+    player.gold = 0;
+    player.goldgain = 0;
+    player.expgain = 0;
     god = 0;
     godgold = 0;
     godexp = 0;
@@ -1467,38 +1496,38 @@ function reset() {
     common = 0;
     commongold = 0;
     commonexp = 0;
-    health = 30;
-    maxhealth = 30;
-    stats = 0;
-    level = 1;
-    defense = 0;
-    experience = 0;
-    maxexperience = 100;
-    hpregen = 2;
+    player.health = 30;
+    player.maxhealth = 30;
+    player.stats = 0;
+    player.level = 1;
+    player.defense = 0;
+    player.experience = 0;
+    player.maxexperience = 100;
+    player.hpregen = 2;
     killed[0] = 0;
-    strength = 1;
-    endurance = 0;
-    maxdamage = 4;
-    mindamage = 1;
+    player.strength = 1;
+    player.endurance = 0;
+    player.maxdamage = 4;
+    player.mindamage = 1;
     blackorb = 0;
     pot = 0;
     spot = 0;
     mpot = 0;
-    document.getElementById('gold').innerHTML = gold;
+    document.getElementById('gold').innerHTML = player.gold;
     document.getElementById('common').innerHTML = common;
     document.getElementById('rare').innerHTML = rare;
     document.getElementById('unique').innerHTML = unique;
     document.getElementById('epic').innerHTML = epic;
     document.getElementById('legendary').innerHTML = legendary;
     document.getElementById('god').innerHTML = god;
-    document.getElementById('health').innerHTML = health;
-    document.getElementById('maxhealth').innerHTML = maxhealth;
-    document.getElementById('stats').innerHTML = stats;
-    document.getElementById('level').innerHTML = level;
-    document.getElementById('defense').innerHTML = defense;
-    document.getElementById('experience').innerHTML = experience;
-    document.getElementById('maxexperience').innerHTML = maxexperience;
-    document.getElementById('hpregen').innerHTML = hpregen;
+    document.getElementById('health').innerHTML = player.health;
+    document.getElementById('maxhealth').innerHTML = player.maxhealth;
+    document.getElementById('stats').innerHTML = player.stats;
+    document.getElementById('level').innerHTML = player.level;
+    document.getElementById('defense').innerHTML = player.defense;
+    document.getElementById('experience').innerHTML = player.experience;
+    document.getElementById('maxexperience').innerHTML = player.maxexperience;
+    document.getElementById('hpregen').innerHTML = player.hpregen;
     document.getElementById('kills1').innerHTML = killed[0];
     document.getElementById('kills2').innerHTML = killed[0];
     document.getElementById('kills3').innerHTML = killed[0];
@@ -1543,10 +1572,10 @@ function reset() {
     document.getElementById('rareexp').innerHTML = rareexp;
     document.getElementById('commongold').innerHTML = commongold;
     document.getElementById('commonexp').innerHTML = commonexp;
-    document.getElementById('strength').innerHTML = strength;
-    document.getElementById('endurance').innerHTML = endurance;
-    document.getElementById('maxdamage').innerHTML = maxdamage;
-    document.getElementById('mindamage').innerHTML = mindamage;
+    document.getElementById('strength').innerHTML = player.strength;
+    document.getElementById('endurance').innerHTML = player.endurance;
+    document.getElementById('maxdamage').innerHTML = player.maxdamage;
+    document.getElementById('mindamage').innerHTML = player.mindamage;
     document.getElementById('blackorb').innerHTML = blackorb;
     document.getElementById('pot').innerHTML = pot;
     document.getElementById('spot').innerHTML = spot;
