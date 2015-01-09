@@ -571,112 +571,177 @@ createMonster(88000, 3500, 6000, 8000, 680000, 	0);
  * @param monster {monster object} Monster to attack
  */
 function attack(monster, id) {
- 
 
     if (monster.hp >= 1) {
-        var damage = Math.floor(Math.random() * (maxdamage - mindamage + 1)) + mindamage;
-        damage = Math.floor(damage - monster.def * 1.2);
-        if (damage > 1) {
-            monster.hp -= damage;
-            document.getElementById("monster"+id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
-            Log("You deal " + damage + " <span style=\"color:blue\">damage</span>");
-        } else Log("<span style=\"color:blue\">Enemy block your attack! </span>");
-        var dmg = Math.floor(Math.random() * (monster.maxDmg - monster.minDmg + 1)) + monster.minDmg;
-        dmg = Math.floor(dmg - defense * 1.2);
-        if (dmg > 1) {
-            health = health - dmg;
-            document.getElementById("health").innerHTML = health;
-            Log("Enemy hit you for " + dmg + " <span style=\"color:red\">damage</span>");
-        } else Log("<span style=\"color:green\">You blocked enemy attack! </span>");
-        if (health < 1) {
-            monster.hp = monster.maxHp;
-            health = maxhealth;
-            document.getElementById("monster"+id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
-            document.getElementById("health").innerHTML = health;
-            Log("<span style=\"color:blue\">You have lost!</span>");
+
+        playerDamage(monster, id);
+        monsterDamage(monster, id)
+    }
+   
+}
+ 
+    
+    
+        function playerDamage(monster, id) {
+            var damage = Math.floor(Math.random() * (maxdamage - mindamage + 1)) + mindamage;
+            damage = Math.floor(damage - monster.def * 1.2);
+            if (damage > 1) {
+                playerDamageDeal(damage, monster, id);
+            }
+            else {
+                Log("<span style=\"color:blue\">Enemy block your attack! </span>");
+            }
+            
         }
-        if (monster.hp < 1) {
-            monster.killed = monster.killed + 1;
-            monster.hp = monster.maxHp;
-            document.getElementById("monster"+id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
-			document.getElementById("monster"+id).getElementsByClassName('killed')[0].innerHTML = monster.killed;
-            var expgain = monster.baseExp / (level / 5);
-            if (experience < maxexperience) {
-                experience = Math.floor(experience + expgain);
-                if (experience >= maxexperience) {
-                    level += 1;
-                    stats += 2;
-                    experience = experience - maxexperience;
-                    maxexperience = Math.floor(maxexperience * 1.2);
-                    Log("You leveled up! Your current level is: " + level);
-                    document.getElementById("maxexperience").innerHTML = maxexperience;
-                    document.getElementById("level").innerHTML = level;
-                    document.getElementById("stats").innerHTML = stats;
-                    document.getElementById("experience").innerHTML = experience;
-                } else Log("You gain: " + Math.floor(expgain) + "experience!");
-                document.getElementById("experience").innerHTML = experience;
-            }
-            var goldLog = 0;
-            var golddrop = Math.floor((Math.random() * 100) + 1);
-            if (golddrop > 95) {
-                golddrop = Math.floor((Math.random() * 20) + 1);
-                gold = gold + golddrop;
-                Log("You loot: " + golddrop + "gold!");
-                document.getElementById("gold").innerHTML = gold;
-            } else if (golddrop >= 75) {
-                golddrop = Math.floor((Math.random() * 10) + 1);
-                gold = gold + golddrop;
-                Log("You loot: " + golddrop + "gold!");
-                document.getElementById("gold").innerHTML = gold;
-            } else if (golddrop >= 60) {
-                golddrop = Math.floor((Math.random() * 5) + 1);
-                gold = gold + golddrop;
-                Log("You loot: " + golddrop + "gold!");
-                document.getElementById("gold").innerHTML = gold;
-            }
-            "This is <span style=\"color:red\">RED</span> text.";
-            var itemdrop = Math.floor((Math.random() * 100) + 1);
-            if (itemdrop < 33) {
-                var fusiondrop = Math.floor((Math.random() * 100) + 1);
-                if (fusiondrop < 70) {
-                    common = common + 1;
-                    Log("You loot:<span style=\"color:grey\">Common</span> Fusion stone!");
-                    document.getElementById("common").innerHTML = common;
-                } else if (fusiondrop <= 100) {
-                    rare = rare + 1;
-                    Log("You loot:<span style=\"color:blue\">Rare</span> Fusion stone!");
-                    document.getElementById("rare").innerHTML = rare;
-                }
-            } else if (itemdrop < 66) {
-                var expdrop = Math.floor((Math.random() * 100) + 1);
-                if (expdrop < 70) {
-                    commonexp = commonexp + 1;
-                    Log("You loot:<span style=\"color:grey\">Common</span> Exp orb!");
-                    document.getElementById("commonexp").innerHTML = commonexp;
-                } else if (expdrop <= 100) {
-                    rareexp = rareexp + 1;
-                    Log("You loot:<span style=\"color:blue\">Rare</span> Exp orb!");
-                    document.getElementById("rareexp").innerHTML = rareexp;
-                }
-            } else {
-                var golddrop = Math.floor((Math.random() * 100) + 1);
-                if (golddrop < 70) {
-                    commongold = commongold + 1;
-                    Log("You loot:<span style=\"color:grey\">Common</span> Gold orb!");
-                    document.getElementById("commongold").innerHTML = commongold;
-                } else if (golddrop <= 100) {
-                    raregold = raregold + 1;
-                    Log("You loot:<span style=\"color:blue\">Rare</span> Gold orb!");
-                    document.getElementById("raregold").innerHTML = raregold;
-                }
-            }
+    
+    function playerDamageDeal(damage, monster, id) {
+        
+        monster.hp -= damage;
+        document.getElementById("monster" + id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
+        Log("You deal " + damage + " <span style=\"color:blue\">damage</span>");
+        if (monster.hp < 1){
+            monsterKilled(monster, id);
         }
     }
-}
+
+    function monsterDamage(monster, id) {
+        var dmg = Math.floor(Math.random() * (monster.maxDmg - monster.minDmg + 1)) + monster.minDmg;
+        dmg = Math.floor(dmg - defense * 1.2);
+        if (dmg > 1){
+            monsterDamageDeal(dmg, monster, id);
+        }
+        else{
+            Log("<span style=\"color:green\">You blocked enemy attack! </span>");
+        }
+    }
+    function monsterDamageDeal(dmg, monster, id) {
+        health = health - dmg;
+        document.getElementById("health").innerHTML = health;
+        Log("Enemy hit you for " + dmg + " <span style=\"color:red\">damage</span>");
+        if (health < 1){
+            playerDead(monster, id);
+        }
+    }
+
+
+
+    function playerDead(monster, id) {
+
+        health = maxhealth;
+        monster.hp = monster.maxHp;
+        document.getElementById("health").innerHTML = health;
+        document.getElementById("monster"+id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
+        Log("<span style=\"color:red\">You have died!</span>");
+
+    }
+
+    function monsterKilled(monster, id) {
+
+        monster.killed = monster.killed + 1;
+        monster.hp = monster.maxHp;
+        document.getElementById("monster"+id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
+        document.getElementById("monster"+id).getElementsByClassName('killed')[0].innerHTML = monster.killed;
+        monsterExperience(monster, id);
+    }
+    function monsterExperience(monster, id) {
+
+        var expgain = monster.baseExp / (level / 5);
+        if (experience < maxexperience) {
+            experience = Math.floor(experience + expgain);
+            if (experience >= maxexperience) {
+                level += 1;
+                stats += 2;
+                experience = experience - maxexperience;
+                maxexperience = Math.floor(maxexperience * 1.2);
+                Log("You leveled up! Your current level is: " + level);
+                document.getElementById("maxexperience").innerHTML = maxexperience;
+                document.getElementById("level").innerHTML = level;
+                document.getElementById("stats").innerHTML = stats;
+                document.getElementById("experience").innerHTML = experience;
+            } else Log("You gain: " + Math.floor(expgain) + "experience!");
+            document.getElementById("experience").innerHTML = experience;
+        }
+        monsterGold(monster, id);
+    }
+
+    function monsterGold(monster, id) {
+        var goldLog = 0;
+        var golddrop = Math.floor((Math.random() * 100) + 1);
+        if (golddrop > 95) {
+            golddrop = Math.floor((Math.random() * 20) + 1);
+            gold = gold + golddrop;
+            Log("You loot: " + golddrop + "gold!");
+            document.getElementById("gold").innerHTML = gold;
+        } else if (golddrop >= 75) {
+            golddrop = Math.floor((Math.random() * 10) + 1);
+            gold = gold + golddrop;
+            Log("You loot: " + golddrop + "gold!");
+            document.getElementById("gold").innerHTML = gold;
+        } else if (golddrop >= 60) {
+            golddrop = Math.floor((Math.random() * 5) + 1);
+            gold = gold + golddrop;
+            Log("You loot: " + golddrop + "gold!");
+            document.getElementById("gold").innerHTML = gold;
+        }
+        monsterItemDrop(monster, id);
+    }
+    function monsterItemDrop(monster, id) {
+
+        var itemdrop = Math.floor((Math.random() * 100) + 1);
+        if (itemdrop < 33) {
+            var fusiondrop = Math.floor((Math.random() * 100) + 1);
+            if (fusiondrop < 70) {
+                common = common + 1;
+                Log("You loot:<span style=\"color:grey\">Common</span> Fusion stone!");
+                document.getElementById("common").innerHTML = common;
+            } else if (fusiondrop <= 100) {
+                rare = rare + 1;
+                Log("You loot:<span style=\"color:blue\">Rare</span> Fusion stone!");
+                document.getElementById("rare").innerHTML = rare;
+            }
+        } else if (itemdrop < 66) {
+            var expdrop = Math.floor((Math.random() * 100) + 1);
+            if (expdrop < 70) {
+                commonexp = commonexp + 1;
+                Log("You loot:<span style=\"color:grey\">Common</span> Exp orb!");
+                document.getElementById("commonexp").innerHTML = commonexp;
+            } else if (expdrop <= 100) {
+                rareexp = rareexp + 1;
+                Log("You loot:<span style=\"color:blue\">Rare</span> Exp orb!");
+                document.getElementById("rareexp").innerHTML = rareexp;
+            }
+        } else {
+            var golddrop = Math.floor((Math.random() * 100) + 1);
+            if (golddrop < 70) {
+                commongold = commongold + 1;
+                Log("You loot:<span style=\"color:grey\">Common</span> Gold orb!");
+                document.getElementById("commongold").innerHTML = commongold;
+            } else if (golddrop <= 100) {
+                raregold = raregold + 1;
+                Log("You loot:<span style=\"color:blue\">Rare</span> Gold orb!");
+                document.getElementById("raregold").innerHTML = raregold;
+            }
+        }
+
+    }
+    
+           
+
+    
+
 
 function bindAttack(monster, id) {
     return function () {
-        attack(monster, id);
+        attack(monster, id),
+        playerDamage(monster, id),
+        playerDamageDeal(monster, id),
+        monsterDamage(monster, id),
+        monsterDamageDeal(monster, id),
+        playerDead(monster, id),
+        monsterKilled(monster, id),
+        monsterExperience(monster, id),
+        monsterGold(monster, id),
+        monsterItemDrop(monster, id);
     }
 }
 
