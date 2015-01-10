@@ -393,21 +393,6 @@ window.setInterval(function () { //Health regen
 }, 1000);
 
 //Upgrading player stats
-function upgradeEndurance() {
-    if (player.stats >= 1) {
-        player.maxhealth = player.maxhealth + 10;
-        player.hpregen = player.hpregen + 1;
-        player.stats = player.stats - 1;
-        player.endurance += 1;
-        Log("Your maximal health is now: " + player.maxhealth + "!");
-        Log("Your health regen increased by: " + player.hpregen + "!");
-        document.getElementById("maxhealth").innerHTML = player.maxhealth;
-        document.getElementById("hpregen").innerHTML = player.hpregen;
-        document.getElementById("stats").innerHTML = player.stats;
-        document.getElementById("endurance").innerHTML = player.endurance;
-    }
-}
-
 function upgradeStrength() {
     if (player.stats >= 1) {
         player.stats = player.stats - 1;
@@ -419,7 +404,89 @@ function upgradeStrength() {
         document.getElementById('maxdamage').innerHTML = player.maxdamage;
         document.getElementById('strength').innerHTML = player.strength;
     }
-}
+};
+
+function upgradeEndurance() {
+    if (player.stats >= 1) {
+        player.maxhealth = player.maxhealth + 10;
+        player.hpregen = player.hpregen + 1;
+        player.stats = player.stats - 1;
+        player.endurance += 1;
+        Log("Your maximal health is now: " + player.maxhealth + "!");
+        document.getElementById("maxhealth").innerHTML = player.maxhealth;
+        document.getElementById("hpregen").innerHTML = player.hpregen;
+        document.getElementById("stats").innerHTML = player.stats;
+        document.getElementById("endurance").innerHTML = player.endurance;
+    }
+};
+
+function upgradeAgility() {
+    if (player.stats >= 1) {
+        player.stats = player.stats - 1;
+        player.agility += 1;
+        player.critChance += 0.1;
+        player.accuracy += 0.1;
+        player.evasion += 0.1;
+        Log("You have increased your agility by 1, evasion, critical chance and accuracy increased!");
+        document.getElementById("stats").innerHTML = player.stats;
+        document.getElementById("agility").innerHTML = player.agility;
+        document.getElementById("evasion").innerHTML = player.evasion;
+        document.getElementById("accuracy").innerHTML = player.accuracy;
+        document.getElementById("criticalChance").innerHTML = player.criticalChance;
+    }
+};
+
+function upgradeDexterity() {
+    if (player.stats >= 1) {
+        player.dexterity += 1;
+        player.stats = player.stats - 1;
+        player.defense += 0.6;
+        player.criticalChance += 0.1;
+        player.criticalDamage += 0.1;
+        Log("You increased your dexterity by 1, defense, critical chance and critical damage increased.");
+        document.getElementById("dexterity").innerHTML = player.dexterity;
+        document.getElementById("stats").innerHTML = player.stats;
+        document.getElementById("defense").innerHTML = player.defense;
+        document.getElementById("criticalDamage").innerHTML = player.criticalDamage;
+        document.getElementById("criticalChance").innerHTML = player.criticalChance;
+    }
+};
+
+function upgradeIntelligence() {
+    if (player.stats >= 1) {
+        player.intelligence += 1;
+        player.stats = player.stats - 1;
+        Log("You have increased your intelligence by 1, note that it's not implemented yet :)");
+        document.getElementById("intelligence").innerHTML = player.intelligence;
+        document.getElementById("stats").innerHTML = player.stats;
+    }
+};
+
+function upgradeWisdom() {
+    if (player.stats >= 1) {
+        player.wisdom += 1;
+        player.stats = player.stats - 1;
+        Log("You have increased your wisdom by 1, note that it's not implemented yet :)");
+        document.getElementById("wisdom").innerHTML = player.wisdom;
+        document.getElementById("stats").innerHTML = player.stats;
+    }
+};
+
+function upgradeLuck() {
+    if (player.stats >= 1) {
+        player.luck += 1;
+        player.criticalChance += 0.05;
+        player.criticalDamage += 0.05;
+        player.dropRate += 1;
+        player.stats = player.stats - 1;
+        Log("You have increased your luck by 1! Critical damage/chance and drop rate increased!");
+        document.getElementById("luck").innerHTML = player.luck;
+        document.getElementById("stats").innerHTML = player.stats;
+        document.getElementById("criticalDamage").innerHTML = player.criticalDamage;
+        document.getElementById("criticalChance").innerHTML = player.criticalChance;
+        document.getElementById("dropRate").innerHTML = player.dropRate;
+    }
+};
 
 //Using potions
 function usepot() {
@@ -437,7 +504,7 @@ function usepot() {
         document.getElementById('pot').innerHTML = pot;
         document.getElementById('health').innerHTML = player.health;
     }
-}
+};
 
 function usespot() {
     if (player.health == player.maxhealth) {
@@ -454,7 +521,7 @@ function usespot() {
         document.getElementById('spot').innerHTML = spot;
         document.getElementById('health').innerHTML = player.health;
     }
-}
+};
 
 function usempot() {
     if (player.health == player.maxhealth) {
@@ -471,7 +538,7 @@ function usempot() {
         document.getElementById('mpot').innerHTML = mpot;
         document.getElementById('health').innerHTML = player.health;
     }
-}
+};
 //Player log
 function Log(data) {
     var i;
@@ -485,23 +552,23 @@ function Log(data) {
         logData[logData.length - 1] = data;
     }
     var logTemp = "";
-    for (i = logData.length -1; i >= 0; i--) {
+    for (i = logData.length - 1; i >= 0; i--) {
         logTemp += "<center>" + logData[i] + "</center>";
     }
     document.getElementById('logConsole').innerHTML = logTemp;
-}
+};
 
 //PLAYER STATS
 var player = {
     stats: 0,
     level: 1,
     strength: 1,
-    endurance: 0,
-    agility: 0,
-    dexterity: 0,
-    intelligence: 0,
-    wisdom: 0,
-    luck: 0,
+    endurance: 1,
+    agility: 1,
+    dexterity: 1,
+    intelligence: 1,
+    wisdom: 1,
+    luck: 1,
     defense: 0,
     experience: 0,
     maxexperience: 100,
@@ -534,14 +601,16 @@ var monsters = [];
 /**
  * Helper method to create the array of monsters
  */
-function createMonster(maxHp, def, minDmg, maxDmg, baseExp) {
+function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva) {
     var monster = {
         hp: maxHp, // init HP to max HP
         maxHp: maxHp,
         def: def,
         minDmg: minDmg,
         maxDmg: maxDmg,
-        baseExp: baseExp
+        baseExp: baseExp,
+        acc: acc,
+        eva: eva
     }
 
     monsters.push(monster);
@@ -551,38 +620,38 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp) {
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
 //            maxHP,  def, minD, maxD, baseExp, kills
-createMonster(10, 0, 2, 3, 5, 0);
-createMonster(30, 2, 2, 5, 10, 0);
-createMonster(70, 4, 4, 7, 30, 0);
-createMonster(130, 6, 6, 10, 50, 0);
-createMonster(190, 9, 9, 14, 90, 0);
-createMonster(280, 13, 13, 19, 140, 0);
-createMonster(380, 18, 18, 23, 190, 0);
-createMonster(500, 25, 25, 30, 260, 0);
-createMonster(700, 30, 32, 37, 340, 0);
-createMonster(900, 38, 40, 45, 450, 0);
-createMonster(1300, 45, 50, 58, 560, 0);
-createMonster(1600, 53, 60, 67, 700, 0);
-createMonster(2200, 65, 75, 80, 810, 0);
-createMonster(2600, 75, 86, 92, 940, 0);
-createMonster(3000, 88, 96, 100, 1060, 0);
-createMonster(4000, 95, 105, 110, 1200, 0);
-createMonster(5000, 120, 140, 160, 1600, 0);
-createMonster(7000, 140, 160, 185, 2150, 0);
-createMonster(9000, 170, 200, 215, 2600, 0);
-createMonster(12000, 200, 230, 250, 3400, 0);
-createMonster(15000, 220, 260, 275, 5000, 0);
-createMonster(18000, 250, 290, 320, 7000, 0);
-createMonster(22000, 300, 350, 380, 10000, 0);
-createMonster(28000, 400, 420, 550, 15000, 0);
-createMonster(34000, 500, 500, 700, 23000, 0);
-createMonster(40000, 700, 900, 1200, 35000, 0);
-createMonster(48000, 1000, 1200, 1500, 70000, 0);
-createMonster(57000, 1200, 1700, 2200, 120000, 0);
-createMonster(65000, 2000, 2500, 3000, 180000, 0);
-createMonster(72000, 2500, 3200, 4000, 290000, 0);
-createMonster(80000, 3000, 4500, 5500, 430000, 0);
-createMonster(88000, 3500, 6000, 8000, 680000, 0);
+createMonster(10, 0, 2, 3, 5, 100, 5);
+createMonster(30, 2, 2, 5, 10, 100, 5);
+createMonster(70, 4, 4, 7, 30, 100, 5);
+createMonster(130, 6, 6, 10, 50, 100, 5);
+createMonster(190, 9, 9, 14, 90, 100, 5);
+createMonster(280, 13, 13, 19, 140, 100, 5);
+createMonster(380, 18, 18, 23, 190, 100, 5);
+createMonster(500, 25, 25, 30, 260, 100, 5);
+createMonster(700, 30, 32, 37, 340, 100, 5);
+createMonster(900, 38, 40, 45, 450, 100, 5);
+createMonster(1300, 45, 50, 58, 560, 100, 5);
+createMonster(1600, 53, 60, 67, 700, 100, 5);
+createMonster(2200, 65, 75, 80, 810, 100, 5);
+createMonster(2600, 75, 86, 92, 940, 100, 5);
+createMonster(3000, 88, 96, 100, 1060, 100, 5);
+createMonster(4000, 95, 105, 110, 1200, 100, 5);
+createMonster(5000, 120, 140, 160, 1600, 100, 5);
+createMonster(7000, 140, 160, 185, 2150, 100, 5);
+createMonster(9000, 170, 200, 215, 2600, 100, 5);
+createMonster(12000, 200, 230, 250, 3400, 100, 5);
+createMonster(15000, 220, 260, 275, 5000, 100, 5);
+createMonster(18000, 250, 290, 320, 7000, 100, 5);
+createMonster(22000, 300, 350, 380, 10000, 100, 5);
+createMonster(28000, 400, 420, 550, 15000, 100, 5);
+createMonster(34000, 500, 500, 700, 23000, 100, 5);
+createMonster(40000, 700, 900, 1200, 35000, 100, 5);
+createMonster(48000, 1000, 1200, 1500, 70000, 100, 5);
+createMonster(57000, 1200, 1700, 2200, 120000, 100, 5);
+createMonster(65000, 2000, 2500, 3000, 180000, 100, 5);
+createMonster(72000, 2500, 3200, 4000, 290000, 100, 5);
+createMonster(80000, 3000, 4500, 5500, 430000, 100, 5);
+createMonster(88000, 3500, 6000, 8000, 680000, 100, 5);
 
 /**
  * Base monster attack method. Shared code among all monsters.
@@ -593,13 +662,26 @@ function attack(monster, id) {
 
     if (monster.hp >= 1) {
 
-        playerDamage(monster, id);
-        monsterDamage(monster, id);
+        playerAttack(monster, id);
+        monsterAttack(monster, id);
     }
 
 }
 
 
+function playerAttack(monster, id) {
+
+    var playerHitChance = (player.accuracy - monster.eva) / 100;
+
+    var randomHitChance = Math.random()
+
+    if (playerHitChance > randomHitChance) {
+        playerDamage(monster, id);
+    }
+    else {
+        Log("<span style=\"color:blue\">YOU MISS! </span>");
+    }
+}
 
 function playerDamage(monster, id) {
     var damage = Math.floor(Math.random() * (player.maxdamage - player.mindamage + 1)) + player.mindamage;
@@ -620,6 +702,20 @@ function playerDamageDeal(damage, monster, id) {
     Log("You deal " + damage + " <span style=\"color:blue\">damage</span>");
     if (monster.hp < 1) {
         monsterKilled(monster, id);
+    }
+}
+
+function monsterAttack(monster, id) {
+
+    var monsterHitChance = (monster.acc - player.evasion) / 100;
+
+    var randomHitChance = Math.random()
+
+    if (monsterHitChance > randomHitChance) {
+        monsterDamage(monster, id);
+    }
+    else {
+        Log("<span style=\"color:red\">You dodge enemy attack!</span>");
     }
 }
 
