@@ -1,4 +1,11 @@
 _________________________
+v1.1 - 10 january 2015   |
+-------------------------|
+- Removed all orbs from the game, this game won't be an idle game, so no exp/gold per second.
+- Added new player stats, str/end/dex/agi/int/wis/luk (which are not working yet, but some of them will soon).
+- Secondary stats page, which give you more info about player defense,critical, drop rate etc.
+- Still working on weapon skills and equipment.
+_________________________
 v1.0.7 - 4 january 2015  |
 -------------------------|
 - Changed javascript code
