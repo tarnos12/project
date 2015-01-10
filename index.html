@@ -1,945 +1,1066 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta charset="utf-8">
-      <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-      <link href="styles/interface.css">
-      <link rel="Shortcut icon" href="images/icon.jpg">
-      <title>Rpg Game</title>
-      <style type="text/css">
-         body  {
-         background-image: url("images/bg.jpg");
-         background-color: #cccccc;
-         }
-      </style>
-      <style type="text/css">
-         .container {
-         width: auto;
-         }​
-      </style>
-      <style type="text/css">
-         div.c3 {text-align: center}
-         div.c2 {margin-bottom: 5px; margin-left: 30%; margin-right: 30%; width: 40%}
-         div.c1 {margin-bottom: 0px; margin-left: 30%; margin-right: 30%; width: 40%}
-      </style>
-   </head>
-   <body>
-      <script type="text/javascript">
-         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-         
-         ga('create', 'UA-57991038-1', 'auto');
-         ga('create', 'UA-57991038-1', 'auto');
-         ga('send', 'pageview');
-         
-      </script>
-      <div class="container">
-         <div class="row">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="styles/interface.css">
+    <link rel="Shortcut icon" href="images/icon.jpg">
+    <title>Rpg Game</title>
+    <style type="text/css">
+        body {
+            background-image: url("images/bg.jpg");
+            background-color: #cccccc;
+            background-size:100% auto; 
+        }
+    </style>
+    <style type="text/css">
+        .container {
+            width: auto;
+        }
+
+
+    </style>
+    <style type="text/css">
+        div.c3 {
+            text-align: center;
+        }
+
+        div.c2 {
+            margin-bottom: 5px;
+            margin-left: 30%;
+            margin-right: 30%;
+            width: 40%;
+        }
+
+        div.c1 {
+            margin-bottom: 0px;
+            margin-left: 30%;
+            margin-right: 30%;
+            width: 40%;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-57991038-1', 'auto');
+        ga('create', 'UA-57991038-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <div class="container">
+        <div class="row">
             <div class="row">
-               <div class="progress-bar progress-bar c1">Experience: <span id="exppercent">0</span>%</div>
-               <div class="progress-bar progress-bar-success progress-bar c2">Health: <span id="health">30</span>/<span id="maxhealth">30</span></div>
+                <div class="progress-bar progress-bar c1">Experience: <span id="exppercent">0</span>%</div>
+                <div class="progress-bar progress-bar-success progress-bar c2">Health: <span id="health">30</span>/<span id="maxhealth">30</span></div>
             </div>
             <div class=".col-sm-3 col-md-3 .col-lg-3">
-               <div class="container">
-                  <ul class="nav nav-tabs">
-                     <li class="active"><a href="#tab_a" data-toggle="tab">Player Stats</a></li>
-                     <li><a href="#tab_b" data-toggle="tab">Secondary Stats</a></li>
-                  </ul>
-                  <div class="tab-content">
-                      <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_a">
-                          <div class="c3">
-                              <h4>Player Stats</h4>
-                          </div>
-                          <table class="table">
-                              <tr>
-                                  <td class="col-md-3">
-                                      Level
-                                  </td>
-                                  <td colspan="2">
-                                      :<span id="level">1</span>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Exp
-                                  </td>
-                                  <td colspan="2">
-                                      :<span id="experience">0</span>/<span id="maxexperience">100</span>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Damage
-                                  </td>
-                                  <td colspan="2">
-                                      :<span id="mindamage">1</span>-<span id="maxdamage">4</span>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Strength
-                                  </td>
-                                  <td>
-                                      :<span id="strength">1</span><br />
-                                  </td>
-                                  <td>
-                                      <input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();">
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Endurance
-                                  </td>
-                                  <td>
-                                      :<span id="endurance">0</span><br />
-                                  </td>
-                                  <td>
-                                      <input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();">
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      Agility
-                                  </td>
-                                  <td>
-                                      :<span id="agility">1</span><br />
-                                  </td>
-                                  <td>
-                                      <input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();">
-                                  </td>
-                              </tr>
-                             <tr>
-                                  <td>
-                                      <img src="images/gold.jpg" alt="Gold Coin">
-                                  </td>
-                                  <td colspan="2">
-                                      :<span id="gold">0</span>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td colspan="2">
-                                      <img src="images/hp.jpg" alt="Health Potion">(20hp): <span id="pot">0</span>
-                                  </td>
-                                  <td>
-                                      <input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();">
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td colspan="2">
-                                      <img src="images/hp1.jpg" alt="Super Potion">(100hp):<span id="spot">0</span>
-                                  </td>
-                                  <td>
-                                      <input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();">
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td colspan="2">
-                                      <img src="images/hp2.jpg" alt="Mega Potion">(500hp):<span id="mpot">0</span>
-                                  </td>
-                                  <td>
-                                      <input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
-                                  </td>
-                              </tr>
-                              <!--
-        <td>
-            Strength: <span id="strength">1</span><br />
-            Endurance: <span id="endurance">0</span><br />
-            Agility: <span id="agility">1</span> <br />
-            Dexterity: <span id="strength">1</span> <br />
-            Intelligence: <span id="strength">1</span><br />
-            Wisdom: <span id="strength">1</span><br />
-            Luck: <span id="strength">1</span><br>
-            Stat Points: <span id="stats">0</span><br />
-
-        </td>
-        <td>
-            <br />
-            <br />
-            <br />
-            <input name="submit" id="vis" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();"><br />
-            <input name="submit" id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();"><br />
-            <input name="submit" id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();"><br />
-            <input name="submit" id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity();"><br />
-            <input name="submit" id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence();"><br />
-            <input name="submit" id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom();"><br />
-            <input name="submit" id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck();"><br />
-        </td>-->
-                        </table>
+                <div class="container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_a" data-toggle="tab">Player Stats</a></li>
+                        <li><a href="#tab_b" data-toggle="tab">Secondary Stats</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_a">
+                            <div class="c3">
+                                <h4>Player Stats</h4>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td class="col-md-3">
+                                        Level
+                                    </td>
+                                    <td colspan="5">
+                                        <span id="level">1</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Exp
+                                    </td>
+                                    <td colspan="5">
+                                        <span id="experience">0</span>/<span id="maxexperience">100</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Damage
+                                    </td>
+                                    <td colspan="5">
+                                        <span id="mindamage">1</span>-<span id="maxdamage">4</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Strength
+                                    </td>
+                                    <td>
+                                        <span id="strength">1</span><br />
+                                    </td>
+                                    <td>
+                                        <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();">
+                                    </td>
+                                    <td>
+                                        Endurance
+                                    </td>
+                                    <td>
+                                        <span id="endurance">1</span><br />
+                                    </td>
+                                    <td>
+                                        <input id="vis2"  type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Agility
+                                    </td>
+                                    <td>
+                                        <span id="agility">1</span><br />
+                                    </td>
+                                    <td>
+                                        <input id="vis3"  type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();">
+                                    </td>
+                                    <td>
+                                        Dexterity
+                                    </td>
+                                    <td>
+                                        <span id="dexterity">1</span><br />
+                                    </td>
+                                    <td>
+                                        <input id="vis4"  type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity();">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Intelligence
+                                    </td>
+                                    <td>
+                                        <span id="intelligence">1</span><br />
+                                    </td>
+                                    <td>
+                                        <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence();">
+                                    </td>
+                                    <td>
+                                        Wisdom
+                                    </td>
+                                    <td>
+                                        <span id="wisdom">1</span><br />
+                                    </td>
+                                    <td>
+                                        <input id="vis6"  type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom();">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Luck
+                                    </td>
+                                    <td>
+                                       <span id="luck">1</span>
+                                    </td>
+                                    <td>
+                                        <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck();">
+                                    </td>
+                                    <td>
+                                        Stat points
+                                    </td>
+                                    <td colspan="2">
+                                        <span id="stats">1</span>
+                                    </td>
+                                    
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img src="images/gold.jpg" alt="Gold Coin">
+                                    </td>
+                                    <td colspan="5">
+                                        <span id="gold">0</span>
+                                    </td>
+                                </tr>
+                            </table>
 
 
-                      </div>
-                     <div class="tab-pane" id="tab_b">
-                        <div class="c3">
-                           <h4>Secondary Stats</h4>
-                            
                         </div>
-                         Health Regen:(<span id="hpregen">2</span>/s)<br />
-                         Defense: <span id="defense">0</span><br />
-                     </div>           
-                  </div>
-                  <!-- tab content -->
-               </div>
-               <!-- end of container -->
+                        <div class="tab-pane" id="tab_b">
+                            <div class="c3">
+                                <h4>Secondary Stats</h4>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td colspan="2" class="col-md-3" >
+                                        Health regen:<span id="hpregen">0</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="col-md-3" >
+                                        Defense:<span id="defense">0</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-3">
+                                        Accuracy:<span id="accuracy">100</span>%
+                                    </td>
+                                    <td class="col-md-3">
+                                        Evasion:<span id="evasion">0</span>%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-3">
+                                        Critical chance:<span id="criticalChance">0</span>%
+                                    </td>
+                                    <td class="col-md-3">
+                                        Critical damage:<span id="criticalDamage">0</span>%
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="col-md-3">
+                                        Drop rate:<span id="dropRate">0</span>%
+                                    </td>
+                                    <td class="col-md-3">
+                                        Exp rate:<span id="expRate">0</span>%
+                                    </td>
+                                </tr>
+                             
+                            </table>
+</div>
+                    </div>
+                    <!-- tab content -->
+                </div>
+                <!-- end of container -->
             </div>
 
             <div class=".col-sm-5 col-md-5 .col-lg-5">
-               <div class="container">
-                  <ul class="nav nav-tabs">
-                     <li class="active"><a href="#tab_a3" data-toggle="tab">Weak</a></li>
-                     <li><a href="#tab_b3" data-toggle="tab">Average</a></li>
-                     <li><a href="#tab_c3" data-toggle="tab">Strong</a></li>
-                     <li><a href="#tab_d3" data-toggle="tab">Bosses</a></li>
-                  </ul>
-                  <div class="tab-content">
-                     <div class="tab-pane active" id="tab_a3">
-                        <div class="c3">
-                           <h4>SLAY MONSTERS!</h4>
+                <div class="container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_a3" data-toggle="tab">Weak</a></li>
+                        <li><a href="#tab_b3" data-toggle="tab">Average</a></li>
+                        <li><a href="#tab_c3" data-toggle="tab">Strong</a></li>
+                        <li><a href="#tab_d3" data-toggle="tab">Bosses</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab_a3">
+                            <div class="c3">
+                                <h4>SLAY MONSTERS!</h4>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div id="monster0" class="c3">
+                                            Dmg:2-3<br>
+                                            Def:0<br>
+                                            <span class="hp">10</span>/<span id="maxHp">10</span><br>
+                                            <img src="images/monster1.jpg" alt="Attack"><br>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster1" class="c3">
+                                            Dmg:2-5<br>
+                                            Def:2<br>
+                                            <span class="hp">30</span>/<span id="maxHp">30</span><br>
+                                            <img src="images/monster2.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster2" class="c3">
+                                            Dmg:4-7<br>
+                                            Def:4<br>
+                                            <span class="hp">70</span>/<span id="maxHp">70</span><br>
+                                            <img src="images/monster3.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster3" class="c3">
+                                            Dmg:6-10<br>
+                                            Def:6<br>
+                                            <span class="hp">130</span>/<span id="maxHp">130</span><br>
+                                            <img src="images/monster4.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button1">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button2">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button3">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button4">Attack</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="monster4" class="c3">
+                                            Dmg:9-14<br>
+                                            Def:9<br>
+                                            <span class="hp">190</span>/<span id="maxHp">190</span><br>
+                                            <img src="images/monster5.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster5" class="c3">
+                                            Dmg:13-19<br>
+                                            Def:13<br>
+                                            <span class="hp">280</span>/<span id="maxHp">280</span><br>
+                                            <img src="images/monster6.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster6" class="c3">
+                                            Dmg:18-23<br>
+                                            Def:18<br>
+                                            <span class="hp">380</span>/<span id="maxHp">380</span><br>
+                                            <img src="images/monster7.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster7" class="c3">
+                                            Dmg:25-30<br>
+                                            Def:25<br>
+                                            <span class="hp">500</span>/<span id="maxHp">500</span><br>
+                                            <img src="images/monster8.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button5">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button6">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button7">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button8">Attack</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        <table class="table">
-                           <tr>
-                              <td>
-                                 <div id ="monster0" class="c3">Dmg:2-3<br>
-                                    Def:0<br>
-                                    <span class="hp">10</span>/<span id="maxHp">10</span><br>
-                                    <img src="images/monster1.jpg" alt="Attack"><br>
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster1" class="c3">Dmg:2-5<br>
-                                    Def:2<br>
-                                    <span class="hp">30</span>/<span id="maxHp">30</span><br>
-                                    <img src="images/monster2.jpg" alt="Attack"><br>
-                                   
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster2" class="c3">Dmg:4-7<br>
-                                    Def:4<br>
-                                    <span class="hp">70</span>/<span id="maxHp">70</span><br>
-                                    <img src="images/monster3.jpg" alt="Attack"><br>
-                                   
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster3" class="c3">Dmg:6-10<br>
-                                    Def:6<br>
-                                    <span class="hp">130</span>/<span id="maxHp">130</span><br>
-                                    <img src="images/monster4.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div class="c3">
-									<button id="button1">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button2">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button3">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button4">Attack</button></div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div id ="monster4" class="c3">Dmg:9-14<br>
-                                    Def:9<br>
-                                    <span class="hp">190</span>/<span id="maxHp">190</span><br>
-                                    <img src="images/monster5.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster5" class="c3">Dmg:13-19<br>
-                                    Def:13<br>
-                                    <span class="hp">280</span>/<span id="maxHp">280</span><br>
-                                    <img src="images/monster6.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster6" class="c3">Dmg:18-23<br>
-                                    Def:18<br>
-                                    <span class="hp">380</span>/<span id="maxHp">380</span><br>
-                                    <img src="images/monster7.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster7" class="c3">Dmg:25-30<br>
-                                    Def:25<br>
-                                    <span class="hp">500</span>/<span id="maxHp">500</span><br>
-                                    <img src="images/monster8.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div class="c3">
-									<button id="button5">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button6">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button7">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button8">Attack</button></div>
-                              </td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="tab-pane" id="tab_b3">
-                        <div class="c3">
-                           <h4>SLAY MONSTERS!</h4>
+                        <div class="tab-pane" id="tab_b3">
+                            <div class="c3">
+                                <h4>SLAY MONSTERS!</h4>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div id="monster8" class="c3">
+                                            Dmg:32-37<br>
+                                            Def:30<br>
+                                            <span class="hp">700</span>/<span id="maxHp">700</span><br>
+                                            <img src="images/monster9.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster9" class="c3">
+                                            Dmg:40-45<br>
+                                            Def:38<br>
+                                            <span class="hp">900</span>/<span id="maxHp">900</span><br>
+                                            <img src="images/monster10.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster10" class="c3">
+                                            Dmg:50-58<br>
+                                            Def:45<br>
+                                            <span class="hp">1300</span>/<span id="maxHp">1300</span><br>
+                                            <img src="images/monster11.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster11" class="c3">
+                                            Dmg:60-67<br>
+                                            Def:53<br>
+                                            <span class="hp">1600</span>/<span id="maxHp">1600</span><br>
+                                            <img src="images/monster12.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button9">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button10">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button11">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button12">Attack</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="monster12" class="c3">
+                                            Dmg:75-80<br>
+                                            Def:65<br>
+                                            <span class="hp">2200</span>/<span id="maxHp">2200</span><br>
+                                            <img src="images/monster13.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster13" class="c3">
+                                            Dmg:86-92<br>
+                                            Def:75<br>
+                                            <span class="hp">2600</span>/<span id="maxHp">2600</span><br>
+                                            <img src="images/monster14.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster14" class="c3">
+                                            Dmg:96-100<br>
+                                            Def:88<br>
+                                            <span class="hp">3000</span>/<span id="maxHp">3000</span><br>
+                                            <img src="images/monster15.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster15" class="c3">
+                                            Dmg:105-110<br>
+                                            Def:95<br>
+                                            <span class="hp">4000</span>/<span id="maxHp">4000</span><br>
+                                            <img src="images/monster16.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button13">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button14">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button15">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button16">Attack</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        <table class="table">
-                           <tr>
-                              <td>
-                                 <div id ="monster8" class="c3">Dmg:32-37<br>
-                                    Def:30<br>
-                                    <span class="hp">700</span>/<span id="maxHp">700</span><br>
-                                    <img src="images/monster9.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster9" class="c3">Dmg:40-45<br>
-                                    Def:38<br>
-                                    <span class="hp">900</span>/<span id="maxHp">900</span><br>
-                                    <img src="images/monster10.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster10" class="c3">Dmg:50-58<br>
-                                    Def:45<br>
-                                    <span class="hp">1300</span>/<span id="maxHp">1300</span><br>
-                                    <img src="images/monster11.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster11" class="c3">Dmg:60-67<br>
-                                    Def:53<br>
-                                    <span class="hp">1600</span>/<span id="maxHp">1600</span><br>
-                                    <img src="images/monster12.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div class="c3">
-									<button id="button9">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button10">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button11">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button12">Attack</button></div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div id ="monster12" class="c3">Dmg:75-80<br>
-                                    Def:65<br>
-                                    <span class="hp">2200</span>/<span id="maxHp">2200</span><br>
-                                    <img src="images/monster13.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster13" class="c3">Dmg:86-92<br>
-                                    Def:75<br>
-                                    <span class="hp">2600</span>/<span id="maxHp">2600</span><br>
-                                    <img src="images/monster14.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster14" class="c3">Dmg:96-100<br>
-                                    Def:88<br>
-                                    <span class="hp">3000</span>/<span id="maxHp">3000</span><br>
-                                    <img src="images/monster15.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster15" class="c3">Dmg:105-110<br>
-                                    Def:95<br>
-                                    <span class="hp">4000</span>/<span id="maxHp">4000</span><br>
-                                    <img src="images/monster16.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div class="c3">
-									<button id="button13">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button14">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button15">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button16">Attack</button></div>
-                              </td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="tab-pane" id="tab_c3">
-                        <div class="c3">
-                           <h4>SLAY MONSTERS!</h4>
+                        <div class="tab-pane" id="tab_c3">
+                            <div class="c3">
+                                <h4>SLAY MONSTERS!</h4>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div id="monster16" class="c3">
+                                            Dmg:140-160<br>
+                                            Def:120<br>
+                                            <span class="hp">5000</span>/<span id="maxHp">5000</span><br>
+                                            <img src="images/monster17.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster17" class="c3">
+                                            Dmg:160-185<br>
+                                            Def:140<br>
+                                            <span class="hp">7000</span>/<span id="maxHp">7000</span><br>
+                                            <img src="images/monster18.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster18" class="c3">
+                                            Dmg:200-215<br>
+                                            Def:170<br>
+                                            <span class="hp">9000</span>/<span id="maxHp">9000</span><br>
+                                            <img src="images/monster19.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster19" class="c3">
+                                            Dmg:230-250<br>
+                                            Def:200<br>
+                                            <span class="hp">12000</span>/<span id="maxHp">12000</span><br>
+                                            <img src="images/monster20.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button17">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button18">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button19">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button20">Attack</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="monster20" class="c3">
+                                            Dmg:260-275<br>
+                                            Def:220<br>
+                                            <span class="hp">15000</span>/<span id="maxHp">15000</span><br>
+                                            <img src="images/monster21.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster21" class="c3">
+                                            Dmg:290-320<br>
+                                            Def:250<br>
+                                            <span class="hp">18000</span>/<span id="maxHp">18000</span><br>
+                                            <img src="images/monster22.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster22" class="c3">
+                                            Dmg:350-380<br>
+                                            Def:300<br>
+                                            <span class="hp">22000</span>/<span id="maxHp">22000</span><br>
+                                            <img src="images/monster23.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster23" class="c3">
+                                            Dmg:420-550<br>
+                                            Def:400<br>
+                                            <span class="hp">28000</span>/<span id="maxHp">28000</span><br>
+                                            <img src="images/monster24.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button21">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button22">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button23">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button24">Attack</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        <table class="table">
-                           <tr>
-                              <td>
-                                 <div id ="monster16" class="c3">Dmg:140-160<br>
-                                    Def:120<br>
-                                    <span class="hp">5000</span>/<span id="maxHp">5000</span><br>
-                                    <img src="images/monster17.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster17" class="c3">Dmg:160-185<br>
-                                    Def:140<br>
-                                    <span class="hp">7000</span>/<span id="maxHp">7000</span><br>
-                                    <img src="images/monster18.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster18" class="c3">Dmg:200-215<br>
-                                    Def:170<br>
-                                    <span class="hp">9000</span>/<span id="maxHp">9000</span><br>
-                                    <img src="images/monster19.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster19" class="c3">Dmg:230-250<br>
-                                    Def:200<br>
-                                    <span class="hp">12000</span>/<span id="maxHp">12000</span><br>
-                                    <img src="images/monster20.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div class="c3">
-									<button id="button17">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button18">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button19">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button20">Attack</button></div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div id ="monster20" class="c3">Dmg:260-275<br>
-                                    Def:220<br>
-                                    <span class="hp">15000</span>/<span id="maxHp">15000</span><br>
-                                    <img src="images/monster21.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster21" class="c3">Dmg:290-320<br>
-                                    Def:250<br>
-                                    <span class="hp">18000</span>/<span id="maxHp">18000</span><br>
-                                    <img src="images/monster22.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster22" class="c3">Dmg:350-380<br>
-                                    Def:300<br>
-                                    <span class="hp">22000</span>/<span id="maxHp">22000</span><br>
-                                    <img src="images/monster23.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster23" class="c3">Dmg:420-550<br>
-                                    Def:400<br>
-                                    <span class="hp">28000</span>/<span id="maxHp">28000</span><br>
-                                    <img src="images/monster24.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div class="c3">
-									<button id="button21">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button22">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button23">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button24">Attack</button></div>
-                              </td>
-                           </tr>
-                        </table>
-                     </div>
-                     <div class="tab-pane" id="tab_d3">
-                        <div class="c3">
-                           <h4>SLAY MONSTERS!</h4>
+                        <div class="tab-pane" id="tab_d3">
+                            <div class="c3">
+                                <h4>SLAY MONSTERS!</h4>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <div id="monster24" class="c3">
+                                            Dmg:500-700<br>
+                                            Def:500<br>
+                                            <span class="hp">34000</span>/<span id="maxHp">34000</span><br>
+                                            <img src="images/monster25.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster25" class="c3">
+                                            Dmg:900-1200<br>
+                                            Def:700<br>
+                                            <span class="hp">40000</span>/<span id="maxHp">40000</span><br>
+                                            <img src="images/monster26.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster26" class="c3">
+                                            Dmg:1200-1500<br>
+                                            Def:1000<br>
+                                            <span class="hp">48000</span>/<span id="maxHp">48000</span><br>
+                                            <img src="images/monster27.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster27" class="c3">
+                                            Dmg:1700-2200<br>
+                                            Def:1200<br>
+                                            <span class="hp">57000</span>/<span id="maxHp">57000</span><br>
+                                            <img src="images/monster28.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button25">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button26">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button27">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button28">Attack</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div id="monster28" class="c3">
+                                            Dmg:2500-3000<br>
+                                            Def:1500<br>
+                                            <span class="hp">65000</span>/<span id="maxHp">65000</span><br>
+                                            <img src="images/monster29.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster29" class="c3">
+                                            Dmg:3200-4000<br>
+                                            Def:2000<br>
+                                            <span class="hp">72000</span>/<span id="maxHp">72000</span><br>
+                                            <img src="images/monster30.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster30" class="c3">
+                                            Dmg:4500-5500<br>
+                                            Def:2500<br>
+                                            <span class="hp">80000</span>/<span id="maxHp">80000</span><br>
+                                            <img src="images/monster31.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div id="monster31" class="c3">
+                                            Dmg:6000-8000<br>
+                                            Def:3000<br>
+                                            <span class="hp">88000</span>/<span id="maxHp">88000</span><br>
+                                            <img src="images/monster32.jpg" alt="Attack"><br>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button29">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button30">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button31">Attack</button>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="c3">
+                                            <button id="button32">Attack</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        <table class="table">
-                           <tr>
-                              <td>
-                                 <div id ="monster24" class="c3">Dmg:500-700<br>
-                                    Def:500<br>
-                                    <span class="hp">34000</span>/<span id="maxHp">34000</span><br>
-                                    <img src="images/monster25.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster25" class="c3">Dmg:900-1200<br>
-                                    Def:700<br>
-                                    <span class="hp">40000</span>/<span id="maxHp">40000</span><br>
-                                    <img src="images/monster26.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster26" class="c3">Dmg:1200-1500<br>
-                                    Def:1000<br>
-                                    <span class="hp">48000</span>/<span id="maxHp">48000</span><br>
-                                    <img src="images/monster27.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster27" class="c3">Dmg:1700-2200<br>
-                                    Def:1200<br>
-                                    <span class="hp">57000</span>/<span id="maxHp">57000</span><br>
-                                    <img src="images/monster28.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div class="c3">
-									<button id="button25">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button26">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button27">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button28">Attack</button></div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div id ="monster28" class="c3">Dmg:2500-3000<br>
-                                    Def:1500<br>
-                                    <span class="hp">65000</span>/<span id="maxHp">65000</span><br>
-                                    <img src="images/monster29.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster29" class="c3">Dmg:3200-4000<br>
-                                    Def:2000<br>
-                                    <span class="hp">72000</span>/<span id="maxHp">72000</span><br>
-                                    <img src="images/monster30.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster30" class="c3">Dmg:4500-5500<br>
-                                    Def:2500<br>
-                                    <span class="hp">80000</span>/<span id="maxHp">80000</span><br>
-                                    <img src="images/monster31.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                              <td>
-                                 <div id ="monster31" class="c3">Dmg:6000-8000<br>
-                                    Def:3000<br>
-                                    <span class="hp">88000</span>/<span id="maxHp">88000</span><br>
-                                    <img src="images/monster32.jpg" alt="Attack"><br>
-                                    
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td>
-                                 <div class="c3">
-									<button id="button29">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button30">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button31">Attack</button></div>
-                              </td>
-                              <td>
-                                 <div class="c3">
-									<button id="button32">Attack</button></div>
-                              </td>
-                           </tr>
+                    </div>
+                    <div class="tablecontainer">
+                        <table class="table table-condensed table-striped table-responsive">
+                            <thead>
+                                <div class="c3">
+                                    <h3>Log</h3>
+                                </div>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span id="logConsole"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
-                     </div>
-                  </div>
-                  <div class="tablecontainer">
-                     <table class="table table-condensed table-striped table-responsive">
-                        <thead>
-                           <div class="c3">
-                              <h3>Log</h3>
-                           </div>
-                        </thead>
-                        <tbody>
-                           <tr>
-                              <td>	<span id="logConsole"></span>
-                              </td>
-                           </tr>
-                        </tbody>
-                     </table>
-                  </div>
-                  <!-- tab content -->
-               </div>
-               <!-- end of container -->
+                    </div>
+                    <!-- tab content -->
+                </div>
+                <!-- end of container -->
             </div>
             <div class=".col-sm-4 col-md-4 .col-lg-4">
-               <div class="container">
-                  <ul class="nav nav-tabs">
-                     <li class="active"><a href="#tab_a2" data-toggle="tab">Player Stats</a></li>
-                     <li><a href="#tab_b2" data-toggle="tab">Inventory</a></li>
-                     <li><a href="#tab_c2" data-toggle="tab">Shop</a></li>
-                     <li><a href="#tab_d2" data-toggle="tab">Bestiary</a></li>
-                     <li><a href="#tab_e2" data-toggle="tab">Save &amp; Options</a></li>
-                  </ul>
-                  <div class="tab-content">
-                     <div class=".col-sm-10 col-md-10 .col-lg-10 tab-pane active" id="tab_a2">
-                        <div class="c3">
-                           <h4>Player Stats &amp; Inventory</h4>
+                <div class="container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_a2" data-toggle="tab">Player Stats</a></li>
+                        <li><a href="#tab_b2" data-toggle="tab">Inventory</a></li>
+                        <li><a href="#tab_c2" data-toggle="tab">Shop</a></li>
+                        <li><a href="#tab_d2" data-toggle="tab">Bestiary</a></li>
+                        <li><a href="#tab_e2" data-toggle="tab">Save &amp; Options</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class=".col-sm-10 col-md-10 .col-lg-10 tab-pane active" id="tab_a2">
+                            <div class="c3">
+                                <h4>Player Stats &amp; Inventory</h4>
+                            </div>
+
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_f1" data-toggle="tab">Potions</a></li>
+                                <li><a href="#tab_f2" data-toggle="tab">Equipment</a></li>
+                                <li><a href="#tab_f3" data-toggle="tab">Weapon Skills</a></li>
+                            </ul>
+
+
+                            <div class="tab-content">
+                                <div class=".col-sm-8 col-md-8 .col-lg-8 tab-pane active" id="tab_f1">
+                                    <table class="table">
+                                        <tr>
+                                            <td colspan="2">
+                                                <img src="images/hp.jpg" alt="Health Potion">(20hp): <span id="pot">0</span>
+                                            </td>
+                                            <td>
+                                                <input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <img src="images/hp1.jpg" alt="Super Potion">(100hp):<span id="spot">0</span>
+                                            </td>
+                                            <td>
+                                                <input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">
+                                                <img src="images/hp2.jpg" alt="Mega Potion">(500hp):<span id="mpot">0</span>
+                                            </td>
+                                            <td>
+                                                <input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+
+                                <div class="tab-pane" id="tab_f2">
+
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                Weapon:
+                                                <img id="weapon"></img>
+                                                <img id="weapon1"></img>
+                                                <img id="weapon2"></img>
+                                                <img id="weapon3"></img>
+                                                <img id="weapon4"></img>
+                                                <img id="weapon5"></img>
+                                                <img id="weapon6"></img>
+                                                <img id="weapon7"></img>
+                                                <img id="weapon8"></img>
+                                                <img id="weapon9"></img>
+                                                <img id="weapon10"></img>
+                                                <img id="weapon11"></img>
+                                                <img id="weapon12"></img>
+                                                <img id="weapon13"></img>
+                                                <img id="weapon14"></img>
+                                                <img id="weapon15"></img>
+                                                <input name="submit" id="weaponeq" type="image" src="images/unequip.jpg" alt="Sign Me Up!" onclick="weaponUnequip();">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Armor:
+                                                <img id="armor"></img>
+                                                <img id="armor1"></img>
+                                                <img id="armor2"></img>
+                                                <img id="armor3"></img>
+                                                <img id="armor4"></img>
+                                                <img id="armor5"></img>
+                                                <img id="armor6"></img>
+                                                <input name="submit" id="armoreq" type="image" src="images/unequip.jpg" alt="Sign Me Up!" onclick="armorUnequip();">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Accessory:
+                                                <img id="accessory"></img>
+                                                <img id="accessory1"></img>
+                                                <img id="accessory2"></img>
+                                                <img id="accessory3"></img>
+                                                <img id="accessory4"></img>
+                                                <img id="accessory5"></img>
+                                                <img id="accessory6"></img>
+                                                <input name="submit" id="accessoryeq" type="image" src="images/unequip.jpg" alt="Sign Me Up!" onclick="accessoryUnequip();">
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                                <div class="tab-pane" id="tab_f3">
+                                    Sword skill level:<br>
+                                    Dagger skill level:<br>
+                                    Axe skill level:<br>
+                                    Mace skill level:<br>
+                                    Staff skill level:<br>
+                                    Fist skill level:<br>
+                                </div>
+                            </div>
                         </div>
-						
-						<ul class="nav nav-tabs">
-                     <li class="active"><a href="#tab_f1" data-toggle="tab">Stats</a></li>
-                     <li><a href="#tab_f2" data-toggle="tab">Equipment</a></li> 
-					 <li><a href="#tab_f3" data-toggle="tab">Weapon Skills</a></li> 
-                  </ul>
-				  
-				  
-				  <div class="tab-content">
-                     <div class=".col-sm-8 col-md-8 .col-lg-8 tab-pane active" id="tab_f1">
-				  
-                        <table class="table">
-                           
-                              <td>Level: <span id="level">1</span><br>
-                                 Exp: <span id="experience">0</span>/<span id="maxexperience">100</span><br>
-                                 Health Regen:(<span id="hpregen">2</span>/s)<br>
-                                 Damage: <span id="mindamage">1</span>-<span id="maxdamage">4</span><br>
-                                 Strength: <span id="strength">1</span> <input name="submit" id="vis" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeStrength();"><br>
-                                 Endurance: <span id="endurance">0</span><input name="submit" id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();"><br>
-								 Agility: <span id="agility">1</span> <input name="submit" id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();"><br>
-								 Dexterity: <span id="strength">1</span> <input name="submit" id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity();"><br>
-								 Intelligence: <span id="strength">1</span> <input name="submit" id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence();"><br>
-								 Wisdom: <span id="strength">1</span> <input name="submit" id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom();"><br>
-								 Luck: <span id="strength">1</span> <input name="submit" id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck();"><br>
-								 Defense: <span id="defense">0</span> <input name="submit" id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDefense();"><br>
-                                 Stat Points: <span id="stats">0</span><br>
-                                 Gold Gain: <span id="goldgain">0</span>/s<br>
-                              </td> <td>asdasd<br />asdasd<br />asdasd</td>
-                
-                           <tr>
-                              <td><img src="images/hp.jpg" alt="Health Potion">(20hp): <span id="pot">0</span><input type="image" src="images/plus.jpg" alt ="usepot" onclick="usepot();"><br>
-                                 <img src="images/hp1.jpg" alt="Super Potion">(100hp):<span id="spot">0</span><input type="image" src="images/plus.jpg" alt ="usepot" onclick="usespot();"><br>
-                                 <img src="images/hp2.jpg" alt="Mega Potion">(500hp):<span id="mpot">0</span><input type="image" src="images/plus.jpg" alt ="usepot" onclick="usempot();">
-                              </td>
-                           </tr>
-                        </table>
-						</div>
-						
-						
-						<div class="tab-pane" id="tab_f2">
-						
-					<table class="table">
-                                    <tr>
-                                       <td>Weapon: 
-										  <img id="weapon"></img>
-                                          <img id="weapon1"></img>
-                                          <img id="weapon2"></img>
-                                          <img id="weapon3"></img>
-                                          <img id="weapon4"></img>
-                                          <img id="weapon5"></img>
-                                          <img id="weapon6"></img>
-                                          <img id="weapon7"></img>
-                                          <img id="weapon8"></img>
-                                          <img id="weapon9"></img>
-                                          <img id="weapon10"></img>
-                                          <img id="weapon11"></img>
-                                          <img id="weapon12"></img>
-                                          <img id="weapon13"></img>
-                                          <img id="weapon14"></img>
-                                          <img id="weapon15"></img>
-                                          <input name="submit" id="weaponeq" type="image" src="images/unequip.jpg" alt="Sign Me Up!" onclick="weaponUnequip();">
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>Armor: 
-										  <img id="armor"></img>
-                                          <img id="armor1"></img>
-                                          <img id="armor2"></img>
-                                          <img id="armor3"></img>
-                                          <img id="armor4"></img>
-                                          <img id="armor5"></img>
-                                          <img id="armor6"></img>
-                                          <input name="submit" id="armoreq" type="image" src="images/unequip.jpg" alt="Sign Me Up!" onclick="armorUnequip();">
-                                       </td>
-                                    </tr>
-                                    <tr>
-                                       <td>Accessory: 
-										  <img id="accessory"></img>
-                                          <img id="accessory1"></img>
-                                          <img id="accessory2"></img>
-                                          <img id="accessory3"></img>
-                                          <img id="accessory4"></img>
-                                          <img id="accessory5"></img>
-                                          <img id="accessory6"></img>
-                                          <input name="submit" id="accessoryeq" type="image" src="images/unequip.jpg" alt="Sign Me Up!" onclick="accessoryUnequip();">
-                                       </td>
-                                    </tr>
-                                 </table>
-						
-						
-						</div>
-						<div class="tab-pane" id="tab_f3">
-						Sword skill level:<br>
-						Dagger skill level:<br>
-						Axe skill level:<br>
-						Mace skill level:<br>
-						Staff skill level:<br>
-						Fist skill level:<br>
-						</div>
-						</div> 
-                     </div>
-                     <div class="tab-pane" id="tab_b2">
-                        <div class="c3">
-                           <h3>Player Inventory</h3>
+                        <div class="tab-pane" id="tab_b2">
+                            <div class="c3">
+                                <h3>Player Inventory</h3>
+                            </div>
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#tab_y1" data-toggle="tab">Weapons</a></li>
+                                <li><a href="#tab_y2" data-toggle="tab">Armors</a></li>
+                                <li><a href="#tab_y3" data-toggle="tab">Accessories</a></li>
+                                <li><a href="#tab_y4" data-toggle="tab">Special</a></li>
+                                <li><a href="#tab_y5" data-toggle="tab">???</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_y1">
+                                    <img src="images/items/sword1.gif" alt="sword"><span id="sword">0</span> <button onclick="equipSword()">Equip</button><br>
+                                    <img src="images/items/dagger1.gif" alt="dagger"><span id="dagger">0</span> <button onclick="equipDagger()">Equip</button><br>
+                                    <img src="images/items/axe1.gif" alt="axe"><span id="axe">0</span> <button onclick="equipAxe()">Equip</button><br>
+                                    <img src="images/items/mace1.gif" alt="mace"><span id="mace">0</span> <button onclick="equipMace()">Equip</button><br>
+                                    <img src="images/items/sword2.gif" alt="sword"><span id="sword1">0</span> <button onclick="equipSword1()">Equip</button><br>
+                                    <img src="images/items/dagger1.gif" alt="dagger"><span id="dagger1">0</span> <button onclick="equipDagger1()">Equip</button><br>
+                                    <img src="images/items/axe1.gif" alt="axe"><span id="axe1">0</span> <button onclick="equipAxe1()">Equip</button><br>
+                                    <img src="images/items/mace2.gif" alt="mace"><span id="mace1">0</span> <button onclick="equipMace1()">Equip</button><br>
+                                    <img src="images/items/sword3.gif" alt="sword"><span id="sword2">0</span> <button onclick="equipSword2()">Equip</button><br>
+                                    <img src="images/items/dagger1.gif" alt="dagger"><span id="dagger2">0</span> <button onclick="equipDagger2()">Equip</button><br>
+                                    <img src="images/items/axe1.gif" alt="axe"><span id="axe2">0</span> <button onclick="equipAxe2()">Equip</button><br>
+                                    <img src="images/items/mace2.gif" alt="mace"><span id="mace2">0</span> <button onclick="equipMace2()">Equip</button><br>
+                                    <img src="images/items/sword4.gif" alt="sword"><span id="sword3">0</span> <button onclick="equipSword3()">Equip</button><br>
+                                    <img src="images/items/dagger1.gif" alt="dagger"><span id="dagger3">0</span> <button onclick="equipDagger3()">Equip</button><br>
+                                    <img src="images/items/axe1.gif" alt="axe"><span id="axe3">0</span> <button onclick="equipAxe3()">Equip</button><br>
+                                    <img src="images/items/mace2.gif" alt="mace"><span id="mace3">0</span> <button onclick="equipMace3()">Equip</button><br>
+                                </div>
+                                <div class="tab-pane" id="tab_y2">
+                                    <img src="images/items/armor1.gif" alt="armor"><span id="armor">0</span> <button onclick="equipArmor()">Equip</button><br>
+                                    <img src="images/items/armor1.gif" alt="armor"><span id="armor1">0</span> <button onclick="equipArmor1()">Equip</button><br>
+                                    <img src="images/items/armor2.gif" alt="armor"><span id="armor2">0</span> <button onclick="equipArmor2()">Equip</button><br>
+                                    <img src="images/items/armor2.gif" alt="armor"><span id="armor3">0</span> <button onclick="equipArmor3()">Equip</button><br>
+                                    <img src="images/items/armor3.gif" alt="armor"><span id="armor4">0</span> <button onclick="equipArmor4()">Equip</button><br>
+                                    <img src="images/items/armor3.gif" alt="armor"><span id="armor5">0</span> <button onclick="equipArmor5()">Equip</button><br>
+                                    <img src="images/items/armor4.gif" alt="armor"><span id="armor6">0</span> <button onclick="equipArmor6()">Equip</button><br>
+                                </div>
+                                <div class="tab-pane" id="tab_y3">
+                                    <img src="images/items/ring.gif" alt="ring"><span id="accessory">0</span> <button onclick="equipAccessory()">Equip</button><br>
+                                    <img src="images/items/ring.gif" alt="ring"><span id="accessory1">0</span> <button onclick="equipAccessory1()">Equip</button><br>
+                                    <img src="images/items/ring.gif" alt="ring"><span id="accessory2">0</span> <button onclick="equipAccessory2()">Equip</button><br>
+                                    <img src="images/items/ring.gif" alt="ring"><span id="accessory3">0</span> <button onclick="equipAccessory3()">Equip</button><br>
+                                    <img src="images/items/ring.gif" alt="ring"><span id="accessory4">0</span> <button onclick="equipAccessory4()">Equip</button><br>
+                                    <img src="images/items/ring.gif" alt="ring"><span id="accessory5">0</span> <button onclick="equipAccessory5()">Equip</button><br>
+                                    <img src="images/items/ring.gif" alt="ring"><span id="accessory6">0</span> <button onclick="equipAccessory6()">Equip</button><br>
+                                    <img src="images/items/ring.gif" alt="ring"><span id="accessory7">0</span> <button onclick="equipAccessory7()">Equip</button><br>
+                                </div>
+                                <div class="tab-pane" id="tab_y4">
+                                    <h4>Coming soon...</h4>
+                                </div>
+                                <div class="tab-pane" id="tab_y5">
+                                    <h4>Coming soon...</h4>
+                                </div>
+                            </div>
                         </div>
-                        <ul class="nav nav-pills">
-                           <li class="active"><a href="#tab_y1" data-toggle="tab">Weapons</a></li>
-                           <li><a href="#tab_y2" data-toggle="tab">Armors</a></li>
-                           <li><a href="#tab_y3" data-toggle="tab">Accessories</a></li>
-                           <li><a href="#tab_y4" data-toggle="tab">Special</a></li>
-                           <li><a href="#tab_y5" data-toggle="tab">???</a></li>
-                        </ul>
-                        <div class="tab-content">
-                           <div class="tab-pane active" id="tab_y1">
-                              <img src="images/items/sword1.gif" alt="sword"><span id="sword">0</span> <button onclick="equipSword()">Equip</button><br>
-                              <img src="images/items/dagger1.gif" alt="dagger"><span id="dagger">0</span> <button onclick="equipDagger()">Equip</button><br>
-                              <img src="images/items/axe1.gif" alt="axe"><span id="axe">0</span> <button onclick="equipAxe()">Equip</button><br>
-                              <img src="images/items/mace1.gif" alt="mace"><span id="mace">0</span> <button onclick="equipMace()">Equip</button><br>
-                              <img src="images/items/sword2.gif" alt="sword"><span id="sword1">0</span> <button onclick="equipSword1()">Equip</button><br>
-                              <img src="images/items/dagger1.gif" alt="dagger"><span id="dagger1">0</span> <button onclick="equipDagger1()">Equip</button><br>
-                              <img src="images/items/axe1.gif" alt="axe"><span id="axe1">0</span> <button onclick="equipAxe1()">Equip</button><br>
-                              <img src="images/items/mace2.gif" alt="mace"><span id="mace1">0</span> <button onclick="equipMace1()">Equip</button><br>
-                              <img src="images/items/sword3.gif" alt="sword"><span id="sword2">0</span> <button onclick="equipSword2()">Equip</button><br>
-                              <img src="images/items/dagger1.gif" alt="dagger"><span id="dagger2">0</span> <button onclick="equipDagger2()">Equip</button><br>
-                              <img src="images/items/axe1.gif" alt="axe"><span id="axe2">0</span> <button onclick="equipAxe2()">Equip</button><br>
-                              <img src="images/items/mace2.gif" alt="mace"><span id="mace2">0</span> <button onclick="equipMace2()">Equip</button><br>
-                              <img src="images/items/sword4.gif" alt="sword"><span id="sword3">0</span> <button onclick="equipSword3()">Equip</button><br>
-                              <img src="images/items/dagger1.gif" alt="dagger"><span id="dagger3">0</span> <button onclick="equipDagger3()">Equip</button><br>
-                              <img src="images/items/axe1.gif" alt="axe"><span id="axe3">0</span> <button onclick="equipAxe3()">Equip</button><br>
-                              <img src="images/items/mace2.gif" alt="mace"><span id="mace3">0</span> <button onclick="equipMace3()">Equip</button><br>
-                           </div>
-                           <div class="tab-pane" id="tab_y2">
-                              <img src="images/items/armor1.gif" alt="armor"><span id="armor">0</span> <button onclick="equipArmor()">Equip</button><br>
-                              <img src="images/items/armor1.gif" alt="armor"><span id="armor1">0</span> <button onclick="equipArmor1()">Equip</button><br>
-                              <img src="images/items/armor2.gif" alt="armor"><span id="armor2">0</span> <button onclick="equipArmor2()">Equip</button><br>
-                              <img src="images/items/armor2.gif" alt="armor"><span id="armor3">0</span> <button onclick="equipArmor3()">Equip</button><br>
-                              <img src="images/items/armor3.gif" alt="armor"><span id="armor4">0</span> <button onclick="equipArmor4()">Equip</button><br>
-                              <img src="images/items/armor3.gif" alt="armor"><span id="armor5">0</span> <button onclick="equipArmor5()">Equip</button><br>
-                              <img src="images/items/armor4.gif" alt="armor"><span id="armor6">0</span> <button onclick="equipArmor6()">Equip</button><br>			
-                           </div>
-                           <div class="tab-pane" id="tab_y3">
-                              <img src="images/items/ring.gif" alt="ring"><span id="accessory">0</span> <button onclick="equipAccessory()">Equip</button><br>
-                              <img src="images/items/ring.gif" alt="ring"><span id="accessory1">0</span> <button onclick="equipAccessory1()">Equip</button><br>
-                              <img src="images/items/ring.gif" alt="ring"><span id="accessory2">0</span> <button onclick="equipAccessory2()">Equip</button><br>
-                              <img src="images/items/ring.gif" alt="ring"><span id="accessory3">0</span> <button onclick="equipAccessory3()">Equip</button><br>
-                              <img src="images/items/ring.gif" alt="ring"><span id="accessory4">0</span> <button onclick="equipAccessory4()">Equip</button><br>
-                              <img src="images/items/ring.gif" alt="ring"><span id="accessory5">0</span> <button onclick="equipAccessory5()">Equip</button><br>
-                              <img src="images/items/ring.gif" alt="ring"><span id="accessory6">0</span> <button onclick="equipAccessory6()">Equip</button><br>
-                              <img src="images/items/ring.gif" alt="ring"><span id="accessory7">0</span> <button onclick="equipAccessory7()">Equip</button><br>
-                           </div>
-                           <div class="tab-pane" id="tab_y4">
-                              <h4>Coming soon...</h4>
-                           </div>
-                           <div class="tab-pane" id="tab_y5">
-                              <h4>Coming soon...</h4>
-                           </div>
+                        <div class="tab-pane" id="tab_c2">
+                            <h4>Shop</h4>
+                            <p>
+                                <img src="images/hp.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Health Potion(20gold each): <button onclick="buypot()">Buy 1</button> <button onclick="buypot10()">Buy 10</button><br>
+                                <img src="images/hp1.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Super Potion(100gold each): <button onclick="buyspot()">Buy 1</button><button onclick="buyspot10()">Buy 10</button><br>
+                                <img src="images/hp2.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Mega Potion(500gold each): <button onclick="buympot()">Buy 1</button><button onclick="buympot10()">Buy 10</button>
+                            </p>
                         </div>
-                     </div>
-                     <div class="tab-pane" id="tab_c2">
-                        <h4>Shop</h4>
-                        <p><img src="images/hp.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Health Potion(20gold each): <button onclick="buypot()">Buy 1</button> <button onclick="buypot10()">Buy 10</button><br>
-                           <img src="images/hp1.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Super Potion(100gold each): <button onclick="buyspot()">Buy 1</button><button onclick="buyspot10()">Buy 10</button><br>
-                           <img src="images/hp2.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Mega Potion(500gold each): <button onclick="buympot()">Buy 1</button><button onclick="buympot10()">Buy 10</button>
-                        </p>
-                     </div>
-                     <div class="tab-pane" id="tab_d2">
-                        <div class="c3">
-                           <h3>Monsters info</h3>
+                        <div class="tab-pane" id="tab_d2">
+                            <div class="c3">
+                                <h3>Monsters info</h3>
+                            </div>
+                            <ul class="nav nav-pills">
+                                <li class="active"><a href="#tab_z1" data-toggle="tab">Weak</a></li>
+                                <li><a href="#tab_z2" data-toggle="tab">Average</a></li>
+                                <li><a href="#tab_z3" data-toggle="tab">Strong</a></li>
+                                <li><a href="#tab_z4" data-toggle="tab">Boss</a></li>
+                                <li><a href="#tab_z5" data-toggle="tab">???</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_z1">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Health</td>
+                                            <td>Attack</td>
+                                            <td>Defense</td>
+                                            <td>Description</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monster1</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="tab_z2">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Health</td>
+                                            <td>Attack</td>
+                                            <td>Defense</td>
+                                            <td>Description</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monster1</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="tab_z3">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Health</td>
+                                            <td>Attack</td>
+                                            <td>Defense</td>
+                                            <td>Description</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monster1</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="tab_z4">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Health</td>
+                                            <td>Attack</td>
+                                            <td>Defense</td>
+                                            <td>Description</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monster1</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="tab_z5">
+                                    <table class="table">
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Health</td>
+                                            <td>Attack</td>
+                                            <td>Defense</td>
+                                            <td>Description</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monster1</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
-                        <ul class="nav nav-pills">
-                           <li class="active"><a href="#tab_z1" data-toggle="tab">Weak</a></li>
-                           <li><a href="#tab_z2" data-toggle="tab">Average</a></li>
-                           <li><a href="#tab_z3" data-toggle="tab">Strong</a></li>
-                           <li><a href="#tab_z4" data-toggle="tab">Boss</a></li>
-                           <li><a href="#tab_z5" data-toggle="tab">???</a></li>
-                        </ul>
-                        <div class="tab-content">
-                           <div class="tab-pane active" id="tab_z1">
-                              <table class="table">
-                                 <tr>
-                                    <td>Name</td>
-                                    <td>Health</td>
-                                    <td>Attack</td>
-                                    <td>Defense</td>
-                                    <td>Description</td>
-                                 </tr>
-                                 <tr>
-                                    <td>monster1</td>
-                                 </tr>
-                              </table>
-                           </div>
-                           <div class="tab-pane" id="tab_z2">
-                              <table class="table">
-                                 <tr>
-                                    <td>Name</td>
-                                    <td>Health</td>
-                                    <td>Attack</td>
-                                    <td>Defense</td>
-                                    <td>Description</td>
-                                 </tr>
-                                 <tr>
-                                    <td>monster1</td>
-                                 </tr>
-                              </table>
-                           </div>
-                           <div class="tab-pane" id="tab_z3">
-                              <table class="table">
-                                 <tr>
-                                    <td>Name</td>
-                                    <td>Health</td>
-                                    <td>Attack</td>
-                                    <td>Defense</td>
-                                    <td>Description</td>
-                                 </tr>
-                                 <tr>
-                                    <td>monster1</td>
-                                 </tr>
-                              </table>
-                           </div>
-                           <div class="tab-pane" id="tab_z4">
-                              <table class="table">
-                                 <tr>
-                                    <td>Name</td>
-                                    <td>Health</td>
-                                    <td>Attack</td>
-                                    <td>Defense</td>
-                                    <td>Description</td>
-                                 </tr>
-                                 <tr>
-                                    <td>monster1</td>
-                                 </tr>
-                              </table>
-                           </div>
-                           <div class="tab-pane" id="tab_z5">
-                              <table class="table">
-                                 <tr>
-                                    <td>Name</td>
-                                    <td>Health</td>
-                                    <td>Attack</td>
-                                    <td>Defense</td>
-                                    <td>Description</td>
-                                 </tr>
-                                 <tr>
-                                    <td>monster1</td>
-                                 </tr>
-                              </table>
-                           </div>
+                        <div class="tab-pane" id="tab_e2">
+                            <h4>Save &amp; Options</h4>
+                            <div class=".col-sm-5 col-md-5 .col-lg-5"><button onclick="save()">save</button> <button onclick="load()">load</button> <button onclick="reset()">reset</button></div>
+                            <div class="c3"> <a href="updates.txt" target="_blank">Changelog</a></div>
                         </div>
-                     </div>
-                     <div class="tab-pane" id="tab_e2">
-                        <h4>Save &amp; Options</h4>
-                        <div class=".col-sm-5 col-md-5 .col-lg-5"><button onclick="save()">save</button> <button onclick="load()">load</button> <button onclick="reset()">reset</button></div>
-                        <div class="c3"> <a href="updates.txt" target="_blank">Changelog</a></div>
-                     </div>
-                     <!-- tab content -->
-                  </div>
-                  <!-- end of container -->
-               </div>
+                        <!-- tab content -->
+                    </div>
+                    <!-- end of container -->
+                </div>
             </div>
-         </div>
-         <div class="container">
+        </div>
+        <div class="container">
             <p class="text-muted"></p>
-            <div class="c3">All tiles have been drawn by David E. Gervais, and are published under the Creative Commons licence.<br>
-               <a href="http://pousse.rapiere.free.fr/tome/" >http://pousse.rapiere.free.fr/tome/</a>
+            <div class="c3">
+                All tiles have been drawn by David E. Gervais, and are published under the Creative Commons licence.<br>
+                <a href="http://pousse.rapiere.free.fr/tome/">http://pousse.rapiere.free.fr/tome/</a>
             </div>
-         </div>
-      </div>
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script><!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src="js/bootstrap.min.js" type="text/javascript"></script><script type="text/javascript" src="js/main.js"></script>
-   </body>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script><!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
 </html>

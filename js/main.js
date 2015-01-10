@@ -47,7 +47,6 @@ window.setInterval(function () {
 }, 100);
 window.setInterval(function () {
     if (player.stats >= 1) { // Show "plus" image when player level up
-        document.getElementById("vis").style.visibility = "visible";
         document.getElementById("vis1").style.visibility = "visible";
         document.getElementById("vis2").style.visibility = "visible";
         document.getElementById("vis3").style.visibility = "visible";
@@ -56,7 +55,6 @@ window.setInterval(function () {
         document.getElementById("vis6").style.visibility = "visible";
         document.getElementById("vis7").style.visibility = "visible";
     } else {
-        document.getElementById("vis").style.visibility = "hidden";
         document.getElementById("vis1").style.visibility = "hidden";
         document.getElementById("vis2").style.visibility = "hidden";
         document.getElementById("vis3").style.visibility = "hidden";
