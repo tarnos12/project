@@ -182,92 +182,138 @@ var wep = {
     Fist: [1, 2, 3, 4]
 };
 
+var weapon = {
 
-var sword = [
+    sword: [
     {
         id: 's1',
         name: 'sword1',
         strength: 2,
-        endurance: 1
+        endurance: 1,
+        image: 'sword1.gif'
     },
     {
         id: 's2',
         name: 'sword2',
         strength: 5,
-        endurance: 2
+        endurance: 2,
+        image: 'sword2.gif'
     },
     {
         id: 's3',
         name: 'sword3',
         strength: 10,
         endurance: 4,
-        agility: 2
+        agility: 2,
+        image: 'sword3.gif'
     },
     {
         id: 's4',
         name: 'sword4',
         strength: 25,
         endurance: 6,
-        agility: 5
-    }
-];
-
-var dagger = [
-    {
-        id: 'd1',
-        name: 'dagger1',
-        agility: 3,
-        dexterity: 0
-    },
-    {
-        id: 'd2',
-        name: 'dagger2',
         agility: 5,
-        dexterity: 3
-    },
-    {
-        id: 'd3',
-        name: 'dagger3',
-        agility: 10,
-        dexterity: 5
-    },
-    {
-        id: 'd4',
-        name: 'dagger4',
-        agility: 25,
-        dexterity: 10,
-        luck:5
+        image: 'sword4.gif'
     }
-];
+    ],
 
-var axe = [
-      {
-        id: 'a1',
-        name: 'axe1',
-        strength: 5,
-        agility: -1
-    },
+    dagger: [
+        {
+            id: 'd1',
+            name: 'dagger1',
+            agility: 3,
+            dexterity: 0,
+            image: 'dagger1.gif'
+        },
+        {
+            id: 'd2',
+            name: 'dagger2',
+            agility: 5,
+            dexterity: 3,
+            image: 'dagger1.gif'
+        },
+        {
+            id: 'd3',
+            name: 'dagger3',
+            agility: 10,
+            dexterity: 5,
+            image: 'dagger1.gif'
+        },
+        {
+            id: 'd4',
+            name: 'dagger4',
+            agility: 25,
+            dexterity: 10,
+            luck: 5,
+            image: 'dagger1.gif'
+        }
+    ],
 
-    {
-        id: 'a2',
-        name: 'axe2',
-        agility: 3,
-        dexterity: 0
-    },
-    {
-    id: 'a3',
-        name: 'axe3',
-        agility: 3,
-        dexterity: 0
-    },
-    {
-        id: 'a4',
-        name: 'axe4',
-        agility: 3,
-        dexterity: 0
-    },
-];
+    axe: [
+          {
+              id: 'a1',
+              name: 'axe1',
+              strength: 5,
+              agility: -1,
+              image: 'axe1.gif'
+          },
 
+        {
+            id: 'a2',
+            name: 'axe2',
+            agility: 3,
+            dexterity: 0,
+            image: 'axe1.gif'
+        },
+        {
+            id: 'a3',
+            name: 'axe3',
+            agility: 3,
+            dexterity: 0,
+            image: 'axe1.gif'
+        },
+        {
+            id: 'a4',
+            name: 'axe4',
+            agility: 3,
+            dexterity: 0,
+            image: 'axe1.gif'
+        },
+    ],
+
+    mace: [
+          {
+              id: 'm1',
+              name: 'mace1',
+              strength: 5,
+              agility: -1,
+              image: 'mace1.gif'
+          },
+
+        {
+            id: 'm2',
+            name: 'mace2',
+            agility: 3,
+            dexterity: 0,
+            image: 'mace1.gif'
+        },
+        {
+            id: 'm3',
+            name: 'mace3',
+            agility: 3,
+            dexterity: 0,
+            image: 'mace2.gif'
+        },
+        {
+            id: 'm4',
+            name: 'mace4',
+            agility: 3,
+            dexterity: 0,
+            image: 'mace2.gif'
+        },
+    ]
+
+};
 
 var arm = [0, 0, 0, 0, 0, 0, 0];		 //Amount of armors in player inventory
 var acc = [0, 0, 0, 0, 0, 0, 0];	 //Amount of accessories in player inventory
@@ -456,16 +502,22 @@ var player = {
     intelligence: 0,
     wisdom: 0,
     luck: 0,
-    mindamage: 1,
-    maxdamage: 4,
     defense: 0,
     experience: 0,
     maxexperience: 100,
     gold: 0,
     health: 30,
     maxhealth: 30,
-    hpregen: 2
-}
+    mindamage: 1,
+    maxdamage: 4,
+    hpregen: 2,
+    accuracy: 100,
+    evasion: 0,
+    criticalChance: 0,
+    criticalDamage: 0,
+    dropRate: 0,
+    expRate: 0
+};
 
 var maxLogLines = 16;
 var logData = {
