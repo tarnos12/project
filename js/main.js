@@ -397,8 +397,8 @@ function upgradeStrength() {
     if (player.stats >= 1) {
         player.stats = player.stats - 1;
         player.strength += 1;
-        player.mindamage = Math.floor(player.strength * 1.5);
-        player.maxdamage = Math.floor(player.strength * 2.5);
+        player.mindamage = Math.floor(player.strength * 1.2);
+        player.maxdamage = Math.floor(player.strength * 1.5);
         document.getElementById('stats').innerHTML = player.stats;
         document.getElementById('mindamage').innerHTML = player.mindamage;
         document.getElementById('maxdamage').innerHTML = player.maxdamage;
@@ -430,9 +430,9 @@ function upgradeAgility() {
         Log("You have increased your agility by 1, evasion, critical chance and accuracy increased!");
         document.getElementById("stats").innerHTML = player.stats;
         document.getElementById("agility").innerHTML = player.agility;
-        document.getElementById("evasion").innerHTML = player.evasion;
-        document.getElementById("accuracy").innerHTML = player.accuracy;
-        document.getElementById("criticalChance").innerHTML = player.criticalChance;
+        document.getElementById("evasion").innerHTML = player.evasion.toFixed(2);
+        document.getElementById("accuracy").innerHTML = player.accuracy.toFixed(2);
+        document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
     }
 };
 
@@ -446,9 +446,9 @@ function upgradeDexterity() {
         Log("You increased your dexterity by 1, defense, critical chance and critical damage increased.");
         document.getElementById("dexterity").innerHTML = player.dexterity;
         document.getElementById("stats").innerHTML = player.stats;
-        document.getElementById("defense").innerHTML = player.defense;
-        document.getElementById("criticalDamage").innerHTML = player.criticalDamage;
-        document.getElementById("criticalChance").innerHTML = player.criticalChance;
+        document.getElementById("defense").innerHTML = player.defense.toFixed(2);
+        document.getElementById("criticalDamage").innerHTML = player.criticalDamage.toFixed(2);
+        document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
     }
 };
 
@@ -482,8 +482,8 @@ function upgradeLuck() {
         Log("You have increased your luck by 1! Critical damage/chance and drop rate increased!");
         document.getElementById("luck").innerHTML = player.luck;
         document.getElementById("stats").innerHTML = player.stats;
-        document.getElementById("criticalDamage").innerHTML = player.criticalDamage;
-        document.getElementById("criticalChance").innerHTML = player.criticalChance;
+        document.getElementById("criticalDamage").innerHTML = player.criticalDamage.toFixed(2);
+        document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
         document.getElementById("dropRate").innerHTML = player.dropRate;
     }
 };
@@ -562,13 +562,13 @@ function Log(data) {
 var player = {
     stats: 0,
     level: 1,
-    strength: 1,
-    endurance: 1,
-    agility: 1,
-    dexterity: 1,
-    intelligence: 1,
-    wisdom: 1,
-    luck: 1,
+    strength: 10,
+    endurance: 10,
+    agility: 10,
+    dexterity: 10,
+    intelligence: 10,
+    wisdom: 10,
+    luck: 10,
     defense: 0,
     experience: 0,
     maxexperience: 100,
@@ -576,7 +576,7 @@ var player = {
     health: 30,
     maxhealth: 30,
     mindamage: 1,
-    maxdamage: 4,
+    maxdamage: 5,
     hpregen: 2,
     accuracy: 100,
     evasion: 0,
@@ -619,7 +619,7 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva) {
 
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
-//            maxHP,  def, minD, maxD, baseExp, kills
+//            maxHP,  def, minD, maxD, baseExp, acc, eva
 createMonster(10, 0, 2, 3, 5, 100, 5);
 createMonster(30, 2, 2, 5, 10, 100, 5);
 createMonster(70, 4, 4, 7, 30, 100, 5);
@@ -685,7 +685,7 @@ function playerAttack(monster, id) {
 
 function playerDamage(monster, id) {
     var damage = Math.floor(Math.random() * (player.maxdamage - player.mindamage + 1)) + player.mindamage;
-    damage = Math.floor(damage - monster.def * 1.2);
+    damage = Math.floor(damage + 0.5 * ((player.strength - 5) + (player.dexterity - 10)));
     if (damage > 1) {
         playerDamageDeal(damage, monster, id);
     }
