@@ -1,14 +1,24 @@
 _________________________
-v1.1 - 10 january 2015   |
+v1.1.1 - 11 january 2015 |
 -------------------------|
+
+- Accuracy and Evasion is working right now
+- Critical chance and bonus damage from critical is working now
+- Changed damage formula which is much better now'
+- Damage per point of strength reduced
+- Base health changed to 50 from 30
+_________________________
+v1.1.0 - 10 january 2015 |
+-------------------------|
+
 - Removed all orbs from the game, this game won't be an idle game, so no exp/gold per second.
 - Added new player stats, str/end/dex/agi/int/wis/luk.
 - Secondary stats page, which give you more info about player defense,critical, drop rate etc.
 - Still working on weapon skills and equipment. 
-- Accuracy and Evasion is working right now
 _________________________
 v1.0.7 - 4 january 2015  |
 -------------------------|
+
 - Changed javascript code
 - Updated html
 _________________________
@@ -46,6 +56,7 @@ v1.0.3 - 27 december 2014|
 _________________________
 v1.0.2 - 26 december 2014|
 -------------------------|
+
 - Changed "Sell  all button" to sell all orbs at once(all quality) 
 - Added Level up system, 5 stats per level, health regeneration, Defense, Strength
 - New monsters, changed weapon requirement to fight them
@@ -53,6 +64,7 @@ v1.0.2 - 26 december 2014|
 _________________________
 v1.0.1 - 25 december 2014|
 -------------------------|
+
 - Added "Sell all button" for a single orb
 
 _________________________

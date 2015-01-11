@@ -59,7 +59,7 @@
         <div class="row">
             <div class="row">
                 <div class="progress-bar progress-bar c1">Experience: <span id="exppercent">0</span>%</div>
-                <div class="progress-bar progress-bar-success progress-bar c2">Health: <span id="health">30</span>/<span id="maxhealth">30</span></div>
+                <div class="progress-bar progress-bar-success progress-bar c2">Health: <span id="health">50</span>/<span id="maxhealth">50</span></div>
             </div>
             <div class=".col-sm-3 col-md-3 .col-lg-3">
                 <div class="container">
@@ -94,7 +94,7 @@
                                         Damage
                                     </td>
                                     <td colspan="5">
-                                        <span id="mindamage">3</span>-<span id="maxdamage">7</span>
+                                        <span id="mindamage">1</span>-<span id="maxdamage">3</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -102,7 +102,7 @@
                                         Strength <img src="images/questionMark.png" data-toggle="tooltip" title="Increase damage">
                                     </td>
                                     <td>
-                                        <span id="strength">10</span><br />
+                                        <span id="strength">5</span><br />
                                     </td>
                                     <td>
                                         <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength();">
@@ -111,7 +111,7 @@
                                         Endurance <img src="images/questionMark.png" data-toggle="tooltip" title="Increase max health and health regen">
                                     </td>
                                     <td>
-                                        <span id="endurance">10</span><br />
+                                        <span id="endurance">5</span><br />
                                     </td>
                                     <td>
                                         <input id="vis2"  type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance();">
@@ -122,16 +122,16 @@
                                         Agility <img src="images/questionMark.png" data-toggle="tooltip" title="Evasion, critical chance, hit rate">
                                     </td>
                                     <td>
-                                        <span id="agility">10</span><br />
+                                        <span id="agility">5</span><br />
                                     </td>
                                     <td>
                                         <input id="vis3"  type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility();">
                                     </td>
                                     <td>
-                                        Dexterity <img src="images/questionMark.png" data-toggle="tooltip" title="Small bonus to damage, evasion, defense, critical damage">
+                                        Dexterity <img src="images/questionMark.png" data-toggle="tooltip" title="Evasion, defense, critical damage">
                                     </td>
                                     <td>
-                                        <span id="dexterity">10</span><br />
+                                        <span id="dexterity">5</span><br />
                                     </td>
                                     <td>
                                         <input id="vis4"  type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity();">
@@ -142,19 +142,19 @@
                                         Intelligence <img src="images/questionMark.png" data-toggle="tooltip" title="not implemented yet, but will increase spell damage with certain weapons">
                                     </td>
                                     <td>
-                                        <span id="intelligence">10</span><br />
+                                        <span id="intelligence">5</span><br />
                                     </td>
                                     <td>
-                                        <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence();">
+                                        <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" disabled onclick="upgradeIntelligence();">
                                     </td>
                                     <td>
                                         Wisdom <img src="images/questionMark.png" data-toggle="tooltip" title="also not implemented, but will increase healing power/chance to proc with each hit">
                                     </td>
                                     <td>
-                                        <span id="wisdom">10</span><br />
+                                        <span id="wisdom">5</span><br />
                                     </td>
                                     <td>
-                                        <input id="vis6"  type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom();">
+                                        <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" disabled onclick="upgradeWisdom();">
                                     </td>
                                 </tr>
                                 <tr>
@@ -162,7 +162,7 @@
                                         Luck <img src="images/questionMark.png" data-toggle="tooltip" title="Increase drop rate a little, critical chance, evasion">
                                     </td>
                                     <td>
-                                       <span id="luck">10</span>
+                                       <span id="luck">5</span>
                                     </td>
                                     <td>
                                         <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck();">
@@ -171,7 +171,7 @@
                                         Stat points
                                     </td>
                                     <td colspan="2">
-                                        <span id="stats">1</span>
+                                        <span id="stats">0</span>
                                     </td>
                                     
                                 </tr>
