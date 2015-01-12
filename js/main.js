@@ -384,8 +384,21 @@ function equipDagger() {
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
     exppercent = (Math.floor((player.experience / player.maxexperience) * 100));
+    var exppercent2 = (Math.floor((player.experience / player.maxexperience) * 100));
+    exppercent2 = exppercent2 / 2.5;
+    var divArray = document.getElementById('progressBar');
+    divArray.style.width = ((exppercent2) + '%');
     document.getElementById("exppercent").innerHTML = exppercent;
-}, 1000);
+}, 100);
+
+window.setInterval(function () {
+    var healthPercent = (Math.floor((player.health / player.maxhealth) * 100));
+    healthPercent = healthPercent / 2.5;
+    var divArray = document.getElementById('progressBar2');
+    divArray.style.width = ((healthPercent) + '%');
+}, 100);
+
+
 window.setInterval(function () { //Health regen
     if (player.health < player.maxhealth) player.health += player.hpregen;
     if (player.health > player.maxhealth) player.health = player.maxhealth;
@@ -474,8 +487,8 @@ function upgradeWisdom() {
 function upgradeLuck() {
     if (player.stats >= 1) {
         player.luck += 1;
-        player.criticalChance += 0.5;
-        player.criticalDamage += 0.5;
+        player.criticalChance += 0.05;
+        player.criticalDamage += 0.05;
         player.evasion += 0.1;
         player.dropRate += 1;
         player.stats = player.stats - 1;

@@ -31,6 +31,7 @@
             margin-left: 30%;
             margin-right: 30%;
             width: 40%;
+            height: 20px;
         }
 
         div.c1 {
@@ -38,6 +39,7 @@
             margin-left: 30%;
             margin-right: 30%;
             width: 40%;
+            height: 20px;
         }
     </style>
 </head>
@@ -58,8 +60,8 @@
     <div class="container">
         <div class="row">
             <div class="row">
-                <div class="progress-bar progress-bar c1">Experience: <span id="exppercent">0</span>%</div>
-                <div class="progress-bar progress-bar-success progress-bar c2">Health: <span id="health">50</span>/<span id="maxhealth">50</span></div>
+                <div id="progressBar" class="progress-bar progress-bar c1">Exp: <span id="exppercent">0</span>%</div>
+                <div id="progressBar2" class="progress-bar progress-bar-success progress-bar c2">HP: <span id="health">50</span>/<span id="maxhealth">50</span></div>
             </div>
             <div class=".col-sm-3 col-md-3 .col-lg-3">
                 <div class="container">
@@ -212,10 +214,10 @@
                                 </tr>
                                 <tr>
                                     <td class="col-md-3">
-                                        Critical chance:<span id="criticalChance">0</span>%
+                                        Critical chance:<span id="criticalChance">1</span>%
                                     </td>
                                     <td class="col-md-3">
-                                        Critical damage:<span id="criticalDamage">0</span>%
+                                        Critical damage:<span id="criticalDamage">1</span>
                                     </td>
                                 </tr>
                                 <tr>
