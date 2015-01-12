@@ -2,7 +2,10 @@ _________________________
 v1.1.2 - 12 january 2015 |
 -------------------------|
 
--Animated progress bar for health and experience
+- Animated progress bar for health and experience
+- When you die, you lose 20% of current gold and experience
+- Experience formula changed to make it easier to level up
+- Wisdom and intelligence now give you some mana, and mana regen. Mana is not used for anything right now, but I will add something soon.
 _________________________
 v1.1.1 - 11 january 2015 |
 -------------------------|

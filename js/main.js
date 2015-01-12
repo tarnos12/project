@@ -405,6 +405,12 @@ window.setInterval(function () { //Health regen
     document.getElementById('health').innerHTML = player.health;
 }, 1000);
 
+window.setInterval(function () { //Mana regen
+    if (player.mana < player.maxMana) player.mana += player.manaRegen;
+    if (player.mana > player.maxMana) player.mana = player.maxMana;
+    document.getElementById('mana').innerHTML = player.mana.toFixed(0);
+}, 1000);
+
 //Upgrading player stats
 function upgradeStrength() {
     if (player.stats >= 1) {
@@ -467,9 +473,11 @@ function upgradeDexterity() {
 function upgradeIntelligence() {
     if (player.stats >= 1) {
         player.intelligence += 1;
+        player.maxMana += 5;
         player.stats = player.stats - 1;
-        Log("You have increased your intelligence by 1, note that it's not implemented yet :)");
+        Log("You have increased your intelligence by 1");
         document.getElementById("intelligence").innerHTML = player.intelligence;
+        document.getElementById("maxmana").innerHTML = player.maxMana;
         document.getElementById("stats").innerHTML = player.stats;
     }
 };
@@ -477,9 +485,13 @@ function upgradeIntelligence() {
 function upgradeWisdom() {
     if (player.stats >= 1) {
         player.wisdom += 1;
+        player.maxMana += 10;
+        player.manaRegen += 0.2;
         player.stats = player.stats - 1;
-        Log("You have increased your wisdom by 1, note that it's not implemented yet :)");
+        Log("You have increased your wisdom by 1");
         document.getElementById("wisdom").innerHTML = player.wisdom;
+        document.getElementById("maxmana").innerHTML = player.maxMana;
+        document.getElementById("manaRegen").innerHTML = player.manaRegen.toFixed(2);
         document.getElementById("stats").innerHTML = player.stats;
     }
 };
@@ -589,6 +601,9 @@ var player = {
     gold: 0,
     health: 50,
     maxhealth: 50,
+    mana: 50,
+    maxMana: 50,
+    manaRegen: 1,
     mindamage: 1,
     maxdamage: 3,
     hpregen: 2,
@@ -795,10 +810,18 @@ function monsterDamageDeal(dmg, monster, id) {
 function playerDead(monster, id) {
 
     player.health = player.maxhealth;
+    goldLost = Math.floor(player.gold - (player.gold / 1.2));
+    player.gold = Math.floor(player.gold / 1.2);
+    expLost = Math.floor(player.experience - (player.experience / 1.2));
+    player.experience = Math.floor(player.experience / 1.2);
     monster.hp = monster.maxHp;
     document.getElementById("health").innerHTML = player.health;
+    document.getElementById("gold").innerHTML = player.gold;
+    document.getElementById("experience").innerHTML = player.experience;
     document.getElementById("monster" + id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     Log("<span style=\"color:red\">You have died!</span>");
+    Log("<span style=\"color:red\">You lost </span>" + goldLost + "gold");
+    Log("<span style=\"color:red\">You lost </span>" + expLost + "experience");
 
 }
 
@@ -813,7 +836,7 @@ function monsterKilled(monster, id) {
 //experience gained from killing a monster
 function monsterExperience(monster) {
 
-    var expgain = monster.baseExp / (player.level / 5);
+    var expgain = monster.baseExp / (player.level / 8);
     if (player.experience < player.maxexperience) {
         player.experience = Math.floor(player.experience + expgain);
         if (player.experience >= player.maxexperience) {

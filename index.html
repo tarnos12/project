@@ -95,8 +95,11 @@
                                     <td>
                                         Damage
                                     </td>
-                                    <td colspan="5">
+                                    <td colspan="2">
                                         <span id="mindamage">1</span>-<span id="maxdamage">3</span>
+                                    </td>
+                                    <td colspan="3">Mana: 
+                                        <span id="mana">50</span>/<span id="maxmana">50</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -141,22 +144,22 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Intelligence <img src="images/questionMark.png" data-toggle="tooltip" title="not implemented yet, but will increase spell damage with certain weapons">
+                                        Intelligence <img src="images/questionMark.png" data-toggle="tooltip" title="Increase effectiveness of certain spells, and give small bonus to mana regen">
                                     </td>
                                     <td>
                                         <span id="intelligence">5</span><br />
                                     </td>
                                     <td>
-                                        <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" disabled onclick="upgradeIntelligence();">
+                                        <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence();">
                                     </td>
                                     <td>
-                                        Wisdom <img src="images/questionMark.png" data-toggle="tooltip" title="also not implemented, but will increase healing power/chance to proc with each hit">
+                                        Wisdom <img src="images/questionMark.png" data-toggle="tooltip" title="Increse max mana, mana regen">
                                     </td>
                                     <td>
                                         <span id="wisdom">5</span><br />
                                     </td>
                                     <td>
-                                        <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" disabled onclick="upgradeWisdom();">
+                                        <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom();">
                                     </td>
                                 </tr>
                                 <tr>
@@ -195,8 +198,10 @@
                             </div>
                             <table class="table">
                                 <tr>
-                                    <td colspan="2" class="col-md-3" >
-                                        Health regen:<span id="hpregen">0</span>
+                                    <td class="col-md-3" >
+                                        Health regen:<span id="hpregen">2</span>
+                                    </td>
+                                    <td>Mana regen:<span id="manaRegen">1</span>
                                     </td>
                                 </tr>
                                 <tr>
@@ -793,6 +798,7 @@
                                 <li class="active"><a href="#tab_f1" data-toggle="tab">Potions</a></li>
                                 <li><a href="#tab_f2" data-toggle="tab">Equipment</a></li>
                                 <li><a href="#tab_f3" data-toggle="tab">Weapon Skills</a></li>
+                                <li><a href="#tab_f4" data-toggle="tab">Player Skills</a></li>
                             </ul>
 
 
@@ -883,12 +889,47 @@
 
                                 </div>
                                 <div class="tab-pane" id="tab_f3">
-                                    Sword skill level:<br>
-                                    Dagger skill level:<br>
-                                    Axe skill level:<br>
-                                    Mace skill level:<br>
-                                    Staff skill level:<br>
-                                    Fist skill level:<br>
+                                    <table class="table">
+                                        <tr>
+                                            <td>
+                                                Sword skill level:
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Dagger skill level:
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                Axe skill level:
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                 Mace skill level:
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                 Staff skill level:
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                 Fist skill level:
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane" id="tab_f4">
+                                   <table class="table">
+                                       <tr>
+                                           <td>
+                                               Coming soon...
+                                           </td>
+                                       </tr>
+                                   </table>
                                 </div>
                             </div>
                         </div>
