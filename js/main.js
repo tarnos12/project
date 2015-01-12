@@ -1,15 +1,15 @@
 window.setInterval(function () {
     var hppercent = 100; //This function heal player automatically using potions.
     hppercent = (Math.floor((player.health / player.maxhealth) * 100));
-    if (player.maxhealth <= 30 & pot >= 1) {
+    if (pot >= 1) {
         if (hppercent <= 30) {
-            if (player.health + pot >= player.maxhealth) {
+            if (player.health + 20 >= player.maxhealth) {
                 player.health = player.maxhealth;
                 pot -= 1;
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("pot").innerHTML = pot;
             } else {
-                player.health += pot;
+                player.health += 20;
                 pot -= 1;
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("pot").innerHTML = pot;
@@ -416,8 +416,8 @@ function upgradeStrength() {
     if (player.stats >= 1) {
         player.stats = player.stats - 1;
         player.strength += 1;
-        player.mindamage = Math.floor(player.strength * 0.4);
-        player.maxdamage = Math.floor(player.strength * 0.6);
+        player.mindamage = Math.floor(player.strength * 0.5);
+        player.maxdamage = Math.floor(player.strength * 0.8);
         document.getElementById('stats').innerHTML = player.stats;
         document.getElementById('mindamage').innerHTML = player.mindamage;
         document.getElementById('maxdamage').innerHTML = player.maxdamage;
@@ -443,7 +443,7 @@ function upgradeAgility() {
     if (player.stats >= 1) {
         player.stats = player.stats - 1;
         player.agility += 1;
-        player.critChance += 0.1;
+        player.criticalChance += 0.2;
         player.accuracy += 0.1;
         player.evasion += 0.1;
         Log("You have increased your agility by 1, evasion, critical chance and accuracy increased!");
@@ -459,7 +459,7 @@ function upgradeDexterity() {
     if (player.stats >= 1) {
         player.dexterity += 1;
         player.stats = player.stats - 1;
-        player.defense += 0.6;
+        player.defense += 1.5;
         player.criticalDamage += 0.1;
         Log("You increased your dexterity by 1, defense, critical chance and critical damage increased.");
         document.getElementById("dexterity").innerHTML = player.dexterity;
@@ -475,7 +475,13 @@ function upgradeIntelligence() {
         player.intelligence += 1;
         player.maxMana += 5;
         player.stats = player.stats - 1;
+        Lifesteal = player.intelligence / 200;
+        console.log(Lifesteal);
+        Lifesteal2 = player.intelligence;
+        console.log(Lifesteal2);
         Log("You have increased your intelligence by 1");
+        document.getElementById("Lifesteal2").innerHTML = Lifesteal2.toFixed(2);
+        document.getElementById("Lifesteal").innerHTML = (Lifesteal * 200).toFixed(2);
         document.getElementById("intelligence").innerHTML = player.intelligence;
         document.getElementById("maxmana").innerHTML = player.maxMana;
         document.getElementById("stats").innerHTML = player.stats;
@@ -604,9 +610,9 @@ var player = {
     mana: 50,
     maxMana: 50,
     manaRegen: 1,
-    mindamage: 1,
-    maxdamage: 3,
-    hpregen: 2,
+    mindamage: 2,
+    maxdamage: 4,
+    hpregen: 0,
     accuracy: 100,
     evasion: 0,
     criticalChance: 1,
@@ -615,6 +621,10 @@ var player = {
     expRate: 0
 };
 
+var Lifesteal = 0.05;
+var Lifesteal2 = 5;
+console.log(Lifesteal);
+console.log(Lifesteal2);
 var maxLogLines = 16;
 var logData = {
     length: 0
@@ -761,6 +771,18 @@ function playerDamage(monster, id) {
 function playerDamageDeal(damage, monster, id) {
 
     monster.hp -= damage;
+    var randomLifestealChance = Math.random()
+    var LifestealHeal = Math.floor(Lifesteal2)
+    if (Lifesteal > randomLifestealChance & player.mana >= 5) {
+        player.health += LifestealHeal
+        player.mana -= 5;
+        document.getElementById("mana").innerHTML = player.mana;
+        if (player.health >= player.maxhealth) {
+            player.health = player.maxhealth;
+        }
+        console.log(LifestealHeal);
+        Log("<span style=\"color:green\">Healed for </span>" + LifestealHeal);
+    }
     document.getElementById("monster" + id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     Log("You deal " + damage + " <span style=\"color:blue\">damage</span>");
     if (monster.hp < 1) {
