@@ -8,14 +8,17 @@ function CreateMonsterHtml() {
             '<div id="' + monsters[i].id + '" class="c3">' +
             'Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg +
             '<br />' +
+            'Def:' + monsters[i].def +
+            '<br />' +
+            monsters[i].hp + "/" + monsters[i].maxHp +
+            '<br />' +
             '<img src="images/' + monsters[i].image + '" alt="' + monsters[i].name + '">' +
             '<br />' +
-            '<button id="button"' + i + '>' + "Attack" + '</button>' + '</div></div>';
+            '<button id="button' + i + '">' + "Attack" + '</button>' + '</div></div>';
     }
 
     document.getElementById("monster").innerHTML = html;
 };
-
 
 
 
