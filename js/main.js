@@ -1,3 +1,156 @@
+function CreateMonsterHtml() {
+
+    var html = "";
+    if( 2 > 1) {
+        html += '<table class="table">'
+        '<tr>'
+        '<td>'
+        '<div id="monster0" class="c3">'
+        'Dmg:2-3<br>'
+        'Def:0<br>'
+        '<span class="hp">10</span>/<span id="maxHp">10</span><br>'
+        '<img src="images/monster1.jpg" alt="Attack"><br>'
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div id="monster1" class="c3">'
+        'Dmg:2-5<br>'
+        'Def:2<br>'
+        '<span class="hp">30</span>/<span id="maxHp">30</span><br>'
+        '<img src="images/monster2.jpg" alt="Attack"><br>'
+
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div id="monster2" class="c3">'
+        'Dmg:4-7<br>'
+        'Def:4<br>'
+        '<span class="hp">70</span>/<span id="maxHp">70</span><br>'
+        '<img src="images/monster3.jpg" alt="Attack"><br>'
+
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div id="monster3" class="c3">'
+        'Dmg:6-10<br>'
+        'Def:6<br>'
+        '<span class="hp">130</span>/<span id="maxHp">130</span><br>'
+        '<img src="images/monster4.jpg" alt="Attack"><br>'
+
+        '</div>'
+        '</td>'
+        '</tr>'
+        '<tr>'
+        '<td>'
+        '<div class="c3">'
+        '<button id="button1">Attack</button>'
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div class="c3">'
+        '<button id="button2">Attack</button>'
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div class="c3">'
+        '<button id="button3">Attack</button>'
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div class="c3">'
+        '<button id="button4">Attack</button>'
+        '</div>'
+        '</td>'
+        '</tr>'
+        '<tr>'
+        '<td>'
+        '<div id="monster4" class="c3">'
+        'Dmg:9-14<br>'
+        'Def:9<br>'
+        '<span class="hp">190</span>/<span id="maxHp">190</span><br>'
+        '<img src="images/monster5.jpg" alt="Attack"><br>'
+
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div id="monster5" class="c3">'
+        'Dmg:13-19<br>'
+        'Def:13<br>'
+        '<span class="hp">280</span>/<span id="maxHp">280</span><br>'
+        '<img src="images/monster6.jpg" alt="Attack"><br>'
+
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div id="monster6" class="c3">'
+        'Dmg:18-23<br>'
+        'Def:18<br>'
+        '<span class="hp">380</span>/<span id="maxHp">380</span><br>'
+        '<img src="images/monster7.jpg" alt="Attack"><br>'
+
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div id="monster7" class="c3">'
+        'Dmg:25-30<br>'
+        'Def:25<br>'
+        '<span class="hp">500</span>/<span id="maxHp">500</span><br>'
+        '<img src="images/monster8.jpg" alt="Attack"><br>'
+
+        '</div>'
+        '</td>'
+        '</tr>'
+        '<tr>'
+        '<td>'
+        '<div class="c3">'
+        '<button id="button5">Attack</button>'
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div class="c3">'
+        '<button id="button6">Attack</button>'
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div class="c3">'
+        '<button id="button7">Attack</button>'
+        '</div>'
+        '</td>'
+        '<td>'
+        '<div class="c3">'
+        ' <button id="button8">Attack</button>'
+        '</div>'
+        '</td>'
+        '</tr>'
+        '</table>';
+
+    }
+    document.getElementById("monster").innerHTML = html;
+};
+
+
+CreateMonsterHtml();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 window.setInterval(function () {
     var hppercent = 100; //This function heal player automatically using potions.
     hppercent = (Math.floor((player.health / player.maxhealth) * 100));
@@ -63,6 +216,28 @@ window.setInterval(function () {
         document.getElementById("vis6").style.visibility = "hidden";
         document.getElementById("vis7").style.visibility = "hidden";
     }
+    document.getElementById('mindamage').innerHTML = player.mindamage;
+    document.getElementById('maxdamage').innerHTML = player.maxdamage;
+    document.getElementById('strength').innerHTML = player.strength;
+    document.getElementById("maxhealth").innerHTML = player.maxhealth;
+    document.getElementById("hpregen").innerHTML = player.hpregen;
+    document.getElementById("stats").innerHTML = player.stats;
+    document.getElementById("endurance").innerHTML = player.endurance;
+    document.getElementById("agility").innerHTML = player.agility;
+    document.getElementById("accuracy").innerHTML = player.accuracy.toFixed(2);
+    document.getElementById("dexterity").innerHTML = player.dexterity;
+    document.getElementById("defense").innerHTML = player.defense.toFixed(2);
+    document.getElementById("criticalDamage").innerHTML = player.criticalDamage.toFixed(2);
+    document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
+    document.getElementById("Lifesteal2").innerHTML = Lifesteal2.toFixed(2);
+    document.getElementById("Lifesteal").innerHTML = (Lifesteal * 200).toFixed(2);
+    document.getElementById("intelligence").innerHTML = player.intelligence;
+    document.getElementById("maxmana").innerHTML = player.maxMana;
+    document.getElementById("wisdom").innerHTML = player.wisdom;
+    document.getElementById("manaRegen").innerHTML = player.manaRegen.toFixed(2);
+    document.getElementById("luck").innerHTML = player.luck;
+    document.getElementById("evasion").innerHTML = player.evasion.toFixed(2);
+    document.getElementById("dropRate").innerHTML = player.dropRate;
 }, 1);
 
 
@@ -418,10 +593,7 @@ function upgradeStrength() {
         player.strength += 1;
         player.mindamage = Math.floor(player.strength * 0.5);
         player.maxdamage = Math.floor(player.strength * 0.8);
-        document.getElementById('stats').innerHTML = player.stats;
-        document.getElementById('mindamage').innerHTML = player.mindamage;
-        document.getElementById('maxdamage').innerHTML = player.maxdamage;
-        document.getElementById('strength').innerHTML = player.strength;
+        
     }
 };
 
@@ -432,10 +604,6 @@ function upgradeEndurance() {
         player.stats = player.stats - 1;
         player.endurance += 1;
         Log("Your maximal health is now: " + player.maxhealth + "!");
-        document.getElementById("maxhealth").innerHTML = player.maxhealth;
-        document.getElementById("hpregen").innerHTML = player.hpregen;
-        document.getElementById("stats").innerHTML = player.stats;
-        document.getElementById("endurance").innerHTML = player.endurance;
     }
 };
 
@@ -447,11 +615,7 @@ function upgradeAgility() {
         player.accuracy += 0.1;
         player.evasion += 0.1;
         Log("You have increased your agility by 1, evasion, critical chance and accuracy increased!");
-        document.getElementById("stats").innerHTML = player.stats;
-        document.getElementById("agility").innerHTML = player.agility;
-        document.getElementById("evasion").innerHTML = player.evasion.toFixed(2);
-        document.getElementById("accuracy").innerHTML = player.accuracy.toFixed(2);
-        document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
+       
     }
 };
 
@@ -462,11 +626,7 @@ function upgradeDexterity() {
         player.defense += 1.5;
         player.criticalDamage += 0.1;
         Log("You increased your dexterity by 1, defense, critical chance and critical damage increased.");
-        document.getElementById("dexterity").innerHTML = player.dexterity;
-        document.getElementById("stats").innerHTML = player.stats;
-        document.getElementById("defense").innerHTML = player.defense.toFixed(2);
-        document.getElementById("criticalDamage").innerHTML = player.criticalDamage.toFixed(2);
-        document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
+        
     }
 };
 
@@ -480,11 +640,7 @@ function upgradeIntelligence() {
         Lifesteal2 = player.intelligence;
         console.log(Lifesteal2);
         Log("You have increased your intelligence by 1");
-        document.getElementById("Lifesteal2").innerHTML = Lifesteal2.toFixed(2);
-        document.getElementById("Lifesteal").innerHTML = (Lifesteal * 200).toFixed(2);
-        document.getElementById("intelligence").innerHTML = player.intelligence;
-        document.getElementById("maxmana").innerHTML = player.maxMana;
-        document.getElementById("stats").innerHTML = player.stats;
+      
     }
 };
 
@@ -495,10 +651,6 @@ function upgradeWisdom() {
         player.manaRegen += 0.2;
         player.stats = player.stats - 1;
         Log("You have increased your wisdom by 1");
-        document.getElementById("wisdom").innerHTML = player.wisdom;
-        document.getElementById("maxmana").innerHTML = player.maxMana;
-        document.getElementById("manaRegen").innerHTML = player.manaRegen.toFixed(2);
-        document.getElementById("stats").innerHTML = player.stats;
     }
 };
 
@@ -511,12 +663,6 @@ function upgradeLuck() {
         player.dropRate += 1;
         player.stats = player.stats - 1;
         Log("You have increased your luck by 1! Critical damage/chance and drop rate increased!");
-        document.getElementById("luck").innerHTML = player.luck;
-        document.getElementById("stats").innerHTML = player.stats;
-        document.getElementById("criticalDamage").innerHTML = player.criticalDamage.toFixed(2);
-        document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
-        document.getElementById("evasion").innerHTML = player.evasion.toFixed(2);
-        document.getElementById("dropRate").innerHTML = player.dropRate;
     }
 };
 
@@ -640,7 +786,7 @@ var monsters = [];
 /**
  * Helper method to create the array of monsters
  */
-function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva) {
+function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id) {
     var monster = {
         hp: maxHp, // init HP to max HP
         maxHp: maxHp,
@@ -649,7 +795,10 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva) {
         maxDmg: maxDmg,
         baseExp: baseExp,
         acc: acc,
-        eva: eva
+        eva: eva,
+        name: name,
+        type: type,
+        id: id
     }
 
     monsters.push(monster);
@@ -658,39 +807,39 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva) {
 
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
-//            maxHP,  def, minD, maxD, baseExp, acc, eva
-createMonster(10, 0, 2, 3, 5, 100, 5);
-createMonster(30, 2, 2, 5, 10, 100, 5);
-createMonster(70, 4, 4, 7, 30, 100, 5);
-createMonster(130, 6, 6, 10, 50, 100, 5);
-createMonster(190, 9, 9, 14, 90, 100, 5);
-createMonster(280, 13, 13, 19, 140, 100, 5);
-createMonster(380, 18, 18, 23, 190, 100, 5);
-createMonster(500, 25, 25, 30, 260, 100, 5);
-createMonster(700, 30, 32, 37, 340, 100, 5);
-createMonster(900, 38, 40, 45, 450, 100, 5);
-createMonster(1300, 45, 50, 58, 560, 100, 5);
-createMonster(1600, 53, 60, 67, 700, 100, 5);
-createMonster(2200, 65, 75, 80, 810, 100, 5);
-createMonster(2600, 75, 86, 92, 940, 100, 5);
-createMonster(3000, 88, 96, 100, 1060, 100, 5);
-createMonster(4000, 95, 105, 110, 1200, 100, 5);
-createMonster(5000, 120, 140, 160, 1600, 100, 5);
-createMonster(7000, 140, 160, 185, 2150, 100, 5);
-createMonster(9000, 170, 200, 215, 2600, 100, 5);
-createMonster(12000, 200, 230, 250, 3400, 100, 5);
-createMonster(15000, 220, 260, 275, 5000, 100, 5);
-createMonster(18000, 250, 290, 320, 7000, 100, 5);
-createMonster(22000, 300, 350, 380, 10000, 100, 5);
-createMonster(28000, 400, 420, 550, 15000, 100, 5);
-createMonster(34000, 500, 500, 700, 23000, 100, 5);
-createMonster(40000, 700, 900, 1200, 35000, 100, 5);
-createMonster(48000, 1000, 1200, 1500, 70000, 100, 5);
-createMonster(57000, 1200, 1700, 2200, 120000, 100, 5);
-createMonster(65000, 2000, 2500, 3000, 180000, 100, 5);
-createMonster(72000, 2500, 3200, 4000, 290000, 100, 5);
-createMonster(80000, 3000, 4500, 5500, 430000, 100, 5);
-createMonster(88000, 3500, 6000, 8000, 680000, 100, 5);
+//            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id
+createMonster(10, 0, 2, 3, 5, 100, 5, 'monster1', 'weak', 1);
+createMonster(30, 2, 2, 5, 10, 100, 5, 'monster2', 'weak', 2);
+createMonster(70, 4, 4, 7, 30, 100, 5, 'monster3', 'weak', 3);
+createMonster(130, 6, 6, 10, 50, 100, 5, 'monster4', 'weak', 4);
+createMonster(190, 9, 9, 14, 90, 100, 5, 'monster5', 'weak', 5);
+createMonster(280, 13, 13, 19, 140, 100, 5, 'monster6', 'weak', 6);
+createMonster(380, 18, 18, 23, 190, 100, 5, 'monster7', 'weak', 7);
+createMonster(500, 25, 25, 30, 260, 100, 5, 'monster8', 'weak', 8);
+createMonster(700, 30, 32, 37, 340, 100, 5, 'monster9', 'average', 9);
+createMonster(900, 38, 40, 45, 450, 100, 5, 'monster10', 'average', 10);
+createMonster(1300, 45, 50, 58, 560, 100, 5, 'monster11', 'average', 11);
+createMonster(1600, 53, 60, 67, 700, 100, 5, 'monster12', 'average', 12);
+createMonster(2200, 65, 75, 80, 810, 100, 5, 'monster13', 'average', 13);
+createMonster(2600, 75, 86, 92, 940, 100, 5, 'monster14', 'average', 14);
+createMonster(3000, 88, 96, 100, 1060, 100, 5, 'monster15', 'average', 15);
+createMonster(4000, 95, 105, 110, 1200, 100, 5, 'monster16', 'average', 16);
+createMonster(5000, 120, 140, 160, 1600, 100, 5, 'monster17', 'strong', 17);
+createMonster(7000, 140, 160, 185, 2150, 100, 5, 'monster18', 'strong', 18);
+createMonster(9000, 170, 200, 215, 2600, 100, 5, 'monster19', 'strong', 19);
+createMonster(12000, 200, 230, 250, 3400, 100, 5, 'monster20', 'strong', 20);
+createMonster(15000, 220, 260, 275, 5000, 100, 5, 'monster21', 'strong', 21);
+createMonster(18000, 250, 290, 320, 7000, 100, 5, 'monster22', 'strong', 22);
+createMonster(22000, 300, 350, 380, 10000, 100, 5, 'monster23', 'strong', 23);
+createMonster(28000, 400, 420, 550, 15000, 100, 5, 'monster24', 'strong', 24);
+createMonster(34000, 500, 500, 700, 23000, 100, 5, 'monster25', 'boss', 25);
+createMonster(40000, 700, 900, 1200, 35000, 100, 5, 'monster26', 'boss', 26);
+createMonster(48000, 1000, 1200, 1500, 70000, 100, 5, 'monster27', 'boss', 27);
+createMonster(57000, 1200, 1700, 2200, 120000, 100, 5, 'monster28', 'boss', 28);
+createMonster(65000, 2000, 2500, 3000, 180000, 100, 5, 'monster29', 'boss', 29);
+createMonster(72000, 2500, 3200, 4000, 290000, 100, 5, 'monster30', 'boss', 30);
+createMonster(80000, 3000, 4500, 5500, 430000, 100, 5, 'monster31', 'boss', 31);
+createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 32);
 
 /**
  * Base monster attack method. Shared code among all monsters.
