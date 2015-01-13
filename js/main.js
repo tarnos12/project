@@ -5,16 +5,16 @@ function CreateMonsterHtml() {
     for (var i = 0; i < monsters.length; i++) {
 
         html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
-            '<div id="' + monsters[i].id + '" class="c3">' +
+            '<div id="monster' + i + '" class="c3">' +
             'Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg +
             '<br />' +
             'Def:' + monsters[i].def +
             '<br />' +
-            monsters[i].hp + "/" + monsters[i].maxHp +
+            '<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp +
             '<br />' +
             '<img src="images/' + monsters[i].image + '" alt="' + monsters[i].name + '">' +
             '<br />' +
-            '<button id="button' + i + '">' + "Attack" + '</button>' + '</div></div>';
+            '<button id="button' + (i+1) + '">' + "Attack" + '</button>' + '</div></div>';
     }
 
     document.getElementById("monster").innerHTML = html;
