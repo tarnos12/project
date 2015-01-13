@@ -1,12 +1,18 @@
 function CreateMonsterHtml() {
 
-    var html = "";
+    var html = '';
+
     for (var i = 0; i < monsters.length; i++) {
 
-        html += '<table class="table"><tr>' + '<td><div id="' + monsters[i].id + '" class="c3"> Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg + '<br />' + '<img src="images/' + monsters[i].image + '" alt="' +monsters[i].name + '">' + '</div></td>' + '</tr></table>'
-    
+        html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
+            '<div id="' + monsters[i].id + '" class="c3">' +
+            'Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg +
+            '<br />' +
+            '<img src="images/' + monsters[i].image + '" alt="' + monsters[i].name + '">' +
+            '<br />' +
+            '<button id="button"' + i + '>' + "Attack" + '</button>' + '</div></div>';
+    }
 
-}
     document.getElementById("monster").innerHTML = html;
 };
 
@@ -946,7 +952,7 @@ function bindAttack(monster, id) {
 
 
 // Bind the attack buttons one for each of the monsters
-/*button1.addEventListener("click", bindAttack(monsters[0], 0));
+button1.addEventListener("click", bindAttack(monsters[0], 0));
 button2.addEventListener("click", bindAttack(monsters[1], 1));
 button3.addEventListener("click", bindAttack(monsters[2], 2));
 button4.addEventListener("click", bindAttack(monsters[3], 3));
@@ -977,7 +983,7 @@ button28.addEventListener("click", bindAttack(monsters[27], 27));
 button29.addEventListener("click", bindAttack(monsters[28], 28));
 button30.addEventListener("click", bindAttack(monsters[29], 29));
 button31.addEventListener("click", bindAttack(monsters[30], 30));
-button32.addEventListener("click", bindAttack(monsters[31], 31));*/
+button32.addEventListener("click", bindAttack(monsters[31], 31));
 
 // ...
 
