@@ -2,44 +2,57 @@ function CreateMonsterHtml() {
 
     var html = '';
 
-    for (var i = 0; i < monsters.length; i++) {
+    html += '<ul class="nav nav-tabs">';
 
-        html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
-            '<div id="monster' + i + '" class="c3">' +
-            'Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg +
-            '<br />' +
-            'Def:' + monsters[i].def +
-            '<br />' +
-            '<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp +
-            '<br />' +
-            '<img src="images/' + monsters[i].image + '" alt="' + monsters[i].name + '">' +
-            '<br />' +
-            '<button id="button' + (i+1) + '">' + "Attack" + '</button>' + '</div></div>';
+    for (var k = 0; k < monsterTypes.length; k++) {
+
+        if (k === 0) {
+            html += '<li class="active">';
+        } else {
+            html += '<li>';
+        }
+
+        html += '<a href="#tab_'+monsterTypes[k].type+'" data-toggle="tab">'+monsterTypes[k].displayName+'</a></li>';
     }
 
-    document.getElementById("monster").innerHTML = html;
+    html += '</ul>';
+    html += '<div class="tab-content">';
+
+    for (var j = 0; j < monsterTypes.length; j++) {
+
+        if (j === 0) {
+            html += '<div class="tab-pane active" ';
+        } else {
+            html += '<div class="tab-pane" ';
+        }
+
+        html += 'id="tab_' + monsterTypes[j].type + '">' +
+            '<div class="c3">' +
+            '<h4>SLAY MONSTERS!</h4>' +
+            '</div>';
+
+        for (var i = 0; i < monsters.length; i++) {
+            if (monsters[i].type === monsterTypes[j].type) {
+
+                html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
+                    '<div id="monster' + i + '" class="c3">' +
+                    'Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg +
+                    '<br />' +
+                    'Def:' + monsters[i].def +
+                    '<br />' +
+                    '<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp +
+                    '<br />' +
+                    '<img src="images/' + monsters[i].image + '" alt="' + monsters[i].name + '">' +
+                    '<br />' +
+                    '<button id="button' + (i + 1) + '">' + "Attack" + '</button>' + '</div></div>';
+            }
+        }
+        html += '</div>';
+    }
+    html += '</div>';
+
+    document.getElementById("monsterTabs").innerHTML = html;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 window.setInterval(function () {
@@ -130,12 +143,6 @@ window.setInterval(function () {
     document.getElementById("evasion").innerHTML = player.evasion.toFixed(2);
     document.getElementById("dropRate").innerHTML = player.dropRate;
 }, 1);
-
-
-
-
-
-
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
     exppercent = (Math.floor((player.experience / player.maxexperience) * 100));
@@ -145,21 +152,17 @@ window.setInterval(function () {
     divArray.style.width = ((exppercent2) + '%');
     document.getElementById("exppercent").innerHTML = exppercent;
 }, 100);
-
 window.setInterval(function () {
     var healthPercent = (Math.floor((player.health / player.maxhealth) * 100));
     healthPercent = healthPercent / 2.5;
     var divArray = document.getElementById('progressBar2');
     divArray.style.width = ((healthPercent) + '%');
 }, 100);
-
-
 window.setInterval(function () { //Health regen
     if (player.health < player.maxhealth) player.health += player.hpregen;
     if (player.health > player.maxhealth) player.health = player.maxhealth;
     document.getElementById('health').innerHTML = player.health;
 }, 1000);
-
 window.setInterval(function () { //Mana regen
     if (player.mana < player.maxMana) player.mana += player.manaRegen;
     if (player.mana > player.maxMana) player.mana = player.maxMana;
@@ -386,6 +389,25 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type
     return monster;
 }
 
+var monsterTypes = [
+    {
+        type: 'weak',
+        displayName: 'Weak'
+    },
+    {
+        type: 'average',
+        displayName: 'Average'
+    },
+    {
+        type: 'strong',
+        displayName: 'Strong'
+    },
+    {
+        type: 'boss',
+        displayName: 'Boss'
+    }
+];
+
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
 //            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id, image
@@ -430,6 +452,7 @@ createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 32);
 
 //attack function, calling other functions depending on player critical/block/evasion and much more in the future :)
 CreateMonsterHtml();
+
 function attack(monster, id) {
 
     if (monster.hp >= 1) {
@@ -652,30 +675,30 @@ button5.addEventListener("click", bindAttack(monsters[4], 4));
 button6.addEventListener("click", bindAttack(monsters[5], 5));
 button7.addEventListener("click", bindAttack(monsters[6], 6));
 button8.addEventListener("click", bindAttack(monsters[7], 7));
-button9.addEventListener("click", bindAttack(monsters[8], 8));
-button10.addEventListener("click", bindAttack(monsters[9], 9));
-button11.addEventListener("click", bindAttack(monsters[10], 10));
-button12.addEventListener("click", bindAttack(monsters[11], 11));
-button13.addEventListener("click", bindAttack(monsters[12], 12));
-button14.addEventListener("click", bindAttack(monsters[13], 13));
-button15.addEventListener("click", bindAttack(monsters[14], 14));
-button16.addEventListener("click", bindAttack(monsters[15], 15));
-button17.addEventListener("click", bindAttack(monsters[16], 16));
-button18.addEventListener("click", bindAttack(monsters[17], 17));
-button19.addEventListener("click", bindAttack(monsters[18], 18));
-button20.addEventListener("click", bindAttack(monsters[19], 19));
-button21.addEventListener("click", bindAttack(monsters[20], 20));
-button22.addEventListener("click", bindAttack(monsters[21], 21));
-button23.addEventListener("click", bindAttack(monsters[22], 22));
-button24.addEventListener("click", bindAttack(monsters[23], 23));
-button25.addEventListener("click", bindAttack(monsters[24], 24));
-button26.addEventListener("click", bindAttack(monsters[25], 25));
-button27.addEventListener("click", bindAttack(monsters[26], 26));
-button28.addEventListener("click", bindAttack(monsters[27], 27));
-button29.addEventListener("click", bindAttack(monsters[28], 28));
-button30.addEventListener("click", bindAttack(monsters[29], 29));
-button31.addEventListener("click", bindAttack(monsters[30], 30));
-button32.addEventListener("click", bindAttack(monsters[31], 31));
+//button9.addEventListener("click", bindAttack(monsters[8], 8));
+//button10.addEventListener("click", bindAttack(monsters[9], 9));
+//button11.addEventListener("click", bindAttack(monsters[10], 10));
+//button12.addEventListener("click", bindAttack(monsters[11], 11));
+//button13.addEventListener("click", bindAttack(monsters[12], 12));
+//button14.addEventListener("click", bindAttack(monsters[13], 13));
+//button15.addEventListener("click", bindAttack(monsters[14], 14));
+//button16.addEventListener("click", bindAttack(monsters[15], 15));
+//button17.addEventListener("click", bindAttack(monsters[16], 16));
+//button18.addEventListener("click", bindAttack(monsters[17], 17));
+//button19.addEventListener("click", bindAttack(monsters[18], 18));
+//button20.addEventListener("click", bindAttack(monsters[19], 19));
+//button21.addEventListener("click", bindAttack(monsters[20], 20));
+//button22.addEventListener("click", bindAttack(monsters[21], 21));
+//button23.addEventListener("click", bindAttack(monsters[22], 22));
+//button24.addEventListener("click", bindAttack(monsters[23], 23));
+//button25.addEventListener("click", bindAttack(monsters[24], 24));
+//button26.addEventListener("click", bindAttack(monsters[25], 25));
+//button27.addEventListener("click", bindAttack(monsters[26], 26));
+//button28.addEventListener("click", bindAttack(monsters[27], 27));
+//button29.addEventListener("click", bindAttack(monsters[28], 28));
+//button30.addEventListener("click", bindAttack(monsters[29], 29));
+//button31.addEventListener("click", bindAttack(monsters[30], 30));
+//button32.addEventListener("click", bindAttack(monsters[31], 31));
 
 // ...
 
