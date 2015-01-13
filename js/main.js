@@ -35,14 +35,14 @@ function CreateMonsterHtml() {
             if (monsters[i].type === monsterTypes[j].type) {
 
                 html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
-                    '<div id="monster' + i + '" class="c3">' +
+                    '<div id="' + monsters[i].id + '" class="c3">' +
                     'Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg +
                     '<br />' +
                     'Def:' + monsters[i].def +
                     '<br />' +
                     '<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp +
                     '<br />' +
-                    '<img src="images/' + monsters[i].image + '" alt="' + monsters[i].name + '">' +
+                    '<img src="images/' + monsters[i].id + '.jpg" alt="' + monsters[i].name + '">' +
                     '<br />' +
                     '<button id="button' + (i + 1) + '">' + "Attack" + '</button>' + '</div></div>';
             }
@@ -411,14 +411,14 @@ var monsterTypes = [
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
 //            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id, image
-createMonster(10, 0, 2, 3, 5, 100, 5, 'monster1', 'weak', 1, 'monster1.jpg');
-createMonster(30, 2, 2, 5, 10, 100, 5, 'monster2', 'weak', 2, 'monster2.jpg');
-createMonster(70, 4, 4, 7, 30, 100, 5, 'monster3', 'weak', 3, 'monster3.jpg');
-createMonster(130, 6, 6, 10, 50, 100, 5, 'monster4', 'weak', 4, 'monster4.jpg');
-createMonster(190, 9, 9, 14, 90, 100, 5, 'monster5', 'weak', 5, 'monster5.jpg');
-createMonster(280, 13, 13, 19, 140, 100, 5, 'monster6', 'weak', 6, 'monster6.jpg');
-createMonster(380, 18, 18, 23, 190, 100, 5, 'monster7', 'weak', 7, 'monster7.jpg');
-createMonster(500, 25, 25, 30, 260, 100, 5, 'monster8', 'weak', 8, 'monster8.jpg');
+createMonster(10, 0, 2, 3, 5, 100, 5, 'monster1', 'weak', 'monster1');
+createMonster(30, 2, 2, 5, 10, 100, 5, 'monster2', 'weak', 'monster2');
+createMonster(70, 4, 4, 7, 30, 100, 5, 'monster3', 'weak', 'monster3');
+createMonster(130, 6, 6, 10, 50, 100, 5, 'monster4', 'weak', 'monster4');
+createMonster(190, 9, 9, 14, 90, 100, 5, 'monster5', 'weak', 'monster5');
+createMonster(280, 13, 13, 19, 140, 100, 5, 'monster6', 'weak', 'monster6');
+createMonster(380, 18, 18, 23, 190, 100, 5, 'monster7', 'weak', 'monster7');
+createMonster(500, 25, 25, 30, 260, 100, 5, 'monster8', 'weak', 'monster8');
 /*createMonster(700, 30, 32, 37, 340, 100, 5, 'monster9', 'average', 9);
 createMonster(900, 38, 40, 45, 450, 100, 5, 'monster10', 'average', 10);
 createMonster(1300, 45, 50, 58, 560, 100, 5, 'monster11', 'average', 11);
@@ -453,26 +453,26 @@ createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 32);
 //attack function, calling other functions depending on player critical/block/evasion and much more in the future :)
 CreateMonsterHtml();
 
-function attack(monster, id) {
+function attack(monster) {
 
     if (monster.hp >= 1) {
 
-        playerAttack(monster, id);
+        playerAttack(monster);
         monsterAttack(monster, id);
     }
 
 }
 
 //Player miss/hit chance
-function playerAttack(monster, id) {
+function playerAttack(monster) {
 
     var playerHitChance = (player.accuracy - monster.eva) / 100;
 
-    var randomHitChance = Math.random()
+    var randomHitChance = Math.random();
 
     if (playerHitChance > randomHitChance) {
 
-        playerCriticalChance(monster, id);
+        playerCriticalChance(monster);
     }
     else {
         Log("<span style=\"color:blue\">YOU MISS! </span>");
@@ -480,27 +480,27 @@ function playerAttack(monster, id) {
 }
 
 //player critical chance
-function playerCriticalChance(monster,id){
+function playerCriticalChance(monster){
     var playerCriticalChance = player.criticalChance / 100;
-    
-    var randomCritChance = Math.random()
+
+    var randomCritChance = Math.random();
 
     if (playerCriticalChance > randomCritChance) {
         Log("<span style=\"color:blue\">CRITICAL HIT </span>");
-        playerCriticalDamage(monster, id);
+        playerCriticalDamage(monster);
     }
     else{
-        playerDamage(monster,id);
+        playerDamage(monster);
     }
 }
 
 //player critical damage calculation
-function playerCriticalDamage(monster,id){
+function playerCriticalDamage(monster){
     var damage = Math.floor(Math.random() * (player.maxdamage - player.mindamage + 1)) + player.mindamage;
     damage = Math.floor(damage * player.criticalDamage * (10 / (10 + monster.def)));
     console.log(damage);
     if (damage >= 1) {
-        playerDamageDeal(damage, monster, id);
+        playerDamageDeal(damage, monster);
     }
     else {
         Log("<span style=\"color:blue\">Enemy block your attack! </span>");
@@ -508,12 +508,12 @@ function playerCriticalDamage(monster,id){
 }
 
 //player normal damage calculation
-function playerDamage(monster, id) {
+function playerDamage(monster) {
     var damage = Math.floor(Math.random() * (player.maxdamage - player.mindamage + 1)) + player.mindamage;
     damage = Math.floor(damage * (10 / (10 + monster.def)));
     console.log(damage);
     if (damage >= 1) {
-        playerDamageDeal(damage, monster, id);
+        playerDamageDeal(damage, monster);
     }
     else {
         Log("<span style=\"color:blue\">Enemy block your attack! </span>");
@@ -522,37 +522,37 @@ function playerDamage(monster, id) {
 }
 
 //player damage deal (base or critical)
-function playerDamageDeal(damage, monster, id) {
+function playerDamageDeal(damage, monster) {
 
     monster.hp -= damage;
-    var randomLifestealChance = Math.random()
-    var LifestealHeal = Math.floor(Lifesteal2)
+    var randomLifestealChance = Math.random();
+    var lifestealHeal = Math.floor(Lifesteal2);
     if (Lifesteal > randomLifestealChance & player.mana >= 5) {
-        player.health += LifestealHeal
+        player.health += lifestealHeal;
         player.mana -= 5;
         document.getElementById("mana").innerHTML = player.mana;
         if (player.health >= player.maxhealth) {
             player.health = player.maxhealth;
         }
-        console.log(LifestealHeal);
-        Log("<span style=\"color:green\">Healed for </span>" + LifestealHeal);
+        console.log(lifestealHeal);
+        Log("<span style=\"color:green\">Healed for </span>" + lifestealHeal);
     }
-    document.getElementById("monster" + id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
+    document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     Log("You deal " + damage + " <span style=\"color:blue\">damage</span>");
     if (monster.hp < 1) {
-        monsterKilled(monster, id);
+        monsterKilled(monster);
     }
 }
 
 //monster hit chance
-function monsterAttack(monster, id) {
+function monsterAttack(monster) {
 
     var monsterHitChance = (monster.acc - player.evasion) / 100;
 
-    var randomHitChance = Math.random()
+    var randomHitChance = Math.random();
 
     if (monsterHitChance > randomHitChance) {
-        monsterDamage(monster, id);
+        monsterDamage(monster);
     }
     else {
         Log("<span style=\"color:red\">You dodge enemy attack!</span>");
@@ -560,11 +560,11 @@ function monsterAttack(monster, id) {
 }
 
 //monster damage calculation
-function monsterDamage(monster, id) {
+function monsterDamage(monster) {
     var dmg = Math.floor(Math.random() * (monster.maxDmg - monster.minDmg + 1)) + monster.minDmg;
     dmg = Math.floor(dmg * (10 / (10 + player.defense)));
     if (dmg >= 1) {
-        monsterDamageDeal(dmg, monster, id);
+        monsterDamageDeal(dmg, monster);
     }
     else {
         Log("<span style=\"color:green\">You blocked enemy attack! </span>");
@@ -572,18 +572,18 @@ function monsterDamage(monster, id) {
 }
 
 //monster damage deal (base or critical)
-function monsterDamageDeal(dmg, monster, id) {
+function monsterDamageDeal(dmg, monster) {
     player.health = player.health - dmg;
     document.getElementById("health").innerHTML = player.health;
     Log("Enemy hit you for " + dmg + " <span style=\"color:red\">damage</span>");
     if (player.health < 1) {
-        playerDead(monster, id);
+        playerDead(monster);
     }
 }
 
 
 //player dead function, restore monster and player hp to max. ! need to add some experience and gold loss on death to prevent abuse of spam clicking for experience all night etc -.- :D
-function playerDead(monster, id) {
+function playerDead(monster) {
 
     player.health = player.maxhealth;
     goldLost = Math.floor(player.gold - (player.gold / 1.2));
@@ -594,7 +594,7 @@ function playerDead(monster, id) {
     document.getElementById("health").innerHTML = player.health;
     document.getElementById("gold").innerHTML = player.gold;
     document.getElementById("experience").innerHTML = player.experience;
-    document.getElementById("monster" + id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
+    document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     Log("<span style=\"color:red\">You have died!</span>");
     Log("<span style=\"color:red\">You lost </span>" + goldLost + "gold");
     Log("<span style=\"color:red\">You lost </span>" + expLost + "experience");
@@ -602,10 +602,10 @@ function playerDead(monster, id) {
 }
 
 //monster kill function
-function monsterKilled(monster, id) {
+function monsterKilled(monster) {
 
     monster.hp = monster.maxHp;
-    document.getElementById("monster" + id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
+    document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     monsterExperience(monster);
 }
 
@@ -667,14 +667,14 @@ function bindAttack(monster, id) {
 
 
 // Bind the attack buttons one for each of the monsters
-button1.addEventListener("click", bindAttack(monsters[0], 0));
-button2.addEventListener("click", bindAttack(monsters[1], 1));
-button3.addEventListener("click", bindAttack(monsters[2], 2));
-button4.addEventListener("click", bindAttack(monsters[3], 3));
-button5.addEventListener("click", bindAttack(monsters[4], 4));
-button6.addEventListener("click", bindAttack(monsters[5], 5));
-button7.addEventListener("click", bindAttack(monsters[6], 6));
-button8.addEventListener("click", bindAttack(monsters[7], 7));
+button1.addEventListener("click", bindAttack(monsters[0]));
+button2.addEventListener("click", bindAttack(monsters[1]));
+button3.addEventListener("click", bindAttack(monsters[2]));
+button4.addEventListener("click", bindAttack(monsters[3]));
+button5.addEventListener("click", bindAttack(monsters[4]));
+button6.addEventListener("click", bindAttack(monsters[5]));
+button7.addEventListener("click", bindAttack(monsters[6]));
+button8.addEventListener("click", bindAttack(monsters[7]));
 //button9.addEventListener("click", bindAttack(monsters[8], 8));
 //button10.addEventListener("click", bindAttack(monsters[9], 9));
 //button11.addEventListener("click", bindAttack(monsters[10], 10));
