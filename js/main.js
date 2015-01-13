@@ -1,135 +1,17 @@
 function CreateMonsterHtml() {
 
     var html = "";
-    if( 2 > 1) {
-        html += '<table class="table">'
-        '<tr>'
-        '<td>'
-        '<div id="monster0" class="c3">'
-        'Dmg:2-3<br>'
-        'Def:0<br>'
-        '<span class="hp">10</span>/<span id="maxHp">10</span><br>'
-        '<img src="images/monster1.jpg" alt="Attack"><br>'
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div id="monster1" class="c3">'
-        'Dmg:2-5<br>'
-        'Def:2<br>'
-        '<span class="hp">30</span>/<span id="maxHp">30</span><br>'
-        '<img src="images/monster2.jpg" alt="Attack"><br>'
+    for (var i = 0; i < monsters.length; i++) {
 
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div id="monster2" class="c3">'
-        'Dmg:4-7<br>'
-        'Def:4<br>'
-        '<span class="hp">70</span>/<span id="maxHp">70</span><br>'
-        '<img src="images/monster3.jpg" alt="Attack"><br>'
+        html += '<table class="table"><tr>' + '<td><div id="' + monsters[i].id + '" class="c3"> Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg + '<br />' + '<img src="images/' + monsters[i].image + '" alt="' +monsters[i].name + '">' + '</div></td>' + '</tr></table>'
+    
 
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div id="monster3" class="c3">'
-        'Dmg:6-10<br>'
-        'Def:6<br>'
-        '<span class="hp">130</span>/<span id="maxHp">130</span><br>'
-        '<img src="images/monster4.jpg" alt="Attack"><br>'
-
-        '</div>'
-        '</td>'
-        '</tr>'
-        '<tr>'
-        '<td>'
-        '<div class="c3">'
-        '<button id="button1">Attack</button>'
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div class="c3">'
-        '<button id="button2">Attack</button>'
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div class="c3">'
-        '<button id="button3">Attack</button>'
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div class="c3">'
-        '<button id="button4">Attack</button>'
-        '</div>'
-        '</td>'
-        '</tr>'
-        '<tr>'
-        '<td>'
-        '<div id="monster4" class="c3">'
-        'Dmg:9-14<br>'
-        'Def:9<br>'
-        '<span class="hp">190</span>/<span id="maxHp">190</span><br>'
-        '<img src="images/monster5.jpg" alt="Attack"><br>'
-
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div id="monster5" class="c3">'
-        'Dmg:13-19<br>'
-        'Def:13<br>'
-        '<span class="hp">280</span>/<span id="maxHp">280</span><br>'
-        '<img src="images/monster6.jpg" alt="Attack"><br>'
-
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div id="monster6" class="c3">'
-        'Dmg:18-23<br>'
-        'Def:18<br>'
-        '<span class="hp">380</span>/<span id="maxHp">380</span><br>'
-        '<img src="images/monster7.jpg" alt="Attack"><br>'
-
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div id="monster7" class="c3">'
-        'Dmg:25-30<br>'
-        'Def:25<br>'
-        '<span class="hp">500</span>/<span id="maxHp">500</span><br>'
-        '<img src="images/monster8.jpg" alt="Attack"><br>'
-
-        '</div>'
-        '</td>'
-        '</tr>'
-        '<tr>'
-        '<td>'
-        '<div class="c3">'
-        '<button id="button5">Attack</button>'
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div class="c3">'
-        '<button id="button6">Attack</button>'
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div class="c3">'
-        '<button id="button7">Attack</button>'
-        '</div>'
-        '</td>'
-        '<td>'
-        '<div class="c3">'
-        ' <button id="button8">Attack</button>'
-        '</div>'
-        '</td>'
-        '</tr>'
-        '</table>';
-
-    }
+}
     document.getElementById("monster").innerHTML = html;
 };
 
 
-CreateMonsterHtml();
+
 
 
 
@@ -786,7 +668,7 @@ var monsters = [];
 /**
  * Helper method to create the array of monsters
  */
-function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id) {
+function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id, image) {
     var monster = {
         hp: maxHp, // init HP to max HP
         maxHp: maxHp,
@@ -798,7 +680,8 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type
         eva: eva,
         name: name,
         type: type,
-        id: id
+        id: id,
+        image: image
     }
 
     monsters.push(monster);
@@ -807,16 +690,16 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type
 
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
-//            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id
-createMonster(10, 0, 2, 3, 5, 100, 5, 'monster1', 'weak', 1);
-createMonster(30, 2, 2, 5, 10, 100, 5, 'monster2', 'weak', 2);
-createMonster(70, 4, 4, 7, 30, 100, 5, 'monster3', 'weak', 3);
-createMonster(130, 6, 6, 10, 50, 100, 5, 'monster4', 'weak', 4);
-createMonster(190, 9, 9, 14, 90, 100, 5, 'monster5', 'weak', 5);
-createMonster(280, 13, 13, 19, 140, 100, 5, 'monster6', 'weak', 6);
-createMonster(380, 18, 18, 23, 190, 100, 5, 'monster7', 'weak', 7);
-createMonster(500, 25, 25, 30, 260, 100, 5, 'monster8', 'weak', 8);
-createMonster(700, 30, 32, 37, 340, 100, 5, 'monster9', 'average', 9);
+//            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id, image
+createMonster(10, 0, 2, 3, 5, 100, 5, 'monster1', 'weak', 1, 'monster1.jpg');
+createMonster(30, 2, 2, 5, 10, 100, 5, 'monster2', 'weak', 2, 'monster2.jpg');
+createMonster(70, 4, 4, 7, 30, 100, 5, 'monster3', 'weak', 3, 'monster3.jpg');
+createMonster(130, 6, 6, 10, 50, 100, 5, 'monster4', 'weak', 4, 'monster4.jpg');
+createMonster(190, 9, 9, 14, 90, 100, 5, 'monster5', 'weak', 5, 'monster5.jpg');
+createMonster(280, 13, 13, 19, 140, 100, 5, 'monster6', 'weak', 6, 'monster6.jpg');
+createMonster(380, 18, 18, 23, 190, 100, 5, 'monster7', 'weak', 7, 'monster7.jpg');
+createMonster(500, 25, 25, 30, 260, 100, 5, 'monster8', 'weak', 8, 'monster8.jpg');
+/*createMonster(700, 30, 32, 37, 340, 100, 5, 'monster9', 'average', 9);
 createMonster(900, 38, 40, 45, 450, 100, 5, 'monster10', 'average', 10);
 createMonster(1300, 45, 50, 58, 560, 100, 5, 'monster11', 'average', 11);
 createMonster(1600, 53, 60, 67, 700, 100, 5, 'monster12', 'average', 12);
@@ -839,7 +722,7 @@ createMonster(57000, 1200, 1700, 2200, 120000, 100, 5, 'monster28', 'boss', 28);
 createMonster(65000, 2000, 2500, 3000, 180000, 100, 5, 'monster29', 'boss', 29);
 createMonster(72000, 2500, 3200, 4000, 290000, 100, 5, 'monster30', 'boss', 30);
 createMonster(80000, 3000, 4500, 5500, 430000, 100, 5, 'monster31', 'boss', 31);
-createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 32);
+createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 32);*/
 
 /**
  * Base monster attack method. Shared code among all monsters.
@@ -848,6 +731,7 @@ createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 32);
  */
 
 //attack function, calling other functions depending on player critical/block/evasion and much more in the future :)
+CreateMonsterHtml();
 function attack(monster, id) {
 
     if (monster.hp >= 1) {
@@ -1062,7 +946,7 @@ function bindAttack(monster, id) {
 
 
 // Bind the attack buttons one for each of the monsters
-button1.addEventListener("click", bindAttack(monsters[0], 0));
+/*button1.addEventListener("click", bindAttack(monsters[0], 0));
 button2.addEventListener("click", bindAttack(monsters[1], 1));
 button3.addEventListener("click", bindAttack(monsters[2], 2));
 button4.addEventListener("click", bindAttack(monsters[3], 3));
@@ -1093,7 +977,7 @@ button28.addEventListener("click", bindAttack(monsters[27], 27));
 button29.addEventListener("click", bindAttack(monsters[28], 28));
 button30.addEventListener("click", bindAttack(monsters[29], 29));
 button31.addEventListener("click", bindAttack(monsters[30], 30));
-button32.addEventListener("click", bindAttack(monsters[31], 31));
+button32.addEventListener("click", bindAttack(monsters[31], 31));*/
 
 // ...
 
