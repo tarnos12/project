@@ -458,7 +458,7 @@ function attack(monster) {
     if (monster.hp >= 1) {
 
         playerAttack(monster);
-        monsterAttack(monster, id);
+        monsterAttack(monster);
     }
 
 }
@@ -658,9 +658,9 @@ function monsterGold() {
 
 
 
-function bindAttack(monster, id) {
+function bindAttack(monster) {
     return function () {
-        attack(monster, id);
+        attack(monster);
     }
 }
 
@@ -675,30 +675,30 @@ button5.addEventListener("click", bindAttack(monsters[4]));
 button6.addEventListener("click", bindAttack(monsters[5]));
 button7.addEventListener("click", bindAttack(monsters[6]));
 button8.addEventListener("click", bindAttack(monsters[7]));
-//button9.addEventListener("click", bindAttack(monsters[8], 8));
-//button10.addEventListener("click", bindAttack(monsters[9], 9));
-//button11.addEventListener("click", bindAttack(monsters[10], 10));
-//button12.addEventListener("click", bindAttack(monsters[11], 11));
-//button13.addEventListener("click", bindAttack(monsters[12], 12));
-//button14.addEventListener("click", bindAttack(monsters[13], 13));
-//button15.addEventListener("click", bindAttack(monsters[14], 14));
-//button16.addEventListener("click", bindAttack(monsters[15], 15));
-//button17.addEventListener("click", bindAttack(monsters[16], 16));
-//button18.addEventListener("click", bindAttack(monsters[17], 17));
-//button19.addEventListener("click", bindAttack(monsters[18], 18));
-//button20.addEventListener("click", bindAttack(monsters[19], 19));
-//button21.addEventListener("click", bindAttack(monsters[20], 20));
-//button22.addEventListener("click", bindAttack(monsters[21], 21));
-//button23.addEventListener("click", bindAttack(monsters[22], 22));
-//button24.addEventListener("click", bindAttack(monsters[23], 23));
-//button25.addEventListener("click", bindAttack(monsters[24], 24));
-//button26.addEventListener("click", bindAttack(monsters[25], 25));
-//button27.addEventListener("click", bindAttack(monsters[26], 26));
-//button28.addEventListener("click", bindAttack(monsters[27], 27));
-//button29.addEventListener("click", bindAttack(monsters[28], 28));
-//button30.addEventListener("click", bindAttack(monsters[29], 29));
-//button31.addEventListener("click", bindAttack(monsters[30], 30));
-//button32.addEventListener("click", bindAttack(monsters[31], 31));
+button9.addEventListener("click", bindAttack(monsters[8]));
+button10.addEventListener("click", bindAttack(monsters[9]));
+button11.addEventListener("click", bindAttack(monsters[10]));
+button12.addEventListener("click", bindAttack(monsters[11]));
+button13.addEventListener("click", bindAttack(monsters[12]));
+button14.addEventListener("click", bindAttack(monsters[13]));
+button15.addEventListener("click", bindAttack(monsters[14]));
+button16.addEventListener("click", bindAttack(monsters[15]));
+button17.addEventListener("click", bindAttack(monsters[16]));
+button18.addEventListener("click", bindAttack(monsters[17]));
+button19.addEventListener("click", bindAttack(monsters[18]));
+button20.addEventListener("click", bindAttack(monsters[19]));
+button21.addEventListener("click", bindAttack(monsters[20]));
+button22.addEventListener("click", bindAttack(monsters[21]));
+button23.addEventListener("click", bindAttack(monsters[22]));
+button24.addEventListener("click", bindAttack(monsters[23]));
+button25.addEventListener("click", bindAttack(monsters[24]));
+button26.addEventListener("click", bindAttack(monsters[25]));
+button27.addEventListener("click", bindAttack(monsters[26]));
+button28.addEventListener("click", bindAttack(monsters[27]));
+button29.addEventListener("click", bindAttack(monsters[28]));
+button30.addEventListener("click", bindAttack(monsters[29]));
+button31.addEventListener("click", bindAttack(monsters[30]));
+button32.addEventListener("click", bindAttack(monsters[31]));
 
 // ...
 
