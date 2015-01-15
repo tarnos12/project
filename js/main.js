@@ -134,7 +134,7 @@ window.setInterval(function () {
     document.getElementById("criticalDamage").innerHTML = player.criticalDamage.toFixed(2);
     document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
     document.getElementById("Lifesteal2").innerHTML = Lifesteal2.toFixed(2);
-    document.getElementById("Lifesteal").innerHTML = (Lifesteal * 200).toFixed(2);
+    document.getElementById("Lifesteal").innerHTML = player.intelligence.toFixed(2);
     document.getElementById("intelligence").innerHTML = player.intelligence;
     document.getElementById("maxmana").innerHTML = player.maxMana;
     document.getElementById("wisdom").innerHTML = player.wisdom;
@@ -142,6 +142,9 @@ window.setInterval(function () {
     document.getElementById("luck").innerHTML = player.luck;
     document.getElementById("evasion").innerHTML = player.evasion.toFixed(2);
     document.getElementById("dropRate").innerHTML = player.dropRate;
+    document.getElementById("level").innerHTML = player.level;
+    document.getElementById("maxexperience").innerHTML = player.maxexperience;
+    document.getElementById("experience").innerHTML = player.experience;
 }, 1);
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
@@ -218,7 +221,7 @@ function upgradeIntelligence() {
         player.intelligence += 1;
         player.maxMana += 5;
         player.stats = player.stats - 1;
-        Lifesteal = player.intelligence / 200;
+        Lifesteal = player.intelligence / 100;
         console.log(Lifesteal);
         Lifesteal2 = player.intelligence;
         console.log(Lifesteal2);
@@ -350,8 +353,8 @@ var player = {
     expRate: 0
 };
 
-var Lifesteal = 0.05;
-var Lifesteal2 = 5;
+var Lifesteal = 0.05; //Chance to happen 0.05->5%
+var Lifesteal2 = 5; //Heal amout 5 -> 5hp
 console.log(Lifesteal);
 console.log(Lifesteal2);
 var maxLogLines = 16;
@@ -621,12 +624,7 @@ function monsterExperience(monster) {
             player.experience = player.experience - player.maxexperience;
             player.maxexperience = Math.floor(player.maxexperience * 1.15);
             Log("You leveled up! Your current player.level is: " + player.level);
-            document.getElementById("maxexperience").innerHTML = player.maxexperience;
-            document.getElementById("level").innerHTML = player.level;
-            document.getElementById("stats").innerHTML = player.stats;
-            document.getElementById("experience").innerHTML = player.experience;
         } else Log("You gain: " + Math.floor(expgain) + "experience!");
-        document.getElementById("experience").innerHTML = player.experience;
     }
     monsterGold();
 }
