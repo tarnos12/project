@@ -57,11 +57,11 @@ function CreateMonsterHtml() {
 
 window.setInterval(function () {
     var hppercent = 100; //This function heal player automatically using potions.
-    hppercent = (Math.floor((player.health / player.maxhealth) * 100));
+    hppercent = (Math.floor((player.health / player.maxhealth()) * 100));
     if (pot >= 1) {
         if (hppercent <= 30) {
-            if (player.health + 20 >= player.maxhealth) {
-                player.health = player.maxhealth;
+            if (player.health + 20 >= player.maxhealth()) {
+                player.health = player.maxhealth();
                 pot -= 1;
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("pot").innerHTML = pot;
@@ -72,10 +72,10 @@ window.setInterval(function () {
                 document.getElementById("pot").innerHTML = pot;
             }
         }
-    } else if (player.maxhealth <= 100 & mpot >= 1) {
+    } else if (player.maxhealth() <= 100 & mpot >= 1) {
         if (hppercent <= 30) {
-            if (player.health + mpot >= player.maxhealth) {
-                player.health = player.maxhealth;
+            if (player.health + mpot >= player.maxhealth()) {
+                player.health = player.maxhealth();
                 mpot -= 1;
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("mpot").innerHTML = mpot;
@@ -89,7 +89,7 @@ window.setInterval(function () {
     } else {
         if (hppercent <= 30 & spot >= 1) {
             if (player.health + spot >= player.maxhealth) {
-                player.health = player.maxhealth;
+                player.health = player.maxhealth();
                 spot -= 1;
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("spot").innerHTML = spot;
@@ -123,7 +123,7 @@ window.setInterval(function () {
     document.getElementById('mindamage').innerHTML = player.mindamage;
     document.getElementById('maxdamage').innerHTML = player.maxdamage;
     document.getElementById('strength').innerHTML = player.strength;
-    document.getElementById("maxhealth").innerHTML = player.maxhealth;
+    document.getElementById("maxhealth").innerHTML = player.maxhealth();
     document.getElementById("hpregen").innerHTML = player.hpregen;
     document.getElementById("stats").innerHTML = player.stats;
     document.getElementById("endurance").innerHTML = player.endurance;
@@ -136,7 +136,8 @@ window.setInterval(function () {
     document.getElementById("Lifesteal2").innerHTML = Lifesteal2.toFixed(2);
     document.getElementById("Lifesteal").innerHTML = player.intelligence.toFixed(2);
     document.getElementById("intelligence").innerHTML = player.intelligence;
-    document.getElementById("maxmana").innerHTML = player.maxMana;
+    document.getElementById("mana").innerHTML = player.mana.toFixed(0);
+    document.getElementById("maxmana").innerHTML = player.maxMana.toFixed(0);
     document.getElementById("wisdom").innerHTML = player.wisdom;
     document.getElementById("manaRegen").innerHTML = player.manaRegen.toFixed(2);
     document.getElementById("luck").innerHTML = player.luck;
@@ -234,7 +235,7 @@ function upgradeWisdom() {
     if (player.stats >= 1) {
         player.wisdom += 1;
         player.maxMana += 10;
-        player.manaRegen += 0.2;
+        player.manaRegen += 0.4;
         player.stats = player.stats - 1;
         Log("You have increased your wisdom by 1");
     }
@@ -338,7 +339,9 @@ var player = {
     maxexperience: 100,
     gold: 0,
     health: 50,
-    maxhealth: 50,
+    maxhealth: function () {
+        return (player.endurance * 100);
+    },
     mana: 50,
     maxMana: 50,
     manaRegen: 1,
@@ -588,7 +591,7 @@ function monsterDamageDeal(dmg, monster) {
 //player dead function, restore monster and player hp to max. ! need to add some experience and gold loss on death to prevent abuse of spam clicking for experience all night etc -.- :D
 function playerDead(monster) {
 
-    player.health = player.maxhealth;
+    player.health = player.maxhealth();
     goldLost = Math.floor(player.gold - (player.gold / 1.2));
     player.gold = Math.floor(player.gold / 1.2);
     expLost = Math.floor(player.experience - (player.experience / 1.2));
@@ -763,7 +766,7 @@ function save() {
     var save = {
         playerGold: player.gold,
         playerHealth: player.health,
-        playerMaxhealth: player.maxhealth,
+        playerMaxhealth: player.maxhealth(),
         playerStats: player.stats,
         playerLevel: player.level,
         playerDefense: player.defense,
@@ -777,6 +780,7 @@ function save() {
         playerExperience: player.experience,
         playerMaxexperience: player.maxexperience,
         playerHpregen: player.hpregen,
+        playerManaregen: player.manaRegen,
         playerMindamage: player.mindamage,
         playerMaxdamage: player.maxdamage,
         pot: pot,
@@ -790,13 +794,14 @@ function load() {
     var savegame = JSON.parse(localStorage.getItem("save"));
     if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
-    if (typeof savegame.playerMaxhealth !== "undefined") player.maxhealth = savegame.playerMaxhealth;
+    if (typeof savegame.playerMaxhealth !== "undefined") player.maxhealth() = savegame.playerMaxhealth;
     if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
     if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
     if (typeof savegame.playerDefense !== "undefined") player.defense = savegame.playerDefense;
     if (typeof savegame.playerExperience !== "undefined") player.experience = savegame.playerExperience;
     if (typeof savegame.playerMaxexperience !== "undefined") player.maxexperience = savegame.playerMaxexperience;
     if (typeof savegame.playerHpregen !== "undefined") player.hpregen = savegame.playerHpregen;
+    if (typeof savegame.playerManaregen !== "undefined") player.manaRegen = savegame.playerManaregen;
     if (typeof savegame.playerStrength !== "undefined") player.strength = savegame.playerStrength;
     if (typeof savegame.playerEndurance !== "undefined") player.endurance = savegame.playerEndurance;
     if (typeof savegame.playerAgility !== "undefined") player.agility = savegame.playerAgility;
@@ -811,13 +816,14 @@ function load() {
     if (typeof savegame.blackorb !== "undefined") blackorb = savegame.blackorb;
     document.getElementById('gold').innerHTML = player.gold;
     document.getElementById('health').innerHTML = player.health;
-    document.getElementById('maxhealth').innerHTML = player.maxhealth;
+    document.getElementById('maxhealth').innerHTML = player.maxhealth();
     document.getElementById('stats').innerHTML = player.stats;
     document.getElementById('level').innerHTML = player.level;
     document.getElementById('defense').innerHTML = player.defense;
     document.getElementById('experience').innerHTML = player.experience;
     document.getElementById('maxexperience').innerHTML = player.maxexperience;
     document.getElementById('hpregen').innerHTML = player.hpregen;
+    document.getElementById('manaRegen').innerHTML = player.manaRegen;
     document.getElementById('strength').innerHTML = player.strength;
     document.getElementById('endurance').innerHTML = player.endurance;
     document.getElementById('agility').innerHTML = player.agility;
