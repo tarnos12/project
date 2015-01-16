@@ -88,7 +88,7 @@ window.setInterval(function () {
         }
     } else {
         if (hppercent <= 30 & spot >= 1) {
-            if (player.health + spot >= player.maxhealth) {
+            if (player.health + spot >= player.maxhealth()) {
                 player.health = player.maxhealth();
                 spot -= 1;
                 document.getElementById("health").innerHTML = player.health;
@@ -186,11 +186,10 @@ function upgradeStrength() {
 
 function upgradeEndurance() {
     if (player.stats >= 1) {
-        player.maxhealth = player.maxhealth + 10;
         player.hpregen = player.hpregen + 1;
         player.stats = player.stats - 1;
         player.endurance += 1;
-        Log("Your maximal health is now: " + player.maxhealth + "!");
+        Log("Your maximal health is now: " + player.maxhealth() + "!");
     }
 };
 
