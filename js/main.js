@@ -80,7 +80,7 @@ window.setInterval(function () {
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("mpot").innerHTML = mpot;
             } else {
-                player.health += mpot;
+                player.health += 100;
                 mpot -= 1;
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("mpot").innerHTML = mpot;
@@ -94,7 +94,7 @@ window.setInterval(function () {
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("spot").innerHTML = spot;
             } else {
-                player.health += spot;
+                player.health += 500;
                 spot -= 1;
                 document.getElementById("health").innerHTML = player.health;
                 document.getElementById("spot").innerHTML = spot;
@@ -120,28 +120,28 @@ window.setInterval(function () {
         document.getElementById("vis6").style.visibility = "hidden";
         document.getElementById("vis7").style.visibility = "hidden";
     }
-    document.getElementById('mindamage').innerHTML = player.mindamage;
-    document.getElementById('maxdamage').innerHTML = player.maxdamage;
+    document.getElementById('mindamage').innerHTML = player.mindamage().toFixed(0);
+    document.getElementById('maxdamage').innerHTML = player.maxdamage().toFixed(0);
     document.getElementById('strength').innerHTML = player.strength;
     document.getElementById("maxhealth").innerHTML = player.maxhealth();
-    document.getElementById("hpregen").innerHTML = player.hpregen;
+    document.getElementById("hpregen").innerHTML = player.hpregen();
     document.getElementById("stats").innerHTML = player.stats;
     document.getElementById("endurance").innerHTML = player.endurance;
     document.getElementById("agility").innerHTML = player.agility;
-    document.getElementById("accuracy").innerHTML = player.accuracy.toFixed(2);
+    document.getElementById("accuracy").innerHTML = player.accuracy().toFixed(2);
     document.getElementById("dexterity").innerHTML = player.dexterity;
-    document.getElementById("defense").innerHTML = player.defense.toFixed(2);
-    document.getElementById("criticalDamage").innerHTML = player.criticalDamage.toFixed(2);
-    document.getElementById("criticalChance").innerHTML = player.criticalChance.toFixed(2);
+    document.getElementById("defense").innerHTML = player.defense().toFixed(2);
+    document.getElementById("criticalDamage").innerHTML = player.criticalDamage().toFixed(2) * 100 + "%" ;
+    document.getElementById("criticalChance").innerHTML = player.criticalChance().toFixed(2);
     document.getElementById("Lifesteal2").innerHTML = Lifesteal2.toFixed(2);
     document.getElementById("Lifesteal").innerHTML = player.intelligence.toFixed(2);
     document.getElementById("intelligence").innerHTML = player.intelligence;
     document.getElementById("mana").innerHTML = player.mana.toFixed(0);
-    document.getElementById("maxmana").innerHTML = player.maxMana.toFixed(0);
+    document.getElementById("maxmana").innerHTML = player.maxMana().toFixed(0);
     document.getElementById("wisdom").innerHTML = player.wisdom;
-    document.getElementById("manaRegen").innerHTML = player.manaRegen.toFixed(2);
+    document.getElementById("manaRegen").innerHTML = player.manaRegen().toFixed(2);
     document.getElementById("luck").innerHTML = player.luck;
-    document.getElementById("evasion").innerHTML = player.evasion.toFixed(2);
+    document.getElementById("evasion").innerHTML = player.evasion().toFixed(2);
     document.getElementById("dropRate").innerHTML = player.dropRate;
     document.getElementById("level").innerHTML = player.level;
     document.getElementById("maxexperience").innerHTML = player.maxexperience;
@@ -157,19 +157,19 @@ window.setInterval(function () {
     document.getElementById("exppercent").innerHTML = exppercent;
 }, 100);
 window.setInterval(function () {
-    var healthPercent = (Math.floor((player.health / player.maxhealth) * 100));
+    var healthPercent = (Math.floor((player.health / player.maxhealth()) * 100));
     healthPercent = healthPercent / 2.5;
     var divArray = document.getElementById('progressBar2');
     divArray.style.width = ((healthPercent) + '%');
 }, 100);
 window.setInterval(function () { //Health regen
-    if (player.health < player.maxhealth) player.health += player.hpregen;
-    if (player.health > player.maxhealth) player.health = player.maxhealth;
+    if (player.health < player.maxhealth()) player.health += player.hpregen();
+    if (player.health > player.maxhealth()) player.health = player.maxhealth();
     document.getElementById('health').innerHTML = player.health;
 }, 1000);
 window.setInterval(function () { //Mana regen
-    if (player.mana < player.maxMana) player.mana += player.manaRegen;
-    if (player.mana > player.maxMana) player.mana = player.maxMana;
+    if (player.mana < player.maxMana()) player.mana += player.manaRegen();
+    if (player.mana > player.maxMana()) player.mana = player.maxMana();
     document.getElementById('mana').innerHTML = player.mana.toFixed(0);
 }, 1000);
 
@@ -178,15 +178,12 @@ function upgradeStrength() {
     if (player.stats >= 1) {
         player.stats = player.stats - 1;
         player.strength += 1;
-        player.mindamage = Math.floor(player.strength * 0.5);
-        player.maxdamage = Math.floor(player.strength * 0.8);
         
     }
 };
 
 function upgradeEndurance() {
     if (player.stats >= 1) {
-        player.hpregen = player.hpregen + 1;
         player.stats = player.stats - 1;
         player.endurance += 1;
         Log("Your maximal health is now: " + player.maxhealth() + "!");
@@ -197,9 +194,6 @@ function upgradeAgility() {
     if (player.stats >= 1) {
         player.stats = player.stats - 1;
         player.agility += 1;
-        player.criticalChance += 0.2;
-        player.accuracy += 0.1;
-        player.evasion += 0.1;
         Log("You have increased your agility by 1, evasion, critical chance and accuracy increased!");
        
     }
@@ -209,8 +203,6 @@ function upgradeDexterity() {
     if (player.stats >= 1) {
         player.dexterity += 1;
         player.stats = player.stats - 1;
-        player.defense += 1.5;
-        player.criticalDamage += 0.1;
         Log("You increased your dexterity by 1, defense, critical chance and critical damage increased.");
         
     }
@@ -219,7 +211,6 @@ function upgradeDexterity() {
 function upgradeIntelligence() {
     if (player.stats >= 1) {
         player.intelligence += 1;
-        player.maxMana += 5;
         player.stats = player.stats - 1;
         Lifesteal = player.intelligence / 100;
         console.log(Lifesteal);
@@ -233,7 +224,6 @@ function upgradeIntelligence() {
 function upgradeWisdom() {
     if (player.stats >= 1) {
         player.wisdom += 1;
-        player.maxMana += 10;
         player.manaRegen += 0.4;
         player.stats = player.stats - 1;
         Log("You have increased your wisdom by 1");
@@ -333,32 +323,52 @@ var player = {
     intelligence: 5,
     wisdom: 5,
     luck: 5,
-    defense: 0,
     experience: 0,
     maxexperience: 100,
     gold: 0,
     health: 50,
     maxhealth: function () {
-        return (player.endurance * 100);
+        return (player.endurance * 10);
     },
     mana: 50,
-    maxMana: 50,
-    manaRegen: 1,
-    mindamage: 2,
-    maxdamage: 4,
-    hpregen: 2,
-    accuracy: 100,
-    evasion: 0,
-    criticalChance: 1,
-    criticalDamage: 1,
+    maxMana: function () {
+        return (player.wisdom * 10 + player.intelligence * 5);
+    },
+    manaRegen: function () {
+        return (player.wisdom);
+    },
+    mindamage: function () {
+        return Math.floor((player.strength * 0.5));
+    },
+    maxdamage: function () {
+        return (player.strength * 0.8);
+    },
+    hpregen: function () {
+        return Math.floor((player.endurance));
+    },
+    accuracy: function () {
+        return Math.floor((95 + (player.agility * 0.05 + player.luck * 0.1)));
+    },
+    defense: function () {
+    return (player.dexterity * 1.2 + player.endurance * 0.5);
+    },
+    evasion: function () {
+        return (5 + (player.agility * 0.5 + player.luck * 0.15));
+    },
+    criticalChance: function () {
+        return (player.agility * 0.5 + player.luck * 0.5);
+    },
+    criticalDamage: function () {
+        return (player.strength * 0.1 + player.dexterity * 0.1);
+    },
     dropRate: 0,
     expRate: 0
 };
-
+console.log("Accuracy " + player.accuracy())
 var Lifesteal = 0.05; //Chance to happen 0.05->5%
 var Lifesteal2 = 5; //Heal amout 5 -> 5hp
-console.log(Lifesteal);
-console.log(Lifesteal2);
+console.log("Lifesteal " + Lifesteal * 100 + "%");
+console.log("Lifesteal Heal " + Lifesteal2 + " HP");
 var maxLogLines = 16;
 var logData = {
     length: 0
@@ -471,7 +481,7 @@ function attack(monster) {
 //Player miss/hit chance
 function playerAttack(monster) {
 
-    var playerHitChance = (player.accuracy - monster.eva) / 100;
+    var playerHitChance = (player.accuracy() - monster.eva) / 100;
 
     var randomHitChance = Math.random();
 
@@ -486,7 +496,7 @@ function playerAttack(monster) {
 
 //player critical chance
 function playerCriticalChance(monster){
-    var playerCriticalChance = player.criticalChance / 100;
+    var playerCriticalChance = player.criticalChance() / 100;
 
     var randomCritChance = Math.random();
 
@@ -501,8 +511,8 @@ function playerCriticalChance(monster){
 
 //player critical damage calculation
 function playerCriticalDamage(monster){
-    var damage = Math.floor(Math.random() * (player.maxdamage - player.mindamage + 1)) + player.mindamage;
-    damage = Math.floor(damage * player.criticalDamage * (10 / (10 + monster.def)));
+    var damage = Math.floor(Math.random() * (player.maxdamage() - player.mindamage() + 1)) + player.mindamage();
+    damage = Math.floor(damage * player.criticalDamage() * (10 / (10 + monster.def)));
     console.log(damage);
     if (damage >= 1) {
         playerDamageDeal(damage, monster);
@@ -514,7 +524,7 @@ function playerCriticalDamage(monster){
 
 //player normal damage calculation
 function playerDamage(monster) {
-    var damage = Math.floor(Math.random() * (player.maxdamage - player.mindamage + 1)) + player.mindamage;
+    var damage = Math.floor(Math.random() * (player.maxdamage() - player.mindamage() + 1)) + player.mindamage();
     damage = Math.floor(damage * (10 / (10 + monster.def)));
     console.log(damage);
     if (damage >= 1) {
@@ -536,8 +546,8 @@ function playerDamageDeal(damage, monster) {
         player.health += lifestealHeal;
         player.mana -= 5;
         document.getElementById("mana").innerHTML = player.mana;
-        if (player.health >= player.maxhealth) {
-            player.health = player.maxhealth;
+        if (player.health >= player.maxhealth()) {
+            player.health = player.maxhealth();
         }
         console.log(lifestealHeal);
         Log("<span style=\"color:green\">Healed for </span>" + lifestealHeal);
@@ -552,7 +562,7 @@ function playerDamageDeal(damage, monster) {
 //monster hit chance
 function monsterAttack(monster) {
 
-    var monsterHitChance = (monster.acc - player.evasion) / 100;
+    var monsterHitChance = (monster.acc - player.evasion()) / 100;
 
     var randomHitChance = Math.random();
 
@@ -567,7 +577,7 @@ function monsterAttack(monster) {
 //monster damage calculation
 function monsterDamage(monster) {
     var dmg = Math.floor(Math.random() * (monster.maxDmg - monster.minDmg + 1)) + monster.minDmg;
-    dmg = Math.floor(dmg * (10 / (10 + player.defense)));
+    dmg = Math.floor(dmg * (10 / (10 + player.defense())));
     if (dmg >= 1) {
         monsterDamageDeal(dmg, monster);
     }
@@ -765,10 +775,8 @@ function save() {
     var save = {
         playerGold: player.gold,
         playerHealth: player.health,
-        playerMaxhealth: player.maxhealth(),
         playerStats: player.stats,
         playerLevel: player.level,
-        playerDefense: player.defense,
         playerStrength: player.strength,
         playerEndurance: player.endurance,
         playerAgility: player.agility,
@@ -778,10 +786,6 @@ function save() {
         playerLuck: player.luck,
         playerExperience: player.experience,
         playerMaxexperience: player.maxexperience,
-        playerHpregen: player.hpregen,
-        playerManaregen: player.manaRegen,
-        playerMindamage: player.mindamage,
-        playerMaxdamage: player.maxdamage,
         pot: pot,
         spot: spot,
         mpot: mpot
@@ -793,14 +797,10 @@ function load() {
     var savegame = JSON.parse(localStorage.getItem("save"));
     if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
-    if (typeof savegame.playerMaxhealth !== "undefined") player.maxhealth() = savegame.playerMaxhealth;
     if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
     if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
-    if (typeof savegame.playerDefense !== "undefined") player.defense = savegame.playerDefense;
     if (typeof savegame.playerExperience !== "undefined") player.experience = savegame.playerExperience;
     if (typeof savegame.playerMaxexperience !== "undefined") player.maxexperience = savegame.playerMaxexperience;
-    if (typeof savegame.playerHpregen !== "undefined") player.hpregen = savegame.playerHpregen;
-    if (typeof savegame.playerManaregen !== "undefined") player.manaRegen = savegame.playerManaregen;
     if (typeof savegame.playerStrength !== "undefined") player.strength = savegame.playerStrength;
     if (typeof savegame.playerEndurance !== "undefined") player.endurance = savegame.playerEndurance;
     if (typeof savegame.playerAgility !== "undefined") player.agility = savegame.playerAgility;
@@ -808,21 +808,15 @@ function load() {
     if (typeof savegame.playerIntelligence !== "undefined") player.intelligence = savegame.playerIntelligence;
     if (typeof savegame.playerWisdom !== "undefined") player.wisdom = savegame.playerWisdom;
     if (typeof savegame.playerLuck !== "undefined") player.luck = savegame.playerLuck;
-    if (typeof savegame.playerMaxdamage !== "undefined") player.maxdamage = savegame.playerMaxdamage;
-    if (typeof savegame.playerMindamage !== "undefined") player.mindamage = savegame.playerMindamage;
     if (typeof savegame.pot !== "undefined") pot = savegame.pot;
     if (typeof savegame.spot !== "undefined") spot = savegame.spot;
     if (typeof savegame.blackorb !== "undefined") blackorb = savegame.blackorb;
     document.getElementById('gold').innerHTML = player.gold;
     document.getElementById('health').innerHTML = player.health;
-    document.getElementById('maxhealth').innerHTML = player.maxhealth();
     document.getElementById('stats').innerHTML = player.stats;
     document.getElementById('level').innerHTML = player.level;
-    document.getElementById('defense').innerHTML = player.defense;
     document.getElementById('experience').innerHTML = player.experience;
     document.getElementById('maxexperience').innerHTML = player.maxexperience;
-    document.getElementById('hpregen').innerHTML = player.hpregen;
-    document.getElementById('manaRegen').innerHTML = player.manaRegen;
     document.getElementById('strength').innerHTML = player.strength;
     document.getElementById('endurance').innerHTML = player.endurance;
     document.getElementById('agility').innerHTML = player.agility;
@@ -830,8 +824,6 @@ function load() {
     document.getElementById('intelligence').innerHTML = player.intelligence;
     document.getElementById('wisdom').innerHTML = player.wisdom;
     document.getElementById('luck').innerHTML = player.luck;
-    document.getElementById('maxdamage').innerHTML = player.maxdamage;
-    document.getElementById('mindamage').innerHTML = player.mindamage;
     document.getElementById('pot').innerHTML = pot;
     document.getElementById('spot').innerHTML = spot;
     document.getElementById('mpot').innerHTML = mpot;
@@ -841,13 +833,10 @@ function reset() {
     localStorage.removeItem("save");
     player.gold = 0;
     player.health = 50;
-    player.maxhealth = 50;
     player.stats = 0;
     player.level = 1;
-    player.defense = 0;
     player.experience = 0;
     player.maxexperience = 100;
-    player.hpregen = 2;
     player.strength = 5;
     player.endurance = 5;
     player.agility = 5;
@@ -855,20 +844,15 @@ function reset() {
     player.intelligence = 5;
     player.wisdom = 5;
     player.luck = 5;
-    player.mindamage = 1;
-    player.maxdamage = 3;
     pot = 0;
     spot = 0;
     mpot = 0;
     document.getElementById('gold').innerHTML = player.gold;
     document.getElementById('health').innerHTML = player.health;
-    document.getElementById('maxhealth').innerHTML = player.maxhealth;
     document.getElementById('stats').innerHTML = player.stats;
     document.getElementById('level').innerHTML = player.level;
-    document.getElementById('defense').innerHTML = player.defense;
     document.getElementById('experience').innerHTML = player.experience;
     document.getElementById('maxexperience').innerHTML = player.maxexperience;
-    document.getElementById('hpregen').innerHTML = player.hpregen;
     document.getElementById('strength').innerHTML = player.strength;
     document.getElementById('endurance').innerHTML = player.endurance;
     document.getElementById('agility').innerHTML = player.agility;
@@ -876,8 +860,6 @@ function reset() {
     document.getElementById('intelligence').innerHTML = player.intelligence;
     document.getElementById('wisdom').innerHTML = player.wisdom;
     document.getElementById('luck').innerHTML = player.luck;
-    document.getElementById('maxdamage').innerHTML = player.maxdamage;
-    document.getElementById('mindamage').innerHTML = player.mindamage;
     document.getElementById('pot').innerHTML = pot;
     document.getElementById('spot').innerHTML = spot;
     document.getElementById('mpot').innerHTML = mpot;
