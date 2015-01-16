@@ -1,4 +1,9 @@
 _________________________
+v1.1.3 - 16 january 2015 |
+-------------------------|
+- Changed all formulas for every stat in game i.e. crit/evasion/accuracy
+- Updated the html code
+_________________________
 v1.1.2 - 12 january 2015 |
 -------------------------|
 

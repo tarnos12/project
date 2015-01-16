@@ -224,7 +224,6 @@ function upgradeIntelligence() {
 function upgradeWisdom() {
     if (player.stats >= 1) {
         player.wisdom += 1;
-        player.manaRegen += 0.4;
         player.stats = player.stats - 1;
         Log("You have increased your wisdom by 1");
     }
@@ -233,9 +232,6 @@ function upgradeWisdom() {
 function upgradeLuck() {
     if (player.stats >= 1) {
         player.luck += 1;
-        player.criticalChance += 0.05;
-        player.criticalDamage += 0.05;
-        player.evasion += 0.1;
         player.dropRate += 1;
         player.stats = player.stats - 1;
         Log("You have increased your luck by 1! Critical damage/chance and drop rate increased!");
