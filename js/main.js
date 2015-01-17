@@ -470,7 +470,7 @@ function attack(monster) {
         DrawBattle();
     }
     else if (monster.hp >= 1) {
-        document.getElementByClass("monsterButton").setAttribute('disabled', false);
+        $(".monsterButton").attr("disabled")
         playerAttack(monster);
         monsterAttack(monster);
     }
@@ -479,7 +479,7 @@ function attack(monster) {
 
 function DrawBattle() {
     battleTurn = 0;
-    document.getElementByClass("monsterButton").setAttribute('disabled', true);
+    $(".monsterButton").attr("enabled")
 }
 
 //Player miss/hit chance
@@ -556,12 +556,14 @@ function playerDamageDeal(damage, monster) {
         console.log(lifestealHeal);
         Log("<span style=\"color:green\">Healed for </span>" + lifestealHeal);
     }
+    attack(monster);
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     Log("You deal " + damage + " <span style=\"color:blue\">damage</span>");
     if (monster.hp < 1) {
         monsterKilled(monster);
+        attack(monster);
     }
-    attack(monster);
+    
 }
 
 //monster hit chance
