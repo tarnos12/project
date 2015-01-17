@@ -44,7 +44,7 @@ function CreateMonsterHtml() {
                     '<br />' +
                     '<img src="images/' + monsters[i].id + '.jpg" alt="' + monsters[i].name + '">' +
                     '<br />' +
-                    '<button id="button' + (i + 1) + '">' + "Attack" + '</button>' + '</div></div>';
+                    '<button class = "monsterButton" id="button' + (i + 1) + '">' + "Attack" + '</button>' + '</div></div>'
             }
         }
         html += '</div>';
@@ -373,6 +373,7 @@ var pot = 0;
 var spot = 0;
 var mpot = 0;
 
+var battleTurn = 0;
 
 // Array to store the monsters
 var monsters = [];
@@ -465,13 +466,20 @@ createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 'mon
 CreateMonsterHtml();
 
 function attack(monster) {
-
-    if (monster.hp >= 1) {
-
+    if (battleTurn >= 20) {
+        DrawBattle();
+    }
+    else if (monster.hp >= 1) {
+        document.getElementByClass("monsterButton").setAttribute('disabled', false);
         playerAttack(monster);
         monsterAttack(monster);
     }
 
+}
+
+function DrawBattle() {
+    battleTurn = 0;
+    document.getElementByClass("monsterButton").setAttribute('disabled', true);
 }
 
 //Player miss/hit chance
@@ -480,7 +488,7 @@ function playerAttack(monster) {
     var playerHitChance = (player.accuracy() - monster.eva) / 100;
 
     var randomHitChance = Math.random();
-
+    battleTurn += 1;
     if (playerHitChance > randomHitChance) {
 
         playerCriticalChance(monster);
@@ -553,6 +561,7 @@ function playerDamageDeal(damage, monster) {
     if (monster.hp < 1) {
         monsterKilled(monster);
     }
+    attack(monster);
 }
 
 //monster hit chance
