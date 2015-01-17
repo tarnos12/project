@@ -259,13 +259,13 @@ function usepot() {
 function usespot() {
     if (player.health == player.maxhealth) {
         Log("Your health is full!");
-    } else if (player.health + 100 >= player.maxhealth & mpot >= 1) {
+    } else if (player.health + 100 >= player.maxhealth & spot >= 1) {
         spot = spot - 1;
         player.health = player.maxhealth;
         document.getElementById('spot').innerHTML = spot;
         document.getElementById('health').innerHTML = player.health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
-    } else if (player.health + 100 < player.maxhealth & mpot >= 1) {
+    } else if (player.health + 100 < player.maxhealth & spot >= 1) {
         spot = spot - 1;
         player.health = player.health + 100;
         document.getElementById('spot').innerHTML = spot;
@@ -373,7 +373,7 @@ var pot = 0;
 var spot = 0;
 var mpot = 0;
 
-var battleTurn = 0;
+var battleTurn = 1;
 
 // Array to store the monsters
 var monsters = [];
@@ -466,11 +466,13 @@ createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 'mon
 CreateMonsterHtml();
 
 function attack(monster) {
+    console.log("Battle Turn: " + battleTurn)
     if (battleTurn >= 20) {
         DrawBattle();
     }
     else if (monster.hp >= 1) {
         $(".monsterButton").attr("disabled")
+        battleTurn += 1;
         playerAttack(monster);
         monsterAttack(monster);
     }
@@ -478,7 +480,7 @@ function attack(monster) {
 }
 
 function DrawBattle() {
-    battleTurn = 0;
+    battleTurn = 1;
     $(".monsterButton").attr("enabled")
 }
 
@@ -488,13 +490,14 @@ function playerAttack(monster) {
     var playerHitChance = (player.accuracy() - monster.eva) / 100;
 
     var randomHitChance = Math.random();
-    battleTurn += 1;
+    
     if (playerHitChance > randomHitChance) {
 
         playerCriticalChance(monster);
     }
     else {
-        Log("<span style=\"color:blue\">YOU MISS! </span>");
+        attack(monster)
+        Log("Turn " + battleTurn + " " + "<span style=\"color:blue\">YOU MISS! </span>");
     }
 }
 
@@ -505,7 +508,7 @@ function playerCriticalChance(monster){
     var randomCritChance = Math.random();
 
     if (playerCriticalChance > randomCritChance) {
-        Log("<span style=\"color:blue\">CRITICAL HIT </span>");
+        Log("Turn " + battleTurn + " " + "<span style=\"color:blue\">CRITICAL HIT </span>");
         playerCriticalDamage(monster);
     }
     else{
@@ -522,7 +525,7 @@ function playerCriticalDamage(monster){
         playerDamageDeal(damage, monster);
     }
     else {
-        Log("<span style=\"color:blue\">Enemy block your attack! </span>");
+        Log("Turn " + battleTurn + " " + "<span style=\"color:blue\">Enemy block your attack! </span>");
     }
 }
 
@@ -535,7 +538,7 @@ function playerDamage(monster) {
         playerDamageDeal(damage, monster);
     }
     else {
-        Log("<span style=\"color:blue\">Enemy block your attack! </span>");
+        Log("Turn " + battleTurn + " " + "<span style=\"color:blue\">Enemy block your attack! </span>");
     }
 
 }
@@ -553,15 +556,14 @@ function playerDamageDeal(damage, monster) {
         if (player.health >= player.maxhealth()) {
             player.health = player.maxhealth();
         }
-        console.log(lifestealHeal);
-        Log("<span style=\"color:green\">Healed for </span>" + lifestealHeal);
+        console.log("Lifesteal Heal: " + lifestealHeal);
+        Log("Turn " + battleTurn + " " + "<span style=\"color:green\">Healed for </span>" + lifestealHeal);
     }
     attack(monster);
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
-    Log("You deal " + damage + " <span style=\"color:blue\">damage</span>");
+    Log("Turn " + battleTurn + " " + "You deal " + damage + " <span style=\"color:blue\">damage</span>");
     if (monster.hp < 1) {
         monsterKilled(monster);
-        attack(monster);
     }
     
 }
@@ -577,7 +579,7 @@ function monsterAttack(monster) {
         monsterDamage(monster);
     }
     else {
-        Log("<span style=\"color:red\">You dodge enemy attack!</span>");
+        Log("Turn " + battleTurn + " " + "<span style=\"color:red\">You dodge enemy attack!</span>");
     }
 }
 
@@ -589,7 +591,7 @@ function monsterDamage(monster) {
         monsterDamageDeal(dmg, monster);
     }
     else {
-        Log("<span style=\"color:green\">You blocked enemy attack! </span>");
+        Log("Turn " + battleTurn + " " + "<span style=\"color:green\">You blocked enemy attack! </span>");
     }
 }
 
@@ -597,7 +599,7 @@ function monsterDamage(monster) {
 function monsterDamageDeal(dmg, monster) {
     player.health = player.health - dmg;
     document.getElementById("health").innerHTML = player.health;
-    Log("Enemy hit you for " + dmg + " <span style=\"color:red\">damage</span>");
+    Log("Turn " + battleTurn + " " + "Enemy hit you for " + dmg + " <span style=\"color:red\">damage</span>");
     if (player.health < 1) {
         playerDead(monster);
     }
@@ -607,6 +609,7 @@ function monsterDamageDeal(dmg, monster) {
 //player dead function, restore monster and player hp to max. ! need to add some experience and gold loss on death to prevent abuse of spam clicking for experience all night etc -.- :D
 function playerDead(monster) {
 
+    battleTurn = 1;
     player.health = player.maxhealth();
     goldLost = Math.floor(player.gold - (player.gold / 1.2));
     player.gold = Math.floor(player.gold / 1.2);
@@ -617,15 +620,16 @@ function playerDead(monster) {
     document.getElementById("gold").innerHTML = player.gold;
     document.getElementById("experience").innerHTML = player.experience;
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
-    Log("<span style=\"color:red\">You have died!</span>");
-    Log("<span style=\"color:red\">You lost </span>" + goldLost + "gold");
-    Log("<span style=\"color:red\">You lost </span>" + expLost + "experience");
+    Log("Turn " + battleTurn + " " + "<span style=\"color:red\">You have died!</span>");
+    Log("Turn " + battleTurn + " " + "<span style=\"color:red\">You lost </span>" + goldLost + "gold");
+    Log("Turn " + battleTurn + " " + "<span style=\"color:red\">You lost </span>" + expLost + "experience");
 
 }
 
 //monster kill function
 function monsterKilled(monster) {
-
+    
+    battleTurn = 1;
     monster.hp = monster.maxHp;
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     monsterExperience(monster);
@@ -642,8 +646,8 @@ function monsterExperience(monster) {
             player.stats += 2;
             player.experience = player.experience - player.maxexperience;
             player.maxexperience = Math.floor(player.maxexperience * 1.15);
-            Log("You leveled up! Your current player.level is: " + player.level);
-        } else Log("You gain: " + Math.floor(expgain) + "experience!");
+            Log("Turn " + battleTurn + " " + "You leveled up! Your current player.level is: " + player.level);
+        } else Log("Turn " + battleTurn + " " + "You gain: " + Math.floor(expgain) + "experience!");
     }
     monsterGold();
 }
@@ -655,17 +659,17 @@ function monsterGold() {
     if (golddrop > 95) {
         golddrop = Math.floor((Math.random() * 20) + 1);
         player.gold = player.gold + golddrop;
-        Log("You loot: " + golddrop + "gold!");
+        Log("Turn " + battleTurn + " " + "You loot: " + golddrop + "gold!");
         document.getElementById("gold").innerHTML = player.gold;
     } else if (golddrop >= 75) {
         golddrop = Math.floor((Math.random() * 10) + 1);
         player.gold = player.gold + golddrop;
-        Log("You loot: " + golddrop + "gold!");
+        Log("Turn " + battleTurn + " " + "You loot: " + golddrop + "gold!");
         document.getElementById("gold").innerHTML = player.gold;
     } else if (golddrop >= 60) {
         golddrop = Math.floor((Math.random() * 5) + 1);
         player.gold = player.gold + golddrop;
-        Log("You loot: " + golddrop + "gold!");
+        Log("Turn " + battleTurn + " " + "You loot: " + golddrop + "gold!");
         document.getElementById("gold").innerHTML = player.gold;
     }
 }
