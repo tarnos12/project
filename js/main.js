@@ -378,10 +378,13 @@ var battleTurn = 1;
 // Array to store the monsters
 var monsters = [];
 
+//Array to store player items
+var playerInventory = [];
+
 /**
  * Helper method to create the array of monsters
  */
-function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id, image) {
+function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id, level) {
     var monster = {
         hp: maxHp, // init HP to max HP
         maxHp: maxHp,
@@ -394,7 +397,7 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type
         name: name,
         type: type,
         id: id,
-        image: image
+        level: level
     }
 
     monsters.push(monster);
@@ -422,39 +425,39 @@ var monsterTypes = [
 
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
-//            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id, image
-createMonster(10, 0, 2, 3, 5, 100, 5, 'monster1', 'weak', 'monster1');
-createMonster(30, 2, 2, 5, 10, 100, 5, 'monster2', 'weak', 'monster2');
-createMonster(70, 4, 4, 7, 30, 100, 5, 'monster3', 'weak', 'monster3');
-createMonster(130, 6, 6, 10, 50, 100, 5, 'monster4', 'weak', 'monster4');
-createMonster(190, 9, 9, 14, 90, 100, 5, 'monster5', 'weak', 'monster5');
-createMonster(280, 13, 13, 19, 140, 100, 5, 'monster6', 'weak', 'monster6');
-createMonster(380, 18, 18, 23, 190, 100, 5, 'monster7', 'weak', 'monster7');
-createMonster(500, 25, 25, 30, 260, 100, 5, 'monster8', 'weak', 'monster8');
-createMonster(700, 30, 32, 37, 340, 100, 5, 'monster9', 'average', 'monster9');
-createMonster(900, 38, 40, 45, 450, 100, 5, 'monster10', 'average', 'monster10');
-createMonster(1300, 45, 50, 58, 560, 100, 5, 'monster11', 'average', 'monster11');
-createMonster(1600, 53, 60, 67, 700, 100, 5, 'monster12', 'average', 'monster12');
-createMonster(2200, 65, 75, 80, 810, 100, 5, 'monster13', 'average', 'monster13');
-createMonster(2600, 75, 86, 92, 940, 100, 5, 'monster14', 'average', 'monster14');
-createMonster(3000, 88, 96, 100, 1060, 100, 5, 'monster15', 'average', 'monster15');
-createMonster(4000, 95, 105, 110, 1200, 100, 5, 'monster16', 'average', 'monster16');
-createMonster(5000, 120, 140, 160, 1600, 100, 5, 'monster17', 'strong', 'monster17');
-createMonster(7000, 140, 160, 185, 2150, 100, 5, 'monster18', 'strong', 'monster18');
-createMonster(9000, 170, 200, 215, 2600, 100, 5, 'monster19', 'strong', 'monster19');
-createMonster(12000, 200, 230, 250, 3400, 100, 5, 'monster20', 'strong', 'monster20');
-createMonster(15000, 220, 260, 275, 5000, 100, 5, 'monster21', 'strong', 'monster21');
-createMonster(18000, 250, 290, 320, 7000, 100, 5, 'monster22', 'strong', 'monster22');
-createMonster(22000, 300, 350, 380, 10000, 100, 5, 'monster23', 'strong', 'monster23');
-createMonster(28000, 400, 420, 550, 15000, 100, 5, 'monster24', 'strong', 'monster24');
-createMonster(34000, 500, 500, 700, 23000, 100, 5, 'monster25', 'boss', 'monster25');
-createMonster(40000, 700, 900, 1200, 35000, 100, 5, 'monster26', 'boss', 'monster26');
-createMonster(48000, 1000, 1200, 1500, 70000, 100, 5, 'monster27', 'boss', 'monster27');
-createMonster(57000, 1200, 1700, 2200, 120000, 100, 5, 'monster28', 'boss', 'monster28');
-createMonster(65000, 2000, 2500, 3000, 180000, 100, 5, 'monster29', 'boss', 'monster29');
-createMonster(72000, 2500, 3200, 4000, 290000, 100, 5, 'monster30', 'boss', 'monster30');
-createMonster(80000, 3000, 4500, 5500, 430000, 100, 5, 'monster31', 'boss', 'monster31');
-createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 'monster32');
+//            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id, level
+createMonster(10, 0, 2, 3, 5, 100, 5, 'monster1', 'weak', 'monster1', 1);
+createMonster(30, 2, 2, 5, 10, 100, 5, 'monster2', 'weak', 'monster2', 2);
+createMonster(70, 4, 4, 7, 30, 100, 5, 'monster3', 'weak', 'monster3', 3);
+createMonster(130, 6, 6, 10, 50, 100, 5, 'monster4', 'weak', 'monster4', 4);
+createMonster(190, 9, 9, 14, 90, 100, 5, 'monster5', 'weak', 'monster5', 5);
+createMonster(280, 13, 13, 19, 140, 100, 5, 'monster6', 'weak', 'monster6', 6);
+createMonster(380, 18, 18, 23, 190, 100, 5, 'monster7', 'weak', 'monster7', 7);
+createMonster(500, 25, 25, 30, 260, 100, 5, 'monster8', 'weak', 'monster8', 8);
+createMonster(700, 30, 32, 37, 340, 100, 5, 'monster9', 'average', 'monster9', 9);
+createMonster(900, 38, 40, 45, 450, 100, 5, 'monster10', 'average', 'monster10', 10);
+createMonster(1300, 45, 50, 58, 560, 100, 5, 'monster11', 'average', 'monster11', 11);
+createMonster(1600, 53, 60, 67, 700, 100, 5, 'monster12', 'average', 'monster12', 12);
+createMonster(2200, 65, 75, 80, 810, 100, 5, 'monster13', 'average', 'monster13', 13);
+createMonster(2600, 75, 86, 92, 940, 100, 5, 'monster14', 'average', 'monster14', 14);
+createMonster(3000, 88, 96, 100, 1060, 100, 5, 'monster15', 'average', 'monster15', 15);
+createMonster(4000, 95, 105, 110, 1200, 100, 5, 'monster16', 'average', 'monster16', 16);
+createMonster(5000, 120, 140, 160, 1600, 100, 5, 'monster17', 'strong', 'monster17', 17);
+createMonster(7000, 140, 160, 185, 2150, 100, 5, 'monster18', 'strong', 'monster18', 18);
+createMonster(9000, 170, 200, 215, 2600, 100, 5, 'monster19', 'strong', 'monster19', 19);
+createMonster(12000, 200, 230, 250, 3400, 100, 5, 'monster20', 'strong', 'monster20', 20);
+createMonster(15000, 220, 260, 275, 5000, 100, 5, 'monster21', 'strong', 'monster21', 21);
+createMonster(18000, 250, 290, 320, 7000, 100, 5, 'monster22', 'strong', 'monster22', 22);
+createMonster(22000, 300, 350, 380, 10000, 100, 5, 'monster23', 'strong', 'monster23', 23);
+createMonster(28000, 400, 420, 550, 15000, 100, 5, 'monster24', 'strong', 'monster24', 24);
+createMonster(34000, 500, 500, 700, 23000, 100, 5, 'monster25', 'boss', 'monster25', 25);
+createMonster(40000, 700, 900, 1200, 35000, 100, 5, 'monster26', 'boss', 'monster26', 26);
+createMonster(48000, 1000, 1200, 1500, 70000, 100, 5, 'monster27', 'boss', 'monster27', 27);
+createMonster(57000, 1200, 1700, 2200, 120000, 100, 5, 'monster28', 'boss', 'monster28', 28);
+createMonster(65000, 2000, 2500, 3000, 180000, 100, 5, 'monster29', 'boss', 'monster29', 29);
+createMonster(72000, 2500, 3200, 4000, 290000, 100, 5, 'monster30', 'boss', 'monster30', 30);
+createMonster(80000, 3000, 4500, 5500, 430000, 100, 5, 'monster31', 'boss', 'monster31', 31);
+createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 'monster32', 32);
 
 /**
  * Base monster attack method. Shared code among all monsters.
@@ -649,11 +652,11 @@ function monsterExperience(monster) {
             Log("Turn " + battleTurn + " " + "You leveled up! Your current player.level is: " + player.level);
         } else Log("Turn " + battleTurn + " " + "You gain: " + Math.floor(expgain) + "experience!");
     }
-    monsterGold();
+    monsterGold(monster);
 }
 
 //gold gained from killing a monster
-function monsterGold() {
+function monsterGold(monster) {
     var goldLog = 0;
     var golddrop = Math.floor((Math.random() * 100) + 1);
     if (golddrop > 95) {
@@ -672,10 +675,26 @@ function monsterGold() {
         Log("Turn " + battleTurn + " " + "You loot: " + golddrop + "gold!");
         document.getElementById("gold").innerHTML = player.gold;
     }
+    monsterItemDrop(monster);
 }
 
-
-
+//Item drop from killing a monster
+//TEST TEST TEST TEST :)
+function monsterItemDrop(monster) {
+    if (monster.type === 'weak') {
+        var randomStrength = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        var strength = randomStrength;
+        var randomEndurance = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        var endurance = randomEndurance;
+        console.log("STR" + " " + strength);
+        console.log("END" + " " + endurance);
+        console.log("LEVEL" + " " + monster.level);
+        var newObject = { strength: strength, endurance: endurance };//THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
+        playerInventory.push(newObject);// UP ^
+        console.log("Array Length " + playerInventory.length);//EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
+    }
+}
+//TEST TEST TEST TEST TEST TEST TEST
 
 
 
