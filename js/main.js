@@ -681,7 +681,7 @@ function monsterGold(monster) {
 //Item drop from killing a monster
 //TEST TEST TEST TEST :)
 function monsterItemDrop(monster) {
-    if (monster.type === 'weak') {
+    if (monster.type === 'weak' & playerInventory.length <= 9) {//If amount of item in inventory exceed 10 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
         var randomStrength = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
         var strength = randomStrength;
         var randomEndurance = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
@@ -693,6 +693,8 @@ function monsterItemDrop(monster) {
         playerInventory.push(newObject);// UP ^
         console.log("Array Length " + playerInventory.length);//EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
     }
+    else
+        console.log("FULL INV")
 }
 //TEST TEST TEST TEST TEST TEST TEST
 
