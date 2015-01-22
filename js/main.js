@@ -469,22 +469,29 @@ createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 'mon
 CreateMonsterHtml();
 
 function attack(monster) {
-    console.log("Battle Turn: " + battleTurn)
-    if (battleTurn >= 20) {
-        DrawBattle();
-    }
-    else if (monster.hp >= 1) {
-        $(".monsterButton").attr("disabled")
+    battleTurn = 1;
+    Log("Battle Turn: " + battleTurn);
+
+    while (battleTurn > 0 && battleTurn < 20) {
+        if (monster.hp >= 1) {
+            $(".monsterButton").attr("disabled");
+            playerAttack(monster);
+            if (monster.hp < 1) {
+                monsterKilled(monster);
+            } else {
+                monsterAttack(monster);
+            }
+        } else {
+            break;
+        }
         battleTurn += 1;
-        playerAttack(monster);
-        monsterAttack(monster);
     }
+    DrawBattle();
 
 }
 
 function DrawBattle() {
-    battleTurn = 1;
-    $(".monsterButton").attr("enabled")
+    $(".monsterButton").attr("enabled");
 }
 
 //Player miss/hit chance
@@ -499,7 +506,6 @@ function playerAttack(monster) {
         playerCriticalChance(monster);
     }
     else {
-        attack(monster)
         Log("Turn " + battleTurn + " " + "<span style=\"color:blue\">YOU MISS! </span>");
     }
 }
@@ -562,12 +568,9 @@ function playerDamageDeal(damage, monster) {
         console.log("Lifesteal Heal: " + lifestealHeal);
         Log("Turn " + battleTurn + " " + "<span style=\"color:green\">Healed for </span>" + lifestealHeal);
     }
-    attack(monster);
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     Log("Turn " + battleTurn + " " + "You deal " + damage + " <span style=\"color:blue\">damage</span>");
-    if (monster.hp < 1) {
-        monsterKilled(monster);
-    }
+    
     
 }
 
@@ -612,7 +615,7 @@ function monsterDamageDeal(dmg, monster) {
 //player dead function, restore monster and player hp to max. ! need to add some experience and gold loss on death to prevent abuse of spam clicking for experience all night etc -.- :D
 function playerDead(monster) {
 
-    battleTurn = 1;
+
     player.health = player.maxhealth();
     goldLost = Math.floor(player.gold - (player.gold / 1.2));
     player.gold = Math.floor(player.gold / 1.2);
@@ -626,16 +629,16 @@ function playerDead(monster) {
     Log("Turn " + battleTurn + " " + "<span style=\"color:red\">You have died!</span>");
     Log("Turn " + battleTurn + " " + "<span style=\"color:red\">You lost </span>" + goldLost + "gold");
     Log("Turn " + battleTurn + " " + "<span style=\"color:red\">You lost </span>" + expLost + "experience");
-
+    battleTurn = -1;
 }
 
 //monster kill function
 function monsterKilled(monster) {
-    
-    battleTurn = 1;
+
     monster.hp = monster.maxHp;
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     monsterExperience(monster);
+    battleTurn = -1;
 }
 
 //experience gained from killing a monster
