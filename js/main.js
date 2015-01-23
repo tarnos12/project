@@ -684,20 +684,31 @@ function monsterGold(monster) {
 //Item drop from killing a monster
 //TEST TEST TEST TEST :)
 function monsterItemDrop(monster) {
-    if (monster.type === 'weak' & playerInventory.length <= 9) {//If amount of item in inventory exceed 10 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
+    if (monster.type === 'weak' & playerInventory.length <= 9) {
+        //If amount of item in inventory exceed 10 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
         var randomStrength = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
         var strength = randomStrength;
+
         var randomEndurance = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
         var endurance = randomEndurance;
+
+        var currentDate = new Date();
+        var weaponId = currentDate.getMilliseconds();
+
         console.log("STR" + " " + strength);
         console.log("END" + " " + endurance);
         console.log("LEVEL" + " " + monster.level);
-        var newObject = { strength: strength, endurance: endurance };//THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
-        playerInventory.push(newObject);// UP ^
-        console.log("Array Length " + playerInventory.length);//EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
-    }
-    else
-        console.log("FULL INV")
+        var newObject = {
+            id: weaponId,
+            strength: strength,
+            endurance: endurance
+        };
+        //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
+        playerInventory.push(newObject); // UP ^
+        //EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
+        console.log("Array Length " + playerInventory.length);
+    } else
+        console.log("FULL INV");
 }
 //TEST TEST TEST TEST TEST TEST TEST
 
