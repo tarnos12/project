@@ -407,19 +407,95 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type
 var monsterTypes = [
     {
         type: 'weak',
-        displayName: 'Weak'
+        displayName: 'Weak',
+        //out of 100, should add upto 100
+        itemQualityChance: [
+            {
+                type: 'Epic',
+                chance: 1
+            },
+            {
+                type: 'Rare',
+                chance: 4
+            },
+            {
+                type: 'Uncommon',
+                chance: 15
+            },
+            {
+                type: 'Common',
+                chance: 80
+            }
+        ]
     },
     {
         type: 'average',
-        displayName: 'Average'
+        displayName: 'Average',
+        //out of 100, should add upto 100
+        itemQualityChance: [
+            {
+                type: 'Epic',
+                chance: 5
+            },
+            {
+                type: 'Rare',
+                chance: 15
+            },
+            {
+                type: 'Uncommon',
+                chance: 30
+            },
+            {
+                type: 'Common',
+                chance: 50
+            }
+        ]
     },
     {
         type: 'strong',
-        displayName: 'Strong'
+        displayName: 'Strong',
+        //out of 100, should add upto 100
+        itemQualityChance: [
+            {
+                type: 'Epic',
+                chance: 10
+            },
+            {
+                type: 'Rare',
+                chance: 20
+            },
+            {
+                type: 'Uncommon',
+                chance: 50
+            },
+            {
+                type: 'Common',
+                chance: 20
+            }
+        ]
     },
     {
         type: 'boss',
-        displayName: 'Boss'
+        displayName: 'Boss',
+        //out of 100, should add upto 100
+        itemQualityChance: [
+            {
+                type: 'Epic',
+                chance: 20
+            },
+            {
+                type: 'Rare',
+                chance: 50
+            },
+            {
+                type: 'Uncommon',
+                chance: 25
+            },
+            {
+                type: 'Common',
+                chance: 5
+            }
+        ]
     }
 ];
 
@@ -681,99 +757,139 @@ function monsterGold(monster) {
     monsterItemDrop(monster);
 }
 
+var itemTypes = [
+    {
+        type: "Weapon",
+        itemSubTypes: [
+            {
+                type: "Sword",
+                //Out of 10
+                strengthMultiplier: 6,
+                enduranceMultiplier: 7,
+                agilityMultiplier: 4,
+                dexterityMultiplier: 1,
+                wisdomMultiplier: 0,
+                intelligenceMultiplier: 1,
+                luckMultiplier: 0
+            },
+            {
+                type: "Dagger",
+                //Out of 10
+                strengthMultiplier: 5,
+                enduranceMultiplier: 4,
+                agilityMultiplier: 9,
+                dexterityMultiplier: 3,
+                wisdomMultiplier: 1,
+                intelligenceMultiplier: 2,
+                luckMultiplier: 0
+            },
+            {
+                type: "Axe",
+                //Out of 10
+                strengthMultiplier: 6,
+                enduranceMultiplier: 7,
+                agilityMultiplier: 4,
+                dexterityMultiplier: 1,
+                wisdomMultiplier: 0,
+                intelligenceMultiplier: 1,
+                luckMultiplier: 0
+            },
+            {
+                type: "Mace",
+                //Out of 10
+                strengthMultiplier: 6,
+                enduranceMultiplier: 7,
+                agilityMultiplier: 4,
+                dexterityMultiplier: 1,
+                wisdomMultiplier: 0,
+                intelligenceMultiplier: 1,
+                luckMultiplier: 0
+            },
+            {
+                type: "Fist",
+                //Out of 10
+                strengthMultiplier: 6,
+                enduranceMultiplier: 7,
+                agilityMultiplier: 4,
+                dexterityMultiplier: 1,
+                wisdomMultiplier: 0,
+                intelligenceMultiplier: 1,
+                luckMultiplier: 0
+            },
+            {
+                type: "Staff",
+                //Out of 10
+                strengthMultiplier: 6,
+                enduranceMultiplier: 7,
+                agilityMultiplier: 4,
+                dexterityMultiplier: 1,
+                wisdomMultiplier: 0,
+                intelligenceMultiplier: 1,
+                luckMultiplier: 0
+            }
+        ]
+    },
+    {
+        type: "Armor",
+        itemSubTypes: []
+    }
+];
+var itemQualities = [
+    {
+        type: "Epic",
+        qualityMultiplier: 4
+    },
+    {
+        type: "Rare",
+        qualityMultiplier: 3
+    },
+    {
+        type: "Uncommon",
+        qualityMultiplier: 2
+    },
+    {
+        type: "Common",
+        qualityMultiplier: 1
+    }
+];
+
+
 //Item drop from killing a monster
 //TEST TEST TEST TEST :)
 function monsterItemDrop(monster) {
+    //If amount of item in inventory exceed 10 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
     if (monster.type === 'weak' & playerInventory.length <= 9) {
-        var itemQuality = '';
-        var itemType = '';
-        var item = '';
-        var itemStat = 0;
-        var itemQualityMultiplier = 0;
-        //If amount of item in inventory exceed 10 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
-            var randomItemQuality = Math.floor(Math.random() * (100 - 1) + 1); //Random item quality
-            if (randomItemQuality < 10) {
-                itemQuality = 'epic'; //epic
-                itemQualityMultiplier = 4;
-            }
-            else if (randomItemQuality < 30) {
-                itemQuality = 'rare'; //rare
-                itemQualityMultiplier = 3;
-            }
-            else if (randomItemQuality < 50) {
-                itemQuality = 'uncommon'; //uncommon
-                itemQualityMultiplier = 2;
-            }
-            else {
-                itemQuality = 'common'; //common
-                itemQualityMultiplier = 1;
-            }
-                var randomItemType = Math.floor(Math.random() * (100 - 1) + 1);//Random item type
-                if (randomItemType < 33){
-                    itemType = 'weapon'; //Weapon
-                }
-                else  if (randomItemType < 66){
-                    itemType = 'armor'; //Armor
-                }
-                else {
-                    itemType = 'accessory'; //accessory
-                }
-                    
-                if (itemType === 'weapon'){
-                    var randomWeapon = Math.floor(Math.random() * (100 - 1) + 1);//Random weapon
-                    if (randomWeapon < 14){
-                        item = 'Sword';
-                    }
-                    else if (randomWeapon < 28){
-                        item = 'Dagger';
-                    }
-                    else if (randomWeapon < 42){
-                        item = 'Axe';
-                    }
-                    else if (randomWeapon < 56){
-                        item = 'Mace';
-                    }
-                    else if (randomWeapon < 70){
-                        item = 'Fist';
-                    }
-                    else {
-                        item = 'Staff';
-                    }
-                }
-        var randomStrength = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var strength = randomStrength * itemStat;
-        strength = strength;
-
-        var randomEndurance = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var endurance = randomEndurance * itemQualityMultiplier * itemStat;
-
-        var randomAgility = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var agility = randomAgility * itemQualityMultiplier * itemStat;
-        agility = agility;
-
-        var randomDexterity = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var dexterity = randomDexterity * itemQualityMultiplier * itemStat;
-        dexterity = dexterity;
-
-        var randomWisdom = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var wisdom = randomWisdom * itemQualityMultiplier * itemStat;
-        wisdom = wisdom;
-
-        var randomIntelligence = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var intelligence = randomIntelligence * itemQualityMultiplier * itemStat;
-        intelligence = intelligence;
-
-        var randomLuck = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var luck = randomluck * itemQualityMultiplier * itemStat;
-        luck = luck;
 
         var currentDate = new Date();
+
+        var monsterType = getMonsterType(monster);
+
+        //Get Item Information
+        var randomItemQuality = Math.floor(Math.random() * (100 - 1) + 1); //Random item quality
+        var itemQuality = getItemQuality(randomItemQuality, monsterType);
+        var itemType = itemTypes[Math.floor(Math.random() * itemTypes.length)]; //This code gets a random item from the item array.
+        var itemSubType = itemType.itemSubTypes[Math.floor(Math.random() * itemTypes.length)]; //This gets a random item sub type from the subType array.
+
+        //Setup all the stats.
+        var randomStat = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        var multiplier = randomStat * itemQuality.qualityMultiplier;
+
+        //Assign the Stats.
+        var strength = multiplier * itemSubType.strengthMultiplier;
+        var agility = multiplier * itemSubType.agilityMultiplier;
+        var dexterity = multiplier * itemSubType.dexterityMultiplier;
+        var wisdom = multiplier * itemSubType.wisdomMultiplier;
+        var intelligence = multiplier * itemSubType.intelligenceMultiplier;
+        var luck = multiplier * itemSubType.luckMultiplier;
+
         var weaponId = currentDate.getMilliseconds();
-        var itemType = item;
+
         console.log("STR" + " " + strength);
         console.log("END" + " " + endurance);
         console.log("LEVEL" + " " + monster.level);
-        var newObject = {
+
+        //Build the Object
+        var newItem = {
             id: weaponId,
             strength: strength,
             endurance: endurance,
@@ -782,21 +898,41 @@ function monsterItemDrop(monster) {
             wisdom: wisdom,
             intelligence: intelligence,
             luck: luck,
-            itemType: itemType
+            itemType: itemSubType.type
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
-        playerInventory.push(newObject); // UP ^
+        playerInventory.push(newItem);
         //EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
-        //Change all current dropped item values to 0...
         console.log("Array Length " + playerInventory.length);
-        itemQuality = '';
-        itemType = '';
-        item = '';
-        itemStat = 0;
-        itemQualityMultiplier = 0;
-
     } else
         console.log("FULL INV");
+}
+
+function getMonsterType(monster) {
+    var monsterType = monsterTypes.filter(function (obj) {
+        return obj.type === monster.type;
+    })[0]; //Doing [0] because it returns an array, but since we know it has only 1 object, we can use 0.
+
+    return monsterType;
+}
+function getItemQuality(randomItemQuality, monsterType) {
+    var itemQuality;
+
+    var chance = 0;
+
+    for (var i = 0; i < monsterType.itemQualityChance.length; i++) {
+        //This is used to add up the previous quality chance to the next because all of them have to add up to 100. They are inclusive, not exclusive.
+        chance += monsterType.itemQualityChance[i].chance;
+
+        if (randomItemQuality < chance) {
+            itemQuality = itemQualities.filter(function (obj) {
+                return obj.type === monsterType.itemQualityChance[i].type;
+            });
+            break;
+        }
+    }
+
+    return itemQuality;
 }
 //TEST TEST TEST TEST TEST TEST TEST
 
