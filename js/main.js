@@ -685,7 +685,55 @@ function monsterGold(monster) {
 //TEST TEST TEST TEST :)
 function monsterItemDrop(monster) {
     if (monster.type === 'weak' & playerInventory.length <= 9) {
+        var itemQuality = '';
+        var itemType = '';
+        var item = '';
         //If amount of item in inventory exceed 10 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
+            var randomItemQuality = Math.floor(Math.random() * (100 - 1) + 1); //Random item quality
+            if (randomItemQuality < 10) {
+                itemQuality = 'epic'; //epic
+            }
+            else if (randomItemQuality < 30) {
+                itemQuality = 'rare'; //rare
+            }
+            else if (randomItemQuality < 50) {
+                itemQuality = 'uncommon'; //uncommon
+            }
+            else {
+                itemQuality = 'common'; //common
+            }
+                var randomItemType = Math.floor(Math.random() * (100 - 1) + 1);//Random item type
+                if (randomItemType < 33){
+                    itemType = 'weapon'; //Weapon
+                }
+                else  if (randomItemType < 66){
+                    itemType = 'armor'; //Armor
+                }
+                else {
+                    itemType = 'accessory'; //accessory
+                }
+                    
+                if (itemType === 'weapon'){
+                    var randomWeapon = Math.floor(Math.random() * (100 - 1) + 1);//Random weapon
+                    if (randomWeapon < 14){
+                        item = 'Sword'
+                    }
+                    else if (randomWeapon < 28){
+                        item = 'Dagger'
+                    }
+                    else if (randomWeapon < 42){
+                        item = 'Axe'
+                    }
+                    else if (randomWeapon < 56){
+                        item = 'Mace'
+                    }
+                    else if (randomWeapon < 70){
+                        item = 'Fist'
+                    }
+                    else {
+                        item = 'Staff'
+                    }
+                }
         var randomStrength = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
         var strength = randomStrength;
 
@@ -694,14 +742,15 @@ function monsterItemDrop(monster) {
 
         var currentDate = new Date();
         var weaponId = currentDate.getMilliseconds();
-
+        var itemType = item;
         console.log("STR" + " " + strength);
         console.log("END" + " " + endurance);
         console.log("LEVEL" + " " + monster.level);
         var newObject = {
             id: weaponId,
             strength: strength,
-            endurance: endurance
+            endurance: endurance,
+            itemType: itemType
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
         playerInventory.push(newObject); // UP ^
