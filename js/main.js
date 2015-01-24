@@ -688,19 +688,25 @@ function monsterItemDrop(monster) {
         var itemQuality = '';
         var itemType = '';
         var item = '';
+        var itemStat = 0;
+        var itemQualityMultiplier = 0;
         //If amount of item in inventory exceed 10 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
             var randomItemQuality = Math.floor(Math.random() * (100 - 1) + 1); //Random item quality
             if (randomItemQuality < 10) {
                 itemQuality = 'epic'; //epic
+                itemQualityMultiplier = 4;
             }
             else if (randomItemQuality < 30) {
                 itemQuality = 'rare'; //rare
+                itemQualityMultiplier = 3;
             }
             else if (randomItemQuality < 50) {
                 itemQuality = 'uncommon'; //uncommon
+                itemQualityMultiplier = 2;
             }
             else {
                 itemQuality = 'common'; //common
+                itemQualityMultiplier = 1;
             }
                 var randomItemType = Math.floor(Math.random() * (100 - 1) + 1);//Random item type
                 if (randomItemType < 33){
@@ -716,29 +722,50 @@ function monsterItemDrop(monster) {
                 if (itemType === 'weapon'){
                     var randomWeapon = Math.floor(Math.random() * (100 - 1) + 1);//Random weapon
                     if (randomWeapon < 14){
-                        item = 'Sword'
+                        item = 'Sword';
                     }
                     else if (randomWeapon < 28){
-                        item = 'Dagger'
+                        item = 'Dagger';
                     }
                     else if (randomWeapon < 42){
-                        item = 'Axe'
+                        item = 'Axe';
                     }
                     else if (randomWeapon < 56){
-                        item = 'Mace'
+                        item = 'Mace';
                     }
                     else if (randomWeapon < 70){
-                        item = 'Fist'
+                        item = 'Fist';
                     }
                     else {
-                        item = 'Staff'
+                        item = 'Staff';
                     }
                 }
         var randomStrength = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var strength = randomStrength;
+        var strength = randomStrength * itemStat;
+        strength = strength;
 
         var randomEndurance = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var endurance = randomEndurance;
+        var endurance = randomEndurance * itemQualityMultiplier * itemStat;
+
+        var randomAgility = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        var agility = randomAgility * itemQualityMultiplier * itemStat;
+        agility = agility;
+
+        var randomDexterity = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        var dexterity = randomDexterity * itemQualityMultiplier * itemStat;
+        dexterity = dexterity;
+
+        var randomWisdom = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        var wisdom = randomWisdom * itemQualityMultiplier * itemStat;
+        wisdom = wisdom;
+
+        var randomIntelligence = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        var intelligence = randomIntelligence * itemQualityMultiplier * itemStat;
+        intelligence = intelligence;
+
+        var randomLuck = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        var luck = randomluck * itemQualityMultiplier * itemStat;
+        luck = luck;
 
         var currentDate = new Date();
         var weaponId = currentDate.getMilliseconds();
@@ -750,12 +777,24 @@ function monsterItemDrop(monster) {
             id: weaponId,
             strength: strength,
             endurance: endurance,
+            agility: agility,
+            dexterity: dexterity,
+            wisdom: wisdom,
+            intelligence: intelligence,
+            luck: luck,
             itemType: itemType
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
         playerInventory.push(newObject); // UP ^
         //EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
+        //Change all current dropped item values to 0...
         console.log("Array Length " + playerInventory.length);
+        itemQuality = '';
+        itemType = '';
+        item = '';
+        itemStat = 0;
+        itemQualityMultiplier = 0;
+
     } else
         console.log("FULL INV");
 }
