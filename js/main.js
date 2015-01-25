@@ -213,9 +213,7 @@ function upgradeIntelligence() {
         player.intelligence += 1;
         player.stats = player.stats - 1;
         Lifesteal = player.intelligence / 100;
-        console.log(Lifesteal);
         Lifesteal2 = player.intelligence;
-        console.log(Lifesteal2);
         Log("You have increased your intelligence by 1");
       
     }
@@ -312,6 +310,7 @@ function Log(data) {
 var player = {
     stats: 0,
     level: 1,
+    inventory: 30,
     strength: 5,
     endurance: 5,
     agility: 5,
@@ -360,11 +359,8 @@ var player = {
     dropRate: 0,
     expRate: 0
 };
-console.log("Accuracy " + player.accuracy())
 var Lifesteal = 0.05; //Chance to happen 0.05->5%
 var Lifesteal2 = 5; //Heal amout 5 -> 5hp
-console.log("Lifesteal " + Lifesteal * 100 + "%");
-console.log("Lifesteal Heal " + Lifesteal2 + " HP");
 var maxLogLines = 16;
 var logData = {
     length: 0
@@ -621,7 +617,6 @@ function playerCriticalChance(monster){
 function playerCriticalDamage(monster){
     var damage = Math.floor(Math.random() * (player.maxdamage() - player.mindamage() + 1)) + player.mindamage();
     damage = Math.floor(damage * player.criticalDamage() * (10 / (10 + monster.def)));
-    console.log(damage);
     if (damage >= 1) {
         playerDamageDeal(damage, monster);
     }
@@ -634,7 +629,6 @@ function playerCriticalDamage(monster){
 function playerDamage(monster) {
     var damage = Math.floor(Math.random() * (player.maxdamage() - player.mindamage() + 1)) + player.mindamage();
     damage = Math.floor(damage * (10 / (10 + monster.def)));
-    console.log(damage);
     if (damage >= 1) {
         playerDamageDeal(damage, monster);
     }
@@ -657,7 +651,6 @@ function playerDamageDeal(damage, monster) {
         if (player.health >= player.maxhealth()) {
             player.health = player.maxhealth();
         }
-        console.log("Lifesteal Heal: " + lifestealHeal);
         Log("Turn " + battleTurn + " " + "<span style=\"color:green\">Healed for </span>" + lifestealHeal);
     }
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
@@ -936,15 +929,15 @@ var itemTypes = [
 var itemQualities = [
     {
         type: "Legendary",
-        qualityMultiplier: 5
+        qualityMultiplier: 10
     },
     {
         type: "Epic",
-        qualityMultiplier: 4
+        qualityMultiplier: 6
     },
     {
         type: "Rare",
-        qualityMultiplier: 3
+        qualityMultiplier: 4
     },
     {
         type: "Uncommon",
@@ -961,7 +954,7 @@ var itemQualities = [
 //TEST TEST TEST TEST :)
 function monsterItemDrop(monster) {
     //If amount of item in inventory exceed 20 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
-    if (playerInventory.length <= 19) {
+    if (playerInventory.length <= player.inventory) {
 
         var currentDate = new Date();
 
@@ -973,42 +966,54 @@ function monsterItemDrop(monster) {
         var itemType = itemTypes[Math.floor(Math.random() * itemTypes.length)]; //This code gets a random item from the item array.
         var itemSubType = itemType.itemSubTypes[Math.floor(Math.random() * itemTypes.length)]; //This gets a random item sub type from the subType array.
 
-        //Setup all the stats.
-        var randomStat = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        var multiplier = randomStat * itemQuality.qualityMultiplier;
+        var stats = {
+            strength: null,
+            endurance: null,
+            agility: null,
+            dexterity: null,
+            wisdom: null,
+            intelligence: null,
+            luck: null
+        };
+        for (var stat in stats) {
+            // todo: consider using Object.hasOwnProperty here.
 
-        //Assign the Stats.
-        var strength = Math.floor(multiplier * itemSubType.strengthMultiplier / 2); //divide each stat by 2 for better balance
-        var endurance = Math.floor(multiplier * itemSubType.enduranceMultiplier / 2);
-        var agility = Math.floor(multiplier * itemSubType.agilityMultiplier / 2);
-        var dexterity = Math.floor(multiplier * itemSubType.dexterityMultiplier / 2);
-        var wisdom = Math.floor(multiplier * itemSubType.wisdomMultiplier / 2);
-        var intelligence = Math.floor(multiplier * itemSubType.intelligenceMultiplier / 2);
-        var luck = Math.floor(multiplier * itemSubType.luckMultiplier / 2);
+            var randomStat = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+            var multiplier = randomStat * itemQuality.qualityMultiplier;
+
+            stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 2);
+        };
 
         var weaponId = currentDate.getMilliseconds();
 
-        console.log("STR" + " " + strength);
-        console.log("END" + " " + endurance);
-        console.log("LEVEL" + " " + monster.level);
+        console.log("Monster Level" + " " + monster.level);
+        console.log("STR" + " " + stats.strength);
+        console.log("END" + " " + stats.endurance);
+        console.log("AGI" + " " + stats.agility);
+        console.log("DEX" + " " + stats.dexterity);
+        console.log("WIS" + " " + stats.wisdom);
+        console.log("INT" + " " + stats.intelligence);
+        console.log("LUK" + " " + stats.luck);
+        console.log("TYPE" + " " + itemSubType.type);
+        console.log("QUALITY" + " " + itemQuality.type);
 
         //Build the Object
         var newItem = {
             id: weaponId,
-            strength: strength,
-            endurance: endurance,
-            agility: agility,
-            dexterity: dexterity,
-            wisdom: wisdom,
-            intelligence: intelligence,
-            luck: luck,
+            strength: stats.strength,
+            endurance: stats.endurance,
+            agility: stats.agility,
+            dexterity: stats.dexterity,
+            wisdom: stats.wisdom,
+            intelligence: stats.intelligence,
+            luck: stats.luck,
             itemType: itemSubType.type,
-            itemQuality: itemQuality
+            itemQuality: itemQuality.type
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
         playerInventory.push(newItem);
         //EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
-        console.log("Array Length " + playerInventory.length);
+        console.log("Number of items " + playerInventory.length);
     } else
         console.log("FULL INV");
 }
