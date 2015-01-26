@@ -842,7 +842,7 @@ var itemTypes = [
         type: "Armor",
         itemSubTypes: [
          {
-             type: "Cloth",
+             type: "Cloth Armor",
              //Out of 10
              strengthMultiplier: 1,
              enduranceMultiplier: 1,
@@ -853,7 +853,7 @@ var itemTypes = [
              luckMultiplier: 0
          },
          {
-             type: "Leather",
+             type: "Leather Armor",
              //Out of 10
              strengthMultiplier: 3,
              enduranceMultiplier: 3,
@@ -864,7 +864,7 @@ var itemTypes = [
              luckMultiplier: 0
          },
          {
-             type: "Medium",
+             type: "Medium Armor",
              //Out of 10
              strengthMultiplier: 5,
              enduranceMultiplier: 5,
@@ -875,7 +875,7 @@ var itemTypes = [
              luckMultiplier: 0
          },
          {
-             type: "Heavy",
+             type: "Heavy Armor",
              //Out of 10
              strengthMultiplier: 10,
              enduranceMultiplier: 10,
@@ -976,12 +976,12 @@ function monsterItemDrop(monster) {
             luck: null
         };
         for (var stat in stats) {
-            // todo: consider using Object.hasOwnProperty here.
+            if (stats.hasOwnProperty(stat)) {
+                var randomStat = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+                var multiplier = randomStat * itemQuality.qualityMultiplier;
 
-            var randomStat = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-            var multiplier = randomStat * itemQuality.qualityMultiplier;
-
-            stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 2);
+                stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 2);
+            }
         };
 
         var weaponId = currentDate.getMilliseconds();
