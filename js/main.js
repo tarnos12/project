@@ -75,10 +75,28 @@ function CreateInventoryWeaponHtml() {
             color = "orange"
         };
         
-        html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" alt="' + monsters[i].name + '">' +
+        html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+                 "Item Rarity: " + playerInventory[i].itemQuality +
+                '\n' +
+                "Strength: " + playerInventory[i].strength +
+                '\n' +
+                "Endurance: " + playerInventory[i].endurance +
+                '\n' +
+                "Agility: " + playerInventory[i].agility +
+                '\n' +
+                "Dexterity: " + playerInventory[i].dexterity +
+                '\n' +
+                "Intelligence: " + playerInventory[i].intelligence +
+                '\n' +
+                "Wisdom: " + playerInventory[i].wisdom +
+                '\n' +
+                "Luck: " + playerInventory[i].luck +
+                '">' +
+
                 playerInventory[i].itemType + " " + '<font color="' + color + '">' + playerInventory[i].itemQuality + '</font>' +
                 '<br />';
         
+       
     }
     document.getElementById("inventory").innerHTML = html;
 };
