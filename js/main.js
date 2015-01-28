@@ -54,6 +54,35 @@ function CreateMonsterHtml() {
     document.getElementById("monsterTabs").innerHTML = html;
 };
 
+function CreateInventoryWeaponHtml() {
+    var html = '';
+  
+    for (var i = 0; i < playerInventory.length; i++) {
+        var color = "";
+        if (playerInventory[i].itemQuality === "Common") {
+            color = "black";
+        }
+        else if (playerInventory[i].itemQuality === "Uncommon") {
+            color = "green";
+        }
+        else if (playerInventory[i].itemQuality === "Rare") {
+            color = "blue";
+        }
+        else if (playerInventory[i].itemQuality === "Epic") {
+            color = "red";
+        }
+        else if (playerInventory[i].itemQuality === "Legendary") {
+            color = "orange"
+        };
+        
+        html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" alt="' + monsters[i].name + '">' +
+                playerInventory[i].itemType + " " + '<font color="' + color + '">' + playerInventory[i].itemQuality + '</font>' +
+                '<br />';
+        
+    }
+    document.getElementById("inventory").innerHTML = html;
+};
+
 
 window.setInterval(function () {
     var hppercent = 100; //This function heal player automatically using potions.
@@ -408,23 +437,29 @@ var monsterTypes = [
         itemQualityChance: [
             {
                 type: 'Legendary',
-                chance: 1
+                chance: 1,
+                color: "orange"
+                
             },
              {
-                 type: 'Epic',
-                 chance: 4
+                type: 'Epic',
+                chance: 4,
+                color: "red"
              },
             {
                 type: 'Rare',
-                chance: 10
+                chance: 10,
+                color: "blue"
             },
             {
                 type: 'Uncommon',
-                chance: 25
+                chance: 25,
+                color: "green"
             },
             {
                 type: 'Common',
-                chance: 60
+                chance: 60,
+                color: "black"
             }
         ]
     },
@@ -434,8 +469,8 @@ var monsterTypes = [
         //out of 100, should add upto 100
         itemQualityChance: [
              {
-                 type: 'Legendary',
-                 chance: 2
+                type: 'Legendary',
+                chance: 2
              },
             {
                 type: 'Epic',
@@ -461,8 +496,8 @@ var monsterTypes = [
         //out of 100, should add upto 100
         itemQualityChance: [
              {
-                 type: 'Legendary',
-                 chance: 3
+                type: 'Legendary',
+                chance: 3
              },
             {
                 type: 'Epic',
@@ -488,8 +523,8 @@ var monsterTypes = [
         //out of 100, should add upto 100
         itemQualityChance: [
              {
-                 type: 'Legendary',
-                 chance: 5
+                type: 'Legendary',
+                chance: 5
              },
             {
                 type: 'Epic',
@@ -574,6 +609,8 @@ function attack(monster) {
         }
         battleTurn += 1;
     }
+    monster.hp = monster.maxHp;
+    document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     DrawBattle();
 
 }
@@ -745,24 +782,13 @@ function monsterExperience(monster) {
 
 //gold gained from killing a monster
 function monsterGold(monster) {
-    var goldLog = 0;
-    var golddrop = Math.floor((Math.random() * 100) + 1);
-    if (golddrop > 95) {
-        golddrop = Math.floor((Math.random() * 20) + 1);
-        player.gold = player.gold + golddrop;
-        Log("Turn " + battleTurn + " " + "You loot: " + golddrop + "gold!");
+    var goldDrop = Math.floor((Math.random() * 100) + 1);
+    var goldDrop = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+        goldDrop = goldDrop * monster.level;
+        player.gold += goldDrop;
+        Log("Turn " + battleTurn + " " + "You loot: " + goldDrop + "gold!");
         document.getElementById("gold").innerHTML = player.gold;
-    } else if (golddrop >= 75) {
-        golddrop = Math.floor((Math.random() * 10) + 1);
-        player.gold = player.gold + golddrop;
-        Log("Turn " + battleTurn + " " + "You loot: " + golddrop + "gold!");
-        document.getElementById("gold").innerHTML = player.gold;
-    } else if (golddrop >= 60) {
-        golddrop = Math.floor((Math.random() * 5) + 1);
-        player.gold = player.gold + golddrop;
-        Log("Turn " + battleTurn + " " + "You loot: " + golddrop + "gold!");
-        document.getElementById("gold").innerHTML = player.gold;
-    }
+    
     monsterItemDrop(monster);
 }
 
@@ -978,9 +1004,11 @@ function monsterItemDrop(monster) {
         for (var stat in stats) {
             if (stats.hasOwnProperty(stat)) {
                 var randomStat = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
+                randomStat = randomStat * monster.level;
                 var multiplier = randomStat * itemQuality.qualityMultiplier;
 
                 stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 2);
+                stats[stat] = Math.floor(Math.random() * ((stats[stat] * 2)) - stats[stat] / 10 + stats[stat]);
             }
         };
 
@@ -1008,10 +1036,13 @@ function monsterItemDrop(monster) {
             intelligence: stats.intelligence,
             luck: stats.luck,
             itemType: itemSubType.type,
+            itemType2: itemTypes.type,
             itemQuality: itemQuality.type
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
         playerInventory.push(newItem);
+
+        CreateInventoryWeaponHtml()
         //EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
         console.log("Number of items " + playerInventory.length);
     } else
