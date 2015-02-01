@@ -53,7 +53,7 @@ function CreateMonsterHtml() {
 
     document.getElementById("monsterTabs").innerHTML = html;
 };
-
+//Create playerInventory html
 function CreateInventoryWeaponHtml() {
     var html = '';
   
@@ -789,7 +789,7 @@ function monsterExperience(monster) {
         player.experience = Math.floor(player.experience + expgain);
         if (player.experience >= player.maxexperience) {
             player.level += 1;
-            player.stats += 2;
+            player.stats += 10;
             player.experience = player.experience - player.maxexperience;
             player.maxexperience = Math.floor(player.maxexperience * 1.15);
             Log("Turn " + battleTurn + " " + "You leveled up! Your current player.level is: " + player.level);
