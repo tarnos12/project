@@ -79,7 +79,7 @@ function CreateInventoryWeaponHtml() {
                 '">' +
 
                 playerInventory[i].itemType + " " + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' +
-                '<button onclick="equipItem' + "(" + playerInventory[i] + ")"  + '">Equip</button>' +
+                '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
                 '<br />';
     }
     document.getElementById("inventory").innerHTML = html;
@@ -390,9 +390,9 @@ var player = {
     dropRate: 0,
     expRate: 0
 };
-var weaponEquipped = {};
-var armorEquipped = {};
-var accessoryEquipped = {};
+var weaponEquip = {};
+var armorEquip = {};
+var accessoryEquip = {};
 var Lifesteal = 0.05; //Chance to happen 0.05->5%
 var Lifesteal2 = 5; //Heal amout 5 -> 5hp
 var maxLogLines = 16;
@@ -995,8 +995,8 @@ function monsterItemDrop(monster) {
         var randomItemQuality = Math.floor(Math.random() * (100 - 1) + 1); //Random item quality
         var itemQuality = getItemQuality(randomItemQuality, monsterType);
         var itemType = itemTypes[Math.floor(Math.random() * itemTypes.length)]; //This code gets a random item from the item array.
+        var itemType2 = itemType.type;
         var itemSubType = itemType.itemSubTypes[Math.floor(Math.random() * itemTypes.length)]; //This gets a random item sub type from the subType array.
-
         var stats = {
             strength: null,
             endurance: null,
@@ -1042,7 +1042,7 @@ function monsterItemDrop(monster) {
             intelligence: stats.intelligence,
             luck: stats.luck,
             itemType: itemSubType.type,
-            itemType2: itemTypes.type,
+            itemType2: itemType,
             itemQuality: itemQuality.type,
             color: itemQuality.color,
             isEquipped: false
@@ -1133,6 +1133,23 @@ button32.addEventListener("click", bindAttack(monsters[31]));
 
 
 
+function equipItem(id) {
+
+    var item = playerInventory.filter(function (obj) {
+        return obj.id === id
+    })[0];
+
+    console.log(item);
+    if (item.itemType2.type === "Weapon") {
+        console.log("Weapon Equipped")
+    }
+    else if (item.itemType2.type === "Armor") {
+        console.log("Armor equipped")
+    }
+    else if (item.itemType2.type === "Accessory") {
+        console.log("Accessory Equipped")
+    }
+};
 
 
 
