@@ -78,10 +78,9 @@ function CreateInventoryWeaponHtml() {
                 "Luck: " + playerInventory[i].luck +
                 '">' +
 
-                playerInventory[i].itemType + " " + '<font color="' + itemQualities[i].color + '">' + playerInventory[i].itemQuality + '</font>' +
+                playerInventory[i].itemType + " " + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' +
+                '<button onclick="equipItem' + "(" + playerInventory[i] + ")"  + '">Equip</button>' +
                 '<br />';
-        
-       
     }
     document.getElementById("inventory").innerHTML = html;
 };
@@ -391,6 +390,9 @@ var player = {
     dropRate: 0,
     expRate: 0
 };
+var weaponEquipped = {};
+var armorEquipped = {};
+var accessoryEquipped = {};
 var Lifesteal = 0.05; //Chance to happen 0.05->5%
 var Lifesteal2 = 5; //Heal amout 5 -> 5hp
 var maxLogLines = 16;
@@ -1015,7 +1017,7 @@ function monsterItemDrop(monster) {
             }
         };
 
-        var weaponId = currentDate.getMilliseconds();
+        var weaponId = currentDate.getTime();
 
        /* console.log("Monster Level" + " " + monster.level);
         console.log("STR" + " " + stats.strength);
@@ -1026,7 +1028,8 @@ function monsterItemDrop(monster) {
         console.log("INT" + " " + stats.intelligence);
         console.log("LUK" + " " + stats.luck);
         console.log("TYPE" + " " + itemSubType.type);
-        console.log("QUALITY" + " " + itemQuality.type);*/
+        console.log("QUALITY" + " " + itemQuality.type);
+        console.log("isEquipped" + " " + isEquipped);*/
 
         //Build the Object
         var newItem = {
@@ -1040,7 +1043,9 @@ function monsterItemDrop(monster) {
             luck: stats.luck,
             itemType: itemSubType.type,
             itemType2: itemTypes.type,
-            itemQuality: itemQuality.type
+            itemQuality: itemQuality.type,
+            color: itemQuality.color,
+            isEquipped: false
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
         playerInventory.push(newItem);
