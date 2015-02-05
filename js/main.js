@@ -1032,7 +1032,7 @@ function monsterItemDrop(monster) {
 
         var weaponId = currentDate.getMilliseconds();
 
-        console.log("Monster Level" + " " + monster.level);
+       /* console.log("Monster Level" + " " + monster.level);
         console.log("STR" + " " + stats.strength);
         console.log("END" + " " + stats.endurance);
         console.log("AGI" + " " + stats.agility);
@@ -1041,7 +1041,7 @@ function monsterItemDrop(monster) {
         console.log("INT" + " " + stats.intelligence);
         console.log("LUK" + " " + stats.luck);
         console.log("TYPE" + " " + itemSubType.type);
-        console.log("QUALITY" + " " + itemQuality.type);
+        console.log("QUALITY" + " " + itemQuality.type);*/
 
         //Build the Object
         var newItem = {
@@ -1062,9 +1062,9 @@ function monsterItemDrop(monster) {
 
         CreateInventoryWeaponHtml()
         //EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
-        console.log("Number of items " + playerInventory.length);
+      //  console.log("Number of items " + playerInventory.length);
     } else
-        console.log("FULL INV");
+      console.log("FULL INV");
 }
 
 function getMonsterType(monster) {

@@ -4,6 +4,8 @@ v1.1.4 - 2 february 2015 |
 - Added item drop, higher level monster drop better items, all items stats are randomly generated
 - You cannot equip items, not yet
 - You gain 10 stats per level
+- Added turn based combat
+- Each turn is displayed in player log
 _________________________
 v1.1.3 - 16 january 2015 |
 -------------------------|
