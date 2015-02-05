@@ -58,22 +58,7 @@ function CreateInventoryWeaponHtml() {
     var html = '';
   
     for (var i = 0; i < playerInventory.length; i++) {
-        var color = "";
-        if (playerInventory[i].itemQuality === "Common") {
-            color = "black";
-        }
-        else if (playerInventory[i].itemQuality === "Uncommon") {
-            color = "green";
-        }
-        else if (playerInventory[i].itemQuality === "Rare") {
-            color = "blue";
-        }
-        else if (playerInventory[i].itemQuality === "Epic") {
-            color = "red";
-        }
-        else if (playerInventory[i].itemQuality === "Legendary") {
-            color = "orange"
-        };
+       
         
         html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + playerInventory[i].itemQuality +
@@ -93,7 +78,7 @@ function CreateInventoryWeaponHtml() {
                 "Luck: " + playerInventory[i].luck +
                 '">' +
 
-                playerInventory[i].itemType + " " + '<font color="' + color + '">' + playerInventory[i].itemQuality + '</font>' +
+                playerInventory[i].itemType + " " + '<font color="' + itemQualities[i].color + '">' + playerInventory[i].itemQuality + '</font>' +
                 '<br />';
         
        
@@ -456,28 +441,23 @@ var monsterTypes = [
             {
                 type: 'Legendary',
                 chance: 1,
-                color: "orange"
                 
             },
              {
                 type: 'Epic',
                 chance: 4,
-                color: "red"
              },
             {
                 type: 'Rare',
                 chance: 10,
-                color: "blue"
             },
             {
                 type: 'Uncommon',
                 chance: 25,
-                color: "green"
             },
             {
                 type: 'Common',
                 chance: 60,
-                color: "black"
             }
         ]
     },
@@ -973,23 +953,28 @@ var itemTypes = [
 var itemQualities = [
     {
         type: "Legendary",
-        qualityMultiplier: 10
+        qualityMultiplier: 10,
+        color: 'purple'
     },
     {
         type: "Epic",
-        qualityMultiplier: 6
+        qualityMultiplier: 6,
+        color: 'orange'
     },
     {
         type: "Rare",
-        qualityMultiplier: 4
+        qualityMultiplier: 4,
+        color: 'blue'
     },
     {
         type: "Uncommon",
-        qualityMultiplier: 2
+        qualityMultiplier: 2,
+        color: 'green'
     },
     {
         type: "Common",
-        qualityMultiplier: 1
+        qualityMultiplier: 1,
+        color: 'black'
     }
 ];
 
