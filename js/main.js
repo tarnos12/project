@@ -1,323 +1,3 @@
-function CreateMonsterHtml() {
-
-    var html = '';
-
-    html += '<ul class="nav nav-tabs">';
-
-    for (var k = 0; k < monsterTypes.length; k++) {
-
-        if (k === 0) {
-            html += '<li class="active">';
-        } else {
-            html += '<li>';
-        }
-
-        html += '<a href="#tab_'+monsterTypes[k].type+'" data-toggle="tab">'+monsterTypes[k].displayName+'</a></li>';
-    }
-
-    html += '</ul>';
-    html += '<div class="tab-content">';
-
-    for (var j = 0; j < monsterTypes.length; j++) {
-
-        if (j === 0) {
-            html += '<div class="tab-pane active" ';
-        } else {
-            html += '<div class="tab-pane" ';
-        }
-
-        html += 'id="tab_' + monsterTypes[j].type + '">' +
-            '<div class="c3">' +
-            '<h4>SLAY MONSTERS!</h4>' +
-            '</div>';
-
-        for (var i = 0; i < monsters.length; i++) {
-            if (monsters[i].type === monsterTypes[j].type) {
-
-                html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
-                    '<div id="' + monsters[i].id + '" class="c3">' +
-                    'Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg +
-                    '<br />' +
-                    'Def:' + monsters[i].def +
-                    '<br />' +
-                    '<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp +
-                    '<br />' +
-                    '<img src="images/' + monsters[i].id + '.jpg" alt="' + monsters[i].name + '">' +
-                    '<br />' +
-                    '<button class = "monsterButton" id="button' + (i + 1) + '">' + "Attack" + '</button>' + '</div></div>'
-            }
-        }
-        html += '</div>';
-    }
-    html += '</div>';
-
-    document.getElementById("monsterTabs").innerHTML = html;
-};
-//Create playerInventory html
-function CreateInventoryWeaponHtml() {
-    var html = '';
-  
-    for (var i = 0; i < playerInventory.length; i++) {
-       
-        
-        html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + playerInventory[i].itemQuality +
-                '\n' +
-                "Strength: " + playerInventory[i].strength +
-                '\n' +
-                "Endurance: " + playerInventory[i].endurance +
-                '\n' +
-                "Agility: " + playerInventory[i].agility +
-                '\n' +
-                "Dexterity: " + playerInventory[i].dexterity +
-                '\n' +
-                "Intelligence: " + playerInventory[i].intelligence +
-                '\n' +
-                "Wisdom: " + playerInventory[i].wisdom +
-                '\n' +
-                "Luck: " + playerInventory[i].luck +
-                '">' +
-
-                playerInventory[i].itemType + " " + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' +
-                '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
-                '<br />';
-    }
-    document.getElementById("inventory").innerHTML = html;
-};
-
-
-window.setInterval(function () {
-    var hppercent = 100; //This function heal player automatically using potions.
-    hppercent = (Math.floor((player.health / player.maxhealth()) * 100));
-    if (pot >= 1) {
-        if (hppercent <= 30) {
-            if (player.health + 20 >= player.maxhealth()) {
-                player.health = player.maxhealth();
-                pot -= 1;
-                document.getElementById("health").innerHTML = player.health;
-                document.getElementById("pot").innerHTML = pot;
-            } else {
-                player.health += 20;
-                pot -= 1;
-                document.getElementById("health").innerHTML = player.health;
-                document.getElementById("pot").innerHTML = pot;
-            }
-        }
-    } else if (player.maxhealth() <= 100 & mpot >= 1) {
-        if (hppercent <= 30) {
-            if (player.health + mpot >= player.maxhealth()) {
-                player.health = player.maxhealth();
-                mpot -= 1;
-                document.getElementById("health").innerHTML = player.health;
-                document.getElementById("mpot").innerHTML = mpot;
-            } else {
-                player.health += 100;
-                mpot -= 1;
-                document.getElementById("health").innerHTML = player.health;
-                document.getElementById("mpot").innerHTML = mpot;
-            }
-        }
-    } else {
-        if (hppercent <= 30 & spot >= 1) {
-            if (player.health + spot >= player.maxhealth()) {
-                player.health = player.maxhealth();
-                spot -= 1;
-                document.getElementById("health").innerHTML = player.health;
-                document.getElementById("spot").innerHTML = spot;
-            } else {
-                player.health += 500;
-                spot -= 1;
-                document.getElementById("health").innerHTML = player.health;
-                document.getElementById("spot").innerHTML = spot;
-            }
-        }
-    } { }
-}, 100);
-window.setInterval(function () {
-    if (player.stats >= 1) { // Show "plus" image when player level up
-        document.getElementById("vis1").style.visibility = "visible";
-        document.getElementById("vis2").style.visibility = "visible";
-        document.getElementById("vis3").style.visibility = "visible";
-        document.getElementById("vis4").style.visibility = "visible";
-        document.getElementById("vis5").style.visibility = "visible";
-        document.getElementById("vis6").style.visibility = "visible";
-        document.getElementById("vis7").style.visibility = "visible";
-    } else {
-        document.getElementById("vis1").style.visibility = "hidden";
-        document.getElementById("vis2").style.visibility = "hidden";
-        document.getElementById("vis3").style.visibility = "hidden";
-        document.getElementById("vis4").style.visibility = "hidden";
-        document.getElementById("vis5").style.visibility = "hidden";
-        document.getElementById("vis6").style.visibility = "hidden";
-        document.getElementById("vis7").style.visibility = "hidden";
-    }
-    document.getElementById('mindamage').innerHTML = player.mindamage().toFixed(0);
-    document.getElementById('maxdamage').innerHTML = player.maxdamage().toFixed(0);
-    document.getElementById('strength').innerHTML = player.strength;
-    document.getElementById("maxhealth").innerHTML = player.maxhealth();
-    document.getElementById("hpregen").innerHTML = player.hpregen();
-    document.getElementById("stats").innerHTML = player.stats;
-    document.getElementById("endurance").innerHTML = player.endurance;
-    document.getElementById("agility").innerHTML = player.agility;
-    document.getElementById("accuracy").innerHTML = player.accuracy().toFixed(2);
-    document.getElementById("dexterity").innerHTML = player.dexterity;
-    document.getElementById("defense").innerHTML = player.defense().toFixed(2);
-    document.getElementById("criticalDamage").innerHTML = player.criticalDamage().toFixed(2) * 100 + "%" ;
-    document.getElementById("criticalChance").innerHTML = player.criticalChance().toFixed(2);
-    document.getElementById("Lifesteal2").innerHTML = Lifesteal2.toFixed(2);
-    document.getElementById("Lifesteal").innerHTML = player.intelligence.toFixed(2);
-    document.getElementById("intelligence").innerHTML = player.intelligence;
-    document.getElementById("mana").innerHTML = player.mana.toFixed(0);
-    document.getElementById("maxmana").innerHTML = player.maxMana().toFixed(0);
-    document.getElementById("wisdom").innerHTML = player.wisdom;
-    document.getElementById("manaRegen").innerHTML = player.manaRegen().toFixed(2);
-    document.getElementById("luck").innerHTML = player.luck;
-    document.getElementById("evasion").innerHTML = player.evasion().toFixed(2);
-    document.getElementById("dropRate").innerHTML = player.dropRate;
-    document.getElementById("level").innerHTML = player.level;
-    document.getElementById("maxexperience").innerHTML = player.maxexperience;
-    document.getElementById("experience").innerHTML = player.experience;
-}, 1);
-window.setInterval(function () {
-    var exppercent = 0; //Player experience in % values at the top bar
-    exppercent = (Math.floor((player.experience / player.maxexperience) * 100));
-    var exppercent2 = (Math.floor((player.experience / player.maxexperience) * 100));
-    exppercent2 = exppercent2 / 2.5;
-    var divArray = document.getElementById('progressBar');
-    divArray.style.width = ((exppercent2) + '%');
-    document.getElementById("exppercent").innerHTML = exppercent;
-}, 100);
-window.setInterval(function () {
-    var healthPercent = (Math.floor((player.health / player.maxhealth()) * 100));
-    healthPercent = healthPercent / 2.5;
-    var divArray = document.getElementById('progressBar2');
-    divArray.style.width = ((healthPercent) + '%');
-}, 100);
-window.setInterval(function () { //Health regen
-    if (player.health < player.maxhealth()) player.health += player.hpregen();
-    if (player.health > player.maxhealth()) player.health = player.maxhealth();
-    document.getElementById('health').innerHTML = player.health;
-}, 1000);
-window.setInterval(function () { //Mana regen
-    if (player.mana < player.maxMana()) player.mana += player.manaRegen();
-    if (player.mana > player.maxMana()) player.mana = player.maxMana();
-    document.getElementById('mana').innerHTML = player.mana.toFixed(0);
-}, 1000);
-
-//Upgrading player stats
-function upgradeStrength() {
-    if (player.stats >= 1) {
-        player.stats = player.stats - 1;
-        player.strength += 1;
-        
-    }
-};
-
-function upgradeEndurance() {
-    if (player.stats >= 1) {
-        player.stats = player.stats - 1;
-        player.endurance += 1;
-        Log("Your maximal health is now: " + player.maxhealth() + "!");
-    }
-};
-
-function upgradeAgility() {
-    if (player.stats >= 1) {
-        player.stats = player.stats - 1;
-        player.agility += 1;
-        Log("You have increased your agility by 1, evasion, critical chance and accuracy increased!");
-       
-    }
-};
-
-function upgradeDexterity() {
-    if (player.stats >= 1) {
-        player.dexterity += 1;
-        player.stats = player.stats - 1;
-        Log("You increased your dexterity by 1, defense, critical chance and critical damage increased.");
-        
-    }
-};
-
-function upgradeIntelligence() {
-    if (player.stats >= 1) {
-        player.intelligence += 1;
-        player.stats = player.stats - 1;
-        Lifesteal = player.intelligence / 100;
-        Lifesteal2 = player.intelligence;
-        Log("You have increased your intelligence by 1");
-      
-    }
-};
-
-function upgradeWisdom() {
-    if (player.stats >= 1) {
-        player.wisdom += 1;
-        player.stats = player.stats - 1;
-        Log("You have increased your wisdom by 1");
-    }
-};
-
-function upgradeLuck() {
-    if (player.stats >= 1) {
-        player.luck += 1;
-        player.dropRate += 1;
-        player.stats = player.stats - 1;
-        Log("You have increased your luck by 1! Critical damage/chance and drop rate increased!");
-    }
-};
-
-//Using potions
-function usepot() {
-    if (player.health == player.maxhealth) {
-        Log("Your health is full!");
-    } else if (player.health + 20 >= player.maxhealth & pot >= 1) {
-        pot = pot - 1;
-        player.health = player.maxhealth;
-        document.getElementById('pot').innerHTML = pot;
-        document.getElementById('health').innerHTML = player.health;
-        Log("You heal for 20 <span style=\"color:green\">health!</span>");
-    } else if (player.health + 20 < player.maxhealth & pot >= 1) {
-        pot = pot - 1;
-        player.health = player.health + 20;
-        document.getElementById('pot').innerHTML = pot;
-        document.getElementById('health').innerHTML = player.health;
-    }
-};
-
-function usespot() {
-    if (player.health == player.maxhealth) {
-        Log("Your health is full!");
-    } else if (player.health + 100 >= player.maxhealth & spot >= 1) {
-        spot = spot - 1;
-        player.health = player.maxhealth;
-        document.getElementById('spot').innerHTML = spot;
-        document.getElementById('health').innerHTML = player.health;
-        Log("You heal for 100 <span style=\"color:green\">health!</span>");
-    } else if (player.health + 100 < player.maxhealth & spot >= 1) {
-        spot = spot - 1;
-        player.health = player.health + 100;
-        document.getElementById('spot').innerHTML = spot;
-        document.getElementById('health').innerHTML = player.health;
-    }
-};
-
-function usempot() {
-    if (player.health == player.maxhealth) {
-        Log("Your health is full!");
-    } else if (player.health + 500 >= player.maxhealth & mpot >= 1) {
-        mpot = mpot - 1;
-        player.health = player.maxhealth;
-        document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('health').innerHTML = player.health;
-        Log("You heal for 100 <span style=\"color:green\">health!</span>");
-    } else if (player.health + 500 < player.maxhealth & mpot >= 1) {
-        mpot = mpot - 1;
-        player.health = player.health + 500;
-        document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('health').innerHTML = player.health;
-    }
-};
 //Player log
 function Log(data) {
     var i;
@@ -342,59 +22,107 @@ var player = {
     stats: 0,
     level: 1,
     inventory: 30,
-    strength: 5,
-    endurance: 5,
-    agility: 5,
-    dexterity: 5,
-    intelligence: 5,
-    wisdom: 5,
-    luck: 5,
+    baseStrength: 5,
+    weaponStrength: 0,
+    armorStrength: 0,
+    accessoryStrength: 0,
+    totalStrength: function () {
+        return (player.baseStrength + player.weaponStrength + player.armorStrength + player.accessoryStrength);
+    },
+    baseEndurance: 5,
+    weaponEndurance: 0,
+    armorEndurance: 0,
+    accessoryEndurance: 0,
+    totalEndurance: function () {
+        return (player.baseEndurance + player.weaponEndurance + player.armorEndurance + player.accessoryEndurance);
+    },
+    baseAgility: 5,
+    weaponAgility: 0,
+    armorAgility: 0,
+    accessoryAgility: 0,
+    totalAgility: function () {
+        return (player.baseAgility + player.weaponAgility + player.armorAgility + player.accessoryAgility);
+    },
+    baseDexterity: 5,
+    weaponDexterity: 0,
+    armorDexterity: 0,
+    accessoryDexterity: 0,
+    totalDexterity: function () {
+        return (player.baseDexterity + player.weaponDexterity + player.armorDexterity + player.accessoryDexterity);
+    },
+    baseIntelligence: 5,
+    weaponIntelligence: 0,
+    armorIntelligence: 0,
+    accessoryIntelligence: 0,
+    totalIntelligence: function () {
+        return (player.baseIntelligence + player.weaponIntelligence + player.armorIntelligence + player.accessoryIntelligence);
+    },
+    baseWisdom: 5,
+    weaponWisdom: 0,
+    armorWisdom: 0,
+    accessoryWisdom: 0,
+    totalWisdom: function () {
+        return (player.baseWisdom + player.weaponWisdom + player.armorWisdom + player.accessoryWisdom);
+    },
+    baseLuck: 5,
+    weaponLuck: 0,
+    armorLuck: 0,
+    accessoryLuck: 0,
+    totalLuck: function () {
+        return (player.baseLuck + player.weaponLuck + player.armorLuck + player.accessoryLuck);
+    },
     experience: 0,
     maxexperience: 100,
     gold: 0,
     health: 50,
     maxhealth: function () {
-        return (player.endurance * 10);
+        return (player.totalEndurance() * 10);
     },
     mana: 50,
     maxMana: function () {
-        return (player.wisdom * 10 + player.intelligence * 5);
+        return (player.totalWisdom() * 10 + player.totalIntelligence() * 5);
     },
     manaRegen: function () {
-        return (player.wisdom);
+        return (player.totalWisdom());
     },
     mindamage: function () {
-        return Math.floor((player.strength * 0.5));
+        return Math.floor((player.totalStrength() * 0.5));
     },
     maxdamage: function () {
-        return (player.strength * 0.8);
+        return (player.totalStrength() * 0.8);
     },
     hpregen: function () {
-        return Math.floor((player.endurance));
+        return Math.floor((player.totalEndurance()));
     },
     accuracy: function () {
-        return Math.floor((95 + (player.agility * 0.05 + player.luck * 0.1)));
+        return Math.floor((95 + (player.totalAgility() * 0.05 + player.totalLuck() * 0.1)));
     },
     defense: function () {
-    return (player.dexterity * 1.2 + player.endurance * 0.5);
+        return (player.totalDexterity() * 1.2 + player.totalEndurance() * 0.5);
     },
     evasion: function () {
-        return (5 + (player.agility * 0.5 + player.luck * 0.15));
+        return (5 + (player.totalAgility() * 0.5 + player.totalLuck() * 0.15));
     },
     criticalChance: function () {
-        return (player.agility * 0.5 + player.luck * 0.5);
+        return (player.totalAgility() * 0.5 + player.totalLuck() * 0.5);
     },
     criticalDamage: function () {
-        return (player.strength * 0.1 + player.dexterity * 0.1);
+        return (player.totalStrength() * 0.1 + player.totalDexterity() * 0.1);
+    },
+    Lifesteal: function () {
+        return (player.totalIntelligence() / 100);
+    },
+    Lifesteal2: function () {
+        return (player.totalIntelligence());
     },
     dropRate: 0,
     expRate: 0
 };
-var weaponEquip = {};
-var armorEquip = {};
-var accessoryEquip = {};
-var Lifesteal = 0.05; //Chance to happen 0.05->5%
-var Lifesteal2 = 5; //Heal amout 5 -> 5hp
+var equippedItems = {
+    weapon: {},
+    armor: {},
+    accessory: {}
+}
 var maxLogLines = 16;
 var logData = {
     length: 0
@@ -1141,162 +869,37 @@ function equipItem(id) {
 
     console.log(item);
     if (item.itemType2.type === "Weapon") {
+        equippedItems.weapon = item
+        player.weaponStrength = item.strength
+        player.weaponEndurance = item.endurance
+        player.weaponAgility = item.agility
+        player.weaponDexterity = item.dexterity
+        player.weaponIntelligence = item.intelligence
+        player.weaponWisdom = item.wisdom
+        player.weaponLuck = item.luck
         console.log("Weapon Equipped")
     }
     else if (item.itemType2.type === "Armor") {
         console.log("Armor equipped")
+        equippedItems.armor = item
+        player.armorStrength = item.strength
+        player.armorEndurance = item.endurance
+        player.armorAgility = item.agility
+        player.armorDexterity = item.dexterity
+        player.armorIntelligence = item.intelligence
+        player.armorWisdom = item.wisdom
+        player.armorLuck = item.luck
     }
     else if (item.itemType2.type === "Accessory") {
         console.log("Accessory Equipped")
+        equippedItems.accessory = item
+        player.accessoryStrength = item.strength
+        player.accessoryEndurance = item.endurance
+        player.accessoryAgility = item.agility
+        player.accessoryDexterity = item.dexterity
+        player.accessoryIntelligence = item.intelligence
+        player.accessoryWisdom = item.wisdom
+        player.accessoryLuck = item.luck
     }
-};
-
-
-
-function buypot() {
-    if (player.gold >= 20) {
-        pot += 1;
-        player.gold -= 20;
-        document.getElementById('pot').innerHTML = pot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
-
-function buypot10() {
-    if (player.gold >= 200) {
-        pot += 10;
-        player.gold -= 200;
-        document.getElementById('pot').innerHTML = pot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
-
-function buyspot() {
-    if (player.gold >= 100) {
-        spot += 1;
-        player.gold -= 100;
-        document.getElementById('spot').innerHTML = spot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
-
-function buyspot10() {
-    if (player.gold >= 1000) {
-        spot += 10;
-        player.gold -= 1000;
-        document.getElementById('spot').innerHTML = spot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
-
-function buympot() {
-    if (player.gold >= 500) {
-        mpot += 1;
-        player.gold -= 500;
-        document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
-
-function buympot10() {
-    if (player.gold >= 5000) {
-        mpot += 10;
-        player.gold -= 5000;
-        document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
-
-function save() {
-    var save = {
-        playerGold: player.gold,
-        playerHealth: player.health,
-        playerStats: player.stats,
-        playerLevel: player.level,
-        playerStrength: player.strength,
-        playerEndurance: player.endurance,
-        playerAgility: player.agility,
-        playerDexterity: player.dexterity,
-        playerIntelligence: player.intelligence,
-        playerWisdom: player.wisdom,
-        playerLuck: player.luck,
-        playerExperience: player.experience,
-        playerMaxexperience: player.maxexperience,
-        pot: pot,
-        spot: spot,
-        mpot: mpot
-    }
-    localStorage.setItem("save", JSON.stringify(save));
-}
-
-function load() {
-    var savegame = JSON.parse(localStorage.getItem("save"));
-    if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
-    if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
-    if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
-    if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
-    if (typeof savegame.playerExperience !== "undefined") player.experience = savegame.playerExperience;
-    if (typeof savegame.playerMaxexperience !== "undefined") player.maxexperience = savegame.playerMaxexperience;
-    if (typeof savegame.playerStrength !== "undefined") player.strength = savegame.playerStrength;
-    if (typeof savegame.playerEndurance !== "undefined") player.endurance = savegame.playerEndurance;
-    if (typeof savegame.playerAgility !== "undefined") player.agility = savegame.playerAgility;
-    if (typeof savegame.playerDexterity !== "undefined") player.dexterity = savegame.playerDexterity;
-    if (typeof savegame.playerIntelligence !== "undefined") player.intelligence = savegame.playerIntelligence;
-    if (typeof savegame.playerWisdom !== "undefined") player.wisdom = savegame.playerWisdom;
-    if (typeof savegame.playerLuck !== "undefined") player.luck = savegame.playerLuck;
-    if (typeof savegame.pot !== "undefined") pot = savegame.pot;
-    if (typeof savegame.spot !== "undefined") spot = savegame.spot;
-    if (typeof savegame.blackorb !== "undefined") blackorb = savegame.blackorb;
-    document.getElementById('gold').innerHTML = player.gold;
-    document.getElementById('health').innerHTML = player.health;
-    document.getElementById('stats').innerHTML = player.stats;
-    document.getElementById('level').innerHTML = player.level;
-    document.getElementById('experience').innerHTML = player.experience;
-    document.getElementById('maxexperience').innerHTML = player.maxexperience;
-    document.getElementById('strength').innerHTML = player.strength;
-    document.getElementById('endurance').innerHTML = player.endurance;
-    document.getElementById('agility').innerHTML = player.agility;
-    document.getElementById('dexterity').innerHTML = player.dexterity;
-    document.getElementById('intelligence').innerHTML = player.intelligence;
-    document.getElementById('wisdom').innerHTML = player.wisdom;
-    document.getElementById('luck').innerHTML = player.luck;
-    document.getElementById('pot').innerHTML = pot;
-    document.getElementById('spot').innerHTML = spot;
-    document.getElementById('mpot').innerHTML = mpot;
-}
-
-function reset() {
-    localStorage.removeItem("save");
-    player.gold = 0;
-    player.health = 50;
-    player.stats = 0;
-    player.level = 1;
-    player.experience = 0;
-    player.maxexperience = 100;
-    player.strength = 5;
-    player.endurance = 5;
-    player.agility = 5;
-    player.dexterity = 5;
-    player.intelligence = 5;
-    player.wisdom = 5;
-    player.luck = 5;
-    pot = 0;
-    spot = 0;
-    mpot = 0;
-    document.getElementById('gold').innerHTML = player.gold;
-    document.getElementById('health').innerHTML = player.health;
-    document.getElementById('stats').innerHTML = player.stats;
-    document.getElementById('level').innerHTML = player.level;
-    document.getElementById('experience').innerHTML = player.experience;
-    document.getElementById('maxexperience').innerHTML = player.maxexperience;
-    document.getElementById('strength').innerHTML = player.strength;
-    document.getElementById('endurance').innerHTML = player.endurance;
-    document.getElementById('agility').innerHTML = player.agility;
-    document.getElementById('dexterity').innerHTML = player.dexterity;
-    document.getElementById('intelligence').innerHTML = player.intelligence;
-    document.getElementById('wisdom').innerHTML = player.wisdom;
-    document.getElementById('luck').innerHTML = player.luck;
-    document.getElementById('pot').innerHTML = pot;
-    document.getElementById('spot').innerHTML = spot;
-    document.getElementById('mpot').innerHTML = mpot;
+    console.log("Equipped item" + equippedItems);
 };
