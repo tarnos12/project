@@ -1,4 +1,32 @@
-﻿function CreateMonsterHtml() {
+﻿//Create player Equipped items html
+
+function CreateEquipHtml() {
+    var html = '';
+
+    html += '<table class="table">';
+
+    for (var i = 0; i < 3; i++) {
+
+        html += '<tr>' +
+                    '<td>';
+        for (var k = 0; k < 1; k++) {
+
+            if (k === 0) {
+                html += equipmentType[i].type +
+                    '<img src="images/items/' + equipmentType[i].type + "1" + '.gif" alt="' + equipmentType[i].type + '">';
+            }
+        }
+                   html +=     '</td>' +
+                                 '</tr>';
+    }
+    console.log("XD" + html);
+    html += '</table>';
+    document.getElementById("equipHtml").innerHTML = html;
+};
+
+
+
+function CreateMonsterHtml() {
 
     var html = '';
 
@@ -76,6 +104,8 @@ function CreateInventoryWeaponHtml() {
                 "Wisdom: " + playerInventory[i].wisdom +
                 '\n' +
                 "Luck: " + playerInventory[i].luck +
+                '\n' +
+                "Value: " + playerInventory[i].value + "gold" +
                 '">' +
 
                 playerInventory[i].itemType + " " + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' +

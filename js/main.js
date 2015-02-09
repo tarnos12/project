@@ -497,28 +497,32 @@ function monsterExperience(monster) {
     var expgain = monster.baseExp / (player.level / 8);
     if (player.experience < player.maxexperience) {
         player.experience = Math.floor(player.experience + expgain);
-        if (player.experience >= player.maxexperience) {
-            player.level += 1;
-            player.stats += 10;
-            player.experience = player.experience - player.maxexperience;
-            player.maxexperience = Math.floor(player.maxexperience * 1.15);
-            Log("Turn " + battleTurn + " " + "You leveled up! Your current player.level is: " + player.level);
-        } else Log("Turn " + battleTurn + " " + "You gain: " + Math.floor(expgain) + "experience!");
     }
+    if (player.experience >= player.maxexperience) {
+        player.level += 1;
+        player.stats += 10;
+        player.experience = player.experience - player.maxexperience;
+        player.maxexperience = Math.floor(player.maxexperience * 1.15);
+        Log("Turn " + battleTurn + " " + "You leveled up! Your current player.level is: " + player.level);
+        }
+    else Log("Turn " + battleTurn + " " + "You gain: " + Math.floor(expgain) + "experience!");
     monsterGold(monster);
-}
+    }
+
 
 //gold gained from killing a monster
 function monsterGold(monster) {
     var goldDrop = Math.floor((Math.random() * 100) + 1);
     var goldDrop = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-        goldDrop = goldDrop * monster.level;
-        player.gold += goldDrop;
-        Log("Turn " + battleTurn + " " + "You loot: " + goldDrop + "gold!");
-        document.getElementById("gold").innerHTML = player.gold;
-    
-    monsterItemDrop(monster);
-}
+    goldDrop = goldDrop * monster.level;
+    player.gold += goldDrop;
+    Log("Turn " + battleTurn + " " + "You loot: " + goldDrop + "gold!");
+    document.getElementById("gold").innerHTML = player.gold;
+    var randomNumber = Math.floor((Math.random() * 100) + 1);
+    if (randomNumber <= 50) {
+        monsterItemDrop(monster);
+    }
+};
 
 var itemTypes = [
     {
@@ -744,6 +748,8 @@ function monsterItemDrop(monster) {
                 stats[stat] = Math.floor(Math.random() * ((stats[stat] * 2)) - stats[stat] / 10 + stats[stat]);
             }
         };
+        //Value of an item, all stats multiplied by item quality multiplier(better quality item = more gold)
+        var itemValue = ((stats.strength + stats.endurance + stats.agility + stats.dexterity + stats.wisdom + stats.intelligence + stats.luck) * itemQuality.qualityMultiplier);
 
         var weaponId = currentDate.getTime();
 
@@ -773,7 +779,8 @@ function monsterItemDrop(monster) {
             itemType2: itemType,
             itemQuality: itemQuality.type,
             color: itemQuality.color,
-            isEquipped: false
+            isEquipped: false,
+            value: itemValue
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
         playerInventory.push(newItem);
@@ -902,4 +909,18 @@ function equipItem(id) {
         player.accessoryLuck = item.luck
     }
     console.log("Equipped item" + equippedItems);
+
+    CreateEquipHtml()
 };
+
+var equipmentType = [
+    {
+        type: "Weapon"
+},
+{
+        type: "Armor"
+},
+{
+        type: "Accessory"
+}
+];
