@@ -5,20 +5,85 @@ function CreateEquipHtml() {
 
     html += '<table class="table">';
 
-    for (var i = 0; i < 3; i++) {
+    //Weapon
+    if (equippedItems.weapon.hasOwnProperty('itemType')) {
+        html += '<tr>' + '<td>';
 
-        html += '<tr>' +
-                    '<td>';
-        for (var k = 0; k < 1; k++) {
-
-            if (k === 0) {
-                html += equipmentType[i].type +
-                    '<img src="images/items/' + equipmentType[i].type + "1" + '.gif" alt="' + equipmentType[i].type + '">';
-            }
-        }
-                   html +=     '</td>' +
-                                 '</tr>';
+        html += equippedItems.weapon.itemType2.type + '<img src="images/items/' + equippedItems.weapon.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+                 "Item Rarity: " + equippedItems.weapon.itemQuality +
+                '\n' +
+                "Strength: " + equippedItems.weapon.strength +
+                '\n' +
+                "Endurance: " + equippedItems.weapon.endurance +
+                '\n' +
+                "Agility: " + equippedItems.weapon.agility +
+                '\n' +
+                "Dexterity: " + equippedItems.weapon.dexterity +
+                '\n' +
+                "Intelligence: " + equippedItems.weapon.intelligence +
+                '\n' +
+                "Wisdom: " + equippedItems.weapon.wisdom +
+                '\n' +
+                "Luck: " + equippedItems.weapon.luck +
+                '\n' +
+                "Value: " + equippedItems.weapon.value + "gold" +
+                '">' +
+                '<button onclick="unequipItem' + "(" + equippedItems.weapon.id + ")" + '">Unequip</button>';
+        html += '</td>' + '</tr>';
     }
+    //Armor
+    if (equippedItems.armor.hasOwnProperty('itemType')) {
+        html += '<tr>' + '<td>';
+
+        html += equippedItems.armor.itemType2.type + '<img src="images/items/' + equippedItems.armor.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+                 "Item Rarity: " + equippedItems.armor.itemQuality +
+                '\n' +
+                "Strength: " + equippedItems.armor.strength +
+                '\n' +
+                "Endurance: " + equippedItems.armor.endurance +
+                '\n' +
+                "Agility: " + equippedItems.armor.agility +
+                '\n' +
+                "Dexterity: " + equippedItems.armor.dexterity +
+                '\n' +
+                "Intelligence: " + equippedItems.armor.intelligence +
+                '\n' +
+                "Wisdom: " + equippedItems.armor.wisdom +
+                '\n' +
+                "Luck: " + equippedItems.armor.luck +
+                '\n' +
+                "Value: " + equippedItems.armor.value + "gold" +
+                '">' +
+                '<button onclick="unequipItem' + "(" + equippedItems.armor.id + ")" + '">Unequip</button>';
+        html += '</td>' + '</tr>';
+    }
+    //Accessory
+    if (equippedItems.accessory.hasOwnProperty('itemType')) {
+        html += '<tr>' + '<td>';
+
+        html += equippedItems.accessory.itemType2.type + '<img src="images/items/' + equippedItems.accessory.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+                 "Item Rarity: " + equippedItems.accessory.itemQuality +
+                '\n' +
+                "Strength: " + equippedItems.accessory.strength +
+                '\n' +
+                "Endurance: " + equippedItems.accessory.endurance +
+                '\n' +
+                "Agility: " + equippedItems.accessory.agility +
+                '\n' +
+                "Dexterity: " + equippedItems.accessory.dexterity +
+                '\n' +
+                "Intelligence: " + equippedItems.accessory.intelligence +
+                '\n' +
+                "Wisdom: " + equippedItems.accessory.wisdom +
+                '\n' +
+                "Luck: " + equippedItems.accessory.luck +
+                '\n' +
+                "Value: " + equippedItems.accessory.value + "gold" +
+                '">' +
+                '<button onclick="unequipItem' + "(" + equippedItems.accessory.id + ")" + '">Unequip</button>';
+        html += '</td>' + '</tr>';
+    }
+
     console.log("XD" + html);
     html += '</table>';
     document.getElementById("equipHtml").innerHTML = html;
@@ -110,6 +175,7 @@ function CreateInventoryWeaponHtml() {
 
                 playerInventory[i].itemType + " " + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' +
                 '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
+                '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' +
                 '<br />';
     }
     document.getElementById("inventory").innerHTML = html;

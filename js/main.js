@@ -912,15 +912,59 @@ function equipItem(id) {
 
     CreateEquipHtml()
 };
+//Unequip item,remove stats. Still need to make it so only item image dissapear, not a whole html
+function unequipItem(id) {
+    var weapon = equippedItems.weapon.id;
+    var armor = equippedItems.armor.id;
+    var accessory = equippedItems.accessory.id;
+    //Weapon unequip
+    if (weapon === id) {
+        equippedItems.weapon = '';
+        player.weaponStrength = 0
+        player.weaponEndurance = 0
+        player.weaponAgility = 0
+        player.weaponDexterity = 0
+        player.weaponIntelligence = 0
+        player.weaponWisdom = 0
+        player.weaponLuck = 0
+    };
+    //Armor unequip
+    if (armor === id) {
+        equippedItems.armor = '';
+        player.armorStrength = 0
+        player.armorEndurance = 0
+        player.armorAgility = 0
+        player.armorDexterity = 0
+        player.armorIntelligence = 0
+        player.armorWisdom = 0
+        player.armorLuck = 0
+    };
+    //Accessory unequip
+    if (accessory === id) {
+        equippedItems.accessory = '';
+        player.accessoryStrength = 0
+        player.accessoryEndurance = 0
+        player.accessoryAgility = 0
+        player.accessoryDexterity = 0
+        player.accessoryIntelligence = 0
+        player.accessoryWisdom = 0
+        player.accessoryLuck = 0
+    };
+    CreateEquipHtml()
+};
 
-var equipmentType = [
-    {
-        type: "Weapon"
-},
-{
-        type: "Armor"
-},
-{
-        type: "Accessory"
-}
-];
+function itemSell(id) {
+    var item = playerInventory.filter(function (obj) {
+        return obj.id === id
+    })[0];
+    var index = playerInventory.indexOf(5);
+    if (index > -1) {
+        array.splice(index, 1);
+    }
+    player.gold += item.value;
+
+    document.getElementById("gold").innerHTML = player.gold;
+    console.log("item value" + item.value)
+    console.log("player gold" + player.gold)
+    console.log("Item" + item.id)
+};
