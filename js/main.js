@@ -21,6 +21,8 @@ function Log(data) {
 var player = {
     stats: 0,
     level: 1,
+    experience: 0,
+    maxexperience: 100,
     inventory: 30,
     baseStrength: 5,
     weaponStrength: 0,
@@ -71,8 +73,6 @@ var player = {
     totalLuck: function () {
         return (player.baseLuck + player.weaponLuck + player.armorLuck + player.accessoryLuck);
     },
-    experience: 0,
-    maxexperience: 100,
     gold: 0,
     health: 50,
     maxhealth: function () {
@@ -116,13 +116,37 @@ var player = {
         return (player.totalIntelligence());
     },
     dropRate: 0,
-    expRate: 0
+    expRate: 0,
+    //Sword
+    swordLevel: 1,
+    swordExp: 0,
+    swordMaxExp: 10,
+    //Dagger
+    daggerLevel: 1,
+    daggerExp: 0,
+    daggerMaxExp: 10,
+    //Axe
+    axeLevel: 1,
+    axeExp: 0,
+    axeMaxExp: 10,
+    //Mace
+    maceLevel: 1,
+    maceExp: 0,
+    maceMaxExp: 10,
+    //Staff
+    staffLevel: 1,
+    staffExp: 0,
+    staffMaxExp: 10,
+    //Fist
+    fistLevel: 1,
+    fistExp: 0,
+    fistMaxExp: 10
 };
 var equippedItems = {
     weapon: {},
     armor: {},
     accessory: {}
-}
+};
 var maxLogLines = 16;
 var logData = {
     length: 0
@@ -484,12 +508,84 @@ function playerDead(monster) {
 
 //monster kill function
 function monsterKilled(monster) {
-
     monster.hp = monster.maxHp;
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     monsterExperience(monster);
     battleTurn = -1;
+    weaponSkill(monster);
 }
+
+//Weapon skill experience
+function weaponSkill(monster) {
+    var expgain = monster.level;
+      //Sword
+    if (equippedItems.weapon.itemType === "Sword") {
+        if (player.swordExp < player.swordMaxExp) {
+            player.swordExp = Math.floor(player.swordExp + expgain);
+        }
+        if (player.swordExp >= player.swordMaxExp) {
+            player.swordLevel += 1;
+            player.swordExp = player.swordExp - player.swordMaxExp;
+            player.swordMaxExp = Math.floor(player.swordMaxExp * 1.2)
+        };
+    }
+        //Dagger
+    else if (equippedItems.weapon.itemType === "Dagger") {
+        if (player.daggerExp < player.daggerMaxExp) {
+            player.daggerExp = Math.floor(player.daggerMaxExp + expgain);
+        }
+        if (player.daggerExp >= player.daggerMaxExp) {
+            player.swordLevel += 1;
+            player.daggerExp = player.daggerExp - player.daggerMaxExp;
+            player.daggerMaxExp = Math.floor(player.daggerMaxExp * 1.2)
+        };
+    }
+        //Axe
+    else if (equippedItems.weapon.itemType === "Axe") {
+        if (player.axeExp < player.axeMaxExp) {
+            player.axeExp = Math.floor(player.axeExp + expgain);
+        }
+        if (player.axeExp >= player.axeMaxExp) {
+            player.swordLevel += 1;
+            player.axeExp = player.axeExp - player.axeMaxExp;
+            player.axeMaxExp = Math.floor(player.axeMaxExp * 1.2)
+        };
+    }
+        //Mace
+    else if (equippedItems.weapon.itemType === "Mace") {
+        if (player.maceExp < player.maceMaxExp) {
+            player.maceExp = Math.floor(player.maceExp + expgain);
+        }
+        if (player.maceExp >= player.maceMaxExp) {
+            player.swordLevel += 1;
+            player.maceExp = player.maceExp - player.maceMaxExp;
+            player.maceMaxExp = Math.floor(player.maceMaxExp * 1.2)
+        };
+    }
+        //Staff
+    else if (equippedItems.weapon.itemType === "Staff") {
+        if (player.staffExp < player.staffMaxExp) {
+            player.staffExp = Math.floor(player.staffExp + expgain);
+        }
+        if (player.staffExp >= player.staffMaxExp) {
+            player.swordLevel += 1;
+            player.staffExp = player.staffExp - player.staffMaxExp;
+            player.staffMaxExp = Math.floor(player.staffMaxExp * 1.2)
+        };
+    }
+        //Fist
+    else if (equippedItems.weapon.itemType === "Fist") {
+        if (player.fistExp < player.fistMaxExp) {
+            player.fistExp = Math.floor(player.fistExp + expgain);
+        }
+        if (player.fistExp >= player.fistMaxExp) {
+            player.swordLevel += 1;
+            player.fistExp = player.fistExp - player.fistMaxExp;
+            player.fistMaxExp = Math.floor(player.fistMaxExp * 1.2)
+        };
+    }
+    CreateWeaponSkillHtml()
+};
 
 //experience gained from killing a monster
 function monsterExperience(monster) {
@@ -503,7 +599,7 @@ function monsterExperience(monster) {
         player.stats += 10;
         player.experience = player.experience - player.maxexperience;
         player.maxexperience = Math.floor(player.maxexperience * 1.15);
-        Log("Turn " + battleTurn + " " + "You leveled up! Your current player.level is: " + player.level);
+        Log("Turn " + battleTurn + " " + "You leveled up! Your current level is: " + player.level);
         }
     else Log("Turn " + battleTurn + " " + "You gain: " + Math.floor(expgain) + "experience!");
     monsterGold(monster);
@@ -519,7 +615,7 @@ function monsterGold(monster) {
     Log("Turn " + battleTurn + " " + "You loot: " + goldDrop + "gold!");
     document.getElementById("gold").innerHTML = player.gold;
     var randomNumber = Math.floor((Math.random() * 100) + 1);
-    if (randomNumber <= 50) {
+    if (randomNumber <= 100) {
         monsterItemDrop(monster);
     }
 };
@@ -873,42 +969,89 @@ function equipItem(id) {
     var item = playerInventory.filter(function (obj) {
         return obj.id === id
     })[0];
-
-    console.log(item);
+   
     if (item.itemType2.type === "Weapon") {
-        equippedItems.weapon = item
-        player.weaponStrength = item.strength
-        player.weaponEndurance = item.endurance
-        player.weaponAgility = item.agility
-        player.weaponDexterity = item.dexterity
-        player.weaponIntelligence = item.intelligence
-        player.weaponWisdom = item.wisdom
-        player.weaponLuck = item.luck
-        console.log("Weapon Equipped")
+        if (equippedItems.weapon.isEquipped === true) {
+            id = equippedItems.weapon.id
+            console.log("ID" + id)
+            unequipItem(id)
+        }
+        else {
+            equippedItems.weapon = item;
+            equippedItems.weapon.isEquipped = true;
+            player.weaponStrength = item.strength;
+            player.weaponEndurance = item.endurance;
+            player.weaponAgility = item.agility;
+            player.weaponDexterity = item.dexterity;
+            player.weaponIntelligence = item.intelligence;
+            player.weaponWisdom = item.wisdom;
+            player.weaponLuck = item.luck;
+            var item = playerInventory.filter(function (obj) {
+                return obj.id === id
+            })[0];
+            var index = playerInventory.indexOf(item);
+            if (index > -1) {
+                playerInventory.splice(index, 1);
+            }
+
+            CreateInventoryWeaponHtml()
+            console.log("Weapon Equipped")
+        }
     }
     else if (item.itemType2.type === "Armor") {
-        console.log("Armor equipped")
-        equippedItems.armor = item
-        player.armorStrength = item.strength
-        player.armorEndurance = item.endurance
-        player.armorAgility = item.agility
-        player.armorDexterity = item.dexterity
-        player.armorIntelligence = item.intelligence
-        player.armorWisdom = item.wisdom
-        player.armorLuck = item.luck
+        if (equippedItems.armor.isEquipped === true) {
+            id = equippedItems.armor.id
+            console.log("ID" + id)
+            unequipItem(id)
+        }
+        else {
+            equippedItems.armor = item;
+            equippedItems.armor.isEquipped = true;
+            player.armorStrength = item.strength;
+            player.armorEndurance = item.endurance;
+            player.armorAgility = item.agility;
+            player.armorDexterity = item.dexterity;
+            player.armorIntelligence = item.intelligence;
+            player.armorWisdom = item.wisdom;
+            player.armorLuck = item.luck;
+            var item = playerInventory.filter(function (obj) {
+                return obj.id === id
+            })[0];
+            var index = playerInventory.indexOf(item);
+            if (index > -1) {
+                playerInventory.splice(index, 1);
+            }
+
+            CreateInventoryWeaponHtml();
+        }
     }
     else if (item.itemType2.type === "Accessory") {
-        console.log("Accessory Equipped")
-        equippedItems.accessory = item
-        player.accessoryStrength = item.strength
-        player.accessoryEndurance = item.endurance
-        player.accessoryAgility = item.agility
-        player.accessoryDexterity = item.dexterity
-        player.accessoryIntelligence = item.intelligence
-        player.accessoryWisdom = item.wisdom
-        player.accessoryLuck = item.luck
+        if (equippedItems.accessory.isEquipped === true) {
+            id = equippedItems.accessory.id
+            console.log("ID" + id)
+            unequipItem(id)
+        }
+        else {
+            equippedItems.accessory = item;
+            equippedItems.accessory.isEquipped = true;
+            player.accessoryStrength = item.strength;
+            player.accessoryEndurance = item.endurance;
+            player.accessoryAgility = item.agility;
+            player.accessoryDexterity = item.dexterity;
+            player.accessoryIntelligence = item.intelligence;
+            player.accessoryWisdom = item.wisdom;
+            player.accessoryLuck = item.luck;
+            var item = playerInventory.filter(function (obj) {
+                return obj.id === id
+            })[0];
+            var index = playerInventory.indexOf(item);
+            if (index > -1) {
+                playerInventory.splice(index, 1);
+            }
+
+            CreateInventoryWeaponHtml();
+        }
     }
-    console.log("Equipped item" + equippedItems);
 
     CreateEquipHtml()
 };
@@ -917,54 +1060,62 @@ function unequipItem(id) {
     var weapon = equippedItems.weapon.id;
     var armor = equippedItems.armor.id;
     var accessory = equippedItems.accessory.id;
+    var weapon2 = equippedItems.weapon;
+    var armor2 = equippedItems.armor;
+    var accessory2 = equippedItems.accessory;
     //Weapon unequip
     if (weapon === id) {
+        equippedItems.weapon.isEquipped = false;
+        playerInventory.splice(1, 0, weapon2);
         equippedItems.weapon = '';
-        player.weaponStrength = 0
-        player.weaponEndurance = 0
-        player.weaponAgility = 0
-        player.weaponDexterity = 0
-        player.weaponIntelligence = 0
-        player.weaponWisdom = 0
-        player.weaponLuck = 0
+        player.weaponStrength = 0;
+        player.weaponEndurance = 0;
+        player.weaponAgility = 0;
+        player.weaponDexterity = 0;
+        player.weaponIntelligence = 0;
+        player.weaponWisdom = 0;
+        player.weaponLuck = 0;
+        CreateInventoryWeaponHtml()
     };
     //Armor unequip
     if (armor === id) {
+        playerInventory.splice(1, 0, armor2);
         equippedItems.armor = '';
-        player.armorStrength = 0
-        player.armorEndurance = 0
-        player.armorAgility = 0
-        player.armorDexterity = 0
-        player.armorIntelligence = 0
-        player.armorWisdom = 0
-        player.armorLuck = 0
+        player.armorStrength = 0;
+        player.armorEndurance = 0;
+        player.armorAgility = 0;
+        player.armorDexterity = 0;
+        player.armorIntelligence = 0;
+        player.armorWisdom = 0;
+        player.armorLuck = 0;
+        CreateInventoryWeaponHtml()
     };
     //Accessory unequip
     if (accessory === id) {
+        playerInventory.splice(1, 0, accessory2);
         equippedItems.accessory = '';
-        player.accessoryStrength = 0
-        player.accessoryEndurance = 0
-        player.accessoryAgility = 0
-        player.accessoryDexterity = 0
-        player.accessoryIntelligence = 0
-        player.accessoryWisdom = 0
-        player.accessoryLuck = 0
+        player.accessoryStrength = 0;
+        player.accessoryEndurance = 0;
+        player.accessoryAgility = 0;
+        player.accessoryDexterity = 0;
+        player.accessoryIntelligence = 0;
+        player.accessoryWisdom = 0;
+        player.accessoryLuck = 0;
+        CreateInventoryWeaponHtml();
     };
-    CreateEquipHtml()
+    CreateEquipHtml();
 };
 
 function itemSell(id) {
     var item = playerInventory.filter(function (obj) {
         return obj.id === id
     })[0];
-    var index = playerInventory.indexOf(5);
+    var index = playerInventory.indexOf(item);
     if (index > -1) {
-        array.splice(index, 1);
+        playerInventory.splice(index, 1);
     }
     player.gold += item.value;
-
+    CreateInventoryWeaponHtml();
     document.getElementById("gold").innerHTML = player.gold;
-    console.log("item value" + item.value)
-    console.log("player gold" + player.gold)
-    console.log("Item" + item.id)
 };
+CreateWeaponSkillHtml()

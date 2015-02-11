@@ -1,4 +1,44 @@
-﻿//Create player Equipped items html
+﻿//Create player Weapon skill html
+function CreateWeaponSkillHtml() {
+    var html = '';
+
+    html += '<table class="table">';
+
+    //Sword
+    html += '<tr>' + '<td>';
+    html += "Sword Skill Level: " + player.swordLevel;
+    html += '</td>' + '</tr>';
+
+    //Dagger
+    html += '<tr>' + '<td>';
+    html += "Dagger Skill Level: " + player.daggerLevel;
+    html += '</td>' + '</tr>';
+
+    //Axe
+    html += '<tr>' + '<td>';
+    html += "Axe Skill Level: " + player.axeLevel;
+    html += '</td>' + '</tr>';
+
+    //Mace
+    html += '<tr>' + '<td>';
+    html += "Mace Skill Level: " + player.maceLevel;
+    html += '</td>' + '</tr>';
+
+    //Staff
+    html += '<tr>' + '<td>';
+    html += "Staff Skill Level: " + player.staffLevel;
+    html += '</td>' + '</tr>';
+
+    //Fist
+    html += '<tr>' + '<td>';
+    html += "Fist Skill Level: " + player.fistLevel;
+    html += '</td>' + '</tr>';
+
+    html += '</table>';
+    document.getElementById("weaponSkill").innerHTML = html;
+};
+
+//Create player Equipped items html
 
 function CreateEquipHtml() {
     var html = '';
@@ -84,7 +124,6 @@ function CreateEquipHtml() {
         html += '</td>' + '</tr>';
     }
 
-    console.log("XD" + html);
     html += '</table>';
     document.getElementById("equipHtml").innerHTML = html;
 };
