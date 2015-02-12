@@ -976,7 +976,7 @@ function equipItem(id) {
             console.log("ID" + id)
             unequipItem(id)
         }
-        else {
+            console.log("TEST")
             equippedItems.weapon = item;
             equippedItems.weapon.isEquipped = true;
             player.weaponStrength = item.strength;
@@ -993,11 +993,9 @@ function equipItem(id) {
             if (index > -1) {
                 playerInventory.splice(index, 1);
             }
-
             CreateInventoryWeaponHtml()
-            console.log("Weapon Equipped")
         }
-    }
+    
     else if (item.itemType2.type === "Armor") {
         if (equippedItems.armor.isEquipped === true) {
             id = equippedItems.armor.id

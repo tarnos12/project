@@ -1,6 +1,12 @@
 _________________________
 v1.1.5 - 6 february 2015 |
 -------------------------|
+- Inventory and Equip screen is working, you can equip, unequip and sell items. Better quality item is worth more gold, even with lower stats.
+- Added Weapon skill levels, while equipped with a sword, you will gain experience for each killed monster, which will level up your "Sword Mastery level"
+- Currently no bonuses for leveling your sword(or any other weapon) level, but I plan to add some bonus stats for a starter, in the near future.
+_________________________
+v1.1.5 - 6 february 2015 |
+-------------------------|
 - You can equip items now(your stats will be updated when you equip an item but there is still no image for item, and you cant unequip them)
 - Items are not saved it, still working on it
 _________________________
