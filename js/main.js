@@ -1050,17 +1050,14 @@ function equipItem(id) {
 };
 //Unequip item,remove stats. Still need to make it so only item image dissapear, not a whole html
 function unequipItem(id, oldId) {
-    var weapon = equippedItems.weapon.id;
-    var armor = equippedItems.armor.id;
-    var accessory = equippedItems.accessory.id;
-    var weapon2 = equippedItems.weapon;
-    var armor2 = equippedItems.armor;
-    var accessory2 = equippedItems.accessory;
+    var weapon = equippedItems.weapon.itemType2.type;
+    var armor = equippedItems.armor.itemType2.type;
+    var accessory = equippedItems.accessory.itemType2.type;
     //Weapon unequip
-    if (weapon === id || weapon === oldId) {
+    if (weapon === "Weapon" || weapon === oldId) {
         equippedItems.weapon.isEquipped = false;
-        playerInventory.push(weapon2);
-        equippedItems.weapon = '';
+        playerInventory.push(equippedItems.weapon);
+        equippedItems.weapon = {};
         player.weaponStrength = 0;
         player.weaponEndurance = 0;
         player.weaponAgility = 0;
@@ -1069,12 +1066,12 @@ function unequipItem(id, oldId) {
         player.weaponWisdom = 0;
         player.weaponLuck = 0;
         CreateInventoryWeaponHtml()
-    };
+    }
     //Armor unequip
-    if (armor === id || armor == oldId) {
+    else if (armor === "Armor" || armor == oldId) {
         equippedItems.armor.isEquipped = false;
-        playerInventory.push(armor2);
-        equippedItems.armor = '';
+        playerInventory.push(equippedItems.armor);
+        equippedItems.armor = {};
         player.armorStrength = 0;
         player.armorEndurance = 0;
         player.armorAgility = 0;
@@ -1083,12 +1080,12 @@ function unequipItem(id, oldId) {
         player.armorWisdom = 0;
         player.armorLuck = 0;
         CreateInventoryWeaponHtml()
-    };
+    }
     //Accessory unequip
-    if (accessory === id || accessory === oldId) {
+   else if (accessory === "Accessory" || accessory === oldId) {
         equippedItems.accessory.isEquipped = false;
-        playerInventory.push(accessory2);
-        equippedItems.accessory = '';
+        playerInventory.push(equippedItems.accessory);
+        equippedItems.accessory = {};
         player.accessoryStrength = 0;
         player.accessoryEndurance = 0;
         player.accessoryAgility = 0;
