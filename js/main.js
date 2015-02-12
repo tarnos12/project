@@ -20,6 +20,7 @@ function Log(data) {
 //PLAYER STATS
 var player = {
     stats: 0,
+    autoBattle: 1,
     level: 1,
     experience: 0,
     maxexperience: 100,
@@ -839,8 +840,8 @@ function monsterItemDrop(monster) {
                 var randomStat = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
                 randomStat = randomStat * monster.level;
                 var multiplier = randomStat * itemQuality.qualityMultiplier;
-
-                stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 2);
+                //Calculate each stat
+                stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 6);
                 stats[stat] = Math.floor(Math.random() * ((stats[stat] * 2)) - stats[stat] / 10 + stats[stat]);
             }
         };
@@ -969,18 +970,14 @@ function equipItem(id) {
     var item = playerInventory.filter(function (obj) {
         return obj.id === id
     })[0];
-   console.log("1 " + item.itemType)
     if (item.itemType2.type === "Weapon") {
         if (equippedItems.weapon.isEquipped === true) {
-            id = equippedItems.weapon.id
-            console.log("2 " + item.itemType)
-            unequipItem(id)
-            console.log("3 " + item.itemType)
+            var oldId = equippedItems.weapon.id
+            unequipItem(oldId)
         }
-        if (item.itemType2.type === "Weapon" && item.id === id) {
+        if (item.id === id) {
             equippedItems.weapon = item;
             equippedItems.weapon.isEquipped = true;
-            console.log("4 " + item.itemType)
             player.weaponStrength = item.strength;
             player.weaponEndurance = item.endurance;
             player.weaponAgility = item.agility;
@@ -988,9 +985,6 @@ function equipItem(id) {
             player.weaponIntelligence = item.intelligence;
             player.weaponWisdom = item.wisdom;
             player.weaponLuck = item.luck;
-            console.log("5 " + item.itemType)
-
-            //This part causes a bug
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
@@ -998,19 +992,15 @@ function equipItem(id) {
             if (index > -1) {
                 playerInventory.splice(index, 1);
             }
-
-            //THIS ^
         }
-        console.log("6 " + item.itemType)
             CreateInventoryWeaponHtml()
         }
-    
     else if (item.itemType2.type === "Armor") {
         if (equippedItems.armor.isEquipped === true) {
-            id = equippedItems.armor.id
-            unequipItem(id)
+          var oldId = equippedItems.armor.id
+            unequipItem(oldId)
         }
-        else {
+        if (item.id === id) {
             equippedItems.armor = item;
             equippedItems.armor.isEquipped = true;
             player.armorStrength = item.strength;
@@ -1023,20 +1013,19 @@ function equipItem(id) {
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
-            var index = playerInventory.indexOf(item);
+            var index = playerInventory.indexOf(item, 0);
             if (index > -1) {
                 playerInventory.splice(index, 1);
             }
-
-            CreateInventoryWeaponHtml();
         }
+        CreateInventoryWeaponHtml()
     }
     else if (item.itemType2.type === "Accessory") {
         if (equippedItems.accessory.isEquipped === true) {
-            id = equippedItems.accessory.id
-            unequipItem(id)
+            var oldId = equippedItems.accessory.id
+            unequipItem(oldId)
         }
-        else {
+        if (item.id === id) {
             equippedItems.accessory = item;
             equippedItems.accessory.isEquipped = true;
             player.accessoryStrength = item.strength;
@@ -1049,19 +1038,18 @@ function equipItem(id) {
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
-            var index = playerInventory.indexOf(item);
+            var index = playerInventory.indexOf(item, 0);
             if (index > -1) {
                 playerInventory.splice(index, 1);
             }
-
-            CreateInventoryWeaponHtml();
         }
+        CreateInventoryWeaponHtml()
     }
 
     CreateEquipHtml()
 };
 //Unequip item,remove stats. Still need to make it so only item image dissapear, not a whole html
-function unequipItem(id) {
+function unequipItem(id, oldId) {
     var weapon = equippedItems.weapon.id;
     var armor = equippedItems.armor.id;
     var accessory = equippedItems.accessory.id;
@@ -1069,7 +1057,7 @@ function unequipItem(id) {
     var armor2 = equippedItems.armor;
     var accessory2 = equippedItems.accessory;
     //Weapon unequip
-    if (weapon === id) {
+    if (weapon === id || weapon === oldId) {
         equippedItems.weapon.isEquipped = false;
         playerInventory.push(weapon2);
         equippedItems.weapon = '';
@@ -1083,7 +1071,8 @@ function unequipItem(id) {
         CreateInventoryWeaponHtml()
     };
     //Armor unequip
-    if (armor === id) {
+    if (armor === id || armor == oldId) {
+        equippedItems.armor.isEquipped = false;
         playerInventory.push(armor2);
         equippedItems.armor = '';
         player.armorStrength = 0;
@@ -1096,7 +1085,8 @@ function unequipItem(id) {
         CreateInventoryWeaponHtml()
     };
     //Accessory unequip
-    if (accessory === id) {
+    if (accessory === id || accessory === oldId) {
+        equippedItems.accessory.isEquipped = false;
         playerInventory.push(accessory2);
         equippedItems.accessory = '';
         player.accessoryStrength = 0;
