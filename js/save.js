@@ -18,7 +18,8 @@
         mpot: mpot,
         playerWeapon: equippedItems.weapon,
         playerArmor: equippedItems.armor,
-        playerAccessory: equippedItems.accessory
+        playerAccessory: equippedItems.accessory,
+        inventory: playerInventory
     }
     localStorage.setItem("save", JSON.stringify(save));
 }
@@ -43,6 +44,7 @@ function load() {
     if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
     if (typeof savegame.playerArmor !== "undefined") equippedItems.armor = savegame.playerArmor;
     if (typeof savegame.playerAccessory !== "undefined") equippedItems.accessory = savegame.playerAccessory;
+    if (typeof savegame.inventory !== "undefined") playerInventory = savegame.inventory;
     document.getElementById('gold').innerHTML = player.gold;
     document.getElementById('health').innerHTML = player.health;
     document.getElementById('stats').innerHTML = player.stats;
@@ -59,9 +61,8 @@ function load() {
     document.getElementById('pot').innerHTML = pot;
     document.getElementById('spot').innerHTML = spot;
     document.getElementById('mpot').innerHTML = mpot;
-    document.getElementById('weaponeq').innerHTML = equippedItems.weapon;
-    document.getElementById('armoreq').innerHTML = equippedItems.armor;
-    document.getElementById('accessoryeq').innerHTML = equippedItems.accessory;
+    CreateInventoryWeaponHtml()
+    CreateEquipHtml()
 }
 
 function reset() {

@@ -969,16 +969,18 @@ function equipItem(id) {
     var item = playerInventory.filter(function (obj) {
         return obj.id === id
     })[0];
-   
+   console.log("1 " + item.itemType)
     if (item.itemType2.type === "Weapon") {
         if (equippedItems.weapon.isEquipped === true) {
             id = equippedItems.weapon.id
-            console.log("ID" + id)
+            console.log("2 " + item.itemType)
             unequipItem(id)
+            console.log("3 " + item.itemType)
         }
-            console.log("TEST")
+        if (item.itemType2.type === "Weapon" && item.id === id) {
             equippedItems.weapon = item;
             equippedItems.weapon.isEquipped = true;
+            console.log("4 " + item.itemType)
             player.weaponStrength = item.strength;
             player.weaponEndurance = item.endurance;
             player.weaponAgility = item.agility;
@@ -986,20 +988,26 @@ function equipItem(id) {
             player.weaponIntelligence = item.intelligence;
             player.weaponWisdom = item.wisdom;
             player.weaponLuck = item.luck;
+            console.log("5 " + item.itemType)
+
+            //This part causes a bug
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
-            var index = playerInventory.indexOf(item);
+            var index = playerInventory.indexOf(item, 0);
             if (index > -1) {
                 playerInventory.splice(index, 1);
             }
+
+            //THIS ^
+        }
+        console.log("6 " + item.itemType)
             CreateInventoryWeaponHtml()
         }
     
     else if (item.itemType2.type === "Armor") {
         if (equippedItems.armor.isEquipped === true) {
             id = equippedItems.armor.id
-            console.log("ID" + id)
             unequipItem(id)
         }
         else {
@@ -1026,7 +1034,6 @@ function equipItem(id) {
     else if (item.itemType2.type === "Accessory") {
         if (equippedItems.accessory.isEquipped === true) {
             id = equippedItems.accessory.id
-            console.log("ID" + id)
             unequipItem(id)
         }
         else {
@@ -1064,7 +1071,7 @@ function unequipItem(id) {
     //Weapon unequip
     if (weapon === id) {
         equippedItems.weapon.isEquipped = false;
-        playerInventory.splice(1, 0, weapon2);
+        playerInventory.push(weapon2);
         equippedItems.weapon = '';
         player.weaponStrength = 0;
         player.weaponEndurance = 0;
@@ -1077,7 +1084,7 @@ function unequipItem(id) {
     };
     //Armor unequip
     if (armor === id) {
-        playerInventory.splice(1, 0, armor2);
+        playerInventory.push(armor2);
         equippedItems.armor = '';
         player.armorStrength = 0;
         player.armorEndurance = 0;
@@ -1090,7 +1097,7 @@ function unequipItem(id) {
     };
     //Accessory unequip
     if (accessory === id) {
-        playerInventory.splice(1, 0, accessory2);
+        playerInventory.push(accessory2);
         equippedItems.accessory = '';
         player.accessoryStrength = 0;
         player.accessoryEndurance = 0;

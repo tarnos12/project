@@ -67,9 +67,11 @@ function CreateEquipHtml() {
                 "Luck: " + equippedItems.weapon.luck +
                 '\n' +
                 "Value: " + equippedItems.weapon.value + "gold" +
-                '">' +
-                '<button onclick="unequipItem' + "(" + equippedItems.weapon.id + ")" + '">Unequip</button>';
-        html += '</td>' + '</tr>';
+                '">';
+                
+        html += '</td>' + '<td>' +
+            '<button onclick="unequipItem' + "(" + equippedItems.weapon.id + ")" + '">Unequip</button>' +
+            '</td>' + '</tr>';
     }
     //Armor
     if (equippedItems.armor.hasOwnProperty('itemType')) {
@@ -93,9 +95,11 @@ function CreateEquipHtml() {
                 "Luck: " + equippedItems.armor.luck +
                 '\n' +
                 "Value: " + equippedItems.armor.value + "gold" +
-                '">' +
-                '<button onclick="unequipItem' + "(" + equippedItems.armor.id + ")" + '">Unequip</button>';
-        html += '</td>' + '</tr>';
+                '">'
+
+       html += '</td>' + '<td>' +
+            '<button onclick="unequipItem' + "(" + equippedItems.armor.id + ")" + '">Unequip</button>' +
+            '</td>' + '</tr>';
     }
     //Accessory
     if (equippedItems.accessory.hasOwnProperty('itemType')) {
@@ -119,9 +123,10 @@ function CreateEquipHtml() {
                 "Luck: " + equippedItems.accessory.luck +
                 '\n' +
                 "Value: " + equippedItems.accessory.value + "gold" +
-                '">' +
-                '<button onclick="unequipItem' + "(" + equippedItems.accessory.id + ")" + '">Unequip</button>';
-        html += '</td>' + '</tr>';
+                '">'
+        html += '</td>' + '<td>' +
+            '<button onclick="unequipItem' + "(" + equippedItems.accessory.id + ")" + '">Unequip</button>' +
+            '</td>' + '</tr>';
     }
 
     html += '</table>';
@@ -189,9 +194,10 @@ function CreateMonsterHtml() {
 function CreateInventoryWeaponHtml() {
     var html = '';
 
+    html += '<table class="table">';
     for (var i = 0; i < playerInventory.length; i++) {
 
-
+        html += '<tr>' + '<td>';
         html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + playerInventory[i].itemQuality +
                 '\n' +
@@ -210,12 +216,12 @@ function CreateInventoryWeaponHtml() {
                 "Luck: " + playerInventory[i].luck +
                 '\n' +
                 "Value: " + playerInventory[i].value + "gold" +
-                '">' +
+                '">' + '</td>';
 
-                playerInventory[i].itemType + " " + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' +
-                '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
-                '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' +
-                '<br />';
+        html += '<td>' + playerInventory[i].itemType + " " + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
+         '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
+         '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
     }
+    html += '</table>';
     document.getElementById("inventory").innerHTML = html;
 };
