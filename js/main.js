@@ -20,7 +20,7 @@ function Log(data) {
 //PLAYER STATS
 var player = {
     stats: 0,
-    autoBattle: 1,
+    autoBattle: 1, // testing
     level: 1,
     experience: 0,
     maxexperience: 100,

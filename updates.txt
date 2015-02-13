@@ -1,5 +1,11 @@
 _________________________
-v1.1.6 - 12 february 2015 |
+v1.1.7 - 13 february 2015|
+-------------------------|
+- Inventory is fully working now
+- Balance changes, each item give much less stats, like 10 times less..if not more, also all stats formula are changed and are much weaker. so instead of 1% critical chance every 1 agi, you need 100 agi.
+- Equipped items now display item rarity, and item value, same for player inventory.
+_________________________
+v1.1.6 - 12 february 2015|
 -------------------------|
 - Inventory and Equip screen is working, you can equip, unequip and sell items. Better quality item is worth more gold, even with lower stats.
 - Added Weapon skill levels, while equipped with a sword, you will gain experience for each killed monster, which will level up your "Sword Mastery level"

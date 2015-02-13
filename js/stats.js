@@ -43,6 +43,7 @@
     document.getElementById("maxexperience").innerHTML = player.maxexperience;
     document.getElementById("experience").innerHTML = player.experience;
 }, 1);
+
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
     exppercent = (Math.floor((player.experience / player.maxexperience) * 100));
