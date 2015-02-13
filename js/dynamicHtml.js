@@ -44,12 +44,13 @@ function CreateEquipHtml() {
     var html = '';
 
     html += '<table class="table">';
+    html += '<tr>' + '<td>' + "Item" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
 
     //Weapon
     if (equippedItems.weapon.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += equippedItems.weapon.itemType2.type + '<img src="images/items/' + equippedItems.weapon.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.weapon.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.weapon.itemQuality +
                 '\n' +
                 "Strength: " + equippedItems.weapon.strength +
@@ -68,8 +69,11 @@ function CreateEquipHtml() {
                 '\n' +
                 "Value: " + equippedItems.weapon.value + "gold" +
                 '">';
-                
-        html += '</td>' + '<td>' +
+
+        html += '</td>' +
+            '<td>' + '<font color="' + equippedItems.weapon.color + '">' + equippedItems.weapon.itemQuality + '</font>' + '</td>' +
+            '<td>' + equippedItems.weapon.value + "Value" + '</td>' +
+            '<td>' +
             '<button onclick="unequipItem' + "(" + equippedItems.weapon.id + ")" + '">Unequip</button>' +
             '</td>' + '</tr>';
     }
@@ -77,7 +81,7 @@ function CreateEquipHtml() {
     if (equippedItems.armor.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += equippedItems.armor.itemType2.type + '<img src="images/items/' + equippedItems.armor.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.armor.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.armor.itemQuality +
                 '\n' +
                 "Strength: " + equippedItems.armor.strength +
@@ -97,15 +101,18 @@ function CreateEquipHtml() {
                 "Value: " + equippedItems.armor.value + "gold" +
                 '">'
 
-       html += '</td>' + '<td>' +
-            '<button onclick="unequipItem' + "(" + equippedItems.armor.id + ")" + '">Unequip</button>' +
-            '</td>' + '</tr>';
+        html += '</td>' +
+             '<td>' + '<font color="' + equippedItems.armor.color + '">' + equippedItems.armor.itemQuality + '</font>' + '</td>' +
+             '<td>' + equippedItems.armor.value + "Value" + '</td>' +
+             '<td>' +
+             '<button onclick="unequipItem' + "(" + equippedItems.armor.id + ")" + '">Unequip</button>' +
+             '</td>' + '</tr>';
     }
     //Accessory
     if (equippedItems.accessory.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += equippedItems.accessory.itemType2.type + '<img src="images/items/' + equippedItems.accessory.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.accessory.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.accessory.itemQuality +
                 '\n' +
                 "Strength: " + equippedItems.accessory.strength +
@@ -124,9 +131,12 @@ function CreateEquipHtml() {
                 '\n' +
                 "Value: " + equippedItems.accessory.value + "gold" +
                 '">'
-        html += '</td>' + '<td>' +
-            '<button onclick="unequipItem' + "(" + equippedItems.accessory.id + ")" + '">Unequip</button>' +
-            '</td>' + '</tr>';
+        html += '</td>' +
+             '<td>' + '<font color="' + equippedItems.accessory.color + '">' + equippedItems.accessory.itemQuality + '</font>' + '</td>' +
+             '<td>' + equippedItems.accessory.value + "Value" + '</td>' +
+             '<td>' +
+             '<button onclick="unequipItem' + "(" + equippedItems.accessory.id + ")" + '">Unequip</button>' +
+             '</td>' + '</tr>';
     }
 
     html += '</table>';
@@ -195,6 +205,7 @@ function CreateInventoryWeaponHtml() {
     var html = '';
 
     html += '<table class="table">';
+    html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Type" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
     for (var i = 0; i < playerInventory.length; i++) {
 
         html += '<tr>' + '<td>';
@@ -218,7 +229,8 @@ function CreateInventoryWeaponHtml() {
                 "Value: " + playerInventory[i].value + "gold" +
                 '">' + '</td>';
 
-        html += '<td>' + playerInventory[i].itemType + " " + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
+        html += '<td>' + playerInventory[i].itemType + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
+            '<td>' + playerInventory[i].value + "Value" +
          '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
          '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
     }

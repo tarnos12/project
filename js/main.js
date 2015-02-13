@@ -77,38 +77,38 @@ var player = {
     gold: 0,
     health: 50,
     maxhealth: function () {
-        return (player.totalEndurance() * 10);
+        return (35 + player.totalEndurance() * 3);
     },
     mana: 50,
     maxMana: function () {
-        return (player.totalWisdom() * 10 + player.totalIntelligence() * 5);
+        return (player.totalWisdom() * 0.5 + player.totalIntelligence() * 0.1);
     },
     manaRegen: function () {
-        return (player.totalWisdom());
+        return (player.totalWisdom() / 5);
     },
     mindamage: function () {
-        return Math.floor((player.totalStrength() * 0.5));
+        return Math.floor((player.totalStrength() * 0.2));
     },
     maxdamage: function () {
-        return (player.totalStrength() * 0.8);
+        return (player.totalStrength() * 0.5);
     },
     hpregen: function () {
-        return Math.floor((player.totalEndurance()));
+        return Math.floor((player.totalEndurance()) / 3);
     },
     accuracy: function () {
-        return Math.floor((95 + (player.totalAgility() * 0.05 + player.totalLuck() * 0.1)));
+        return Math.floor((95 + (player.totalAgility() * 0.02 + player.totalLuck() * 0.01)));
     },
     defense: function () {
-        return (player.totalDexterity() * 1.2 + player.totalEndurance() * 0.5);
+        return (player.totalDexterity() * 0.2 + player.totalEndurance() * 0.1);
     },
     evasion: function () {
-        return (5 + (player.totalAgility() * 0.5 + player.totalLuck() * 0.15));
+        return (5 + (player.totalAgility() * 0.003 + player.totalLuck() * 0.002));
     },
     criticalChance: function () {
-        return (player.totalAgility() * 0.5 + player.totalLuck() * 0.5);
+        return (player.totalAgility() * 0.05 + player.totalLuck() * 0.03);
     },
     criticalDamage: function () {
-        return (player.totalStrength() * 0.1 + player.totalDexterity() * 0.1);
+        return (player.totalStrength() * 0.003 + player.totalDexterity() * 0.002);
     },
     Lifesteal: function () {
         return (player.totalIntelligence() / 100);
@@ -837,11 +837,10 @@ function monsterItemDrop(monster) {
         };
         for (var stat in stats) {
             if (stats.hasOwnProperty(stat)) {
-                var randomStat = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
-                randomStat = randomStat * monster.level;
+                var randomStat = Math.floor(Math.random() * ((monster.level + 2) - monster.level + 1) + monster.level);
                 var multiplier = randomStat * itemQuality.qualityMultiplier;
                 //Calculate each stat
-                stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 6);
+                stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 10);
                 stats[stat] = Math.floor(Math.random() * ((stats[stat] * 2)) - stats[stat] / 10 + stats[stat]);
             }
         };
@@ -1050,11 +1049,11 @@ function equipItem(id) {
 };
 //Unequip item,remove stats. Still need to make it so only item image dissapear, not a whole html
 function unequipItem(id, oldId) {
-    var weapon = equippedItems.weapon.itemType2.type;
-    var armor = equippedItems.armor.itemType2.type;
-    var accessory = equippedItems.accessory.itemType2.type;
+    var weapon = id;
+    var armor = id;
+    var accessory = id;
     //Weapon unequip
-    if (weapon === "Weapon" || weapon === oldId) {
+    if (weapon === equippedItems.weapon.id || weapon === oldId) {
         equippedItems.weapon.isEquipped = false;
         playerInventory.push(equippedItems.weapon);
         equippedItems.weapon = {};
@@ -1068,7 +1067,7 @@ function unequipItem(id, oldId) {
         CreateInventoryWeaponHtml()
     }
     //Armor unequip
-    else if (armor === "Armor" || armor == oldId) {
+    else if (armor === equippedItems.armor.id || armor == oldId) {
         equippedItems.armor.isEquipped = false;
         playerInventory.push(equippedItems.armor);
         equippedItems.armor = {};
@@ -1082,7 +1081,7 @@ function unequipItem(id, oldId) {
         CreateInventoryWeaponHtml()
     }
     //Accessory unequip
-   else if (accessory === "Accessory" || accessory === oldId) {
+    else if (accessory === equippedItems.accessory.id || accessory === oldId) {
         equippedItems.accessory.isEquipped = false;
         playerInventory.push(equippedItems.accessory);
         equippedItems.accessory = {};
