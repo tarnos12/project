@@ -24,55 +24,55 @@ var player = {
     level: 1,
     experience: 0,
     maxexperience: 100,
-    inventory: 30,
+    inventory: 50,
     baseStrength: 5,
     weaponStrength: 0,
     armorStrength: 0,
     accessoryStrength: 0,
     totalStrength: function () {
-        return (player.baseStrength + player.weaponStrength + player.armorStrength + player.accessoryStrength);
+        return Math.floor((player.baseStrength + player.weaponStrength + player.armorStrength + player.accessoryStrength + player.swordStrength() + player.axeStrength() + player.fistStrength()));
     },
     baseEndurance: 5,
     weaponEndurance: 0,
     armorEndurance: 0,
     accessoryEndurance: 0,
     totalEndurance: function () {
-        return (player.baseEndurance + player.weaponEndurance + player.armorEndurance + player.accessoryEndurance);
+        return  Math.floor((player.baseEndurance + player.weaponEndurance + player.armorEndurance + player.accessoryEndurance + player.maceEndurance() + player.axeEndurance()));
     },
     baseAgility: 5,
     weaponAgility: 0,
     armorAgility: 0,
     accessoryAgility: 0,
     totalAgility: function () {
-        return (player.baseAgility + player.weaponAgility + player.armorAgility + player.accessoryAgility);
+        return  Math.floor((player.baseAgility + player.weaponAgility + player.armorAgility + player.accessoryAgility + player.swordAgility() + player.daggerAgility()));
     },
     baseDexterity: 5,
     weaponDexterity: 0,
     armorDexterity: 0,
     accessoryDexterity: 0,
     totalDexterity: function () {
-        return (player.baseDexterity + player.weaponDexterity + player.armorDexterity + player.accessoryDexterity);
+        return  Math.floor((player.baseDexterity + player.weaponDexterity + player.armorDexterity + player.accessoryDexterity + player.daggerDexterity() + player.fistDexterity()));
     },
     baseIntelligence: 5,
     weaponIntelligence: 0,
     armorIntelligence: 0,
     accessoryIntelligence: 0,
     totalIntelligence: function () {
-        return (player.baseIntelligence + player.weaponIntelligence + player.armorIntelligence + player.accessoryIntelligence);
+        return  Math.floor((player.baseIntelligence + player.weaponIntelligence + player.armorIntelligence + player.accessoryIntelligence + player.staffIntelligence()));
     },
     baseWisdom: 5,
     weaponWisdom: 0,
     armorWisdom: 0,
     accessoryWisdom: 0,
     totalWisdom: function () {
-        return (player.baseWisdom + player.weaponWisdom + player.armorWisdom + player.accessoryWisdom);
+        return  Math.floor((player.baseWisdom + player.weaponWisdom + player.armorWisdom + player.accessoryWisdom + player.staffWisdom() + player.maceWisdom()));
     },
     baseLuck: 5,
     weaponLuck: 0,
     armorLuck: 0,
     accessoryLuck: 0,
     totalLuck: function () {
-        return (player.baseLuck + player.weaponLuck + player.armorLuck + player.accessoryLuck);
+        return  Math.floor((player.baseLuck + player.weaponLuck + player.armorLuck + player.accessoryLuck));
     },
     gold: 0,
     health: 50,
@@ -116,33 +116,138 @@ var player = {
     Lifesteal2: function () {
         return (player.totalIntelligence());
     },
+    
     dropRate: 0,
     expRate: 0,
     //Sword
     swordLevel: 1,
     swordExp: 0,
     swordMaxExp: 10,
+    isSword: false,
+    swordStrength: function () {
+        if (player.isSword === true) {
+            return (player.swordLevel * 2);
+        }
+        else if (player.isSword === false) {
+            return (player.swordLevel * 0);
+        }
+    },
+    swordAgility: function () {
+        if (player.isSword === true) {
+            return (player.swordLevel * 1.5);
+        }
+        else if (player.isSword === false) {
+            return (player.swordLevel * 0);
+        }
+    },
     //Dagger
     daggerLevel: 1,
     daggerExp: 0,
     daggerMaxExp: 10,
+    isDagger: false,
+    daggerAgility: function () {
+        if (player.isDagger === true) {
+            return (player.daggerLevel * 2);
+        }
+        else if (player.isDagger === false) {
+            return (player.daggerLevel * 0);
+        }
+    },
+    daggerDexterity: function () {
+        if (player.isDagger === true) {
+            return (player.daggerLevel * 1.5);
+        }
+        else if (player.isDagger === false) {
+            return (player.daggerLevel * 0);
+        }
+    },
     //Axe
     axeLevel: 1,
     axeExp: 0,
     axeMaxExp: 10,
+    isAxe: false,
+    axeStrength: function () {
+        if (player.isAxe === true) {
+            return (player.axeLevel * 2);
+        }
+        else if (player.isAxe === false) {
+            return (player.axeLevel * 0);
+        }
+    },
+    axeEndurance: function () {
+        if (player.isAxe === true) {
+            return (player.axeLevel * 1.5);
+        }
+        else if (player.isAxe === false) {
+            return (player.axeLevel * 0);
+        }
+    },
     //Mace
     maceLevel: 1,
     maceExp: 0,
     maceMaxExp: 10,
+    isMace: false,
+    maceEndurance: function () {
+        if (player.isMace === true) {
+            return (player.maceLevel * 2);
+        }
+        else if (player.isMace === false) {
+            return (player.maceLevel * 0);
+        }
+    },
+    maceWisdom: function () {
+        if (player.isMace === true) {
+            return (player.maceLevel * 1.5);
+        }
+        else if (player.isMace === false) {
+            return (player.maceLevel * 0);
+        }
+    },
     //Staff
     staffLevel: 1,
     staffExp: 0,
     staffMaxExp: 10,
+    isStaff: false,
+    staffIntelligence: function () {
+        if (player.isStaff === true) {
+            return (player.staffLevel * 2);
+        }
+        else if (player.isStaff === false) {
+            return (player.staffLevel * 0);
+        }
+    },
+    staffWisdom: function () {
+        if (player.isStaff === true) {
+            return (player.staffLevel * 1.5);
+        }
+        else if (player.isStaff === false) {
+            return (player.staffLevel * 0);
+        }
+    },
     //Fist
     fistLevel: 1,
     fistExp: 0,
-    fistMaxExp: 10
+    fistMaxExp: 10,
+    isFist: false,
+    fistStrength: function () {
+        if (player.isFist === true) {
+            return (player.fistLevel * 1.5);
+        }
+        else if (player.isFist === false) {
+            return (player.fistLevel * 0);
+        }
+    },
+    fistDexterity: function () {
+        if (player.isFist === true) {
+            return (player.fistLevel * 2);
+        }
+        else if (player.isFist === false) {
+            return (player.fistLevel * 0);
+        }
+    },
 };
+var tempVar = player.swordStrength();
+var tempVar2 = player.totalStrength();
 var equippedItems = {
     weapon: {},
     armor: {},
@@ -200,19 +305,19 @@ var monsterTypes = [
             },
              {
                 type: 'Epic',
-                chance: 4,
+                chance: 15,
              },
             {
                 type: 'Rare',
-                chance: 10,
+                chance: 50,
             },
             {
                 type: 'Uncommon',
-                chance: 25,
+                chance: 334,
             },
             {
                 type: 'Common',
-                chance: 60,
+                chance: 600,
             }
         ]
     },
@@ -223,23 +328,23 @@ var monsterTypes = [
         itemQualityChance: [
              {
                 type: 'Legendary',
-                chance: 2
+                chance: 2,
              },
             {
                 type: 'Epic',
-                chance: 6
+                chance: 28,
             },
             {
                 type: 'Rare',
-                chance: 20
+                chance: 100,
             },
             {
                 type: 'Uncommon',
-                chance: 40
+                chance: 400,
             },
             {
                 type: 'Common',
-                chance: 32
+                chance: 470,
             }
         ]
     },
@@ -250,23 +355,23 @@ var monsterTypes = [
         itemQualityChance: [
              {
                 type: 'Legendary',
-                chance: 3
+                chance: 3,
              },
             {
                 type: 'Epic',
-                chance: 10
+                chance: 97,
             },
             {
                 type: 'Rare',
-                chance: 30
+                chance: 200,
             },
             {
                 type: 'Uncommon',
-                chance: 50
+                chance: 500,
             },
             {
                 type: 'Common',
-                chance: 7
+                chance: 200,
             }
         ]
     },
@@ -277,23 +382,23 @@ var monsterTypes = [
         itemQualityChance: [
              {
                 type: 'Legendary',
-                chance: 5
+                chance: 5,
              },
             {
                 type: 'Epic',
-                chance: 15
+                chance: 145,
             },
             {
                 type: 'Rare',
-                chance: 50
+                chance: 350,
             },
             {
                 type: 'Uncommon',
-                chance: 25
+                chance: 400,
             },
             {
                 type: 'Common',
-                chance: 5
+                chance: 100,
             }
         ]
     }
@@ -536,7 +641,7 @@ function weaponSkill(monster) {
             player.daggerExp = Math.floor(player.daggerMaxExp + expgain);
         }
         if (player.daggerExp >= player.daggerMaxExp) {
-            player.swordLevel += 1;
+            player.daggerLevel += 1;
             player.daggerExp = player.daggerExp - player.daggerMaxExp;
             player.daggerMaxExp = Math.floor(player.daggerMaxExp * 1.2)
         };
@@ -547,7 +652,7 @@ function weaponSkill(monster) {
             player.axeExp = Math.floor(player.axeExp + expgain);
         }
         if (player.axeExp >= player.axeMaxExp) {
-            player.swordLevel += 1;
+            player.axeLevel += 1;
             player.axeExp = player.axeExp - player.axeMaxExp;
             player.axeMaxExp = Math.floor(player.axeMaxExp * 1.2)
         };
@@ -558,7 +663,7 @@ function weaponSkill(monster) {
             player.maceExp = Math.floor(player.maceExp + expgain);
         }
         if (player.maceExp >= player.maceMaxExp) {
-            player.swordLevel += 1;
+            player.maceLevel += 1;
             player.maceExp = player.maceExp - player.maceMaxExp;
             player.maceMaxExp = Math.floor(player.maceMaxExp * 1.2)
         };
@@ -569,7 +674,7 @@ function weaponSkill(monster) {
             player.staffExp = Math.floor(player.staffExp + expgain);
         }
         if (player.staffExp >= player.staffMaxExp) {
-            player.swordLevel += 1;
+            player.staffLevel += 1;
             player.staffExp = player.staffExp - player.staffMaxExp;
             player.staffMaxExp = Math.floor(player.staffMaxExp * 1.2)
         };
@@ -580,7 +685,7 @@ function weaponSkill(monster) {
             player.fistExp = Math.floor(player.fistExp + expgain);
         }
         if (player.fistExp >= player.fistMaxExp) {
-            player.swordLevel += 1;
+            player.fistLevel += 1;
             player.fistExp = player.fistExp - player.fistMaxExp;
             player.fistMaxExp = Math.floor(player.fistMaxExp * 1.2)
         };
@@ -616,11 +721,59 @@ function monsterGold(monster) {
     Log("Turn " + battleTurn + " " + "You loot: " + goldDrop + "gold!");
     document.getElementById("gold").innerHTML = player.gold;
     var randomNumber = Math.floor((Math.random() * 100) + 1);
-    if (randomNumber <= 100) {
+    if (randomNumber >= 50) {
+        Log("Turn " + battleTurn + " " + "<span style=\"color:orange\">You found an item! </span>");
         monsterItemDrop(monster);
     }
+    //TESTING NEW ITEM TYPE DROP
+    /*else if (randomNumber >= 20) { 
+        monsterOtherItemDrop(monster);
+    }*/
 };
 
+var otherItemTypes = [
+    {
+        type: "Orb",
+        itemSubTypes: [
+            {
+                type: "Fire"
+            },
+            {
+                type: "Water"
+            },
+            {
+                type: "Wind"
+            },
+            {
+                type: "Earth"
+            },
+            {
+                type: "Lightning"
+            }
+        ]
+    },
+    {
+        type: "Card",
+        itemSubTypes: [
+            {
+                type: "Common"
+            },
+            {
+                type: "Uncommon"
+            },
+            {
+                type: "Rare"
+            },
+            {
+                type: "Epic"
+            },
+            {
+                type: "Legendary"
+            },
+        ]
+    }
+];
+        
 var itemTypes = [
     {
         type: "Weapon",
@@ -811,6 +964,20 @@ var itemQualities = [
 
 
 //Item drop from killing a monster
+//TESTING NEW ITEM TYPE
+/*function monsterOtherItemDrop(monster) {
+    if (playerInventory.length <= player.inventory) {
+        var itemType2 = "Other"
+        var newItem = {
+            itemType2: otherItemTypes.type,
+        };
+        //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
+        playerInventory.push(newItem);
+
+        CreateInventoryWeaponHtml()
+    }
+};*/
+
 //TEST TEST TEST TEST :)
 function monsterItemDrop(monster) {
     //If amount of item in inventory exceed 20 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
@@ -821,7 +988,7 @@ function monsterItemDrop(monster) {
         var monsterType = getMonsterType(monster);
 
         //Get Item Information
-        var randomItemQuality = Math.floor(Math.random() * (100 - 1) + 1); //Random item quality
+        var randomItemQuality = Math.floor(Math.random() * (1000 - 1) + 1); //Random item quality
         var itemQuality = getItemQuality(randomItemQuality, monsterType);
         var itemType = itemTypes[Math.floor(Math.random() * itemTypes.length)]; //This code gets a random item from the item array.
         var itemType2 = itemType.type;
@@ -903,7 +1070,6 @@ function getItemQuality(randomItemQuality, monsterType) {
     for (var i = 0; i < monsterType.itemQualityChance.length; i++) {
         //This is used to add up the previous quality chance to the next because all of them have to add up to 100. They are inclusive, not exclusive.
         chance += monsterType.itemQualityChance[i].chance;
-
         if (randomItemQuality <= chance) {
             itemQuality = itemQualities.filter(function (obj) {
                 return obj.type === monsterType.itemQualityChance[i].type;
@@ -977,6 +1143,24 @@ function equipItem(id) {
         if (item.id === id) {
             equippedItems.weapon = item;
             equippedItems.weapon.isEquipped = true;
+            if (equippedItems.weapon.itemType === "Sword") {
+                player.isSword = true;
+            }
+            else if (equippedItems.weapon.itemType === "Dagger") {
+                player.isDagger = true;
+            }
+            else if (equippedItems.weapon.itemType === "Axe") {
+                player.isAxe = true;
+            }
+            else if (equippedItems.weapon.itemType === "Mace") {
+                player.isMace = true;
+            }
+            else if (equippedItems.weapon.itemType === "Staff") {
+                player.isStaff = true;
+            }
+            else if (equippedItems.weapon.itemType === "Fist") {
+                player.isFist = true;
+            }
             player.weaponStrength = item.strength;
             player.weaponEndurance = item.endurance;
             player.weaponAgility = item.agility;
@@ -1044,7 +1228,7 @@ function equipItem(id) {
         }
         CreateInventoryWeaponHtml()
     }
-
+    CreateWeaponSkillHtml()
     CreateEquipHtml()
 };
 //Unequip item,remove stats. Still need to make it so only item image dissapear, not a whole html
@@ -1056,6 +1240,24 @@ function unequipItem(id, oldId) {
     if (weapon === equippedItems.weapon.id || weapon === oldId) {
         equippedItems.weapon.isEquipped = false;
         playerInventory.push(equippedItems.weapon);
+        if (equippedItems.weapon.itemType === "Sword") {
+            player.isSword = false;
+        }
+        else if (equippedItems.weapon.itemType === "Dagger") {
+            player.isDagger = false;
+        }
+        else if (equippedItems.weapon.itemType === "Axe") {
+            player.isAxe = false;
+        }
+        else if (equippedItems.weapon.itemType === "Mace") {
+            player.isMace = false;
+        }
+        else if (equippedItems.weapon.itemType === "Staff") {
+            player.isStaff = false;
+        }
+        else if (equippedItems.weapon.itemType === "Fist") {
+            player.isFist = false;
+        }
         equippedItems.weapon = {};
         player.weaponStrength = 0;
         player.weaponEndurance = 0;
@@ -1095,6 +1297,7 @@ function unequipItem(id, oldId) {
         CreateInventoryWeaponHtml();
     };
     CreateEquipHtml();
+    CreateWeaponSkillHtml();
 };
 
 function itemSell(id) {
@@ -1110,3 +1313,22 @@ function itemSell(id) {
     document.getElementById("gold").innerHTML = player.gold;
 };
 CreateWeaponSkillHtml()
+
+var InventoryItemTypes = [
+    {
+        type: 'Weapon',
+        displayName: 'Weapon',
+    },
+    {
+        type: 'Armor',
+        displayName: 'Armor',
+    },
+     {
+         type: 'Accessory',
+         displayName: 'Accessory',
+     },
+      {
+          type: 'Other',
+          displayName: 'Other',
+      },
+];

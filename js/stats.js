@@ -42,6 +42,7 @@
     document.getElementById("level").innerHTML = player.level;
     document.getElementById("maxexperience").innerHTML = player.maxexperience;
     document.getElementById("experience").innerHTML = player.experience;
+
 }, 1);
 
 window.setInterval(function () {
@@ -128,5 +129,26 @@ function upgradeLuck() {
         player.dropRate += 1;
         player.stats = player.stats - 1;
         Log("You have increased your luck by 1! Critical damage/chance and drop rate increased!");
+    }
+};
+
+function loadIsEquipped() {
+    if (equippedItems.weapon.itemType === "Sword") {
+        player.isSword = true;
+    }
+    else if (equippedItems.weapon.itemType === "Dagger") {
+        player.isDagger = true;
+    }
+    else if (equippedItems.weapon.itemType === "Axe") {
+        player.isAxe = true;
+    }
+    else if (equippedItems.weapon.itemType === "Mace") {
+        player.isMace = true;
+    }
+    else if (equippedItems.weapon.itemType === "Staff") {
+        player.isStaff = true;
+    }
+    else if (equippedItems.weapon.itemType === "Fist") {
+        player.isFist = true;
     }
 };

@@ -7,31 +7,37 @@ function CreateWeaponSkillHtml() {
     //Sword
     html += '<tr>' + '<td>';
     html += "Sword Skill Level: " + player.swordLevel;
+    html += '<td>' + "Strength +" + player.swordStrength() + '</td>' + '<td>' + " Agility +" + player.swordAgility() + '</td>';
     html += '</td>' + '</tr>';
 
     //Dagger
     html += '<tr>' + '<td>';
     html += "Dagger Skill Level: " + player.daggerLevel;
+    html += '<td>' + "Agility +" + player.daggerAgility() + '</td>' + '<td>' + " Dexterity +" + player.daggerDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
     //Axe
     html += '<tr>' + '<td>';
     html += "Axe Skill Level: " + player.axeLevel;
+    html += '<td>' + "Strength +" + player.axeStrength() + '</td>' + '<td>' + " Endurance +" + player.axeEndurance() + '</td>';
     html += '</td>' + '</tr>';
 
     //Mace
     html += '<tr>' + '<td>';
     html += "Mace Skill Level: " + player.maceLevel;
+    html += '<td>' + "Endurance +" + player.maceEndurance() + '</td>' + '<td>' + " Wisdom +" + player.maceWisdom() + '</td>';
     html += '</td>' + '</tr>';
 
     //Staff
     html += '<tr>' + '<td>';
     html += "Staff Skill Level: " + player.staffLevel;
+    html += '<td>' + "Intelligence +" + player.staffIntelligence() + '</td>' + '<td>' + " Wisdom +" + player.staffWisdom() + '</td>';
     html += '</td>' + '</tr>';
 
     //Fist
     html += '<tr>' + '<td>';
     html += "Fist Skill Level: " + player.fistLevel;
+    html += '<td>' + "Strength +" + player.fistStrength() + '</td>' + '<td>' + " Dexterity +" + player.fistDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
     html += '</table>';
@@ -201,7 +207,7 @@ function CreateMonsterHtml() {
     document.getElementById("monsterTabs").innerHTML = html;
 };
 //Create playerInventory html
-function CreateInventoryWeaponHtml() {
+/*function CreateInventoryWeaponHtml() {
     var html = '';
 
     html += '<table class="table">';
@@ -233,7 +239,79 @@ function CreateInventoryWeaponHtml() {
             '<td>' + playerInventory[i].value + "Value" +
          '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
          '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
+
+        
     }
     html += '</table>';
+    document.getElementById("inventory").innerHTML = html;
+};*/
+
+//TEST
+function CreateInventoryWeaponHtml() {
+    var html = '';
+    html += '<ul class="nav nav-tabs">';
+
+    for (var k = 0; k < 4; k++) {
+
+        if (k === 0) {
+            html += '<li class="active">';
+        } else {
+            html += '<li>';
+        }
+
+        html += '<a href="#tab_' + InventoryItemTypes[k].type + '" data-toggle="tab">' + InventoryItemTypes[k].displayName + '</a></li>';
+    }
+
+    html += '</ul>';
+    html += '<div class="tab-content">';
+    for (var j = 0; j < InventoryItemTypes.length; j++) {
+
+        if (j === 0) {
+            html += '<div class="tab-pane active" ';
+
+        } else {
+            html += '<div class="tab-pane" ';
+        }
+
+        html += 'id="tab_' + InventoryItemTypes[j].type + '">'
+
+        html += '<table class="table">';
+        html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Type" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
+        for (var i = 0; i < playerInventory.length; i++) {
+            if (playerInventory[i].itemType2.type === InventoryItemTypes[j].type) {
+
+                html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">'
+                html += '<tr>' + '<td>';
+                html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+                         "Item Rarity: " + playerInventory[i].itemQuality +
+                        '\n' +
+                        "Strength: " + playerInventory[i].strength +
+                        '\n' +
+                        "Endurance: " + playerInventory[i].endurance +
+                        '\n' +
+                        "Agility: " + playerInventory[i].agility +
+                        '\n' +
+                        "Dexterity: " + playerInventory[i].dexterity +
+                        '\n' +
+                        "Intelligence: " + playerInventory[i].intelligence +
+                        '\n' +
+                        "Wisdom: " + playerInventory[i].wisdom +
+                        '\n' +
+                        "Luck: " + playerInventory[i].luck +
+                        '\n' +
+                        "Value: " + playerInventory[i].value + "gold" +
+                        '">' + '</td>' + '</div>';
+
+                html += '<td>' + playerInventory[i].itemType + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
+                    '<td>' + playerInventory[i].value + "Value" +
+                 '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
+                 '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
+            }
+        }
+        html += '</table>';
+        html += '</div>';
+    }
+    html += '</div>';
+
     document.getElementById("inventory").innerHTML = html;
 };

@@ -1,4 +1,12 @@
 _________________________
+v1.1.8 - 14 february 2015|
+-------------------------|
+- Weapon skills, When you equip weapon, you gain experience(currently hidden) and level up your weapon mastery, while you have it equipped it gives you passive stats which you can see at Weapon Skills page.
+___________________________
+v1.1.7.1 - 13 february 2015|
+---------------------------|
+- Fix to loading equipped items stats
+_________________________
 v1.1.7 - 13 february 2015|
 -------------------------|
 - Inventory is fully working now

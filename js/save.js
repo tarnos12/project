@@ -91,8 +91,10 @@ function load() {
     document.getElementById('spot').innerHTML = spot;
     document.getElementById('mpot').innerHTML = mpot;
     document.getElementById("gold").innerHTML = player.gold;
-    CreateInventoryWeaponHtml()
-    CreateEquipHtml()
+    CreateInventoryWeaponHtml();
+    CreateEquipHtml();
+    loadIsEquipped();
+    CreateWeaponSkillHtml()
 }
 
 function reset() {
