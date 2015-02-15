@@ -29,16 +29,16 @@
     document.getElementById("defense").innerHTML = player.defense().toFixed(2);
     document.getElementById("criticalDamage").innerHTML = player.criticalDamage().toFixed(2) * 100 + "%";
     document.getElementById("criticalChance").innerHTML = player.criticalChance().toFixed(2);
-    document.getElementById("Lifesteal2").innerHTML = player.Lifesteal2().toFixed(2)
-    document.getElementById("Lifesteal").innerHTML = player.Lifesteal().toFixed(2)
+    document.getElementById("Lifesteal2").innerHTML = player.Lifesteal2().toFixed(2);
+    document.getElementById("Lifesteal").innerHTML = player.Lifesteal().toFixed(2);
     document.getElementById("intelligence").innerHTML = player.totalIntelligence();
     document.getElementById("mana").innerHTML = player.mana.toFixed(0);
     document.getElementById("maxmana").innerHTML = player.maxMana().toFixed(0);
     document.getElementById("wisdom").innerHTML = player.totalWisdom();
-    document.getElementById("manaRegen").innerHTML = player.manaRegen()
+    document.getElementById("manaRegen").innerHTML = player.manaRegen();
     document.getElementById("luck").innerHTML = player.totalLuck();
-    document.getElementById("evasion").innerHTML = player.evasion()
-    document.getElementById("dropRate").innerHTML = player.dropRate;
+    document.getElementById("evasion").innerHTML = player.evasion();
+    document.getElementById("dropRate").innerHTML = player.dropRate();
     document.getElementById("level").innerHTML = player.level;
     document.getElementById("maxexperience").innerHTML = player.maxexperience;
     document.getElementById("experience").innerHTML = player.experience;
@@ -126,7 +126,6 @@ function upgradeWisdom() {
 function upgradeLuck() {
     if (player.stats >= 1) {
         player.baseLuck += 1;
-        player.dropRate += 1;
         player.stats = player.stats - 1;
         Log("You have increased your luck by 1! Critical damage/chance and drop rate increased!");
     }

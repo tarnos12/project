@@ -1,3 +1,8 @@
+___________________________
+v1.1.8.1 - 14 february 2015|
+---------------------------|
+- Fixed a bug, where you could not load your weapon skill stats
+- Loading "Drop rate" is now working, but currently drop rate, does not affect your drop. I will change this in the near future, when I add new items to the game.
 _________________________
 v1.1.8 - 14 february 2015|
 -------------------------|

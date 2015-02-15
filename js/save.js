@@ -40,13 +40,37 @@
         accessoryWisdom: player.accessoryWisdom,
         weaponLuck: player.weaponLuck,
         armorLuck: player.armorLuck,
-        accessoryLuck: player.accessoryLuck
+        accessoryLuck: player.accessoryLuck,
+        swordMaxExp: player.swordMaxExp,
+        swordLevel: player.swordLevel,
+        daggerMaxExp: player.daggerMaxExp,
+        daggerLevel: player.daggerLevel,
+        axeMaxExp: player.axeMaxExp,
+        axeLevel: player.axeLevel,
+        maceMaxExp: player.maceMaxExp,
+        maceLevel: player.maceLevel,
+        staffMaxExp: player.staffMaxExp,
+        staffLevel: player.staffLevel,
+        fistMaxExp: player.fistMaxExp,
+        fistLevel: player.fistLevel,
     }
     localStorage.setItem("save", JSON.stringify(save));
 }
 
 function load() {
     var savegame = JSON.parse(localStorage.getItem("save"));
+    if (typeof savegame.swordMaxExp !== "undefined") player.swordMaxExp = savegame.swordMaxExp;
+    if (typeof savegame.swordLevel !== "undefined") player.swordLevel = savegame.swordLevel;
+    if (typeof savegame.daggerMaxExp !== "undefined") player.daggerMaxExp = savegame.daggerMaxExp;
+    if (typeof savegame.daggerLevel !== "undefined") player.daggerLevel = savegame.daggerLevel;
+    if (typeof savegame.axeMaxExp !== "undefined") player.axeMaxExp = savegame.axeMaxExp;
+    if (typeof savegame.axeLevel !== "undefined") player.axeLevel = savegame.axeLevel;
+    if (typeof savegame.maceMaxExp !== "undefined") player.maceMaxExp = savegame.maceMaxExp;
+    if (typeof savegame.maceLevel !== "undefined") player.maceLevel = savegame.maceLevel;
+    if (typeof savegame.staffMaxExp !== "undefined") player.staffMaxExp = savegame.staffMaxExp;
+    if (typeof savegame.staffLevel !== "undefined") player.staffLevel = savegame.staffLevel;
+    if (typeof savegame.fistMaxExp !== "undefined") player.fistMaxExp = savegame.fistMaxExp;
+    if (typeof savegame.fistLevel !== "undefined") player.fistLevel = savegame.fistLevel;
     if (typeof savegame.weaponStrength !== "undefined") player.weaponStrength = savegame.weaponStrength;
     if (typeof savegame.armorStrength !== "undefined") player.armorStrength = savegame.armorStrength;
     if (typeof savegame.accessoryStrength !== "undefined") player.accessoryStrength = savegame.accessoryStrength;
@@ -94,7 +118,7 @@ function load() {
     CreateInventoryWeaponHtml();
     CreateEquipHtml();
     loadIsEquipped();
-    CreateWeaponSkillHtml()
+    CreateWeaponSkillHtml();
 }
 
 function reset() {

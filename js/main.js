@@ -72,7 +72,7 @@ var player = {
     armorLuck: 0,
     accessoryLuck: 0,
     totalLuck: function () {
-        return  Math.floor((player.baseLuck + player.weaponLuck + player.armorLuck + player.accessoryLuck));
+        return Math.floor((player.baseLuck + player.weaponLuck + player.armorLuck + player.accessoryLuck));
     },
     gold: 0,
     health: 50,
@@ -117,7 +117,9 @@ var player = {
         return (player.totalIntelligence());
     },
     
-    dropRate: 0,
+    dropRate: function () {
+        return (player.totalLuck());
+    },
     expRate: 0,
     //Sword
     swordLevel: 1,
@@ -638,7 +640,7 @@ function weaponSkill(monster) {
         //Dagger
     else if (equippedItems.weapon.itemType === "Dagger") {
         if (player.daggerExp < player.daggerMaxExp) {
-            player.daggerExp = Math.floor(player.daggerMaxExp + expgain);
+            player.daggerExp = Math.floor(player.daggerExp + expgain);
         }
         if (player.daggerExp >= player.daggerMaxExp) {
             player.daggerLevel += 1;
