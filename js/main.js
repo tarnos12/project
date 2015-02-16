@@ -23,7 +23,7 @@ var player = {
     autoBattle: 1, // testing
     level: 1,
     experience: 0,
-    maxexperience: 100,
+    maxExperience: 100,
     inventory: 50,
     baseStrength: 5,
     weaponStrength: 0,
@@ -86,10 +86,10 @@ var player = {
     manaRegen: function () {
         return (player.totalWisdom() / 5);
     },
-    mindamage: function () {
+    minDamage: function () {
         return Math.floor((player.totalStrength() * 0.2));
     },
-    maxdamage: function () {
+    maxDamage: function () {
         return (player.totalStrength() * 0.5);
     },
     hpregen: function () {
@@ -512,7 +512,7 @@ function playerCriticalChance(monster){
 
 //player critical damage calculation
 function playerCriticalDamage(monster){
-    var damage = Math.floor(Math.random() * (player.maxdamage() - player.mindamage() + 1)) + player.mindamage();
+    var damage = Math.floor(Math.random() * (player.maxDamage() - player.minDamage() + 1)) + player.minDamage();
     damage = Math.floor(damage * player.criticalDamage() * (10 / (10 + monster.def)));
     if (damage >= 1) {
         playerDamageDeal(damage, monster);
@@ -524,7 +524,7 @@ function playerCriticalDamage(monster){
 
 //player normal damage calculation
 function playerDamage(monster) {
-    var damage = Math.floor(Math.random() * (player.maxdamage() - player.mindamage() + 1)) + player.mindamage();
+    var damage = Math.floor(Math.random() * (player.maxDamage() - player.minDamage() + 1)) + player.minDamage();
     damage = Math.floor(damage * (10 / (10 + monster.def)));
     if (damage >= 1) {
         playerDamageDeal(damage, monster);
@@ -699,14 +699,14 @@ function weaponSkill(monster) {
 function monsterExperience(monster) {
 
     var expgain = monster.baseExp / (player.level / 8);
-    if (player.experience < player.maxexperience) {
+    if (player.experience < player.maxExperience) {
         player.experience = Math.floor(player.experience + expgain);
     }
-    if (player.experience >= player.maxexperience) {
+    if (player.experience >= player.maxExperience) {
         player.level += 1;
         player.stats += 10;
-        player.experience = player.experience - player.maxexperience;
-        player.maxexperience = Math.floor(player.maxexperience * 1.15);
+        player.experience = player.experience - player.maxExperience;
+        player.maxExperience = Math.floor(player.maxExperience * 1.15);
         Log("Turn " + battleTurn + " " + "You leveled up! Your current level is: " + player.level);
         }
     else Log("Turn " + battleTurn + " " + "You gain: " + Math.floor(expgain) + "experience!");
@@ -716,19 +716,21 @@ function monsterExperience(monster) {
 
 //gold gained from killing a monster
 function monsterGold(monster) {
-    var goldDrop = Math.floor((Math.random() * 100) + 1);
     var goldDrop = Math.floor(Math.random() * ((monster.level + 5) - monster.level + 1) + monster.level);
     goldDrop = goldDrop * monster.level;
     player.gold += goldDrop;
     Log("Turn " + battleTurn + " " + "You loot: " + goldDrop + "gold!");
     document.getElementById("gold").innerHTML = player.gold;
     var randomNumber = Math.floor((Math.random() * 100) + 1);
-    if (randomNumber >= 50) {
+    if (randomNumber <= 50 + (player.dropRate() / 10)) {
+        console.log("Random number: " + randomNumber)
+        console.log("Drop rate: " + (50 + (player.dropRate()) / 10 ))
+        
         Log("Turn " + battleTurn + " " + "<span style=\"color:orange\">You found an item! </span>");
         monsterItemDrop(monster);
     }
     //TESTING NEW ITEM TYPE DROP
-    /*else if (randomNumber >= 20) { 
+    /*else if (randomNumber <= 70) { 
         monsterOtherItemDrop(monster);
     }*/
 };

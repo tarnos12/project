@@ -16,8 +16,8 @@
         document.getElementById("vis6").style.visibility = "hidden";
         document.getElementById("vis7").style.visibility = "hidden";
     }
-    document.getElementById('mindamage').innerHTML = player.mindamage().toFixed(0);
-    document.getElementById('maxdamage').innerHTML = player.maxdamage().toFixed(0);
+    document.getElementById('mindamage').innerHTML = player.minDamage().toFixed(0);
+    document.getElementById('maxdamage').innerHTML = player.maxDamage().toFixed(0);
     document.getElementById('strength').innerHTML = player.totalStrength();
     document.getElementById("maxhealth").innerHTML = player.maxhealth();
     document.getElementById("hpregen").innerHTML = player.hpregen();
@@ -40,7 +40,7 @@
     document.getElementById("evasion").innerHTML = player.evasion();
     document.getElementById("dropRate").innerHTML = player.dropRate();
     document.getElementById("level").innerHTML = player.level;
-    document.getElementById("maxexperience").innerHTML = player.maxexperience;
+    document.getElementById("maxexperience").innerHTML = player.maxExperience;
     document.getElementById("experience").innerHTML = player.experience;
 
 }, 1);

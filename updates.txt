@@ -1,3 +1,10 @@
+_________________________
+v1.1.9 - 16 february 2015|
+-------------------------|
+- Fixed a glitch with inventory items moving off screen when using Firefox
+- Small bug fixes
+- Upgrading luck, and increasing your drop rate, now affects how often you drop an item, starting at 50.5% increasing by 0.1% every point in luck, 
+so you need 500 points in luck to have 100% drop rate, any more than this won't give any bonuses.
 ___________________________
 v1.1.8.1 - 14 february 2015|
 ---------------------------|

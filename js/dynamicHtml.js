@@ -267,10 +267,10 @@ function CreateInventoryWeaponHtml() {
     for (var j = 0; j < InventoryItemTypes.length; j++) {
 
         if (j === 0) {
-            html += '<div class="tab-pane active" ';
+            html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane active" ';
 
         } else {
-            html += '<div class="tab-pane" ';
+            html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane" ';
         }
 
         html += 'id="tab_' + InventoryItemTypes[j].type + '">'
@@ -279,8 +279,6 @@ function CreateInventoryWeaponHtml() {
         html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Type" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType2.type === InventoryItemTypes[j].type) {
-
-                html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">'
                 html += '<tr>' + '<td>';
                 html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
                          "Item Rarity: " + playerInventory[i].itemQuality +
