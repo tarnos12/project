@@ -298,7 +298,7 @@
                                     <table class="table">
                                         <tr>
                                             <td colspan="2">
-                                                <img src="images/hp.jpg" alt="Health Potion">(20hp): <span id="pot">0</span>
+                                                <img src="images/hp.png" alt="Health Potion">(20hp): <span id="pot">0</span>
                                             </td>
                                             <td>
                                                 <input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();">
@@ -306,7 +306,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <img src="images/hp1.jpg" alt="Super Potion">(100hp):<span id="spot">0</span>
+                                                <img src="images/hp.png" alt="Super Potion">(100hp):<span id="spot">0</span>
                                             </td>
                                             <td>
                                                 <input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();">
@@ -314,7 +314,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <img src="images/hp2.jpg" alt="Mega Potion">(500hp):<span id="mpot">0</span>
+                                                <img src="images/hp.png" alt="Mega Potion">(500hp):<span id="mpot">0</span>
                                             </td>
                                             <td>
                                                 <input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
@@ -350,109 +350,111 @@
                             <div class="c3">
                                 <h3>Player Inventory</h3>
                             </div>
-                            <div id="inventory"></div>
-                        </div>
-                        <div class="tab-pane" id="tab_c2">
-                            <h4>Shop</h4>
-                            <p>
-                                <img src="images/hp.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Health Potion(20gold each): <button onclick="buypot()">Buy 1</button> <button onclick="buypot10()">Buy 10</button><br>
-                                <img src="images/hp1.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Super Potion(100gold each): <button onclick="buyspot()">Buy 1</button><button onclick="buyspot10()">Buy 10</button><br>
-                                <img src="images/hp2.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Mega Potion(500gold each): <button onclick="buympot()">Buy 1</button><button onclick="buympot10()">Buy 10</button>
-                            </p>
-                        </div>
-                        <div class="tab-pane" id="tab_d2">
-                            <div class="c3">
-                                <h3>Monsters info</h3>
+
+                                <div id="inventory"></div>
+
+                                </div>
+                                <div class="tab-pane" id="tab_c2">
+                                    <h4>Shop</h4>
+                                    <p>
+                                        <img src="images/hp.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Health Potion(20gold each): <button onclick="buypot()">Buy 1</button> <button onclick="buypot10()">Buy 10</button><br>
+                                        <img src="images/hp1.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Super Potion(100gold each): <button onclick="buyspot()">Buy 1</button><button onclick="buyspot10()">Buy 10</button><br>
+                                        <img src="images/hp2.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Mega Potion(500gold each): <button onclick="buympot()">Buy 1</button><button onclick="buympot10()">Buy 10</button>
+                                    </p>
+                                </div>
+                                <div class="tab-pane" id="tab_d2">
+                                    <div class="c3">
+                                        <h3>Monsters info</h3>
+                                    </div>
+                                    <ul class="nav nav-pills">
+                                        <li class="active"><a href="#tab_z1" data-toggle="tab">Weak</a></li>
+                                        <li><a href="#tab_z2" data-toggle="tab">Average</a></li>
+                                        <li><a href="#tab_z3" data-toggle="tab">Strong</a></li>
+                                        <li><a href="#tab_z4" data-toggle="tab">Boss</a></li>
+                                        <li><a href="#tab_z5" data-toggle="tab">???</a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_z1">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Health</td>
+                                                    <td>Attack</td>
+                                                    <td>Defense</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>monster1</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane" id="tab_z2">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Health</td>
+                                                    <td>Attack</td>
+                                                    <td>Defense</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>monster1</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane" id="tab_z3">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Health</td>
+                                                    <td>Attack</td>
+                                                    <td>Defense</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>monster1</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane" id="tab_z4">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Health</td>
+                                                    <td>Attack</td>
+                                                    <td>Defense</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>monster1</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane" id="tab_z5">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Health</td>
+                                                    <td>Attack</td>
+                                                    <td>Defense</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>monster1</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_e2">
+                                    <h4>Save &amp; Options</h4>
+                                    <div class=".col-sm-5 col-md-5 .col-lg-5"><button onclick="save()">save</button> <button onclick="load()">load</button> <button onclick="reset()">reset</button></div>
+                                    <div class="c3"> <a href="updates.txt" target="_blank">Changelog</a></div>
+                                </div>
+                                <!-- tab content -->
                             </div>
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#tab_z1" data-toggle="tab">Weak</a></li>
-                                <li><a href="#tab_z2" data-toggle="tab">Average</a></li>
-                                <li><a href="#tab_z3" data-toggle="tab">Strong</a></li>
-                                <li><a href="#tab_z4" data-toggle="tab">Boss</a></li>
-                                <li><a href="#tab_z5" data-toggle="tab">???</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="tab_z1">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Health</td>
-                                            <td>Attack</td>
-                                            <td>Defense</td>
-                                            <td>Description</td>
-                                        </tr>
-                                        <tr>
-                                            <td>monster1</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="tab-pane" id="tab_z2">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Health</td>
-                                            <td>Attack</td>
-                                            <td>Defense</td>
-                                            <td>Description</td>
-                                        </tr>
-                                        <tr>
-                                            <td>monster1</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="tab-pane" id="tab_z3">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Health</td>
-                                            <td>Attack</td>
-                                            <td>Defense</td>
-                                            <td>Description</td>
-                                        </tr>
-                                        <tr>
-                                            <td>monster1</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="tab-pane" id="tab_z4">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Health</td>
-                                            <td>Attack</td>
-                                            <td>Defense</td>
-                                            <td>Description</td>
-                                        </tr>
-                                        <tr>
-                                            <td>monster1</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="tab-pane" id="tab_z5">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Name</td>
-                                            <td>Health</td>
-                                            <td>Attack</td>
-                                            <td>Defense</td>
-                                            <td>Description</td>
-                                        </tr>
-                                        <tr>
-                                            <td>monster1</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
+                            <!-- end of container -->
                         </div>
-                        <div class="tab-pane" id="tab_e2">
-                            <h4>Save &amp; Options</h4>
-                            <div class=".col-sm-5 col-md-5 .col-lg-5"><button onclick="save()">save</button> <button onclick="load()">load</button> <button onclick="reset()">reset</button></div>
-                            <div class="c3"> <a href="updates.txt" target="_blank">Changelog</a></div>
-                        </div>
-                        <!-- tab content -->
-                    </div>
-                    <!-- end of container -->
-                </div>
             </div>
         </div>
         <div class="container">

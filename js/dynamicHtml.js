@@ -56,7 +56,7 @@ function CreateEquipHtml() {
     if (equippedItems.weapon.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.weapon.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.weapon.itemType + equippedItems.weapon.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.weapon.itemQuality +
                 '\n' +
                 "Strength: " + equippedItems.weapon.strength +
@@ -87,7 +87,7 @@ function CreateEquipHtml() {
     if (equippedItems.armor.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.armor.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.armor.itemType + equippedItems.armor.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.armor.itemQuality +
                 '\n' +
                 "Strength: " + equippedItems.armor.strength +
@@ -118,7 +118,7 @@ function CreateEquipHtml() {
     if (equippedItems.accessory.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.accessory.itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.accessory.itemType + equippedItems.accessory.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.accessory.itemQuality +
                 '\n' +
                 "Strength: " + equippedItems.accessory.strength +
@@ -280,7 +280,7 @@ function CreateInventoryWeaponHtml() {
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType2.type === InventoryItemTypes[j].type) {
                 html += '<tr>' + '<td>';
-                html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
+                html += '<img src="images/items/' + playerInventory[i].itemType + playerInventory[i].itemQuality + '.png" "data-toggle=" "tooltip" title="' +
                          "Item Rarity: " + playerInventory[i].itemQuality +
                         '\n' +
                         "Strength: " + playerInventory[i].strength +
@@ -305,6 +305,7 @@ function CreateInventoryWeaponHtml() {
                  '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
                  '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
             }
+            //Else if inventory item type is equal to orb/card/etc...different code here, without item stats etc.
         }
         html += '</table>';
         html += '</div>';

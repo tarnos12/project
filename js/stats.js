@@ -47,8 +47,8 @@
 
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
-    exppercent = (Math.floor((player.experience / player.maxexperience) * 100));
-    var exppercent2 = (Math.floor((player.experience / player.maxexperience) * 100));
+    exppercent = (Math.floor((player.experience / player.maxExperience) * 100));
+    var exppercent2 = (Math.floor((player.experience / player.maxExperience) * 100));
     exppercent2 = exppercent2 / 2.5;
     var divArray = document.getElementById('progressBar');
     divArray.style.width = ((exppercent2) + '%');

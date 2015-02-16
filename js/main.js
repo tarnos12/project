@@ -248,8 +248,6 @@ var player = {
         }
     },
 };
-var tempVar = player.swordStrength();
-var tempVar2 = player.totalStrength();
 var equippedItems = {
     weapon: {},
     armor: {},
@@ -722,18 +720,35 @@ function monsterGold(monster) {
     Log("Turn " + battleTurn + " " + "You loot: " + goldDrop + "gold!");
     document.getElementById("gold").innerHTML = player.gold;
     var randomNumber = Math.floor((Math.random() * 100) + 1);
-    if (randomNumber <= 50 + (player.dropRate() / 10)) {
-        console.log("Random number: " + randomNumber)
-        console.log("Drop rate: " + (50 + (player.dropRate()) / 10 ))
-        
-        Log("Turn " + battleTurn + " " + "<span style=\"color:orange\">You found an item! </span>");
+    if (randomNumber <= (50 + (player.dropRate() / 10))) {
         monsterItemDrop(monster);
     }
     //TESTING NEW ITEM TYPE DROP
-    /*else if (randomNumber <= 70) { 
+   /* var randomNumber = Math.floor((Math.random() * 100) + 1);
+    if (randomNumber <= (50 + (player.dropRate() / 10))) {
         monsterOtherItemDrop(monster);
+        Log("Turn " + battleTurn + " " + "<span style=\"color:orange\">You found an item! </span>");
     }*/
 };
+//Item drop from killing a monster
+//TESTING NEW ITEM TYPE
+/*function monsterOtherItemDrop(monster) {
+    if (playerInventory.length <= player.inventory) {
+        var itemType = otherItemTypes[Math.floor(Math.random() * otherItemTypes.length)]; //This code gets a random item from the item array.
+        var itemType2 = itemType.type;
+        var itemSubType = itemType.itemSubTypes[Math.floor(Math.random() * itemType.itemSubTypes.length)]; //This gets a random item sub type from the subType array.
+        console.log("1st " + itemType.type)
+        console.log("2nd " + itemSubType.type)
+        var newItem = {
+            itemType: itemSubType.type,
+            itemType2: itemType,
+        };
+        //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
+        playerInventory.push(newItem);
+
+        CreateInventoryWeaponHtml()
+    }
+};*/
 
 var otherItemTypes = [
     {
@@ -967,26 +982,12 @@ var itemQualities = [
 ];
 
 
-//Item drop from killing a monster
-//TESTING NEW ITEM TYPE
-/*function monsterOtherItemDrop(monster) {
-    if (playerInventory.length <= player.inventory) {
-        var itemType2 = "Other"
-        var newItem = {
-            itemType2: otherItemTypes.type,
-        };
-        //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
-        playerInventory.push(newItem);
-
-        CreateInventoryWeaponHtml()
-    }
-};*/
 
 //TEST TEST TEST TEST :)
 function monsterItemDrop(monster) {
     //If amount of item in inventory exceed 20 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
     if (playerInventory.length <= player.inventory) {
-
+        Log("<span style=\"color:orange\">You found an item! </span>");
         var currentDate = new Date();
 
         var monsterType = getMonsterType(monster);
@@ -1056,7 +1057,7 @@ function monsterItemDrop(monster) {
         //EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
       //  console.log("Number of items " + playerInventory.length);
     } else
-      console.log("FULL INV");
+        Log("<span style=\"color:orange\">Inventory full! </span>");
 }
 
 function getMonsterType(monster) {
