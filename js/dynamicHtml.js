@@ -272,7 +272,7 @@ function CreateInventoryWeaponHtml() {
     html += '<div class="tab-content" id="tabControl_Inventory">';
     for (var j = 0; j < InventoryItemTypes.length; j++) {
 
-        if (j === 0) {
+        if (j === inventoryTabActiveNum) {
             html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane active" ';
 
         } else {
