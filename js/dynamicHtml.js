@@ -59,6 +59,8 @@ function CreateEquipHtml() {
         html += '<img src="images/items/' + equippedItems.weapon.itemType + equippedItems.weapon.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.weapon.itemQuality +
                 '\n' +
+                "Item Type: " + equippedItems.weapon.itemType +
+                '\n' +
                 "Strength: " + equippedItems.weapon.strength +
                 '\n' +
                 "Endurance: " + equippedItems.weapon.endurance +
@@ -90,6 +92,8 @@ function CreateEquipHtml() {
         html += '<img src="images/items/' + equippedItems.armor.itemType + equippedItems.armor.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.armor.itemQuality +
                 '\n' +
+                "Item Type: " + equippedItems.armor.itemType +
+                '\n' +
                 "Strength: " + equippedItems.armor.strength +
                 '\n' +
                 "Endurance: " + equippedItems.armor.endurance +
@@ -114,34 +118,100 @@ function CreateEquipHtml() {
              '<button onclick="unequipItem' + "(" + equippedItems.armor.id + ")" + '">Unequip</button>' +
              '</td>' + '</tr>';
     }
-    //Accessory
-    if (equippedItems.accessory.hasOwnProperty('itemType')) {
+    //Ring
+    if (equippedItems.ring.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.accessory.itemType + equippedItems.accessory.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + equippedItems.accessory.itemQuality +
+        html += '<img src="images/items/' + equippedItems.ring.itemType + equippedItems.ring.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
+                 "Item Rarity: " + equippedItems.ring.itemQuality +
                 '\n' +
-                "Strength: " + equippedItems.accessory.strength +
+                "Item Type: " + equippedItems.ring.itemType +
                 '\n' +
-                "Endurance: " + equippedItems.accessory.endurance +
+                "Strength: " + equippedItems.ring.strength +
                 '\n' +
-                "Agility: " + equippedItems.accessory.agility +
+                "Endurance: " + equippedItems.ring.endurance +
                 '\n' +
-                "Dexterity: " + equippedItems.accessory.dexterity +
+                "Agility: " + equippedItems.ring.agility +
                 '\n' +
-                "Intelligence: " + equippedItems.accessory.intelligence +
+                "Dexterity: " + equippedItems.ring.dexterity +
                 '\n' +
-                "Wisdom: " + equippedItems.accessory.wisdom +
+                "Intelligence: " + equippedItems.ring.intelligence +
                 '\n' +
-                "Luck: " + equippedItems.accessory.luck +
+                "Wisdom: " + equippedItems.ring.wisdom +
                 '\n' +
-                "Value: " + equippedItems.accessory.value + "gold" +
+                "Luck: " + equippedItems.ring.luck +
+                '\n' +
+                "Value: " + equippedItems.ring.value + "gold" +
                 '">'
         html += '</td>' +
-             '<td>' + '<font color="' + equippedItems.accessory.color + '">' + equippedItems.accessory.itemQuality + '</font>' + '</td>' +
-             '<td>' + equippedItems.accessory.value + "Value" + '</td>' +
+             '<td>' + '<font color="' + equippedItems.ring.color + '">' + equippedItems.ring.itemQuality + '</font>' + '</td>' +
+             '<td>' + equippedItems.ring.value + "Value" + '</td>' +
              '<td>' +
-             '<button onclick="unequipItem' + "(" + equippedItems.accessory.id + ")" + '">Unequip</button>' +
+             '<button onclick="unequipItem' + "(" + equippedItems.ring.id + ")" + '">Unequip</button>' +
+             '</td>' + '</tr>';
+    }
+    //Amulet
+    if (equippedItems.amulet.hasOwnProperty('itemType')) {
+        html += '<tr>' + '<td>';
+
+        html += '<img src="images/items/' + equippedItems.amulet.itemType + equippedItems.amulet.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
+                 "Item Rarity: " + equippedItems.amulet.itemQuality +
+                '\n' +
+                "Item Type: " + equippedItems.amulet.itemType +
+                '\n' +
+                "Strength: " + equippedItems.amulet.strength +
+                '\n' +
+                "Endurance: " + equippedItems.amulet.endurance +
+                '\n' +
+                "Agility: " + equippedItems.amulet.agility +
+                '\n' +
+                "Dexterity: " + equippedItems.amulet.dexterity +
+                '\n' +
+                "Intelligence: " + equippedItems.amulet.intelligence +
+                '\n' +
+                "Wisdom: " + equippedItems.amulet.wisdom +
+                '\n' +
+                "Luck: " + equippedItems.amulet.luck +
+                '\n' +
+                "Value: " + equippedItems.amulet.value + "gold" +
+                '">'
+        html += '</td>' +
+             '<td>' + '<font color="' + equippedItems.amulet.color + '">' + equippedItems.amulet.itemQuality + '</font>' + '</td>' +
+             '<td>' + equippedItems.amulet.value + "Value" + '</td>' +
+             '<td>' +
+             '<button onclick="unequipItem' + "(" + equippedItems.amulet.id + ")" + '">Unequip</button>' +
+             '</td>' + '</tr>';
+    }
+    //Talisman
+    if (equippedItems.talisman.hasOwnProperty('itemType')) {
+        html += '<tr>' + '<td>';
+
+        html += '<img src="images/items/' + equippedItems.talisman.itemType + equippedItems.talisman.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
+                 "Item Rarity: " + equippedItems.talisman.itemQuality +
+                '\n' +
+                "Item Type: " + equippedItems.talisman.itemType +
+                '\n' +
+                "Strength: " + equippedItems.talisman.strength +
+                '\n' +
+                "Endurance: " + equippedItems.talisman.endurance +
+                '\n' +
+                "Agility: " + equippedItems.talisman.agility +
+                '\n' +
+                "Dexterity: " + equippedItems.talisman.dexterity +
+                '\n' +
+                "Intelligence: " + equippedItems.talisman.intelligence +
+                '\n' +
+                "Wisdom: " + equippedItems.talisman.wisdom +
+                '\n' +
+                "Luck: " + equippedItems.talisman.luck +
+                '\n' +
+                "Value: " + equippedItems.talisman.value + "gold" +
+                '">'
+        html += '</td>' +
+             '<td>' + '<font color="' + equippedItems.talisman.color + '">' + equippedItems.talisman.itemQuality + '</font>' + '</td>' +
+             '<td>' + equippedItems.talisman.value + "Value" + '</td>' +
+             '<td>' +
+             '<button onclick="unequipItem' + "(" + equippedItems.talisman.id + ")" + '">Unequip</button>' +
              '</td>' + '</tr>';
     }
 
@@ -289,6 +359,8 @@ function CreateInventoryWeaponHtml() {
                 html += '<img src="images/items/' + playerInventory[i].itemType + playerInventory[i].itemQuality + '.png" "data-toggle=" "tooltip" title="' +
                          "Item Rarity: " + playerInventory[i].itemQuality +
                         '\n' +
+                        "Item Type: " + playerInventory[i].itemType +
+                        '\n' +
                         "Strength: " + playerInventory[i].strength +
                         '\n' +
                         "Endurance: " + playerInventory[i].endurance +
@@ -311,7 +383,13 @@ function CreateInventoryWeaponHtml() {
                  '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
                  '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
             }
-            //Else if inventory item type is equal to orb/card/etc...different code here, without item stats etc.
+                //Else if inventory item type is equal to orb/card/etc...different code here, without item stats etc.
+            else if (playerInventory[i].itemType3 === InventoryItemTypes[j].type) {
+                html += '<tr>' + '<td>';
+                html += '<img src="images/items/' + playerInventory[i].itemType + playerInventory[i].itemType2.type + '.png"' + '">' + '</td>' + '</div>';
+                html += '<td>' + playerInventory[i].itemType + " " + '</td>'
+                    
+                }
         }
         html += '</table>';
         html += '</div>';

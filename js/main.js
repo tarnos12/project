@@ -24,55 +24,92 @@ var player = {
     level: 1,
     experience: 0,
     maxExperience: 100,
-    inventory: 50,
+    inventory: function () {
+        return Math.floor((player.totalStrength() + 100));
+    },
     baseStrength: 5,
     weaponStrength: 0,
     armorStrength: 0,
-    accessoryStrength: 0,
+    ringStrength: 0,
+    amuletStrength: 0,
+    talismanStrength: 0,
+    accessoryStrength: function () {
+        return Math.floor((player.ringStrength + player.amuletStrength + player.talismanStrength));
+    },
     totalStrength: function () {
-        return Math.floor((player.baseStrength + player.weaponStrength + player.armorStrength + player.accessoryStrength + player.swordStrength() + player.axeStrength() + player.fistStrength()));
+        return Math.floor((player.baseStrength + player.weaponStrength + player.armorStrength + player.accessoryStrength() + player.swordStrength() + player.axeStrength() + player.fistStrength()));
     },
     baseEndurance: 5,
     weaponEndurance: 0,
     armorEndurance: 0,
-    accessoryEndurance: 0,
+    ringEndurance: 0,
+    amuletEndurance: 0,
+    talismanEndurance: 0,
+    accessoryEndurance: function () {
+        return Math.floor((player.ringEndurance + player.amuletEndurance + player.talismanEndurance));
+    },
     totalEndurance: function () {
-        return  Math.floor((player.baseEndurance + player.weaponEndurance + player.armorEndurance + player.accessoryEndurance + player.maceEndurance() + player.axeEndurance()));
+        return  Math.floor((player.baseEndurance + player.weaponEndurance + player.armorEndurance + player.accessoryEndurance() + player.maceEndurance() + player.axeEndurance()));
     },
     baseAgility: 5,
     weaponAgility: 0,
     armorAgility: 0,
-    accessoryAgility: 0,
+    ringAgility: 0,
+    amuletAgility: 0,
+    talismanAgility: 0,
+    accessoryAgility: function () {
+        return Math.floor((player.ringAgility + player.amuletAgility + player.talismanAgility));
+    },
     totalAgility: function () {
-        return  Math.floor((player.baseAgility + player.weaponAgility + player.armorAgility + player.accessoryAgility + player.swordAgility() + player.daggerAgility()));
+        return  Math.floor((player.baseAgility + player.weaponAgility + player.armorAgility + player.accessoryAgility() + player.swordAgility() + player.daggerAgility()));
     },
     baseDexterity: 5,
     weaponDexterity: 0,
     armorDexterity: 0,
-    accessoryDexterity: 0,
+    ringDexterity: 0,
+    amuletDexterity: 0,
+    talismanDexterity: 0,
+    accessoryDexterity: function () {
+        return Math.floor((player.ringDexterity + player.amuletDexterity + player.talismanDexterity));
+    },
     totalDexterity: function () {
-        return  Math.floor((player.baseDexterity + player.weaponDexterity + player.armorDexterity + player.accessoryDexterity + player.daggerDexterity() + player.fistDexterity()));
+        return  Math.floor((player.baseDexterity + player.weaponDexterity + player.armorDexterity + player.accessoryDexterity() + player.daggerDexterity() + player.fistDexterity()));
     },
     baseIntelligence: 5,
     weaponIntelligence: 0,
     armorIntelligence: 0,
-    accessoryIntelligence: 0,
+    ringIntelligence: 0,
+    amuletIntelligence: 0,
+    talismanIntelligence: 0,
+    accessoryIntelligence: function () {
+        return Math.floor((player.ringIntelligence + player.amuletIntelligence + player.talismanIntelligence));
+    },
     totalIntelligence: function () {
-        return  Math.floor((player.baseIntelligence + player.weaponIntelligence + player.armorIntelligence + player.accessoryIntelligence + player.staffIntelligence()));
+        return  Math.floor((player.baseIntelligence + player.weaponIntelligence + player.armorIntelligence + player.accessoryIntelligence() + player.staffIntelligence()));
     },
     baseWisdom: 5,
     weaponWisdom: 0,
     armorWisdom: 0,
-    accessoryWisdom: 0,
+    ringWisdom: 0,
+    amuletWisdom: 0,
+    talismanWisdom: 0,
+    accessoryWisdom: function () {
+        return Math.floor((player.ringWisdom + player.amuletWisdom + player.talismanWisdom));
+    },
     totalWisdom: function () {
-        return  Math.floor((player.baseWisdom + player.weaponWisdom + player.armorWisdom + player.accessoryWisdom + player.staffWisdom() + player.maceWisdom()));
+        return  Math.floor((player.baseWisdom + player.weaponWisdom + player.armorWisdom + player.accessoryWisdom() + player.staffWisdom() + player.maceWisdom()));
     },
     baseLuck: 5,
     weaponLuck: 0,
     armorLuck: 0,
-    accessoryLuck: 0,
+    ringLuck: 0,
+    amuletLuck: 0,
+    talismanLuck: 0,
+    accessoryLuck: function () {
+        return Math.floor((player.ringLuck + player.amuletLuck + player.talismanLuck));
+    },
     totalLuck: function () {
-        return Math.floor((player.baseLuck + player.weaponLuck + player.armorLuck + player.accessoryLuck));
+        return Math.floor((player.baseLuck + player.weaponLuck + player.armorLuck + player.accessoryLuck()));
     },
     gold: 0,
     health: 50,
@@ -251,7 +288,9 @@ var player = {
 var equippedItems = {
     weapon: {},
     armor: {},
-    accessory: {}
+    ring: {},
+    amulet: {},
+    talisman: {}
 };
 var maxLogLines = 16;
 var logData = {
@@ -737,11 +776,18 @@ function monsterGold(monster) {
         var itemType = otherItemTypes[Math.floor(Math.random() * otherItemTypes.length)]; //This code gets a random item from the item array.
         var itemType2 = itemType.type;
         var itemSubType = itemType.itemSubTypes[Math.floor(Math.random() * itemType.itemSubTypes.length)]; //This gets a random item sub type from the subType array.
+        var itemType3 = itemSubType.type2;
+        var color = itemSubType.color
         console.log("1st " + itemType.type)
         console.log("2nd " + itemSubType.type)
+        console.log("3rd " + itemSubType.type2)
+        console.log("4th " + itemSubType.color)
+
         var newItem = {
             itemType: itemSubType.type,
             itemType2: itemType,
+            itemType3: itemSubType.type2,
+            color: itemSubType.color
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
         playerInventory.push(newItem);
@@ -755,19 +801,29 @@ var otherItemTypes = [
         type: "Orb",
         itemSubTypes: [
             {
-                type: "Fire"
+                type: "Fire",
+                type2: "Other",
+                color: "red"
             },
             {
-                type: "Water"
+                type: "Water",
+                type2: "Other",
+                color: "blue"
             },
             {
-                type: "Wind"
+                type: "Wind",
+                type2: "Other",
+                color: "green"
             },
             {
-                type: "Earth"
+                type: "Earth",
+                type2: "Other",
+                color: "brown"
             },
             {
-                type: "Lightning"
+                type: "Lightning",
+                type2: "Other",
+                color: "orange"
             }
         ]
     },
@@ -997,7 +1053,7 @@ function monsterItemDrop(monster) {
         var itemQuality = getItemQuality(randomItemQuality, monsterType);
         var itemType = itemTypes[Math.floor(Math.random() * itemTypes.length)]; //This code gets a random item from the item array.
         var itemType2 = itemType.type;
-        var itemSubType = itemType.itemSubTypes[Math.floor(Math.random() * itemTypes.length)]; //This gets a random item sub type from the subType array.
+        var itemSubType = itemType.itemSubTypes[Math.floor(Math.random() * itemType.itemSubTypes.length)]; //This gets a random item sub type from the subType array.
         var stats = {
             strength: null,
             endurance: null,
@@ -1208,21 +1264,71 @@ function equipItem(id) {
         }
         CreateInventoryWeaponHtml()
     }
-    else if (item.itemType2.type === "Accessory") {
-        if (equippedItems.accessory.isEquipped === true) {
-            var oldId = equippedItems.accessory.id
+    else if (item.itemType === "Ring") {
+        if (equippedItems.ring.isEquipped === true) {
+            var oldId = equippedItems.ring.id
             unequipItem(oldId)
         }
         if (item.id === id) {
-            equippedItems.accessory = item;
-            equippedItems.accessory.isEquipped = true;
-            player.accessoryStrength = item.strength;
-            player.accessoryEndurance = item.endurance;
-            player.accessoryAgility = item.agility;
-            player.accessoryDexterity = item.dexterity;
-            player.accessoryIntelligence = item.intelligence;
-            player.accessoryWisdom = item.wisdom;
-            player.accessoryLuck = item.luck;
+            equippedItems.ring = item;
+            equippedItems.ring.isEquipped = true;
+            player.ringStrength = item.strength;
+            player.ringEndurance = item.endurance;
+            player.ringAgility = item.agility;
+            player.ringDexterity = item.dexterity;
+            player.ringIntelligence = item.intelligence;
+            player.ringWisdom = item.wisdom;
+            player.ringLuck = item.luck;
+            var item = playerInventory.filter(function (obj) {
+                return obj.id === id
+            })[0];
+            var index = playerInventory.indexOf(item, 0);
+            if (index > -1) {
+                playerInventory.splice(index, 1);
+            }
+        }
+        CreateInventoryWeaponHtml()
+    }
+    else if (item.itemType === "Amulet") {
+        if (equippedItems.amulet.isEquipped === true) {
+            var oldId = equippedItems.amulet.id
+            unequipItem(oldId)
+        }
+        if (item.id === id) {
+            equippedItems.amulet = item;
+            equippedItems.amulet.isEquipped = true;
+            player.amuletStrength = item.strength;
+            player.amuletEndurance = item.endurance;
+            player.amuletAgility = item.agility;
+            player.amuletDexterity = item.dexterity;
+            player.amuletIntelligence = item.intelligence;
+            player.amuletWisdom = item.wisdom;
+            player.amuletLuck = item.luck;
+            var item = playerInventory.filter(function (obj) {
+                return obj.id === id
+            })[0];
+            var index = playerInventory.indexOf(item, 0);
+            if (index > -1) {
+                playerInventory.splice(index, 1);
+            }
+        }
+        CreateInventoryWeaponHtml()
+    }
+    else if (item.itemType === "Talisman") {
+        if (equippedItems.talisman.isEquipped === true) {
+            var oldId = equippedItems.talisman.id
+            unequipItem(oldId)
+        }
+        if (item.id === id) {
+            equippedItems.talisman = item;
+            equippedItems.talisman.isEquipped = true;
+            player.talismanStrength = item.strength;
+            player.talismanEndurance = item.endurance;
+            player.talismanAgility = item.agility;
+            player.talismanDexterity = item.dexterity;
+            player.talismanIntelligence = item.intelligence;
+            player.talismanWisdom = item.wisdom;
+            player.talismanLuck = item.luck;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
@@ -1236,13 +1342,15 @@ function equipItem(id) {
     CreateWeaponSkillHtml()
     CreateEquipHtml()
 };
-//Unequip item,remove stats. Still need to make it so only item image dissapear, not a whole html
+//Unequip item,remove stats.
 function unequipItem(id, oldId) {
-    var weapon = id;
-    var armor = id;
-    var accessory = id;
+    var weaponId = id;
+    var armorId = id;
+    var ringId = id;
+    var amuletId = id;
+    var talismanId = id;
     //Weapon unequip
-    if (weapon === equippedItems.weapon.id || weapon === oldId) {
+    if (weaponId === equippedItems.weapon.id || weaponId === oldId) {
         equippedItems.weapon.isEquipped = false;
         playerInventory.push(equippedItems.weapon);
         if (equippedItems.weapon.itemType === "Sword") {
@@ -1273,8 +1381,8 @@ function unequipItem(id, oldId) {
         player.weaponLuck = 0;
         CreateInventoryWeaponHtml()
     }
-    //Armor unequip
-    else if (armor === equippedItems.armor.id || armor == oldId) {
+        //Armor unequip
+    else if (armorId === equippedItems.armor.id || armorId == oldId) {
         equippedItems.armor.isEquipped = false;
         playerInventory.push(equippedItems.armor);
         equippedItems.armor = {};
@@ -1287,18 +1395,46 @@ function unequipItem(id, oldId) {
         player.armorLuck = 0;
         CreateInventoryWeaponHtml()
     }
-    //Accessory unequip
-    else if (accessory === equippedItems.accessory.id || accessory === oldId) {
-        equippedItems.accessory.isEquipped = false;
-        playerInventory.push(equippedItems.accessory);
-        equippedItems.accessory = {};
-        player.accessoryStrength = 0;
-        player.accessoryEndurance = 0;
-        player.accessoryAgility = 0;
-        player.accessoryDexterity = 0;
-        player.accessoryIntelligence = 0;
-        player.accessoryWisdom = 0;
-        player.accessoryLuck = 0;
+        //Ring unequip
+    else if (ringId === equippedItems.ring.id || ringId === oldId) {
+        equippedItems.ring.isEquipped = false;
+        playerInventory.push(equippedItems.ring);
+        equippedItems.ring = {};
+        player.ringStrength = 0;
+        player.ringEndurance = 0;
+        player.ringAgility = 0;
+        player.ringDexterity = 0;
+        player.ringIntelligence = 0;
+        player.ringWisdom = 0;
+        player.ringLuck = 0;
+        CreateInventoryWeaponHtml();
+    }
+        //Amulet unequip
+    else if (amuletId === equippedItems.amulet.id || amuletId === oldId) {
+        equippedItems.amulet.isEquipped = false;
+        playerInventory.push(equippedItems.amulet);
+        equippedItems.amulet = {};
+        player.amuletStrength = 0;
+        player.amuletEndurance = 0;
+        player.amuletAgility = 0;
+        player.amuletDexterity = 0;
+        player.amuletIntelligence = 0;
+        player.amuletWisdom = 0;
+        player.amuletLuck = 0;
+        CreateInventoryWeaponHtml();
+    }
+        //Talisman unequip
+    else if (talismanId === equippedItems.talisman.id || talismanId === oldId) {
+        equippedItems.talisman.isEquipped = false;
+        playerInventory.push(equippedItems.talisman);
+        equippedItems.talisman = {};
+        player.talismanStrength = 0;
+        player.talismanEndurance = 0;
+        player.talismanAgility = 0;
+        player.talismanDexterity = 0;
+        player.talismanIntelligence = 0;
+        player.talismanWisdom = 0;
+        player.talismanLuck = 0;
         CreateInventoryWeaponHtml();
     };
     CreateEquipHtml();

@@ -4,6 +4,8 @@ v1.2.0 - 17 february 2015|
 - Inventory bug with changing tab is fixed!
 - New item graphics!
 - Bug fixes
+- New item slots, accessory split into 3 slots: ring, amulet, talisman. Soon there will be armor slot split, chest/helmet/gloves/boots/legs :)
+- Strength increase your max backpack slots by 1 slot per 1 point in strength, base amout of slots is 100 -_- just for fun, testing etc.
 _________________________
 v1.1.9 - 16 february 2015|
 -------------------------|
