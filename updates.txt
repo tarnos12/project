@@ -1,4 +1,10 @@
 _________________________
+v1.2.0 - 17 february 2015|
+-------------------------|
+- Inventory bug with changing tab is fixed!
+- New item graphics!
+- Bug fixes
+_________________________
 v1.1.9 - 16 february 2015|
 -------------------------|
 - Fixed a glitch with inventory items moving off screen when using Firefox

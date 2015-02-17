@@ -12,7 +12,7 @@
         playerWisdom: player.baseWisdom,
         playerLuck: player.baseLuck,
         playerExperience: player.experience,
-        playerMaxexperience: player.maxexperience,
+        playerMaxExperience: player.maxExperience,
         pot: pot,
         spot: spot,
         mpot: mpot,
@@ -97,7 +97,7 @@ function load() {
     if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
     if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
     if (typeof savegame.playerExperience !== "undefined") player.experience = savegame.playerExperience;
-    if (typeof savegame.playerMaxexperience !== "undefined") player.maxexperience = savegame.playerMaxexperience;
+    if (typeof savegame.playerMaxExperience !== "undefined") player.maxExperience = savegame.playerMaxExperience;
     if (typeof savegame.playerStrength !== "undefined") player.baseStrength = savegame.playerStrength;
     if (typeof savegame.playerEndurance !== "undefined") player.baseEndurance = savegame.playerEndurance;
     if (typeof savegame.playerAgility !== "undefined") player.baseAgility = savegame.playerAgility;
@@ -128,7 +128,7 @@ function reset() {
     player.stats = 0;
     player.level = 1;
     player.experience = 0;
-    player.maxexperience = 100;
+    player.maxExperience = 100;
     player.baseStrength = 5;
     player.baseEndurance = 5;
     player.baseAgility = 5;
@@ -144,7 +144,7 @@ function reset() {
     document.getElementById('stats').innerHTML = player.stats;
     document.getElementById('level').innerHTML = player.level;
     document.getElementById('experience').innerHTML = player.experience;
-    document.getElementById('maxexperience').innerHTML = player.maxexperience;
+    document.getElementById('maxexperience').innerHTML = player.maxExperience;
     document.getElementById('strength').innerHTML = player.baseStrength;
     document.getElementById('endurance').innerHTML = player.baseEndurance;
     document.getElementById('agility').innerHTML = player.baseAgility;
