@@ -1,4 +1,4 @@
-﻿//Create player Weapon skill html
+//Create player Weapon skill html
 function CreateWeaponSkillHtml() {
     var html = '';
 
@@ -246,6 +246,12 @@ function CreateMonsterHtml() {
     document.getElementById("inventory").innerHTML = html;
 };*/
 
+inventoryTabActiveNum = 0;
+function changedTabInventory(index)
+{
+	inventoryTabActiveNum = index;
+}
+
 //TEST
 function CreateInventoryWeaponHtml() {
     var html = '';
@@ -253,17 +259,17 @@ function CreateInventoryWeaponHtml() {
 
     for (var k = 0; k < 4; k++) {
 
-        if (k === 0) {
-            html += '<li class="active">';
+        if (k === inventoryTabActiveNum) {
+            html += '<li class="active" onClick = changedTabInventory(' + k + ')>';
         } else {
-            html += '<li>';
+            html += '<li onClick = changedTabInventory(' + k + ')>';
         }
 
         html += '<a href="#tab_' + InventoryItemTypes[k].type + '" data-toggle="tab">' + InventoryItemTypes[k].displayName + '</a></li>';
     }
 
     html += '</ul>';
-    html += '<div class="tab-content">';
+    html += '<div class="tab-content" id="tabControl_Inventory">';
     for (var j = 0; j < InventoryItemTypes.length; j++) {
 
         if (j === 0) {
