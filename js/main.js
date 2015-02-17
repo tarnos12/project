@@ -1042,7 +1042,7 @@ var itemQualities = [
 //TEST TEST TEST TEST :)
 function monsterItemDrop(monster) {
     //If amount of item in inventory exceed 20 you wont drop anymore items, 9 can be changed to some variable like "max.inventorySlots"
-    if (playerInventory.length <= player.inventory) {
+    if (playerInventory.length <= player.inventory()) {
         Log("<span style=\"color:orange\">You found an item! </span>");
         var currentDate = new Date();
 
