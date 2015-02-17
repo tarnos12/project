@@ -6,6 +6,7 @@ v1.2.0 - 17 february 2015|
 - Bug fixes
 - New item slots, accessory split into 3 slots: ring, amulet, talisman. Soon there will be armor slot split, chest/helmet/gloves/boots/legs :)
 - Strength increase your max backpack slots by 1 slot per 1 point in strength, base amout of slots is 100 -_- just for fun, testing etc.
+- Item compare, hover over an item in your inventory, number next to item stats shows you how much of that stat you gain with that item, so (5) means + 5 and (-5) means you lose 5 of that stat upon equipping an item. I will work on something better soon
 _________________________
 v1.1.9 - 16 february 2015|
 -------------------------|

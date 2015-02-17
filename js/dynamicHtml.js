@@ -355,25 +355,40 @@ function CreateInventoryWeaponHtml() {
         html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Type" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType2.type === InventoryItemTypes[j].type) {
+                if (playerInventory[i].itemType2.type === "Weapon") {
+                    var itemStat = equippedItems.weapon;
+                }
+                else if (playerInventory[i].itemType2.type === "Armor") {
+                    var itemStat = equippedItems.armor;
+                }
+                else if (playerInventory[i].itemType === "Ring") {
+                    var itemStat = equippedItems.ring;
+                }
+                else if (playerInventory[i].itemType === "Amulet") {
+                    var itemStat = equippedItems.amulet;
+                }
+                else if (playerInventory[i].itemType === "Talisman") {
+                    var itemStat = equippedItems.talisman;
+                }
                 html += '<tr>' + '<td>';
                 html += '<img src="images/items/' + playerInventory[i].itemType + playerInventory[i].itemQuality + '.png" "data-toggle=" "tooltip" title="' +
                          "Item Rarity: " + playerInventory[i].itemQuality +
                         '\n' +
                         "Item Type: " + playerInventory[i].itemType +
                         '\n' +
-                        "Strength: " + playerInventory[i].strength +
+                        "Strength: " + playerInventory[i].strength + " --- " + "(" + (playerInventory[i].strength - itemStat.strength) + ")" +
                         '\n' +
-                        "Endurance: " + playerInventory[i].endurance +
+                        "Endurance: " + playerInventory[i].endurance + " --- " + "(" + (playerInventory[i].endurance - itemStat.endurance) + ")" +
                         '\n' +
-                        "Agility: " + playerInventory[i].agility +
+                        "Agility: " + playerInventory[i].agility + " --- " + "(" + (playerInventory[i].agility - itemStat.agility) + ")" +
                         '\n' +
-                        "Dexterity: " + playerInventory[i].dexterity +
+                        "Dexterity: " + playerInventory[i].dexterity + " --- " + "(" + (playerInventory[i].dexterity - itemStat.dexterity) + ")" +
                         '\n' +
-                        "Intelligence: " + playerInventory[i].intelligence +
+                        "Intelligence: " + playerInventory[i].intelligence + " --- " + "(" + (playerInventory[i].intelligence - itemStat.intelligence) + ")" +
                         '\n' +
-                        "Wisdom: " + playerInventory[i].wisdom +
+                        "Wisdom: " + playerInventory[i].wisdom + " --- " + "(" + (playerInventory[i].wisdom - itemStat.wisdom) + ")" +
                         '\n' +
-                        "Luck: " + playerInventory[i].luck +
+                        "Luck: " + playerInventory[i].luck + " --- " + "(" + (playerInventory[i].luck - itemStat.luck) + ")" +
                         '\n' +
                         "Value: " + playerInventory[i].value + "gold" +
                         '">' + '</td>' + '</div>';
