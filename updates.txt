@@ -1,4 +1,11 @@
 _________________________
+v1.2.1 - 17 february 2015|
+-------------------------|
+- Check options menu! You can use checkbox to set which items will be destroyed when dropped from monsters, if you dont want to see common items in your inventory, then just check a box :)
+- Base drop rate is 100%. When you have 200% drop rate that means every item has 2x higher chance to drop...at some point with high enough drop Rate, common/uncommon won't drop at all, unless you already use auto destroy option :)
+- With higher drop rate, you also drop items more often, base chance to drop an item is around 50%, each point in luck increase that chance by 0.01 so at 100 points of luck you have 51% chance to drop item -_-
+- Increased base damage formula a little, to make it easier with higher difficulty monsters
+_________________________
 v1.2.0 - 17 february 2015|
 -------------------------|
 - Inventory bug with changing tab is fixed!

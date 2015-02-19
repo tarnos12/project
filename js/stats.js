@@ -36,10 +36,11 @@
     document.getElementById("manaRegen").innerHTML = player.manaRegen();
     document.getElementById("luck").innerHTML = player.totalLuck();
     document.getElementById("evasion").innerHTML = player.evasion();
-    document.getElementById("dropRate").innerHTML = player.dropRate();
+    document.getElementById("dropRate").innerHTML = player.dropRate() * 100;
     document.getElementById("level").innerHTML = player.level;
     document.getElementById("maxexperience").innerHTML = player.maxExperience;
     document.getElementById("experience").innerHTML = player.experience;
+    document.getElementById("gold").innerHTML = player.gold;
 
 }, 1);
 

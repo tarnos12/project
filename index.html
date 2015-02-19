@@ -348,6 +348,9 @@
                                 <div class="tab-pane" id="tab_c2">
                                     <h4>Shop</h4>
                                     <p>
+                                        <!-- <button onclick="sellAllCommon()">Sell All Common</button><br /><br />
+                                        <button onclick="sellAllUncommon()">Sell All Uncommon</button><br /><br />
+                                        <button onclick="sellAllRare()">Sell All Rare</button><br /><br />-->
                                         <img src="images/hp.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Health Potion(20gold each): <button onclick="buypot()">Buy 1</button> <button onclick="buypot10()">Buy 10</button><br>
                                         <img src="images/hp1.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Super Potion(100gold each): <button onclick="buyspot()">Buy 1</button><button onclick="buyspot10()">Buy 10</button><br>
                                         <img src="images/hp2.jpg" alt="** PLEASE DESCRIBE THIS IMAGE **">Mega Potion(500gold each): <button onclick="buympot()">Buy 1</button><button onclick="buympot10()">Buy 10</button>
@@ -439,8 +442,17 @@
                                 </div>
                                 <div class="tab-pane" id="tab_e2">
                                     <h4>Save &amp; Options</h4>
-                                    <div class=".col-sm-5 col-md-5 .col-lg-5"><button onclick="save()">save</button> <button onclick="load()">load</button> <button onclick="reset()">reset</button></div>
-                                    <div class="c3"> <a href="updates.txt" target="_blank">Changelog</a></div>
+                                    <div class=".col-sm-12 col-md-12 .col-lg-12">
+                                        <button onclick="save()">save</button>
+                                        <button onclick="load()">load</button>
+                                        <button onclick="reset()">reset</button><br /><br />
+
+                                        <div> <a href="updates.txt" target="_blank">Changelog</a></div><br />
+                                        <div><label><input type='checkbox' id="common" onclick='handleClick(this);'>Destroy all Common</label></div>
+                                        <div><label><input type='checkbox' id="uncommon" onclick='handleClick(this);'>Destroy all Uncommon</label></div>
+                                        <div><label><input type='checkbox' id="rare" onclick='handleClick(this);'>Destroy all Rare</label></div>
+                                        <div><label><input type='checkbox' id="epic" onclick='handleClick(this);'>Destroy all Epic</label></div>
+                                    </div>
                                 </div>
                                 <!-- tab content -->
                             </div>
