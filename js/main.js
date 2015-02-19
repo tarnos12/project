@@ -902,6 +902,17 @@ var itemTypes = [
                 wisdomMultiplier: 7,
                 intelligenceMultiplier: 10,
                 luckMultiplier: 0
+            },
+            {
+                type: "Bow",
+                //Out of 10
+                strengthMultiplier: 6,
+                enduranceMultiplier: 4,
+                agilityMultiplier: 5,
+                dexterityMultiplier: 10,
+                wisdomMultiplier: 2,
+                intelligenceMultiplier: 3,
+                luckMultiplier: 0
             }
         ]
     },
@@ -991,7 +1002,67 @@ var itemTypes = [
              luckMultiplier: 10
          }
         ]
-    }
+    },
+      {
+          type: "OffHand",
+          itemSubTypes: [
+           {
+               type: "Shield",
+               //Out of 10
+               strengthMultiplier: 7,
+               enduranceMultiplier: 10,
+               agilityMultiplier: 3,
+               dexterityMultiplier: 5,
+               wisdomMultiplier: 2,
+               intelligenceMultiplier: 2,
+               luckMultiplier: 0
+           },
+           {
+               type: "Book",
+               //Out of 10
+               strengthMultiplier: 2,
+               enduranceMultiplier: 3,
+               agilityMultiplier: 6,
+               dexterityMultiplier: 3,
+               wisdomMultiplier: 10,
+               intelligenceMultiplier: 6,
+               luckMultiplier: 0
+           },
+           {
+               type: "OffHandDagger",
+               //Out of 10
+               strengthMultiplier: 3,
+               enduranceMultiplier: 3,
+               agilityMultiplier: 10,
+               dexterityMultiplier: 5,
+               wisdomMultiplier: 5,
+               intelligenceMultiplier: 4,
+               luckMultiplier: 0
+           },
+           {
+               type: "ThrowingWeapon",
+               //Out of 10
+               strengthMultiplier: 6,
+               enduranceMultiplier: 2,
+               agilityMultiplier: 5,
+               dexterityMultiplier: 10,
+               wisdomMultiplier: 3,
+               intelligenceMultiplier: 4,
+               luckMultiplier: 0
+           },
+           {
+               type: "OffHandOrb",
+               //Out of 10
+               strengthMultiplier: 2,
+               enduranceMultiplier: 4,
+               agilityMultiplier: 4,
+               dexterityMultiplier: 5,
+               wisdomMultiplier: 5,
+               intelligenceMultiplier: 10,
+               luckMultiplier: 0
+           }
+          ]
+      }
 ];
 var itemQualities = [
     {
@@ -1064,19 +1135,6 @@ function monsterItemDrop(monster) {
 
             var weaponId = currentDate.getTime();
 
-            /* console.log("Monster Level" + " " + monster.level);
-             console.log("STR" + " " + stats.strength);
-             console.log("END" + " " + stats.endurance);
-             console.log("AGI" + " " + stats.agility);
-             console.log("DEX" + " " + stats.dexterity);
-             console.log("WIS" + " " + stats.wisdom);
-             console.log("INT" + " " + stats.intelligence);
-             console.log("LUK" + " " + stats.luck);
-             console.log("TYPE" + " " + itemSubType.type);
-             console.log("QUALITY" + " " + itemQuality.type);
-             console.log("isEquipped" + " " + isEquipped);*/
-
-            //Build the Object
             var newItem = {
                 id: weaponId,
                 strength: stats.strength,
@@ -1093,12 +1151,9 @@ function monsterItemDrop(monster) {
                 isEquipped: false,
                 value: itemValue
             };
-            //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
             playerInventory.push(newItem);
 
             CreateInventoryWeaponHtml()
-            //EACH MONSTER KILL SHOULD INCREASE ARRAY LENGTH + 1
-            //  console.log("Number of items " + playerInventory.length);
 
             Log("<span style=\"color:orange\">You found an item! </span>");
         }
@@ -1195,6 +1250,7 @@ function equipItem(id) {
         if (item.id === id) {
             equippedItems.weapon = item;
             equippedItems.weapon.isEquipped = true;
+            //Check which weapon is equipped so you can gain stats and level up weapon mastery
             if (equippedItems.weapon.itemType === "Sword") {
                 player.isSword = true;
             }
