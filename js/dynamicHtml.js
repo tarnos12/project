@@ -325,6 +325,7 @@ function changedTabInventory(index)
 //TEST
 function CreateInventoryWeaponHtml() {
     var html = '';
+    html += '<div class="c3"> <h3>Player Inventory</h3>' + playerInventory.length  + "/" + player.inventory() + '</div>'
     html += '<ul class="nav nav-tabs">';
 
     for (var k = 0; k < 4; k++) {
@@ -392,6 +393,13 @@ function CreateInventoryWeaponHtml() {
                         '\n' +
                         "Value: " + playerInventory[i].value + "gold" +
                         '">' + '</td>' + '</div>';
+                //ADD ALL ITEMS VALUE TOGETHER, might want to use it for bulk selling in future...need to add if/else for item quality too...
+                /*var total = 0;
+                for (var s = 0; s < playerInventory.length; s++) {
+                //If else playerInventory[i].itemType === common :)
+                    total += playerInventory[s].value << 0;
+                }
+                console.log("TOTAL" + total)*/
 
                 html += '<td>' + playerInventory[i].itemType + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
                     '<td>' + playerInventory[i].value + "Value" +

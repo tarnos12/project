@@ -7,6 +7,7 @@ v1.2.0 - 17 february 2015|
 - New item slots, accessory split into 3 slots: ring, amulet, talisman. Soon there will be armor slot split, chest/helmet/gloves/boots/legs :)
 - Strength increase your max backpack slots by 1 slot per 1 point in strength, base amout of slots is 100 -_- just for fun, testing etc.
 - Item compare, hover over an item in your inventory, number next to item stats shows you how much of that stat you gain with that item, so (5) means + 5 and (-5) means you lose 5 of that stat upon equipping an item. I will work on something better soon
+- Inventory slot display, check inventory tab.
 _________________________
 v1.1.9 - 16 february 2015|
 -------------------------|
@@ -62,7 +63,6 @@ v1.1.3 - 16 january 2015 |
 _________________________
 v1.1.2 - 12 january 2015 |
 -------------------------|
-
 - Animated progress bar for health and experience
 - When you die, you lose 20% of current gold and experience
 - Experience formula changed to make it easier to level up
@@ -71,7 +71,6 @@ v1.1.2 - 12 january 2015 |
 _________________________
 v1.1.1 - 11 january 2015 |
 -------------------------|
-
 - Accuracy and Evasion is working right now
 - Critical chance and bonus damage from critical is working now
 - Changed damage formula which is much better now'
@@ -80,7 +79,6 @@ v1.1.1 - 11 january 2015 |
 _________________________
 v1.1.0 - 10 january 2015 |
 -------------------------|
-
 - Removed all orbs from the game, this game won't be an idle game, so no exp/gold per second.
 - Added new player stats, str/end/dex/agi/int/wis/luk.
 - Secondary stats page, which give you more info about player defense,critical, drop rate etc.
@@ -88,14 +86,12 @@ v1.1.0 - 10 january 2015 |
 _________________________
 v1.0.7 - 4 january 2015  |
 -------------------------|
-
 - Changed javascript code
 - Updated html
 - Log is displayed in reverse order
 _________________________
 v1.0.6 - 31 december 2014|
 -------------------------|
-
 - Changed log position
 - Added new tabs, inventory, equipments(still in development)
 - Changed html file, fixed many bugs
@@ -103,7 +99,6 @@ v1.0.6 - 31 december 2014|
 _________________________
 v1.0.5 - 30 december 2014|
 -------------------------|
-
 - Added tabs to the game, which contain addition game info, as well a shop, options menu etc.
 - Total of 32 monsters, including bosses(all of it require balance changes)
 - New damage system(Will be changed again soon)
@@ -112,22 +107,18 @@ v1.0.5 - 30 december 2014|
 _________________________
 v1.0.4 - 28 december 2014|
 -------------------------|
-
 - Added exp and health progress bar at the top
 - More monsters, also they have their own stats i.e. health/strength/defense
 _________________________
 v1.0.3 - 27 december 2014|
 -------------------------|
-
 - Added experience, gold, fusion orbs which let you gain exp/gold per second
 - Added more info in character page
 - Added colors to item rarity
 - Updated a website to work on all resolutions, should work even on mobile devices
-
 _________________________
 v1.0.2 - 26 december 2014|
 -------------------------|
-
 - Changed "Sell  all button" to sell all orbs at once(all quality) 
 - Added Level up system, 5 stats per level, health regeneration, Defense, Strength
 - New monsters, changed weapon requirement to fight them
@@ -135,10 +126,8 @@ v1.0.2 - 26 december 2014|
 _________________________
 v1.0.1 - 25 december 2014|
 -------------------------|
-
 - Added "Sell all button" for a single orb
-
-_________________________
+_______________________
 v1.0 - 25 december 2014|
 -----------------------|
 - Initial Release

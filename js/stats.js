@@ -29,8 +29,6 @@
     document.getElementById("defense").innerHTML = player.defense().toFixed(2);
     document.getElementById("criticalDamage").innerHTML = player.criticalDamage().toFixed(2) * 100 + "%";
     document.getElementById("criticalChance").innerHTML = player.criticalChance().toFixed(2);
-    document.getElementById("Lifesteal2").innerHTML = player.Lifesteal2().toFixed(2);
-    document.getElementById("Lifesteal").innerHTML = player.Lifesteal().toFixed(2);
     document.getElementById("intelligence").innerHTML = player.totalIntelligence();
     document.getElementById("mana").innerHTML = player.mana.toFixed(0);
     document.getElementById("maxmana").innerHTML = player.maxMana().toFixed(0);

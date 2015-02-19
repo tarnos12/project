@@ -147,12 +147,6 @@ var player = {
     criticalDamage: function () {
         return (player.totalStrength() * 0.003 + player.totalDexterity() * 0.002);
     },
-    Lifesteal: function () {
-        return (player.totalIntelligence() / 100);
-    },
-    Lifesteal2: function () {
-        return (player.totalIntelligence());
-    },
     
     dropRate: function () {
         return (player.totalLuck());
@@ -576,17 +570,7 @@ function playerDamage(monster) {
 function playerDamageDeal(damage, monster) {
 
     monster.hp -= damage;
-    var randomLifestealChance = Math.random();
-    var lifestealHeal = Math.floor(Lifesteal2);
-    if (Lifesteal > randomLifestealChance & player.mana >= 5) {
-        player.health += lifestealHeal;
-        player.mana -= 5;
-        document.getElementById("mana").innerHTML = player.mana;
-        if (player.health >= player.maxhealth()) {
-            player.health = player.maxhealth();
-        }
-        Log("Turn " + battleTurn + " " + "<span style=\"color:green\">Healed for </span>" + lifestealHeal);
-    }
+    //Add more stuff like "bonus elemental damage from passive skills or bonus weapon damage
     document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     Log("Turn " + battleTurn + " " + "You deal " + damage + " <span style=\"color:blue\">damage</span>");
     
@@ -1073,7 +1057,7 @@ function monsterItemDrop(monster) {
             }
         };
         //Value of an item, all stats multiplied by item quality multiplier(better quality item = more gold)
-        var itemValue = ((stats.strength + stats.endurance + stats.agility + stats.dexterity + stats.wisdom + stats.intelligence + stats.luck) * itemQuality.qualityMultiplier);
+        var itemValue = (stats.strength + stats.endurance + stats.agility + stats.dexterity + stats.wisdom + stats.intelligence + stats.luck); // * itemQuality.qualityMultiplier
 
         var weaponId = currentDate.getTime();
 
@@ -1473,3 +1457,5 @@ var InventoryItemTypes = [
           displayName: 'Other',
       },
 ];
+CreateInventoryWeaponHtml();
+CreateEquipHtml();
