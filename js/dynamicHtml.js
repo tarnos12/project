@@ -40,6 +40,12 @@ function CreateWeaponSkillHtml() {
     html += '<td>' + "Strength +" + player.fistStrength() + '</td>' + '<td>' + " Dexterity +" + player.fistDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
+    //Bow
+    html += '<tr>' + '<td>';
+    html += "Bow Skill Level: " + player.bowLevel;
+    html += '<td>' + "Strength +" + player.bowStrength() + '</td>' + '<td>' + " Dexterity +" + player.bowDexterity() + '</td>';
+    html += '</td>' + '</tr>';
+
     html += '</table>';
     document.getElementById("weaponSkill").innerHTML = html;
 };
@@ -83,6 +89,39 @@ function CreateEquipHtml() {
             '<td>' + equippedItems.weapon.value + "Value" + '</td>' +
             '<td>' +
             '<button onclick="unequipItem' + "(" + equippedItems.weapon.id + ")" + '">Unequip</button>' +
+            '</td>' + '</tr>';
+    }
+    //Off-Hand
+    if (equippedItems.offHand.hasOwnProperty('itemType')) {
+        html += '<tr>' + '<td>';
+
+        html += '<img src="images/items/' + equippedItems.offHand.itemType + equippedItems.offHand.itemQuality + '.png" "data-toggle=" "tooltip" title="' +
+                 "Item Rarity: " + equippedItems.offHand.itemQuality +
+                '\n' +
+                "Item Type: " + equippedItems.offHand.itemType +
+                '\n' +
+                "Strength: " + equippedItems.offHand.strength +
+                '\n' +
+                "Endurance: " + equippedItems.offHand.endurance +
+                '\n' +
+                "Agility: " + equippedItems.offHand.agility +
+                '\n' +
+                "Dexterity: " + equippedItems.offHand.dexterity +
+                '\n' +
+                "Intelligence: " + equippedItems.offHand.intelligence +
+                '\n' +
+                "Wisdom: " + equippedItems.offHand.wisdom +
+                '\n' +
+                "Luck: " + equippedItems.offHand.luck +
+                '\n' +
+                "Value: " + equippedItems.offHand.value + "gold" +
+                '">';
+
+        html += '</td>' +
+            '<td>' + '<font color="' + equippedItems.offHand.color + '">' + equippedItems.offHand.itemQuality + '</font>' + '</td>' +
+            '<td>' + equippedItems.offHand.value + "Value" + '</td>' +
+            '<td>' +
+            '<button onclick="unequipItem' + "(" + equippedItems.offHand.id + ")" + '">Unequip</button>' +
             '</td>' + '</tr>';
     }
     //Armor
@@ -328,7 +367,7 @@ function CreateInventoryWeaponHtml() {
     html += '<div class="c3"> <h3>Player Inventory</h3>' + playerInventory.length  + "/" + player.inventory() + '</div>'
     html += '<ul class="nav nav-tabs">';
 
-    for (var k = 0; k < 4; k++) {
+    for (var k = 0; k < 5; k++) {
 
         if (k === inventoryTabActiveNum) {
             html += '<li class="active" onClick = changedTabInventory(' + k + ')>';
@@ -358,6 +397,9 @@ function CreateInventoryWeaponHtml() {
             if (playerInventory[i].itemType2.type === InventoryItemTypes[j].type) {
                 if (playerInventory[i].itemType2.type === "Weapon") {
                     var itemStat = equippedItems.weapon;
+                }
+                else if (playerInventory[i].itemType2.type === "OffHand") {
+                    var itemStat = equippedItems.offHand;
                 }
                 else if (playerInventory[i].itemType2.type === "Armor") {
                     var itemStat = equippedItems.armor;

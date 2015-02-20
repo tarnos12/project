@@ -1,4 +1,11 @@
 _________________________
+v1.2.2 - 20 february 2015|
+-------------------------|
+- New item type, off-hand. Shields/Orbs/Books/Throwing/Dagger
+- New weapon types: Bow
+- Updated some graphic, added new weapon skill for a bow.
+- Sell all common, uncommon, rare at shop!
+_________________________
 v1.2.1 - 18 february 2015|
 -------------------------|
 - Check options menu! You can use checkbox to set which items will be destroyed when dropped from monsters, if you dont want to see common items in your inventory, then just check a box :)

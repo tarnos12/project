@@ -16,47 +16,64 @@
         pot: pot,
         spot: spot,
         mpot: mpot,
+        //Equipped Items
         playerWeapon: equippedItems.weapon,
+        playerOffHand: equippedItems.offHand,
         playerArmor: equippedItems.armor,
         playerRing: equippedItems.ring,
         playerAmulet: equippedItems.amulet,
         playerTalisman: equippedItems.talisman,
         inventory: playerInventory,
-        weaponStrength: equippedItems.weapon.strength,
+        //Item strength
+        weaponStrength: player.weaponStrength,
+        offHandStrength: player.offHandStrength,
         armorStrength: player.armorStrength,
         ringStrength: player.ringStrength,
         amuletStrength: player.amuletStrength,
         talismanStrength: player.talismanStrength,
+        //Item Endurance
         weaponEndurance: player.weaponEndurance,
+        offHandEndurance: player.offHandEndurance,
         armorEndurance: player.armorEndurance,
         ringEndurance: player.ringEndurance,
         amuletEndurance: player.amuletEndurance,
         talismanEndurance: player.talismanEndurance,
-        weaponAgility: equippedItems.weapon.agility,
+        //Item Agility
+        weaponAgility: player.weaponAgility,
+        offHandAgility: player.offHandAgility,
         armorAgility: player.armorAgility,
         ringAgility: player.ringAgility,
         amuletAgility: player.amuletAgility,
         talismanAgility: player.talismanAgility,
+        //Item Dexterity
         weaponDexterity: player.weaponDexterity,
+        offHandDexterity: player.offHandDexterity,
         armorDexterity: player.armorDexterity,
         ringDexterity: player.ringDexterity,
         amuletDexterity: player.amuletDexterity,
         talismanDexterity: player.talismanDexterity,
+        //Item Intelligence
         weaponIntelligence: player.weaponIntelligence,
+        offHandIntelligence: player.offHandIntelligence,
         armorIntelligence: player.armorIntelligence,
         ringIntelligence: player.ringIntelligence,
         amuletIntelligence: player.amuletIntelligence,
         talismanIntelligence: player.talismanIntelligence,
+        //Item Wisdom
         weaponWisdom: player.weaponWisdom,
+        offHandWisdom: player.offHandWisdom,
         armorWisdom: player.armorWisdom,
         ringWisdom: player.ringWisdom,
         amuletWisdom: player.amuletWisdom,
         talismanWisdom: player.talismanWisdom,
+        //Item Luck
         weaponLuck: player.weaponLuck,
+        offHandLuck: player.offHandLuck,
         armorLuck: player.armorLuck,
         ringLuck: player.ringLuck,
         amuletLuck: player.amuletLuck,
         talismanLuck: player.talismanLuck,
+        //Weapon mastery levels and experience
         swordMaxExp: player.swordMaxExp,
         swordLevel: player.swordLevel,
         daggerMaxExp: player.daggerMaxExp,
@@ -69,6 +86,8 @@
         staffLevel: player.staffLevel,
         fistMaxExp: player.fistMaxExp,
         fistLevel: player.fistLevel,
+        bowMaxExp: player.bowMaxExp,
+        bowLevel: player.bowLevel,
     }
     localStorage.setItem("save", JSON.stringify(save));
 }
@@ -87,41 +106,58 @@ function load() {
     if (typeof savegame.staffLevel !== "undefined") player.staffLevel = savegame.staffLevel;
     if (typeof savegame.fistMaxExp !== "undefined") player.fistMaxExp = savegame.fistMaxExp;
     if (typeof savegame.fistLevel !== "undefined") player.fistLevel = savegame.fistLevel;
+    if (typeof savegame.bowMaxExp !== "undefined") player.bowMaxExp = savegame.bowMaxExp;
+    if (typeof savegame.bowLevel !== "undefined") player.bowLevel = savegame.bowLevel;
+    //Strength
     if (typeof savegame.weaponStrength !== "undefined") player.weaponStrength = savegame.weaponStrength;
+    if (typeof savegame.offHandStrength !== "undefined") player.offHandStrength = savegame.offHandStrength;
     if (typeof savegame.armorStrength !== "undefined") player.armorStrength = savegame.armorStrength;
     if (typeof savegame.ringStrength !== "undefined") player.ringStrength = savegame.ringStrength;
     if (typeof savegame.amuletStrength !== "undefined") player.amuletStrength = savegame.amuletStrength;
     if (typeof savegame.talismanStrength !== "undefined") player.talismanStrength = savegame.talismanStrength;
+    //Endurance
     if (typeof savegame.weaponEndurance !== "undefined") player.weaponEndurance = savegame.weaponEndurance;
+    if (typeof savegame.offHandEndurance !== "undefined") player.offHandEndurance = savegame.offHandEndurance;
     if (typeof savegame.armorEndurance !== "undefined") player.armorEndurance = savegame.armorEndurance;
     if (typeof savegame.ringEndurance !== "undefined") player.ringEndurance = savegame.ringEndurance;
     if (typeof savegame.amuletEndurance !== "undefined") player.amuletEndurance = savegame.amuletEndurance;
     if (typeof savegame.talismanEndurance !== "undefined") player.talismanEndurance = savegame.talismanEndurance;
+    //Agility
     if (typeof savegame.weaponAgility !== "undefined") player.weaponAgility = savegame.weaponAgility;
+    if (typeof savegame.offHandAgility !== "undefined") player.offHandAgility = savegame.offHandAgility;
     if (typeof savegame.armorAgility !== "undefined") player.armorAgility = savegame.armorAgility;
     if (typeof savegame.ringAgility !== "undefined") player.ringAgility = savegame.ringAgility;
     if (typeof savegame.amuletAgility !== "undefined") player.amuletAgility = savegame.amuletAgility;
     if (typeof savegame.talismanAgility !== "undefined") player.talismanAgility = savegame.talismanAgility;
+    //Dexterity
     if (typeof savegame.weaponDexterity !== "undefined") player.weaponDexterity = savegame.weaponDexterity;
+    if (typeof savegame.offHandDexterity !== "undefined") player.offHandDexterity = savegame.offHandDexterity;
     if (typeof savegame.armorDexterity !== "undefined") player.armorDexterity = savegame.armorDexterity;
     if (typeof savegame.ringDexterity !== "undefined") player.ringDexterity = savegame.ringDexterity;
     if (typeof savegame.amuletDexterity !== "undefined") player.amuletDexterity = savegame.amuletDexterity;
     if (typeof savegame.talismanDexterity !== "undefined") player.talismanDexterity = savegame.talismanDexterity;
+    //Intelligence
     if (typeof savegame.weaponIntelligence !== "undefined") player.weaponIntelligence = savegame.weaponIntelligence;
+    if (typeof savegame.offHandIntelligence !== "undefined") player.offHandIntelligence = savegame.offHandIntelligence;
     if (typeof savegame.armorIntelligence !== "undefined") player.armorIntelligence = savegame.armorIntelligence;
     if (typeof savegame.ringIntelligence !== "undefined") player.ringIntelligence = savegame.ringIntelligence;
     if (typeof savegame.amuletIntelligence !== "undefined") player.amuletIntelligence = savegame.amuletIntelligence;
     if (typeof savegame.talismanIntelligence !== "undefined") player.talismanIntelligence = savegame.talismanIntelligence;
+    //Wisdom
     if (typeof savegame.weaponWisdom !== "undefined") player.weaponWisdom = savegame.weaponWisdom;
+    if (typeof savegame.offHandWisdom !== "undefined") player.offHandWisdom = savegame.offHandWisdom;
     if (typeof savegame.armorWisdom !== "undefined") player.armorWisdom = savegame.armorWisdom;
     if (typeof savegame.ringWisdom !== "undefined") player.ringWisdom = savegame.ringWisdom;
     if (typeof savegame.amuletWisdom !== "undefined") player.amuletWisdom = savegame.amuletWisdom;
     if (typeof savegame.talismanWisdom !== "undefined") player.talismanWisdom = savegame.talismanWisdom;
+    //Luck
     if (typeof savegame.weaponLuck !== "undefined") player.weaponLuck = savegame.weaponLuck;
+    if (typeof savegame.offHandLuck !== "undefined") player.offHandLuck = savegame.offHandLuck;
     if (typeof savegame.armorLuck !== "undefined") player.armorLuck = savegame.armorLuck;
     if (typeof savegame.ringLuck !== "undefined") player.ringLuck = savegame.ringLuck;
     if (typeof savegame.amuletLuck !== "undefined") player.amuletLuck = savegame.amuletLuck;
     if (typeof savegame.talismanLuck !== "undefined") player.talismanLuck = savegame.talismanLuck;
+    //Other
     if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
     if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
@@ -138,6 +174,7 @@ function load() {
     if (typeof savegame.pot !== "undefined") pot = savegame.pot;
     if (typeof savegame.spot !== "undefined") spot = savegame.spot;
     if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
+    if (typeof savegame.playerOffHand !== "undefined") equippedItems.offHand = savegame.playerOffHand;
     if (typeof savegame.playerArmor !== "undefined") equippedItems.armor = savegame.playerArmor;
     if (typeof savegame.playerRing !== "undefined") equippedItems.ring = savegame.playerRing;
     if (typeof savegame.playerAmulet !== "undefined") equippedItems.amulet = savegame.playerAmulet;

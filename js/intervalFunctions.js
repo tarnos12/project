@@ -29,8 +29,8 @@
                 document.getElementById("mpot").innerHTML = mpot;
             }
         }
-    } else {
-        if (hppercent <= 30 & spot >= 1) {
+    } else if (player.maxhealth() <= 500 & spot >= 1){
+        if (hppercent <= 30) {
             if (player.health + spot >= player.maxhealth()) {
                 player.health = player.maxhealth();
                 spot -= 1;

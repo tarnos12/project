@@ -149,4 +149,7 @@ function loadIsEquipped() {
     else if (equippedItems.weapon.itemType === "Fist") {
         player.isFist = true;
     }
+    else if (equippedItems.weapon.itemType === "Bow") {
+        player.isBow = true;
+    }
 };
