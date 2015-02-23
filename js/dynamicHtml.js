@@ -6,43 +6,43 @@ function CreateWeaponSkillHtml() {
 
     //Sword
     html += '<tr>' + '<td>';
-    html += "Sword Skill Level: " + player.swordLevel;
+    html += "Sword Skill Level: " + player.SwordLevel;
     html += '<td>' + "Strength +" + player.swordStrength() + '</td>' + '<td>' + " Agility +" + player.swordAgility() + '</td>';
     html += '</td>' + '</tr>';
 
     //Dagger
     html += '<tr>' + '<td>';
-    html += "Dagger Skill Level: " + player.daggerLevel;
+    html += "Dagger Skill Level: " + player.DaggerLevel;
     html += '<td>' + "Agility +" + player.daggerAgility() + '</td>' + '<td>' + " Dexterity +" + player.daggerDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
     //Axe
     html += '<tr>' + '<td>';
-    html += "Axe Skill Level: " + player.axeLevel;
+    html += "Axe Skill Level: " + player.AxeLevel;
     html += '<td>' + "Strength +" + player.axeStrength() + '</td>' + '<td>' + " Endurance +" + player.axeEndurance() + '</td>';
     html += '</td>' + '</tr>';
 
     //Mace
     html += '<tr>' + '<td>';
-    html += "Mace Skill Level: " + player.maceLevel;
+    html += "Mace Skill Level: " + player.MaceLevel;
     html += '<td>' + "Endurance +" + player.maceEndurance() + '</td>' + '<td>' + " Wisdom +" + player.maceWisdom() + '</td>';
     html += '</td>' + '</tr>';
 
     //Staff
     html += '<tr>' + '<td>';
-    html += "Staff Skill Level: " + player.staffLevel;
+    html += "Staff Skill Level: " + player.StaffLevel;
     html += '<td>' + "Intelligence +" + player.staffIntelligence() + '</td>' + '<td>' + " Wisdom +" + player.staffWisdom() + '</td>';
     html += '</td>' + '</tr>';
 
     //Fist
     html += '<tr>' + '<td>';
-    html += "Fist Skill Level: " + player.fistLevel;
+    html += "Fist Skill Level: " + player.FistLevel;
     html += '<td>' + "Strength +" + player.fistStrength() + '</td>' + '<td>' + " Dexterity +" + player.fistDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
     //Bow
     html += '<tr>' + '<td>';
-    html += "Bow Skill Level: " + player.bowLevel;
+    html += "Bow Skill Level: " + player.BowLevel;
     html += '<td>' + "Strength +" + player.bowStrength() + '</td>' + '<td>' + " Dexterity +" + player.bowDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
@@ -266,7 +266,7 @@ function CreateMonsterHtml() {
 
     html += '<ul class="nav nav-tabs">';
 
-    for (var k = 0; k < monsterTypes.length; k++) {
+    for (var k = 0; k < monsterAreas.length; k++) {
 
         if (k === 0) {
             html += '<li class="active">';
@@ -274,13 +274,13 @@ function CreateMonsterHtml() {
             html += '<li>';
         }
 
-        html += '<a href="#tab_' + monsterTypes[k].type + '" data-toggle="tab">' + monsterTypes[k].displayName + '</a></li>';
+        html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab">' + monsterAreas[k].displayName + '</a></li>';
     }
 
     html += '</ul>';
     html += '<div class="tab-content">';
 
-    for (var j = 0; j < monsterTypes.length; j++) {
+    for (var j = 0; j < monsterAreas.length; j++) {
 
         if (j === 0) {
             html += '<div class="tab-pane active" ';
@@ -288,13 +288,13 @@ function CreateMonsterHtml() {
             html += '<div class="tab-pane" ';
         }
 
-        html += 'id="tab_' + monsterTypes[j].type + '">' +
+        html += 'id="tab_' + monsterAreas[j].type + '">' +
             '<div class="c3">' +
             '<h4>SLAY MONSTERS!</h4>' +
             '</div>';
 
         for (var i = 0; i < monsters.length; i++) {
-            if (monsters[i].type === monsterTypes[j].type) {
+            if (monsters[i].area === monsterAreas[j].type) {
 
                 html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
                     '<div id="' + monsters[i].id + '" class="c3">' +
@@ -303,6 +303,8 @@ function CreateMonsterHtml() {
                     'Def:' + monsters[i].def +
                     '<br />' +
                     '<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp +
+                    '<br />' +
+                    '<b>' + monsters[i].name + '</b>' +
                     '<br />' +
                     '<img src="images/' + monsters[i].id + '.jpg" alt="' + monsters[i].name + '">' +
                     '<br />' +

@@ -28,17 +28,11 @@ var player = {
         return Math.floor((player.totalStrength() + 100));
     },
     baseStrength: 5,
-    weaponStrength: 0,
-    offHandStrength: 0,
-    armorStrength: 0,
-    ringStrength: 0,
-    amuletStrength: 0,
-    talismanStrength: 0,
-    accessoryStrength: function () {
-        return Math.floor((player.ringStrength + player.amuletStrength + player.talismanStrength));
+    equipStrength: function () {
+        return Math.floor((equippedItems.weapon.strength + equippedItems.offHand.strength + equippedItems.armor.strength + equippedItems.ring.strength + equippedItems.amulet.strength + equippedItems.talisman.strength));
     },
     totalStrength: function () {
-        return Math.floor((player.baseStrength + player.weaponStrength + player.offHandStrength + player.armorStrength + player.accessoryStrength() + player.swordStrength() + player.axeStrength() + player.fistStrength() + player.bowStrength()));
+        return Math.floor((player.baseStrength + player.equipStrength() + player.axeStrength() + player.fistStrength() + player.bowStrength()));
     },
     baseEndurance: 5,
     weaponEndurance: 0,
@@ -160,160 +154,208 @@ var player = {
     },
     expRate: 0,
     //Sword
-    swordLevel: 1,
-    swordExp: 0,
-    swordMaxExp: 10,
+    SwordLevel: 1,
+    SwordExp: 0,
+    SwordMaxExp: 10,
     isSword: false,
     swordStrength: function () {
         if (player.isSword === true) {
-            return (player.swordLevel * 2);
+            return (player.SwordLevel * 2);
         }
         else if (player.isSword === false) {
-            return (player.swordLevel * 0);
+            return (player.SwordLevel * 0);
         }
     },
     swordAgility: function () {
         if (player.isSword === true) {
-            return (player.swordLevel * 1.5);
+            return (player.SwordLevel * 1.5);
         }
         else if (player.isSword === false) {
-            return (player.swordLevel * 0);
+            return (player.SwordLevel * 0);
         }
     },
     //Dagger
-    daggerLevel: 1,
-    daggerExp: 0,
-    daggerMaxExp: 10,
+    DaggerLevel: 1,
+    DaggerExp: 0,
+    DaggerMaxExp: 10,
     isDagger: false,
     daggerAgility: function () {
         if (player.isDagger === true) {
-            return (player.daggerLevel * 2);
+            return (player.DaggerLevel * 2);
         }
         else if (player.isDagger === false) {
-            return (player.daggerLevel * 0);
+            return (player.DaggerLevel * 0);
         }
     },
     daggerDexterity: function () {
         if (player.isDagger === true) {
-            return (player.daggerLevel * 1.5);
+            return (player.DaggerLevel * 1.5);
         }
         else if (player.isDagger === false) {
-            return (player.daggerLevel * 0);
+            return (player.DaggerLevel * 0);
         }
     },
     //Axe
-    axeLevel: 1,
-    axeExp: 0,
-    axeMaxExp: 10,
+    AxeLevel: 1,
+    AxeExp: 0,
+    AxeMaxExp: 10,
     isAxe: false,
     axeStrength: function () {
         if (player.isAxe === true) {
-            return (player.axeLevel * 2);
+            return (player.AxeLevel * 2);
         }
         else if (player.isAxe === false) {
-            return (player.axeLevel * 0);
+            return (player.AxeLevel * 0);
         }
     },
     axeEndurance: function () {
         if (player.isAxe === true) {
-            return (player.axeLevel * 1.5);
+            return (player.AxeLevel * 1.5);
         }
         else if (player.isAxe === false) {
-            return (player.axeLevel * 0);
+            return (player.AxeLevel * 0);
         }
     },
     //Mace
-    maceLevel: 1,
-    maceExp: 0,
-    maceMaxExp: 10,
+    MaceLevel: 1,
+    MaceExp: 0,
+    MaceMaxExp: 10,
     isMace: false,
     maceEndurance: function () {
         if (player.isMace === true) {
-            return (player.maceLevel * 2);
+            return (player.MaceLevel * 2);
         }
         else if (player.isMace === false) {
-            return (player.maceLevel * 0);
+            return (player.MaceLevel * 0);
         }
     },
     maceWisdom: function () {
         if (player.isMace === true) {
-            return (player.maceLevel * 1.5);
+            return (player.MaceLevel * 1.5);
         }
         else if (player.isMace === false) {
-            return (player.maceLevel * 0);
+            return (player.MaceLevel * 0);
         }
     },
     //Staff
-    staffLevel: 1,
-    staffExp: 0,
-    staffMaxExp: 10,
+    StaffLevel: 1,
+    StaffExp: 0,
+    StaffMaxExp: 10,
     isStaff: false,
     staffIntelligence: function () {
         if (player.isStaff === true) {
-            return (player.staffLevel * 2);
+            return (player.StaffLevel * 2);
         }
         else if (player.isStaff === false) {
-            return (player.staffLevel * 0);
+            return (player.StaffLevel * 0);
         }
     },
     staffWisdom: function () {
         if (player.isStaff === true) {
-            return (player.staffLevel * 1.5);
+            return (player.StaffLevel * 1.5);
         }
         else if (player.isStaff === false) {
-            return (player.staffLevel * 0);
+            return (player.StaffLevel * 0);
         }
     },
     //Fist
-    fistLevel: 1,
-    fistExp: 0,
-    fistMaxExp: 10,
+    FistLevel: 1,
+    FistExp: 0,
+    FistMaxExp: 10,
     isFist: false,
     fistStrength: function () {
         if (player.isFist === true) {
-            return (player.fistLevel * 2);
+            return (player.FistLevel * 2);
         }
         else if (player.isFist === false) {
-            return (player.fistLevel * 0);
+            return (player.FistLevel * 0);
         }
     },
     fistDexterity: function () {
         if (player.isFist === true) {
-            return (player.fistLevel * 1.5);
+            return (player.FistLevel * 1.5);
         }
         else if (player.isFist === false) {
-            return (player.fistLevel * 0);
+            return (player.FistLevel * 0);
         }
     },
     //Bow
-    bowLevel: 1,
-    bowExp: 0,
-    bowMaxExp: 10,
+    BowLevel: 1,
+    BowExp: 0,
+    BowMaxExp: 10,
     isBow: false,
     bowStrength: function () {
         if (player.isBow === true) {
-            return (player.bowLevel * 1.5);
+            return (player.BowLevel * 1.5);
         }
         else if (player.isBow === false) {
-            return (player.bowLevel * 0);
+            return (player.BowLevel * 0);
         }
     },
     bowDexterity: function () {
         if (player.isBow === true) {
-            return (player.bowLevel * 2);
+            return (player.BowLevel * 2);
         }
         else if (player.isBow === false) {
-            return (player.bowLevel * 0);
+            return (player.BowLevel * 0);
         }
     }
 };
 var equippedItems = {
-    weapon: {},
-    offHand: {},
-    armor: {},
-    ring: {},
-    amulet: {},
-    talisman: {}
+    weapon: {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0
+    },
+    offHand: {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0
+    },
+    armor: {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0
+    },
+    ring: {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0
+    },
+    amulet: {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0
+    },
+    talisman: {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0
+    }
 };
 var maxLogLines = 16;
 var logData = {
@@ -334,7 +376,7 @@ var playerInventory = [];
 /**
  * Helper method to create the array of monsters
  */
-function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id, level) {
+function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id, level, area) {
     var monster = {
         hp: maxHp, // init HP to max HP
         maxHp: maxHp,
@@ -347,12 +389,32 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type
         name: name,
         type: type,
         id: id,
-        level: level
+        level: level,
+        area: area
     }
 
     monsters.push(monster);
     return monster;
 }
+
+var monsterAreas = [
+    {
+    type: 'BanditHideout',
+    displayName: 'Bandit Hideout'
+    },
+     {
+         type: 'Forest',
+         displayName: 'Forest'
+     },
+      {
+          type: 'Mountains',
+          displayName: 'Mountains'
+      },
+       {
+           type: 'AncientCave',
+           displayName: 'Ancient Cave'
+       }
+]
 
 var monsterTypes = [
     {
@@ -469,38 +531,38 @@ var monsterTypes = [
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
 //            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id, level
-createMonster(10, 0, 2, 3, 5, 100, 5, 'monster1', 'weak', 'monster1', 1);
-createMonster(30, 2, 2, 5, 10, 100, 5, 'monster2', 'weak', 'monster2', 2);
-createMonster(70, 4, 4, 7, 30, 100, 5, 'monster3', 'weak', 'monster3', 3);
-createMonster(130, 6, 6, 10, 50, 100, 5, 'monster4', 'weak', 'monster4', 4);
-createMonster(190, 9, 9, 14, 90, 100, 5, 'monster5', 'weak', 'monster5', 5);
-createMonster(280, 13, 13, 19, 140, 100, 5, 'monster6', 'weak', 'monster6', 6);
-createMonster(380, 18, 18, 23, 190, 100, 5, 'monster7', 'weak', 'monster7', 7);
-createMonster(500, 25, 25, 30, 260, 100, 5, 'monster8', 'weak', 'monster8', 8);
-createMonster(700, 30, 32, 37, 340, 100, 5, 'monster9', 'average', 'monster9', 9);
-createMonster(900, 38, 40, 45, 450, 100, 5, 'monster10', 'average', 'monster10', 10);
-createMonster(1300, 45, 50, 58, 560, 100, 5, 'monster11', 'average', 'monster11', 11);
-createMonster(1600, 53, 60, 67, 700, 100, 5, 'monster12', 'average', 'monster12', 12);
-createMonster(2200, 65, 75, 80, 810, 100, 5, 'monster13', 'average', 'monster13', 13);
-createMonster(2600, 75, 86, 92, 940, 100, 5, 'monster14', 'average', 'monster14', 14);
-createMonster(3000, 88, 96, 100, 1060, 100, 5, 'monster15', 'average', 'monster15', 15);
-createMonster(4000, 95, 105, 110, 1200, 100, 5, 'monster16', 'average', 'monster16', 16);
-createMonster(5000, 120, 140, 160, 1600, 100, 5, 'monster17', 'strong', 'monster17', 17);
-createMonster(7000, 140, 160, 185, 2150, 100, 5, 'monster18', 'strong', 'monster18', 18);
-createMonster(9000, 170, 200, 215, 2600, 100, 5, 'monster19', 'strong', 'monster19', 19);
-createMonster(12000, 200, 230, 250, 3400, 100, 5, 'monster20', 'strong', 'monster20', 20);
-createMonster(15000, 220, 260, 275, 5000, 100, 5, 'monster21', 'strong', 'monster21', 21);
-createMonster(18000, 250, 290, 320, 7000, 100, 5, 'monster22', 'strong', 'monster22', 22);
-createMonster(22000, 300, 350, 380, 10000, 100, 5, 'monster23', 'strong', 'monster23', 23);
-createMonster(28000, 400, 420, 550, 15000, 100, 5, 'monster24', 'strong', 'monster24', 24);
-createMonster(34000, 500, 500, 700, 23000, 100, 5, 'monster25', 'boss', 'monster25', 25);
-createMonster(40000, 700, 900, 1200, 35000, 100, 5, 'monster26', 'boss', 'monster26', 26);
-createMonster(48000, 1000, 1200, 1500, 70000, 100, 5, 'monster27', 'boss', 'monster27', 27);
-createMonster(57000, 1200, 1700, 2200, 120000, 100, 5, 'monster28', 'boss', 'monster28', 28);
-createMonster(65000, 2000, 2500, 3000, 180000, 100, 5, 'monster29', 'boss', 'monster29', 29);
-createMonster(72000, 2500, 3200, 4000, 290000, 100, 5, 'monster30', 'boss', 'monster30', 30);
-createMonster(80000, 3000, 4500, 5500, 430000, 100, 5, 'monster31', 'boss', 'monster31', 31);
-createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'monster32', 'boss', 'monster32', 32);
+createMonster(10, 0, 2, 3, 5, 100, 5, 'Bandit', 'weak', 'monster1', 1, "BanditHideout");
+createMonster(30, 2, 2, 5, 10, 100, 5, 'Bandit Thug', 'weak', 'monster2', 2, "BanditHideout");
+createMonster(70, 4, 4, 7, 30, 100, 5, 'Bandit Archer', 'weak', 'monster3', 3, "BanditHideout");
+createMonster(130, 6, 6, 10, 50, 100, 5, 'Bandit Plunderer', 'weak', 'monster4', 4, "BanditHideout");
+createMonster(190, 9, 9, 14, 90, 100, 5, 'Bandit Assasin', 'weak', 'monster5', 5, "BanditHideout");
+createMonster(280, 13, 13, 19, 140, 100, 5, 'Bandit Leader', 'weak', 'monster6', 6, "BanditHideout");
+createMonster(380, 18, 18, 23, 190, 100, 5, 'Bandit Chief', 'weak', 'monster7', 7, "BanditHideout");
+createMonster(500, 25, 25, 30, 260, 100, 5, 'Bandit Lord', 'weak', 'monster8', 8, "BanditHideout");
+createMonster(700, 30, 32, 37, 340, 100, 5, 'Spider', 'average', 'monster9', 9, "Forest");
+createMonster(900, 38, 40, 45, 450, 100, 5, 'Wolf', 'average', 'monster10', 10, "Forest");
+createMonster(1300, 45, 50, 58, 560, 100, 5, 'Bear', 'average', 'monster11', 11, "Forest");
+createMonster(1600, 53, 60, 67, 700, 100, 5, 'Grizzly', 'average', 'monster12', 12, "Forest");
+createMonster(2200, 65, 75, 80, 810, 100, 5, 'Troll', 'average', 'monster13', 13, "Forest");
+createMonster(2600, 75, 86, 92, 940, 100, 5, 'Forest Troll', 'average', 'monster14', 14, "Forest");
+createMonster(3000, 88, 96, 100, 1060, 100, 5, 'Spider Queen', 'average', 'monster15', 15, "Forest");
+createMonster(4000, 95, 105, 110, 1200, 100, 5, 'Troll Leader', 'average', 'monster16', 16, "Forest");
+createMonster(5000, 120, 140, 160, 1600, 100, 5, 'Giant', 'strong', 'monster17', 17, "Mountains");
+createMonster(7000, 140, 160, 185, 2150, 100, 5, 'Frost Giant', 'strong', 'monster18', 18, "Mountains");
+createMonster(9000, 170, 200, 215, 2600, 100, 5, 'Frost Troll', 'strong', 'monster19', 19, "Mountains");
+createMonster(12000, 200, 230, 250, 3400, 100, 5, 'Wyvern', 'strong', 'monster20', 20, "Mountains");
+createMonster(15000, 220, 260, 275, 5000, 100, 5, 'Frost Dragon', 'strong', 'monster21', 21, "Mountains");
+createMonster(18000, 250, 290, 320, 7000, 100, 5, 'Ice Elemental', 'strong', 'monster22', 22, "Mountains");
+createMonster(22000, 300, 350, 380, 10000, 100, 5, 'Frost Guardian', 'strong', 'monster23', 23, "Mountains");
+createMonster(28000, 400, 420, 550, 15000, 100, 5, 'Frost Queen', 'strong', 'monster24', 24, "Mountains");
+createMonster(34000, 500, 500, 700, 23000, 100, 5, 'Zombie', 'boss', 'monster25', 25, "AncientCave");
+createMonster(40000, 700, 900, 1200, 35000, 100, 5, 'Skeleton', 'boss', 'monster26', 26, "AncientCave");
+createMonster(48000, 1000, 1200, 1500, 70000, 100, 5, 'Skeleton Soldier', 'boss', 'monster27', 27, "AncientCave");
+createMonster(57000, 1200, 1700, 2200, 120000, 100, 5, 'Skeleton Archer', 'boss', 'monster28', 28, "AncientCave");
+createMonster(65000, 2000, 2500, 3000, 180000, 100, 5, 'Skeleton Mage', 'boss', 'monster29', 29, "AncientCave");
+createMonster(72000, 2500, 3200, 4000, 290000, 100, 5, 'Skeleton Healer', 'boss', 'monster30', 30, "AncientCave");
+createMonster(80000, 3000, 4500, 5500, 430000, 100, 5, 'Wraith', 'boss', 'monster31', 31, "AncientCave");
+createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'Lich King', 'boss', 'monster32', 32, "AncientCave");
 
 /**
  * Base monster attack method. Shared code among all monsters.
@@ -676,81 +738,15 @@ function monsterKilled(monster) {
 //Weapon skill experience
 function weaponSkill(monster) {
     var expgain = monster.level;
-      //Sword
-    if (equippedItems.weapon.itemType === "Sword") {
-        if (player.swordExp < player.swordMaxExp) {
-            player.swordExp = Math.floor(player.swordExp + expgain);
-        }
-        if (player.swordExp >= player.swordMaxExp) {
-            player.swordLevel += 1;
-            player.swordExp = player.swordExp - player.swordMaxExp;
-            player.swordMaxExp = Math.floor(player.swordMaxExp * 1.2)
-        };
+    var itemType = equippedItems.weapon.itemType;
+    
+    if (player[itemType + "Exp"] < player[itemType + "MaxExp"]) {
+        player[itemType + "Exp"] = Math.floor(player[itemType + "Exp"] + expgain);
     }
-        //Dagger
-    else if (equippedItems.weapon.itemType === "Dagger") {
-        if (player.daggerExp < player.daggerMaxExp) {
-            player.daggerExp = Math.floor(player.daggerExp + expgain);
-        }
-        if (player.daggerExp >= player.daggerMaxExp) {
-            player.daggerLevel += 1;
-            player.daggerExp = player.daggerExp - player.daggerMaxExp;
-            player.daggerMaxExp = Math.floor(player.daggerMaxExp * 1.2)
-        };
-    }
-        //Axe
-    else if (equippedItems.weapon.itemType === "Axe") {
-        if (player.axeExp < player.axeMaxExp) {
-            player.axeExp = Math.floor(player.axeExp + expgain);
-        }
-        if (player.axeExp >= player.axeMaxExp) {
-            player.axeLevel += 1;
-            player.axeExp = player.axeExp - player.axeMaxExp;
-            player.axeMaxExp = Math.floor(player.axeMaxExp * 1.2)
-        };
-    }
-        //Mace
-    else if (equippedItems.weapon.itemType === "Mace") {
-        if (player.maceExp < player.maceMaxExp) {
-            player.maceExp = Math.floor(player.maceExp + expgain);
-        }
-        if (player.maceExp >= player.maceMaxExp) {
-            player.maceLevel += 1;
-            player.maceExp = player.maceExp - player.maceMaxExp;
-            player.maceMaxExp = Math.floor(player.maceMaxExp * 1.2)
-        };
-    }
-        //Staff
-    else if (equippedItems.weapon.itemType === "Staff") {
-        if (player.staffExp < player.staffMaxExp) {
-            player.staffExp = Math.floor(player.staffExp + expgain);
-        }
-        if (player.staffExp >= player.staffMaxExp) {
-            player.staffLevel += 1;
-            player.staffExp = player.staffExp - player.staffMaxExp;
-            player.staffMaxExp = Math.floor(player.staffMaxExp * 1.2)
-        };
-    }
-        //Fist
-    else if (equippedItems.weapon.itemType === "Fist") {
-        if (player.fistExp < player.fistMaxExp) {
-            player.fistExp = Math.floor(player.fistExp + expgain);
-        }
-        if (player.fistExp >= player.fistMaxExp) {
-            player.fistLevel += 1;
-            player.fistExp = player.fistExp - player.fistMaxExp;
-            player.fistMaxExp = Math.floor(player.fistMaxExp * 1.2)
-        };
-    }
-    else if (equippedItems.weapon.itemType === "Bow") {
-        if (player.bowExp < player.bowMaxExp) {
-            player.bowExp = Math.floor(player.bowExp + expgain);
-        }
-        if (player.bowExp >= player.bowMaxExp) {
-            player.bowLevel += 1;
-            player.bowExp = player.bowExp - player.bowMaxExp;
-            player.bowMaxExp = Math.floor(player.bowMaxExp * 1.2)
-        };
+    if (player[itemType + "Exp"] >= player[itemType + "MaxExp"]) {
+        player[itemType + "Level"] += 1;
+        player[itemType + "Exp"] -= player[itemType + "MaxExp"];
+        player[itemType + "MaxExp"] = Math.floor(player[itemType + "MaxExp"] * 1.2);
     }
     CreateWeaponSkillHtml()
 };
@@ -1147,6 +1143,7 @@ function monsterItemDrop(monster) {
         //Get Item Information
         var randomItemQuality = Math.floor(Math.random() * (1000 - 1) + 1); //Random item quality
         var itemQuality = getItemQuality(randomItemQuality, monsterType);
+        if (typeof itemQuality !=="undefined"){
         if (checkBoxCommon === false && itemQuality.type === "Common" || checkBoxUncommon === false && itemQuality.type === "Uncommon" || checkBoxRare === false && itemQuality.type === "Rare" || checkBoxEpic === false && itemQuality.type === "Epic" || itemQuality.type === "Legendary") {
             var itemType = itemTypes[Math.floor(Math.random() * itemTypes.length)]; //This code gets a random item from the item array.
             var itemType2 = itemType.type;
@@ -1196,9 +1193,12 @@ function monsterItemDrop(monster) {
 
             Log("<span style=\"color:orange\">You found an item! </span>");
         }
-    } else
+    } else {
         Log("<span style=\"color:orange\">Inventory full! </span>");
     }
+}
+}
+
 
 
 function getMonsterType(monster) {
@@ -1215,9 +1215,11 @@ function getItemQuality(randomItemQuality, monsterType) {
 
     for (var i = 0; i < monsterType.itemQualityChance.length; i++) {
         //This is used to add up the previous quality chance to the next because all of them have to add up to 100. They are inclusive, not exclusive.
-        chance += monsterType.itemQualityChance[i].chance;
+        chance = monsterType.itemQualityChance[i].chance;
         if (randomItemQuality <= chance * player.dropRate()) {
             itemQuality = itemQualities.filter(function (obj) {
+
+                console.log("turur" + monsterType.itemQualityChance[i].type)
                 return obj.type === monsterType.itemQualityChance[i].type;
             })[0];
             break;
@@ -1311,13 +1313,6 @@ function equipItem(id) {
             else if (equippedItems.weapon.itemType === "Bow") {
                 player.isBow = true;
             }
-            player.weaponStrength = item.strength;
-            player.weaponEndurance = item.endurance;
-            player.weaponAgility = item.agility;
-            player.weaponDexterity = item.dexterity;
-            player.weaponIntelligence = item.intelligence;
-            player.weaponWisdom = item.wisdom;
-            player.weaponLuck = item.luck;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
@@ -1336,13 +1331,6 @@ function equipItem(id) {
         if (item.id === id) {
             equippedItems.offHand = item;
             equippedItems.offHand.isEquipped = true;
-            player.offHandStrength = item.strength;
-            player.offHandEndurance = item.endurance;
-            player.offHandAgility = item.agility;
-            player.offHandDexterity = item.dexterity;
-            player.offHandIntelligence = item.intelligence;
-            player.offHandWisdom = item.wisdom;
-            player.offHandLuck = item.luck;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
@@ -1361,13 +1349,6 @@ function equipItem(id) {
         if (item.id === id) {
             equippedItems.armor = item;
             equippedItems.armor.isEquipped = true;
-            player.armorStrength = item.strength;
-            player.armorEndurance = item.endurance;
-            player.armorAgility = item.agility;
-            player.armorDexterity = item.dexterity;
-            player.armorIntelligence = item.intelligence;
-            player.armorWisdom = item.wisdom;
-            player.armorLuck = item.luck;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
@@ -1386,13 +1367,6 @@ function equipItem(id) {
         if (item.id === id) {
             equippedItems.ring = item;
             equippedItems.ring.isEquipped = true;
-            player.ringStrength = item.strength;
-            player.ringEndurance = item.endurance;
-            player.ringAgility = item.agility;
-            player.ringDexterity = item.dexterity;
-            player.ringIntelligence = item.intelligence;
-            player.ringWisdom = item.wisdom;
-            player.ringLuck = item.luck;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
@@ -1411,13 +1385,6 @@ function equipItem(id) {
         if (item.id === id) {
             equippedItems.amulet = item;
             equippedItems.amulet.isEquipped = true;
-            player.amuletStrength = item.strength;
-            player.amuletEndurance = item.endurance;
-            player.amuletAgility = item.agility;
-            player.amuletDexterity = item.dexterity;
-            player.amuletIntelligence = item.intelligence;
-            player.amuletWisdom = item.wisdom;
-            player.amuletLuck = item.luck;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
@@ -1436,13 +1403,6 @@ function equipItem(id) {
         if (item.id === id) {
             equippedItems.talisman = item;
             equippedItems.talisman.isEquipped = true;
-            player.talismanStrength = item.strength;
-            player.talismanEndurance = item.endurance;
-            player.talismanAgility = item.agility;
-            player.talismanDexterity = item.dexterity;
-            player.talismanIntelligence = item.intelligence;
-            player.talismanWisdom = item.wisdom;
-            player.talismanLuck = item.luck;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
             })[0];
@@ -1489,84 +1449,90 @@ function unequipItem(id, oldId) {
         else if (equippedItems.weapon.itemType === "Bow") {
             player.isBow = false;
         }
-        equippedItems.weapon = {};
-        player.weaponStrength = 0;
-        player.weaponEndurance = 0;
-        player.weaponAgility = 0;
-        player.weaponDexterity = 0;
-        player.weaponIntelligence = 0;
-        player.weaponWisdom = 0;
-        player.weaponLuck = 0;
+        equippedItems.weapon = {
+            strength: 0,
+            endurance: 0,
+            agility: 0,
+            dexterity: 0,
+            intelligence: 0,
+            wisdom: 0,
+            luck: 0
+        };
         CreateInventoryWeaponHtml()
     }
         //Off-Hand unequip
     else if (offHandId === equippedItems.offHand.id || offHandId == oldId) {
         equippedItems.offHand.isEquipped = false;
         playerInventory.push(equippedItems.offHand);
-        equippedItems.offHand = {};
-        player.offHandStrength = 0;
-        player.offHandEndurance = 0;
-        player.offHandAgility = 0;
-        player.offHandDexterity = 0;
-        player.offHandIntelligence = 0;
-        player.offHandWisdom = 0;
-        player.offHandLuck = 0;
+        equippedItems.offHand = {
+            strength: 0,
+            endurance: 0,
+            agility: 0,
+            dexterity: 0,
+            intelligence: 0,
+            wisdom: 0,
+            luck: 0
+        };
         CreateInventoryWeaponHtml()
     }
         //Armor unequip
     else if (armorId === equippedItems.armor.id || armorId == oldId) {
         equippedItems.armor.isEquipped = false;
         playerInventory.push(equippedItems.armor);
-        equippedItems.armor = {};
-        player.armorStrength = 0;
-        player.armorEndurance = 0;
-        player.armorAgility = 0;
-        player.armorDexterity = 0;
-        player.armorIntelligence = 0;
-        player.armorWisdom = 0;
-        player.armorLuck = 0;
+        equippedItems.armor = {
+            strength: 0,
+            endurance: 0,
+            agility: 0,
+            dexterity: 0,
+            intelligence: 0,
+            wisdom: 0,
+            luck: 0
+        };
         CreateInventoryWeaponHtml()
     }
         //Ring unequip
     else if (ringId === equippedItems.ring.id || ringId === oldId) {
         equippedItems.ring.isEquipped = false;
         playerInventory.push(equippedItems.ring);
-        equippedItems.ring = {};
-        player.ringStrength = 0;
-        player.ringEndurance = 0;
-        player.ringAgility = 0;
-        player.ringDexterity = 0;
-        player.ringIntelligence = 0;
-        player.ringWisdom = 0;
-        player.ringLuck = 0;
+        equippedItems.ring = {
+            strength: 0,
+            endurance: 0,
+            agility: 0,
+            dexterity: 0,
+            intelligence: 0,
+            wisdom: 0,
+            luck: 0
+        };
         CreateInventoryWeaponHtml();
     }
         //Amulet unequip
     else if (amuletId === equippedItems.amulet.id || amuletId === oldId) {
         equippedItems.amulet.isEquipped = false;
         playerInventory.push(equippedItems.amulet);
-        equippedItems.amulet = {};
-        player.amuletStrength = 0;
-        player.amuletEndurance = 0;
-        player.amuletAgility = 0;
-        player.amuletDexterity = 0;
-        player.amuletIntelligence = 0;
-        player.amuletWisdom = 0;
-        player.amuletLuck = 0;
+        equippedItems.amulet = {
+            strength: 0,
+            endurance: 0,
+            agility: 0,
+            dexterity: 0,
+            intelligence: 0,
+            wisdom: 0,
+            luck: 0
+        };
         CreateInventoryWeaponHtml();
     }
         //Talisman unequip
     else if (talismanId === equippedItems.talisman.id || talismanId === oldId) {
         equippedItems.talisman.isEquipped = false;
         playerInventory.push(equippedItems.talisman);
-        equippedItems.talisman = {};
-        player.talismanStrength = 0;
-        player.talismanEndurance = 0;
-        player.talismanAgility = 0;
-        player.talismanDexterity = 0;
-        player.talismanIntelligence = 0;
-        player.talismanWisdom = 0;
-        player.talismanLuck = 0;
+        equippedItems.talisman = {
+            strength: 0,
+            endurance: 0,
+            agility: 0,
+            dexterity: 0,
+            intelligence: 0,
+            wisdom: 0,
+            luck: 0
+        };
         CreateInventoryWeaponHtml();
     };
     CreateEquipHtml();

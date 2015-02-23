@@ -1,4 +1,8 @@
 _________________________
+v1.2.3 - 22 february 2015|
+-------------------------|
+- Changed some of the code, which allowed me to remove most of it, without any changes to the gameply. In short there is less code :)
+_________________________
 v1.2.2 - 20 february 2015|
 -------------------------|
 - New item type, off-hand. Shields/Orbs/Books/Throwing/Dagger
