@@ -35,82 +35,49 @@ var player = {
         return Math.floor((player.baseStrength + player.equipStrength() + player.axeStrength() + player.fistStrength() + player.bowStrength()));
     },
     baseEndurance: 5,
-    weaponEndurance: 0,
-    offHandEndurance: 0,
-    armorEndurance: 0,
-    ringEndurance: 0,
-    amuletEndurance: 0,
-    talismanEndurance: 0,
-    accessoryEndurance: function () {
-        return Math.floor((player.ringEndurance + player.amuletEndurance + player.talismanEndurance));
+    equipEndurance: function () {
+        return Math.floor((equippedItems.weapon.endurance + equippedItems.offHand.endurance + equippedItems.armor.endurance + equippedItems.ring.endurance + equippedItems.amulet.endurance + equippedItems.talisman.endurance));
     },
     totalEndurance: function () {
-        return Math.floor((player.baseEndurance + player.weaponEndurance + player.offHandEndurance + player.armorEndurance + player.accessoryEndurance() + player.maceEndurance() + player.axeEndurance()));
+        return Math.floor((player.baseEndurance + player.equipEndurance() + player.maceEndurance() + player.axeEndurance()));
     },
     baseAgility: 5,
-    weaponAgility: 0,
-    offHandAgility: 0,
-    armorAgility: 0,
-    ringAgility: 0,
-    amuletAgility: 0,
-    talismanAgility: 0,
-    accessoryAgility: function () {
-        return Math.floor((player.ringAgility + player.amuletAgility + player.talismanAgility));
+    equipAgility: function () {
+        return Math.floor((equippedItems.weapon.agility + equippedItems.offHand.agility + equippedItems.armor.agility + equippedItems.ring.agility + equippedItems.amulet.agility + equippedItems.talisman.agility));
     },
     totalAgility: function () {
-        return  Math.floor((player.baseAgility + player.weaponAgility + player.offHandAgility + player.armorAgility + player.accessoryAgility() + player.swordAgility() + player.daggerAgility()));
+        return Math.floor((player.baseAgility + player.equipAgility() + player.swordAgility() + player.daggerAgility()));
     },
     baseDexterity: 5,
-    weaponDexterity: 0,
-    offHandDexterity: 0,
-    armorDexterity: 0,
-    ringDexterity: 0,
-    amuletDexterity: 0,
-    talismanDexterity: 0,
-    accessoryDexterity: function () {
-        return Math.floor((player.ringDexterity + player.amuletDexterity + player.talismanDexterity));
+    equipDexterity: function () {
+        return Math.floor((equippedItems.weapon.dexterity + equippedItems.offHand.dexterity + equippedItems.armor.dexterity + equippedItems.ring.dexterity + equippedItems.amulet.dexterity + equippedItems.talisman.dexterity));
     },
     totalDexterity: function () {
-        return Math.floor((player.baseDexterity + player.weaponDexterity + player.offHandDexterity + player.armorDexterity + player.accessoryDexterity() + player.daggerDexterity() + player.fistDexterity() + player.bowDexterity()));
+        return Math.floor((player.baseDexterity + player.equipDexterity() + player.daggerDexterity() + player.fistDexterity() + player.bowDexterity()));
     },
     baseIntelligence: 5,
-    weaponIntelligence: 0,
-    offHandIntelligence: 0,
-    armorIntelligence: 0,
-    ringIntelligence: 0,
-    amuletIntelligence: 0,
-    talismanIntelligence: 0,
-    accessoryIntelligence: function () {
-        return Math.floor((player.ringIntelligence + player.amuletIntelligence + player.talismanIntelligence));
+
+    equipIntelligence: function () {
+        return Math.floor((equippedItems.weapon.intelligence + equippedItems.offHand.intelligence + equippedItems.armor.intelligence + equippedItems.ring.intelligence + equippedItems.amulet.intelligence + equippedItems.talisman.intelligence));
     },
     totalIntelligence: function () {
-        return  Math.floor((player.baseIntelligence + player.weaponIntelligence + player.offHandIntelligence + player.armorIntelligence + player.accessoryIntelligence() + player.staffIntelligence()));
+        return Math.floor((player.baseIntelligence + player.equipIntelligence() + player.staffIntelligence()));
     },
     baseWisdom: 5,
-    weaponWisdom: 0,
-    offHandWisdom: 0,
-    armorWisdom: 0,
-    ringWisdom: 0,
-    amuletWisdom: 0,
-    talismanWisdom: 0,
-    accessoryWisdom: function () {
-        return Math.floor((player.ringWisdom + player.amuletWisdom + player.talismanWisdom));
+
+    equipWisdom: function () {
+        return Math.floor((equippedItems.weapon.wisdom + equippedItems.offHand.wisdom + equippedItems.armor.wisdom + equippedItems.ring.wisdom + equippedItems.amulet.wisdom + equippedItems.talisman.wisdom));
     },
     totalWisdom: function () {
-        return Math.floor((player.baseWisdom + player.weaponWisdom + player.offHandWisdom + player.armorWisdom + player.accessoryWisdom() + player.staffWisdom() + player.maceWisdom()));
+        return Math.floor((player.baseWisdom + player.equipWisdom() + player.staffWisdom() + player.maceWisdom()));
     },
     baseLuck: 5,
-    weaponLuck: 0,
-    offHandLuck: 0,
-    armorLuck: 0,
-    ringLuck: 0,
-    amuletLuck: 0,
-    talismanLuck: 0,
-    accessoryLuck: function () {
-        return Math.floor((player.ringLuck + player.amuletLuck + player.talismanLuck));
+
+    equipLuck: function () {
+        return Math.floor((equippedItems.weapon.luck + equippedItems.offHand.luck + equippedItems.armor.luck + equippedItems.ring.luck + equippedItems.amulet.luck + equippedItems.talisman.luck));
     },
     totalLuck: function () {
-        return Math.floor((player.baseLuck + player.weaponLuck + player.offHandLuck + player.armorLuck + player.accessoryLuck()));
+        return Math.floor((player.baseLuck + player.equipLuck()));
     },
     gold: 0,
     health: 50,
@@ -143,10 +110,10 @@ var player = {
         return (5 + (player.totalAgility() * 0.003 + player.totalLuck() * 0.002));
     },
     criticalChance: function () {
-        return (player.totalAgility() * 0.05 + player.totalLuck() * 0.03);
+        return (player.totalAgility() * 0.05 + player.totalLuck() * 0.03).toFixed(1);
     },
     criticalDamage: function () {
-        return (player.totalStrength() * 0.003 + player.totalDexterity() * 0.002);
+        return (player.totalStrength() * 0.003 + player.totalDexterity() * 0.002).toFixed(2);
     },
     
     dropRate: function () {
