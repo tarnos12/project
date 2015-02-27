@@ -343,7 +343,7 @@ var playerInventory = [];
 /**
  * Helper method to create the array of monsters
  */
-function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id, level, area) {
+function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type, id, level, area, group) {
     var monster = {
         hp: maxHp, // init HP to max HP
         maxHp: maxHp,
@@ -357,148 +357,19 @@ function createMonster(maxHp, def, minDmg, maxDmg, baseExp, acc, eva, name, type
         type: type,
         id: id,
         level: level,
-        area: area
+        area: area,
+        group: group
     }
 
     monsters.push(monster);
     return monster;
 }
 
-var monsterAreas = [
-    {
-    type: 'BanditHideout',
-    displayName: 'Bandit Hideout'
-    },
-     {
-         type: 'Forest',
-         displayName: 'Forest'
-     },
-      {
-          type: 'Mountains',
-          displayName: 'Mountains'
-      },
-       {
-           type: 'AncientCave',
-           displayName: 'Ancient Cave'
-       }
-]
-
-var monsterTypes = [
-    {
-        type: 'weak',
-        displayName: 'Weak',
-        //out of 100, should add upto 100
-        itemQualityChance: [
-            {
-                type: 'Legendary',
-                chance: 1,
-                
-            },
-             {
-                type: 'Epic',
-                chance: 15,
-             },
-            {
-                type: 'Rare',
-                chance: 50,
-            },
-            {
-                type: 'Uncommon',
-                chance: 334,
-            },
-            {
-                type: 'Common',
-                chance: 600,
-            }
-        ]
-    },
-    {
-        type: 'average',
-        displayName: 'Average',
-        //out of 100, should add upto 100
-        itemQualityChance: [
-             {
-                type: 'Legendary',
-                chance: 2,
-             },
-            {
-                type: 'Epic',
-                chance: 28,
-            },
-            {
-                type: 'Rare',
-                chance: 100,
-            },
-            {
-                type: 'Uncommon',
-                chance: 400,
-            },
-            {
-                type: 'Common',
-                chance: 470,
-            }
-        ]
-    },
-    {
-        type: 'strong',
-        displayName: 'Strong',
-        //out of 100, should add upto 100
-        itemQualityChance: [
-             {
-                type: 'Legendary',
-                chance: 3,
-             },
-            {
-                type: 'Epic',
-                chance: 97,
-            },
-            {
-                type: 'Rare',
-                chance: 200,
-            },
-            {
-                type: 'Uncommon',
-                chance: 500,
-            },
-            {
-                type: 'Common',
-                chance: 200,
-            }
-        ]
-    },
-    {
-        type: 'boss',
-        displayName: 'Boss',
-        //out of 100, should add upto 100
-        itemQualityChance: [
-             {
-                type: 'Legendary',
-                chance: 5,
-             },
-            {
-                type: 'Epic',
-                chance: 145,
-            },
-            {
-                type: 'Rare',
-                chance: 350,
-            },
-            {
-                type: 'Uncommon',
-                chance: 400,
-            },
-            {
-                type: 'Common',
-                chance: 100,
-            }
-        ]
-    }
-];
 
 // Create the monsters, each with varying stats. Allows for easy
 // add/remove/modify of monsters
 //            maxHP,  def, minD, maxD, baseExp, acc, eva, name, type, id, level
-createMonster(10, 0, 2, 3, 5, 100, 5, 'Bandit', 'weak', 'monster1', 1, "BanditHideout");
+createMonster(10, 0, 2, 3, 5, 100, 5, 'Bandit', 'weak', 'monster1', 1, "BanditHideout", 'groupA');
 createMonster(30, 2, 2, 5, 10, 100, 5, 'Bandit Thug', 'weak', 'monster2', 2, "BanditHideout");
 createMonster(70, 4, 4, 7, 30, 100, 5, 'Bandit Archer', 'weak', 'monster3', 3, "BanditHideout");
 createMonster(130, 6, 6, 10, 50, 100, 5, 'Bandit Plunderer', 'weak', 'monster4', 4, "BanditHideout");
@@ -536,9 +407,139 @@ createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'Lich King', 'boss', 'mon
  *
  * @param monster {monster object} Monster to attack
  */
+var monsterAreas = [
+    {
+        type: 'BanditHideout',
+        displayName: 'Bandit Hideout'
+    },
+     {
+         type: 'Forest',
+         displayName: 'Forest'
+     },
+      {
+          type: 'Mountains',
+          displayName: 'Mountains'
+      },
+       {
+           type: 'AncientCave',
+           displayName: 'Ancient Cave'
+       }
+]
 
-//attack function, calling other functions depending on player critical/block/evasion and much more in the future :)
+var monsterTypes = [
+    {
+        type: 'weak',
+        displayName: 'Weak',
+        //out of 100, should add upto 100
+        itemQualityChance: [
+            {
+                type: 'Legendary',
+                chance: 1,
+
+            },
+             {
+                 type: 'Epic',
+                 chance: 15,
+             },
+            {
+                type: 'Rare',
+                chance: 50,
+            },
+            {
+                type: 'Uncommon',
+                chance: 334,
+            },
+            {
+                type: 'Common',
+                chance: 600,
+            }
+        ]
+    },
+    {
+        type: 'average',
+        displayName: 'Average',
+        //out of 100, should add upto 100
+        itemQualityChance: [
+             {
+                 type: 'Legendary',
+                 chance: 2,
+             },
+            {
+                type: 'Epic',
+                chance: 28,
+            },
+            {
+                type: 'Rare',
+                chance: 100,
+            },
+            {
+                type: 'Uncommon',
+                chance: 400,
+            },
+            {
+                type: 'Common',
+                chance: 470,
+            }
+        ]
+    },
+    {
+        type: 'strong',
+        displayName: 'Strong',
+        //out of 100, should add upto 100
+        itemQualityChance: [
+             {
+                 type: 'Legendary',
+                 chance: 3,
+             },
+            {
+                type: 'Epic',
+                chance: 97,
+            },
+            {
+                type: 'Rare',
+                chance: 200,
+            },
+            {
+                type: 'Uncommon',
+                chance: 500,
+            },
+            {
+                type: 'Common',
+                chance: 200,
+            }
+        ]
+    },
+    {
+        type: 'boss',
+        displayName: 'Boss',
+        //out of 100, should add upto 100
+        itemQualityChance: [
+             {
+                 type: 'Legendary',
+                 chance: 5,
+             },
+            {
+                type: 'Epic',
+                chance: 145,
+            },
+            {
+                type: 'Rare',
+                chance: 350,
+            },
+            {
+                type: 'Uncommon',
+                chance: 400,
+            },
+            {
+                type: 'Common',
+                chance: 100,
+            }
+        ]
+    }
+];
 CreateMonsterHtml();
+
+
 
 function attack(monster) {
     battleTurn = 1;
@@ -749,31 +750,29 @@ function monsterGold(monster) {
         monsterItemDrop(monster);
     }
     //TESTING NEW ITEM TYPE DROP
- /*   var randomNumber = Math.floor((Math.random() * 100) + 1);
-    if (randomNumber <= (50 + (player.dropRate() / 10))) {
+    var randomNumber = Math.floor((Math.random() * 100) + 1);
+    if (randomNumber <= (1000 + (player.dropRate() / 10))) {
         monsterOtherItemDrop(monster);
         Log("Turn " + battleTurn + " " + "<span style=\"color:orange\">You found an item! </span>");
-    }*/
+    }
 };
 //Item drop from killing a monster
 //TESTING NEW ITEM TYPE
 function monsterOtherItemDrop(monster) {
-    if (playerInventory.length <= player.inventory) {
-        var itemType = otherItemTypes[Math.floor(Math.random() * otherItemTypes.length)]; //This code gets a random item from the item array.
-        var itemType2 = itemType.type;
-        var itemSubType = itemType.itemSubTypes[Math.floor(Math.random() * itemType.itemSubTypes.length)]; //This gets a random item sub type from the subType array.
-        var itemType3 = itemSubType.type2;
-        var color = itemSubType.color
-        console.log("1st " + itemType.type)
+    if (playerInventory.length <= player.inventory()) {
+        var monsterGroup = monster.group;
+        var monsterArea = monster.area;
+        var monsterType = itemTable[monsterGroup][monsterArea]
+        var randomItemQuality = Math.floor(Math.random() * (100 - 1) + 1); //Random item quality
+        var dropItem = testItemQuality(randomItemQuality, monsterType);
+       
+       /* console.log("1st " + itemType.type)
         console.log("2nd " + itemSubType.type)
         console.log("3rd " + itemSubType.type2)
-        console.log("4th " + itemSubType.color)
+        console.log("4th " + itemSubType.color)*/
 
         var newItem = {
-            itemType: itemSubType.type,
-            itemType2: itemType,
-            itemType3: itemSubType.type2,
-            color: itemSubType.color
+            Type: dropItem.itemType,
         };
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
         playerInventory.push(newItem);
@@ -1166,15 +1165,14 @@ function monsterItemDrop(monster) {
 }
 }
 
-
-
+//New Drop function monster type<group>
 function getMonsterType(monster) {
     var monsterType = monsterTypes.filter(function (obj) {
         return obj.type === monster.type;
     })[0]; //Doing [0] because it returns an array, but since we know it has only 1 object, we can use 0.
-
     return monsterType;
 }
+
 function getItemQuality(randomItemQuality, monsterType) {
     var itemQuality;
 
@@ -1186,7 +1184,6 @@ function getItemQuality(randomItemQuality, monsterType) {
         if (randomItemQuality <= chance * player.dropRate()) {
             itemQuality = itemQualities.filter(function (obj) {
 
-                console.log("turur" + monsterType.itemQualityChance[i].type)
                 return obj.type === monsterType.itemQualityChance[i].type;
             })[0];
             break;
@@ -1195,8 +1192,30 @@ function getItemQuality(randomItemQuality, monsterType) {
 
     return itemQuality;
 }
-//TEST TEST TEST TEST TEST TEST TEST
 
+//TEST TEST TEST TEST TEST TEST TEST
+function testItemQuality(randomItemQuality, monsterType) {
+    var dropItem;
+
+    var chance = 0;
+    for (var i = 0; i < monsterType.itemDrop.length; i++) {
+        
+        //This is used to add up the previous quality chance to the next because all of them have to add up to 100. They are inclusive, not exclusive.
+        chance += monsterType.itemDrop[i].chance;
+        console.log ("CHANCE " + chance)
+        if (randomItemQuality <= 100) {
+            dropItem = monsterType.itemDrop.filter(function (obj) {
+
+                console.log("TEST 2 2 2 " + monsterType.itemDrop[i].itemType)
+                return obj.itemDrop === monsterType.itemDrop[i].itemType;
+            })[0];
+            break;
+        }
+    }
+
+    return dropItem;
+}
+//TEST TEST TEST TEST TEST TEST TEST
 
 
 function bindAttack(monster) {
