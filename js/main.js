@@ -771,11 +771,9 @@ function monsterOtherItemDrop(monster) {
         console.log("3rd " + itemSubType.type2)
         console.log("4th " + itemSubType.color)*/
 
-        var newItem = {
-            Type: dropItem.itemType,
-        };
+        
         //THIS SHOULD ADD AN OBJECT TO AN ARRAY WITH FOLLOWING STATS
-        playerInventory.push(newItem);
+        playerInventory.push(dropItem);
 
         CreateInventoryWeaponHtml()
     }
@@ -1207,7 +1205,7 @@ function testItemQuality(randomItemQuality, monsterType) {
             dropItem = monsterType.itemDrop.filter(function (obj) {
 
                 console.log("TEST 2 2 2 " + monsterType.itemDrop[i].itemType)
-                return obj.itemDrop === monsterType.itemDrop[i].itemType;
+                return obj.itemDrop === monsterType.itemDrop[i];
             })[0];
             break;
         }
