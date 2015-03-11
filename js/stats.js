@@ -131,25 +131,25 @@ function upgradeLuck() {
 };
 
 function loadIsEquipped() {
-    if (equippedItems.weapon.itemType === "Sword") {
+    if (equippedItems.weapon.subType === "Sword") {
         player.isSword = true;
     }
-    else if (equippedItems.weapon.itemType === "Dagger") {
+    else if (equippedItems.weapon.subType === "Dagger") {
         player.isDagger = true;
     }
-    else if (equippedItems.weapon.itemType === "Axe") {
+    else if (equippedItems.weapon.subType === "Axe") {
         player.isAxe = true;
     }
-    else if (equippedItems.weapon.itemType === "Mace") {
+    else if (equippedItems.weapon.subType === "Mace") {
         player.isMace = true;
     }
-    else if (equippedItems.weapon.itemType === "Staff") {
+    else if (equippedItems.weapon.subType === "Staff") {
         player.isStaff = true;
     }
-    else if (equippedItems.weapon.itemType === "Fist") {
+    else if (equippedItems.weapon.subType === "Fist") {
         player.isFist = true;
     }
-    else if (equippedItems.weapon.itemType === "Bow") {
+    else if (equippedItems.weapon.subType === "Bow") {
         player.isBow = true;
     }
 };

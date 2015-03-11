@@ -1,4 +1,13 @@
 _________________________
+v1.3.0 - 22 february 2015|
+-------------------------|
+- Redesigned item loot table, no more random stats on items. Each item has it's own name and stats
+- Game log display total damage received/dealt also critical hit rating(total critical hits divided by turns)
+- Changed max turns to 20 from 19(that was a mistake actually since it was supossed to be 20). It will be changed to increase based on character stat like endurance later on
+- Changed monster health display, to show only max health, since actual health is not updating because battles are automatic
+- Player stats now display STR, END etc instead of Strength, Endurance
+- Moved Sell All buttons to inventory page for easy access.
+_________________________
 v1.2.3 - 22 february 2015|
 -------------------------|
 - Changed some of the code, which allowed me to remove most of it, without any changes to the gameply. In short there is less code :)
