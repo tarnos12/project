@@ -39,12 +39,20 @@
         FistLevel: player.FistLevel,
         BowMaxExp: player.BowMaxExp,
         BowLevel: player.BowLevel,
+        //Other
+        itemId: itemIdNumber,
+        backpackUpgrade: player.backpackUpgrade,
+        backpackPrice: backpackPrice,
     }
+    Log("Game Saved")
     localStorage.setItem("save", JSON.stringify(save));
 }
 
 function load() {
     var savegame = JSON.parse(localStorage.getItem("save"));
+    if (typeof savegame.itemId !== "undefined") itemIdNumber = savegame.itemId;
+    if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
+    if (typeof savegame.backpackPrice !== "undefined") backpackPrice = savegame.backpackPrice;
     if (typeof savegame.SwordMaxExp !== "undefined") player.SwordMaxExp = savegame.SwordMaxExp;
     if (typeof savegame.SwordLevel !== "undefined") player.SwordLevel = savegame.SwordLevel;
     if (typeof savegame.DaggerMaxExp !== "undefined") player.DaggerMaxExp = savegame.DaggerMaxExp;
@@ -75,6 +83,7 @@ function load() {
     if (typeof savegame.playerLuck !== "undefined") player.baseLuck = savegame.playerLuck;
     if (typeof savegame.pot !== "undefined") pot = savegame.pot;
     if (typeof savegame.spot !== "undefined") spot = savegame.spot;
+    if (typeof savegame.mpot !== "undefined") mpot = savegame.mpot;
     if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
     if (typeof savegame.playerOffHand !== "undefined") equippedItems.offHand = savegame.playerOffHand;
     if (typeof savegame.playerArmor !== "undefined") equippedItems.armor = savegame.playerArmor;
@@ -98,32 +107,106 @@ function reset() {
     player.health = 50;
     player.stats = 0;
     player.level = 1;
-    player.experience = 0;
-    player.maxExperience = 100;
     player.baseStrength = 5;
-    player.baseEndurance = 5;
+    player.baseEndurance  = 5;
     player.baseAgility = 5;
     player.baseDexterity = 5;
     player.baseIntelligence = 5;
     player.baseWisdom = 5;
     player.baseLuck = 5;
+    player.experience = 0;
+    player.maxExperience = 100;
     pot = 0;
     spot = 0;
     mpot = 0;
-    document.getElementById('gold').innerHTML = player.gold;
-    document.getElementById('health').innerHTML = player.health;
-    document.getElementById('stats').innerHTML = player.stats;
-    document.getElementById('level').innerHTML = player.level;
-    document.getElementById('experience').innerHTML = player.experience;
-    document.getElementById('maxexperience').innerHTML = player.maxExperience;
-    document.getElementById('strength').innerHTML = player.baseStrength;
-    document.getElementById('endurance').innerHTML = player.baseEndurance;
-    document.getElementById('agility').innerHTML = player.baseAgility;
-    document.getElementById('dexterity').innerHTML = player.baseDexterity;
-    document.getElementById('intelligence').innerHTML = player.baseIntelligence;
-    document.getElementById('wisdom').innerHTML = player.baseWisdom;
-    document.getElementById('luck').innerHTML = player.baseLuck;
-    document.getElementById('pot').innerHTML = pot;
-    document.getElementById('spot').innerHTML = spot;
-    document.getElementById('mpot').innerHTML = mpot;
+    //Equipped Items
+    equippedItems.weapon = {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0,
+        minDamage: 0,
+        maxDamage: 0
+    },
+    equippedItems.offHand = {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0,
+        defense: 0
+    },
+    equippedItems.armor = {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0,
+        defense: 0
+    },
+    equippedItems.ring = {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0,
+    },
+    equippedItems.amulet = {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0,
+    },
+    equippedItems.talisman = {
+        strength: 0,
+        endurance: 0,
+        agility: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        luck: 0,
+    },
+    playerInventory = [];
+    //Weapon mastery levels and experience
+    player.SwordMaxExp = 10;
+    player.SwordExp = 0;
+    player.SwordLevel = 1;
+    player.DaggerMaxExp = 10;
+    player.DaggerExp = 0;
+    player.DaggerLevel = 1;
+    player.AxeMaxExp = 10;
+    player.AxeExp = 0;
+    player.AxeLevel = 1;
+    player.MaceMaxExp = 10;
+    player.MaceExp = 0;
+    player.MaceLevel = 1;
+    player.StaffMaxExp = 10;
+    player.StaffExp = 0;
+    player.StaffLevel = 1;
+    player.FistMaxExp = 10;
+    player.FistExp = 0;
+    player.FistLevel = 1;
+    player.BowMaxExp = 10;
+    player.BowExp = 0;
+    player.BowLevel = 1;
+    //Other
+    itemIdNumber = 1;
+    player.backpackUpgrade = 0,
+    backpackPrice = 100,
+    CreateInventoryWeaponHtml();
+    CreateEquipHtml();
+    resetIsEquipped()
+    CreateWeaponSkillHtml();
 };

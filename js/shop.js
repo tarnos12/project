@@ -1,7 +1,4 @@
-﻿
-
-
-function buypot() {
+﻿function buypot() {
     if (player.gold >= 20) {
         pot += 1;
         player.gold -= 20;
@@ -52,5 +49,30 @@ function buympot10() {
         player.gold -= 5000;
         document.getElementById('mpot').innerHTML = mpot;
         document.getElementById('gold').innerHTML = player.gold;
+    }
+}
+var backpackPrice = 100;
+function buyBackpack() {
+    if (player.gold >= backpackPrice) {
+        player.backpackUpgrade += 1;
+        player.gold -= backpackPrice;
+        backpackPrice *= 2;
+        CreateInventoryWeaponHtml()
+        document.getElementById("backpack").innerHTML = backpackPrice;
+        Log("You max inventory slots upgraded by 1, now you have: " + player.inventory() + " inventory slots")
+    }
+    else {
+        Log("You do not have enough money to upgrade backpack slots. You need " + backpackPrice + " gold");
+    }
+}
+
+function buyStat() {
+    if (player.gold >= 1000) {
+        player.stats += 1;
+        player.gold -= 1000;
+        Log("Your stat points increased by 1")
+    }
+    else {
+        Log("You do not have enough money to buy this. You need 1000 gold")
     }
 }

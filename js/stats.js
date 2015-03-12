@@ -26,7 +26,7 @@
     document.getElementById("agility").innerHTML = player.totalAgility();
     document.getElementById("accuracy").innerHTML = player.accuracy().toFixed(2);
     document.getElementById("dexterity").innerHTML = player.totalDexterity();
-    document.getElementById("defense").innerHTML = player.defense().toFixed(2);
+    document.getElementById("defense").innerHTML = player.defense().toFixed(0);
     document.getElementById("criticalDamage").innerHTML = (player.criticalDamage() * 100) + "%";
     document.getElementById("criticalChance").innerHTML = player.criticalChance();
     document.getElementById("intelligence").innerHTML = player.totalIntelligence();
@@ -41,8 +41,15 @@
     document.getElementById("maxexperience").innerHTML = player.maxExperience;
     document.getElementById("experience").innerHTML = player.experience;
     document.getElementById("gold").innerHTML = player.gold;
-
+    document.getElementById("backpack").innerHTML = backpackPrice;
+    document.getElementById('pot').innerHTML = pot;
+    document.getElementById('spot').innerHTML = spot;
+    document.getElementById('mpot').innerHTML = mpot;
 }, 1);
+//auto Save
+window.setInterval(function () {
+    save()
+}, 10000);
 
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
@@ -70,6 +77,15 @@ window.setInterval(function () { //Mana regen
     document.getElementById('mana').innerHTML = player.mana.toFixed(0);
 }, 1000);
 
+function levelUp() {
+    player.baseStrength += 4.6;
+    player.baseEndurance += 4.4;
+    player.baseAgility += 3.4;
+    player.baseDexterity += 2.7;
+    player.baseWisdom += 2.3;
+    player.baseIntelligence += 3.5;
+    player.baseLuck += 1.6;
+}
 //Upgrading player stats
 function upgradeStrength() {
     if (player.stats >= 1) {
@@ -131,25 +147,35 @@ function upgradeLuck() {
 };
 
 function loadIsEquipped() {
-    if (equippedItems.weapon.itemType === "Sword") {
+    if (equippedItems.weapon.subType === "Sword") {
         player.isSword = true;
     }
-    else if (equippedItems.weapon.itemType === "Dagger") {
+    else if (equippedItems.weapon.subType === "Dagger") {
         player.isDagger = true;
     }
-    else if (equippedItems.weapon.itemType === "Axe") {
+    else if (equippedItems.weapon.subType === "Axe") {
         player.isAxe = true;
     }
-    else if (equippedItems.weapon.itemType === "Mace") {
+    else if (equippedItems.weapon.subType === "Mace") {
         player.isMace = true;
     }
-    else if (equippedItems.weapon.itemType === "Staff") {
+    else if (equippedItems.weapon.subType === "Staff") {
         player.isStaff = true;
     }
-    else if (equippedItems.weapon.itemType === "Fist") {
+    else if (equippedItems.weapon.subType === "Fist") {
         player.isFist = true;
     }
-    else if (equippedItems.weapon.itemType === "Bow") {
+    else if (equippedItems.weapon.subType === "Bow") {
         player.isBow = true;
     }
+};
+
+function resetIsEquipped() {
+        player.isSword = false;
+        player.isDagger = false;
+        player.isAxe = false;
+        player.isMace = false;
+        player.isStaff = false;
+        player.isFist = false;
+        player.isBow = false;
 };
