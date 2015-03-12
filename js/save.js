@@ -209,4 +209,4 @@ function reset() {
     CreateEquipHtml();
     resetIsEquipped()
     CreateWeaponSkillHtml();
-};
+};//test
