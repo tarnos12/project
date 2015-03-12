@@ -42,8 +42,8 @@ function CreateWeaponSkillHtml() {
 
     //Bow
     html += '<tr>' + '<td>';
-    html += "Bow Skill Level: " + player.BowLevel;
-    html += '<td>' + "Strength +" + player.bowStrength() + '</td>' + '<td>' + " Dexterity +" + player.bowDexterity() + '</td>';
+    html += "Bow Skill Level: " + player.RangedLevel;
+    html += '<td>' + "Strength +" + player.rangedStrength() + '</td>' + '<td>' + " Dexterity +" + player.rangedDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
     html += '</table>';

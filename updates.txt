@@ -1,5 +1,9 @@
 _________________________
-v1.3.0 - 12 march 2015|
+v1.3.0.1 - 12 march 2015 |
+-------------------------|
+- Fixed a bug, with Bow weapon skill not upgrading
+_________________________
+v1.3.0 - 12 march 2015   |
 -------------------------|
 - Redesigned item loot table, no more random stats on items. Each item has it's own name and stats, will be updated further, so each item can have higher stats(randomly)
 - Game log display total damage received/dealt also critical hit rating(total critical hits divided by turns that took you to kill/die)
