@@ -24,9 +24,6 @@ function itemDropRandom(monsterType) {
                 return obj === monsterType.itemDrop[i];
             }
             )[0];
-            var randomStrength = Math.floor((Math.random() * (dropItem.iLvl * 10)) + dropItem.iLvl);
-            console.log("TEST " + randomStrength)
-            dropItem.strength = randomStrength
             //Checks if player used checkbox to auto remove items by quality. Also this code add "id" property to each created item
             if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
                 var currentDate = new Date();
