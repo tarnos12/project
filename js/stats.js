@@ -41,8 +41,15 @@
     document.getElementById("maxexperience").innerHTML = player.maxExperience;
     document.getElementById("experience").innerHTML = player.experience;
     document.getElementById("gold").innerHTML = player.gold;
-
+    document.getElementById("backpack").innerHTML = backpackPrice;
+    document.getElementById('pot').innerHTML = pot;
+    document.getElementById('spot').innerHTML = spot;
+    document.getElementById('mpot').innerHTML = mpot;
 }, 1);
+//auto Save
+window.setInterval(function () {
+    save()
+}, 10000);
 
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
@@ -161,4 +168,14 @@ function loadIsEquipped() {
     else if (equippedItems.weapon.subType === "Bow") {
         player.isBow = true;
     }
+};
+
+function resetIsEquipped() {
+        player.isSword = false;
+        player.isDagger = false;
+        player.isAxe = false;
+        player.isMace = false;
+        player.isStaff = false;
+        player.isFist = false;
+        player.isBow = false;
 };

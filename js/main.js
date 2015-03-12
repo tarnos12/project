@@ -24,8 +24,9 @@ var player = {
     level: 1,
     experience: 0,
     maxExperience: 100,
+    backpackUpgrade: 0,
     inventory: function () {
-        return Math.floor((20 + player.totalStrength() + equippedItems.backpack.slots)); //Add backpacks "new item type"
+        return Math.floor((20 + (player.totalStrength() / 10) + equippedItems.backpack.slots + player.backpackUpgrade)); //Add backpacks "new item type"
     },
     baseStrength: 5,
    
@@ -33,7 +34,7 @@ var player = {
         return Math.floor((equippedItems.weapon.strength + equippedItems.offHand.strength + equippedItems.armor.strength + equippedItems.ring.strength + equippedItems.amulet.strength + equippedItems.talisman.strength));
     },
     totalStrength: function () {
-        return Math.floor((player.baseStrength + player.equipStrength() + player.axeStrength() + player.fistStrength() + player.bowStrength()));
+        return Math.floor((player.baseStrength + player.equipStrength() + player.axeStrength() + player.fistStrength() + player.bowStrength() + player.swordStrength()));
     },
     baseEndurance: 5,
     equipEndurance: function () {
@@ -93,10 +94,10 @@ var player = {
         return (player.totalWisdom() / 5);
     },
     minDamage: function () {
-        return Math.floor((player.totalStrength() * 1000.4) + equippedItems.weapon.minDamage);
+        return Math.floor((player.totalStrength() * 0.4) + equippedItems.weapon.minDamage);
     },
     maxDamage: function () {
-        return Math.floor((player.totalStrength() * 1000.6) + equippedItems.weapon.maxDamage);
+        return Math.floor((player.totalStrength() * 0.6) + equippedItems.weapon.maxDamage);
     },
     hpregen: function () {
         return Math.floor((player.totalEndurance()) / 3);
@@ -108,10 +109,10 @@ var player = {
         return (player.totalDexterity() * 0.5 + player.totalEndurance() * 0.4);
     },
     evasion: function () {
-        return (5 + (player.totalAgility() * 0.003 + player.totalLuck() * 0.002));
+        return (5 + (player.totalAgility() * 0.03 + player.totalLuck() * 0.02));
     },
     criticalChance: function () {
-        return (player.totalAgility() * 0.05 + player.totalLuck() * 0.03).toFixed(1);
+        return (10 + player.totalAgility() * 0.08 + player.totalLuck() * 0.05).toFixed(1);
     },
     criticalDamage: function () {
         return (1 + player.totalStrength() * 0.003 + player.totalDexterity() * 0.002).toFixed(2);
@@ -399,22 +400,22 @@ createMonster(2200, 65, 75, 80, 810, 100, 5, 'Troll', 'average', 'monster13', 13
 createMonster(2600, 75, 86, 92, 940, 100, 5, 'Forest Troll', 'average', 'monster14', 14, "Forest", 'groupF');
 createMonster(3000, 88, 96, 100, 1060, 100, 5, 'Spider Queen', 'average', 'monster15', 15, "Forest", 'groupF');
 createMonster(4000, 95, 105, 110, 1200, 100, 5, 'Troll Leader', 'average', 'monster16', 16, "Forest", 'groupG');//End of Forest <BOSS>
-createMonster(5000, 120, 140, 160, 1600, 100, 5, 'Giant', 'strong', 'monster17', 17, "Mountains", 'groupB');
-createMonster(7000, 140, 160, 185, 2150, 100, 5, 'Frost Giant', 'strong', 'monster18', 18, "Mountains", 'groupA');
-createMonster(9000, 170, 200, 215, 2600, 100, 5, 'Frost Troll', 'strong', 'monster19', 19, "Mountains", 'groupC');
-createMonster(12000, 200, 230, 250, 3400, 100, 5, 'Wyvern', 'strong', 'monster20', 20, "Mountains", 'groupE');
-createMonster(15000, 220, 260, 275, 5000, 100, 5, 'Frost Dragon', 'strong', 'monster21', 21, "Mountains", 'groupD');
-createMonster(18000, 250, 290, 320, 7000, 100, 5, 'Ice Elemental', 'strong', 'monster22', 22, "Mountains", 'groupF');
-createMonster(22000, 300, 350, 380, 10000, 100, 5, 'Frost Guardian', 'strong', 'monster23', 23, "Mountains", 'groupF');
-createMonster(28000, 400, 420, 550, 15000, 100, 5, 'Frost Queen', 'strong', 'monster24', 24, "Mountains", 'groupG');//End of Mountains <BOSS>
-createMonster(34000, 500, 500, 700, 23000, 100, 5, 'Zombie', 'boss', 'monster25', 25, "AncientCave", 'groupA');
-createMonster(40000, 700, 900, 1200, 35000, 100, 5, 'Skeleton', 'boss', 'monster26', 26, "AncientCave", 'groupB');
-createMonster(48000, 1000, 1200, 1500, 70000, 100, 5, 'Skeleton Soldier', 'boss', 'monster27', 27, "AncientCave", 'groupD');
-createMonster(57000, 1200, 1700, 2200, 120000, 100, 5, 'Skeleton Archer', 'boss', 'monster28', 28, "AncientCave", 'groupE');
-createMonster(65000, 2000, 2500, 3000, 180000, 100, 5, 'Skeleton Mage', 'boss', 'monster29', 29, "AncientCave", 'groupC');
-createMonster(72000, 2500, 3200, 4000, 290000, 100, 5, 'Skeleton Healer', 'boss', 'monster30', 30, "AncientCave", 'groupF');
-createMonster(80000, 3000, 4500, 5500, 430000, 100, 5, 'Wraith', 'boss', 'monster31', 31, "AncientCave", 'groupF');
-createMonster(88000, 3500, 6000, 8000, 680000, 100, 5, 'Lich King', 'boss', 'monster32', 32, "AncientCave", 'groupG');//End of Ancient Cave <BOSS>
+createMonster(5000, 110, 140, 160, 1600, 100, 5, 'Giant', 'strong', 'monster17', 17, "Mountains", 'groupB');
+createMonster(7000, 120, 160, 185, 2150, 100, 5, 'Frost Giant', 'strong', 'monster18', 18, "Mountains", 'groupA');
+createMonster(9000, 133, 200, 215, 2600, 100, 5, 'Frost Troll', 'strong', 'monster19', 19, "Mountains", 'groupC');
+createMonster(12000, 146, 230, 250, 3400, 100, 5, 'Wyvern', 'strong', 'monster20', 20, "Mountains", 'groupE');
+createMonster(15000, 160, 260, 275, 5000, 100, 5, 'Frost Dragon', 'strong', 'monster21', 21, "Mountains", 'groupD');
+createMonster(18000, 173, 290, 320, 7000, 100, 5, 'Ice Elemental', 'strong', 'monster22', 22, "Mountains", 'groupF');
+createMonster(22000, 182, 350, 380, 10000, 100, 5, 'Frost Guardian', 'strong', 'monster23', 23, "Mountains", 'groupF');
+createMonster(28000, 193, 420, 550, 15000, 100, 5, 'Frost Queen', 'strong', 'monster24', 24, "Mountains", 'groupG');//End of Mountains <BOSS>
+createMonster(34000, 201, 500, 700, 23000, 100, 5, 'Zombie', 'boss', 'monster25', 25, "AncientCave", 'groupA');
+createMonster(40000, 213, 900, 1200, 35000, 100, 5, 'Skeleton', 'boss', 'monster26', 26, "AncientCave", 'groupB');
+createMonster(48000, 222, 1200, 1500, 70000, 100, 5, 'Skeleton Soldier', 'boss', 'monster27', 27, "AncientCave", 'groupD');
+createMonster(57000, 231, 1700, 2200, 120000, 100, 5, 'Skeleton Archer', 'boss', 'monster28', 28, "AncientCave", 'groupE');
+createMonster(65000, 240, 2500, 3000, 180000, 100, 5, 'Skeleton Mage', 'boss', 'monster29', 29, "AncientCave", 'groupC');
+createMonster(72000, 260, 3200, 4000, 290000, 100, 5, 'Skeleton Healer', 'boss', 'monster30', 30, "AncientCave", 'groupF');
+createMonster(80000, 280, 4500, 5500, 430000, 100, 5, 'Wraith', 'boss', 'monster31', 31, "AncientCave", 'groupF');
+createMonster(88000, 300, 6000, 8000, 680000, 100, 5, 'Lich King', 'boss', 'monster32', 32, "AncientCave", 'groupG');//End of Ancient Cave <BOSS>
 
 /**
  * Base monster attack method. Shared code among all monsters.
@@ -465,7 +466,6 @@ function attack(monster) {
         }
         battleTurn += 1;
     }
-    monster.hp = monster.maxHp;
         DrawBattle();
 }
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
@@ -535,6 +535,7 @@ function playerDamageDeal(damage, monster) {
 
     monster.hp -= damage;
     damageDealt += damage;
+    document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
     //Add more stuff like "bonus elemental damage from passive skills or bonus weapon damage
     
     
@@ -581,7 +582,7 @@ function playerDead(monster) {
     player.gold = Math.floor(player.gold / 1.2);
     expLost = Math.floor(player.experience - (player.experience / 1.2));
     player.experience = Math.floor(player.experience / 1.2);
-    monster.hp = monster.maxHp;
+    //monster.hp = monster.maxHp;
     document.getElementById("health").innerHTML = player.health;
     document.getElementById("gold").innerHTML = player.gold;
     document.getElementById("experience").innerHTML = player.experience;
@@ -596,7 +597,7 @@ function playerDead(monster) {
     battleTurn = -1;
     damageDealt = 0;
     damageTaken = 0;
-    criticalRate = 0
+    criticalRate = 0;
 }
 
 //monster kill function
@@ -608,12 +609,12 @@ function monsterKilled(monster) {
     Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
     Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "in total");
     Log("<span style=\"color:blue\">Turns: </span>" + battleTurn);
-    console.log("Battle Turn " + battleTurn)
     Log("--------------------------------------------")
     battleTurn = -1;
     damageDealt = 0;
     damageTaken = 0;
     criticalRate = 0
+    document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp;
 }
 
 //Weapon skill experience

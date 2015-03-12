@@ -9,7 +9,7 @@
     }
 };
 
-var testnumber = 1;
+var itemIdNumber = 1;
 function itemDropRandom(monsterType) {
 
     var dropItem;
@@ -50,11 +50,12 @@ function itemDropRandom(monsterType) {
             if (dropItem.luck == null || dropItem.luck == "undefined") {
                 dropItem["luck"] = 0
             }
-                dropItem["id"] = testnumber;
+                dropItem["id"] = itemIdNumber;
                 playerInventory.push(dropItem);
-                testnumber += 1;
+                itemIdNumber += 1;
             }
+
+            Log("<span style=\"color:orange\">You found an item! </span>");
         }
     }
-    Log("<span style=\"color:orange\">You found an item! </span>");
 }

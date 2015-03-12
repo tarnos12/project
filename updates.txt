@@ -1,13 +1,30 @@
 _________________________
-v1.3.0 - 22 february 2015|
+v1.3.0 - 12 march 2015|
 -------------------------|
-- Redesigned item loot table, no more random stats on items. Each item has it's own name and stats
-- Game log display total damage received/dealt also critical hit rating(total critical hits divided by turns)
+- Redesigned item loot table, no more random stats on items. Each item has it's own name and stats, will be updated further, so each item can have higher stats(randomly)
+- Game log display total damage received/dealt also critical hit rating(total critical hits divided by turns that took you to kill/die)
 - Changed max turns to 20 from 19(that was a mistake actually since it was supossed to be 20). It will be changed to increase based on character stat like endurance later on
-- Changed monster health display, to show only max health, since actual health is not updating because battles are automatic
 - Player stats now display STR, END etc instead of Strength, Endurance
 - Moved Sell All buttons to inventory page for easy access.
 - Updated item tooltip, now display only stats which are higher than 0,
+- Auto save feature, save the game every 10 seconds. Remeber to load a game manually after you refresh the page.
+- Added donation button at the option menu, if you want to support me feel free to donate. I want to spend some money on better graphic later on, so any amount will help.
+- Each monster health is displayed, when you attack it, monster hp will not change back to max anymore. I will need to consider adding some limitations, so you can't attack stronger monster to farm items easly by fighting it 1000 times etc...
+- Added a little tutorial, on the left side you will find a tab "Game info" I will be updating it with new info, currently there are just basic stuff.
+- Moved Inventory tab next to Equipment tab inside Player Stats tab for easier access
+- Mega potion now saves
+- All potions are used automatically, when you are low enough, they are used while "auto fighting for 20 rounds" You can't see the effect in most cases, but you will notice that "total damage taken" will be lower if you have health potions.
+- There is also requirement for them to be used. Read more in game<Game info tab>
+- You gain stats per level, You can still spend 10 points each level(soon to be changed)
+- Increased defense gain for each point in dexterity and endurance
+- Increased base critical chance to 10%
+- You can upgrade your Inventory slots, at shop. Each upgrade gives you + 1 inventory slots, for 100 gold at the beginning and increasing by 2 times for each purchase(just a basic idea)
+- You can also buy + 1 stat points for 1000 gold at shop, price stays the same for now, might change it later
+- Your max inventory slots are determined by your total strength(including bonuses from items/passives). You start with 20 slots + 1 slot for every 10 points in strength.
+- Lowered all monster defense, ALOT. That should make it much easier fighting stronger enemies, with current changes, when you don't find items with + 10k stats.
+- You can drop multiple items at once, if you are lucky :)
+- Luck increase a chance to "roll an item". What that means is, with more luck, there is a higher chance for you to get an item from a monster, note that this does not increase actual item drop chance, but how often you will roll for that item.
+- There is probably more, I can't remember now.
 _________________________
 v1.2.3 - 22 february 2015|
 -------------------------|

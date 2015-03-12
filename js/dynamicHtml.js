@@ -62,9 +62,10 @@ function CreateEquipHtml() {
     if (equippedItems.weapon.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.weapon.subType + "/" + +equippedItems.weapon.image + '.png" "data-toggle=" "tooltip" title="'
+        html += '<img src="images/items/' + equippedItems.weapon.subType + "/" + equippedItems.weapon.image + '.png" "data-toggle=" "tooltip" title="'
         html += "Item Rarity: " + equippedItems.weapon.itemQuality + '\n'
         html += "Item Type: " + equippedItems.weapon.itemType + '\n'
+        html += "Damage: " + equippedItems.weapon.minDamage + "-" + equippedItems.weapon.maxDamage + '\n'
         html += "Strength: " + equippedItems.weapon.strength + '\n'
         html += "Endurance: " + equippedItems.weapon.endurance + '\n'
         html += "Agility: " + equippedItems.weapon.agility + '\n'
@@ -121,7 +122,7 @@ function CreateEquipHtml() {
     if (equippedItems.armor.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.armor.image + '.png" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.armor.subType + "/" + equippedItems.armor.image + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.armor.itemQuality +
                 '\n' +
                 "Item Type: " + equippedItems.armor.itemType +
@@ -155,7 +156,7 @@ function CreateEquipHtml() {
     if (equippedItems.ring.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.ring.image + '.png" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.ring.subType + "/" + equippedItems.ring.image + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.ring.itemQuality +
                 '\n' +
                 "Item Type: " + equippedItems.ring.itemType +
@@ -188,7 +189,7 @@ function CreateEquipHtml() {
     if (equippedItems.amulet.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.amulet.image + '.png" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.amulet.subType + "/" + equippedItems.amulet.image + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.amulet.itemQuality +
                 '\n' +
                 "Item Type: " + equippedItems.amulet.itemType +
@@ -221,7 +222,7 @@ function CreateEquipHtml() {
     if (equippedItems.talisman.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.talisman.image  + '.png" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.talisman.subType + "/"  + equippedItems.talisman.image + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.talisman.itemQuality +
                 '\n' +
                 "Item Type: " + equippedItems.talisman.itemType +
@@ -299,7 +300,7 @@ function CreateMonsterHtml() {
                     '<br />' +
                     'Def:' + monsters[i].def +
                     '<br />' +
-                    "Health: " + monsters[i].maxHp +
+                    "HP: " + '<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp +
                     '<br />' +
                     '<b>' + monsters[i].name + '</b>' +
                     '<br />' +
@@ -413,7 +414,7 @@ function CreateInventoryWeaponHtml() {
                     var itemStat = equippedItems.talisman;
                 }
                 html += '<tr>' + '<td>';
-                html += '<img src="images/items/' + playerInventory[i].image + '.png" "data-toggle=" "tooltip" title="'
+                html += '<img src="images/items/' + playerInventory[i].subType + "/"  + playerInventory[i].image + '.png" "data-toggle=" "tooltip" title="'
                 html += "Stat change:"
                 html += '\n'
                 html += "Item Type: " + playerInventory[i].subType + '\n'
