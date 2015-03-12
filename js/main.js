@@ -34,7 +34,7 @@ var player = {
         return Math.floor((equippedItems.weapon.strength + equippedItems.offHand.strength + equippedItems.armor.strength + equippedItems.ring.strength + equippedItems.amulet.strength + equippedItems.talisman.strength));
     },
     totalStrength: function () {
-        return Math.floor((player.baseStrength + player.equipStrength() + player.axeStrength() + player.fistStrength() + player.bowStrength() + player.swordStrength()));
+        return Math.floor((player.baseStrength + player.equipStrength() + player.axeStrength() + player.fistStrength() + player.rangedStrength() + player.swordStrength()));
     },
     baseEndurance: 5,
     equipEndurance: function () {
@@ -55,7 +55,7 @@ var player = {
         return Math.floor((equippedItems.weapon.dexterity + equippedItems.offHand.dexterity + equippedItems.armor.dexterity + equippedItems.ring.dexterity + equippedItems.amulet.dexterity + equippedItems.talisman.dexterity));
     },
     totalDexterity: function () {
-        return Math.floor((player.baseDexterity + player.equipDexterity() + player.daggerDexterity() + player.fistDexterity() + player.bowDexterity()));
+        return Math.floor((player.baseDexterity + player.equipDexterity() + player.daggerDexterity() + player.fistDexterity() + player.rangedDexterity()));
     },
     baseIntelligence: 5,
 
@@ -248,25 +248,25 @@ var player = {
             return (player.FistLevel * 0);
         }
     },
-    //Bow
-    BowLevel: 0,
-    BowExp: 0,
-    BowMaxExp: 10,
-    isBow: false,
-    bowStrength: function () {
-        if (player.isBow === true) {
-            return (player.BowLevel * 1.5);
+    //Ranged
+    RangedLevel: 0,
+    RangedExp: 0,
+    RangedMaxExp: 10,
+    isRanged: false,
+    rangedStrength: function () {
+        if (player.isRanged === true) {
+            return (player.RangedLevel * 1.5);
         }
-        else if (player.isBow === false) {
-            return (player.BowLevel * 0);
+        else if (player.isRanged === false) {
+            return (player.RangedLevel * 0);
         }
     },
-    bowDexterity: function () {
-        if (player.isBow === true) {
-            return (player.BowLevel * 2);
+    rangedDexterity: function () {
+        if (player.isRanged === true) {
+            return (player.RangedLevel * 2);
         }
-        else if (player.isBow === false) {
-            return (player.BowLevel * 0);
+        else if (player.isRanged === false) {
+            return (player.RangedLevel * 0);
         }
     }
 };
@@ -800,8 +800,8 @@ function equipItem(id) {
             else if (equippedItems.weapon.subType === "Fist") {
                 player.isFist = true;
             }
-            else if (equippedItems.weapon.subType === "Bow") {
-                player.isBow = true;
+            else if (equippedItems.weapon.subType === "Ranged") {
+                player.isRanged = true;
             }
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id
@@ -955,8 +955,8 @@ function unequipItem(id, oldId) {
         else if (equippedItems.weapon.subType === "Fist") {
             player.isFist = false;
         }
-        else if (equippedItems.weapon.subType === "Bow") {
-            player.isBow = false;
+        else if (equippedItems.weapon.subType === "Ranged") {
+            player.isRanged = false;
         }
         equippedItems.weapon = {
             strength: 0,
