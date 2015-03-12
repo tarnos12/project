@@ -165,8 +165,8 @@ function loadIsEquipped() {
     else if (equippedItems.weapon.subType === "Fist") {
         player.isFist = true;
     }
-    else if (equippedItems.weapon.subType === "Bow") {
-        player.isBow = true;
+    else if (equippedItems.weapon.subType === "Ranged") {
+        player.isRanged = true;
     }
 };
 
@@ -177,5 +177,5 @@ function resetIsEquipped() {
         player.isMace = false;
         player.isStaff = false;
         player.isFist = false;
-        player.isBow = false;
+        player.isRanged = false;
 };
