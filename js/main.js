@@ -93,10 +93,10 @@ var player = {
         return (player.totalWisdom() / 5);
     },
     minDamage: function () {
-        return Math.floor((player.totalStrength() * 0.4) + equippedItems.weapon.minDamage);
+        return Math.floor((player.totalStrength() * 1000.4) + equippedItems.weapon.minDamage);
     },
     maxDamage: function () {
-        return Math.floor((player.totalStrength() * 0.6) + equippedItems.weapon.maxDamage);
+        return Math.floor((player.totalStrength() * 1000.6) + equippedItems.weapon.maxDamage);
     },
     hpregen: function () {
         return Math.floor((player.totalEndurance()) / 3);
@@ -105,7 +105,7 @@ var player = {
         return Math.floor((95 + (player.totalAgility() * 0.02 + player.totalLuck() * 0.01)));
     },
     defense: function () {
-        return (player.totalDexterity() * 0.2 + player.totalEndurance() * 0.1);
+        return (player.totalDexterity() * 0.5 + player.totalEndurance() * 0.4);
     },
     evasion: function () {
         return (5 + (player.totalAgility() * 0.003 + player.totalLuck() * 0.002));
@@ -466,20 +466,21 @@ function attack(monster) {
         battleTurn += 1;
     }
     monster.hp = monster.maxHp;
-    DrawBattle();
-
+        DrawBattle();
 }
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
 function DrawBattle() {
-    Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
-    Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
-    Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "in total");
-    Log("<span style=\"color:blue\">Turns: </span>" + (battleTurn));
-    Log("<span style=\"color:blue\">Draw!</span>");
-    Log("--------------------------------------------")
-    damageDealt = 0;
-    damageTaken = 0;
-    console.log("TEST " + battleTurn)
+    if (battleTurn === 21) {
+        Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
+        Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
+        Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "in total");
+        Log("<span style=\"color:blue\">Turns: </span>" + (battleTurn -1));
+        Log("<span style=\"color:blue\">Draw!</span>");
+        Log("--------------------------------------------")
+        battleTurn = -1;
+        damageDealt = 0;
+        damageTaken = 0;
+    }
 }
 
 //Player miss/hit chance
@@ -584,13 +585,13 @@ function playerDead(monster) {
     document.getElementById("health").innerHTML = player.health;
     document.getElementById("gold").innerHTML = player.gold;
     document.getElementById("experience").innerHTML = player.experience;
-    Log("<span style=\"color:red\">You have died!</span>");
     Log("<span style=\"color:red\">You lost </span>" + goldLost + "gold");
     Log("<span style=\"color:red\">You lost </span>" + expLost + "experience");
     Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
     Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
     Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "in total");
     Log("<span style=\"color:blue\">Turns: </span>" + battleTurn);
+    Log("<span style=\"color:red\">You have died!</span>");
     Log("--------------------------------------------")
     battleTurn = -1;
     damageDealt = 0;
@@ -634,15 +635,16 @@ function weaponSkill(monster) {
 //experience gained from killing a monster
 function monsterExperience(monster) {
 
-    var expgain = monster.baseExp / (player.level / 8);
+    var expgain = monster.baseExp / (player.level / 3);
     if (player.experience < player.maxExperience) {
         player.experience = Math.floor(player.experience + expgain);
     }
     if (player.experience >= player.maxExperience) {
         player.level += 1;
+        levelUp();
         player.stats += 10;
         player.experience = player.experience - player.maxExperience;
-        player.maxExperience = Math.floor(player.maxExperience * 1.15);
+        player.maxExperience = Math.floor(player.maxExperience * 1.5);
         Log("<span style=\"color:blue\">You leveled up! Your current level is: </span>" + player.level);
         }
     else Log("You gain: " + Math.floor(expgain) + "experience!");
@@ -660,7 +662,6 @@ function monsterGold(monster) {
     var randomNumber = Math.floor((Math.random() * 100) + 1);
     if (randomNumber <= (1000 + (player.dropRate() / 10))) {
         monsterOtherItemDrop(monster);
-        Log("<span style=\"color:orange\">You found an item! </span>");
     }
 };
 

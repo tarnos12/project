@@ -62,27 +62,18 @@ function CreateEquipHtml() {
     if (equippedItems.weapon.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.weapon.image + '.png" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + equippedItems.weapon.itemQuality +
-                '\n' +
-                "Item Type: " + equippedItems.weapon.itemType +
-                '\n' +
-                "Strength: " + equippedItems.weapon.strength +
-                '\n' +
-                "Endurance: " + equippedItems.weapon.endurance +
-                '\n' +
-                "Agility: " + equippedItems.weapon.agility +
-                '\n' +
-                "Dexterity: " + equippedItems.weapon.dexterity +
-                '\n' +
-                "Intelligence: " + equippedItems.weapon.intelligence +
-                '\n' +
-                "Wisdom: " + equippedItems.weapon.wisdom +
-                '\n' +
-                "Luck: " + equippedItems.weapon.luck +
-                '\n' +
-                "Value: " + equippedItems.weapon.value + "gold" +
-                '">';
+        html += '<img src="images/items/' + equippedItems.weapon.subType + "/" + +equippedItems.weapon.image + '.png" "data-toggle=" "tooltip" title="'
+        html += "Item Rarity: " + equippedItems.weapon.itemQuality + '\n'
+        html += "Item Type: " + equippedItems.weapon.itemType + '\n'
+        html += "Strength: " + equippedItems.weapon.strength + '\n'
+        html += "Endurance: " + equippedItems.weapon.endurance + '\n'
+        html += "Agility: " + equippedItems.weapon.agility + '\n'
+        html += "Dexterity: " + equippedItems.weapon.dexterity + '\n'
+        html += "Intelligence: " + equippedItems.weapon.intelligence + '\n'
+        html += "Wisdom: " + equippedItems.weapon.wisdom + '\n'
+        html += "Luck: " + equippedItems.weapon.luck + '\n'
+        html += "Value: " + equippedItems.weapon.value + "gold"
+        html += '">';
 
         html += '</td>' +
             '<td>' + equippedItems.weapon.name + '</td>' +
@@ -96,7 +87,7 @@ function CreateEquipHtml() {
     if (equippedItems.offHand.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.offHand.image + '.png" "data-toggle=" "tooltip" title="' +
+        html += '<img src="images/items/' + equippedItems.offHand.subType + "/" + equippedItems.offHand.image + '.png" "data-toggle=" "tooltip" title="' +
                  "Item Rarity: " + equippedItems.offHand.itemQuality +
                 '\n' +
                 "Item Type: " + equippedItems.offHand.itemType +
@@ -422,31 +413,86 @@ function CreateInventoryWeaponHtml() {
                     var itemStat = equippedItems.talisman;
                 }
                 html += '<tr>' + '<td>';
-                html += '<img src="images/items/' + playerInventory[i].image + '.png" "data-toggle=" "tooltip" title="' +
-                        "Stat change:" +
-                        '\n' +
-                        "Item Type: " + playerInventory[i].subType +
-                        '\n' +
-                        "Damage: " + playerInventory[i].minDamage + "-" + playerInventory[i].maxDamage +
-                        '\n' +
-                        "Defense: " + (playerInventory[i].defense - itemStat.defense) +
-                        '\n' +
-                        "Strength: " + (playerInventory[i].strength - itemStat.strength) +
-                        '\n' +
-                        "Endurance: " +  (playerInventory[i].endurance - itemStat.endurance) +
-                        '\n' +
-                        "Agility: " + (playerInventory[i].agility - itemStat.agility) +
-                        '\n' +
-                        "Dexterity: " + (playerInventory[i].dexterity - itemStat.dexterity) +
-                        '\n' +
-                        "Intelligence: " + (playerInventory[i].intelligence - itemStat.intelligence) +
-                        '\n' +
-                        "Wisdom: " + (playerInventory[i].wisdom - itemStat.wisdom) +
-                        '\n' +
-                        "Luck: " + (playerInventory[i].luck - itemStat.luck) +
-                        '\n' +
-                        "Value: " + playerInventory[i].value + "gold" +
-                        '">' + '</td>';
+                html += '<img src="images/items/' + playerInventory[i].image + '.png" "data-toggle=" "tooltip" title="'
+                html += "Stat change:"
+                html += '\n'
+                html += "Item Type: " + playerInventory[i].subType + '\n'
+                if (playerInventory[i].minDamage > 0 && playerInventory[i].maxDamage > 0) {
+                    html += "Damage: " + playerInventory[i].minDamage + "-" + playerInventory[i].maxDamage + '\n'
+                }
+               
+                if (playerInventory[i].defense > 0) {
+                    if (itemStat.defense > 0) {
+                        html += "Defense: " + (playerInventory[i].defense - itemStat.defense) + '\n'
+                    }
+                    else {
+                        html += "Defense: " + playerInventory[i].defense + '\n'
+                    }
+                    
+                }
+                if (playerInventory[i].strength > 0) {
+                    if (itemStat.strength > 0) {
+                        html += "Strength: " + (playerInventory[i].strength - itemStat.strength) + '\n'
+                    }
+                    else {
+                        html += "Strength: " + playerInventory[i].strength + '\n'
+                    }
+                }
+                if (playerInventory[i].endurance > 0) {
+                    if (itemStat.endurance > 0) {
+                        html += "Endurance: " + (playerInventory[i].endurance - itemStat.endurance) + '\n'
+                    }
+                    else {
+                        html += "Endurance: " + playerInventory[i].endurance + '\n'
+                    }
+                }
+                if (playerInventory[i].agility > 0) {
+                    if (itemStat.agility > 0) {
+                        html += "Agility: " + (playerInventory[i].agility - itemStat.agility) + '\n'
+                    }
+                    else {
+                        html += "Agility: " + playerInventory[i].agility + '\n'
+                    }
+                }
+                if (playerInventory[i].dexterity > 0) {
+                    if (itemStat.dexterity > 0) {
+                        html += "Dexterity: " + (playerInventory[i].dexterity - itemStat.dexterity) + '\n'
+                    }
+                    else {
+                        html += "Dexterity: " + playerInventory[i].dexterity + '\n'
+                    }
+                }
+                if (playerInventory[i].intelligence > 0) {
+                    if (itemStat.intelligence > 0) {
+
+                        html += "Intelligence: " + (playerInventory[i].intelligence - itemStat.intelligence) + '\n'
+                    }
+                    else {
+                        html += "Intelligence: " + playerInventory[i].intelligence + '\n'
+                    }
+                }
+                if (playerInventory[i].wisdom > 0) {
+                    if (itemStat.wisdom > 0) {
+
+                        html += "Wisdom: " + (playerInventory[i].wisdom - itemStat.wisdom) + '\n'
+                    }
+                    else {
+                        html += "Wisdom: " + playerInventory[i].wisdom + '\n'
+                    }
+                }
+                if (playerInventory[i].luck > 0) {
+                    if (itemStat.luck > 0) {
+
+                        html += "Luck: " + (playerInventory[i].luck - itemStat.luck) + '\n'
+                    }
+                    else {
+                        html += "Luck: " + playerInventory[i].luck + '\n'
+                    }
+                }
+               
+                
+                html += "Value: " + playerInventory[i].value + "gold"
+                html += '">' + '</td>';
                 //ADD ALL ITEMS VALUE TOGETHER, might want to use it for bulk selling in future...need to add if/else for item quality too...
                 /*var total = 0;
                 for (var s = 0; s < playerInventory.length; s++) {

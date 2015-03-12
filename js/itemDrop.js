@@ -4,12 +4,14 @@
         var monsterArea = monster.area;
         var monsterType = itemTable[monsterGroup][monsterArea]
 
-        testItemQuality(monsterType);
+        itemDropRandom(monsterType);
         CreateInventoryWeaponHtml()
     }
 };
 
-function testItemQuality(monsterType) {
+var testnumber = 1;
+function itemDropRandom(monsterType) {
+
     var dropItem;
 
     var chance = 0;
@@ -48,9 +50,11 @@ function testItemQuality(monsterType) {
             if (dropItem.luck == null || dropItem.luck == "undefined") {
                 dropItem["luck"] = 0
             }
-                dropItem["id"] = currentDate.getTime();
+                dropItem["id"] = testnumber;
                 playerInventory.push(dropItem);
+                testnumber += 1;
             }
         }
     }
+    Log("<span style=\"color:orange\">You found an item! </span>");
 }

@@ -1,7 +1,6 @@
 ﻿// Each monster have a Group asigned to them, like GroupA consist of melee monsters which use Swords/Axes etc. 
 //Each group have sub group which is their location, used to determine different item level
 // It goes like this: Group - > location - > random pick item type (group dependant) each with "chance value" then pick an item inside a choosen item type
-
 var itemTable = {
     //Warrior type monsters with Swords/axes
     groupA: {
@@ -129,11 +128,11 @@ var itemTable = {
                 subType: 'chest',
                 color: 'blue',
                 image: 'StuddedDoublet',
-                defense: 3,
-                agility: 3,
-                dexterity: 2,
-                endurance: 1,
-                value: 40
+                defense: 12,
+                agility: 10,
+                dexterity: 7,
+                endurance: 5,
+                value: 180
             },
             //Heavy Armor
             {
@@ -266,7 +265,7 @@ var itemTable = {
                 itemType: 'weapon',
                 subType: 'Axe',
                 color: 'blue',
-                image: 'Bearded Axe',
+                image: 'BeardedAxe',
                 minDamage: 25,
                 maxDamage: 40,
                 strength: 48,
@@ -446,7 +445,7 @@ var itemTable = {
                 itemType: 'weapon',
                 subType: 'Axe',
                 color: 'blue',
-                image: 'Gothic Axe',
+                image: 'GothicAxe',
                 minDamage: 60,
                 maxDamage: 90,
                 strength: 90,
@@ -1352,11 +1351,11 @@ var itemTable = {
                 subType: 'chest',
                 color: 'blue',
                 image: 'StuddedDoublet',
-                defense: 3,
-                agility: 3,
-                dexterity: 2,
-                endurance: 1,
-                value: 40
+                defense: 12,
+                agility: 10,
+                dexterity: 7,
+                endurance: 5,
+                value: 180
             },
             //Robes
             {
@@ -2493,7 +2492,7 @@ var itemTable = {
             itemDrop: [
            {
                chance: 50,
-               name: 'Hunters Bow',
+               name: 'Hunter\'s Bow',
                itemQuality: 'Common',
                itemType: 'weapon',
                subType: 'Ranged',

@@ -26,7 +26,7 @@
     document.getElementById("agility").innerHTML = player.totalAgility();
     document.getElementById("accuracy").innerHTML = player.accuracy().toFixed(2);
     document.getElementById("dexterity").innerHTML = player.totalDexterity();
-    document.getElementById("defense").innerHTML = player.defense().toFixed(2);
+    document.getElementById("defense").innerHTML = player.defense().toFixed(0);
     document.getElementById("criticalDamage").innerHTML = (player.criticalDamage() * 100) + "%";
     document.getElementById("criticalChance").innerHTML = player.criticalChance();
     document.getElementById("intelligence").innerHTML = player.totalIntelligence();
@@ -70,6 +70,15 @@ window.setInterval(function () { //Mana regen
     document.getElementById('mana').innerHTML = player.mana.toFixed(0);
 }, 1000);
 
+function levelUp() {
+    player.baseStrength += 4.6;
+    player.baseEndurance += 4.4;
+    player.baseAgility += 3.4;
+    player.baseDexterity += 2.7;
+    player.baseWisdom += 2.3;
+    player.baseIntelligence += 3.5;
+    player.baseLuck += 1.6;
+}
 //Upgrading player stats
 function upgradeStrength() {
     if (player.stats >= 1) {

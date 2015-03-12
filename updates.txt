@@ -7,6 +7,7 @@ v1.3.0 - 22 february 2015|
 - Changed monster health display, to show only max health, since actual health is not updating because battles are automatic
 - Player stats now display STR, END etc instead of Strength, Endurance
 - Moved Sell All buttons to inventory page for easy access.
+- Updated item tooltip, now display only stats which are higher than 0,
 _________________________
 v1.2.3 - 22 february 2015|
 -------------------------|
