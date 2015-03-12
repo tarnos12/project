@@ -38,7 +38,7 @@
         FistMaxExp: player.FistMaxExp,
         FistLevel: player.FistLevel,
         BowMaxExp: player.BowMaxExp,
-        BowLevel: player.BowLevel,
+        RangedLevel: player.RangedLevel,
         //Other
         itemId: itemIdNumber,
         backpackUpgrade: player.backpackUpgrade,
@@ -66,7 +66,7 @@ function load() {
     if (typeof savegame.FistMaxExp !== "undefined") player.FistMaxExp = savegame.FistMaxExp;
     if (typeof savegame.FistLevel !== "undefined") player.FistLevel = savegame.FistLevel;
     if (typeof savegame.BowMaxExp !== "undefined") player.BowMaxExp = savegame.BowMaxExp;
-    if (typeof savegame.BowLevel !== "undefined") player.BowLevel = savegame.BowLevel;
+    if (typeof savegame.RangedLevel !== "undefined") player.RangedLevel = savegame.RangedLevel;
     //Other
     if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
@@ -200,7 +200,7 @@ function reset() {
     player.FistLevel = 1;
     player.BowMaxExp = 10;
     player.BowExp = 0;
-    player.BowLevel = 1;
+    player.RangedLevel = 1;
     //Other
     itemIdNumber = 1;
     player.backpackUpgrade = 0,
