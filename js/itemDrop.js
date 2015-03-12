@@ -21,14 +21,15 @@ function itemDropRandom(monsterType) {
         var randomItemChance = Math.floor(Math.random() * (1000 - 1) + 1);
         if (randomItemChance <= chance) {
             dropItem = monsterType.itemDrop.filter(function (obj) {
-
                 return obj === monsterType.itemDrop[i];
             }
             )[0];
+            var randomStrength = Math.floor((Math.random() * (dropItem.iLvl * 10)) + dropItem.iLvl);
+            console.log("TEST " + randomStrength)
+            dropItem.strength = randomStrength
             //Checks if player used checkbox to auto remove items by quality. Also this code add "id" property to each created item
             if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
                 var currentDate = new Date();
-
             if (dropItem.strength == null || dropItem.strength == "undefined") {
                 dropItem["strength"] = 0
             }
@@ -50,12 +51,19 @@ function itemDropRandom(monsterType) {
             if (dropItem.luck == null || dropItem.luck == "undefined") {
                 dropItem["luck"] = 0
             }
-                dropItem["id"] = itemIdNumber;
-                playerInventory.push(dropItem);
-                itemIdNumber += 1;
+            dropItem["id"] = itemIdNumber;
+            var itemHolder = [];
+            itemHolder.push(dropItem);
+            playerInventory.push.apply(
+                playerInventory,
+                JSON.parse(JSON.stringify(itemHolder))
+                );
+
+            itemIdNumber += 1;
+                Log("<span style=\"color:orange\">You found an item! </span>");
             }
 
-            Log("<span style=\"color:orange\">You found an item! </span>");
+            
         }
     }
 }
