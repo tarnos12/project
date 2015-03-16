@@ -1,51 +1,51 @@
 ﻿window.setInterval(function () {
     var hppercent = 100; //This function heal player automatically using potions.
     hppercent = (Math.floor((player.health / player.maxhealth()) * 100));
-    if (player.maxhealth() >= 500 & mpot >= 1) {
+    if (player.maxhealth() >= 500 & mpot >= 1 & player.isDead == false) {
         if (hppercent <= 30) {
             if (player.health + 500 >= player.maxhealth()) {
                 player.health = player.maxhealth();
                 mpot -= 1;
                 document.getElementById("health").innerHTML = player.health;
-                document.getElementById("mpot").innerHTML = mpot;
+                document.getElementById("megaPotion").innerHTML = mpot;
             }
             else {
                 player.health += 500;
                 mpot -= 1;
                 document.getElementById("health").innerHTML = player.health;
-                document.getElementById("mpot").innerHTML = mpot;
+                document.getElementById("megaPotion").innerHTML = mpot;
             }
         }
     }
-    else if (player.maxhealth() >= 300 & spot >= 1) {
+    else if (player.maxhealth() >= 300 & spot >= 1 & player.isDead == false) {
         if (hppercent <= 30) {
             if (player.health + 100 >= player.maxhealth()) {
                 player.health = player.maxhealth();
                 spot -= 1;
                 document.getElementById("health").innerHTML = player.health;
-                document.getElementById("spot").innerHTML = spot;
+                document.getElementById("superPotion").innerHTML = spot;
             }
             else {
                 player.health += 100;
                 spot -= 1;
                 document.getElementById("health").innerHTML = player.health;
-                document.getElementById("spot").innerHTML = spot;
+                document.getElementById("superPotion").innerHTML = spot;
             }
         }
     }
-    else if (pot >= 1) {
+    else if (pot >= 1 & player.isDead == false) {
         if (hppercent <= 30) {
             if (player.health + 20 >= player.maxhealth()) {
                 player.health = player.maxhealth();
                 pot -= 1;
                 document.getElementById("health").innerHTML = player.health;
-                document.getElementById("pot").innerHTML = pot;
+                document.getElementById("potion").innerHTML = pot;
             }
             else {
                 player.health += 20;
                 pot -= 1;
                 document.getElementById("health").innerHTML = player.health;
-                document.getElementById("pot").innerHTML = pot;
+                document.getElementById("potion").innerHTML = pot;
             }
         }
     }
@@ -65,13 +65,13 @@ function usepot() {
     } else if (player.health + 20 >= player.maxhealth() & pot >= 1) {
         pot = pot - 1;
         player.health = player.maxhealth();
-        document.getElementById('pot').innerHTML = pot;
+        document.getElementById('potion').innerHTML = pot;
         document.getElementById('health').innerHTML = player.health;
         Log("You heal for 20 <span style=\"color:green\">health!</span>");
     } else if (player.health + 20 < player.maxhealth() & pot >= 1) {
         pot = pot - 1;
         player.health = player.health + 20;
-        document.getElementById('pot').innerHTML = pot;
+        document.getElementById('potion').innerHTML = pot;
         document.getElementById('health').innerHTML = player.health;
     }
 };
@@ -82,13 +82,13 @@ function usespot() {
     } else if (player.health + 100 >= player.maxhealth() & spot >= 1) {
         spot = spot - 1;
         player.health = player.maxhealth();
-        document.getElementById('spot').innerHTML = spot;
+        document.getElementById('superPotion').innerHTML = spot;
         document.getElementById('health').innerHTML = player.health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
     } else if (player.health + 100 < player.maxhealth() & spot >= 1) {
         spot = spot - 1;
         player.health = player.health + 100;
-        document.getElementById('spot').innerHTML = spot;
+        document.getElementById('superPotion').innerHTML = spot;
         document.getElementById('health').innerHTML = player.health;
     }
 };
@@ -99,13 +99,21 @@ function usempot() {
     } else if (player.health + 500 >= player.maxhealth() & mpot >= 1) {
         mpot = mpot - 1;
         player.health = player.maxhealth();
-        document.getElementById('mpot').innerHTML = mpot;
+        document.getElementById('megaPotion').innerHTML = mpot;
         document.getElementById('health').innerHTML = player.health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
     } else if (player.health + 500 < player.maxhealth() & mpot >= 1) {
         mpot = mpot - 1;
         player.health = player.health + 500;
-        document.getElementById('mpot').innerHTML = mpot;
+        document.getElementById('megaPotion').innerHTML = mpot;
         document.getElementById('health').innerHTML = player.health;
     }
+};
+
+function playerRevive() {
+    setTimeout(
+   function () {
+       player.health = player.maxhealth();
+       player.isDead = false;
+   }, 5000);
 };

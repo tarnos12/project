@@ -4,8 +4,8 @@
         document.getElementById("vis2").style.visibility = "visible";
         document.getElementById("vis3").style.visibility = "visible";
         document.getElementById("vis4").style.visibility = "visible";
-        document.getElementById("vis5").style.visibility = "visible";
-        document.getElementById("vis6").style.visibility = "visible";
+        //document.getElementById("vis5").style.visibility = "visible";
+        //document.getElementById("vis6").style.visibility = "visible";
         document.getElementById("vis7").style.visibility = "visible";
     } else {
         document.getElementById("vis1").style.visibility = "hidden";
@@ -27,8 +27,8 @@
     document.getElementById("accuracy").innerHTML = player.accuracy().toFixed(2);
     document.getElementById("dexterity").innerHTML = player.totalDexterity();
     document.getElementById("defense").innerHTML = player.defense().toFixed(0);
-    document.getElementById("criticalDamage").innerHTML = (player.criticalDamage() * 100) + "%";
-    document.getElementById("criticalChance").innerHTML = player.criticalChance();
+    document.getElementById("criticalDamage").innerHTML = (player.criticalDamage() * 100).toFixed(0) + "%";
+    document.getElementById("criticalChance").innerHTML = player.criticalChance().toFixed(1);
     document.getElementById("intelligence").innerHTML = player.totalIntelligence();
     document.getElementById("mana").innerHTML = player.mana.toFixed(0);
     document.getElementById("maxmana").innerHTML = player.maxMana().toFixed(0);
@@ -36,15 +36,16 @@
     document.getElementById("manaRegen").innerHTML = player.manaRegen();
     document.getElementById("luck").innerHTML = player.totalLuck();
     document.getElementById("evasion").innerHTML = player.evasion().toFixed(1);
-    document.getElementById("dropRate").innerHTML = player.dropRate() * 100;
+    document.getElementById("dropRate").innerHTML = (player.dropRate() * 100).toFixed(1);
     document.getElementById("level").innerHTML = player.level;
     document.getElementById("maxexperience").innerHTML = player.maxExperience;
     document.getElementById("experience").innerHTML = player.experience;
-    document.getElementById("gold").innerHTML = player.gold;
-    document.getElementById("backpack").innerHTML = backpackPrice;
-    document.getElementById('pot').innerHTML = pot;
-    document.getElementById('spot').innerHTML = spot;
-    document.getElementById('mpot').innerHTML = mpot;
+    document.getElementById("gold").innerHTML = player.gold.toFixed(0);
+    document.getElementById("buyBackpack").innerHTML = backpackStatus.price;
+    document.getElementById("buyStat").innerHTML = statStatus.price;
+    document.getElementById('potion').innerHTML = pot;
+    document.getElementById('superPotion').innerHTML = spot;
+    document.getElementById('megaPotion').innerHTML = mpot;
 }, 1);
 //auto Save
 window.setInterval(function () {
@@ -67,8 +68,10 @@ window.setInterval(function () {
     divArray.style.width = ((healthPercent) + '%');
 }, 100);
 window.setInterval(function () { //Health regen
-    if (player.health < player.maxhealth()) player.health += player.hpregen();
-    if (player.health > player.maxhealth()) player.health = player.maxhealth();
+    if (player.isDead == false) {
+        if (player.health < player.maxhealth()) player.health += player.hpregen();
+        if (player.health > player.maxhealth()) player.health = player.maxhealth();
+    }
     document.getElementById('health').innerHTML = player.health;
 }, 1000);
 window.setInterval(function () { //Mana regen
@@ -85,73 +88,13 @@ function levelUp() {
     player.baseWisdom += 2.3;
     player.baseIntelligence += 3.5;
     player.baseLuck += 1.6;
+    monsterKillCount();
+    CreateMonsterHtml();
 }
-//Upgrading player stats
-function upgradeStrength() {
-    if (player.stats >= 1) {
-        player.stats = player.stats - 1;
-        player.baseStrength += 1;
-
-    }
-};
-
-function upgradeEndurance() {
-    if (player.stats >= 1) {
-        player.stats = player.stats - 1;
-        player.baseEndurance += 1;
-        Log("Your maximal health is now: " + player.maxhealth() + "!");
-    }
-};
-
-function upgradeAgility() {
-    if (player.stats >= 1) {
-        player.stats = player.stats - 1;
-        player.baseAgility += 1;
-        Log("You have increased your agility by 1, evasion, critical chance and accuracy increased!");
-
-    }
-};
-
-function upgradeDexterity() {
-    if (player.stats >= 1) {
-        player.baseDexterity += 1;
-        player.stats = player.stats - 1;
-        Log("You increased your dexterity by 1, defense, critical chance and critical damage increased.");
-
-    }
-};
-
-function upgradeIntelligence() {
-    if (player.stats >= 1) {
-        player.baseIntelligence += 1;
-        player.stats = player.stats - 1;
-        Log("You have increased your intelligence by 1");
-
-    }
-};
-
-function upgradeWisdom() {
-    if (player.stats >= 1) {
-        player.baseWisdom += 1;
-        player.stats = player.stats - 1;
-        Log("You have increased your wisdom by 1");
-    }
-};
-
-function upgradeLuck() {
-    if (player.stats >= 1) {
-        player.baseLuck += 1;
-        player.stats = player.stats - 1;
-        Log("You have increased your luck by 1! Critical damage/chance and drop rate increased!");
-    }
-};
 
 function loadIsEquipped() {
     if (equippedItems.weapon.subType === "Sword") {
         player.isSword = true;
-    }
-    else if (equippedItems.weapon.subType === "Dagger") {
-        player.isDagger = true;
     }
     else if (equippedItems.weapon.subType === "Axe") {
         player.isAxe = true;
@@ -162,9 +105,6 @@ function loadIsEquipped() {
     else if (equippedItems.weapon.subType === "Staff") {
         player.isStaff = true;
     }
-    else if (equippedItems.weapon.subType === "Fist") {
-        player.isFist = true;
-    }
     else if (equippedItems.weapon.subType === "Ranged") {
         player.isRanged = true;
     }
@@ -172,10 +112,166 @@ function loadIsEquipped() {
 
 function resetIsEquipped() {
         player.isSword = false;
-        player.isDagger = false;
         player.isAxe = false;
         player.isMace = false;
         player.isStaff = false;
-        player.isFist = false;
         player.isRanged = false;
 };
+
+
+//Upgrading player stats
+
+//Strength
+function upgradeStrength(strength) {
+    if (event.shiftKey) {
+        if (player.stats >= 100) {
+            player.stats = player.stats - 100;
+            player.baseStrength += 100;
+        }
+    }
+    if (event.ctrlKey) {
+        if (player.stats >= 10) {
+            player.stats = player.stats - 10;
+            player.baseStrength += 10;
+
+        }
+    }
+    else if (!event.shiftKey && !event.ctrlKey) {
+        if (player.stats >= 1) {
+            player.stats = player.stats - 1;
+            player.baseStrength += 1;
+        }
+    }
+}
+//Endurance
+function upgradeEndurance(endurance) {
+    if (event.shiftKey) {
+        if (player.stats >= 100) {
+            player.stats = player.stats - 100;
+            player.baseEndurance += 100;
+        }
+    }
+    if (event.ctrlKey) {
+        if (player.stats >= 10) {
+            player.stats = player.stats - 10;
+            player.baseEndurance += 10;
+
+        }
+    }
+    else if (!event.shiftKey && !event.ctrlKey) {
+        if (player.stats >= 1) {
+            player.stats = player.stats - 1;
+            player.baseEndurance += 1;
+        }
+    }
+}
+//Agility
+function upgradeAgility(agility) {
+    if (event.shiftKey) {
+        if (player.stats >= 100) {
+            player.stats = player.stats - 100;
+            player.baseAgility += 100;
+        }
+    }
+    if (event.ctrlKey) {
+        if (player.stats >= 10) {
+            player.stats = player.stats - 10;
+            player.baseAgility += 10;
+
+        }
+    }
+    else if (!event.shiftKey && !event.ctrlKey) {
+        if (player.stats >= 1) {
+            player.stats = player.stats - 1;
+            player.baseAgility += 1;
+        }
+    }
+}
+//Dexterity
+function upgradeDexterity(dexterity) {
+    if (event.shiftKey) {
+        if (player.stats >= 100) {
+            player.stats = player.stats - 100;
+            player.baseDexterity += 100;
+        }
+    }
+    if (event.ctrlKey) {
+        if (player.stats >= 10) {
+            player.stats = player.stats - 10;
+            player.baseDexterity += 10;
+
+        }
+    }
+    else if (!event.shiftKey && !event.ctrlKey) {
+        if (player.stats >= 1) {
+            player.stats = player.stats - 1;
+            player.baseDexterity += 1;
+        }
+    }
+}
+//Wisdom
+function upgradeWisdom(wisdom) {
+    if (event.shiftKey) {
+        if (player.stats >= 100) {
+            player.stats = player.stats - 100;
+            player.baseWisdom += 100;
+        }
+    }
+    if (event.ctrlKey) {
+        if (player.stats >= 10) {
+            player.stats = player.stats - 10;
+            player.baseWisdom += 10;
+
+        }
+    }
+    else if (!event.shiftKey && !event.ctrlKey) {
+        if (player.stats >= 1) {
+            player.stats = player.stats - 1;
+            player.baseWisdom += 1;
+        }
+    }
+}
+//Intelligence
+function upgradeIntelligence(intelligence) {
+    if (event.shiftKey) {
+        if (player.stats >= 100) {
+            player.stats = player.stats - 100;
+            player.baseIntelligence += 100;
+        }
+    }
+    if (event.ctrlKey) {
+        if (player.stats >= 10) {
+            player.stats = player.stats - 10;
+            player.baseIntelligence += 10;
+
+        }
+    }
+    else if (!event.shiftKey && !event.ctrlKey) {
+        if (player.stats >= 1) {
+            player.stats = player.stats - 1;
+            player.baseIntelligence += 1;
+        }
+    }
+}
+//Luck
+function upgradeLuck(luck) {
+    if (event.shiftKey) {
+        if (player.stats >= 100) {
+            player.stats = player.stats - 100;
+            player.baseLuck += 100;
+        }
+    }
+    if (event.ctrlKey) {
+        if (player.stats >= 10) {
+            player.stats = player.stats - 10;
+            player.baseLuck += 10;
+
+        }
+    }
+    else if (!event.shiftKey && !event.ctrlKey) {
+        if (player.stats >= 1) {
+            player.stats = player.stats - 1;
+            player.baseLuck += 1;
+        }
+    }
+}

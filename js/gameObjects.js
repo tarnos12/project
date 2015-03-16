@@ -20,3 +20,23 @@
           displayName: 'Other',
       },
 ];
+
+var monsterAreas = [
+    {
+        type: 'BanditHideout',
+        displayName: 'Bandit Hideout'
+    },
+     {
+         type: 'Forest',
+         displayName: 'Forest'
+     },
+      {
+          type: 'Mountains',
+          displayName: 'Mountains'
+      },
+       {
+           type: 'AncientCave',
+           displayName: 'Ancient Cave'
+       }
+];
+CreateMonsterHtml();

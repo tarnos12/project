@@ -1,78 +1,90 @@
-﻿function buypot() {
-    if (player.gold >= 20) {
-        pot += 1;
-        player.gold -= 20;
-        document.getElementById('pot').innerHTML = pot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
+﻿var potionStatus = {};
+potionStatus.price = 20;
+var superPotionStatus = {};
+superPotionStatus.price = 100;
+var megaPotionStatus = {};
+megaPotionStatus.price = 500;
+//Buy Stuff -_-
+function potionBuy(type, count) {
+    var priceTemp = type.price;
+    var priceToPay = 0;
+    for (i = 0; i < count; i++) {
+        priceToPay += priceTemp;
+        priceTemp = priceTemp;
+    };
 
-function buypot10() {
-    if (player.gold >= 200) {
-        pot += 10;
-        player.gold -= 200;
-        document.getElementById('pot').innerHTML = pot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
+    if (player.gold >= priceToPay) {
+        type.price = priceTemp;
+        player.gold -= priceToPay;
+        return true;
+    };
+    Log("You do not have enough money to buy this. You need " + priceTemp + " gold.");
+    return false;
+};
+//Buy potions
+function buyPotion(count) {
+    if (potionBuy(potionStatus, count)) {
+        pot += count
+        document.getElementById("potion").innerHTML = potionStatus.price;
+        Log("You bought " + count + " Potions.");
+    };
+};
+//Buy Super potions
+function buySuperPotion(count) {
+    if (potionBuy(superPotionStatus, count)) {
+        spot += count
+        document.getElementById("superPotion").innerHTML = superPotionStatus.price;
+        Log("You bought " + count + " Super Potions");
+    };
+};
+//Buy Mega potions
+function buyMegaPotion(count) {
+    if (potionBuy(megaPotionStatus, count)) {
+        mpot += count
+        document.getElementById("megaPotion").innerHTML = megaPotionStatus.price;
+        Log("You bought " + count + "Mega Potions");
+    };
+};
 
-function buyspot() {
-    if (player.gold >= 100) {
-        spot += 1;
-        player.gold -= 100;
-        document.getElementById('spot').innerHTML = spot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
+var backpackStatus = {};
+backpackStatus.price = 100;
+backpackStatus.multiplier = 1.04;
+ 
+var statStatus = {};
+statStatus.price = 500;
+statStatus.multiplier = 1.01;
 
-function buyspot10() {
-    if (player.gold >= 1000) {
-        spot += 10;
-        player.gold -= 1000;
-        document.getElementById('spot').innerHTML = spot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
+//Buy Stuff -_-
+function buyStuff(type, count) {
+    var priceTemp = type.price;
+    var priceToPay = 0;
+    for (i = 0; i < count; i++) {
+        priceToPay += priceTemp;
+        priceTemp = Math.round(priceTemp * type.multiplier);
+    };
 
-function buympot() {
-    if (player.gold >= 500) {
-        mpot += 1;
-        player.gold -= 500;
-        document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
-
-function buympot10() {
-    if (player.gold >= 5000) {
-        mpot += 10;
-        player.gold -= 5000;
-        document.getElementById('mpot').innerHTML = mpot;
-        document.getElementById('gold').innerHTML = player.gold;
-    }
-}
-var backpackPrice = 100;
-function buyBackpack() {
-    if (player.gold >= backpackPrice) {
-        player.backpackUpgrade += 1;
-        player.gold -= backpackPrice;
-        backpackPrice *= 2;
-        CreateInventoryWeaponHtml()
-        document.getElementById("backpack").innerHTML = backpackPrice;
-        Log("You max inventory slots upgraded by 1, now you have: " + player.inventory() + " inventory slots")
-    }
-    else {
-        Log("You do not have enough money to upgrade backpack slots. You need " + backpackPrice + " gold");
-    }
-}
-
-function buyStat() {
-    if (player.gold >= 1000) {
-        player.stats += 1;
-        player.gold -= 1000;
-        Log("Your stat points increased by 1")
-    }
-    else {
-        Log("You do not have enough money to buy this. You need 1000 gold")
-    }
-}
+    if (player.gold >= priceToPay) {
+        type.price = priceTemp;
+        player.gold -= priceToPay;
+        return true;
+    };
+    Log("You do not have enough money to buy this. You need " + priceTemp + " gold.");
+    return false;
+};
+//Buy backpack
+function buyBackpack(count) {
+    if (buyStuff(backpackStatus, count)) {
+        player.backpackUpgrade += count;
+        document.getElementById("buyBackpack").innerHTML = backpackStatus.price;
+        CreateInventoryWeaponHtml();
+        Log("You max inventory slots upgraded by " + count + ", now you have: " + player.inventory() + " inventory slots");
+    };
+};
+//Buy Stat points
+function buyStat(count) {
+    if (buyStuff(statStatus, count)) {
+        player.stats += count;
+        document.getElementById("buyStat").innerHTML = statStatus.price;
+        Log("Your stat points increased by " + count + ".");
+    };
+};
