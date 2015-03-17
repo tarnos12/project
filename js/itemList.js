@@ -836,8 +836,8 @@ function MakeItemList() {
         baseDexterity: 50,
         value: 2000
     };
-    Weapons.Doublebow = {
-        name: 'DoubleBow',
+    Weapons.DoubleBow = {
+        name: 'Double Bow',
         itemQuality: 'Rare',
         itemType: 'weapon',
         subType: 'Ranged',
@@ -2867,7 +2867,7 @@ function MakeItemList() {
         baseIntelligence: 40,
         value: 2200
     };
-    OffHand.Cinqudeas = {
+    OffHand.Cinquedeas = {
         chance: 10,
         name: 'Cinquedeas',
         itemQuality: 'Rare',

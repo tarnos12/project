@@ -15,7 +15,7 @@ function itemDropRandom(monster) {
     var chance = 0;
     for (var i = 0; i < monsterDrop.length; i++) {
         itemDropChance = monsterDrop[i].chance;
-        var randomItemChance = Math.floor(Math.random() * (10000 - 1) + 1);
+        var randomItemChance = Math.floor(Math.random() * (20000 - 1) + 1);
             if (randomItemChance <= (itemDropChance * player.dropRate())) {
                 var dropItem = monsterDrop[i].item
 
@@ -26,7 +26,7 @@ function itemDropRandom(monster) {
 
                 if (dropItem.baseStrength > 0) {
                     console.log("TEST " + monsterStats.level)
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
                     bonusStrength = dropItem.baseStrength
                     dropItem["strength"] = returnNum + bonusStrength
                 }
@@ -34,7 +34,7 @@ function itemDropRandom(monster) {
                     dropItem["strength"] = 0;
                 }
                 if (dropItem.baseEndurance > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
                     bonusEndurance = dropItem.baseEndurance
                     dropItem["endurance"] = returnNum + bonusEndurance
                 }
@@ -42,7 +42,7 @@ function itemDropRandom(monster) {
                     dropItem["endurance"] = 0;
                 }
                 if (dropItem.baseAgility > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
                     bonusAgility = dropItem.baseAgility
                     dropItem["agility"] = returnNum + bonusAgility
                 }
@@ -50,7 +50,7 @@ function itemDropRandom(monster) {
                     dropItem["agility"] = 0;
                 }
                 if (dropItem.baseDexterity > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
                     bonusDexterity = dropItem.baseDexterity
                     dropItem["dexterity"] = returnNum + bonusDexterity
                 }
@@ -58,7 +58,7 @@ function itemDropRandom(monster) {
                     dropItem["dexterity"] = 0;
                 }
                 if (dropItem.baseWisdom > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
                     bonusWisdom = dropItem.baseWisdom
                     dropItem["wisdom"] = returnNum + bonusWisdom
                 }
@@ -66,7 +66,7 @@ function itemDropRandom(monster) {
                     dropItem["wisdom"] = 0;
                 }
                 if (dropItem.baseIntelligence > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
                     bonusIntelligence = dropItem.baseIntelligence
                     dropItem["intelligence"] = returnNum + bonusIntelligence
                 }
@@ -74,7 +74,7 @@ function itemDropRandom(monster) {
                     dropItem["intelligence"] = 0;
                 }
                 if (dropItem.baseLuck > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
                     bonusLuck = dropItem.baseLuck
                     dropItem["luck"] = returnNum + bonusLuck
                 }
@@ -82,17 +82,17 @@ function itemDropRandom(monster) {
                     dropItem["luck"] = 0;
                 }
                 if (dropItem.baseMinDamage > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2))
                     bonusMinDamage = dropItem.baseMinDamage
                     dropItem["minDamage"] = returnNum + bonusMinDamage
                 }
                 if (dropItem.baseMaxDamage > 0) {
-                    var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 4) + (monsterStats.level * 4))
                     bonusMaxDamage = dropItem.baseMaxDamage
                     dropItem["maxDamage"] = returnNum + bonusMaxDamage
                 }
                 if (dropItem.baseDefense > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 5) + (monsterStats.level * 5))
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2))
                     bonusDefense = dropItem.baseDefense
                     dropItem["defense"] = returnNum + bonusDefense
                 }

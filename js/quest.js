@@ -1,4 +1,4 @@
-﻿function monsterKillCount() {
+﻿/*function monsterKillCount() {
     if (player.level >= 2) {
         BanditThug.Stats.isShown = true;
         document.getElementById("story").innerHTML = "Story time!" + "<br/>";
@@ -95,4 +95,4 @@
         LichKing.Stats.isShown = true;
     };
     CreateMonsterHtml();
-};
+};*/

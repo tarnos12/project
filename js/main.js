@@ -23,7 +23,7 @@ var player = {
     isDead: false,
     itemIdNumber: 1,
     stats: 0,
-    gold: 20000000000,
+    gold: 0,
     autoBattle: 1, // testing
     level: 1,
     experience: 0,
@@ -37,7 +37,7 @@ var player = {
         return Math.floor((20 + (player.totalStrength() / 10) + equippedItems.backpack.slots + player.backpackUpgrade)); //Add backpacks "new item type"
     },
     //Strength
-    baseStrength: 5,
+    baseStrength: 50000000,
     equipStrength: function () {
         return Math.floor(
             equippedItems.weapon.strength +
@@ -55,7 +55,7 @@ var player = {
             player.swordStrength());
     },
     //Endurance
-    baseEndurance: 5,
+    baseEndurance: 500000,
     equipEndurance: function () {
         return Math.floor(equippedItems.weapon.endurance + equippedItems.offHand.endurance + equippedItems.armor.endurance + equippedItems.ring.endurance + equippedItems.amulet.endurance + equippedItems.talisman.endurance);
     },

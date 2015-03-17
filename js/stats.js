@@ -88,8 +88,8 @@ function levelUp() {
     player.baseWisdom += 2.3;
     player.baseIntelligence += 3.5;
     player.baseLuck += 1.6;
-    monsterKillCount();
-    CreateMonsterHtml();
+    //monsterKillCount();
+    //CreateMonsterHtml();
 }
 
 function loadIsEquipped() {

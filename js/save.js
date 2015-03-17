@@ -43,7 +43,6 @@
         monsterList: monsterList,
     }
     Log("Game Saved")
-    monsterKillCount()
     localStorage.setItem("save", JSON.stringify(save));
 }
 
@@ -92,7 +91,6 @@ function load() {
     document.getElementById('superPotion').innerHTML = spot;
     document.getElementById('megaPotion').innerHTML = mpot;
     document.getElementById("gold").innerHTML = player.gold;
-    monsterKillCount();
     CreateInventoryWeaponHtml();
     CreateEquipHtml();
     loadIsEquipped();
@@ -199,6 +197,7 @@ function reset() {
     player.backpackUpgrade = 0,
     backpackStatus.price = 100,
     statStatus.price = 500,
+    MakeItemList();
     MakeMonsterList();
     CreateInventoryWeaponHtml();
     CreateEquipHtml();
