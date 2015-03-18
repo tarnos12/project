@@ -156,6 +156,7 @@ function reset() {
         intelligence: 0,
         wisdom: 0,
         luck: 0,
+        defense: 0
     },
     equippedItems.amulet = {
         strength: 0,
@@ -165,6 +166,7 @@ function reset() {
         intelligence: 0,
         wisdom: 0,
         luck: 0,
+        defense: 0
     },
     equippedItems.talisman = {
         strength: 0,
@@ -174,6 +176,7 @@ function reset() {
         intelligence: 0,
         wisdom: 0,
         luck: 0,
+        defense: 0
     },
     playerInventory = [];
     //Weapon mastery levels and experience
