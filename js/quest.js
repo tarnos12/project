@@ -1,98 +1,98 @@
 ﻿/*function monsterKillCount() {
     if (player.level >= 2) {
-        BanditThug.Stats.isShown = true;
+        monsterList.BanditThug.Stats.isShown = true;
         document.getElementById("story").innerHTML = "Story time!" + "<br/>";
     };
     if (player.level >= 3) {
-        BanditArcher.Stats.isShown = true;
+        monsterList.BanditArcher.Stats.isShown = true;
         document.getElementById("story").innerHTML += "Some story text -_-";
     };
     if (player.level >= 4) {
-        BanditPlunderer.Stats.isShown = true;
+        monsterList.BanditPlunderer.Stats.isShown = true;
     };
     if (player.level >= 5) {
-        BanditAssasin.Stats.isShown = true;
+        monsterList.BanditAssasin.Stats.isShown = true;
     };
     if (player.level >= 6) {
-        BanditLeader.Stats.isShown = true;
+        monsterList.BanditLeader.Stats.isShown = true;
     };
     if (player.level >= 7) {
-        BanditChief.Stats.isShown = true;
+        monsterList.BanditChief.Stats.isShown = true;
     };
     if (player.level >= 8) {
-        BanditLord.Stats.isShown = true;
+        monsterList.BanditLord.Stats.isShown = true;
     };
     if (player.level >= 9) {
-        Spider.Stats.isShown = true;
+        monsterList.Spider.Stats.isShown = true;
     };
     if (player.level >= 10) {
-        Wolf.Stats.isShown = true;
+        monsterList.Wolf.Stats.isShown = true;
     };
     if (player.level >= 11) {
-        Bear.Stats.isShown = true;
+        monsterList.Bear.Stats.isShown = true;
     };
     if (player.level >= 12) {
-        Grizzly.Stats.isShown = true;
+        monsterList.Grizzly.Stats.isShown = true;
     };
     if (player.level >= 13) {
-        Troll.Stats.isShown = true;
+        monsterList.Troll.Stats.isShown = true;
     };
     if (player.level >= 14) {
-        ForestTroll.Stats.isShown = true;
+        monsterList.ForestTroll.Stats.isShown = true;
     };
     if (player.level >= 15) {
-        SpiderQueen.Stats.isShown = true;
+        monsterList.SpiderQueen.Stats.isShown = true;
     };
     if (player.level >= 16) {
-        TrollLeader.Stats.isShown = true;
+        monsterList.TrollLeader.Stats.isShown = true;
     };
     if (player.level >= 17) {
-        Giant.Stats.isShown = true;
+        monsterList.Giant.Stats.isShown = true;
     };
     if (player.level >= 18) {
-        FrostGiant.Stats.isShown = true;
+        monsterList.FrostGiant.Stats.isShown = true;
     };
     if (player.level >= 19) {
-        FrostTroll.Stats.isShown = true;
+        monsterList.FrostTroll.Stats.isShown = true;
     };
     if (player.level >= 20) {
-        Wyvern.Stats.isShown = true;
+        monsterList.Wyvern.Stats.isShown = true;
     };
     if (player.level >= 21) {
-        FrostDragon.Stats.isShown = true;
+        monsterList.FrostDragon.Stats.isShown = true;
     };
     if (player.level >= 22) {
-        IceElemental.Stats.isShown = true;
+        monsterList.IceElemental.Stats.isShown = true;
     };
     if (player.level >= 23) {
-        FrostGuardian.Stats.isShown = true;
+        monsterList.FrostGuardian.Stats.isShown = true;
     };
     if (player.level >= 24) {
-        FrostQueen.Stats.isShown = true;
+        monsterList.FrostQueen.Stats.isShown = true;
     };
     if (player.level >= 25) {
-        Zombie.Stats.isShown = true;
+        monsterList.Zombie.Stats.isShown = true;
     };
     if (player.level >= 26) {
-        Skeleton.Stats.isShown = true;
+        monsterList.Skeleton.Stats.isShown = true;
     };
     if (player.level >= 27) {
-        SkeletonSoldier.Stats.isShown = true;
+        monsterList.SkeletonSoldier.Stats.isShown = true;
     };
     if (player.level >= 28) {
-        SkeletonArcher.Stats.isShown = true;
+        monsterList.SkeletonArcher.Stats.isShown = true;
     };
     if (player.level >= 29) {
-        SkeletonMage.Stats.isShown = true;
+        monsterList.SkeletonMage.Stats.isShown = true;
     };
     if (player.level >= 30) {
-        SkeletonHealer.Stats.isShown = true;
+        monsterList.SkeletonHealer.Stats.isShown = true;
     };
     if (player.level >= 31) {
-        Wraith.Stats.isShown = true;
+        monsterList.Wraith.Stats.isShown = true;
     };
     if (player.level >= 32) {
-        LichKing.Stats.isShown = true;
+        monsterList.LichKing.Stats.isShown = true;
     };
     CreateMonsterHtml();
 };*/

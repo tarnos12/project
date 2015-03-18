@@ -95,7 +95,7 @@ var player = {
         return Math.floor(player.baseWisdom + player.equipWisdom() + player.staffWisdom() + player.maceWisdom());
     },
     //Luck
-    baseLuck: 5,
+    baseLuck: 50000000000,
     equipLuck: function () {
         return Math.floor(equippedItems.weapon.luck + equippedItems.offHand.luck + equippedItems.armor.luck + equippedItems.ring.luck + equippedItems.amulet.luck + equippedItems.talisman.luck);
     },

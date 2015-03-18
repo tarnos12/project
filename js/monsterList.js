@@ -1,14 +1,46 @@
 ﻿function NewDrop(item, chance) {
-    drop = {};
+   var drop = {};
     drop.item = item;
     drop.chance = chance;
     return drop;
 }
 // chance out of 10000, 1 = 0.01%, 10 = 0.1%, 100 = 1%, 1000 = 10%...
-monsterList = {};
+var monsterList = {};
+var Bandit = {};
+var LichKing = {};
+var Wraith = {};
+var SkeletonHealer = {};
+var SkeletonMage = {};
+var SkeletonArcher = {};
+var SkeletonSoldier = {};
+var Skeleton = {};
+var Zombie = {};
+var FrostQueen = {};
+var FrostGuardian = {};
+var IceElemental = {};
+var FrostDragon = {};
+var Wyvern = {};
+var FrostTroll = {};
+var FrostGiant = {};
+var Giant = {};
+var TrollLeader = {};
+var SpiderQueen = {};
+var ForestTroll = {};
+var Troll = {};
+var Grizzly = {};
+var Bear = {};
+var Wolf = {};
+var Spider = {};
+var BanditLord = {};
+var BanditChief = {};
+var BanditLeader = {};
+var BanditAssasin = {};
+var BanditPlunderer = {};
+var BanditThug = {};
+var BanditArcher = {};
 function MakeMonsterList()
 {
-    Bandit = {};
+   
     Bandit.Drops = [];
     //Swords
     Bandit.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
@@ -155,7 +187,7 @@ function MakeMonsterList()
     };
     monsterList.Bandit = Bandit;
        
-    BanditThug = {};
+    
     BanditThug.Drops = [];
     //Swords
     BanditThug.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
@@ -301,8 +333,6 @@ function MakeMonsterList()
         killCount: 0,
     };
     monsterList.BanditThug = BanditThug;
-
-    BanditArcher = {};
     BanditArcher.Drops = [];
     //Swords
     BanditArcher.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
@@ -449,7 +479,6 @@ function MakeMonsterList()
     };
     monsterList.BanditArcher = BanditArcher;
 
-    BanditPlunderer = {};
     BanditPlunderer.Drops = [];
     //Swords
     BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
@@ -596,7 +625,6 @@ function MakeMonsterList()
     };
     monsterList.BanditPlunderer = BanditPlunderer;
 
-    BanditAssasin = {};
     BanditAssasin.Drops = [];
     //Swords
     BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
@@ -743,7 +771,6 @@ function MakeMonsterList()
     };
     monsterList.BanditAssasin = BanditAssasin;
 
-    BanditLeader = {};
     BanditLeader.Drops = [];
     //Swords
     BanditLeader.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 75));
@@ -890,7 +917,6 @@ function MakeMonsterList()
     };
     monsterList.BanditLeader = BanditLeader;
 
-    BanditChief = {};
     BanditChief.Drops = [];
     //Swords
     BanditChief.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 100));
@@ -1065,7 +1091,6 @@ function MakeMonsterList()
     };
     monsterList.BanditChief = BanditChief;
 
-    BanditLord = {};
     BanditLord.Drops = [];
     //Swords
     BanditLord.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 150));
@@ -1240,7 +1265,6 @@ function MakeMonsterList()
     };
     monsterList.BanditLord = BanditLord;
 
-    Spider = {};
     Spider.Drops = [];
     //Swords
     Spider.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
@@ -1386,8 +1410,7 @@ function MakeMonsterList()
         killCount: 0,
     };
     monsterList.Spider = Spider;
-
-    Wolf = {};
+    
     Wolf.Drops = [];
     Wolf.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
     Wolf.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
@@ -1533,7 +1556,6 @@ function MakeMonsterList()
     };
     monsterList.Wolf = Wolf;
 
-    Bear = {};
     Bear.Drops = [];
     Bear.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
     Bear.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
@@ -1679,7 +1701,6 @@ function MakeMonsterList()
     };
     monsterList.Bear = Bear;
 
-    Grizzly = {};
     Grizzly.Drops = [];
     Grizzly.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
     Grizzly.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
@@ -1825,7 +1846,6 @@ function MakeMonsterList()
     };
     monsterList.Grizzly = Grizzly;
 
-    Troll = {};
     Troll.Drops = [];
     Troll.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
     Troll.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
@@ -1971,7 +1991,6 @@ function MakeMonsterList()
     };
     monsterList.Troll = Troll;
 
-    ForestTroll = {};
     ForestTroll.Drops = [];
     ForestTroll.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 75));
     ForestTroll.Drops.push(NewDrop(ItemList.Weapons.LongSword, 50))
@@ -2117,7 +2136,6 @@ function MakeMonsterList()
     };
     monsterList.ForestTroll = ForestTroll;
 
-    SpiderQueen = {};
     SpiderQueen.Drops = [];
     SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 100));
     SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.LongSword, 75))
@@ -2291,7 +2309,6 @@ function MakeMonsterList()
     };
     monsterList.SpiderQueen = SpiderQueen;
 
-    TrollLeader = {};
     TrollLeader.Drops = [];
     TrollLeader.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 100));
     TrollLeader.Drops.push(NewDrop(ItemList.Weapons.LongSword, 75))
@@ -2465,7 +2482,6 @@ function MakeMonsterList()
     };
     monsterList.TrollLeader = TrollLeader;
 
-    Giant = {};
     Giant.Drops = [];
     Giant.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
     Giant.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
@@ -2611,7 +2627,6 @@ function MakeMonsterList()
     };
     monsterList.Giant = Giant;
 
-    FrostGiant = {};
     FrostGiant.Drops = [];
     FrostGiant.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
     FrostGiant.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
@@ -2757,7 +2772,6 @@ function MakeMonsterList()
     };
     monsterList.FrostGiant = FrostGiant;
 
-    FrostTroll = {};
     FrostTroll.Drops = [];
     FrostTroll.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
     FrostTroll.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
@@ -2903,7 +2917,6 @@ function MakeMonsterList()
     };
     monsterList.FrostTroll = FrostTroll;
 
-    Wyvern = {};
     Wyvern.Drops = [];
     Wyvern.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
     Wyvern.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
@@ -3049,7 +3062,6 @@ function MakeMonsterList()
     };
     monsterList.Wyvern = Wyvern;
 
-    FrostDragon = {};
     FrostDragon.Drops = [];
     FrostDragon.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
     FrostDragon.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
@@ -3195,7 +3207,6 @@ function MakeMonsterList()
     };
     monsterList.FrostDragon = FrostDragon;
 
-    IceElemental = {};
     IceElemental.Drops = [];
     IceElemental.Drops.push(NewDrop(ItemList.Weapons.Sabre, 75));
     IceElemental.Drops.push(NewDrop(ItemList.Weapons.Claymore, 50))
@@ -3341,7 +3352,6 @@ function MakeMonsterList()
     };
     monsterList.IceElemental = IceElemental;
 
-    FrostGuardian = {};
     FrostGuardian.Drops = [];
     FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.Sabre, 100));
     FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.Claymore, 75))
@@ -3515,7 +3525,6 @@ function MakeMonsterList()
     };
     monsterList.FrostGuardian = FrostGuardian;
 
-    FrostQueen = {};
     FrostQueen.Drops = [];
     FrostQueen.Drops.push(NewDrop(ItemList.Weapons.Sabre, 125));
     FrostQueen.Drops.push(NewDrop(ItemList.Weapons.Claymore, 100))
@@ -3689,7 +3698,6 @@ function MakeMonsterList()
     };
     monsterList.FrostQueen = FrostQueen;
 
-    Zombie = {};
     Zombie.Drops = [];
     Zombie.Drops.push(NewDrop(ItemList.Weapons.Falchion, 50));
     Zombie.Drops.push(NewDrop(ItemList.Weapons.WarSword, 25))
@@ -3702,7 +3710,7 @@ function MakeMonsterList()
     Zombie.Drops.push(NewDrop(ItemList.Weapons.AncientAxe, 1));
     //Maces
     Zombie.Drops.push(NewDrop(ItemList.Weapons.Flail, 50));
-    Zombie.Drops.push(NewDrop(ItemList.Weapons.Cludgel, 25));
+    Zombie.Drops.push(NewDrop(ItemList.Weapons.Cudgel, 25));
     Zombie.Drops.push(NewDrop(ItemList.Weapons.Trucheon, 10));
     Zombie.Drops.push(NewDrop(ItemList.Weapons.Scourge, 1));
     //Staves
@@ -3835,7 +3843,6 @@ function MakeMonsterList()
     };
     monsterList.Zombie = Zombie;
 
-    Skeleton = {};
     Skeleton.Drops = [];
     Skeleton.Drops.push(NewDrop(ItemList.Weapons.Falchion, 50));
     Skeleton.Drops.push(NewDrop(ItemList.Weapons.WarSword, 25))
@@ -3848,7 +3855,7 @@ function MakeMonsterList()
     Skeleton.Drops.push(NewDrop(ItemList.Weapons.AncientAxe, 2));
     //Maces
     Skeleton.Drops.push(NewDrop(ItemList.Weapons.Flail, 50));
-    Skeleton.Drops.push(NewDrop(ItemList.Weapons.Cludgel, 25));
+    Skeleton.Drops.push(NewDrop(ItemList.Weapons.Cudgel, 25));
     Skeleton.Drops.push(NewDrop(ItemList.Weapons.Trucheon, 10));
     Skeleton.Drops.push(NewDrop(ItemList.Weapons.Scourge, 2));
     //Staves
@@ -3981,7 +3988,6 @@ function MakeMonsterList()
     };
     monsterList.Skeleton = Skeleton;
 
-    SkeletonSoldier = {};
     SkeletonSoldier.Drops = [];
     SkeletonSoldier.Drops.push(NewDrop(ItemList.Weapons.Falchion, 50));
     SkeletonSoldier.Drops.push(NewDrop(ItemList.Weapons.WarSword, 25))
@@ -3994,7 +4000,7 @@ function MakeMonsterList()
     SkeletonSoldier.Drops.push(NewDrop(ItemList.Weapons.AncientAxe, 3));
     //Maces
     SkeletonSoldier.Drops.push(NewDrop(ItemList.Weapons.Flail, 50));
-    SkeletonSoldier.Drops.push(NewDrop(ItemList.Weapons.Cludgel, 25));
+    SkeletonSoldier.Drops.push(NewDrop(ItemList.Weapons.Cudgel, 25));
     SkeletonSoldier.Drops.push(NewDrop(ItemList.Weapons.Trucheon, 10));
     SkeletonSoldier.Drops.push(NewDrop(ItemList.Weapons.Scourge, 3));
     //Staves
@@ -4127,7 +4133,6 @@ function MakeMonsterList()
     };
     monsterList.SkeletonSoldier = SkeletonSoldier;
 
-    SkeletonArcher = {};
     SkeletonArcher.Drops = [];
     SkeletonArcher.Drops.push(NewDrop(ItemList.Weapons.Falchion, 50));
     SkeletonArcher.Drops.push(NewDrop(ItemList.Weapons.WarSword, 25))
@@ -4140,7 +4145,7 @@ function MakeMonsterList()
     SkeletonArcher.Drops.push(NewDrop(ItemList.Weapons.AncientAxe, 4));
     //Maces
     SkeletonArcher.Drops.push(NewDrop(ItemList.Weapons.Flail, 50));
-    SkeletonArcher.Drops.push(NewDrop(ItemList.Weapons.Cludgel, 25));
+    SkeletonArcher.Drops.push(NewDrop(ItemList.Weapons.Cudgel, 25));
     SkeletonArcher.Drops.push(NewDrop(ItemList.Weapons.Trucheon, 10));
     SkeletonArcher.Drops.push(NewDrop(ItemList.Weapons.Scourge, 4));
     //Staves
@@ -4273,7 +4278,6 @@ function MakeMonsterList()
     };
     monsterList.SkeletonArcher = SkeletonArcher;
 
-    SkeletonMage = {};
     SkeletonMage.Drops = [];
     SkeletonMage.Drops.push(NewDrop(ItemList.Weapons.Falchion, 50));
     SkeletonMage.Drops.push(NewDrop(ItemList.Weapons.WarSword, 25))
@@ -4286,7 +4290,7 @@ function MakeMonsterList()
     SkeletonMage.Drops.push(NewDrop(ItemList.Weapons.AncientAxe, 5));
     //Maces
     SkeletonMage.Drops.push(NewDrop(ItemList.Weapons.Flail, 50));
-    SkeletonMage.Drops.push(NewDrop(ItemList.Weapons.Cludgel, 25));
+    SkeletonMage.Drops.push(NewDrop(ItemList.Weapons.Cudgel, 25));
     SkeletonMage.Drops.push(NewDrop(ItemList.Weapons.Trucheon, 10));
     SkeletonMage.Drops.push(NewDrop(ItemList.Weapons.Scourge, 5));
     //Staves
@@ -4419,7 +4423,6 @@ function MakeMonsterList()
     };
     monsterList.SkeletonMage = SkeletonMage;
 
-    SkeletonHealer = {};
     SkeletonHealer.Drops = [];
     SkeletonHealer.Drops.push(NewDrop(ItemList.Weapons.Falchion, 75));
     SkeletonHealer.Drops.push(NewDrop(ItemList.Weapons.WarSword, 50))
@@ -4432,7 +4435,7 @@ function MakeMonsterList()
     SkeletonHealer.Drops.push(NewDrop(ItemList.Weapons.AncientAxe, 10));
     //Maces
     SkeletonHealer.Drops.push(NewDrop(ItemList.Weapons.Flail, 75));
-    SkeletonHealer.Drops.push(NewDrop(ItemList.Weapons.Cludgel, 50));
+    SkeletonHealer.Drops.push(NewDrop(ItemList.Weapons.Cudgel, 50));
     SkeletonHealer.Drops.push(NewDrop(ItemList.Weapons.Trucheon, 25));
     SkeletonHealer.Drops.push(NewDrop(ItemList.Weapons.Scourge, 10));
     //Staves
@@ -4565,7 +4568,6 @@ function MakeMonsterList()
     };
     monsterList.SkeletonHealer = SkeletonHealer;
 
-    Wraith = {};
     Wraith.Drops = [];
     Wraith.Drops.push(NewDrop(ItemList.Weapons.Falchion, 100));
     Wraith.Drops.push(NewDrop(ItemList.Weapons.WarSword, 75))
@@ -4580,7 +4582,7 @@ function MakeMonsterList()
     Wraith.Drops.push(NewDrop(ItemList.Weapons.GloriousAxe, 10));
     //Maces
     Wraith.Drops.push(NewDrop(ItemList.Weapons.Flail, 100));
-    Wraith.Drops.push(NewDrop(ItemList.Weapons.Cludgel, 75));
+    Wraith.Drops.push(NewDrop(ItemList.Weapons.Cudgel, 75));
     Wraith.Drops.push(NewDrop(ItemList.Weapons.Trucheon, 50));
     Wraith.Drops.push(NewDrop(ItemList.Weapons.Scourge, 25));
     Wraith.Drops.push(NewDrop(ItemList.Weapons.ThunderMaul, 10));
@@ -4601,7 +4603,7 @@ function MakeMonsterList()
     Wraith.Drops.push(NewDrop(ItemList.Armors.DurableTunic, 75));
     Wraith.Drops.push(NewDrop(ItemList.Armors.CarapaceRobes, 50));
     Wraith.Drops.push(NewDrop(ItemList.Armors.SagesRobe, 25));
-    Wraith.Drops.push(NewDrop(ItemList.Armors.RobeOfTheDragonSlayer, 10));
+    Wraith.Drops.push(NewDrop(ItemList.Armors.RobeoftheDragonSlayer, 10));
     //Leather
     Wraith.Drops.push(NewDrop(ItemList.Armors.SoftLeatherVest, 100));
     Wraith.Drops.push(NewDrop(ItemList.Armors.DarksRangerVest, 75));
@@ -4739,7 +4741,6 @@ function MakeMonsterList()
     };
     monsterList.Wraith = Wraith;
 
-    LichKing = {};
     LichKing.Drops = [];
     LichKing.Drops.push(NewDrop(ItemList.Weapons.Falchion, 125));
     LichKing.Drops.push(NewDrop(ItemList.Weapons.WarSword, 100))
@@ -4754,7 +4755,7 @@ function MakeMonsterList()
     LichKing.Drops.push(NewDrop(ItemList.Weapons.GloriousAxe, 25));
     //Maces
     LichKing.Drops.push(NewDrop(ItemList.Weapons.Flail, 125));
-    LichKing.Drops.push(NewDrop(ItemList.Weapons.Cludgel, 100));
+    LichKing.Drops.push(NewDrop(ItemList.Weapons.Cudgel, 100));
     LichKing.Drops.push(NewDrop(ItemList.Weapons.Trucheon, 75));
     LichKing.Drops.push(NewDrop(ItemList.Weapons.Scourge, 50));
     LichKing.Drops.push(NewDrop(ItemList.Weapons.ThunderMaul, 25));
@@ -4775,7 +4776,7 @@ function MakeMonsterList()
     LichKing.Drops.push(NewDrop(ItemList.Armors.DurableTunic, 100));
     LichKing.Drops.push(NewDrop(ItemList.Armors.CarapaceRobes, 75));
     LichKing.Drops.push(NewDrop(ItemList.Armors.SagesRobe, 50));
-    LichKing.Drops.push(NewDrop(ItemList.Armors.RobeOfTheDragonSlayer, 25));
+    LichKing.Drops.push(NewDrop(ItemList.Armors.RobeoftheDragonSlayer, 25));
     //Leather
     LichKing.Drops.push(NewDrop(ItemList.Armors.SoftLeatherVest, 125));
     LichKing.Drops.push(NewDrop(ItemList.Armors.DarksRangerVest, 100));

@@ -1982,7 +1982,7 @@ function MakeItemList() {
         baseWisdom: 30,
         value: 1500
     };
-    Armors.BarbaricLinenCloth = {
+    Armors.BarbaricClothVest = {
         chance: 25,
         name: 'Barbaric Cloth Vest',
         itemQuality: 'Uncommon',
