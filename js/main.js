@@ -627,7 +627,7 @@ function equipItem(id) {
         };
         CreateInventoryWeaponHtml();
     }
-    else if (item.subType === "ring") {
+    else if (item.subType === "Ring") {
         if (equippedItems.ring.isEquipped === true) {
             var oldId = equippedItems.ring.id
             unequipItem(oldId);
@@ -645,7 +645,7 @@ function equipItem(id) {
         };
         CreateInventoryWeaponHtml();
     }
-    else if (item.subType === "amulet") {
+    else if (item.subType === "Amulet") {
         if (equippedItems.amulet.isEquipped === true) {
             var oldId = equippedItems.amulet.id
             unequipItem(oldId);
@@ -663,7 +663,7 @@ function equipItem(id) {
         };
         CreateInventoryWeaponHtml();
     }
-    else if (item.subType === "talisman") {
+    else if (item.subType === "Talisman") {
         if (equippedItems.talisman.isEquipped === true) {
             var oldId = equippedItems.talisman.id
             unequipItem(oldId);
