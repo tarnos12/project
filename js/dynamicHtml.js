@@ -413,13 +413,13 @@ function CreateInventoryWeaponHtml() {
                 else if (playerInventory[i].itemType === "armor") {
                     var itemStat = equippedItems.armor;
                 }
-                else if (playerInventory[i].subType === "ring") {
+                else if (playerInventory[i].subType === "Ring") {
                     var itemStat = equippedItems.ring;
                 }
-                else if (playerInventory[i].subType === "amulet") {
+                else if (playerInventory[i].subType === "Amulet") {
                     var itemStat = equippedItems.amulet;
                 }
-                else if (playerInventory[i].subType === "talisman") {
+                else if (playerInventory[i].subType === "Talisman") {
                     var itemStat = equippedItems.talisman;
                 }
                 html += '<tr>' + '<td>';
