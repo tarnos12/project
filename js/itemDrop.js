@@ -18,7 +18,7 @@ function itemDropRandom(monster) {
         var randomItemChance = Math.floor(Math.random() * (20000 - 1) + 1);
             if (randomItemChance <= (itemDropChance * player.dropRate())) {
                 var dropItem = monsterDrop[i].item
-
+                //test
 
             //Checks if player used checkbox to auto remove items by quality. Also this code add "id" property to each created item
             if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
