@@ -838,8 +838,8 @@ var checkBoxUncommon = false;
 var checkBoxRare = false;
 var checkBoxEpic = false;
 function handleClick(id) {
-    checkBoxCommon = document.getElementById("Common").checked;
-    checkBoxUncommon = document.getElementById("Uncommon").checked;
-    checkBoxRare = document.getElementById("Rare").checked;
-    checkBoxEpic = document.getElementById("Epic").checked;
+    checkBoxCommon = document.getElementById("common").checked;
+    checkBoxUncommon = document.getElementById("uncommon").checked;
+    checkBoxRare = document.getElementById("rare").checked;
+    checkBoxEpic = document.getElementById("epic").checked;
 };
