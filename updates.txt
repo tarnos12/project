@@ -1,5 +1,5 @@
 _________________________
-v1.3.1 - 14 march 2015   |
+v1.3.1 - 18 march 2015   |
 -------------------------|
 - Hold Ctrl & click to add 10 stats, shift & click for 100 stats
 - Evasion cap at 20%
