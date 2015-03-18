@@ -25,6 +25,9 @@
         }
     </style>
     <style type="text/css">
+        div.c5 {
+            width: 100%;
+        }
         div.c4 {
             background-color: azure;
         }
@@ -71,7 +74,7 @@
             </div>
             <div class=".col-sm-3 col-md-3 .col-lg-3">
                 <div class="container c4">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-pills">
                         <li class="active"><a href="#tab_a" data-toggle="tab">Player Stats</a></li>
                         <li><a href="#tab_b" data-toggle="tab">Game Info</a></li>
                         <li><a href="#tab_c" data-toggle="tab">Story</a></li>
@@ -246,7 +249,7 @@
                             <div class="c3">
                                 <h4>Game Tutorial</h4><br />
                                 </div>
-                                <ul class="nav nav-tabs">
+                            <ul class="nav nav-pills">
                                     <li class="active"><a href="#tab_za" data-toggle="tab">Fighting</a></li>
                                     <li><a href="#tab_zb" data-toggle="tab">Items</a></li>
                                     <li><a href="#tab_zc" data-toggle="tab">Potions</a></li>
@@ -255,8 +258,8 @@
                                 <div class="tab-content">
                                     <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_za">
                                         <div class="c3">
-                                <h5><b>FIGHTING</b></h5>
-                            </div>
+                                            <h5><b>FIGHTING</b></h5>
+                                        </div>
                                         <ul>
                                             <li>
                                                 Each fight consist of 20 battle turns.<br />
@@ -280,7 +283,7 @@
                                     </div>
 
                                     <div class="col-sm-12 col-md-12 col-lg-12 tab-pane" id="tab_zb">
-                            <div class="c3"><h5><b>ITEMS</b></h5></div> 
+                                        <div class="c3"><h5><b>ITEMS</b></h5></div>
                                         <ul>
                                             <li>
                                                 All monster drop Common, Uncommon, Rare, Epic items, higher level monster have more chance to drop each of those items.<br />
@@ -294,7 +297,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-sm-12 col-md-12 col-lg-12 tab-pane" id="tab_zc">
-                            <div class="c3"><h5><b>Potions</b></h5></div>
+                                        <div class="c3"><h5><b>Potions</b></h5></div>
                                         <ul>
                                             <li>
                                                 If you have 30% hp or less potions will be used.
@@ -324,7 +327,7 @@
                                         <ol>
                                             <li>
                                                 <ul>
-                                                    <li class ="bold">Strength:</li>
+                                                <li class="bold">Strength:</li>
                                                     <li>10 points: 4 Min Damage</li>
                                                     <li>10 points: 6 Max Damage</li>
                                                     <li>10 points: 3% Critical Damage</li>
@@ -393,7 +396,10 @@
                     <div id="monsterTabs">
 
                     </div>
-                    <div class="tablecontainer">
+
+                    <!-- tab content -->
+                </div>
+                <div class="tablecontainer c4">
                         <table class="table table-condensed table-striped table-responsive">
                             <thead>
                             </thead>
@@ -406,14 +412,12 @@
                             </tbody>
                         </table>
                     </div>
-                    <!-- tab content -->
-                </div>
-
                 <!-- end of container -->
             </div>
+
             <div class=".col-sm-4 col-md-4 .col-lg-4">
                 <div class="container c4">
-                    <ul class="nav nav-tabs">
+                    <ul class="nav nav-pills">
                         <li class="active"><a href="#tab_a2" data-toggle="tab">Player Inventory</a></li>
                         <li><a href="#tab_b2" data-toggle="tab">Weapon Skills</a></li>
                         <li><a href="#tab_c2" data-toggle="tab">Shop</a></li>
@@ -425,7 +429,7 @@
                                 <h4>Player Inventory</h4>
                             </div>
 
-                            <ul class="nav nav-tabs">
+                            <ul class="nav nav-pills">
                                 <li class="active"><a href="#tab_f1" data-toggle="tab">Potions</a></li>
                                 <li><a href="#tab_f2" data-toggle="tab">Equipment</a></li>
                                 <li><a href="#tab_f3" data-toggle="tab">Inventory</a></li>
@@ -469,11 +473,13 @@
                                     <div id="equipHtml"> </div>
 
                                 </div>
-                                <div class="tab-pane" id="tab_f3">
-                                    <br /><button onclick="sellAllCommon()">Sell All Common</button>
-                                    <button onclick="sellAllUncommon()">Sell All Uncommon</button>
-                                    <button onclick="sellAllRare()">Sell All Rare</button>
-                                    <button onclick="sellAllEpic()">Sell All Epic</button><br /><br />
+                                <div class="tab-pane " id="tab_f3">
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="Left Align">
+                                        <br /><button type="button" class="btn btn-default" onclick="sellAllCommon()">Sell All Common</button>
+                                        <button type="button" class="btn btn-default" onclick="sellAllUncommon()">Sell All Uncommon</button>
+                                        <button type="button" class="btn btn-default" onclick="sellAllRare()">Sell All Rare</button>
+                                        <button type="button" class="btn btn-default" onclick="sellAllEpic()">Sell All Epic</button>
+                                    </div>
                                     <div id="inventory"></div>
 
 
@@ -492,20 +498,41 @@
                         <div class="tab-pane" id="tab_c2">
                             <h4>Shop</h4>
                             <p>
-                                <img src="images/stat.png" alt="Buy Stat">Stat Points(<span id="buyStat">500</span> gold)<button onclick="buyStat(1)">Buy</button><button onclick="buyStat(10)">Buy 10</button><button onclick="buyStat(100)">Buy 100</button><br />
-                                <img src="images/bag.png" alt="Upgrade Backpack">Bag Slots(<span id="buyBackpack">100</span> gold)<button onclick="buyBackpack(1)">Buy</button><button onclick="buyBackpack(10)">Buy 10</button><button onclick="buyBackpack(100)">Buy 100</button><br>
-                                <img src="images/hp.png" alt="Buy Potion">Health Potion(20gold each)<button onclick="buyPotion(1)">Buy</button><button onclick="buyPotion(10)">Buy 10</button><button onclick="buyPotion(100)">Buy 100</button><br>
-                                <img src="images/hp.png" alt="Buy Super Potion">Super Potion(100gold each)<button onclick="buySuperPotion(1)">Buy</button><button onclick="buySuperPotion(10)">Buy 10</button><button onclick="buySuperPotion(100)">Buy 100</button><br>
-                                <img src="images/hp.png" alt="Buy Mega Potion">Mega Potion(500gold each)<button onclick="buyMegaPotion(1)">Buy</button><button onclick="buyMegaPotion(10)">Buy 10</button><button onclick="buyMegaPotion(100)">Buy 100</button>
+                                <img src="images/stat.png" alt="Buy Stat">Stat Points(<span id="buyStat">500</span> gold)
+                                <span type="button" class="btn btn-default" onclick="buyStat(1)">Buy</span>
+                                <span type="button" class="btn btn-default" onclick="buyStat(10)">Buy 10</span>
+                                <span type="button" class="btn btn-default" onclick="buyStat(100)">Buy 100</span><br />
+                                <img src="images/bag.png" alt="Upgrade Backpack">Bag Slots(<span id="buyBackpack">100</span> gold)
+                                <span type="button" class="btn btn-default" onclick="buyBackpack(1)">Buy</span>
+                                <span type="button" class="btn btn-default" onclick="buyBackpack(10)">Buy 10</span>
+                                <span type="button" class="btn btn-default" onclick="buyBackpack(100)">Buy 100</span><br>
+                                <img src="images/hp.png" alt="Buy Potion">Health Potion(20gold each)
+                                <span type="button" class="btn btn-default" onclick="buyPotion(1)">Buy</span>
+                                <span type="button" class="btn btn-default" onclick="buyPotion(10)">Buy 10</span>
+                                <span type="button" class="btn btn-default" onclick="buyPotion(100)">Buy 100</span><br>
+                                <img src="images/hp.png" alt="Buy Super Potion">Super Potion(100gold each)
+                                <span type="button" class="btn btn-default" onclick="buySuperPotion(1)">Buy</span>
+                                <span type="button" class="btn btn-default" onclick="buySuperPotion(10)">Buy 10</span>
+                                <span type="button" class="btn btn-default" onclick="buySuperPotion(100)">Buy 100</span><br>
+                                <img src="images/hp.png" alt="Buy Mega Potion">Mega Potion(500gold each)
+                                <span type="button" class="btn btn-default" onclick="buyMegaPotion(1)">Buy</span>
+                                <span type="button" class="btn btn-default" onclick="buyMegaPotion(10)">Buy 10</span>
+                                <span type="button" class="btn btn-default" onclick="buyMegaPotion(100)">Buy 100</span>
                             </p>
                         </div>
                         
                         <div class="tab-pane" id="tab_d2">
                             <h4>Save &amp; Options</h4>
                             <div class=".col-sm-12 col-md-12 .col-lg-12">
-                                <button onclick="save()">save</button>
-                                <button onclick="load()">load</button>
-                                <button onclick="reset()">reset</button><br /><br />
+                                <span type="button" class="btn btn-default" onclick="save()">
+                                    save
+                                </span>
+                                <span type="button" class="btn btn-default" onclick="load()">
+                                    load
+                                </span>
+                                <span type="button" class="btn btn-default" onclick="reset()">
+                                    reset
+                                </span><br /><br />
 
                                 <div> <a href="updates.txt" target="_blank">Changelog</a></div><br />
                                 <a href="http://www.reddit.com/r/LoFW/">Subreddit</a><br /><br />
@@ -536,10 +563,10 @@
                     <div class="c3 c4">
                         <p class="text-muted credit">
                             All tiles have been drawn by David E. Gervais, and are published under the Creative Commons licence.<br />
-                        <a href="http://pousse.rapiere.free.fr/tome/">http://pousse.rapiere.free.fr/tome/</a>
+                            <a href="http://pousse.rapiere.free.fr/tome/">http://pousse.rapiere.free.fr/tome/</a>
                         </p>
                     </div>
-                    </div>
+                </div>
         </footer>
 
     </div>

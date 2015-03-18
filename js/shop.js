@@ -18,7 +18,7 @@ function potionBuy(type, count) {
         player.gold -= priceToPay;
         return true;
     };
-    Log("You do not have enough money to buy this. You need " + priceTemp + " gold.");
+    Log("You do not have enough money to buy this. You need " + (priceToPay - player.gold) + " more gold.");
     return false;
 };
 //Buy potions
@@ -68,7 +68,7 @@ function buyStuff(type, count) {
         player.gold -= priceToPay;
         return true;
     };
-    Log("You do not have enough money to buy this. You need " + priceTemp + " gold.");
+    Log("You do not have enough money to buy this. You need " + (priceToPay - player.gold) + " more gold.");
     return false;
 };
 //Buy backpack

@@ -1,4 +1,11 @@
 _________________________
+v1.3.2 - 19 march 2015   |
+-------------------------|
+- Fixed a bug with log overlapping, monster area (Firefox).
+- Changed item shop log display, to show you how much gold you are missing to buy certain item, so if you have 10000 gold and bulk item cost 12000, you will see a message telling you that you need 2000 more gold.
+- Updated buttons, you can no longer hold enter/space to auto attack monsters. It wasn't intended in the first place.
+
+_________________________
 v1.3.1 - 18 march 2015   |
 -------------------------|
 - Hold Ctrl & click to add 10 stats, shift & click for 100 stats
