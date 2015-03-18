@@ -1,4 +1,20 @@
 _________________________
+v1.3.1 - 14 march 2015   |
+-------------------------|
+- Hold Ctrl & click to add 10 stats, shift & click for 100 stats
+- Evasion cap at 20%
+- Critical chance cap at 50% from stats(will be possible to increase by other means later in the game, like skills, buffs, items)
+- Moved Secondary Stats panel, and merged it together with Player Stats, so you can see both of the at the same time.
+- Each item has hidden base stats(strength,endurance etc.), iLvl(item level), each monster has a level too...Combining both of those and base stats, give each item random stat each time they drop, so if you kill stronger enemy, and he drop same weapon, it will be much stronger :)
+- All monster drop items of rarity common, uncommon, rare, epic(even epics yes!), but since low level monster, give weaker stats, and has lower chance to drop "epic" then it is better to kill stronger monster.
+- Last monster of each area has a chance to drop "Legendary" quality items.
+- Luck increase your Drop Rate, you need total of 500 luck to increase your Drop Rate by 200%, which means item which has a chance of 0.01% drop will have 0.02% drop rate. Same for 1% will change to 2%. There will be items increasing drop rate directly too.
+- Removed Bestiary tab, since it was not used, but will be in the future.
+- Added buy 10 and buy 100, at the shop.
+- Disabled stat upgrade for Wisdom and Intelligence, since they don't have much of use right now.
+- At the beginning you have only 1 monster to fight, next monsters unlock as you level up(soon I want to add basic story, and maybe quests, which will unlock next monster)
+- Added new items, accessories(rings,amulets,talismans), you can equip one of each accessory type. Also added off-hand (shield, dagger).
+_________________________
 v1.3.0.1 - 12 march 2015 |
 -------------------------|
 - Fixed a bug, with Bow weapon skill not upgrading

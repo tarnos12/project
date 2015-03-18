@@ -27,8 +27,6 @@
         //Weapon mastery levels and experience
         SwordMaxExp: player.SwordMaxExp,
         SwordLevel: player.SwordLevel,
-        DaggerMaxExp: player.DaggerMaxExp,
-        DaggerLevel: player.DaggerLevel,
         AxeMaxExp: player.AxeMaxExp,
         AxeLevel: player.AxeLevel,
         MaceMaxExp: player.MaceMaxExp,
@@ -37,12 +35,14 @@
         StaffLevel: player.StaffLevel,
         FistMaxExp: player.FistMaxExp,
         FistLevel: player.FistLevel,
-        RangedMaxExp: player.RangedMaxExp,
-        RangedLevel: player.RangedLevel,
+        BowMaxExp: player.BowMaxExp,
+        BowLevel: player.BowLevel,
         //Other
-        itemId: itemIdNumber,
+        itemId: player.itemIdNumber,
         backpackUpgrade: player.backpackUpgrade,
-        backpackPrice: backpackPrice,
+        backpackStatus: backpackStatus,
+        statStatus: statStatus,
+        monsterList: monsterList,
     }
     Log("Game Saved")
     localStorage.setItem("save", JSON.stringify(save));
@@ -50,13 +50,13 @@
 
 function load() {
     var savegame = JSON.parse(localStorage.getItem("save"));
-    if (typeof savegame.itemId !== "undefined") itemIdNumber = savegame.itemId;
+    if (typeof savegame.itemId !== "undefined") player.itemIdNumber = savegame.itemId;
+    if (typeof savegame.monsterList !== "undefined") monsterList = savegame.monsterList;
     if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
-    if (typeof savegame.backpackPrice !== "undefined") backpackPrice = savegame.backpackPrice;
+    if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
+    if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
     if (typeof savegame.SwordMaxExp !== "undefined") player.SwordMaxExp = savegame.SwordMaxExp;
     if (typeof savegame.SwordLevel !== "undefined") player.SwordLevel = savegame.SwordLevel;
-    if (typeof savegame.DaggerMaxExp !== "undefined") player.DaggerMaxExp = savegame.DaggerMaxExp;
-    if (typeof savegame.DaggerLevel !== "undefined") player.DaggerLevel = savegame.DaggerLevel;
     if (typeof savegame.AxeMaxExp !== "undefined") player.AxeMaxExp = savegame.AxeMaxExp;
     if (typeof savegame.AxeLevel !== "undefined") player.AxeLevel = savegame.AxeLevel;
     if (typeof savegame.MaceMaxExp !== "undefined") player.MaceMaxExp = savegame.MaceMaxExp;
@@ -65,8 +65,8 @@ function load() {
     if (typeof savegame.StaffLevel !== "undefined") player.StaffLevel = savegame.StaffLevel;
     if (typeof savegame.FistMaxExp !== "undefined") player.FistMaxExp = savegame.FistMaxExp;
     if (typeof savegame.FistLevel !== "undefined") player.FistLevel = savegame.FistLevel;
-    if (typeof savegame.RangedMaxExp !== "undefined") player.RangedMaxExp = savegame.RangedMaxExp;
-    if (typeof savegame.RangedLevel !== "undefined") player.RangedLevel = savegame.RangedLevel;
+    if (typeof savegame.BowMaxExp !== "undefined") player.BowMaxExp = savegame.BowMaxExp;
+    if (typeof savegame.BowLevel !== "undefined") player.BowLevel = savegame.BowLevel;
     //Other
     if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
@@ -91,14 +91,15 @@ function load() {
     if (typeof savegame.playerAmulet !== "undefined") equippedItems.amulet = savegame.playerAmulet;
     if (typeof savegame.playerTalisman !== "undefined") equippedItems.talisman = savegame.playerTalisman;
     if (typeof savegame.inventory !== "undefined") playerInventory = savegame.inventory;
-    document.getElementById('pot').innerHTML = pot;
-    document.getElementById('spot').innerHTML = spot;
-    document.getElementById('mpot').innerHTML = mpot;
+    document.getElementById('potion').innerHTML = pot;
+    document.getElementById('superPotion').innerHTML = spot;
+    document.getElementById('megaPotion').innerHTML = mpot;
     document.getElementById("gold").innerHTML = player.gold;
     CreateInventoryWeaponHtml();
     CreateEquipHtml();
     loadIsEquipped();
     CreateWeaponSkillHtml();
+    CreateMonsterHtml();
 }
 
 function reset() {
@@ -183,9 +184,6 @@ function reset() {
     player.SwordMaxExp = 10;
     player.SwordExp = 0;
     player.SwordLevel = 1;
-    player.DaggerMaxExp = 10;
-    player.DaggerExp = 0;
-    player.DaggerLevel = 1;
     player.AxeMaxExp = 10;
     player.AxeExp = 0;
     player.AxeLevel = 1;
@@ -198,15 +196,19 @@ function reset() {
     player.FistMaxExp = 10;
     player.FistExp = 0;
     player.FistLevel = 1;
-    player.RangedMaxExp = 10;
-    player.RangedExp = 0;
-    player.RangedLevel = 1;
+    player.BowMaxExp = 10;
+    player.BowExp = 0;
+    player.BowLevel = 1;
     //Other
-    itemIdNumber = 1;
+    player.itemIdNumber = 1;
     player.backpackUpgrade = 0,
-    backpackPrice = 100,
+    backpackStatus.price = 100,
+    statStatus.price = 500,
+    MakeItemList();
+    MakeMonsterList();
     CreateInventoryWeaponHtml();
     CreateEquipHtml();
-    resetIsEquipped()
+    resetIsEquipped();
     CreateWeaponSkillHtml();
+    CreateMonsterHtml();
 };//test

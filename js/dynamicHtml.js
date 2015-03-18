@@ -10,12 +10,6 @@ function CreateWeaponSkillHtml() {
     html += '<td>' + "Strength +" + player.swordStrength() + '</td>' + '<td>' + " Agility +" + player.swordAgility() + '</td>';
     html += '</td>' + '</tr>';
 
-    //Dagger
-    html += '<tr>' + '<td>';
-    html += "Dagger Skill Level: " + player.DaggerLevel;
-    html += '<td>' + "Agility +" + player.daggerAgility() + '</td>' + '<td>' + " Dexterity +" + player.daggerDexterity() + '</td>';
-    html += '</td>' + '</tr>';
-
     //Axe
     html += '<tr>' + '<td>';
     html += "Axe Skill Level: " + player.AxeLevel;
@@ -32,12 +26,6 @@ function CreateWeaponSkillHtml() {
     html += '<tr>' + '<td>';
     html += "Staff Skill Level: " + player.StaffLevel;
     html += '<td>' + "Intelligence +" + player.staffIntelligence() + '</td>' + '<td>' + " Wisdom +" + player.staffWisdom() + '</td>';
-    html += '</td>' + '</tr>';
-
-    //Fist
-    html += '<tr>' + '<td>';
-    html += "Fist Skill Level: " + player.FistLevel;
-    html += '<td>' + "Strength +" + player.fistStrength() + '</td>' + '<td>' + " Dexterity +" + player.fistDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
     //Bow
@@ -66,13 +54,27 @@ function CreateEquipHtml() {
         html += "Item Rarity: " + equippedItems.weapon.itemQuality + '\n'
         html += "Item Type: " + equippedItems.weapon.itemType + '\n'
         html += "Damage: " + equippedItems.weapon.minDamage + "-" + equippedItems.weapon.maxDamage + '\n'
-        html += "Strength: " + equippedItems.weapon.strength + '\n'
-        html += "Endurance: " + equippedItems.weapon.endurance + '\n'
-        html += "Agility: " + equippedItems.weapon.agility + '\n'
-        html += "Dexterity: " + equippedItems.weapon.dexterity + '\n'
-        html += "Intelligence: " + equippedItems.weapon.intelligence + '\n'
-        html += "Wisdom: " + equippedItems.weapon.wisdom + '\n'
-        html += "Luck: " + equippedItems.weapon.luck + '\n'
+        if (equippedItems.weapon.strength > 0) {
+            html += "Strength: " + equippedItems.weapon.strength + '\n'
+        }
+        if (equippedItems.weapon.endurance > 0) {
+            html += "Endurance: " + equippedItems.weapon.endurance + '\n'
+        }
+        if (equippedItems.weapon.agility > 0) {
+            html += "Agility: " + equippedItems.weapon.agility + '\n'
+        }
+        if (equippedItems.weapon.dexterity > 0) {
+            html += "Dexterity: " + equippedItems.weapon.dexterity + '\n'
+        }
+        if (equippedItems.weapon.intelligence > 0) {
+            html += "Intelligence: " + equippedItems.weapon.intelligence + '\n'
+        }
+        if (equippedItems.weapon.wisdom > 0) {
+            html += "Wisdom: " + equippedItems.weapon.wisdom + '\n'
+        }
+        if (equippedItems.weapon.luck > 0) {
+            html += "Luck: " + equippedItems.weapon.luck + '\n'
+        }
         html += "Value: " + equippedItems.weapon.value + "gold"
         html += '">';
 
@@ -88,27 +90,34 @@ function CreateEquipHtml() {
     if (equippedItems.offHand.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.offHand.subType + "/" + equippedItems.offHand.image + '.png" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + equippedItems.offHand.itemQuality +
-                '\n' +
-                "Item Type: " + equippedItems.offHand.itemType +
-                '\n' +
-                "Strength: " + equippedItems.offHand.strength +
-                '\n' +
-                "Endurance: " + equippedItems.offHand.endurance +
-                '\n' +
-                "Agility: " + equippedItems.offHand.agility +
-                '\n' +
-                "Dexterity: " + equippedItems.offHand.dexterity +
-                '\n' +
-                "Intelligence: " + equippedItems.offHand.intelligence +
-                '\n' +
-                "Wisdom: " + equippedItems.offHand.wisdom +
-                '\n' +
-                "Luck: " + equippedItems.offHand.luck +
-                '\n' +
-                "Value: " + equippedItems.offHand.value + "gold" +
-                '">';
+        html += '<img src="images/items/' + equippedItems.offHand.subType + "/" + equippedItems.offHand.image + '.png" "data-toggle=" "tooltip" title="'
+        html +=  "Item Rarity: " + equippedItems.offHand.itemQuality + '\n'
+        html += "Item Type: " + equippedItems.offHand.itemType + '\n'
+        if (equippedItems.offHand.defense > 0) {
+            html += "Defense: " + equippedItems.offHand.defense + '\n'
+        }
+        if (equippedItems.offHand.strength > 0) {
+            html += "Strength: " + equippedItems.offHand.strength + '\n'
+        }
+        if (equippedItems.offHand.endurance > 0) {
+            html += "Endurance: " + equippedItems.offHand.endurance + '\n'
+        }
+        if (equippedItems.offHand.agility > 0) {
+            html += "Agility: " + equippedItems.offHand.agility + '\n'
+        }
+        if (equippedItems.offHand.dexterity > 0) {
+            html += "Dexterity: " + equippedItems.offHand.dexterity + '\n'
+        }
+        if (equippedItems.offHand.intelligence > 0) {
+            html += "Intelligence: " + equippedItems.offHand.intelligence + '\n'
+        }
+        if (equippedItems.offHand.wisdom > 0) {
+            html += "Wisdom: " + equippedItems.offHand.wisdom + '\n'
+        }
+        if (equippedItems.offHand.luck > 0) {
+            html += "Luck: " + equippedItems.offHand.luck + '\n'
+        }
+        html +="Value: " + equippedItems.offHand.value + "gold" + '">';
 
         html += '</td>' +
             '<td>' + equippedItems.offHand.name + '</td>' +
@@ -122,27 +131,34 @@ function CreateEquipHtml() {
     if (equippedItems.armor.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.armor.subType + "/" + equippedItems.armor.image + '.png" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + equippedItems.armor.itemQuality +
-                '\n' +
-                "Item Type: " + equippedItems.armor.itemType +
-                '\n' +
-                "Strength: " + equippedItems.armor.strength +
-                '\n' +
-                "Endurance: " + equippedItems.armor.endurance +
-                '\n' +
-                "Agility: " + equippedItems.armor.agility +
-                '\n' +
-                "Dexterity: " + equippedItems.armor.dexterity +
-                '\n' +
-                "Intelligence: " + equippedItems.armor.intelligence +
-                '\n' +
-                "Wisdom: " + equippedItems.armor.wisdom +
-                '\n' +
-                "Luck: " + equippedItems.armor.luck +
-                '\n' +
-                "Value: " + equippedItems.armor.value + "gold" +
-                '">'
+        html += '<img src="images/items/' + equippedItems.armor.subType + "/" + equippedItems.armor.image + '.png" "data-toggle=" "tooltip" title="'
+        html += "Item Rarity: " + equippedItems.armor.itemQuality + '\n'
+        html += "Item Type: " + equippedItems.armor.itemType + '\n'
+        if (equippedItems.armor.defense > 0) {
+            html += "Defense: " + equippedItems.armor.defense + '\n'
+        }
+        if (equippedItems.armor.strength > 0) {
+            html += "Strength: " + equippedItems.armor.strength + '\n'
+        }
+        if (equippedItems.armor.endurance > 0) {
+            html += "Endurance: " + equippedItems.armor.endurance + '\n'
+        }
+        if (equippedItems.armor.agility > 0) {
+            html += "Agility: " + equippedItems.armor.agility + '\n'
+        }
+        if (equippedItems.armor.dexterity > 0) {
+            html += "Dexterity: " + equippedItems.armor.dexterity + '\n'
+        }
+        if (equippedItems.armor.intelligence > 0) {
+            html += "Intelligence: " + equippedItems.armor.intelligence + '\n'
+        }
+        if (equippedItems.armor.wisdom > 0) {
+            html += "Wisdom: " + equippedItems.armor.wisdom + '\n'
+        }
+        if (equippedItems.armor.luck > 0) {
+            html += "Luck: " + equippedItems.armor.luck + '\n'
+        }
+        html += "Value: " + equippedItems.armor.value + "gold" + '">';
 
         html += '</td>' +
             '<td>' + equippedItems.armor.name + '</td>' +
@@ -156,27 +172,34 @@ function CreateEquipHtml() {
     if (equippedItems.ring.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.ring.subType + "/" + equippedItems.ring.image + '.png" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + equippedItems.ring.itemQuality +
-                '\n' +
-                "Item Type: " + equippedItems.ring.itemType +
-                '\n' +
-                "Strength: " + equippedItems.ring.strength +
-                '\n' +
-                "Endurance: " + equippedItems.ring.endurance +
-                '\n' +
-                "Agility: " + equippedItems.ring.agility +
-                '\n' +
-                "Dexterity: " + equippedItems.ring.dexterity +
-                '\n' +
-                "Intelligence: " + equippedItems.ring.intelligence +
-                '\n' +
-                "Wisdom: " + equippedItems.ring.wisdom +
-                '\n' +
-                "Luck: " + equippedItems.ring.luck +
-                '\n' +
-                "Value: " + equippedItems.ring.value + "gold" +
-                '">'
+        html += '<img src="images/items/' + equippedItems.ring.subType + "/" + equippedItems.ring.image + '.png" "data-toggle=" "tooltip" title="'
+        html += "Item Rarity: " + equippedItems.ring.itemQuality + '\n'
+        html += "Item Type: " + equippedItems.ring.itemType + '\n'
+        if (equippedItems.ring.defense > 0) {
+            html += "Defense: " + equippedItems.ring.defense + '\n'
+        }
+        if (equippedItems.ring.strength > 0) {
+            html += "Strength: " + equippedItems.ring.strength + '\n'
+        }
+        if (equippedItems.ring.endurance > 0) {
+            html += "Endurance: " + equippedItems.ring.endurance + '\n'
+        }
+        if (equippedItems.ring.agility > 0) {
+            html += "Agility: " + equippedItems.ring.agility + '\n'
+        }
+        if (equippedItems.ring.dexterity > 0) {
+            html += "Dexterity: " + equippedItems.ring.dexterity + '\n'
+        }
+        if (equippedItems.ring.intelligence > 0) {
+            html += "Intelligence: " + equippedItems.ring.intelligence + '\n'
+        }
+        if (equippedItems.ring.wisdom > 0) {
+            html += "Wisdom: " + equippedItems.ring.wisdom + '\n'
+        }
+        if (equippedItems.ring.luck > 0) {
+            html += "Luck: " + equippedItems.ring.luck + '\n'
+        }
+        html += "Value: " + equippedItems.ring.value + "gold" + '">';
         html += '</td>' +
             '<td>' + equippedItems.ring.name + '</td>' +
              '<td>' + '<font color="' + equippedItems.ring.color + '">' + equippedItems.ring.itemQuality + '</font>' + '</td>' +
@@ -189,27 +212,34 @@ function CreateEquipHtml() {
     if (equippedItems.amulet.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.amulet.subType + "/" + equippedItems.amulet.image + '.png" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + equippedItems.amulet.itemQuality +
-                '\n' +
-                "Item Type: " + equippedItems.amulet.itemType +
-                '\n' +
-                "Strength: " + equippedItems.amulet.strength +
-                '\n' +
-                "Endurance: " + equippedItems.amulet.endurance +
-                '\n' +
-                "Agility: " + equippedItems.amulet.agility +
-                '\n' +
-                "Dexterity: " + equippedItems.amulet.dexterity +
-                '\n' +
-                "Intelligence: " + equippedItems.amulet.intelligence +
-                '\n' +
-                "Wisdom: " + equippedItems.amulet.wisdom +
-                '\n' +
-                "Luck: " + equippedItems.amulet.luck +
-                '\n' +
-                "Value: " + equippedItems.amulet.value + "gold" +
-                '">'
+        html += '<img src="images/items/' + equippedItems.amulet.subType + "/" + equippedItems.amulet.image + '.png" "data-toggle=" "tooltip" title="'
+        html += "Item Rarity: " + equippedItems.amulet.itemQuality + '\n'
+        html += "Item Type: " + equippedItems.amulet.itemType + '\n'
+        if (equippedItems.amulet.defense > 0) {
+            html += "Defense: " + equippedItems.amulet.defense + '\n'
+        }
+        if (equippedItems.amulet.strength > 0) {
+            html += "Strength: " + equippedItems.amulet.strength + '\n'
+        }
+        if (equippedItems.amulet.endurance > 0) {
+            html += "Endurance: " + equippedItems.amulet.endurance + '\n'
+        }
+        if (equippedItems.amulet.agility > 0) {
+            html += "Agility: " + equippedItems.amulet.agility + '\n'
+        }
+        if (equippedItems.amulet.dexterity > 0) {
+            html += "Dexterity: " + equippedItems.amulet.dexterity + '\n'
+        }
+        if (equippedItems.amulet.intelligence > 0) {
+            html += "Intelligence: " + equippedItems.amulet.intelligence + '\n'
+        }
+        if (equippedItems.amulet.wisdom > 0) {
+            html += "Wisdom: " + equippedItems.amulet.wisdom + '\n'
+        }
+        if (equippedItems.amulet.luck > 0) {
+            html += "Luck: " + equippedItems.amulet.luck + '\n'
+        }
+        html += "Value: " + equippedItems.amulet.value + "gold" + '">';
         html += '</td>' +
             '<td>' + equippedItems.amulet.name + '</td>' +
              '<td>' + '<font color="' + equippedItems.amulet.color + '">' + equippedItems.amulet.itemQuality + '</font>' + '</td>' +
@@ -222,27 +252,34 @@ function CreateEquipHtml() {
     if (equippedItems.talisman.hasOwnProperty('itemType')) {
         html += '<tr>' + '<td>';
 
-        html += '<img src="images/items/' + equippedItems.talisman.subType + "/"  + equippedItems.talisman.image + '.png" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + equippedItems.talisman.itemQuality +
-                '\n' +
-                "Item Type: " + equippedItems.talisman.itemType +
-                '\n' +
-                "Strength: " + equippedItems.talisman.strength +
-                '\n' +
-                "Endurance: " + equippedItems.talisman.endurance +
-                '\n' +
-                "Agility: " + equippedItems.talisman.agility +
-                '\n' +
-                "Dexterity: " + equippedItems.talisman.dexterity +
-                '\n' +
-                "Intelligence: " + equippedItems.talisman.intelligence +
-                '\n' +
-                "Wisdom: " + equippedItems.talisman.wisdom +
-                '\n' +
-                "Luck: " + equippedItems.talisman.luck +
-                '\n' +
-                "Value: " + equippedItems.talisman.value + "gold" +
-                '">'
+        html += '<img src="images/items/' + equippedItems.talisman.subType + "/" + equippedItems.talisman.image + '.png" "data-toggle=" "tooltip" title="'
+        html += "Item Rarity: " + equippedItems.talisman.itemQuality + '\n'
+        html += "Item Type: " + equippedItems.talisman.itemType + '\n'
+        if (equippedItems.talisman.defense > 0) {
+            html += "Defense: " + equippedItems.talisman.defense + '\n'
+        }
+        if (equippedItems.talisman.strength > 0) {
+            html += "Strength: " + equippedItems.talisman.strength + '\n'
+        }
+        if (equippedItems.talisman.endurance > 0) {
+            html += "Endurance: " + equippedItems.talisman.endurance + '\n'
+        }
+        if (equippedItems.talisman.agility > 0) {
+            html += "Agility: " + equippedItems.talisman.agility + '\n'
+        }
+        if (equippedItems.talisman.dexterity > 0) {
+            html += "Dexterity: " + equippedItems.talisman.dexterity + '\n'
+        }
+        if (equippedItems.talisman.intelligence > 0) {
+            html += "Intelligence: " + equippedItems.talisman.intelligence + '\n'
+        }
+        if (equippedItems.talisman.wisdom > 0) {
+            html += "Wisdom: " + equippedItems.talisman.wisdom + '\n'
+        }
+        if (equippedItems.talisman.luck > 0) {
+            html += "Luck: " + equippedItems.talisman.luck + '\n'
+        }
+        html += "Value: " + equippedItems.talisman.value + "gold" + '">';
         html += '</td>' +
             '<td>' + equippedItems.talisman.name + '</td>' +
              '<td>' + '<font color="' + equippedItems.talisman.color + '">' + equippedItems.talisman.itemQuality + '</font>' + '</td>' +
@@ -258,6 +295,10 @@ function CreateEquipHtml() {
 
 
 
+monsterTabActiveNum = 0;
+function changedTabmonster(index) {
+    monsterTabActiveNum = index;
+}
 function CreateMonsterHtml() {
 
     var html = '';
@@ -266,10 +307,10 @@ function CreateMonsterHtml() {
 
     for (var k = 0; k < monsterAreas.length; k++) {
 
-        if (k === 0) {
-            html += '<li class="active">';
+        if (k === monsterTabActiveNum) {
+            html += '<li class="active" onClick = changedTabmonster(' + k + ')>';
         } else {
-            html += '<li>';
+            html += '<li onClick = changedTabmonster(' + k + ')>';
         }
 
         html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab">' + monsterAreas[k].displayName + '</a></li>';
@@ -280,7 +321,7 @@ function CreateMonsterHtml() {
 
     for (var j = 0; j < monsterAreas.length; j++) {
 
-        if (j === 0) {
+        if (j === monsterTabActiveNum) {
             html += '<div class="tab-pane active" ';
         } else {
             html += '<div class="tab-pane" ';
@@ -291,23 +332,30 @@ function CreateMonsterHtml() {
             '<h4>SLAY MONSTERS!</h4>' +
             '</div>';
 
-        for (var i = 0; i < monsters.length; i++) {
-            if (monsters[i].area === monsterAreas[j].type) {
-
-                html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
-                    '<div id="' + monsters[i].id + '" class="c3">' +
-                    'Dmg:' + monsters[i].minDmg + "-" + monsters[i].maxDmg +
-                    '<br />' +
-                    'Def:' + monsters[i].def +
-                    '<br />' +
-                    "HP: " + '<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp +
-                    '<br />' +
-                    '<b>' + monsters[i].name + '</b>' +
-                    '<br />' +
-                    '<img src="images/' + monsters[i].id + '.jpg" alt="' + monsters[i].name + '">' +
-                    '<br />' +
-                    '<button class = "monsterButton" id="button' + (i + 1) + '">' + "Attack" + '</button>' + '</div></div>'
+        for (var key in monsterList) {
+            if (monsterList.hasOwnProperty(key)) {
+                var monster = monsterList[key];
+                var area = monster.Stats.area;
             }
+
+            if (area === monsterAreas[j].type) {
+                if (monster.Stats.isShown == true) {
+                    html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
+                        '<div id="' + monster.Stats.id + '" class="c3">' +
+                        'Dmg:' + monster.Stats.minDmg + "-" + monster.Stats.maxDmg +
+                        '<br />' +
+                        'Def:' + monster.Stats.def +
+                        '<br />' +
+                        "HP: " + '<span class="hp">' + monster.Stats.hp + '</span>' + "/" + monster.Stats.maxHp +
+                        '<br />' +
+                        '<b>' + monster.Stats.displayName + '</b>' +
+                        '<br />' +
+                        '<img src="images/' + "monster" + monster.Stats.id + '.jpg" alt="' + monster.Stats.displayName + '">' +
+                        '<br />' +
+                        '<button onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</button>' + '</div></div>'
+                }
+            }
+
         }
         html += '</div>';
     }
@@ -315,45 +363,6 @@ function CreateMonsterHtml() {
 
     document.getElementById("monsterTabs").innerHTML = html;
 };
-//Create playerInventory html
-/*function CreateInventoryWeaponHtml() {
-    var html = '';
-
-    html += '<table class="table">';
-    html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Type" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
-    for (var i = 0; i < playerInventory.length; i++) {
-
-        html += '<tr>' + '<td>';
-        html += '<img src="images/items/' + playerInventory[i].itemType + "1" + '.gif" "data-toggle=" "tooltip" title="' +
-                 "Item Rarity: " + playerInventory[i].itemQuality +
-                '\n' +
-                "Strength: " + playerInventory[i].strength +
-                '\n' +
-                "Endurance: " + playerInventory[i].endurance +
-                '\n' +
-                "Agility: " + playerInventory[i].agility +
-                '\n' +
-                "Dexterity: " + playerInventory[i].dexterity +
-                '\n' +
-                "Intelligence: " + playerInventory[i].intelligence +
-                '\n' +
-                "Wisdom: " + playerInventory[i].wisdom +
-                '\n' +
-                "Luck: " + playerInventory[i].luck +
-                '\n' +
-                "Value: " + playerInventory[i].value + "gold" +
-                '">' + '</td>';
-
-        html += '<td>' + playerInventory[i].itemType + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
-            '<td>' + playerInventory[i].value + "Value" +
-         '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
-         '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
-
-        
-    }
-    html += '</table>';
-    document.getElementById("inventory").innerHTML = html;
-};*/
 
 inventoryTabActiveNum = 0;
 function changedTabInventory(index)
@@ -367,7 +376,7 @@ function CreateInventoryWeaponHtml() {
     html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length  + "/" + player.inventory() + '</div>'
     html += '<ul class="nav nav-tabs">';
 
-    for (var k = 0; k < 5; k++) {
+    for (var k = 0; k < 4; k++) {
 
         if (k === inventoryTabActiveNum) {
             html += '<li class="active" onClick = changedTabInventory(' + k + ')>';
@@ -404,34 +413,34 @@ function CreateInventoryWeaponHtml() {
                 else if (playerInventory[i].itemType === "armor") {
                     var itemStat = equippedItems.armor;
                 }
-                else if (playerInventory[i].itemType === "ring") {
+                else if (playerInventory[i].subType === "ring") {
                     var itemStat = equippedItems.ring;
                 }
-                else if (playerInventory[i].itemType === "amulet") {
+                else if (playerInventory[i].subType === "amulet") {
                     var itemStat = equippedItems.amulet;
                 }
-                else if (playerInventory[i].itemType === "talisman") {
+                else if (playerInventory[i].subType === "talisman") {
                     var itemStat = equippedItems.talisman;
                 }
                 html += '<tr>' + '<td>';
                 html += '<img src="images/items/' + playerInventory[i].subType + "/"  + playerInventory[i].image + '.png" "data-toggle=" "tooltip" title="'
-                html += "Stat change:"
+                html += "You will gain:"
                 html += '\n'
                 html += "Item Type: " + playerInventory[i].subType + '\n'
                 if (playerInventory[i].minDamage > 0 && playerInventory[i].maxDamage > 0) {
-                    html += "Damage: " + playerInventory[i].minDamage + "-" + playerInventory[i].maxDamage + '\n'
+                    html += "Min Damage: " + (playerInventory[i].minDamage - itemStat.minDamage) + '\n'
+                    html+= "Max Damage: " + (playerInventory[i].maxDamage - itemStat.maxDamage) + '\n'
                 }
                
-                if (playerInventory[i].defense > 0) {
+                if (playerInventory[i].defense > 0 || itemStat.defense > 0) {
                     if (itemStat.defense > 0) {
                         html += "Defense: " + (playerInventory[i].defense - itemStat.defense) + '\n'
                     }
                     else {
                         html += "Defense: " + playerInventory[i].defense + '\n'
                     }
-                    
                 }
-                if (playerInventory[i].strength > 0) {
+                if (playerInventory[i].strength > 0 || itemStat.strength > 0) {
                     if (itemStat.strength > 0) {
                         html += "Strength: " + (playerInventory[i].strength - itemStat.strength) + '\n'
                     }
@@ -439,7 +448,7 @@ function CreateInventoryWeaponHtml() {
                         html += "Strength: " + playerInventory[i].strength + '\n'
                     }
                 }
-                if (playerInventory[i].endurance > 0) {
+                if (playerInventory[i].endurance > 0 || itemStat.endurance > 0) {
                     if (itemStat.endurance > 0) {
                         html += "Endurance: " + (playerInventory[i].endurance - itemStat.endurance) + '\n'
                     }
@@ -447,7 +456,7 @@ function CreateInventoryWeaponHtml() {
                         html += "Endurance: " + playerInventory[i].endurance + '\n'
                     }
                 }
-                if (playerInventory[i].agility > 0) {
+                if (playerInventory[i].agility > 0 || itemStat.agility > 0) {
                     if (itemStat.agility > 0) {
                         html += "Agility: " + (playerInventory[i].agility - itemStat.agility) + '\n'
                     }
@@ -455,7 +464,7 @@ function CreateInventoryWeaponHtml() {
                         html += "Agility: " + playerInventory[i].agility + '\n'
                     }
                 }
-                if (playerInventory[i].dexterity > 0) {
+                if (playerInventory[i].dexterity > 0 || itemStat.dexterity) {
                     if (itemStat.dexterity > 0) {
                         html += "Dexterity: " + (playerInventory[i].dexterity - itemStat.dexterity) + '\n'
                     }
@@ -463,7 +472,7 @@ function CreateInventoryWeaponHtml() {
                         html += "Dexterity: " + playerInventory[i].dexterity + '\n'
                     }
                 }
-                if (playerInventory[i].intelligence > 0) {
+                if (playerInventory[i].intelligence > 0 || itemStat.intelligence) {
                     if (itemStat.intelligence > 0) {
 
                         html += "Intelligence: " + (playerInventory[i].intelligence - itemStat.intelligence) + '\n'
@@ -472,7 +481,7 @@ function CreateInventoryWeaponHtml() {
                         html += "Intelligence: " + playerInventory[i].intelligence + '\n'
                     }
                 }
-                if (playerInventory[i].wisdom > 0) {
+                if (playerInventory[i].wisdom > 0 || itemStat.wisdom) {
                     if (itemStat.wisdom > 0) {
 
                         html += "Wisdom: " + (playerInventory[i].wisdom - itemStat.wisdom) + '\n'
@@ -481,7 +490,7 @@ function CreateInventoryWeaponHtml() {
                         html += "Wisdom: " + playerInventory[i].wisdom + '\n'
                     }
                 }
-                if (playerInventory[i].luck > 0) {
+                if (playerInventory[i].luck > 0 || itemStat.luck) {
                     if (itemStat.luck > 0) {
 
                         html += "Luck: " + (playerInventory[i].luck - itemStat.luck) + '\n'
@@ -494,14 +503,6 @@ function CreateInventoryWeaponHtml() {
                 
                 html += "Value: " + playerInventory[i].value + "gold"
                 html += '">' + '</td>';
-                //ADD ALL ITEMS VALUE TOGETHER, might want to use it for bulk selling in future...need to add if/else for item quality too...
-                /*var total = 0;
-                for (var s = 0; s < playerInventory.length; s++) {
-                //If else playerInventory[i].itemType === common :)
-                    total += playerInventory[s].value << 0;
-                }
-                console.log("TOTAL" + total)*/
-
                 html += '<td>' + playerInventory[i].name + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
                     '<td>' + playerInventory[i].value + "Value" +
                  '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
