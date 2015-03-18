@@ -23,7 +23,7 @@ var player = {
     isDead: false,
     itemIdNumber: 1,
     stats: 0,
-    gold: 122482,
+    gold: 0,
     autoBattle: 1, // testing
     level: 1,
     experience: 0,
