@@ -329,7 +329,7 @@ function MakeMonsterList()
         id: 2,
         level: 2,
         area: "BanditHideout",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.BanditThug = BanditThug;
@@ -474,7 +474,7 @@ function MakeMonsterList()
         id: 3,
         level: 3,
         area: "BanditHideout",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.BanditArcher = BanditArcher;
@@ -620,7 +620,7 @@ function MakeMonsterList()
         id: 4,
         level: 4,
         area: "BanditHideout",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.BanditPlunderer = BanditPlunderer;
@@ -766,7 +766,7 @@ function MakeMonsterList()
         id: 5,
         level: 5,
         area: "BanditHideout",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.BanditAssasin = BanditAssasin;
@@ -912,7 +912,7 @@ function MakeMonsterList()
         id: 6,
         level: 6,
         area: "BanditHideout",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.BanditLeader = BanditLeader;
@@ -1086,7 +1086,7 @@ function MakeMonsterList()
         id: 7,
         level: 7,
         area: "BanditHideout",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.BanditChief = BanditChief;
@@ -1260,7 +1260,7 @@ function MakeMonsterList()
         id: 8,
         level: 8,
         area: "BanditHideout",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.BanditLord = BanditLord;
@@ -1406,7 +1406,7 @@ function MakeMonsterList()
         id: 9,
         level: 9,
         area: "Forest",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Spider = Spider;
@@ -1551,7 +1551,7 @@ function MakeMonsterList()
         id: 10,
         level: 10,
         area: "Forest",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Wolf = Wolf;
@@ -1696,7 +1696,7 @@ function MakeMonsterList()
         id: 11,
         level: 11,
         area: "Forest",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Bear = Bear;
@@ -1841,7 +1841,7 @@ function MakeMonsterList()
         id: 12,
         level: 12,
         area: "Forest",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Grizzly = Grizzly;
@@ -1986,7 +1986,7 @@ function MakeMonsterList()
         id: 13,
         level: 13,
         area: "Forest",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Troll = Troll;
@@ -2131,7 +2131,7 @@ function MakeMonsterList()
         id: 14,
         level: 14,
         area: "Forest",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.ForestTroll = ForestTroll;
@@ -2304,7 +2304,7 @@ function MakeMonsterList()
         id: 15,
         level: 15,
         area: "Forest",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.SpiderQueen = SpiderQueen;
@@ -2477,7 +2477,7 @@ function MakeMonsterList()
         id: 16,
         level: 16,
         area: "Forest",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.TrollLeader = TrollLeader;
@@ -2622,7 +2622,7 @@ function MakeMonsterList()
         id: 17,
         level: 17,
         area: "Mountains",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Giant = Giant;
@@ -2767,7 +2767,7 @@ function MakeMonsterList()
         id: 18,
         level: 18,
         area: "Mountains",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.FrostGiant = FrostGiant;
@@ -2912,7 +2912,7 @@ function MakeMonsterList()
         id: 19,
         level: 19,
         area: "Mountains",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.FrostTroll = FrostTroll;
@@ -3057,7 +3057,7 @@ function MakeMonsterList()
         id: 20,
         level: 20,
         area: "Mountains",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Wyvern = Wyvern;
@@ -3202,7 +3202,7 @@ function MakeMonsterList()
         id: 21,
         level: 21,
         area: "Mountains",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.FrostDragon = FrostDragon;
@@ -3347,7 +3347,7 @@ function MakeMonsterList()
         id: 22,
         level: 22,
         area: "Mountains",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.IceElemental = IceElemental;
@@ -3520,7 +3520,7 @@ function MakeMonsterList()
         id: 23,
         level: 23,
         area: "Mountains",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.FrostGuardian = FrostGuardian;
@@ -3693,7 +3693,7 @@ function MakeMonsterList()
         id: 24,
         level: 24,
         area: "Mountains",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.FrostQueen = FrostQueen;
@@ -3838,7 +3838,7 @@ function MakeMonsterList()
         id: 25,
         level: 25,
         area: "AncientCave",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Zombie = Zombie;
@@ -3983,7 +3983,7 @@ function MakeMonsterList()
         id: 26,
         level: 26,
         area: "AncientCave",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Skeleton = Skeleton;
@@ -4128,7 +4128,7 @@ function MakeMonsterList()
         id: 27,
         level: 27,
         area: "AncientCave",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.SkeletonSoldier = SkeletonSoldier;
@@ -4273,7 +4273,7 @@ function MakeMonsterList()
         id: 28,
         level: 28,
         area: "AncientCave",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.SkeletonArcher = SkeletonArcher;
@@ -4418,7 +4418,7 @@ function MakeMonsterList()
         id: 29,
         level: 29,
         area: "AncientCave",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.SkeletonMage = SkeletonMage;
@@ -4563,7 +4563,7 @@ function MakeMonsterList()
         id: 30,
         level: 30,
         area: "AncientCave",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.SkeletonHealer = SkeletonHealer;
@@ -4736,7 +4736,7 @@ function MakeMonsterList()
         id: 31,
         level: 31,
         area: "AncientCave",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.Wraith = Wraith;
@@ -4909,7 +4909,7 @@ function MakeMonsterList()
         id: 32,
         level: 32,
         area: "AncientCave",
-        isShown: true,
+        isShown: false,
         killCount: 0,
     };
     monsterList.LichKing = LichKing;

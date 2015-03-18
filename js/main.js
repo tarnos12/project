@@ -37,7 +37,7 @@ var player = {
         return Math.floor((20 + (player.totalStrength() / 10) + equippedItems.backpack.slots + player.backpackUpgrade)); //Add backpacks "new item type"
     },
     //Strength
-    baseStrength: 50000000,
+    baseStrength: 5,
     equipStrength: function () {
         return Math.floor(
             equippedItems.weapon.strength +
@@ -55,7 +55,7 @@ var player = {
             player.swordStrength());
     },
     //Endurance
-    baseEndurance: 500000,
+    baseEndurance: 5,
     equipEndurance: function () {
         return Math.floor(equippedItems.weapon.endurance + equippedItems.offHand.endurance + equippedItems.armor.endurance + equippedItems.ring.endurance + equippedItems.amulet.endurance + equippedItems.talisman.endurance);
     },
@@ -95,7 +95,7 @@ var player = {
         return Math.floor(player.baseWisdom + player.equipWisdom() + player.staffWisdom() + player.maceWisdom());
     },
     //Luck
-    baseLuck: 50000000000,
+    baseLuck: 5,
     equipLuck: function () {
         return Math.floor(equippedItems.weapon.luck + equippedItems.offHand.luck + equippedItems.armor.luck + equippedItems.ring.luck + equippedItems.amulet.luck + equippedItems.talisman.luck);
     },

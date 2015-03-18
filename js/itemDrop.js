@@ -25,7 +25,6 @@ function itemDropRandom(monster) {
                 dropItem["id"] = player.itemIdNumber;
 
                 if (dropItem.baseStrength > 0) {
-                    console.log("TEST " + monsterStats.level)
                     var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
                     bonusStrength = dropItem.baseStrength
                     dropItem["strength"] = returnNum + bonusStrength

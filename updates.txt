@@ -14,7 +14,6 @@ v1.3.1 - 14 march 2015   |
 - Disabled stat upgrade for Wisdom and Intelligence, since they don't have much of use right now.
 - At the beginning you have only 1 monster to fight, next monsters unlock as you level up(soon I want to add basic story, and maybe quests, which will unlock next monster)
 - Added new items, accessories(rings,amulets,talismans), you can equip one of each accessory type. Also added off-hand (shield, dagger).
--
 _________________________
 v1.3.0.1 - 12 march 2015 |
 -------------------------|

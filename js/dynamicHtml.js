@@ -376,7 +376,7 @@ function CreateInventoryWeaponHtml() {
     html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length  + "/" + player.inventory() + '</div>'
     html += '<ul class="nav nav-tabs">';
 
-    for (var k = 0; k < 5; k++) {
+    for (var k = 0; k < 4; k++) {
 
         if (k === inventoryTabActiveNum) {
             html += '<li class="active" onClick = changedTabInventory(' + k + ')>';
@@ -503,14 +503,6 @@ function CreateInventoryWeaponHtml() {
                 
                 html += "Value: " + playerInventory[i].value + "gold"
                 html += '">' + '</td>';
-                //ADD ALL ITEMS VALUE TOGETHER, might want to use it for bulk selling in future...need to add if/else for item quality too...
-                /*var total = 0;
-                for (var s = 0; s < playerInventory.length; s++) {
-                //If else playerInventory[i].itemType === common :)
-                    total += playerInventory[s].value << 0;
-                }
-                console.log("TOTAL" + total)*/
-
                 html += '<td>' + playerInventory[i].name + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
                     '<td>' + playerInventory[i].value + "Value" +
                  '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +

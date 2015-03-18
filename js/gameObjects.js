@@ -15,10 +15,10 @@
          type: 'accessory',
          displayName: 'Accessory',
      },
-      {
+      /*{
           type: 'other',
           displayName: 'Other',
-      },
+      },*/
 ];
 
 var monsterAreas = [
