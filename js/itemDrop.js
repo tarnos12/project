@@ -16,19 +16,58 @@ function itemDropRandom(monster) {
     for (var i = 0; i < monsterDrop.length; i++) {
         itemDropChance = monsterDrop[i].chance;
         var randomItemChance = Math.floor(Math.random() * (20000 - 1) + 1);
-            if (randomItemChance <= (itemDropChance * player.dropRate())) {
-                var dropItem = monsterDrop[i].item
+        if (randomItemChance <= (itemDropChance * player.dropRate())) {
+            var dropItem = monsterDrop[i].item
+            //test
 
-
-                return obj === monsterType.itemDrop[i];
-            }
-            )[0];
             //Checks if player used checkbox to auto remove items by quality. Also this code add "id" property to each created item
             if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
-                var currentDate = new Date();
+                dropItem["id"] = player.itemIdNumber;
 
-            if (dropItem.strength == null || dropItem.strength == "undefined") {
-                dropItem["strength"] = 0
+                if (dropItem.baseStrength > 0) {
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
+                    bonusStrength = dropItem.baseStrength
+                    dropItem["strength"] = returnNum + bonusStrength
+                }
+                else {
+                    dropItem["strength"] = 0;
+                }
+                if (dropItem.baseEndurance > 0) {
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
+                    bonusEndurance = dropItem.baseEndurance
+                    dropItem["endurance"] = returnNum + bonusEndurance
+                }
+                else {
+                    dropItem["endurance"] = 0;
+                }
+                if (dropItem.baseAgility > 0) {
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
+                    bonusAgility = dropItem.baseAgility
+                    dropItem["agility"] = returnNum + bonusAgility
+                }
+                else {
+                    dropItem["agility"] = 0;
+                }
+                if (dropItem.baseDexterity > 0) {
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
+                    bonusDexterity = dropItem.baseDexterity
+                    dropItem["dexterity"] = returnNum + bonusDexterity
+                }
+                else {
+                    dropItem["dexterity"] = 0;
+                }
+                if (dropItem.baseWisdom > 0) {
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
+                    bonusWisdom = dropItem.baseWisdom
+                    dropItem["wisdom"] = returnNum + bonusWisdom
+                }
+                else {
+                    dropItem["wisdom"] = 0;
+                }
+                if (dropItem.baseIntelligence > 0) {
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 3) + (monsterStats.level * 3))
+                    bonusIntelligence = dropItem.baseIntelligence
+                    dropItem["intelligence"] = returnNum + bonusIntelligence
                 }
                 else {
                     dropItem["intelligence"] = 0;
@@ -56,11 +95,17 @@ function itemDropRandom(monster) {
                     bonusDefense = dropItem.baseDefense
                     dropItem["defense"] = returnNum + bonusDefense
                 }
-                dropItem["id"] = itemIdNumber;
-                playerInventory.push(dropItem);
-                itemIdNumber += 1;
+                else {
+                    dropItem["defense"] = 0;
                 }
 
+                var itemHolder = [];
+                itemHolder.push(dropItem);
+                playerInventory.push.apply(
+                    playerInventory,
+                    JSON.parse(JSON.stringify(itemHolder))
+                    );
+                player.itemIdNumber += 1;
                 Log("<span style=\"color:orange\">You found an item! </span>");
             }
         }
