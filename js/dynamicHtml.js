@@ -42,7 +42,6 @@ function CreateWeaponSkillHtml() {
 
 function CreateEquipHtml() {
     var html = '';
-
     html += '<table class="table">';
     html += '<tr>' + '<td>' + "Item" + '</td>' + '<td>' + "Name" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
 
@@ -83,7 +82,7 @@ function CreateEquipHtml() {
             '<td>' + '<font color="' + equippedItems.weapon.color + '">' + equippedItems.weapon.itemQuality + '</font>' + '</td>' +
             '<td>' + equippedItems.weapon.value + "Value" + '</td>' +
             '<td>' +
-            '<button onclick="unequipItem' + "(" + equippedItems.weapon.id + ")" + '">Unequip</button>' +
+            '<button type="button" class="btn btn-default" onclick="unequipItem' + "(" + equippedItems.weapon.id + ")" + '">Unequip</button>' +
             '</td>' + '</tr>';
     }
     //Off-Hand
@@ -124,7 +123,7 @@ function CreateEquipHtml() {
             '<td>' + '<font color="' + equippedItems.offHand.color + '">' + equippedItems.offHand.itemQuality + '</font>' + '</td>' +
             '<td>' + equippedItems.offHand.value + "Value" + '</td>' +
             '<td>' +
-            '<button onclick="unequipItem' + "(" + equippedItems.offHand.id + ")" + '">Unequip</button>' +
+            '<button type="button" class="btn btn-default" onclick="unequipItem' + "(" + equippedItems.offHand.id + ")" + '">Unequip</button>' +
             '</td>' + '</tr>';
     }
     //Armor
@@ -165,7 +164,7 @@ function CreateEquipHtml() {
              '<td>' + '<font color="' + equippedItems.armor.color + '">' + equippedItems.armor.itemQuality + '</font>' + '</td>' +
              '<td>' + equippedItems.armor.value + "Value" + '</td>' +
              '<td>' +
-             '<button onclick="unequipItem' + "(" + equippedItems.armor.id + ")" + '">Unequip</button>' +
+             '<button type="button" class="btn btn-default" onclick="unequipItem' + "(" + equippedItems.armor.id + ")" + '">Unequip</button>' +
              '</td>' + '</tr>';
     }
     //Ring
@@ -205,7 +204,7 @@ function CreateEquipHtml() {
              '<td>' + '<font color="' + equippedItems.ring.color + '">' + equippedItems.ring.itemQuality + '</font>' + '</td>' +
              '<td>' + equippedItems.ring.value + "Value" + '</td>' +
              '<td>' +
-             '<button onclick="unequipItem' + "(" + equippedItems.ring.id + ")" + '">Unequip</button>' +
+             '<button type="button" class="btn btn-default" onclick="unequipItem' + "(" + equippedItems.ring.id + ")" + '">Unequip</button>' +
              '</td>' + '</tr>';
     }
     //Amulet
@@ -245,7 +244,7 @@ function CreateEquipHtml() {
              '<td>' + '<font color="' + equippedItems.amulet.color + '">' + equippedItems.amulet.itemQuality + '</font>' + '</td>' +
              '<td>' + equippedItems.amulet.value + "Value" + '</td>' +
              '<td>' +
-             '<button onclick="unequipItem' + "(" + equippedItems.amulet.id + ")" + '">Unequip</button>' +
+             '<button type="button" class="btn btn-default" onclick="unequipItem' + "(" + equippedItems.amulet.id + ")" + '">Unequip</button>' +
              '</td>' + '</tr>';
     }
     //Talisman
@@ -285,7 +284,7 @@ function CreateEquipHtml() {
              '<td>' + '<font color="' + equippedItems.talisman.color + '">' + equippedItems.talisman.itemQuality + '</font>' + '</td>' +
              '<td>' + equippedItems.talisman.value + "Value" + '</td>' +
              '<td>' +
-             '<button onclick="unequipItem' + "(" + equippedItems.talisman.id + ")" + '">Unequip</button>' +
+             '<button type="button" class="btn btn-default" onclick="unequipItem' + "(" + equippedItems.talisman.id + ")" + '">Unequip</button>' +
              '</td>' + '</tr>';
     }
 
@@ -303,7 +302,7 @@ function CreateMonsterHtml() {
 
     var html = '';
 
-    html += '<ul class="nav nav-tabs">';
+    html += '<ul class="nav nav-pills">';
 
     for (var k = 0; k < monsterAreas.length; k++) {
 
@@ -352,7 +351,7 @@ function CreateMonsterHtml() {
                         '<br />' +
                         '<img src="images/' + "monster" + monster.Stats.id + '.jpg" alt="' + monster.Stats.displayName + '">' +
                         '<br />' +
-                        '<button onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</button>' + '</div></div>'
+                        '<span type="button" class="btn btn-default" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>'
                 }
             }
 
@@ -373,8 +372,8 @@ function changedTabInventory(index)
 //TEST
 function CreateInventoryWeaponHtml() {
     var html = '';
-    html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length  + "/" + player.inventory() + '</div>'
-    html += '<ul class="nav nav-tabs">';
+    html += '<div class="c3" width: 100%;>' + "Inventory Slots: " + playerInventory.length + "/" + player.inventory() + '</div>'
+    html += '<ul class="nav nav-pills">';
 
     for (var k = 0; k < 4; k++) {
 
@@ -388,20 +387,20 @@ function CreateInventoryWeaponHtml() {
     }
 
     html += '</ul>';
-    html += '<div class="tab-content" id="tabControl_Inventory">';
+    html += '<div class="tab-content" width: 100% id="tabControl_Inventory">';
     for (var j = 0; j < InventoryItemTypes.length; j++) {
 
         if (j === inventoryTabActiveNum) {
-            html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane active" ';
+            html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane active" width: 100%; ';
 
         } else {
-            html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane" ';
+            html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane" width: 100%; ';
         }
 
         html += 'id="tab_' + InventoryItemTypes[j].type + '">'
 
         html += '<table class="table">';
-        html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Name" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
+        html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Name" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td colspan="4">' + "Value" + '</td>' + '</tr>';
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType === InventoryItemTypes[j].type) {
                 if (playerInventory[i].itemType === "weapon") {
@@ -500,13 +499,12 @@ function CreateInventoryWeaponHtml() {
                     }
                 }
                
-                
                 html += "Value: " + playerInventory[i].value + "gold"
                 html += '">' + '</td>';
                 html += '<td>' + playerInventory[i].name + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
                     '<td>' + playerInventory[i].value + "Value" +
-                 '<td>' + '<button onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
-                 '<button onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
+                 '<td>' + '<button type="button" class="btn btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' + '</td>' +
+                 '<td>' + '<button type="button" class="btn btn-default" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
             }
                 //Else if inventory item type is equal to orb/card/etc...different code here, without item stats etc.
             else if (playerInventory[i].itemType3 === InventoryItemTypes[j].type) {
