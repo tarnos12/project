@@ -354,7 +354,7 @@ function attack(monster) {
             };
         }
         else {
-            Log("<span style=\"color:red\">You can't fight while being dead. </span>")
+            Log("<span style=\"color:red\">You can't fight while being dead. </span>");
             break;
         };
         battleTurn += 1;
