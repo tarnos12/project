@@ -214,4 +214,5 @@ function reset() {
     resetIsEquipped();
     CreateWeaponSkillHtml();
     CreateMonsterHtml();
+    save();
 };//test
