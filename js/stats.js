@@ -122,7 +122,7 @@ function resetIsEquipped() {
 //Upgrading player stats
 
 //Strength
-function upgradeStrength(strength) {
+function upgradeStrength(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
@@ -144,7 +144,7 @@ function upgradeStrength(strength) {
     }
 }
 //Endurance
-function upgradeEndurance(endurance) {
+function upgradeEndurance(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
@@ -166,7 +166,7 @@ function upgradeEndurance(endurance) {
     }
 }
 //Agility
-function upgradeAgility(agility) {
+function upgradeAgility(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
@@ -188,7 +188,7 @@ function upgradeAgility(agility) {
     }
 }
 //Dexterity
-function upgradeDexterity(dexterity) {
+function upgradeDexterity(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
@@ -210,7 +210,7 @@ function upgradeDexterity(dexterity) {
     }
 }
 //Wisdom
-function upgradeWisdom(wisdom) {
+function upgradeWisdom(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
@@ -232,7 +232,7 @@ function upgradeWisdom(wisdom) {
     }
 }
 //Intelligence
-function upgradeIntelligence(intelligence) {
+function upgradeIntelligence(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
@@ -254,7 +254,7 @@ function upgradeIntelligence(intelligence) {
     }
 }
 //Luck
-function upgradeLuck(luck) {
+function upgradeLuck(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
