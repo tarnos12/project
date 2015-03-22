@@ -2,6 +2,7 @@ _________________________
 v1.3.3 - 22 march 2015   |
 -------------------------|
 - Fixed a bug with firefox, preventing you from spending stat points.
+-
 _________________________
 v1.3.2 - 19 march 2015   |
 -------------------------|
