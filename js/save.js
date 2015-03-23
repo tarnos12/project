@@ -95,8 +95,9 @@ function load() {
     CreateEquipHtml();
     loadIsEquipped();
     CreateWeaponSkillHtml();
+    monsterKillCount();
     CreateMonsterHtml();
-}
+};
 
 function reset() {
     localStorage.removeItem("save");
@@ -206,6 +207,7 @@ function reset() {
     CreateEquipHtml();
     resetIsEquipped();
     CreateWeaponSkillHtml();
+    monsterKillCount();
     CreateMonsterHtml();
     save();
 };//test
