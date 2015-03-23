@@ -45,19 +45,21 @@ function sellAllRare() {
     total = 0;
 };
 function sellAllEpic() {
-    var playerInventoryNew = [];
+    if (confirm("Are you sure?") == true) {
+        var playerInventoryNew = [];
 
-    for (var i = 0; i < playerInventory.length; i++) {
-        if (playerInventory[i].itemQuality === "Epic") {
-            total += playerInventory[i].value << 0;
-        } else {
-            playerInventoryNew.push(playerInventory[i]);
+        for (var i = 0; i < playerInventory.length; i++) {
+            if (playerInventory[i].itemQuality === "Epic") {
+                total += playerInventory[i].value << 0;
+            } else {
+                playerInventoryNew.push(playerInventory[i]);
+            };
         };
+        player.gold += total;
+        playerInventory = playerInventoryNew;
+        CreateInventoryWeaponHtml();
+        total = 0;
     };
-    player.gold += total;
-    playerInventory = playerInventoryNew;
-    CreateInventoryWeaponHtml();
-    total = 0;
 };
 //Single item sell
 function itemSell(id) {

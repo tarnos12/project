@@ -76,7 +76,7 @@ function CreateEquipHtml() {
         }
         html += "Value: " + equippedItems.weapon.value + "gold"
         html += '">';
-
+       
         html += '</td>' +
             '<td>' + equippedItems.weapon.name + '</td>' +
             '<td>' + '<font color="' + equippedItems.weapon.color + '">' + equippedItems.weapon.itemQuality + '</font>' + '</td>' +
