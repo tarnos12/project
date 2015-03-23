@@ -1,4 +1,9 @@
 _________________________
+v1.3.3 - 23 march 2015   |
+-------------------------|
+- Added confirm button when selling all epics.
+- Each stat show you bonus from equipped items inside brackets (blue color). It looks like STR -> total Str(equip str)
+_________________________
 v1.3.3 - 22 march 2015   |
 -------------------------|
 - Fixed a bug with firefox, preventing you from spending stat points.
