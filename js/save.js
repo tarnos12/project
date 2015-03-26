@@ -33,10 +33,8 @@
         MaceLevel: player.MaceLevel,
         StaffMaxExp: player.StaffMaxExp,
         StaffLevel: player.StaffLevel,
-        FistMaxExp: player.FistMaxExp,
-        FistLevel: player.FistLevel,
-        BowMaxExp: player.BowMaxExp,
-        BowLevel: player.BowLevel,
+        RangedMaxExp: player.RangedMaxExp,
+        RangedLevel: player.RangedLevel,
         //Other
         itemId: player.itemIdNumber,
         backpackUpgrade: player.backpackUpgrade,
@@ -63,10 +61,8 @@ function load() {
     if (typeof savegame.MaceLevel !== "undefined") player.MaceLevel = savegame.MaceLevel;
     if (typeof savegame.StaffMaxExp !== "undefined") player.StaffMaxExp = savegame.StaffMaxExp;
     if (typeof savegame.StaffLevel !== "undefined") player.StaffLevel = savegame.StaffLevel;
-    if (typeof savegame.FistMaxExp !== "undefined") player.FistMaxExp = savegame.FistMaxExp;
-    if (typeof savegame.FistLevel !== "undefined") player.FistLevel = savegame.FistLevel;
-    if (typeof savegame.BowMaxExp !== "undefined") player.BowMaxExp = savegame.BowMaxExp;
-    if (typeof savegame.BowLevel !== "undefined") player.BowLevel = savegame.BowLevel;
+    if (typeof savegame.RangedMaxExp !== "undefined") player.RangedMaxExp = savegame.RangedMaxExp;
+    if (typeof savegame.RangedLevel !== "undefined") player.RangedLevel = savegame.RangedLevel;
     //Other
     if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
@@ -197,12 +193,9 @@ function reset() {
     player.StaffMaxExp = 10;
     player.StaffExp = 0;
     player.StaffLevel = 1;
-    player.FistMaxExp = 10;
-    player.FistExp = 0;
-    player.FistLevel = 1;
-    player.BowMaxExp = 10;
-    player.BowExp = 0;
-    player.BowLevel = 1;
+    player.RangedMaxExp = 10;
+    player.RangedExp = 0;
+    player.RangedLevel = 1;
     //Other
     player.itemIdNumber = 1;
     player.backpackUpgrade = 0,
