@@ -1,4 +1,8 @@
 _________________________
+v1.3.4 - 27 march 2015   |
+-------------------------|
+- Fixed a bug with bow skill not saving.
+_________________________
 v1.3.3 - 23 march 2015   |
 -------------------------|
 - Added confirm button when selling all epics.
