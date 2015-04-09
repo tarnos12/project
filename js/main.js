@@ -426,6 +426,7 @@ function playerDamageDeal(damage, monster) {
     damageDealt += damage;
     document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     //Add more stuff like "bonus elemental damage from passive skills or bonus weapon damage
+    itemExperienceGain(monster);
 };
 
 //monster hit chance
@@ -538,6 +539,30 @@ function monsterExperience(monster) {
     }
     else Log("You gain: " + Math.floor(expgain) + " experience!");
     monsterGold(monster);
+};
+
+//Experience gain for equipped items
+function itemExperienceGain(monster) {
+    var weaponExp = equippedItems.weapon.exp;
+    var weaponMaxExp = equippedItems.weapon.maxExp;
+    var weaponLevel = equippedItems.weapon.level;
+    var monsterExp = monsterStats.level;
+    if (weaponExp < weaponMaxExp){
+        weaponExp += monsterExp;
+    };
+    if (weaponExp >= weaponMaxExp) {
+        weaponLevel += 1;
+        equippedItems.weapon.minDamage += (1 * weaponLevel)
+        equippedItems.weapon.maxDamage += (2 * weaponLevel)
+        weaponExp = weaponExp - weaponMaxExp;
+        weaponMaxExp = Math.floor(weaponMaxExp * 2)
+    };
+    if (weaponLevel >= 7) {
+        weaponLevel = "Max";
+    };
+    equippedItems.weapon.exp = weaponExp;
+    equippedItems.weapon.maxExp = weaponMaxExp;
+    equippedItems.weapon.level = weaponLevel;
 };
 
 //gold gained from killing a monster

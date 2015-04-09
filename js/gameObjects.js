@@ -27,12 +27,12 @@ var monsterAreas = [
         displayName: 'Bandit Hideout'
     },
      {
-         type: 'Forest',
-         displayName: 'Forest'
+         type: 'ForestofNarsus',
+         displayName: 'Forest of Narsus'
      },
       {
-          type: 'Mountains',
-          displayName: 'Mountains'
+          type: 'OzJotnar',
+          displayName: 'Oz Jotnar'
       },
        {
            type: 'AncientCave',

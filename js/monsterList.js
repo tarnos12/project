@@ -6,168 +6,173 @@
 }
 // chance out of 10000, 1 = 0.01%, 10 = 0.1%, 100 = 1%, 1000 = 10%...
 var monsterList = {};
-var Bandit = {};
-var LichKing = {};
-var Wraith = {};
-var SkeletonHealer = {};
-var SkeletonMage = {};
-var SkeletonArcher = {};
-var SkeletonSoldier = {};
-var Skeleton = {};
-var Zombie = {};
-var FrostQueen = {};
-var FrostGuardian = {};
-var IceElemental = {};
-var FrostDragon = {};
-var Wyvern = {};
-var FrostTroll = {};
-var FrostGiant = {};
+
+var VarikGrunt = {};
+var VarikSoldier = {};
+var VarikMarksmen = {};
+var VarikVulture = {};
+var VarikEvader = {};
+var VariksLiar = {};
+var VariksQueen = {};
+var LordVarik = {};
+
+var ToxicFlies = {};
+var Stalker = {};
+var AlphaStalker = {};
+var StalkerPack = {};
+var JumpingSpider = {};
+var SpiderBeast = {};
+var Narsus = {};
+var JotunnScout = {};
+
 var Giant = {};
-var TrollLeader = {};
-var SpiderQueen = {};
-var ForestTroll = {};
-var Troll = {};
-var Grizzly = {};
-var Bear = {};
-var Wolf = {};
-var Spider = {};
-var BanditLord = {};
-var BanditChief = {};
-var BanditLeader = {};
-var BanditAssasin = {};
-var BanditPlunderer = {};
-var BanditThug = {};
-var BanditArcher = {};
+var FrostGiant = {};
+var FrostTroll = {};
+var Wyvern = {};
+var FrostDragon = {};
+var IceElemental = {};
+var FrostGuardian = {};
+var FrostQueen = {};
+
+var Zombie = {};
+var Skeleton = {};
+var SkeletonSoldier = {};
+var SkeletonArcher = {};
+var SkeletonMage = {};
+var SkeletonHealer = {};
+var Wraith = {};
+var LichKing = {};
+
 function MakeMonsterList()
 {
    
-    Bandit.Drops = [];
+    VarikGrunt.Drops = [];
     //Swords
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 1));
     //Axes
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 1));
     //Maces
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 1));
     //Staves
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 1));
     //Bows
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 1));
     //Robes
-    Bandit.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.MageRobes, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.MageRobes, 1));
     //Leather
-    Bandit.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 1));
     //Heavy
-    Bandit.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 1));
     //Shield
-    Bandit.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
-    Bandit.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
-    Bandit.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
-    Bandit.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 1));
     //Dagger offHand
-    Bandit.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
-    Bandit.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
-    Bandit.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
-    Bandit.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 1));
     //Rings
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 1));
     //Amulets
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 1));
     //Talismans
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 1));
-    Bandit.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 1));
-    Bandit.Stats = {
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 1));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 1));
+    VarikGrunt.Stats = {
         hp: 30,
         maxHp: 30,
         def: 0,
@@ -176,8 +181,8 @@ function MakeMonsterList()
         baseExp: 10,
         acc: 95,
         eva: 5,
-        name: "Bandit",
-        displayName: "Bandit",
+        name: "VarikGrunt",
+        displayName: "Varik Grunt",
         type: "weak",
         id: 1,
         level: 1,
@@ -185,136 +190,136 @@ function MakeMonsterList()
         isShown: true,
         killCount: 0,
     };
-    monsterList.Bandit = Bandit;
+    monsterList.VarikGrunt = VarikGrunt;
        
     
-    BanditThug.Drops = [];
+    VarikSoldier.Drops = [];
     //Swords
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 2));
     //Axes
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 2));
     //Maces
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 2));
     //Staves
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 2));
     //Bows
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 2));
     //Robes
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.MageRobes, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.MageRobes, 2));
     //Leather
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 2));
     //Heavy
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 2));
     //Shield
-    BanditThug.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 2));
     //Dagger offHand
-    BanditThug.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 2));
     //Rings
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 2));
     //Amulets
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 2));
     //Talismans
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 2));
-    BanditThug.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 2));
-    BanditThug.Stats = {
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 2));
+    VarikSoldier.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 2));
+    VarikSoldier.Stats = {
         hp: 100,
         maxHp: 100,
         def: 7,
@@ -323,8 +328,8 @@ function MakeMonsterList()
         baseExp: 40,
         acc: 95,
         eva: 5,
-        name: "BanditThug",
-        displayName: "Bandit Thug",
+        name: "VarikSoldier",
+        displayName: "Varik Soldier",
         type: "weak",
         id: 2,
         level: 2,
@@ -332,134 +337,134 @@ function MakeMonsterList()
         isShown: false,
         killCount: 0,
     };
-    monsterList.BanditThug = BanditThug;
-    BanditArcher.Drops = [];
+    monsterList.VarikSoldier = VarikSoldier;
+    VarikMarksmen.Drops = [];
     //Swords
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 3));
     //Axes
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 3));
     //Maces
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 3));
     //Staves
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 3));
     //Bows
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 3));
     //Robes
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.MageRobes, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.MageRobes, 3));
     //Leather
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 3));
     //Heavy
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 3));
     //Shield
-    BanditArcher.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 3));
     //Dagger offHand
-    BanditArcher.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 3));
     //Rings
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 3));
     //Amulets
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 3));
     //Talismans
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 3));
-    BanditArcher.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 3));
-    BanditArcher.Stats = {
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 3));
+    VarikMarksmen.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 3));
+    VarikMarksmen.Stats = {
         hp: 250,
         maxHp: 250,
         def: 10,
@@ -468,8 +473,8 @@ function MakeMonsterList()
         baseExp: 100,
         acc: 95,
         eva: 5,
-        name: "BanditArcher",
-        displayName: "Bandit Archer",
+        name: "VarikMarksmen",
+        displayName: "Varik Marksmen",
         type: "weak",
         id: 3,
         level: 3,
@@ -477,135 +482,135 @@ function MakeMonsterList()
         isShown: false,
         killCount: 0,
     };
-    monsterList.BanditArcher = BanditArcher;
+    monsterList.VarikMarksmen = VarikMarksmen;
 
-    BanditPlunderer.Drops = [];
+    VarikVulture.Drops = [];
     //Swords
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 4));
     //Axes
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 4));
     //Maces
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 4));
     //Staves
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 4));
     //Bows
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 4));
     //Robes
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.MageRobes, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.MageRobes, 4));
     //Leather
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 4));
     //Heavy
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 4));
     //Shield
-    BanditPlunderer.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 4));
     //Dagger offHand
-    BanditPlunderer.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 4));
     //Rings
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 4));
     //Amulets
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 4));
     //Talismans
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 4));
-    BanditPlunderer.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 4));
-    BanditPlunderer.Stats = {
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 4));
+    VarikVulture.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 4));
+    VarikVulture.Stats = {
         hp: 400,
         maxHp: 400,
         def: 15,
@@ -614,8 +619,8 @@ function MakeMonsterList()
         baseExp: 150,
         acc: 95,
         eva: 5,
-        name: "BanditPlunderer",
-        displayName: "Bandit Plunderer",
+        name: "VarikVulture",
+        displayName: "Varik Vulture",
         type: "weak",
         id: 4,
         level: 4,
@@ -623,135 +628,135 @@ function MakeMonsterList()
         isShown: false,
         killCount: 0,
     };
-    monsterList.BanditPlunderer = BanditPlunderer;
+    monsterList.VarikVulture = VarikVulture;
 
-    BanditAssasin.Drops = [];
+    VarikEvader.Drops = [];
     //Swords
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 25))
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 5));
     //Axes
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 5));
     //Maces
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.Club, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 5));
     //Staves
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 5));
     //Bows
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 50));;
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 5));
     //Robes
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.MageRobes, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.MageRobes, 5));
     //Leather
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 5));
     //Heavy
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 5));
     //Shield
-    BanditAssasin.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.OffHand.Buckler, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 5));
     //Dagger offHand
-    BanditAssasin.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.OffHand.Dagger, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.OffHand.Kris, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 5));
     //Rings
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 5));
     //Amulets
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 5));
     //Talismans
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 5));
-    BanditAssasin.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 5));
-    BanditAssasin.Stats = {
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 5));
+    VarikEvader.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 5));
+    VarikEvader.Stats = {
         hp: 700,
         maxHp: 700,
         def: 20,
@@ -760,8 +765,8 @@ function MakeMonsterList()
         baseExp: 250,
         acc: 95,
         eva: 5,
-        name: "BanditAssasin",
-        displayName: "Bandit Assasin",
+        name: "VarikEvader",
+        displayName: "Varik Evader",
         type: "weak",
         id: 5,
         level: 5,
@@ -769,135 +774,135 @@ function MakeMonsterList()
         isShown: false,
         killCount: 0,
     };
-    monsterList.BanditAssasin = BanditAssasin;
+    monsterList.VarikEvader = VarikEvader;
 
-    BanditLeader.Drops = [];
+    VariksLiar.Drops = [];
     //Swords
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 50))
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 50))
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 10));
     //Axes
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 10));
     //Maces
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.Club, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.Club, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 10));
     //Staves
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 10));
     //Bows
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 75));;
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 75));;
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 10));
     //Robes
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.MageRobes, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.MageRobes, 10));
     //Leather
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 10));
     //Heavy
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 10));
     //Shield
-    BanditLeader.Drops.push(NewDrop(ItemList.OffHand.Buckler, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.OffHand.Buckler, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 10));
     //Dagger offHand
-    BanditLeader.Drops.push(NewDrop(ItemList.OffHand.Dagger, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.OffHand.Kris, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.OffHand.Dagger, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.OffHand.Kris, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 10));
     //Rings
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 10));
     //Amulets
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 10));
     //Talismans
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 75));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 50));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 25));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 10));
-    BanditLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 10));
-    BanditLeader.Stats = {
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 75));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 50));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 25));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 10));
+    VariksLiar.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 10));
+    VariksLiar.Stats = {
         hp: 1000,
         maxHp: 1000,
         def: 25,
@@ -906,8 +911,8 @@ function MakeMonsterList()
         baseExp: 400,
         acc: 95,
         eva: 5,
-        name: "BanditLeader",
-        displayName: "Bandit Leader",
+        name: "VariksLiar",
+        displayName: "Variks Liar",
         type: "weak",
         id: 6,
         level: 6,
@@ -915,163 +920,163 @@ function MakeMonsterList()
         isShown: false,
         killCount: 0,
     };
-    monsterList.BanditLeader = BanditLeader;
+    monsterList.VariksLiar = VariksLiar;
 
-    BanditChief.Drops = [];
+    VariksQueen.Drops = [];
     //Swords
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 75))
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.ColossusSword, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 75))
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.ColossusSword, 10));
     //Axes
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.EttinAxe, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.EttinAxe, 10));
     //Maces
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.Club, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.ReinforcedMace, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.Club, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.ReinforcedMace, 10));
     //Staves
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.GhostWand, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.GhostWand, 10));
     //Bows
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 100));;
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Weapons.AshwoodBow, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 100));;
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Weapons.AshwoodBow, 10));
     //Robes
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.MageRobes, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.MagicWeaverTunic, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.MageRobes, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.MagicWeaverTunic, 10));
     //Leather
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.RangersVest, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.RangersVest, 10));
     //Heavy
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Armors.SalvagedChainArmor, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Armors.SalvagedChainArmor, 10));
     //Shield
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.Buckler, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.Luna, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.Buckler, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.Luna, 10));
     //Dagger offHand
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.Dagger, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.Kris, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.OffHand.FangedKnife, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.Dagger, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.Kris, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.OffHand.FangedKnife, 10));
     //Rings
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofMight, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofTenacity, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofAlertness, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofMastery, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofFluke, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.RingofResistance, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofMight, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofTenacity, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofAlertness, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofMastery, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFluke, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.RingofResistance, 10));
     //Amulets
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofMight, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofTenacity, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofAlertness, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofMastery, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofFluke, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.AmuletofResistance, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofMight, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofTenacity, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofAlertness, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofMastery, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFluke, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofResistance, 10));
     //Talismans
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 100));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 75));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 50));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 25));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofMight, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofTenacity, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofAlertness, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofMastery, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofFluke, 10));
-    BanditChief.Drops.push(NewDrop(ItemList.Accessory.TalismanofResistance, 10));
-    BanditChief.Stats = {
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 100));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 75));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 50));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 25));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofMight, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofTenacity, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofAlertness, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofMastery, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFluke, 10));
+    VariksQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofResistance, 10));
+    VariksQueen.Stats = {
         hp: 1350,
         maxHp: 1350,
         def: 30,
@@ -1080,8 +1085,8 @@ function MakeMonsterList()
         baseExp: 600,
         acc: 95,
         eva: 5,
-        name: "BanditChief",
-        displayName: "Bandit Chief",
+        name: "VariksQueen",
+        displayName: "Variks Queen",
         type: "weak",
         id: 7,
         level: 7,
@@ -1089,163 +1094,163 @@ function MakeMonsterList()
         isShown: false,
         killCount: 0,
     };
-    monsterList.BanditChief = BanditChief;
+    monsterList.VariksQueen = VariksQueen;
 
-    BanditLord.Drops = [];
+    LordVarik.Drops = [];
     //Swords
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 100))
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.ColossusSword, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.ShortSword, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.BroadSword, 100))
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.GreatSword, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.GothicSword, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.ColossusSword, 25));
     //Axes
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.EttinAxe, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.HandAxe, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.BroadAxe, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.MilitaryAxe, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.BerserkerAxe, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.EttinAxe, 25));
     //Maces
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.Club, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.ReinforcedMace, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.Club, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.WarHammer, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.JaggedStar, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.TyrantClub, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.ReinforcedMace, 25));
     //Staves
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.GhostWand, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.ShortStaff, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.GrimWand, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.JoStaff, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.Stalagmite, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.GhostWand, 25));
     //Bows
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 150));;
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Weapons.AshwoodBow, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.ShortBow, 150));;
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.ShortBattleBow, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.RazorBow, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.GreatBow, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Weapons.AshwoodBow, 25));
     //Robes
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.MageRobes, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.MagicWeaverTunic, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.BlackRobes, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.HoodedRobes, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.MonkRobes, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.MageRobes, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.MagicWeaverTunic, 25));
     //Leather
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.RangersVest, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.LeatherArmor, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.ReinforcedLeatherVest, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.StuddedDoublet, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.DarkIronLeather, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.RangersVest, 25));
     //Heavy
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Armors.SalvagedChainArmor, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.ScalemailVest, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.ChainmailArmor, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.LightMailArmor, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.BrigandVest, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Armors.SalvagedChainArmor, 25));
     //Shield
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.Buckler, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.Luna, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.Buckler, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.SpikedShield, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.TowerShield, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.GrimShield, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.Luna, 25));
     //Dagger offHand
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.Dagger, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.Kris, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.OffHand.FangedKnife, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.Dagger, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.Kris, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.OffHand.FangedKnife, 25));
     //Rings
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofMight, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofTenacity, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofAlertness, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofMastery, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofFluke, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.RingofResistance, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofMight, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofTenacity, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofAlertness, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofMastery, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofFluke, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.RingofResistance, 25));
     //Amulets
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofMight, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofTenacity, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofAlertness, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofMastery, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofFluke, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.AmuletofResistance, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofMight, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofTenacity, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofAlertness, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofMastery, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofFluke, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.AmuletofResistance, 25));
     //Talismans
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 150));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 100));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 75));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 50));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofMight, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofTenacity, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofAlertness, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofMastery, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofFluke, 25));
-    BanditLord.Drops.push(NewDrop(ItemList.Accessory.TalismanofResistance, 25));
-    BanditLord.Stats = {
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 150));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 100));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 75));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 50));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofMight, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofTenacity, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofAlertness, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofMastery, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofFluke, 25));
+    LordVarik.Drops.push(NewDrop(ItemList.Accessory.TalismanofResistance, 25));
+    LordVarik.Stats = {
         hp: 1600,
         maxHp: 1600,
         def: 35,
@@ -1254,8 +1259,8 @@ function MakeMonsterList()
         baseExp: 750,
         acc: 95,
         eva: 5,
-        name: "BanditLord",
-        displayName: "Bandit Lord",
+        name: "LordVarik",
+        displayName: "Lord Varik",
         type: "weak",
         id: 8,
         level: 8,
@@ -1263,135 +1268,135 @@ function MakeMonsterList()
         isShown: false,
         killCount: 0,
     };
-    monsterList.BanditLord = BanditLord;
+    monsterList.LordVarik = LordVarik;
 
-    Spider.Drops = [];
+    ToxicFlies.Drops = [];
     //Swords
-    Spider.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
-    Spider.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 1));
     //Axes
-    Spider.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 1));
     //Maces
-    Spider.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 1));
     //Staves
-    Spider.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 1));
     //Bows
-    Spider.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
-    Spider.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
-    Spider.Drops.push(NewDrop(ItemList.Weapons.StagBow, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Weapons.StagBow, 1));
     //Robes
-    Spider.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
-    Spider.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
-    Spider.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
-    Spider.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 1));
     //Leather
-    Spider.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
-    Spider.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
-    Spider.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
-    Spider.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 1));
     //Heavy
-    Spider.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
-    Spider.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
-    Spider.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
-    Spider.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 1));
     //Shield
-    Spider.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
-    Spider.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
-    Spider.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
-    Spider.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 1));
     //Dagger offHand
-    Spider.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
-    Spider.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
-    Spider.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
-    Spider.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 1));
     //Rings
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 1));
     //Amulets
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 1));
     //Talismans
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 1));
-    Spider.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 1));
-    Spider.Stats = {
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 1));
+    ToxicFlies.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 1));
+    ToxicFlies.Stats = {
         hp: 2000,
         maxHp: 2000,
         def: 40,
@@ -1400,143 +1405,143 @@ function MakeMonsterList()
         baseExp: 1000,
         acc: 95,
         eva: 5,
-        name: "Spider",
-        displayName: "Spider",
+        name: "ToxicFlies",
+        displayName: "Toxic Flies",
         type: "average",
         id: 9,
         level: 9,
-        area: "Forest",
+        area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
     };
-    monsterList.Spider = Spider;
+    monsterList.ToxicFlies = ToxicFlies;
     
-    Wolf.Drops = [];
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 2));
+    Stalker.Drops = [];
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 2));
     //Axes
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 2));
     //Maces
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 2));
     //Staves
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 2));
     //Bows
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Weapons.StagBow, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Weapons.StagBow, 2));
     //Robes
-    Wolf.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 2));
     //Leather
-    Wolf.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 2));
     //Heavy
-    Wolf.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 2));
     //Shield
-    Wolf.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
-    Wolf.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
-    Wolf.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
-    Wolf.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 2));
+    Stalker.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
+    Stalker.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
+    Stalker.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
+    Stalker.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 2));
     //Dagger offHand
-    Wolf.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
-    Wolf.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
-    Wolf.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
-    Wolf.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 2));
+    Stalker.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
+    Stalker.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
+    Stalker.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
+    Stalker.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 2));
     //Rings
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 2));
     //Amulets
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 2));
     //Talismans
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 2));
-    Wolf.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 2));
-    Wolf.Stats = {
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 2));
+    Stalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 2));
+    Stalker.Stats = {
         hp: 2400,
         maxHp: 2400,
         def: 50,
@@ -1545,143 +1550,143 @@ function MakeMonsterList()
         baseExp: 1250,
         acc: 95,
         eva: 5,
-        name: "Wolf",
-        displayName: "Wolf",
+        name: "Stalker",
+        displayName: "Stalker",
         type: "average",
         id: 10,
         level: 10,
-        area: "Forest",
+        area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
     };
-    monsterList.Wolf = Wolf;
+    monsterList.Stalker = Stalker;
 
-    Bear.Drops = [];
-    Bear.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
-    Bear.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 3));
+    AlphaStalker.Drops = [];
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 3));
     //Axes
-    Bear.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 3));
     //Maces
-    Bear.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 3));
     //Staves
-    Bear.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 3));
     //Bows
-    Bear.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
-    Bear.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
-    Bear.Drops.push(NewDrop(ItemList.Weapons.StagBow, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Weapons.StagBow, 3));
     //Robes
-    Bear.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
-    Bear.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
-    Bear.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
-    Bear.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 3));
     //Leather
-    Bear.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
-    Bear.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
-    Bear.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
-    Bear.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 3));
     //Heavy
-    Bear.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
-    Bear.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
-    Bear.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
-    Bear.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 3));
     //Shield
-    Bear.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
-    Bear.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
-    Bear.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
-    Bear.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 3));
     //Dagger offHand
-    Bear.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
-    Bear.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
-    Bear.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
-    Bear.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 3));
     //Rings
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 3));
     //Amulets
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 3));
     //Talismans
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 3));
-    Bear.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 3));
-    Bear.Stats = {
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 3));
+    AlphaStalker.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 3));
+    AlphaStalker.Stats = {
         hp: 3000,
         maxHp: 3000,
         def: 60,
@@ -1690,143 +1695,143 @@ function MakeMonsterList()
         baseExp: 1500,
         acc: 95,
         eva: 5,
-        name: "Bear",
-        displayName: "Bear",
+        name: "AlphaStalker",
+        displayName: "Alpha Stalker",
         type: "average",
         id: 11,
         level: 11,
-        area: "Forest",
+        area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
     };
-    monsterList.Bear = Bear;
+    monsterList.AlphaStalker = AlphaStalker;
 
-    Grizzly.Drops = [];
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 4));
+    StalkerPack.Drops = [];
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 4));
     //Axes
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 4));
     //Maces
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 4));
     //Staves
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 4));
     //Bows
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Weapons.StagBow, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Weapons.StagBow, 4));
     //Robes
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 4));
     //Leather
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 4));
     //Heavy
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 4));
     //Shield
-    Grizzly.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 4));
     //Dagger offHand
-    Grizzly.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 4));
     //Rings
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 4));
     //Amulets
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 4));
     //Talismans
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 4));
-    Grizzly.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 4));
-    Grizzly.Stats = {
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 4));
+    StalkerPack.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 4));
+    StalkerPack.Stats = {
         hp: 3500,
         maxHp: 3500,
         def: 70,
@@ -1835,143 +1840,143 @@ function MakeMonsterList()
         baseExp: 1800,
         acc: 95,
         eva: 5,
-        name: "Grizzly",
-        displayName: "Grizzly",
+        name: "StalkerPack",
+        displayName: "Stalker Pack",
         type: "average",
         id: 12,
         level: 12,
-        area: "Forest",
+        area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
     };
-    monsterList.Grizzly = Grizzly;
+    monsterList.StalkerPack = StalkerPack;
 
-    Troll.Drops = [];
-    Troll.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
-    Troll.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 5));
+    JumpingSpider.Drops = [];
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.LongSword, 25))
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.Gladius, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 5));
     //Axes
-    Troll.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 5));
     //Maces
-    Troll.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.Maul, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 5));
     //Staves
-    Troll.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 5));
     //Bows
-    Troll.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
-    Troll.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
-    Troll.Drops.push(NewDrop(ItemList.Weapons.StagBow, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 50));;
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Weapons.StagBow, 5));
     //Robes
-    Troll.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
-    Troll.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
-    Troll.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
-    Troll.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 5));
     //Leather
-    Troll.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
-    Troll.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
-    Troll.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
-    Troll.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 5));
     //Heavy
-    Troll.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
-    Troll.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
-    Troll.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
-    Troll.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 5));
     //Shield
-    Troll.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
-    Troll.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
-    Troll.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
-    Troll.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 5));
     //Dagger offHand
-    Troll.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
-    Troll.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
-    Troll.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
-    Troll.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.OffHand.Katar, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 5));
     //Rings
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 5));
     //Amulets
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 5));
     //Talismans
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 5));
-    Troll.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 5));
-    Troll.Stats = {
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 50));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 25));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 10));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 5));
+    JumpingSpider.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 5));
+    JumpingSpider.Stats = {
         hp: 4200,
         maxHp: 4200,
         def: 80,
@@ -1980,143 +1985,143 @@ function MakeMonsterList()
         baseExp: 2200,
         acc: 95,
         eva: 5,
-        name: "Troll",
-        displayName: "Troll",
+        name: "JumpingSpider",
+        displayName: "Jumping Spider",
         type: "average",
         id: 13,
         level: 13,
-        area: "Forest",
+        area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
     };
-    monsterList.Troll = Troll;
+    monsterList.JumpingSpider = JumpingSpider;
 
-    ForestTroll.Drops = [];
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.LongSword, 50))
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.Gladius, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 10));
+    SpiderBeast.Drops = [];
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.LongSword, 50))
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.Gladius, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 10));
     //Axes
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 10));
     //Maces
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.Maul, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.Maul, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 10));
     //Staves
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 10));
     //Bows
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 75));;
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Weapons.StagBow, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 75));;
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Weapons.StagBow, 10));
     //Robes
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 10));
     //Leather
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 10));
     //Heavy
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 10));
     //Shield
-    ForestTroll.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 10));
     //Dagger offHand
-    ForestTroll.Drops.push(NewDrop(ItemList.OffHand.Katar, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.OffHand.Katar, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 10));
     //Rings
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 10));
     //Amulets
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 10));
     //Talismans
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 75));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 50));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 25));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 10));
-    ForestTroll.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 10));
-    ForestTroll.Stats = {
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 75));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 50));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 25));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 10));
+    SpiderBeast.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 10));
+    SpiderBeast.Stats = {
         hp: 4800,
         maxHp: 4800,
         def: 90,
@@ -2125,171 +2130,171 @@ function MakeMonsterList()
         baseExp: 2700,
         acc: 95,
         eva: 5,
-        name: "ForestTroll",
-        displayName: "Forest Troll",
+        name: "SpiderBeast",
+        displayName: "Spider Beast",
         type: "average",
         id: 14,
         level: 14,
-        area: "Forest",
+        area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
     };
-    monsterList.ForestTroll = ForestTroll;
+    monsterList.SpiderBeast = SpiderBeast;
 
-    SpiderQueen.Drops = [];
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.LongSword, 75))
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.Gladius, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.HighlandBlade, 10));
+    Narsus.Drops = [];
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.LongSword, 75))
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.Gladius, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.HighlandBlade, 10));
     //Axes
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.FeralAxe, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.FeralAxe, 10));
     //Maces
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.Maul, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.OgreMaul, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.Maul, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.OgreMaul, 10));
     //Staves
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.UnearthedWand, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.UnearthedWand, 10));
     //Bows
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 100));;
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.StagBow, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Weapons.CeremonialBow, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 100));;
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.StagBow, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Weapons.CeremonialBow, 10));
     //Robes
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.AncestralTunic, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.AncestralTunic, 10));
     //Leather
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.NomadicVest, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.NomadicVest, 10));
     //Heavy
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Armors.TemplarArmor, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Armors.TemplarArmor, 10));
     //Shield
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.Hyperion, 10));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 100));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 75));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 50));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 25));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.Hyperion, 10));
     //Dagger offHand
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.Katar, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.OffHand.RunicTalons, 10));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.Katar, 100));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 75));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 50));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 25));
+    Narsus.Drops.push(NewDrop(ItemList.OffHand.RunicTalons, 10));
     //Rings
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofMight, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofTenacity, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofAlertness, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofMastery, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofFluke, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.RingofResistance, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofMight, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofTenacity, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofAlertness, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofMastery, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofFluke, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.RingofResistance, 10));
     //Amulets
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofMight, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofTenacity, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofAlertness, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofMastery, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofFluke, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.AmuletofResistance, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofMight, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofTenacity, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofAlertness, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofMastery, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofFluke, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.AmuletofResistance, 10));
     //Talismans
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 100));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 75));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 50));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 25));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofMight, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofTenacity, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofAlertness, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofMastery, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofFluke, 10));
-    SpiderQueen.Drops.push(NewDrop(ItemList.Accessory.TalismanofResistance, 10));
-    SpiderQueen.Stats = {
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 100));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 75));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 50));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 25));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofMight, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofTenacity, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofAlertness, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofMastery, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofFluke, 10));
+    Narsus.Drops.push(NewDrop(ItemList.Accessory.TalismanofResistance, 10));
+    Narsus.Stats = {
         hp: 6000,
         maxHp: 6000,
         def: 100,
@@ -2298,171 +2303,171 @@ function MakeMonsterList()
         baseExp: 3500,
         acc: 95,
         eva: 5,
-        name: "SpiderQueen",
-        displayName: "Spider Queen",
+        name: "Narsus",
+        displayName: "Narsus",
         type: "average",
         id: 15,
         level: 15,
-        area: "Forest",
+        area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
     };
-    monsterList.SpiderQueen = SpiderQueen;
+    monsterList.Narsus = Narsus;
 
-    TrollLeader.Drops = [];
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.LongSword, 75))
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.Gladius, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.HighlandBlade, 10));
+    JotunnScout.Drops = [];
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.Scimitar, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.LongSword, 75))
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.Gladius, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.TuskSword, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.HighlandBlade, 10));
     //Axes
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.FeralAxe, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.DoubleAxe, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.BattleAxe, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.BeardedAxe, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.SmallCrescent, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.FeralAxe, 10));
     //Maces
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.Maul, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.OgreMaul, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.SpikedClub, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.Maul, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.BattleHammer, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.DevilStar, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.OgreMaul, 10));
     //Staves
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.UnearthedWand, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.LongStaff, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.BurntWand, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.QuaterStaff, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.PetrifiedWand, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.UnearthedWand, 10));
     //Bows
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 100));;
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.StagBow, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Weapons.CeremonialBow, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.HuntersBow, 100));;
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.LongBattleBow, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.CedarBow, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.StagBow, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Weapons.CeremonialBow, 10));
     //Robes
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.AncestralTunic, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.RedLinenVest, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.BeadedRobes, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.AncestralRobe, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.MysticsRobe, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.AncestralTunic, 10));
     //Leather
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.NomadicVest, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.SnowhideVest, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.BattleHarness, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.CuredLeatherArmor, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.BlackBearHideVest, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.NomadicVest, 10));
     //Heavy
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Armors.TemplarArmor, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.AugumentedChainVest, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.JaggedChainVest, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.RecruitTunic, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.SiegeBrigadeVest, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Armors.TemplarArmor, 10));
     //Shield
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.Hyperion, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.SmallShield, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.BoneShield, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.GothicShield, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.AncientShield, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.Hyperion, 10));
     //Dagger offHand
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.Katar, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.OffHand.RunicTalons, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.Katar, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.WristBlade, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.BladeTalons, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.FeralClaws, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.OffHand.RunicTalons, 10));
     //Rings
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofMight, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofTenacity, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofAlertness, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofMastery, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofFluke, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.RingofResistance, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofStrength, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofLuck, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofDefense, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofPower, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofStamina, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofFeather, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofExpertise, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofDestiny, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofSafety, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofSupremacy, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofFortitude, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofBalance, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofSkill, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofFortune, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofProtection, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofForce, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofHardness, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofFlexibility, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofAbility, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofChance, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofImmunity, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofMight, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofTenacity, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofAlertness, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofMastery, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofFluke, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.RingofResistance, 10));
     //Amulets
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofMight, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofTenacity, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofAlertness, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofMastery, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofFluke, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.AmuletofResistance, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofStrength, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofEndurance, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofAgility, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofDexterity, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofLuck, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofDefense, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofPower, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofStamina, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofFeather, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofExpertise, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofDestiny, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofSafety, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofSupremacy, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortitude, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofBalance, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofSkill, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofFortune, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofProtection, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofForce, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofHardness, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofFlexibility, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofAbility, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofChance, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofImmunity, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofMight, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofTenacity, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofAlertness, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofMastery, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofFluke, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.AmuletofResistance, 10));
     //Talismans
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 100));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 75));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 50));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 25));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofMight, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofTenacity, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofAlertness, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofMastery, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofFluke, 10));
-    TrollLeader.Drops.push(NewDrop(ItemList.Accessory.TalismanofResistance, 10));
-    TrollLeader.Stats = {
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofStrength, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofEndurance, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofAgility, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofDexterity, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofLuck, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofDefense, 100));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofPower, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofStamina, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofFeather, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofExpertise, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofDestiny, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofSafety, 75));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofSupremacy, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortitude, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofBalance, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofSkill, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofFortune, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofProtection, 50));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofForce, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofHardness, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofFlexibility, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofAbility, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofChance, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofImmunity, 25));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofMight, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofTenacity, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofAlertness, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofMastery, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofFluke, 10));
+    JotunnScout.Drops.push(NewDrop(ItemList.Accessory.TalismanofResistance, 10));
+    JotunnScout.Stats = {
         hp: 8000,
         maxHp: 8000,
         def: 110,
@@ -2471,16 +2476,16 @@ function MakeMonsterList()
         baseExp: 4000,
         acc: 95,
         eva: 5,
-        name: "TrollLeader",
-        displayName: "Troll Leader",
+        name: "JotunnScout",
+        displayName: "Jotunn Scout",
         type: "average",
         id: 16,
         level: 16,
-        area: "Forest",
+        area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
     };
-    monsterList.TrollLeader = TrollLeader;
+    monsterList.JotunnScout = JotunnScout;
 
     Giant.Drops = [];
     Giant.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
@@ -2621,7 +2626,7 @@ function MakeMonsterList()
         type: "strong",
         id: 17,
         level: 17,
-        area: "Mountains",
+        area: "OzJotnar",
         isShown: false,
         killCount: 0,
     };
@@ -2766,7 +2771,7 @@ function MakeMonsterList()
         type: "strong",
         id: 18,
         level: 18,
-        area: "Mountains",
+        area: "OzJotnar",
         isShown: false,
         killCount: 0,
     };
@@ -2907,11 +2912,11 @@ function MakeMonsterList()
         acc: 95,
         eva: 5,
         name: "FrostTroll",
-        displayName: "Frost Troll",
+        displayName: "Frost troll",
         type: "strong",
         id: 19,
         level: 19,
-        area: "Mountains",
+        area: "OzJotnar",
         isShown: false,
         killCount: 0,
     };
@@ -3056,7 +3061,7 @@ function MakeMonsterList()
         type: "strong",
         id: 20,
         level: 20,
-        area: "Mountains",
+        area: "OzJotnar",
         isShown: false,
         killCount: 0,
     };
@@ -3201,7 +3206,7 @@ function MakeMonsterList()
         type: "strong",
         id: 21,
         level: 21,
-        area: "Mountains",
+        area: "OzJotnar",
         isShown: false,
         killCount: 0,
     };
@@ -3346,7 +3351,7 @@ function MakeMonsterList()
         type: "strong",
         id: 22,
         level: 22,
-        area: "Mountains",
+        area: "OzJotnar",
         isShown: false,
         killCount: 0,
     };
@@ -3519,7 +3524,7 @@ function MakeMonsterList()
         type: "strong",
         id: 23,
         level: 23,
-        area: "Mountains",
+        area: "OzJotnar",
         isShown: false,
         killCount: 0,
     };
@@ -3692,7 +3697,7 @@ function MakeMonsterList()
         type: "strong",
         id: 24,
         level: 24,
-        area: "Mountains",
+        area: "OzJotnar",
         isShown: false,
         killCount: 0,
     };

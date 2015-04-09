@@ -1,4 +1,9 @@
 _________________________
+v1.4 - 27 march 2015     |
+-------------------------|
+- Added story to the game, if you fulfill requirements, like kill certain monster enough times or level up to a certain level, you will unlock new part of the story and stronger enemy.
+- 
+_________________________
 v1.3.4 - 27 march 2015   |
 -------------------------|
 - Fixed a bug with bow skill not saving.

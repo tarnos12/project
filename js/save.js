@@ -209,5 +209,9 @@ function reset() {
     CreateWeaponSkillHtml();
     monsterKillCount();
     CreateMonsterHtml();
+    pageReload();
     save();
 };//test
+function pageReload() {
+    location.reload();
+};

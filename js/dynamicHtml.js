@@ -339,7 +339,7 @@ function CreateMonsterHtml() {
 
             if (area === monsterAreas[j].type) {
                 if (monster.Stats.isShown == true) {
-                    html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">' +
+                    html += '<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">' +
                         '<div id="' + monster.Stats.id + '" class="c3">' +
                         'Dmg:' + monster.Stats.minDmg + "-" + monster.Stats.maxDmg +
                         '<br />' +
@@ -422,85 +422,88 @@ function CreateInventoryWeaponHtml() {
                     var itemStat = equippedItems.talisman;
                 }
                 html += '<tr>' + '<td>';
-                html += '<img src="images/items/' + playerInventory[i].subType + "/"  + playerInventory[i].image + '.png" "data-toggle=" "tooltip" title="'
-                html += "You will gain:"
-                html += '\n'
-                html += "Item Type: " + playerInventory[i].subType + '\n'
+                html += '<a href="#" class="tooltipA">'
+                html += '<img src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png" />'
+                html += '<span>'
+                html += 'You will gain:'
+                html += '<br />'
+                html += 'Rarity: ' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '<br />'
+                html += "Item Type: " + playerInventory[i].subType
                 if (playerInventory[i].minDamage > 0 && playerInventory[i].maxDamage > 0) {
-                    html += "Min Damage: " + (playerInventory[i].minDamage - itemStat.minDamage) + '\n'
-                    html+= "Max Damage: " + (playerInventory[i].maxDamage - itemStat.maxDamage) + '\n'
+                    html += '<br />' + "Damage: " + (playerInventory[i].minDamage - itemStat.minDamage) + '-'
+                    html+= (playerInventory[i].maxDamage - itemStat.maxDamage)
                 }
                
                 if (playerInventory[i].defense > 0 || itemStat.defense > 0) {
                     if (itemStat.defense > 0) {
-                        html += "Defense: " + (playerInventory[i].defense - itemStat.defense) + '\n'
+                        html += '<br />' + "Defense: " + '<font color="' + (playerInventory[i].defense - itemStat.defense) + '</font>'
                     }
                     else {
-                        html += "Defense: " + playerInventory[i].defense + '\n'
+                        html += '<br />' + "Defense: " + '<span style="color:red">' + playerInventory[i].defense + '</span>'
                     }
                 }
                 if (playerInventory[i].strength > 0 || itemStat.strength > 0) {
                     if (itemStat.strength > 0) {
-                        html += "Strength: " + (playerInventory[i].strength - itemStat.strength) + '\n'
+                        html += '<br />' + "Strength: " + (playerInventory[i].strength - itemStat.strength)
                     }
                     else {
-                        html += "Strength: " + playerInventory[i].strength + '\n'
+                        html += '<br />' + "Strength: " + playerInventory[i].strength
                     }
                 }
                 if (playerInventory[i].endurance > 0 || itemStat.endurance > 0) {
                     if (itemStat.endurance > 0) {
-                        html += "Endurance: " + (playerInventory[i].endurance - itemStat.endurance) + '\n'
+                        html += '<br />' + "Endurance: " + (playerInventory[i].endurance - itemStat.endurance)
                     }
                     else {
-                        html += "Endurance: " + playerInventory[i].endurance + '\n'
+                        html += '<br />' + "Endurance: " + playerInventory[i].endurance
                     }
                 }
                 if (playerInventory[i].agility > 0 || itemStat.agility > 0) {
                     if (itemStat.agility > 0) {
-                        html += "Agility: " + (playerInventory[i].agility - itemStat.agility) + '\n'
+                        html += '<br />' + "Agility: " + (playerInventory[i].agility - itemStat.agility)
                     }
                     else {
-                        html += "Agility: " + playerInventory[i].agility + '\n'
+                        html += '<br />' + "Agility: " + playerInventory[i].agility
                     }
                 }
                 if (playerInventory[i].dexterity > 0 || itemStat.dexterity) {
                     if (itemStat.dexterity > 0) {
-                        html += "Dexterity: " + (playerInventory[i].dexterity - itemStat.dexterity) + '\n'
+                        html += '<br />' + "Dexterity: " + (playerInventory[i].dexterity - itemStat.dexterity)
                     }
                     else {
-                        html += "Dexterity: " + playerInventory[i].dexterity + '\n'
+                        html += '<br />' + "Dexterity: " + playerInventory[i].dexterity
                     }
                 }
                 if (playerInventory[i].intelligence > 0 || itemStat.intelligence) {
                     if (itemStat.intelligence > 0) {
 
-                        html += "Intelligence: " + (playerInventory[i].intelligence - itemStat.intelligence) + '\n'
+                        html += '<br />' + "Intelligence: " + (playerInventory[i].intelligence - itemStat.intelligence)
                     }
                     else {
-                        html += "Intelligence: " + playerInventory[i].intelligence + '\n'
+                        html += '<br />' + "Intelligence: " + playerInventory[i].intelligence
                     }
                 }
                 if (playerInventory[i].wisdom > 0 || itemStat.wisdom) {
                     if (itemStat.wisdom > 0) {
 
-                        html += "Wisdom: " + (playerInventory[i].wisdom - itemStat.wisdom) + '\n'
+                        html += '<br />' + "Wisdom: " + (playerInventory[i].wisdom - itemStat.wisdom)
                     }
                     else {
-                        html += "Wisdom: " + playerInventory[i].wisdom + '\n'
+                        html += '<br />' + "Wisdom: " + playerInventory[i].wisdom
                     }
                 }
                 if (playerInventory[i].luck > 0 || itemStat.luck) {
                     if (itemStat.luck > 0) {
 
-                        html += "Luck: " + (playerInventory[i].luck - itemStat.luck) + '\n'
+                        html += '<br />' + "Luck: " + (playerInventory[i].luck - itemStat.luck)
                     }
                     else {
-                        html += "Luck: " + playerInventory[i].luck + '\n'
+                        html += '<br />' + "Luck: " + playerInventory[i].luck
                     }
                 }
                
-                html += "Value: " + playerInventory[i].value + "gold"
-                html += '">' + '</td>';
+                html += '<br />' + "Value: " + playerInventory[i].value + "gold"
+                html += '</span>' + '</a>' + '</td>';
                 html += '<td>' + playerInventory[i].name + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
                     '<td>' + playerInventory[i].value + "Value" +
                  '<td>' + '<button type="button" class="btn btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' + '</td>' +
