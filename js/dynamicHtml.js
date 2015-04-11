@@ -240,9 +240,23 @@ function CreateInventoryWeaponHtml() {
                     html += '<br />' + 'Level: ' + playerInventory[i].level + "/" + playerInventory[i].maxLevel;
                     html += '<br />' + 'Experience: ' + playerInventory[i].exp + "/" + playerInventory[i].maxExp;
                 };
-                if (playerInventory[i].minDamage > 0 && playerInventory[i].maxDamage > 0) {
-                    html += '<br />' + "Damage: " + (playerInventory[i].minDamage - itemStat.minDamage) + '-'
-                    html+= (playerInventory[i].maxDamage - itemStat.maxDamage)
+                if ((playerInventory[i].minDamage - itemStat.minDamage) < 0) {
+                    html += '<br />' + "Damage: " + playerInventory[i].minDamage + " (" + '<b style="color:red">' + (playerInventory[i].minDamage - itemStat.minDamage) + '</b>' + ")" + " to ";
+                }
+                else if ((playerInventory[i].minDamage - itemStat.minDamage) > 0) {
+                    html += '<br />' + "Damage: " + playerInventory[i].minDamage + " (" + '<b style="color:green">' + "+" + (playerInventory[i].minDamage - itemStat.minDamage) + '</b>' + ")" + " to ";
+                }
+                else if ((playerInventory[i].minDamage - itemStat.minDamage) == 0) {
+                    html += '<br />' + "Damage: " + playerInventory[i].minDamage + " (0)" + " to ";
+                }
+                if ((playerInventory[i].maxDamage - itemStat.maxDamage) < 0) {
+                    html += playerInventory[i].maxDamage + " (" + '<b style="color:red">' + (playerInventory[i].maxDamage - itemStat.maxDamage) + '</b>' + ")";
+                }
+                else if ((playerInventory[i].maxDamage - itemStat.maxDamage) > 0) {
+                    html += playerInventory[i].maxDamage + " (" + '<b style="color:green">' + "+" + (playerInventory[i].maxDamage - itemStat.maxDamage) + '</b>' + ")";
+                }
+                else if ((playerInventory[i].maxDamage - itemStat.maxDamage) == 0) {
+                    html += playerInventory[i].maxDamage + " (0)" + " to ";
                 }
                 var item = playerInventory[i];
                 for (var statName in item) { //Here stat will become the word Defense
