@@ -35,7 +35,7 @@ var player = {
         return (1 + (player.totalLuck()) / 500);
     },
     inventory: function () {
-        return Math.floor((20 + (player.totalStrength() / 10) + equippedItems.backpack.slots + player.backpackUpgrade)); //Add backpacks "new item type"
+        return Math.floor((20 + (player.totalStrength() / 10) + player.backpackUpgrade)); //Add backpacks "new item type"
     },
     //Strength
     baseStrength: 5,
@@ -322,9 +322,6 @@ var equippedItems = {
         luck: 0,
         defense: 0
     },
-    backpack: {
-        slots: 0,
-    }
 };
 
 var maxLogLines = 16;

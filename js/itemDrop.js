@@ -98,7 +98,7 @@ function itemDropRandom(monster) {
                 else {
                     dropItem["defense"] = 0;
                 }
-                
+
                 //Add item level up etc
                 if (dropItem.itemQuality == "Common") {
                     dropItem["level"] = 0;
