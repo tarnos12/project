@@ -100,10 +100,40 @@ function itemDropRandom(monster) {
                 }
                 
                 //Add item level up etc
-                if (dropItem.itemQuality == "Common" || dropItem.itemQuality == "Uncommon") {
+                if (dropItem.itemQuality == "Common") {
                     dropItem["level"] = 0;
+                    dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
-                    dropItem["maxExp"] = 10;
+                    dropItem["maxExp"] = 100;
+                    dropItem["power"] = 1; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
+                };
+                if (dropItem.itemQuality == "Uncommon") {
+                    dropItem["level"] = 0;
+                    dropItem["maxLevel"] = 10;
+                    dropItem["exp"] = 0;
+                    dropItem["maxExp"] = 200;
+                    dropItem["power"] = 2; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
+                };
+                if (dropItem.itemQuality == "Rare") {
+                    dropItem["level"] = 0;
+                    dropItem["maxLevel"] = 15;
+                    dropItem["exp"] = 0;
+                    dropItem["maxExp"] = 300;
+                    dropItem["power"] = 3; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
+                };
+                if (dropItem.itemQuality == "Epic") {
+                    dropItem["level"] = 0;
+                    dropItem["maxLevel"] = 20;
+                    dropItem["exp"] = 0;
+                    dropItem["maxExp"] = 400;
+                    dropItem["power"] = 4; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
+                };
+                if (dropItem.itemQuality == "Legendary") {
+                    dropItem["level"] = 0;
+                    dropItem["maxLevel"] = 30;
+                    dropItem["exp"] = 0;
+                    dropItem["maxExp"] = 500;
+                    dropItem["power"] = 5; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                 };
                 
             var itemHolder = [];
