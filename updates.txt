@@ -1,4 +1,14 @@
 _________________________
+v1.4 - 11 april 2015     |
+-------------------------|
+- Added story to the game (not completed yet), you will unlock new part of the story and stronger enemy each time you level up (soon to be changed with monster kills).
+- Changed item tooltip, to display each item base stat and compare it with currently equipped item and change color to red if you lose stat on equip or green when you gain stat.
+- Weapon levels, each weapon rarity: Common, Uncommon, Rare, Epic, Legendary have "max Level" which is 5, 10, 15, 20, 30 respectively. Each weapon tooltip will display item level and experience.
+Each weapon "strike" gives you experience on currently equipped weapon, based on monster level, and item will gain some new stats and old stats will get stronger. Amount of bonus stat you gain is determined by iLvl (item level) and item rarity.
+Legendary item gives you much higher bonuses than common when you level them up, but also require much more experience to level them.
+- Game Version check, if your save is old, and require you to reset the game to fully enjoy the game, test new stuff etc, it will automatically reset for you.
+- When you press a reset button, there will be a confirm button, and game reset will refresh the page for you and save the fresh game, to overwrite old one.
+_________________________
 v1.3.4 - 27 march 2015   |
 -------------------------|
 - Fixed a bug with bow skill not saving.

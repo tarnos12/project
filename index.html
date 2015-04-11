@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/footer.css" rel="stylesheet" type="text/css">
+    <link href="css/text.css" rel="stylesheet" type="text/css">
+    <link href="css/tooltip.css" rel="stylesheet" type="text/css">
     <link rel="Shortcut icon" href="images/icon.png">
     <title>Legend of the Fallen Warrior</title>
     <style type="text/css">
@@ -29,7 +31,7 @@
             width: 100%;
         }
         div.c4 {
-            background-color: azure;
+            background-color: #EEDFA6;
         }
 
         div.c3 {
@@ -72,7 +74,7 @@
                 <div id="progressBar" class="progress-bar progress-bar c1">Exp: <span id="exppercent">0</span>%</div>
                 <div id="progressBar2" class="progress-bar progress-bar-success progress-bar c2">HP: <span id="health">50</span>/<span id="maxhealth">50</span></div>
             </div>
-            <div class=".col-sm-3 col-md-3 .col-lg-3">
+            <div class=".col-sm-5 col-md-4 .col-lg-2">
                 <div class="container c4">
                     <ul class="nav nav-pills">
                         <li class="active"><a href="#tab_a" data-toggle="tab">Player Stats</a></li>
@@ -92,7 +94,7 @@
                                     <td colspan="2">
                                         <span id="level">1</span>
                                     </td>
-                                    <td colspan ="3">
+                                    <td colspan="3">
                                         Exp
                                         <span id="experience">0</span>/<span id="maxexperience">100</span>
                                     </td>
@@ -379,7 +381,27 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_c">
-                            <div id="story">Still working on it :D</div>
+                            <div id="story">
+                                <h1><b>Prologue</b></h1><br /><br />
+                                <p>
+                                    The dead stay dead, but in your case that isn't true.
+                                    You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
+                                    On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
+                                    It speaks to you and it desires only one thing: Battle.<br /><br />
+                                    "Become the Legend I was and help me feel alive again."<br /><br />
+                                    You respond by opening your door and taking the first steps towards a new life.
+                                </p>
+
+                                <h3><b>Varik Grunts</b></h3><br />
+                                <p>
+                                    Of course, you have to start somewhere.
+                                    You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
+                                    Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
+                                    So, you go stir up some trouble with the Varik Grunts and hope someone notices.
+                                    Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
+                                    You started trouble with them by breaking a bottle over one of their heads.
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <!-- tab content -->
@@ -387,7 +409,7 @@
                 <!-- end of container -->
             </div>
 
-            <div class=".col-sm-5 col-md-5 .col-lg-5">
+            <div class=".col-sm-3 col-md-4 .col-lg-5">
                 <div class="container c4">
                     <div id="monsterTabs">
 
@@ -411,7 +433,7 @@
                 <!-- end of container -->
             </div>
 
-            <div class=".col-sm-4 col-md-4 .col-lg-4">
+            <div class=".col-sm-4 col-md-4 .col-lg-5">
                 <div class="container c4">
                     <ul class="nav nav-pills">
                         <li class="active"><a href="#tab_a2" data-toggle="tab">Player Inventory</a></li>
@@ -526,26 +548,26 @@
                                 <span type="button" class="btn btn-default" onclick="load()">
                                     load
                                 </span>
-                                <span type="button" class="btn btn-default" onclick="reset()">
+                                <span type="button" class="btn btn-default" onclick="resetCheck()">
                                     reset
                                 </span><br /><br />
 
-                                        <div> <a href="updates.txt" target="_blank">Changelog</a></div><br />
-                                        <a href="http://www.reddit.com/r/LoFW/">Subreddit</a><br /><br />
-                                        <div><label><input type='checkbox' id="common" onclick='handleClick(this);'>Destroy all Common</label></div>
-                                        <div><label><input type='checkbox' id="uncommon" onclick='handleClick(this);'>Destroy all Uncommon</label></div>
-                                        <div><label><input type='checkbox' id="rare" onclick='handleClick(this);'>Destroy all Rare</label></div>
-                                        <div><label><input type='checkbox' id="epic" onclick='handleClick(this);'>Destroy all Epic</label></div><br />
-                                        <div class="c3">
-                                            <b>Game is free, but donations are always welcome. I am going to spend about $900 for new graphic (item sprites + monster sprites) so any help is appreciated.</b>
-                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                                <input type="hidden" name="cmd" value="_s-xclick">
-                                                <input type="hidden" name="hosted_button_id" value="A9UAZH8H9XHFQ">
-                                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                                <img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
-                                            </form>
-                                        </div>
-</div>
+                                <div> <a href="updates.txt" target="_blank">Changelog</a></div><br />
+                                <a href="http://www.reddit.com/r/LoFW/">Subreddit</a><br /><br />
+                                <div><label><input type='checkbox' id="common" onclick='handleClick(this);'>Destroy all Common</label></div>
+                                <div><label><input type='checkbox' id="uncommon" onclick='handleClick(this);'>Destroy all Uncommon</label></div>
+                                <div><label><input type='checkbox' id="rare" onclick='handleClick(this);'>Destroy all Rare</label></div>
+                                <div><label><input type='checkbox' id="epic" onclick='handleClick(this);'>Destroy all Epic</label></div><br />
+                                <div class="c3">
+                                    <b>Game is free, but donations are always welcome. I am going to spend about $900 for new graphic (item sprites + monster sprites) so any help is appreciated.</b>
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="A9UAZH8H9XHFQ">
+                                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <!-- tab content -->
                     </div>

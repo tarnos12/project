@@ -41,6 +41,7 @@
         backpackStatus: backpackStatus,
         statStatus: statStatus,
         monsterList: monsterList,
+        gameVersion: player.gameVersion,
     }
     Log("Game Saved")
     localStorage.setItem("save", JSON.stringify(save));
@@ -49,6 +50,7 @@
 function load() {
     var savegame = JSON.parse(localStorage.getItem("save"));
     if (typeof savegame.itemId !== "undefined") player.itemIdNumber = savegame.itemId;
+    if (typeof savegame.gameVersion !== "undefined") player.gameVersion = savegame.gameVersion;
     if (typeof savegame.monsterList !== "undefined") monsterList = savegame.monsterList;
     if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
     if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
@@ -97,8 +99,14 @@ function load() {
     CreateWeaponSkillHtml();
     monsterKillCount();
     CreateMonsterHtml();
+    versionCheck();
 };
 
+function resetCheck() {
+    if (confirm("Are you sure?") == true) {
+        reset();
+    };
+};
 function reset() {
     localStorage.removeItem("save");
     player.gold = 0;
@@ -209,5 +217,16 @@ function reset() {
     CreateWeaponSkillHtml();
     monsterKillCount();
     CreateMonsterHtml();
+    player.gameVersion = currentGameVersion;
+    pageReload();
     save();
 };//test
+
+function pageReload() {
+    location.reload();
+};
+function versionCheck() {
+    if (player.gameVersion != currentGameVersion) {
+        reset();
+    };
+};

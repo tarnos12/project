@@ -183,7 +183,7 @@ var itemTable = {
 
             ]
         },
-        Forest: {
+        ForestofNarsus: {
             itemDrop: [
                 //Weapons
             {
@@ -364,7 +364,7 @@ var itemTable = {
             },
             ]
         },
-        Mountains: {
+        OzJotnars: {
             itemDrop: [
             {
                 chance: 50,
@@ -862,7 +862,7 @@ var itemTable = {
             },
             ]
         },
-        Forest: {
+        ForestofNarsus: {
             itemDrop: [
             {
                 chance: 50,
@@ -997,7 +997,7 @@ var itemTable = {
             },
             ]
         },
-        Mountains: {
+        OzJotnars: {
             itemDrop: [
             {
                 chance: 50,
@@ -1405,7 +1405,7 @@ var itemTable = {
             },
             ]
         },
-        Forest: {
+        ForestofNarsus: {
              itemDrop: [
             {
                 chance: 50,
@@ -1540,7 +1540,7 @@ var itemTable = {
             },
             ]
         },
-        Mountains: {
+        OzJotnars: {
             itemDrop: [
             {
                 chance: 50,
@@ -1948,7 +1948,7 @@ var itemTable = {
             },
             ]
         },
-        Forest: {
+        ForestofNarsus: {
             itemDrop: [
            {
                chance: 50,
@@ -2083,7 +2083,7 @@ var itemTable = {
             },
             ]
         },
-        Mountains: {
+        OzJotnars: {
             itemDrop: [
            {
                chance: 50,
@@ -2491,7 +2491,7 @@ var itemTable = {
             },
             ]
         },
-        Forest: {
+        ForestofNarsus: {
             itemDrop: [
            {
                chance: 50,
@@ -2626,7 +2626,7 @@ var itemTable = {
             },
             ]
         },
-        Mountains: {
+        OzJotnars: {
            itemDrop: [
            {
                chance: 50,
@@ -3034,7 +3034,7 @@ var itemTable = {
 
             ]
         },
-        Forest: {
+        ForestofNarsus: {
             itemDrop: [
            {
                chance: 5,
@@ -3170,7 +3170,7 @@ var itemTable = {
             },
             ]
         },
-        Mountains: {
+        OzJotnars: {
             itemDrop: [
            {
                chance: 5,
@@ -3579,7 +3579,7 @@ var itemTable = {
             },
             ]
         },
-        Forest: {
+        ForestofNarsus: {
              itemDrop: [
            {
                chance: 5,
@@ -3715,7 +3715,7 @@ var itemTable = {
             },
             ]
         },
-        Mountains: {
+        OzJotnars: {
             itemDrop: [
            {
                chance: 5,
@@ -3991,15 +3991,15 @@ var itemTable = {
     //Crafting items maybe?
     groupH: {
         BanditHideout: {},
-        Forest: {},
-        Mountains: {},
+        ForestofNarsus: {},
+        OzJotnars: {},
         AncientCave: {},
     },
     //Some other stuff in the future...crards/materia maybe
     groupI: {
          BanditHideout: {},
-        Forest: {},
-        Mountains: {},
+        ForestofNarsus: {},
+        OzJotnars: {},
         AncientCave: {},
     },
 };

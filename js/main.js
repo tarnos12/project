@@ -17,6 +17,7 @@ function Log(data) {
     document.getElementById('logConsole').innerHTML = logTemp;
 };
 
+var currentGameVersion = 1.4;
 //PLAYER STATS
 var player = {
     monsterCount: 1,
@@ -426,6 +427,7 @@ function playerDamageDeal(damage, monster) {
     damageDealt += damage;
     document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     //Add more stuff like "bonus elemental damage from passive skills or bonus weapon damage
+    itemExperienceGain(monster);
 };
 
 //monster hit chance
@@ -538,6 +540,49 @@ function monsterExperience(monster) {
     }
     else Log("You gain: " + Math.floor(expgain) + " experience!");
     monsterGold(monster);
+};
+
+//Experience gain for equipped items
+function itemExperienceGain(monster) {
+    var weaponExp = equippedItems.weapon.exp;
+    var weaponMaxExp = equippedItems.weapon.maxExp;
+    var weaponLevel = equippedItems.weapon.level;
+    var weaponMaxLevel = equippedItems.weapon.maxLevel;
+    var monsterExp = monsterStats.level;
+    var weapon = equippedItems.weapon;
+    if (weaponLevel != weaponMaxLevel) {
+        if (weaponExp < weaponMaxExp) {
+            weaponExp += monsterExp;
+        };
+        if (weaponExp >= weaponMaxExp) {
+            weaponLevel += 1;
+            equippedItems.weapon.minDamage += (1 * weaponLevel)
+            equippedItems.weapon.maxDamage += (2 * weaponLevel)
+            weaponExp = weaponExp - weaponMaxExp;
+            weaponMaxExp = Math.floor(weaponMaxExp * 1.1)
+                if (weapon.subType == "Sword", "Axe", "Bow") {
+                    weapon.minDamage += weapon.iLvl + weapon.power + 2;
+                    weapon.maxDamage += weapon.iLvl + weapon.power + 2;
+                    weapon.strength += weapon.iLvl + weapon.power + 2;
+                    weapon.endurance += weapon.iLvl + weapon.power + 1;
+                    weapon.agility += weapon.iLvl + weapon.power + 2;
+                    weapon.dexterity += weapon.iLvl + weapon.power + 2;
+                }
+                else if (weapon.subType == "Mace", "Staff") {
+                    weapon.minDamage += weapon.iLvl + weapon.power + 2;
+                    weapon.maxDamage += weapon.iLvl + weapon.power + 2;
+                    weapon.strength += weapon.iLvl + weapon.power + 1;
+                    weapon.endurance += weapon.iLvl + weapon.power + 2;
+                    weapon.intelligence += weapon.iLvl + weapon.power + 2;
+                    weapon.wisdom += weapon.iLvl + weapon.power + 2;
+                }
+            
+        };
+        equippedItems.weapon.exp = weaponExp;
+        equippedItems.weapon.maxExp = weaponMaxExp;
+        equippedItems.weapon.level = weaponLevel;
+        CreateEquipHtml()
+    }
 };
 
 //gold gained from killing a monster

@@ -1,0 +1,40 @@
+﻿h1 {
+	font-family: Papyrus;
+	font-size: 23px;
+	font-style: italic;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 25.3px;
+}
+h3 {
+	font-family: Papyrus;
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 700;
+	line-height: 18.7px;
+}
+p {
+	font-family: Papyrus;
+	font-size: 17px;
+	font-style: italic;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20.4px;
+}
+blockquote {
+	font-family: Papyrus,fantasy;
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 23px;
+}
+pre {
+	font-family: Papyrus;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 13.2px;
+}
