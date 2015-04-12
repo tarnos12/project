@@ -6,31 +6,31 @@ function CreateWeaponSkillHtml() {
 
     //Sword
     html += '<tr>' + '<td>';
-    html += "Sword Skill Level: " + player.SwordLevel;
+    html += "Sword Skill Level: " + player.swordLevel;
     html += '<td>' + "Strength +" + player.swordStrength() + '</td>' + '<td>' + " Agility +" + player.swordAgility() + '</td>';
     html += '</td>' + '</tr>';
 
     //Axe
     html += '<tr>' + '<td>';
-    html += "Axe Skill Level: " + player.AxeLevel;
+    html += "Axe Skill Level: " + player.axeLevel;
     html += '<td>' + "Strength +" + player.axeStrength() + '</td>' + '<td>' + " Endurance +" + player.axeEndurance() + '</td>';
     html += '</td>' + '</tr>';
 
     //Mace
     html += '<tr>' + '<td>';
-    html += "Mace Skill Level: " + player.MaceLevel;
+    html += "Mace Skill Level: " + player.maceLevel;
     html += '<td>' + "Endurance +" + player.maceEndurance() + '</td>' + '<td>' + " Wisdom +" + player.maceWisdom() + '</td>';
     html += '</td>' + '</tr>';
 
     //Staff
     html += '<tr>' + '<td>';
-    html += "Staff Skill Level: " + player.StaffLevel;
+    html += "Staff Skill Level: " + player.staffLevel;
     html += '<td>' + "Intelligence +" + player.staffIntelligence() + '</td>' + '<td>' + " Wisdom +" + player.staffWisdom() + '</td>';
     html += '</td>' + '</tr>';
 
     //Bow
     html += '<tr>' + '<td>';
-    html += "Bow Skill Level: " + player.RangedLevel;
+    html += "Bow Skill Level: " + player.rangedLevel;
     html += '<td>' + "Strength +" + player.rangedStrength() + '</td>' + '<td>' + " Dexterity +" + player.rangedDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
