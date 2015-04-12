@@ -2988,7 +2988,7 @@ function MakeItemList() {
         itemType: 'accessory',
         subType: 'ring',
         color: 'black',
-        image: 'CrackedRingofLearning',
+        image: 'Ring001',
         iLvl: 1,
         baseExpRate: 5,
         value: 50
@@ -2999,7 +2999,7 @@ function MakeItemList() {
         itemType: 'accessory',
         subType: 'ring',
         color: 'green',
-        image: 'DamagedRingofLearning',
+        image: 'Ring002',
         iLvl: 2,
         baseExpRate: 10,
         value: 200
@@ -3010,7 +3010,7 @@ function MakeItemList() {
         itemType: 'accessory',
         subType: 'ring',
         color: 'blue',
-        image: 'RingofLearning',
+        image: 'Ring003',
         iLvl: 3,
         baseExpRate: 15,
         value: 500
@@ -3021,7 +3021,7 @@ function MakeItemList() {
         itemType: 'accessory',
         subType: 'ring',
         color: 'orange',
-        image: 'SupremeRingofLearning',
+        image: 'Ring004',
         iLvl: 4,
         baseExpRate: 20,
         value: 800
@@ -3032,200 +3032,146 @@ function MakeItemList() {
         itemType: 'accessory',
         subType: 'ring',
         color: 'red',
-        image: 'AncientRingofLearning',
+        image: 'Ring005',
         iLvl: 5,
         baseExpRate: 25,
         value: 1500
     };
     //Ring Endurance
-    Accessory.RingofEndurance = {
-        name: 'Ring of Endurance',
+    Accessory.CrackedRingofWealth = {
+        name: 'Cracked Ring of Wealth',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'ring',
         color: 'black',
-        image: 'RingOfEndurance',
+        image: 'Ring001',
         iLvl: 1,
-        baseEndurance: 5,
+        baseGoldRate: 5,
         value: 50
     };
-    Accessory.RingofStamina = {
-        name: 'Ring of Stamina',
+    Accessory.DamagedRingofWealth = {
+        name: 'Damaged Ring of Wealth',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'ring',
         color: 'green',
-        image: 'RingOfStamina',
+        image: 'Ring002',
         iLvl: 2,
-        baseEndurance: 10,
+        baseGoldRate: 10,
         value: 200
     };
-    Accessory.RingofFortitude = {
-        name: 'Ring of Fortitude',
+    Accessory.RingofWealth = {
+        name: 'Ring of Wealth',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'ring',
         color: 'blue',
-        image: 'RingOfFortitude',
+        image: 'Ring003',
         iLvl: 3,
-        baseEndurance: 15,
+        baseGoldRate: 15,
         value: 500
     };
-    Accessory.RingofHardness = {
-        name: 'Ring of Hardness',
+    Accessory.SupremeRingofWealth = {
+        name: 'Supreme Ring of Wealth',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'ring',
         color: 'orange',
-        image: 'RingOfHardness',
+        image: 'Ring004',
         iLvl: 4,
-        baseEndurance: 20,
+        baseGoldRate: 20,
         value: 800
     };
-    Accessory.RingofTenacity = {
-        name: 'Ring of Tenacity',
+    Accessory.AncientRingofWealth = {
+        name: 'Ancient Ring of Wealth',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'ring',
         color: 'red',
-        image: 'RingOfTenacity',
+        image: 'Ring005',
         iLvl: 5,
-        baseStrength: 25,
+        baseGoldRate: 25,
         value: 1500
     };
     //Ring Agility
-    Accessory.RingofAgility = {
-        name: 'Ring of Agility',
+    Accessory.CrackedRingofOpportunity = {
+        name: 'Cracked Ring of Opportunity',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'ring',
         color: 'black',
-        image: 'RingOfAgility',
+        image: 'Ring001',
         iLvl: 1,
-        baseAgility: 5,
+        baseDropRate: 5,
         value: 50
     };
-    Accessory.RingofFeather = {
-        name: 'Ring of Feather',
+    Accessory.DamagedRingofOpportunity = {
+        name: 'Damaged Ring of Opportunity',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'ring',
         color: 'green',
-        image: 'RingOfFeather',
+        image: 'Ring002',
         iLvl: 2,
-        baseAgility: 10,
+        baseDropRate: 10,
         value: 200
     };
-    Accessory.RingofBalance = {
-        name: 'Ring of Balance',
+    Accessory.RingofOpportunity = {
+        name: 'Ring of Opportunity',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'ring',
         color: 'blue',
-        image: 'RingOfBalance',
+        image: 'Ring003',
         iLvl: 3,
-        baseAgility: 15,
+        baseDropRate: 15,
         value: 500
     };
-    Accessory.RingofFlexibility = {
-        name: 'Ring of Flexibility',
+    Accessory.SupremeRingofOpportunity = {
+        name: 'Supreme Ring of Opportunity',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'ring',
         color: 'orange',
-        image: 'RingOfFlexibility',
+        image: 'Ring004',
         iLvl: 4,
-        baseAgility: 20,
+        baseDropRate: 20,
         value: 800
     };
-    Accessory.RingofAlertness = {
-        name: 'Ring of Alertness',
+    Accessory.AncientRingofOpportunity = {
+        name: 'Ancient Ring of Opportunity',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'ring',
         color: 'red',
-        image: 'RingOfAlertness',
+        image: 'Ring005',
         iLvl: 5,
-        baseAgility: 25,
+        baseDropRate: 25,
         value: 1500
     };
     //Ring Dexterity
-    Accessory.RingofDexterity = {
-        name: 'Ring of Dexterity',
+    Accessory.CrackedRingofFortune = {
+        name: 'Cracked Ring of Fortune',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'ring',
         color: 'black',
-        image: 'RingOfDexterity',
+        image: 'Ring001',
         iLvl: 1,
-        baseDexterity: 5,
+        baseExpRate: 5,
+        baseGoldRate: 5,
         value: 50
     };
-    Accessory.RingofExpertise = {
-        name: 'Ring of Expertise',
+    Accessory.DamagedRingofFortune = {
+        name: 'Damaged Ring of Fortune',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'ring',
         color: 'green',
-        image: 'RingOfExpertise',
+        image: 'Ring002',
         iLvl: 2,
-        baseDexterity: 10,
-        value: 200
-    };
-    Accessory.RingofSkill = {
-        name: 'Ring of Skill',
-        itemQuality: 'Rare',
-        itemType: 'accessory',
-        subType: 'ring',
-        color: 'blue',
-        image: 'RingOfSkill',
-        iLvl: 3,
-        baseDexterity: 15,
-        value: 500
-    };
-    Accessory.RingofAbility = {
-        name: 'Ring of Ability',
-        itemQuality: 'Epic',
-        itemType: 'accessory',
-        subType: 'ring',
-        color: 'orange',
-        image: 'RingOfAbility',
-        iLvl: 4,
-        baseDexterity: 20,
-        value: 800
-    };
-    Accessory.RingofMastery = {
-        name: 'Ring of Mastery',
-        itemQuality: 'Legendary',
-        itemType: 'accessory',
-        subType: 'ring',
-        color: 'red',
-        image: 'RingOfMastery',
-        iLvl: 5,
-        baseDexterity: 25,
-        value: 1500
-    };
-    //Ring Luck
-    Accessory.RingofLuck = {
-        name: 'Ring of Luck',
-        itemQuality: 'Common',
-        itemType: 'accessory',
-        subType: 'ring',
-        color: 'black',
-        image: 'RingOfLuck',
-        iLvl: 1,
-        baseLuck: 5,
-        value: 50
-    };
-    Accessory.RingofDestiny = {
-        name: 'Ring of Destiny',
-        itemQuality: 'Uncommon',
-        itemType: 'accessory',
-        subType: 'ring',
-        color: 'green',
-        image: 'RingOfDestiny',
-        iLvl: 2,
-        baseLuck: 10,
+        baseExpRate: 10,
+        baseGoldRate: 10,
         value: 200
     };
     Accessory.RingofFortune = {
@@ -3234,334 +3180,415 @@ function MakeItemList() {
         itemType: 'accessory',
         subType: 'ring',
         color: 'blue',
-        image: 'RingOfFortune',
+        image: 'Ring003',
         iLvl: 3,
-        baseLuck: 15,
+        baseExpRate: 15,
+        baseGoldRate: 15,
         value: 500
     };
-    Accessory.RingofChance = {
-        name: 'Ring of Chance',
+    Accessory.SupremeRingofFortune = {
+        name: 'Supreme Ring of Fortune',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'ring',
         color: 'orange',
-        image: 'RingOfChance',
+        image: 'Ring004',
         iLvl: 4,
-        baseLuck: 20,
+        baseExpRate: 20,
+        baseGoldRate: 20,
         value: 800
     };
-    Accessory.RingofFluke = {
-        name: 'Ring of Fluke',
+    Accessory.AncientRingofFortune = {
+        name: 'Ancient Ring of Fortune',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'ring',
         color: 'red',
-        image: 'RingOfFluke',
+        image: 'Ring005',
         iLvl: 5,
-        baseLuck: 25,
+        baseExpRate: 25,
+        baseDropRate: 25,
+        value: 1500
+    };
+    //Ring Luck
+    Accessory.CrackedRingofProsperity = {
+        name: 'Cracked Ring of Prosperity',
+        itemQuality: 'Common',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'black',
+        image: 'Ring001',
+        iLvl: 1,
+        baseExpRate: 5,
+        baseDropRate: 5,
+        value: 50
+    };
+    Accessory.DamagedRingofProsperity = {
+        name: 'Damaged Ring of Prosperity',
+        itemQuality: 'Uncommon',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'green',
+        image: 'Ring002',
+        iLvl: 2,
+        baseExpRate: 10,
+        baseDropRate: 10,
+        value: 200
+    };
+    Accessory.RingofProsperity = {
+        name: 'Ring of Prosperity',
+        itemQuality: 'Rare',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'blue',
+        image: 'Ring003',
+        iLvl: 3,
+        baseExpRate: 15,
+        baseDropRate: 15,
+        value: 500
+    };
+    Accessory.SupremeRingofProsperity = {
+        name: 'Supreme Ring of Prosperity',
+        itemQuality: 'Epic',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'orange',
+        image: 'Ring004',
+        iLvl: 4,
+        baseExpRate: 20,
+        baseDropRate: 20,
+        value: 800
+    };
+    Accessory.AncientRingofProsperity = {
+        name: 'Ancient Ring of Prosperity',
+        itemQuality: 'Legendary',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'red',
+        image: 'Ring005',
+        iLvl: 5,
+        baseExpRate: 25,
+        baseDropRate: 25,
         value: 1500
     };
     //Ring Defense
-    Accessory.RingofDefense = {
-        name: 'Ring of Defense',
+    Accessory.CrackedRingofAbundance = {
+        name: 'Cracked Ring of Abundance',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'ring',
         color: 'black',
-        image: 'RingOfDefense',
+        image: 'Ring001',
         iLvl: 1,
-        baseDefense: 5,
+        baseGoldRate: 5,
+        baseDropRate: 5,
         value: 50
     };
-    Accessory.RingofProtection = {
-        name: 'Ring of Protection',
+    Accessory.DamagedRingofAbundance = {
+        name: 'Damaged Ring of Abundance',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'ring',
         color: 'green',
-        image: 'RingOfProtection',
+        image: 'Ring002',
         iLvl: 2,
-        baseDefense: 10,
+        baseGoldRate: 10,
+        baseDropRate: 10,
         value: 200
     };
-    Accessory.RingofImmunity = {
-        name: 'Ring of Immunity',
+    Accessory.RingofAbundance = {
+        name: 'Ring of Abundance',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'ring',
         color: 'blue',
-        image: 'RingOfImmunity',
+        image: 'Ring003',
         iLvl: 3,
-        baseDefense: 15,
+        baseGoldRate: 15,
+        baseDropRate: 15,
         value: 500
     };
-    Accessory.RingofSafety = {
-        name: 'Ring of Safety',
+    Accessory.SupremeRingofAbundance = {
+        name: 'Supreme Ring of Abundance',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'ring',
         color: 'orange',
-        image: 'RingOfSafety',
+        image: 'Ring004',
         iLvl: 4,
-        baseDefense: 20,
+        baseGoldRate: 20,
+        baseDropRate: 20,
         value: 800
     };
-    Accessory.RingofResistance = {
-        name: 'Ring of Resistance',
+    Accessory.AncientRingofAbundance = {
+        name: 'Ancient Ring of Abundance',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'ring',
         color: 'red',
-        image: 'RingOfResistance',
+        image: 'Ring005',
         iLvl: 5,
-        baseDefense: 25,
+        baseGoldRate: 25,
+        baseDropRate: 25,
         value: 1500
     };
-    //Amulets
-    Accessory.AmuletofStrength = {
-        name: 'Amulet of Strength',
+    //Ring all 3
+    Accessory.CrackedRingofPlenty = {
+        name: 'Cracked Ring of Plenty',
+        itemQuality: 'Common',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'black',
+        image: 'Ring001',
+        iLvl: 1,
+        baseGoldRate: 5,
+        baseDropRate: 5,
+        baseExpRate: 5,
+        value: 50
+    };
+    Accessory.DamagedRingofPlenty = {
+        name: 'Damaged Ring of Plenty',
+        itemQuality: 'Uncommon',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'green',
+        image: 'Ring002',
+        iLvl: 2,
+        baseGoldRate: 10,
+        baseDropRate: 10,
+        baseExpRate: 10,
+        value: 200
+    };
+    Accessory.RingofPlenty = {
+        name: 'Ring of Plenty',
+        itemQuality: 'Rare',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'blue',
+        image: 'Ring003',
+        iLvl: 3,
+        baseGoldRate: 15,
+        baseDropRate: 15,
+        baseExpRate: 15,
+        value: 500
+    };
+    Accessory.SupremeRingofPlenty = {
+        name: 'Supreme Ring of Plenty',
+        itemQuality: 'Epic',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'orange',
+        image: 'Ring004',
+        iLvl: 4,
+        baseGoldRate: 20,
+        baseDropRate: 20,
+        baseExpRate: 20,
+        value: 800
+    };
+    Accessory.AncientRingofPlenty = {
+        name: 'Ancient Ring of Plenty',
+        itemQuality: 'Legendary',
+        itemType: 'accessory',
+        subType: 'ring',
+        color: 'red',
+        image: 'Ring005',
+        iLvl: 5,
+        baseGoldRate: 25,
+        baseDropRate: 25,
+        baseExpRate: 25,
+        value: 1500
+    };
+    //Amulet
+    Accessory.CrackedAmuletofLearning = {
+        name: 'Cracked Amulet of Learning',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'black',
-        image: 'AmuletOfStrength',
+        image: 'Amulet001',
         iLvl: 1,
-        baseStrength: 5,
+        baseExpRate: 5,
         value: 50
     };
-    Accessory.AmuletofPower = {
-        name: 'Amulet of Power',
+    Accessory.DamagedAmuletofLearning = {
+        name: 'Damaged Amulet of Learning',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'green',
-        image: 'AmuletOfPower',
+        image: 'Amulet002',
         iLvl: 2,
-        baseStrength: 10,
+        baseExpRate: 10,
         value: 200
     };
-    Accessory.AmuletofSupremacy = {
-        name: 'Amulet of Supremacy',
+    Accessory.AmuletofLearning = {
+        name: 'Amulet of Learning',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'blue',
-        image: 'AmuletOfSupremacy',
+        image: 'Amulet003',
         iLvl: 3,
-        baseStrength: 15,
+        baseExpRate: 15,
         value: 500
     };
-    Accessory.AmuletofForce = {
-        name: 'Amulet of Force',
+    Accessory.SupremeAmuletofLearning = {
+        name: 'Supreme Amulet of Learning',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'orange',
-        image: 'AmuletOfForce',
+        image: 'Amulet004',
         iLvl: 4,
-        baseStrength: 20,
+        baseExpRate: 20,
         value: 800
     };
-    Accessory.AmuletofMight = {
-        name: 'Amulet of Might',
+    Accessory.AncientAmuletofLearning = {
+        name: 'Ancient Amulet of Learning',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'red',
-        image: 'AmuletOfMight',
+        image: 'Amulet005',
         iLvl: 5,
-        baseStrength: 25,
+        baseExpRate: 25,
         value: 1500
     };
     //Amulet Endurance
-    Accessory.AmuletofEndurance = {
-        name: 'Amulet of Endurance',
+    Accessory.CrackedAmuletofWealth = {
+        name: 'Cracked Amulet of Wealth',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'black',
-        image: 'AmuletOfEndurance',
+        image: 'Amulet001',
         iLvl: 1,
-        baseEndurance: 5,
+        baseGoldRate: 5,
         value: 50
     };
-    Accessory.AmuletofStamina = {
-        name: 'Amulet of Stamina',
+    Accessory.DamagedAmuletofWealth = {
+        name: 'Damaged Amulet of Wealth',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'green',
-        image: 'AmuletOfStamina',
+        image: 'Amulet002',
         iLvl: 2,
-        baseEndurance: 10,
+        baseGoldRate: 10,
         value: 200
     };
-    Accessory.AmuletofFortitude = {
-        name: 'Amulet of Fortitude',
+    Accessory.AmuletofWealth = {
+        name: 'Amulet of Wealth',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'blue',
-        image: 'AmuletOfFortitude',
+        image: 'Amulet003',
         iLvl: 3,
-        baseEndurance: 15,
+        baseGoldRate: 15,
         value: 500
     };
-    Accessory.AmuletofHardness = {
-        name: 'Amulet of Hardness',
+    Accessory.SupremeAmuletofWealth = {
+        name: 'Supreme Amulet of Wealth',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'orange',
-        image: 'AmuletOfHardness',
+        image: 'Amulet004',
         iLvl: 4,
-        baseEndurance: 20,
+        baseGoldRate: 20,
         value: 800
     };
-    Accessory.AmuletofTenacity = {
-        name: 'Amulet of Tenacity',
+    Accessory.AncientAmuletofWealth = {
+        name: 'Ancient Amulet of Wealth',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'red',
-        image: 'AmuletOfTenacity',
+        image: 'Amulet005',
         iLvl: 5,
-        baseStrength: 25,
+        baseGoldRate: 25,
         value: 1500
     };
     //Amulet Agility
-    Accessory.AmuletofAgility = {
-        name: 'Amulet of Agility',
+    Accessory.CrackedAmuletofOpportunity = {
+        name: 'Cracked Amulet of Opportunity',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'black',
-        image: 'AmuletOfAgility',
+        image: 'Amulet001',
         iLvl: 1,
-        baseAgility: 5,
+        baseDropRate: 5,
         value: 50
     };
-    Accessory.AmuletofFeather = {
-        name: 'Amulet of Feather',
+    Accessory.DamagedAmuletofOpportunity = {
+        name: 'Damaged Amulet of Opportunity',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'green',
-        image: 'AmuletOfFeather',
+        image: 'Amulet002',
         iLvl: 2,
-        baseAgility: 10,
+        baseDropRate: 10,
         value: 200
     };
-    Accessory.AmuletofBalance = {
-        name: 'Amulet of Balance',
+    Accessory.AmuletofOpportunity = {
+        name: 'Amulet of Opportunity',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'blue',
-        image: 'AmuletOfBalance',
+        image: 'Amulet003',
         iLvl: 3,
-        baseAgility: 15,
+        baseDropRate: 15,
         value: 500
     };
-    Accessory.AmuletofFlexibility = {
-        name: 'Amulet of Flexibility',
+    Accessory.SupremeAmuletofOpportunity = {
+        name: 'Supreme Amulet of Opportunity',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'orange',
-        image: 'AmuletOfFlexibility',
+        image: 'Amulet004',
         iLvl: 4,
-        baseAgility: 20,
+        baseDropRate: 20,
         value: 800
     };
-    Accessory.AmuletofAlertness = {
-        name: 'Amulet of Alertness',
+    Accessory.AncientAmuletofOpportunity = {
+        name: 'Ancient Amulet of Opportunity',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'red',
-        image: 'AmuletOfAlertness',
+        image: 'Amulet005',
         iLvl: 5,
-        baseAgility: 25,
+        baseDropRate: 25,
         value: 1500
     };
     //Amulet Dexterity
-    Accessory.AmuletofDexterity = {
-        name: 'Amulet of Dexterity',
+    Accessory.CrackedAmuletofFortune = {
+        name: 'Cracked Amulet of Fortune',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'black',
-        image: 'AmuletOfDexterity',
+        image: 'Amulet001',
         iLvl: 1,
-        baseDexterity: 5,
+        baseExpRate: 5,
+        baseGoldRate: 5,
         value: 50
     };
-    Accessory.AmuletofExpertise = {
-        name: 'Amulet of Expertise',
+    Accessory.DamagedAmuletofFortune = {
+        name: 'Damaged Amulet of Fortune',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'green',
-        image: 'AmuletOfExpertise',
+        image: 'Amulet002',
         iLvl: 2,
-        baseDexterity: 10,
-        value: 200
-    };
-    Accessory.AmuletofSkill = {
-        name: 'Amulet of Skill',
-        itemQuality: 'Rare',
-        itemType: 'accessory',
-        subType: 'amulet',
-        color: 'blue',
-        image: 'AmuletOfSkill',
-        iLvl: 3,
-        baseDexterity: 15,
-        value: 500
-    };
-    Accessory.AmuletofAbility = {
-        name: 'Amulet of Ability',
-        itemQuality: 'Epic',
-        itemType: 'accessory',
-        subType: 'amulet',
-        color: 'orange',
-        image: 'AmuletOfAbility',
-        iLvl: 4,
-        baseDexterity: 20,
-        value: 800
-    };
-    Accessory.AmuletofMastery = {
-        name: 'Amulet of Mastery',
-        itemQuality: 'Legendary',
-        itemType: 'accessory',
-        subType: 'amulet',
-        color: 'red',
-        image: 'AmuletOfMastery',
-        iLvl: 5,
-        baseDexterity: 25,
-        value: 1500
-    };
-    //Amulet Luck
-    Accessory.AmuletofLuck = {
-        name: 'Amulet of Luck',
-        itemQuality: 'Common',
-        itemType: 'accessory',
-        subType: 'amulet',
-        color: 'black',
-        image: 'AmuletOfLuck',
-        iLvl: 1,
-        baseLuck: 5,
-        value: 50
-    };
-    Accessory.AmuletofDestiny = {
-        name: 'Amulet of Destiny',
-        itemQuality: 'Uncommon',
-        itemType: 'accessory',
-        subType: 'amulet',
-        color: 'green',
-        image: 'AmuletOfDestiny',
-        iLvl: 2,
-        baseLuck: 10,
+        baseExpRate: 10,
+        baseGoldRate: 10,
         value: 200
     };
     Accessory.AmuletofFortune = {
@@ -3570,334 +3597,417 @@ function MakeItemList() {
         itemType: 'accessory',
         subType: 'amulet',
         color: 'blue',
-        image: 'AmuletOfFortune',
+        image: 'Amulet003',
         iLvl: 3,
-        baseLuck: 15,
+        baseExpRate: 15,
+        baseGoldRate: 15,
         value: 500
     };
-    Accessory.AmuletofChance = {
-        name: 'Amulet of Chance',
+    Accessory.SupremeAmuletofFortune = {
+        name: 'Supreme Amulet of Fortune',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'orange',
-        image: 'AmuletOfChance',
+        image: 'Amulet004',
         iLvl: 4,
-        baseLuck: 20,
+        baseExpRate: 20,
+        baseGoldRate: 20,
         value: 800
     };
-    Accessory.AmuletofFluke = {
-        name: 'Amulet of Fluke',
+    Accessory.AncientAmuletofFortune = {
+        name: 'Ancient Amulet of Fortune',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'red',
-        image: 'AmuletOfFluke',
+        image: 'Amulet005',
         iLvl: 5,
-        baseLuck: 25,
+        baseExpRate: 25,
+        baseDropRate: 25,
+        value: 1500
+    };
+    //Amulet Luck
+    Accessory.CrackedAmuletofProsperity = {
+        name: 'Cracked Amulet of Prosperity',
+        itemQuality: 'Common',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'black',
+        image: 'Amulet001',
+        iLvl: 1,
+        baseExpRate: 5,
+        baseDropRate: 5,
+        value: 50
+    };
+    Accessory.DamagedAmuletofProsperity = {
+        name: 'Damaged Amulet of Prosperity',
+        itemQuality: 'Uncommon',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'green',
+        image: 'Amulet002',
+        iLvl: 2,
+        baseExpRate: 10,
+        baseDropRate: 10,
+        value: 200
+    };
+    Accessory.AmuletofProsperity = {
+        name: 'Amulet of Prosperity',
+        itemQuality: 'Rare',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'blue',
+        image: 'Amulet003',
+        iLvl: 3,
+        baseExpRate: 15,
+        baseDropRate: 15,
+        value: 500
+    };
+    Accessory.SupremeAmuletofProsperity = {
+        name: 'Supreme Amulet of Prosperity',
+        itemQuality: 'Epic',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'orange',
+        image: 'Amulet004',
+        iLvl: 4,
+        baseExpRate: 20,
+        baseDropRate: 20,
+        value: 800
+    };
+    Accessory.AncientAmuletofProsperity = {
+        name: 'Ancient Amulet of Prosperity',
+        itemQuality: 'Legendary',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'red',
+        image: 'Amulet005',
+        iLvl: 5,
+        baseExpRate: 25,
+        baseDropRate: 25,
         value: 1500
     };
     //Amulet Defense
-    Accessory.AmuletofDefense = {
-        name: 'Amulet of Defense',
+    Accessory.CrackedAmuletofAbundance = {
+        name: 'Cracked Amulet of Abundance',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'black',
-        image: 'AmuletOfDefense',
+        image: 'Amulet001',
         iLvl: 1,
-        baseDefense: 5,
+        baseGoldRate: 5,
+        baseDropRate: 5,
         value: 50
     };
-    Accessory.AmuletofProtection = {
-        name: 'Amulet of Protection',
+    Accessory.DamagedAmuletofAbundance = {
+        name: 'Damaged Amulet of Abundance',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'green',
-        image: 'AmuletOfProtection',
+        image: 'Amulet002',
         iLvl: 2,
-        baseDefense: 10,
+        baseGoldRate: 10,
+        baseDropRate: 10,
         value: 200
     };
-    Accessory.AmuletofImmunity = {
-        name: 'Amulet of Immunity',
+    Accessory.AmuletofAbundance = {
+        name: 'Amulet of Abundance',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'blue',
-        image: 'AmuletOfImmunity',
+        image: 'Amulet003',
         iLvl: 3,
-        baseDefense: 15,
+        baseGoldRate: 15,
+        baseDropRate: 15,
         value: 500
     };
-    Accessory.AmuletofSafety = {
-        name: 'Amulet of Safety',
+    Accessory.SupremeAmuletofAbundance = {
+        name: 'Supreme Amulet of Abundance',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'orange',
-        image: 'AmuletOfSafety',
+        image: 'Amulet004',
         iLvl: 4,
-        baseDefense: 20,
+        baseGoldRate: 20,
+        baseDropRate: 20,
         value: 800
     };
-    Accessory.AmuletofResistance = {
-        name: 'Amulet of Resistance',
+    Accessory.AncientAmuletofAbundance = {
+        name: 'Ancient Amulet of Abundance',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'amulet',
         color: 'red',
-        image: 'AmuletOfResistance',
+        image: 'Amulet005',
         iLvl: 5,
-        baseDefense: 25,
+        baseGoldRate: 25,
+        baseDropRate: 25,
+        value: 1500
+    };
+    //Amulet all 3
+    Accessory.CrackedAmuletofPlenty = {
+        name: 'Cracked Amulet of Plenty',
+        itemQuality: 'Common',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'black',
+        image: 'Amulet001',
+        iLvl: 1,
+        baseGoldRate: 5,
+        baseDropRate: 5,
+        baseExpRate: 5,
+        value: 50
+    };
+    Accessory.DamagedAmuletofPlenty = {
+        name: 'Damaged Amulet of Plenty',
+        itemQuality: 'Uncommon',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'green',
+        image: 'Amulet002',
+        iLvl: 2,
+        baseGoldRate: 10,
+        baseDropRate: 10,
+        baseExpRate: 10,
+        value: 200
+    };
+    Accessory.AmuletofPlenty = {
+        name: 'Amulet of Plenty',
+        itemQuality: 'Rare',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'blue',
+        image: 'Amulet003',
+        iLvl: 3,
+        baseGoldRate: 15,
+        baseDropRate: 15,
+        baseExpRate: 15,
+        value: 500
+    };
+    Accessory.SupremeAmuletofPlenty = {
+        name: 'Supreme Amulet of Plenty',
+        itemQuality: 'Epic',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'orange',
+        image: 'Amulet004',
+        iLvl: 4,
+        baseGoldRate: 20,
+        baseDropRate: 20,
+        baseExpRate: 20,
+        value: 800
+    };
+    Accessory.AncientAmuletofPlenty = {
+        name: 'Ancient Amulet of Plenty',
+        itemQuality: 'Legendary',
+        itemType: 'accessory',
+        subType: 'amulet',
+        color: 'red',
+        image: 'Amulet005',
+        iLvl: 5,
+        baseGoldRate: 25,
+        baseDropRate: 25,
+        baseExpRate: 25,
         value: 1500
     };
     //Talismans
-    Accessory.TalismanofStrength = {
-        name: 'Talisman of Strength',
+
+    //Talisman
+    Accessory.CrackedTalismanofLearning = {
+        name: 'Cracked Talisman of Learning',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'black',
-        image: 'TalismanOfStrength',
+        image: 'Talisman001',
         iLvl: 1,
-        baseStrength: 5,
+        baseExpRate: 5,
         value: 50
     };
-    Accessory.TalismanofPower = {
-        name: 'Talisman of Power',
+    Accessory.DamagedTalismanofLearning = {
+        name: 'Damaged Talisman of Learning',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'green',
-        image: 'TalismanOfPower',
+        image: 'Talisman002',
         iLvl: 2,
-        baseStrength: 10,
+        baseExpRate: 10,
         value: 200
     };
-    Accessory.TalismanofSupremacy = {
-        name: 'Talisman of Supremacy',
+    Accessory.TalismanofLearning = {
+        name: 'Talisman of Learning',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'blue',
-        image: 'TalismanOfSupremacy',
+        image: 'Talisman003',
         iLvl: 3,
-        baseStrength: 15,
+        baseExpRate: 15,
         value: 500
     };
-    Accessory.TalismanofForce = {
-        name: 'Talisman of Force',
+    Accessory.SupremeTalismanofLearning = {
+        name: 'Supreme Talisman of Learning',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'orange',
-        image: 'TalismanOfForce',
+        image: 'Talisman004',
         iLvl: 4,
-        baseStrength: 20,
+        baseExpRate: 20,
         value: 800
     };
-    Accessory.TalismanofMight = {
-        name: 'Talisman of Might',
+    Accessory.AncientTalismanofLearning = {
+        name: 'Ancient Talisman of Learning',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'red',
-        image: 'TalismanOfMight',
+        image: 'Talisman005',
         iLvl: 5,
-        baseStrength: 25,
+        baseExpRate: 25,
         value: 1500
     };
     //Talisman Endurance
-    Accessory.TalismanofEndurance = {
-        name: 'Talisman of Endurance',
+    Accessory.CrackedTalismanofWealth = {
+        name: 'Cracked Talisman of Wealth',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'black',
-        image: 'TalismanOfEndurance',
+        image: 'Talisman001',
         iLvl: 1,
-        baseEndurance: 5,
+        baseGoldRate: 5,
         value: 50
     };
-    Accessory.TalismanofStamina = {
-        name: 'Talisman of Stamina',
+    Accessory.DamagedTalismanofWealth = {
+        name: 'Damaged Talisman of Wealth',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'green',
-        image: 'TalismanOfStamina',
+        image: 'Talisman002',
         iLvl: 2,
-        baseEndurance: 10,
+        baseGoldRate: 10,
         value: 200
     };
-    Accessory.TalismanofFortitude = {
-        name: 'Talisman of Fortitude',
+    Accessory.TalismanofWealth = {
+        name: 'Talisman of Wealth',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'blue',
-        image: 'TalismanOfFortitude',
+        image: 'Talisman003',
         iLvl: 3,
-        baseEndurance: 15,
+        baseGoldRate: 15,
         value: 500
     };
-    Accessory.TalismanofHardness = {
-        name: 'Talisman of Hardness',
+    Accessory.SupremeTalismanofWealth = {
+        name: 'Supreme Talisman of Wealth',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'orange',
-        image: 'TalismanOfHardness',
+        image: 'Talisman004',
         iLvl: 4,
-        baseEndurance: 20,
+        baseGoldRate: 20,
         value: 800
     };
-    Accessory.TalismanofTenacity = {
-        name: 'Talisman of Tenacity',
+    Accessory.AncientTalismanofWealth = {
+        name: 'Ancient Talisman of Wealth',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'red',
-        image: 'TalismanOfTenacity',
+        image: 'Talisman005',
         iLvl: 5,
-        baseStrength: 25,
+        baseGoldRate: 25,
         value: 1500
     };
     //Talisman Agility
-    Accessory.TalismanofAgility = {
-        name: 'Talisman of Agility',
+    Accessory.CrackedTalismanofOpportunity = {
+        name: 'Cracked Talisman of Opportunity',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'black',
-        image: 'TalismanOfAgility',
+        image: 'Talisman001',
         iLvl: 1,
-        baseAgility: 5,
+        baseDropRate: 5,
         value: 50
     };
-    Accessory.TalismanofFeather = {
-        name: 'Talisman of Feather',
+    Accessory.DamagedTalismanofOpportunity = {
+        name: 'Damaged Talisman of Opportunity',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'green',
-        image: 'TalismanOfFeather',
+        image: 'Talisman002',
         iLvl: 2,
-        baseAgility: 10,
+        baseDropRate: 10,
         value: 200
     };
-    Accessory.TalismanofBalance = {
-        name: 'Talisman of Balance',
+    Accessory.TalismanofOpportunity = {
+        name: 'Talisman of Opportunity',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'blue',
-        image: 'TalismanOfBalance',
+        image: 'Talisman003',
         iLvl: 3,
-        baseAgility: 15,
+        baseDropRate: 15,
         value: 500
     };
-    Accessory.TalismanofFlexibility = {
-        name: 'Talisman of Flexibility',
+    Accessory.SupremeTalismanofOpportunity = {
+        name: 'Supreme Talisman of Opportunity',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'orange',
-        image: 'TalismanOfFlexibility',
+        image: 'Talisman004',
         iLvl: 4,
-        baseAgility: 20,
+        baseDropRate: 20,
         value: 800
     };
-    Accessory.TalismanofAlertness = {
-        name: 'Talisman of Alertness',
+    Accessory.AncientTalismanofOpportunity = {
+        name: 'Ancient Talisman of Opportunity',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'red',
-        image: 'TalismanOfAlertness',
+        image: 'Talisman005',
         iLvl: 5,
-        baseAgility: 25,
+        baseDropRate: 25,
         value: 1500
     };
     //Talisman Dexterity
-    Accessory.TalismanofDexterity = {
-        name: 'Talisman of Dexterity',
+    Accessory.CrackedTalismanofFortune = {
+        name: 'Cracked Talisman of Fortune',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'black',
-        image: 'TalismanOfDexterity',
+        image: 'Talisman001',
         iLvl: 1,
-        baseDexterity: 5,
+        baseExpRate: 5,
+        baseGoldRate: 5,
         value: 50
     };
-    Accessory.TalismanofExpertise = {
-        name: 'Talisman of Expertise',
+    Accessory.DamagedTalismanofFortune = {
+        name: 'Damaged Talisman of Fortune',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'green',
-        image: 'TalismanOfExpertise',
+        image: 'Talisman002',
         iLvl: 2,
-        baseDexterity: 10,
-        value: 200
-    };
-    Accessory.TalismanofSkill = {
-        name: 'Talisman of Skill',
-        itemQuality: 'Rare',
-        itemType: 'accessory',
-        subType: 'talisman',
-        color: 'blue',
-        image: 'TalismanOfSkill',
-        iLvl: 3,
-        baseDexterity: 15,
-        value: 500
-    };
-    Accessory.TalismanofAbility = {
-        name: 'Talisman of Ability',
-        itemQuality: 'Epic',
-        itemType: 'accessory',
-        subType: 'talisman',
-        color: 'orange',
-        image: 'TalismanOfAbility',
-        iLvl: 4,
-        baseDexterity: 20,
-        value: 800
-    };
-    Accessory.TalismanofMastery = {
-        name: 'Talisman of Mastery',
-        itemQuality: 'Legendary',
-        itemType: 'accessory',
-        subType: 'talisman',
-        color: 'red',
-        image: 'TalismanOfMastery',
-        iLvl: 5,
-        baseDexterity: 25,
-        value: 1500
-    };
-    //Talisman Luck
-    Accessory.TalismanofLuck = {
-        name: 'Talisman of Luck',
-        itemQuality: 'Common',
-        itemType: 'accessory',
-        subType: 'talisman',
-        color: 'black',
-        image: 'TalismanOfLuck',
-        iLvl: 1,
-        baseLuck: 5,
-        value: 50
-    };
-    Accessory.TalismanofDestiny = {
-        name: 'Talisman of Destiny',
-        itemQuality: 'Uncommon',
-        itemType: 'accessory',
-        subType: 'talisman',
-        color: 'green',
-        image: 'TalismanOfDestiny',
-        iLvl: 2,
-        baseLuck: 10,
+        baseExpRate: 10,
+        baseGoldRate: 10,
         value: 200
     };
     Accessory.TalismanofFortune = {
@@ -3906,87 +4016,222 @@ function MakeItemList() {
         itemType: 'accessory',
         subType: 'talisman',
         color: 'blue',
-        image: 'TalismanOfFortune',
+        image: 'Talisman003',
         iLvl: 3,
-        baseLuck: 15,
+        baseExpRate: 15,
+        baseGoldRate: 15,
         value: 500
     };
-    Accessory.TalismanofChance = {
-        name: 'Talisman of Chance',
+    Accessory.SupremeTalismanofFortune = {
+        name: 'Supreme Talisman of Fortune',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'orange',
-        image: 'TalismanOfChance',
+        image: 'Talisman004',
         iLvl: 4,
-        baseLuck: 20,
+        baseExpRate: 20,
+        baseGoldRate: 20,
         value: 800
     };
-    Accessory.TalismanofFluke = {
-        name: 'Talisman of Fluke',
+    Accessory.AncientTalismanofFortune = {
+        name: 'Ancient Talisman of Fortune',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'red',
-        image: 'TalismanOfFluke',
+        image: 'Talisman005',
         iLvl: 5,
-        baseLuck: 25,
+        baseExpRate: 25,
+        baseDropRate: 25,
         value: 1500
     };
-    //Talisman Defense
-    Accessory.TalismanofDefense = {
-        name: 'Talisman of Defense',
+    //Talisman Luck
+    Accessory.CrackedTalismanofProsperity = {
+        name: 'Cracked Talisman of Prosperity',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'black',
-        image: 'TalismanOfDefense',
+        image: 'Talisman001',
         iLvl: 1,
-        baseDefense: 5,
+        baseExpRate: 5,
+        baseDropRate: 5,
         value: 50
     };
-    Accessory.TalismanofProtection = {
-        name: 'Talisman of Protection',
+    Accessory.DamagedTalismanofProsperity = {
+        name: 'Damaged Talisman of Prosperity',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'green',
-        image: 'TalismanOfProtection',
+        image: 'Talisman002',
         iLvl: 2,
-        baseDefense: 10,
+        baseExpRate: 10,
+        baseDropRate: 10,
         value: 200
     };
-    Accessory.TalismanofImmunity = {
-        name: 'Talisman of Immunity',
+    Accessory.TalismanofProsperity = {
+        name: 'Talisman of Prosperity',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'blue',
-        image: 'TalismanOfImmunity',
+        image: 'Talisman003',
         iLvl: 3,
-        baseDefense: 15,
+        baseExpRate: 15,
+        baseDropRate: 15,
         value: 500
     };
-    Accessory.TalismanofSafety = {
-        name: 'Talisman of Safety',
+    Accessory.SupremeTalismanofProsperity = {
+        name: 'Supreme Talisman of Prosperity',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'orange',
-        image: 'TalismanOfSafety',
+        image: 'Talisman004',
         iLvl: 4,
-        baseDefense: 20,
+        baseExpRate: 20,
+        baseDropRate: 20,
         value: 800
     };
-    Accessory.TalismanofResistance = {
-        name: 'Talisman of Resistance',
+    Accessory.AncientTalismanofProsperity = {
+        name: 'Ancient Talisman of Prosperity',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'talisman',
         color: 'red',
-        image: 'TalismanOfResistance',
+        image: 'Talisman005',
         iLvl: 5,
-        baseDefense: 25,
+        baseExpRate: 25,
+        baseDropRate: 25,
+        value: 1500
+    };
+    //Talisman Defense
+    Accessory.CrackedTalismanofAbundance = {
+        name: 'Cracked Talisman of Abundance',
+        itemQuality: 'Common',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'black',
+        image: 'Talisman001',
+        iLvl: 1,
+        baseGoldRate: 5,
+        baseDropRate: 5,
+        value: 50
+    };
+    Accessory.DamagedTalismanofAbundance = {
+        name: 'Damaged Talisman of Abundance',
+        itemQuality: 'Uncommon',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'green',
+        image: 'Talisman002',
+        iLvl: 2,
+        baseGoldRate: 10,
+        baseDropRate: 10,
+        value: 200
+    };
+    Accessory.TalismanofAbundance = {
+        name: 'Talisman of Abundance',
+        itemQuality: 'Rare',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'blue',
+        image: 'Talisman003',
+        iLvl: 3,
+        baseGoldRate: 15,
+        baseDropRate: 15,
+        value: 500
+    };
+    Accessory.SupremeTalismanofAbundance = {
+        name: 'Supreme Talisman of Abundance',
+        itemQuality: 'Epic',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'orange',
+        image: 'Talisman004',
+        iLvl: 4,
+        baseGoldRate: 20,
+        baseDropRate: 20,
+        value: 800
+    };
+    Accessory.AncientTalismanofAbundance = {
+        name: 'Ancient Talisman of Abundance',
+        itemQuality: 'Legendary',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'red',
+        image: 'Talisman005',
+        iLvl: 5,
+        baseGoldRate: 25,
+        baseDropRate: 25,
+        value: 1500
+    };
+    //Talisman all 3
+    Accessory.CrackedTalismanofPlenty = {
+        name: 'Cracked Talisman of Plenty',
+        itemQuality: 'Common',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'black',
+        image: 'Talisman001',
+        iLvl: 1,
+        baseGoldRate: 5,
+        baseDropRate: 5,
+        baseExpRate: 5,
+        value: 50
+    };
+    Accessory.DamagedTalismanofPlenty = {
+        name: 'Damaged Talisman of Plenty',
+        itemQuality: 'Uncommon',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'green',
+        image: 'Talisman002',
+        iLvl: 2,
+        baseGoldRate: 10,
+        baseDropRate: 10,
+        baseExpRate: 10,
+        value: 200
+    };
+    Accessory.TalismanofPlenty = {
+        name: 'Talisman of Plenty',
+        itemQuality: 'Rare',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'blue',
+        image: 'Talisman003',
+        iLvl: 3,
+        baseGoldRate: 15,
+        baseDropRate: 15,
+        baseExpRate: 15,
+        value: 500
+    };
+    Accessory.SupremeTalismanofPlenty = {
+        name: 'Supreme Talisman of Plenty',
+        itemQuality: 'Epic',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'orange',
+        image: 'Talisman004',
+        iLvl: 4,
+        baseGoldRate: 20,
+        baseDropRate: 20,
+        baseExpRate: 20,
+        value: 800
+    };
+    Accessory.AncientTalismanofPlenty = {
+        name: 'Ancient Talisman of Plenty',
+        itemQuality: 'Legendary',
+        itemType: 'accessory',
+        subType: 'talisman',
+        color: 'red',
+        image: 'Talisman005',
+        iLvl: 5,
+        baseGoldRate: 25,
+        baseDropRate: 25,
+        baseExpRate: 25,
         value: 1500
     };
     ItemList.Accessory = Accessory;

@@ -5,9 +5,11 @@ v1.4.1 - 12 april 2015 |
 - Added scrollbar for inventory and game story. Removed item value and name from inventory. You can see all item info when hovering over an item image. I left item rarity until I find an easier way to display it.
 - Added chat to the game! Still testing it, and it will be changed in the future.
 - Credits page, still working to update it further, you can see all peoples that helped me.
-- Quick Fix
+- Fixed all known bugs.
+- Added new accessories with new stats
+- Working Exp/Drop/Gold Rate bonuses.
 _________________________
-v1.4.0 - 11 april 2015     |
+v1.4.0 - 11 april 2015   |
 -------------------------|
 - Added story to the game (not completed yet), you will unlock new part of the story and stronger enemy each time you level up (soon to be changed with monster kills).
 - Changed item tooltip, to display each item base stat and compare it with currently equipped item and change color to red if you lose stat on equip or green when you gain stat.

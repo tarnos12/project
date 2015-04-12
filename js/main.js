@@ -30,7 +30,6 @@ var player = {
     level: 1,
     experience: 0,
     maxExperience: 100,
-    
     backpackUpgrade: 0,
     dropRate: function () {
         return (1 + (player.totalLuck() + equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 500);
@@ -160,108 +159,108 @@ var player = {
         return (1.48 + player.totalStrength() * 0.003 + player.totalDexterity() * 0.002).toFixed(2);
     },
     //Sword
-    SwordLevel: 0,
-    SwordExp: 0,
-    SwordMaxExp: 10,
+    swordLevel: 0,
+    swordExp: 0,
+    swordMaxExp: 10,
     isSword: false,
     swordStrength: function () {
         if (player.isSword === true) {
-            return (player.SwordLevel * 2);
+            return (player.swordLevel * 2);
         }
         else if (player.isSword === false) {
-            return (player.SwordLevel * 0);
+            return (player.swordLevel * 0);
         }
     },
     swordAgility: function () {
         if (player.isSword === true) {
-            return (player.SwordLevel * 1.5);
+            return (player.swordLevel * 1.5);
         }
         else if (player.isSword === false) {
-            return (player.SwordLevel * 0);
+            return (player.swordLevel * 0);
         }
     },
     //Axe
-    AxeLevel: 0,
-    AxeExp: 0,
-    AxeMaxExp: 10,
+    axeLevel: 0,
+    axeExp: 0,
+    axeMaxExp: 10,
     isAxe: false,
     axeStrength: function () {
         if (player.isAxe === true) {
-            return (player.AxeLevel * 2);
+            return (player.axeLevel * 2);
         }
         else if (player.isAxe === false) {
-            return (player.AxeLevel * 0);
+            return (player.axeLevel * 0);
         }
     },
     axeEndurance: function () {
         if (player.isAxe === true) {
-            return (player.AxeLevel * 1.5);
+            return (player.axeLevel * 1.5);
         }
         else if (player.isAxe === false) {
-            return (player.AxeLevel * 0);
+            return (player.axeLevel * 0);
         }
     },
     //Mace
-    MaceLevel: 0,
-    MaceExp: 0,
-    MaceMaxExp: 10,
+    maceLevel: 0,
+    maceExp: 0,
+    maceMaxExp: 10,
     isMace: false,
     maceEndurance: function () {
         if (player.isMace === true) {
-            return (player.MaceLevel * 2);
+            return (player.maceLevel * 2);
         }
         else if (player.isMace === false) {
-            return (player.MaceLevel * 0);
+            return (player.maceLevel * 0);
         }
     },
     maceWisdom: function () {
         if (player.isMace === true) {
-            return (player.MaceLevel * 1.5);
+            return (player.maceLevel * 1.5);
         }
         else if (player.isMace === false) {
-            return (player.MaceLevel * 0);
+            return (player.maceLevel * 0);
         }
     },
     //Staff
-    StaffLevel: 0,
-    StaffExp: 0,
-    StaffMaxExp: 10,
+    staffLevel: 0,
+    staffExp: 0,
+    staffMaxExp: 10,
     isStaff: false,
     staffIntelligence: function () {
         if (player.isStaff === true) {
-            return (player.StaffLevel * 2);
+            return (player.staffLevel * 2);
         }
         else if (player.isStaff === false) {
-            return (player.StaffLevel * 0);
+            return (player.staffLevel * 0);
         }
     },
     staffWisdom: function () {
         if (player.isStaff === true) {
-            return (player.StaffLevel * 1.5);
+            return (player.staffLevel * 1.5);
         }
         else if (player.isStaff === false) {
-            return (player.StaffLevel * 0);
+            return (player.staffLevel * 0);
         }
     },
     //Ranged
-    RangedLevel: 0,
-    RangedExp: 0,
-    RangedMaxExp: 10,
+    rangedLevel: 0,
+    rangedExp: 0,
+    rangedMaxExp: 10,
     isRanged: false,
     rangedStrength: function () {
         if (player.isRanged === true) {
-            return (player.RangedLevel * 1.5);
+            return (player.rangedLevel * 1.5);
         }
         else if (player.isRanged === false) {
-            return (player.RangedLevel * 0);
+            return (player.rangedLevel * 0);
         }
     },
     rangedDexterity: function () {
         if (player.isRanged === true) {
-            return (player.RangedLevel * 2);
+            return (player.rangedLevel * 2);
         }
         else if (player.isRanged === false) {
-            return (player.RangedLevel * 0);
+            return (player.rangedLevel * 0);
         }
     }
 };
@@ -539,7 +538,7 @@ function weaponSkill(monster) {
 //experience gained from killing a monster
 function monsterExperience(monster) {
 
-    var expgain = monsterStats.baseExp / (player.level / 3);
+    var expgain = (monsterStats.baseExp / (player.level / 3)) * player.expRate();
     if (player.experience < player.maxExperience) {
         player.experience = Math.floor(player.experience + expgain);
     };
