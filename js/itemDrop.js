@@ -107,7 +107,7 @@ function itemDropRandom(monster) {
                     dropItem["maxExp"] = 100;
                     dropItem["power"] = 1; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl) + (monsterStats.level));
+                        var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
                     }
@@ -115,7 +115,7 @@ function itemDropRandom(monster) {
                         dropItem["dropRate"] = 0;
                     };
                     if (dropItem.baseExpRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl) + (monsterStats.level));
+                        var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
                     }
@@ -123,7 +123,7 @@ function itemDropRandom(monster) {
                         dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl) + (monsterStats.level));
+                        var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
                     }
@@ -138,7 +138,7 @@ function itemDropRandom(monster) {
                     dropItem["maxExp"] = 200;
                     dropItem["power"] = 2; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 2) + (monsterStats.level * 2));
+                        var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 3) + (monsterStats.level * 3));
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
                     }
@@ -146,7 +146,7 @@ function itemDropRandom(monster) {
                         dropItem["dropRate"] = 0;
                     };
                     if (dropItem.baseExpRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 2) + (monsterStats.level * 2));
+                        var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 3) + (monsterStats.level * 3));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
                     }
@@ -154,7 +154,7 @@ function itemDropRandom(monster) {
                         dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 2) + (monsterStats.level * 2));
+                        var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 3) + (monsterStats.level * 3));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
                     }
@@ -169,7 +169,7 @@ function itemDropRandom(monster) {
                     dropItem["maxExp"] = 300;
                     dropItem["power"] = 3; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 3) + (monsterStats.level * 3));
+                        var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 4) + (monsterStats.level * 4));
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
                     }
@@ -177,7 +177,7 @@ function itemDropRandom(monster) {
                         dropItem["dropRate"] = 0;
                     };
                     if (dropItem.baseExpRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 3) + (monsterStats.level * 3));
+                        var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 4) + (monsterStats.level * 4));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
                     }
@@ -185,7 +185,7 @@ function itemDropRandom(monster) {
                         dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 3) + (monsterStats.level * 3));
+                        var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 4) + (monsterStats.level * 4));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
                     }
@@ -200,7 +200,7 @@ function itemDropRandom(monster) {
                     dropItem["maxExp"] = 400;
                     dropItem["power"] = 4; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 4) + (monsterStats.level * 4));
+                        var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 5) + (monsterStats.level * 5));
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
                     }
@@ -208,7 +208,7 @@ function itemDropRandom(monster) {
                         dropItem["dropRate"] = 0;
                     };
                     if (dropItem.baseExpRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 4) + (monsterStats.level * 4));
+                        var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 5) + (monsterStats.level * 5));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
                     }
@@ -216,7 +216,7 @@ function itemDropRandom(monster) {
                         dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 4) + (monsterStats.level * 4));
+                        var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 5) + (monsterStats.level * 5));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
                     }
@@ -231,7 +231,7 @@ function itemDropRandom(monster) {
                     dropItem["maxExp"] = 500;
                     dropItem["power"] = 5; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 5) + (monsterStats.level * 5));
+                        var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 6) + (monsterStats.level * 6));
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
                     }
@@ -239,7 +239,7 @@ function itemDropRandom(monster) {
                         dropItem["dropRate"] = 0;
                     };
                     if (dropItem.baseExpRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 5) + (monsterStats.level * 5));
+                        var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 6) + (monsterStats.level * 6));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
                     }
@@ -247,7 +247,7 @@ function itemDropRandom(monster) {
                         dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
-                        var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 5) + (monsterStats.level * 5));
+                        var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 6) + (monsterStats.level * 6));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
                     }
