@@ -624,19 +624,19 @@ function equipItem(id) {
             equippedItems.weapon = item;
             equippedItems.weapon.isEquipped = true;
             //Check which weapon is equipped so you can gain stats and level up weapon mastery
-            if (equippedItems.weapon.subType === "Sword") {
+            if (equippedItems.weapon.subType === "sword") {
                 player.isSword = true;
             }
-            else if (equippedItems.weapon.subType === "Axe") {
+            else if (equippedItems.weapon.subType === "axe") {
                 player.isAxe = true;
             }
-            else if (equippedItems.weapon.subType === "Mace") {
+            else if (equippedItems.weapon.subType === "mace") {
                 player.isMace = true;
             }
-            else if (equippedItems.weapon.subType === "Staff") {
+            else if (equippedItems.weapon.subType === "staff") {
                 player.isStaff = true;
             }
-            else if (equippedItems.weapon.subType === "Ranged") {
+            else if (equippedItems.weapon.subType === "ranged") {
                 player.isRanged = true;
             }
             var item = playerInventory.filter(function (obj) {
@@ -685,7 +685,7 @@ function equipItem(id) {
         };
         CreateInventoryWeaponHtml();
     }
-    else if (item.subType === "Ring") {
+    else if (item.subType === "ring") {
         if (equippedItems.ring.isEquipped === true) {
             var oldId = equippedItems.ring.id
             unequipItem(oldId);
@@ -703,7 +703,7 @@ function equipItem(id) {
         };
         CreateInventoryWeaponHtml();
     }
-    else if (item.subType === "Amulet") {
+    else if (item.subType === "amulet") {
         if (equippedItems.amulet.isEquipped === true) {
             var oldId = equippedItems.amulet.id
             unequipItem(oldId);
@@ -721,7 +721,7 @@ function equipItem(id) {
         };
         CreateInventoryWeaponHtml();
     }
-    else if (item.subType === "Talisman") {
+    else if (item.subType === "talisman") {
         if (equippedItems.talisman.isEquipped === true) {
             var oldId = equippedItems.talisman.id
             unequipItem(oldId);
@@ -774,19 +774,19 @@ function unequipItem(id, oldId) {
     if (weaponId === equippedItems.weapon.id || weaponId === oldId) {
         equippedItems.weapon.isEquipped = false;
         playerInventory.push(equippedItems.weapon);
-        if (equippedItems.weapon.subType === "Sword") {
+        if (equippedItems.weapon.subType === "sword") {
             player.isSword = false;
         }
-        else if (equippedItems.weapon.subType === "Axe") {
+        else if (equippedItems.weapon.subType === "axe") {
             player.isAxe = false;
         }
-        else if (equippedItems.weapon.subType === "Mace") {
+        else if (equippedItems.weapon.subType === "mace") {
             player.isMace = false;
         }
-        else if (equippedItems.weapon.subType === "Staff") {
+        else if (equippedItems.weapon.subType === "staff") {
             player.isStaff = false;
         }
-        else if (equippedItems.weapon.subType === "Ranged") {
+        else if (equippedItems.weapon.subType === "ranged") {
             player.isRanged = false;
         };
         equippedItems.weapon = {

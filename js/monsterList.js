@@ -98,7 +98,7 @@ function MakeMonsterList()
     VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.MithrilPoint, 10));
     VarikGrunt.Drops.push(NewDrop(ItemList.OffHand.BoneKnife, 1));
     //Rings
-    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.CrackedRingofLearning, 5000));
+    VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.CrackedRingofLearning, 50));
     VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofEndurance, 50));
     VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofAgility, 50));
     VarikGrunt.Drops.push(NewDrop(ItemList.Accessory.RingofDexterity, 50));
