@@ -36,7 +36,9 @@
     document.getElementById("manaRegen").innerHTML = player.manaRegen();
     document.getElementById("luck").innerHTML = player.totalLuck() + " (" + '<font color="blue">' + player.equipLuck() + '</font>' + ")";
     document.getElementById("evasion").innerHTML = player.evasion().toFixed(1);
-    document.getElementById("dropRate").innerHTML = (player.dropRate() * 100).toFixed(1);
+    document.getElementById("dropRate").innerHTML = (player.dropRate() * 100).toFixed(0);
+    document.getElementById("expRate").innerHTML = (player.expRate() * 100).toFixed(0);
+    document.getElementById("goldRate").innerHTML = (player.goldRate() * 100).toFixed(0);
     document.getElementById("level").innerHTML = player.level;
     document.getElementById("maxexperience").innerHTML = player.maxExperience;
     document.getElementById("experience").innerHTML = player.experience;
