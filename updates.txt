@@ -1,5 +1,9 @@
 _________________________
-v1.4 - 11 april 2015     |
+v1.4.1 - 12 april 2015 |
+-------------------------|
+- Hopefully I fixed a bug with save/load.
+_________________________
+v1.4.0 - 11 april 2015     |
 -------------------------|
 - Added story to the game (not completed yet), you will unlock new part of the story and stronger enemy each time you level up (soon to be changed with monster kills).
 - Changed item tooltip, to display each item base stat and compare it with currently equipped item and change color to red if you lose stat on equip or green when you gain stat.
