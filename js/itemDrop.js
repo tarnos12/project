@@ -129,7 +129,7 @@ function itemDropRandom(monster) {
                     }
                     else {
                         dropItem["goldRate"] = 0;
-                };
+                    };
                 };
                 if (dropItem.itemQuality == "Uncommon") {
                     dropItem["level"] = 0;
@@ -141,16 +141,25 @@ function itemDropRandom(monster) {
                         var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
+                    }
+                    else {
+                        dropItem["dropRate"] = 0;
                     };
                     if (dropItem.baseExpRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
+                    }
+                    else {
+                        dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
+                    }
+                    else {
+                        dropItem["goldRate"] = 0;
                     };
                 };
                 if (dropItem.itemQuality == "Rare") {
@@ -163,16 +172,25 @@ function itemDropRandom(monster) {
                         var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 3) + (monsterStats.level * 3));
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
+                    }
+                    else {
+                        dropItem["dropRate"] = 0;
                     };
                     if (dropItem.baseExpRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 3) + (monsterStats.level * 3));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
+                    }
+                    else {
+                        dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 3) + (monsterStats.level * 3));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
+                    }
+                    else {
+                        dropItem["goldRate"] = 0;
                     };
                 };
                 if (dropItem.itemQuality == "Epic") {
@@ -186,15 +204,24 @@ function itemDropRandom(monster) {
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
                     }
+                    else {
+                        dropItem["dropRate"] = 0;
+                    };
                     if (dropItem.baseExpRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 4) + (monsterStats.level * 4));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
+                    }
+                    else {
+                        dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 4) + (monsterStats.level * 4));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
+                    }
+                    else {
+                        dropItem["goldRate"] = 0;
                     };
                 };
                 if (dropItem.itemQuality == "Legendary") {
@@ -207,16 +234,25 @@ function itemDropRandom(monster) {
                         var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 5) + (monsterStats.level * 5));
                         bonusDropRate = dropItem.baseDropRate;
                         dropItem["dropRate"] = returnNum + bonusDropRate;
+                    }
+                    else {
+                        dropItem["dropRate"] = 0;
                     };
                     if (dropItem.baseExpRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 5) + (monsterStats.level * 5));
                         bonusExpRate = dropItem.baseExpRate;
                         dropItem["expRate"] = returnNum + bonusExpRate;
+                    }
+                    else {
+                        dropItem["expRate"] = 0;
                     };
                     if (dropItem.baseGoldRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 5) + (monsterStats.level * 5));
                         bonusGoldRate = dropItem.baseGoldRate;
                         dropItem["goldRate"] = returnNum + bonusGoldRate;
+                    }
+                    else {
+                        dropItem["goldRate"] = 0;
                     };
                 };
                 
