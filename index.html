@@ -239,7 +239,11 @@
                                         Exp rate:<span id="expRate">0</span>%
                                     </td>
                                 </tr>
-
+                                <tr>
+                                    <td colspan="2" class="col-md-3">
+                                        Gold rate:<span id="goldRate">0</span>%
+                                    </td>
+                                </tr>
                             </table>
 
                         </div>
@@ -381,7 +385,7 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_c">
-                            <div id="story">
+                            <div class="story" id="story">
                                 <h1><b>Prologue</b></h1><br /><br />
                                 <p>
                                     The dead stay dead, but in your case that isn't true.
@@ -440,9 +444,10 @@
                         <li><a href="#tab_b2" data-toggle="tab">Weapon Skills</a></li>
                         <li><a href="#tab_c2" data-toggle="tab">Shop</a></li>
                         <li><a href="#tab_d2" data-toggle="tab">Save &amp; Options</a></li>
+                        <li><a href="#tab_e2" data-toggle="tab">Credits</a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class=".col-sm-10 col-md-10 .col-lg-10 tab-pane active" id="tab_a2">
+                        <div class=".col-sm-12 col-md-12 .col-lg-12 tab-pane active" id="tab_a2">
                             <div class="c3">
                                 <h4>Player Inventory</h4>
                             </div>
@@ -498,7 +503,7 @@
                                         <button type="button" class="btn btn-default" onclick="sellAllRare()">Sell All Rare</button>
                                         <button type="button" class="btn btn-default" onclick="sellAllEpic()">Sell All Epic</button>
                                     </div>
-                                    <div id="inventory"></div>
+                                    <div class="inventory" id="inventory"></div>
 
 
                                 </div>
@@ -517,42 +522,42 @@
                             <h4>Shop</h4>
                             <p>
                                 <img src="images/stat.png" alt="Buy Stat">Stat Points(<span id="buyStat">500</span> gold)
-                                <span type="button" class="btn btn-default" onclick="buyStat(1)">Buy</span>
-                                <span type="button" class="btn btn-default" onclick="buyStat(10)">Buy 10</span>
-                                <span type="button" class="btn btn-default" onclick="buyStat(100)">Buy 100</span><br />
+                                <button type="button" class="btn btn-default" onclick="buyStat(1)">Buy</button>
+                                <button type="button" class="btn btn-default" onclick="buyStat(10)">Buy 10</button>
+                                <button type="button" class="btn btn-default" onclick="buyStat(100)">Buy 100</button><br />
                                 <img src="images/bag.png" alt="Upgrade Backpack">Bag Slots(<span id="buyBackpack">100</span> gold)
-                                <span type="button" class="btn btn-default" onclick="buyBackpack(1)">Buy</span>
-                                <span type="button" class="btn btn-default" onclick="buyBackpack(10)">Buy 10</span>
-                                <span type="button" class="btn btn-default" onclick="buyBackpack(100)">Buy 100</span><br>
+                                <button type="button" class="btn btn-default" onclick="buyBackpack(1)">Buy</button>
+                                <button type="button" class="btn btn-default" onclick="buyBackpack(10)">Buy 10</button>
+                                <button type="button" class="btn btn-default" onclick="buyBackpack(100)">Buy 100</button><br>
                                 <img src="images/hp.png" alt="Buy Potion">Health Potion(20gold each)
-                                <span type="button" class="btn btn-default" onclick="buyPotion(1)">Buy</span>
-                                <span type="button" class="btn btn-default" onclick="buyPotion(10)">Buy 10</span>
-                                <span type="button" class="btn btn-default" onclick="buyPotion(100)">Buy 100</span><br>
+                                <button type="button" class="btn btn-default" onclick="buyPotion(1)">Buy</button>
+                                <button type="button" class="btn btn-default" onclick="buyPotion(10)">Buy 10</button>
+                                <button type="button" class="btn btn-default" onclick="buyPotion(100)">Buy 100</button><br>
                                 <img src="images/hp.png" alt="Buy Super Potion">Super Potion(100gold each)
-                                <span type="button" class="btn btn-default" onclick="buySuperPotion(1)">Buy</span>
-                                <span type="button" class="btn btn-default" onclick="buySuperPotion(10)">Buy 10</span>
-                                <span type="button" class="btn btn-default" onclick="buySuperPotion(100)">Buy 100</span><br>
+                                <button type="button" class="btn btn-default" onclick="buySuperPotion(1)">Buy</button>
+                                <button type="button" class="btn btn-default" onclick="buySuperPotion(10)">Buy 10</button>
+                                <button type="button" class="btn btn-default" onclick="buySuperPotion(100)">Buy 100</button><br>
                                 <img src="images/hp.png" alt="Buy Mega Potion">Mega Potion(500gold each)
-                                <span type="button" class="btn btn-default" onclick="buyMegaPotion(1)">Buy</span>
-                                <span type="button" class="btn btn-default" onclick="buyMegaPotion(10)">Buy 10</span>
-                                <span type="button" class="btn btn-default" onclick="buyMegaPotion(100)">Buy 100</span>
+                                <button type="button" class="btn btn-default" onclick="buyMegaPotion(1)">Buy</button>
+                                <button type="button" class="btn btn-default" onclick="buyMegaPotion(10)">Buy 10</button>
+                                <button type="button" class="btn btn-default" onclick="buyMegaPotion(100)">Buy 100</button>
                             </p>
                         </div>
 
                         <div class="tab-pane" id="tab_d2">
                             <h4>Save &amp; Options</h4>
                             <div class=".col-sm-12 col-md-12 .col-lg-12">
-                                <span type="button" class="btn btn-default" onclick="save()">
+                                <button type="button" class="btn btn-default" onclick="save()">
                                     save
-                                </span>
-                                <span type="button" class="btn btn-default" onclick="load()">
+                                </button>
+                                <button type="button" class="btn btn-default" onclick="load()">
                                     load
-                                </span>
-                                <span type="button" class="btn btn-default" onclick="resetCheck()">
+                                </button>
+                                <button type="button" class="btn btn-default" onclick="resetCheck()">
                                     reset
-                                </span><br /><br />
+                                </button><br /><br />
 
-                                <div> <a href="updates.txt" target="_blank">Changelog</a></div><br />
+                                <a href="updates.txt" target="_blank">Changelog</a><br />
                                 <a href="http://www.reddit.com/r/LoFW/">Subreddit</a><br /><br />
                                 <div><label><input type='checkbox' id="common" onclick='handleClick(this);'>Destroy all Common</label></div>
                                 <div><label><input type='checkbox' id="uncommon" onclick='handleClick(this);'>Destroy all Uncommon</label></div>
@@ -568,6 +573,15 @@
                                     </form>
                                 </div>
                             </div>
+                        </div>
+                        <div class="tab-pane" id="tab_e2">
+                            <div class="c3">
+                                <h4>Credits</h4>
+                            </div>
+                            Help with game code - DarkShadow44 - <a href="http://steamcommunity.com/profiles/76561198036405586/">Steam profile</a><br />
+                            Story - Jason Lee - <a href="http://www.reddit.com/user/ParanoiDoom">Reddit profile</a><br />
+                            Feedback - Reddit users - <a href="http://www.reddit.com/r/incremental_games/">Incremental Reddit</a>
+
                         </div>
                         <!-- tab content -->
                     </div>
@@ -605,5 +619,6 @@
     <script type="text/javascript" src="js/save.js"></script>
     <script type="text/javascript" src="js/shop.js"></script>
     <script type="text/javascript" src="js/stats.js"></script>
+    <script type="text/javascript" data-cfasync="false">(function () { var done = false; var script = document.createElement('script'); script.async = true; script.type = 'text/javascript'; script.src = 'https://app.purechat.com/VisitorWidget/WidgetScript'; document.getElementsByTagName('HEAD').item(0).appendChild(script); script.onreadystatechange = script.onload = function (e) { if (!done && (!this.readyState || this.readyState == 'loaded' || this.readyState == 'complete')) { var w = new PCWidget({ c: '6a63facc-04e9-4938-9ef7-3d0d31f23483', f: true }); done = true; } }; })();</script>
 </body>
 </html>

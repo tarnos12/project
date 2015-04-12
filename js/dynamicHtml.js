@@ -198,16 +198,16 @@ function CreateInventoryWeaponHtml() {
     for (var j = 0; j < InventoryItemTypes.length; j++) {
 
         if (j === inventoryTabActiveNum) {
-            html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane active" width: 100%; ';
+            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane active" width: 100%; ';
 
         } else {
-            html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 tab-pane" width: 100%; ';
+            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane" width: 100%; ';
         }
 
         html += 'id="tab_' + InventoryItemTypes[j].type + '">'
 
         html += '<table class="table">';
-        html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Name" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td colspan="4">' + "Value" + '</td>' + '</tr>';
+        html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Rarity" + '</td>' + '</tr>';
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType === InventoryItemTypes[j].type) {
                 if (playerInventory[i].itemType === "weapon") {
@@ -258,6 +258,33 @@ function CreateInventoryWeaponHtml() {
                 else if ((playerInventory[i].maxDamage - itemStat.maxDamage) == 0) {
                     html += playerInventory[i].maxDamage + " (0)" + " to ";
                 }
+                if ((playerInventory[i].expRate - itemStat.expRate) < 0) {
+                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (" + '<b style="color:red">' + (playerInventory[i].expRate - itemStat.expRate) + '</b>' + ")" + " to ";
+                }
+                else if ((playerInventory[i].expRate - itemStat.expRate) > 0) {
+                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].expRate - itemStat.expRate) + '</b>' + ")" + " to ";
+                }
+                else if ((playerInventory[i].expRate - itemStat.expRate) == 0 && playerInventory[i].expRate > 0) {
+                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (0)" + " to ";
+                }
+                if ((playerInventory[i].goldRate - itemStat.goldRate) < 0) {
+                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (" + '<b style="color:red">' + (playerInventory[i].goldRate - itemStat.goldRate) + '</b>' + ")" + " to ";
+                }
+                else if ((playerInventory[i].goldRate - itemStat.goldRate) > 0) {
+                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].goldRate - itemStat.goldRate) + '</b>' + ")" + " to ";
+                }
+                else if ((playerInventory[i].goldRate - itemStat.goldRate) == 0 && playerInventory[i].goldRate > 0) {
+                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (0)" + " to ";
+                }
+                if ((playerInventory[i].dropRate - itemStat.dropRate) < 0) {
+                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (" + '<b style="color:red">' + (playerInventory[i].dropRate - itemStat.dropRate) + '</b>' + ")" + " to ";
+                }
+                else if ((playerInventory[i].dropRate - itemStat.dropRate) > 0) {
+                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].dropRate - itemStat.dropRate) + '</b>' + ")" + " to ";
+                }
+                else if ((playerInventory[i].dropRate - itemStat.dropRate) == 0 && playerInventory[i].dropRate > 0) {
+                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (0)" + " to ";
+                }
                 var item = playerInventory[i];
                 for (var statName in item) { //Here stat will become the word Defense
 
@@ -284,10 +311,10 @@ function CreateInventoryWeaponHtml() {
             
                 html += '<br />' + "Value: " + playerInventory[i].value + "gold"
                 html += '</span>' + '</a>' + '</td>';
-                html += '<td>' + playerInventory[i].name + " " + '</td>' + '<td>' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
-                    '<td>' + playerInventory[i].value + "Value" +
-                 '<td>' + '<button type="button" class="btn btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' + '</td>' +
-                 '<td>' + '<button type="button" class="btn btn-default" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
+                html += '<td colspan="3">' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
+   
+                 '<td class="col-md-3">' + '<button type="button" class="btn btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' + '</td>' +
+                 '<td class="col-md-3">' + '<button type="button" class="btn btn-default" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
             }
                 //Else if inventory item type is equal to orb/card/etc...different code here, without item stats etc.
             else if (playerInventory[i].itemType3 === InventoryItemTypes[j].type) {

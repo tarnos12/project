@@ -2982,59 +2982,59 @@ function MakeItemList() {
     //Accessory list
     Accessory = {};
     //Rings
-    Accessory.RingofStrength = {
-        name: 'Ring of Strength',
+    Accessory.CrackedRingofLearning = {
+        name: 'Cracked Ring of Learning',
         itemQuality: 'Common',
         itemType: 'accessory',
         subType: 'Ring',
         color: 'black',
-        image: 'RingOfStrength',
+        image: 'CrackedRingofLearning',
         iLvl: 1,
-        baseStrength: 5,
+        baseExpRate: 5,
         value: 50
     };
-    Accessory.RingofPower = {
-        name: 'Ring of Power',
+    Accessory.DamagedRingofLearning = {
+        name: 'Damaged Ring of Learning',
         itemQuality: 'Uncommon',
         itemType: 'accessory',
         subType: 'Ring',
         color: 'green',
-        image: 'RingOfPower',
+        image: 'DamagedRingofLearning',
         iLvl: 2,
-        baseStrength: 10,
+        baseExpRate: 10,
         value: 200
     };
-    Accessory.RingofSupremacy = {
-        name: 'Ring of Supremacy',
+    Accessory.RingofLearning = {
+        name: 'Ring of Learning',
         itemQuality: 'Rare',
         itemType: 'accessory',
         subType: 'Ring',
         color: 'blue',
-        image: 'RingOfSupremacy',
+        image: 'RingofLearning',
         iLvl: 3,
-        baseStrength: 15,
+        baseExpRate: 15,
         value: 500
     };
-    Accessory.RingofForce = {
-        name: 'Ring of Force',
+    Accessory.SupremeRingofLearning = {
+        name: 'Supreme Ring of Learning',
         itemQuality: 'Epic',
         itemType: 'accessory',
         subType: 'Ring',
         color: 'orange',
-        image: 'RingOfForce',
+        image: 'SupremeRingofLearning',
         iLvl: 4,
-        baseStrength: 20,
+        baseExpRate: 20,
         value: 800
     };
-    Accessory.RingofMight = {
-        name: 'Ring of Might',
+    Accessory.AncientRingofLearning = {
+        name: 'Ancient Ring of Learning',
         itemQuality: 'Legendary',
         itemType: 'accessory',
         subType: 'Ring',
         color: 'red',
-        image: 'RingOfMight',
+        image: 'AncientRingofLearning',
         iLvl: 5,
-        baseStrength: 25,
+        baseExpRate: 25,
         value: 1500
     };
     //Ring Endurance

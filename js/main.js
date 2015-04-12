@@ -17,10 +17,10 @@ function Log(data) {
     document.getElementById('logConsole').innerHTML = logTemp;
 };
 
-var currentGameVersion = 1.4;
+var currentGameVersion = 1.41;
 //PLAYER STATS
 var player = {
-    gameVersion: 1.4,
+    gameVersion: 1.41,
     monsterCount: 1,
     isDead: false,
     itemIdNumber: 1,
@@ -30,10 +30,16 @@ var player = {
     level: 1,
     experience: 0,
     maxExperience: 100,
-    expRate: 0,
+    
     backpackUpgrade: 0,
     dropRate: function () {
-        return (1 + (player.totalLuck()) / 500);
+        return (1 + (player.totalLuck() + equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 500);
+    },
+    expRate: function () {
+        return (1 + (equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100);
+    },
+    goldRate: function () {
+        return (1 + (equippedItems.ring.goldRate + equippedItems.amulet.goldRate + equippedItems.talisman.goldRate) / 100);
     },
     inventory: function () {
         return Math.floor((20 + (player.totalStrength() / 10) + player.backpackUpgrade)); //Add backpacks "new item type"
@@ -301,7 +307,10 @@ var equippedItems = {
         intelligence: 0,
         wisdom: 0,
         luck: 0,
-        defense: 0
+        defense: 0,
+        dropRate: 0,
+        expRate: 0,
+        goldRate: 0
     },
     amulet: {
         strength: 0,
@@ -311,7 +320,10 @@ var equippedItems = {
         intelligence: 0,
         wisdom: 0,
         luck: 0,
-        defense: 0
+        defense: 0,
+        dropRate: 0,
+        expRate: 0,
+        goldRate: 0
     },
     talisman: {
         strength: 0,
@@ -321,7 +333,10 @@ var equippedItems = {
         intelligence: 0,
         wisdom: 0,
         luck: 0,
-        defense: 0
+        defense: 0,
+        dropRate: 0,
+        expRate: 0,
+        goldRate: 0
     },
 };
 
@@ -585,8 +600,8 @@ function itemExperienceGain(monster) {
 
 //gold gained from killing a monster
 function monsterGold(monster) {
-    var goldDrop = Math.floor(Math.random() * ((monsterStats.level + 5) - monsterStats.level + 1) + monsterStats.level);
-    goldDrop = goldDrop * monsterStats.level;
+    var randomGold = Math.floor(Math.random() * ((monsterStats.level + 5) - monsterStats.level + 1) + monsterStats.level);
+    goldDrop = randomGold * player.goldRate();
     player.gold += goldDrop;
     Log("You loot: " + goldDrop + " gold!");
     document.getElementById("gold").innerHTML = player.gold;
