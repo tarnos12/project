@@ -95,19 +95,19 @@ function levelUp() {
 }
 
 function loadIsEquipped() {
-    if (equippedItems.weapon.subType === "Sword") {
+    if (equippedItems.weapon.subType === "sword") {
         player.isSword = true;
     }
-    else if (equippedItems.weapon.subType === "Axe") {
+    else if (equippedItems.weapon.subType === "axe") {
         player.isAxe = true;
     }
-    else if (equippedItems.weapon.subType === "Mace") {
+    else if (equippedItems.weapon.subType === "mace") {
         player.isMace = true;
     }
-    else if (equippedItems.weapon.subType === "Staff") {
+    else if (equippedItems.weapon.subType === "staff") {
         player.isStaff = true;
     }
-    else if (equippedItems.weapon.subType === "Ranged") {
+    else if (equippedItems.weapon.subType === "ranged") {
         player.isRanged = true;
     }
 };
