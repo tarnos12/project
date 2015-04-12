@@ -109,7 +109,7 @@ function resetCheck() {
 };
 function reset() {
     localStorage.removeItem("save");
-    player.gold = 0;
+   /*player.gold = 0;
     player.health = 50;
     player.stats = 0;
     player.level = 1;
@@ -217,9 +217,8 @@ function reset() {
     CreateWeaponSkillHtml();
     monsterKillCount();
     CreateMonsterHtml();
-    player.gameVersion = currentGameVersion;
+    player.gameVersion = currentGameVersion;*/
     pageReload();
-    save();
 };//test
 
 function pageReload() {

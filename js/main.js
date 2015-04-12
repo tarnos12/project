@@ -20,6 +20,7 @@ function Log(data) {
 var currentGameVersion = 1.4;
 //PLAYER STATS
 var player = {
+    gameVersion: 1.4,
     monsterCount: 1,
     isDead: false,
     itemIdNumber: 1,
