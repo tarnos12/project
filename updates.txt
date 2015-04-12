@@ -5,6 +5,7 @@ v1.4.1 - 12 april 2015 |
 - Added scrollbar for inventory and game story. Removed item value and name from inventory. You can see all item info when hovering over an item image. I left item rarity until I find an easier way to display it.
 - Added chat to the game! Still testing it, and it will be changed in the future.
 - Credits page, still working to update it further, you can see all peoples that helped me.
+- Quick Fix
 _________________________
 v1.4.0 - 11 april 2015     |
 -------------------------|
