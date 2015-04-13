@@ -64,50 +64,105 @@ var player = {
     //Endurance
     baseEndurance: 5,
     equipEndurance: function () {
-        return Math.floor(equippedItems.weapon.endurance + equippedItems.offHand.endurance + equippedItems.armor.endurance + equippedItems.ring.endurance + equippedItems.amulet.endurance + equippedItems.talisman.endurance);
+        return Math.floor(
+            equippedItems.weapon.endurance +
+            equippedItems.offHand.endurance +
+            equippedItems.armor.endurance +
+            equippedItems.ring.endurance +
+            equippedItems.amulet.endurance +
+            equippedItems.talisman.endurance);
     },
     totalEndurance: function () {
-        return Math.floor(player.baseEndurance + player.equipEndurance() + player.maceEndurance() + player.axeEndurance());
+        return Math.floor(
+            player.baseEndurance +
+            player.equipEndurance() +
+            player.maceEndurance() +
+            player.axeEndurance());
     },
     //Agility
     baseAgility: 5,
     equipAgility: function () {
-        return Math.floor(equippedItems.weapon.agility + equippedItems.offHand.agility + equippedItems.armor.agility + equippedItems.ring.agility + equippedItems.amulet.agility + equippedItems.talisman.agility);
+        return Math.floor(
+            equippedItems.weapon.agility +
+            equippedItems.offHand.agility +
+            equippedItems.armor.agility +
+            equippedItems.ring.agility +
+            equippedItems.amulet.agility +
+            equippedItems.talisman.agility);
     },
     totalAgility: function () {
-        return Math.floor(player.baseAgility + player.equipAgility() + player.swordAgility());
+        return Math.floor(
+            player.baseAgility +
+            player.equipAgility() +
+            player.swordAgility());
     },
     //Dexterity
     baseDexterity: 5,
     equipDexterity: function () {
-        return Math.floor(equippedItems.weapon.dexterity + equippedItems.offHand.dexterity + equippedItems.armor.dexterity + equippedItems.ring.dexterity + equippedItems.amulet.dexterity + equippedItems.talisman.dexterity);
+        return Math.floor(
+            equippedItems.weapon.dexterity +
+            equippedItems.offHand.dexterity +
+            equippedItems.armor.dexterity +
+            equippedItems.ring.dexterity +
+            equippedItems.amulet.dexterity +
+            equippedItems.talisman.dexterity);
     },
     totalDexterity: function () {
-        return Math.floor(player.baseDexterity + player.equipDexterity() + player.rangedDexterity());
+        return Math.floor(
+            player.baseDexterity +
+            player.equipDexterity() +
+            player.rangedDexterity());
     },
     //Intelligence
     baseIntelligence: 5,
     equipIntelligence: function () {
-        return Math.floor(equippedItems.weapon.intelligence + equippedItems.offHand.intelligence + equippedItems.armor.intelligence + equippedItems.ring.intelligence + equippedItems.amulet.intelligence + equippedItems.talisman.intelligence);
+        return Math.floor(
+            equippedItems.weapon.intelligence +
+            equippedItems.offHand.intelligence +
+            equippedItems.armor.intelligence +
+            equippedItems.ring.intelligence +
+            equippedItems.amulet.intelligence +
+            equippedItems.talisman.intelligence);
     },
     totalIntelligence: function () {
-        return Math.floor(player.baseIntelligence + player.equipIntelligence() + player.staffIntelligence());
+        return Math.floor(
+            player.baseIntelligence +
+            player.equipIntelligence() +
+            player.staffIntelligence());
     },
     //Wisdom
     baseWisdom: 5,
     equipWisdom: function () {
-        return Math.floor(equippedItems.weapon.wisdom + equippedItems.offHand.wisdom + equippedItems.armor.wisdom + equippedItems.ring.wisdom + equippedItems.amulet.wisdom + equippedItems.talisman.wisdom);
+        return Math.floor(
+            equippedItems.weapon.wisdom +
+            equippedItems.offHand.wisdom +
+            equippedItems.armor.wisdom +
+            equippedItems.ring.wisdom +
+            equippedItems.amulet.wisdom +
+            equippedItems.talisman.wisdom);
     },
     totalWisdom: function () {
-        return Math.floor(player.baseWisdom + player.equipWisdom() + player.staffWisdom() + player.maceWisdom());
+        return Math.floor(
+            player.baseWisdom +
+            player.equipWisdom() +
+            player.staffWisdom() +
+            player.maceWisdom());
     },
     //Luck
     baseLuck: 5,
     equipLuck: function () {
-        return Math.floor(equippedItems.weapon.luck + equippedItems.offHand.luck + equippedItems.armor.luck + equippedItems.ring.luck + equippedItems.amulet.luck + equippedItems.talisman.luck);
+        return Math.floor(
+            equippedItems.weapon.luck +
+            equippedItems.offHand.luck +
+            equippedItems.armor.luck +
+            equippedItems.ring.luck +
+            equippedItems.amulet.luck +
+            equippedItems.talisman.luck);
     },
     totalLuck: function () {
-        return Math.floor(player.baseLuck + player.equipLuck());
+        return Math.floor(
+            player.baseLuck +
+            player.equipLuck());
     },
     //Health
     health: 50,
@@ -120,24 +175,36 @@ var player = {
     //Mana
     mana: 50,
     maxMana: function () {
-        return (player.totalWisdom() * 0.5 + player.totalIntelligence() * 0.1);
+        return (
+            player.totalWisdom() * 0.5 +
+            player.totalIntelligence() * 0.1);
     },
     manaRegen: function () {
         return (player.totalWisdom() / 5);
     },
     //Damage
     minDamage: function () {
-        return Math.floor(1 + (player.totalStrength() * 0.4) + equippedItems.weapon.minDamage);
+        return Math.floor(
+            1 + (player.totalStrength() * 0.4) +
+            equippedItems.weapon.minDamage);
     },
     maxDamage: function () {
-        return Math.floor(2 + (player.totalStrength() * 0.6) + equippedItems.weapon.maxDamage);
+        return Math.floor(
+            2 + (player.totalStrength() * 0.6) +
+            equippedItems.weapon.maxDamage);
     },
     //Secondary
     accuracy: function () {
         return Math.floor(95 + (player.totalAgility() * 0.02 + player.totalLuck() * 0.01));
     },
     defense: function () {
-        return ((player.totalDexterity() * 0.5 + player.totalEndurance() * 0.4) + equippedItems.armor.defense + equippedItems.ring.defense + equippedItems.amulet.defense + equippedItems.talisman.defense);
+        return (
+            (player.totalDexterity() * 0.5 +
+            player.totalEndurance() * 0.4) +
+            equippedItems.armor.defense +
+            equippedItems.ring.defense +
+            equippedItems.amulet.defense +
+            equippedItems.talisman.defense);
     },
     evasion: function () {
         if ((5 + (player.totalAgility() * 0.03 + player.totalLuck() * 0.02)) > 20) {
@@ -507,6 +574,8 @@ function monsterKilled(monster) {
     monsterStats.hp = monsterStats.maxHp;
     monsterExperience(monster);
     weaponSkill(monster);
+    var name = monsterStats.name;
+    monsterKillCount[name] = parseInt(monsterKillCount[name]) + 1;
     Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
     Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
     Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "in total");
