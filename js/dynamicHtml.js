@@ -135,7 +135,7 @@ function CreateMonsterHtml() {
 
         html += 'id="tab_' + monsterAreas[j].type + '">' +
             '<div class="c3">' +
-            '<h4>SLAY MONSTERS!</h4>' +
+            '<h4>SLAY MONSTERS!</h4>' + '<br />' +
             '</div>';
 
         for (var key in monsterList) {

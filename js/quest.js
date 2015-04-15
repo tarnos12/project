@@ -9,12 +9,12 @@
 
     ToxicFlies: false,
 };
-function monsterKillCount() {
+function quest() {
     if (player.level >= 2) {
         monsterList.VarikSoldier.Stats.isShown = true;
         if (monsterUnlock.VarikSoldier == false) {
             document.getElementById("story").innerHTML += '<h3><b>Varik Soldiers</b></h3><br />' +
-            '<p>After your victory over the grunts you notice another group approaching.' +
+            '<p class="story">After your victory over the grunts you notice another group approaching.' +
             'The Varik Soldiers have arrived and they aren\'t happy.' +
             'You stand in front of them and yell at them to stop.' +
             'They turn and you can see these ones have actually been trained a bit.' +
@@ -28,7 +28,7 @@ function monsterKillCount() {
         monsterList.VarikMarksmen.Stats.isShown = true;
         if (monsterUnlock.VarikMarksmen == false) {
             document.getElementById("story").innerHTML += '<h3><b>Varik Marksmen</b></h3><br />' +
-          '<p>"What in the name Asmodeus are you? Why won\'t you die?"' + '<br /><br />' +
+          '<p class="story">"What in the name Asmodeus are you? Why won\'t you die?"' + '<br /><br />' +
           'You stare as the soldier departs from this world.' +
           'You feel a pang of sadness over this but quickly remember these thugs are responsible for burning down New Hemlock.' +
           'Only the leaders of this petty gang know why. As you are thinking an arrow just barely misses you and hits a groaning soldier in the chest.' + '<br /><br />' +
@@ -42,7 +42,7 @@ function monsterKillCount() {
         monsterList.VarikVulture.Stats.isShown = true;
         if (monsterUnlock.VarikVulture == false) {
             document.getElementById("story").innerHTML += '<h3><b>Varik Vulture</b></h3><br />' +
-            '<p>You might have been hit a few times but you are quickly discovering that immortality is a pretty huge advantage.' +
+            '<p class="story">You might have been hit a few times but you are quickly discovering that immortality is a pretty huge advantage.' +
             'Your kind of immortality is one where you never actually die, you just fall down and wake back up after your healing kicks in.' +
             'The marksmen have been taken care of and now you continue deeper into their hideout.' + '<br /><br />' +
             '"Hey, did you have to kill them? I mean come on, do you know how long it takes to train a decent archer?' +
@@ -55,7 +55,7 @@ function monsterKillCount() {
         monsterList.VarikEvader.Stats.isShown = true;
         if (monsterUnlock.VarikEvader == false){
             document.getElementById("story").innerHTML += '<h3><b>Varik Evader</b></h3><br />' +
-            '<p>"Haha, that was fun, little pup. Go on and get killed already. Let me die alone!"' + '<br /><br />' +
+            '<p class="story">"Haha, that was fun, little pup. Go on and get killed already. Let me die alone!"' + '<br /><br />' +
             'The Buzzard was fast and strong but you were faster and stronger and with every victory you felt your strength growing.' +
             'Maybe you might make as much of a presence to be noticed by the Temple of Legends but that is far ahead and out of your league. The Voice returns:' + '<br /><br />' +
             '"Why are you fighting these weaklings?' +
@@ -72,7 +72,7 @@ function monsterKillCount() {
         monsterList.VariksLiar.Stats.isShown = true;
         if (monsterUnlock.VariksLiar == false) {
             document.getElementById("story").innerHTML += '<h3><b>Variks Liar</b></h3><br />' +
-            '<p>The Evader thought he had you but it seems that immortality isn\'t your only gift,' +
+            '<p class="story">The Evader thought he had you but it seems that immortality isn\'t your only gift,' +
             'because it is becoming apparent that you are developing into a decent fighter as even the Evader couldn\'t pin you down.' +
             'The Evader lived up to his name though but was still defeated because where he had skill, you had endurance and patience.' + '<br /><br />' +
             '"The Lord is not going to like this at all. Ohh, lets get this over with. I know you will win but I am not going to just give up."' +
@@ -87,7 +87,7 @@ function monsterKillCount() {
         monsterList.VariksQueen.Stats.isShown = true;
         if (monsterUnlock.VariksQueen == false) {
             document.getElementById("story").innerHTML += '<h3><b>Variks Queen</b></h3><br />' +
-            '<p>The Liar had some nasty tricks up his sleeve,' +
+            '<p class="story">The Liar had some nasty tricks up his sleeve,' +
             'multiple times he had refracted on image of himself in different directions causing you to slam right into the ground, wall, or table.' +
             'He even managed to make you think your weapon became a snake which didn\'t last long.' +
             'Eventually, he fell just like the others and failed in his goal to stop you.' +
@@ -105,7 +105,7 @@ function monsterKillCount() {
         monsterList.LordVarik.Stats.isShown = true;
         if (monsterUnlock.LordVarik == false) {
             document.getElementById("story").innerHTML += '<h3><b>Lord Varik</b></h3><br />' +
-            '<p>She lay there bleeding out, "You are going to burn, even your immortality won\'t protect you from judgment."' +  
+            '<p class="story">She lay there bleeding out, "You are going to burn, even your immortality won\'t protect you from judgment."' +  
             'She died sitting against a wall in a dingy hideout that smelled of alcohol and ginger.' + '<br /><br />' +
  
             '"You killed my wife, my friend, my soldiers, and my "fans".' +
@@ -126,7 +126,7 @@ function monsterKillCount() {
         monsterList.ToxicFlies.Stats.isShown = true;
         if (monsterUnlock.ToxicFlies == false) {
             document.getElementById("story").innerHTML += '<h3><b>The End of Lord Varik</b></h3><br />' +
-            '<p>Just like the rest of his gang, he lay there bleeding and feeling woefully mortal.' +  
+            '<p class="story">Just like the rest of his gang, he lay there bleeding and feeling woefully mortal.' +  
             '"How? How did you become immortal? Why you? Why not me? I DESERVE IT! I won\'t die to this! Not here, Not today!"' + '<br /><br />' +
  
             'You spoke again, "Why did you burn down New Hemlock?"' + '<br /><br />' +
@@ -144,14 +144,14 @@ function monsterKillCount() {
 
             '<h1><b>Forest Of Narsus</b></h1>' +
  
-            '<p>You stand at the edge of the forest. This is it, the point of no return. ' +
+            '<p class="story">You stand at the edge of the forest. This is it, the point of no return. ' +
             'It is said that those who enter the forest are cursed to never return home, you are here to prove them wrong.' +  
             'The deep grime of the place really sticks out, every footfall ends in a snapped twig or a crushed leaf.' + 
             'The smell of rot and the sound of insects fill your senses as your take the first tentative step into the Spider Queens territory.</p>' +
 
             '<h3><b>Toxic Flies</b></h3>' +
  
-            '<p>As you enter the forest the sound of insects intensifies until you see a swarm of large flies.' +  
+            '<p class="story">As you enter the forest the sound of insects intensifies until you see a swarm of large flies.' +  
             'There had to be hundreds of them and all of them around a foot and a half long.' +  
             'When they noticed you they immediately began spitting at you; the substance was definitely acidic.' +  
             'You took a while to reach them but when you did the swarm seemed to grow and infest the entire surrounding area.' +  

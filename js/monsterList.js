@@ -162,6 +162,7 @@ function MakeMonsterList()
         area: "BanditHideout",
         isShown: true,
         killCount: 0,
+        manaCost: 10
     };
     monsterList.VarikGrunt = VarikGrunt;
        
@@ -282,6 +283,7 @@ function MakeMonsterList()
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
+        manaCost: 20
     };
     monsterList.VarikSoldier = VarikSoldier;
     VarikMarksmen.Drops = [];
@@ -400,6 +402,7 @@ function MakeMonsterList()
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
+        manaCost: 30
     };
     monsterList.VarikMarksmen = VarikMarksmen;
 
@@ -519,6 +522,7 @@ function MakeMonsterList()
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
+        manaCost: 40
     };
     monsterList.VarikVulture = VarikVulture;
 
@@ -638,6 +642,7 @@ function MakeMonsterList()
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
+        manaCost: 50
     };
     monsterList.VarikEvader = VarikEvader;
 
@@ -757,6 +762,7 @@ function MakeMonsterList()
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
+        manaCost: 60
     };
     monsterList.VariksLiar = VariksLiar;
 
@@ -886,6 +892,7 @@ function MakeMonsterList()
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
+        manaCost: 70
     };
     monsterList.VariksQueen = VariksQueen;
 
@@ -1015,6 +1022,7 @@ function MakeMonsterList()
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
+        manaCost: 80
     };
     monsterList.LordVarik = LordVarik;
 
@@ -1134,6 +1142,7 @@ function MakeMonsterList()
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
+        manaCost: 90
     };
     monsterList.ToxicFlies = ToxicFlies;
     
@@ -1252,6 +1261,7 @@ function MakeMonsterList()
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
+        manaCost : 100
     };
     monsterList.Stalker = Stalker;
 
@@ -1369,7 +1379,8 @@ function MakeMonsterList()
         level: 11,
         area: "ForestofNarsus",
         isShown: false,
-        killCount: 0,
+        killCount : 0,
+        manaCost: 110
     };
     monsterList.AlphaStalker = AlphaStalker;
 
@@ -1488,6 +1499,7 @@ function MakeMonsterList()
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
+        manaCost: 120
     };
     monsterList.StalkerPack = StalkerPack;
 
@@ -1606,6 +1618,7 @@ function MakeMonsterList()
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
+        manaCost: 130
     };
     monsterList.JumpingSpider = JumpingSpider;
 
@@ -1724,6 +1737,7 @@ function MakeMonsterList()
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
+        manaCost: 140
     };
     monsterList.SpiderBeast = SpiderBeast;
 
@@ -1852,6 +1866,7 @@ function MakeMonsterList()
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
+        manaCost: 150
     };
     monsterList.Narsus = Narsus;
 
@@ -1979,7 +1994,8 @@ function MakeMonsterList()
         level: 16,
         area: "ForestofNarsus",
         isShown: false,
-        killCount: 0,
+        killCount : 0,
+        manaCost: 160
     };
     monsterList.JotunnScout = JotunnScout;
 
@@ -2098,6 +2114,7 @@ function MakeMonsterList()
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
+        manaCost: 170
     };
     monsterList.Giant = Giant;
 
@@ -2216,6 +2233,7 @@ function MakeMonsterList()
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
+        manaCost: 180
     };
     monsterList.FrostGiant = FrostGiant;
 
@@ -2334,6 +2352,7 @@ function MakeMonsterList()
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
+        manaCost: 190
     };
     monsterList.FrostTroll = FrostTroll;
 
@@ -2452,6 +2471,7 @@ function MakeMonsterList()
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
+        manaCost: 200
     };
     monsterList.Wyvern = Wyvern;
 
@@ -2569,7 +2589,8 @@ function MakeMonsterList()
         level: 21,
         area: "OzJotnar",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+            manaCost: 210
     };
     monsterList.FrostDragon = FrostDragon;
 
@@ -2687,7 +2708,8 @@ function MakeMonsterList()
         level: 22,
         area: "OzJotnar",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+            manaCost: 220
     };
     monsterList.IceElemental = IceElemental;
 
@@ -2815,7 +2837,8 @@ function MakeMonsterList()
         level: 23,
         area: "OzJotnar",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+            manaCost: 230
     };
     monsterList.FrostGuardian = FrostGuardian;
 
@@ -2944,6 +2967,7 @@ function MakeMonsterList()
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
+            manaCost: 240
     };
     monsterList.FrostQueen = FrostQueen;
 
@@ -3061,7 +3085,8 @@ function MakeMonsterList()
         level: 25,
         area: "AncientCave",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+            manaCost: 250
     };
     monsterList.Zombie = Zombie;
 
@@ -3179,7 +3204,8 @@ function MakeMonsterList()
         level: 26,
         area: "AncientCave",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+            manaCost: 260
     };
     monsterList.Skeleton = Skeleton;
 
@@ -3297,7 +3323,8 @@ function MakeMonsterList()
         level: 27,
         area: "AncientCave",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+        manaCost: 270
     };
     monsterList.SkeletonSoldier = SkeletonSoldier;
 
@@ -3416,6 +3443,7 @@ function MakeMonsterList()
         area: "AncientCave",
         isShown: false,
         killCount: 0,
+            manaCost: 280
     };
     monsterList.SkeletonArcher = SkeletonArcher;
 
@@ -3533,7 +3561,8 @@ function MakeMonsterList()
         level: 29,
         area: "AncientCave",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+            manaCost: 290
     };
     monsterList.SkeletonMage = SkeletonMage;
 
@@ -3651,7 +3680,8 @@ function MakeMonsterList()
         level: 30,
         area: "AncientCave",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+            manaCost: 300
     };
     monsterList.SkeletonHealer = SkeletonHealer;
 
@@ -3779,7 +3809,8 @@ function MakeMonsterList()
         level: 31,
         area: "AncientCave",
         isShown: false,
-        killCount: 0,
+            killCount: 0,
+            manaCost: 310
     };
     monsterList.Wraith = Wraith;
 
@@ -3908,6 +3939,7 @@ function MakeMonsterList()
         area: "AncientCave",
         isShown: false,
         killCount: 0,
+            manaCost: 320
     };
     monsterList.LichKing = LichKing;
 }
