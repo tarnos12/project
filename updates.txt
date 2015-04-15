@@ -1,5 +1,10 @@
 _________________________
-v1.4.2 - 12 april 2015   |
+v1.4.2 - 14 april 2015   |
+-------------------------|
+- Added progress bar to weapon skills tab.
+- Fixed auto Battle mode (i.e "idle mode"), it now works properly. 
+_________________________
+v1.4.2 - 14 april 2015   |
 -------------------------|
 - Added "idle" mode, which cost you mana per second of idling. First monster cost 10 mana/s increasing by 10 for each next enemy.
 - Updated a footer, now it sticks to the bottom of the page.

@@ -277,15 +277,16 @@ function upgradeLuck(event) {
         }
     }
 }
-function autoBattle(monster) {
+function autoAttack(monster) {
     var ManaCost = monster.Stats.manaCost;
     var autoBattle = window.setInterval(function () {
         if (player.mana >= ManaCost && player.autoBattle == true) {
-            attack(monster)
             player.mana -= ManaCost;
+            attack(monster)
         }
         else if (player.autoBattle == false) {
             clearInterval(autoBattle);
+            player.isAuto = false;
         };
     }, 1000)
 };

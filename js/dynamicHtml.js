@@ -7,30 +7,36 @@ function CreateWeaponSkillHtml() {
     //Sword
     html += '<tr>' + '<td>';
     html += "Sword Skill Level: " + player.swordLevel;
+    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.swordExp / player.swordMaxExp) * 100) + '%;"></div></div>'
     html += '<td>' + "Strength +" + player.swordStrength() + '</td>' + '<td>' + " Agility +" + player.swordAgility() + '</td>';
     html += '</td>' + '</tr>';
+    
 
     //Axe
     html += '<tr>' + '<td>';
     html += "Axe Skill Level: " + player.axeLevel;
+    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.axeExp / player.axeMaxExp) * 100) + '%;"></div></div>'
     html += '<td>' + "Strength +" + player.axeStrength() + '</td>' + '<td>' + " Endurance +" + player.axeEndurance() + '</td>';
     html += '</td>' + '</tr>';
 
     //Mace
     html += '<tr>' + '<td>';
     html += "Mace Skill Level: " + player.maceLevel;
+    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.maceExp / player.maceMaxExp) * 100) + '%;"></div></div>'
     html += '<td>' + "Endurance +" + player.maceEndurance() + '</td>' + '<td>' + " Wisdom +" + player.maceWisdom() + '</td>';
     html += '</td>' + '</tr>';
 
     //Staff
     html += '<tr>' + '<td>';
     html += "Staff Skill Level: " + player.staffLevel;
+    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.staffExp / player.staffMaxExp) * 100) + '%;"></div></div>'
     html += '<td>' + "Intelligence +" + player.staffIntelligence() + '</td>' + '<td>' + " Wisdom +" + player.staffWisdom() + '</td>';
     html += '</td>' + '</tr>';
 
     //Bow
     html += '<tr>' + '<td>';
     html += "Bow Skill Level: " + player.rangedLevel;
+    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.rangedExp / player.rangedMaxExp) * 100) + '%;"></div></div>'
     html += '<td>' + "Strength +" + player.rangedStrength() + '</td>' + '<td>' + " Dexterity +" + player.rangedDexterity() + '</td>';
     html += '</td>' + '</tr>';
 
