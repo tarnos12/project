@@ -1,5 +1,5 @@
 _________________________
-v1.4.2 - 14 april 2015   |
+v1.4.2 - 15 april 2015   |
 -------------------------|
 - Added progress bar to weapon skills tab.
 - Fixed auto Battle mode (i.e "idle mode"), it now works properly. 
