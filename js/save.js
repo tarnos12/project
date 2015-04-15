@@ -97,7 +97,7 @@ function load() {
     CreateEquipHtml();
     loadIsEquipped();
     CreateWeaponSkillHtml();
-    monsterKillCount();
+    quest();
     CreateMonsterHtml();
     versionCheck();
 };
@@ -215,7 +215,7 @@ function reset() {
     CreateEquipHtml();
     resetIsEquipped();
     CreateWeaponSkillHtml();
-    monsterKillCount();
+    quest();
     CreateMonsterHtml();
     player.gameVersion = currentGameVersion;*/
     pageReload();

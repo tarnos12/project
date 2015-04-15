@@ -9,7 +9,7 @@
 
     ToxicFlies: false,
 };
-function monsterKillCount() {
+function quest() {
     if (player.level >= 2) {
         monsterList.VarikSoldier.Stats.isShown = true;
         if (monsterUnlock.VarikSoldier == false) {

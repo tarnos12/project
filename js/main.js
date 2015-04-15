@@ -21,12 +21,11 @@ var currentGameVersion = 1.41;
 //PLAYER STATS
 var player = {
     gameVersion: 1.41,
-    monsterCount: 1,
     isDead: false,
     itemIdNumber: 1,
     stats: 0,
     gold: 0,
-    autoBattle: 1, // testing
+    autoBattle: false, // testing
     level: 1,
     experience: 0,
     maxExperience: 100,
@@ -173,14 +172,14 @@ var player = {
         return Math.floor((player.totalEndurance()) / 3);
     },
     //Mana
-    mana: 50,
+    mana: 10,
     maxMana: function () {
-        return (
+        return (7 +
             player.totalWisdom() * 0.5 +
             player.totalIntelligence() * 0.1);
     },
     manaRegen: function () {
-        return (player.totalWisdom() / 5);
+        return (player.totalWisdom() / 10);
     },
     //Damage
     minDamage: function () {
@@ -199,8 +198,7 @@ var player = {
     },
     defense: function () {
         return (
-            (player.totalDexterity() * 0.5 +
-            player.totalEndurance() * 0.4) +
+            (player.totalDexterity() * 0.5) +
             equippedItems.armor.defense +
             equippedItems.ring.defense +
             equippedItems.amulet.defense +
@@ -458,6 +456,10 @@ function DrawBattle() {
 
 //Player miss/hit chance
 function playerAttack(monster) {
+    document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
+    if (player.autoBattle == true) {
+            autoBattle(monster);
+        }
     var playerHitChance = (player.accuracy() - monsterStats.eva) / 100;
     var randomHitChance = Math.random();
     if (playerHitChance > randomHitChance) {
@@ -574,8 +576,7 @@ function monsterKilled(monster) {
     monsterStats.hp = monsterStats.maxHp;
     monsterExperience(monster);
     weaponSkill(monster);
-    var name = monsterStats.name;
-    monsterKillCount[name] = parseInt(monsterKillCount[name]) + 1;
+    monsterStats.killCount++;
     Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
     Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
     Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "in total");
@@ -963,9 +964,10 @@ var checkBoxCommon = false;
 var checkBoxUncommon = false;
 var checkBoxRare = false;
 var checkBoxEpic = false;
-function handleClick(id) {
+function handleClick() {
     checkBoxCommon = document.getElementById("common").checked;
     checkBoxUncommon = document.getElementById("uncommon").checked;
     checkBoxRare = document.getElementById("rare").checked;
     checkBoxEpic = document.getElementById("epic").checked;
+    player.autoBattle = document.getElementById("autoBattle").checked;
 };

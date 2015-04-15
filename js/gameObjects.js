@@ -40,8 +40,3 @@ var monsterAreas = [
        }
 ];
 CreateMonsterHtml();
-
-var monsterKillCount = {
-    VarikGrunt: 0,
-    VarikSoldier: 0,
-}

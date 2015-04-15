@@ -113,7 +113,15 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Str <img src="images/questionMark.png" alt="questionMark" data-toggle="tooltip" title="Increase damage">
+                                        Str <a href="#" class="tooltipA">
+                                            <img src="images/questionMark.png" alt="questionMark">
+                                            <span>
+                                               10 points = 4 Min Damage<br />
+                                               10 points = 6 Max Damage<br />
+                                               10 points = 3% Critical Damage<br />
+                                               10 points = 1 Inventory slot
+                                            </span>
+                                        </a>
                                     </td>
                                     <td>
                                         <span id="strength">5</span><br />
@@ -122,7 +130,13 @@
                                         <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
                                     </td>
                                     <td>
-                                        End <img src="images/questionMark.png" alt="questionMark" data-toggle="tooltip" title="Increase max health and health regen">
+                                        End <a href="#" class="tooltipA">
+                                            <img src="images/questionMark.png" alt="questionMark">
+                                            <span>
+                                                1 point = 3 Max Health<br />
+                                                3 points = 1 Health/s
+                                            </span>
+                                        </a>  
                                     </td>
                                     <td>
                                         <span id="endurance">5</span><br />
@@ -133,7 +147,14 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Agi <img src="images/questionMark.png" alt="questionMark" data-toggle="tooltip" title="Evasion, critical chance, hit rate">
+                                        Agi <a href="#" class="tooltipA">
+                                            <img src="images/questionMark.png" alt="questionMark">
+                                            <span>
+                                                100 points = 2% Accuracy<br />
+                                                100 points = 3% Evasion<br />
+                                                100 points = 3% Critical Chance
+                                            </span>
+                                        </a>    
                                     </td>
                                     <td>
                                         <span id="agility">5</span><br />
@@ -142,7 +163,13 @@
                                         <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
                                     </td>
                                     <td>
-                                        Dex <img src="images/questionMark.png" alt="questionMark" data-toggle="tooltip" title="Evasion, defense, critical damage">
+                                        Dex <a href="#" class="tooltipA">
+                                            <img src="images/questionMark.png" alt="questionMark">
+                                            <span>
+                                                2 points = 1 Defense<br />
+                                                10 points = 2% Critical Damage
+                                            </span>
+                                        </a>
                                     </td>
                                     <td>
                                         <span id="dexterity">5</span><br />
@@ -153,7 +180,13 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Int <img src="images/questionMark.png" alt="questionMark" data-toggle="tooltip" title="Increase effectiveness of certain spells, and give small bonus to mana regen">
+                                        Int <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            Currently not much use, and it's disabled until more content is added.<br />
+                                            10 points = 1 Max Mana
+                                        </span>
+                                    </a>
                                     </td>
                                     <td>
                                         <span id="intelligence">5</span><br />
@@ -162,19 +195,32 @@
                                         <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" disabled onclick="upgradeIntelligence(event);">
                                     </td>
                                     <td>
-                                        Wis <img src="images/questionMark.png" alt="questionMark" data-toggle="tooltip" title="Increse max mana, mana regen">
+                                        Wis <a href="#" class="tooltipA">
+                                            <img src="images/questionMark.png" alt="questionMark">
+                                            <span>
+                                                10 points = 1 Mana/s<br />
+                                                2 points = 1 Max Mana</span>
+                                        </a>
                                     </td>
                                     <td>
                                         <span id="wisdom">5</span><br />
                                     </td>
                                     <td>
-                                        <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" disabled onclick="upgradeWisdom(event);">
+                                        <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        Luk <img src="images/questionMark.png" alt="questionMark" data-toggle="tooltip" title="Increase drop rate a little, critical chance, evasion">
-                                    </td>
+                                        Luk <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            100 points = 1% Accuracy<br />
+                                            100 points = 2% Evasion(20% cap)<br />
+                                            100 points = 1% Critical Chance<br />
+                                            100 points = 20% drop rate
+                                        </span>
+                                    </a>
+                                   </td>
                                     <td>
                                         <span id="luck">5</span>
                                     </td>
@@ -193,8 +239,12 @@
                                     <td>
                                         <img src="images/gold.jpg" alt="Gold Coin">
                                     </td>
-                                    <td colspan="5">
+                                    <td>
                                         <span id="gold">0</span>
+                                    </td>
+                                    <td colspan="5">
+
+                                        <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
                                     </td>
                                 </tr>
                             </table>
@@ -559,12 +609,12 @@
 
                                 <a href="updates.txt" target="_blank">Changelog</a><br />
                                 <a href="http://www.reddit.com/r/LoFW/">Subreddit</a><br /><br />
-                                <div><label><input type='checkbox' id="common" onclick='handleClick(this);'>Destroy all Common</label></div>
-                                <div><label><input type='checkbox' id="uncommon" onclick='handleClick(this);'>Destroy all Uncommon</label></div>
-                                <div><label><input type='checkbox' id="rare" onclick='handleClick(this);'>Destroy all Rare</label></div>
-                                <div><label><input type='checkbox' id="epic" onclick='handleClick(this);'>Destroy all Epic</label></div><br />
+                                <div><label><input type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
+                                <div><label><input type='checkbox' id="uncommon" onclick='handleClick();'>Destroy all Uncommon</label></div>
+                                <div><label><input type='checkbox' id="rare" onclick='handleClick();'>Destroy all Rare</label></div>
+                                <div><label><input type='checkbox' id="epic" onclick='handleClick();'>Destroy all Epic</label></div><br />
                                 <div class="c3">
-                                    <b>Game is free, but donations are always welcome. I am going to spend about $900 for new graphic (item sprites + monster sprites) so any help is appreciated.</b>
+                                    <b>Game is free, but donations are always welcome.</b>
                                     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                                         <input type="hidden" name="cmd" value="_s-xclick">
                                         <input type="hidden" name="hosted_button_id" value="A9UAZH8H9XHFQ">
@@ -614,7 +664,6 @@
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/quest.js"></script>
     <script type="text/javascript" src="js/intervalFunctions.js"></script>
-    <script type="text/javascript" src="js/itemTable.js"></script>
     <script type="text/javascript" src="js/itemDrop.js"></script>
     <script type="text/javascript" src="js/itemSell.js"></script>
     <script type="text/javascript" src="js/save.js"></script>

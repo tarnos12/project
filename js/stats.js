@@ -5,7 +5,7 @@
         document.getElementById("vis3").style.visibility = "visible";
         document.getElementById("vis4").style.visibility = "visible";
         //document.getElementById("vis5").style.visibility = "visible";
-        //document.getElementById("vis6").style.visibility = "visible";
+        document.getElementById("vis6").style.visibility = "visible";
         document.getElementById("vis7").style.visibility = "visible";
     } else {
         document.getElementById("vis1").style.visibility = "hidden";
@@ -90,7 +90,7 @@ function levelUp() {
     player.baseWisdom += 2.3;
     player.baseIntelligence += 3.5;
     player.baseLuck += 1.6;
-    monsterKillCount();
+    quest();
     CreateMonsterHtml();
 }
 
@@ -277,3 +277,15 @@ function upgradeLuck(event) {
         }
     }
 }
+function autoBattle(monster) {
+    var ManaCost = monster.Stats.manaCost;
+    var autoBattle = window.setInterval(function () {
+        if (player.mana >= ManaCost && player.autoBattle == true) {
+            attack(monster)
+            player.mana -= ManaCost;
+        }
+        else if (player.autoBattle == false) {
+            clearInterval(autoBattle);
+        };
+    }, 1000)
+};
