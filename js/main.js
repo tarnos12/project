@@ -22,6 +22,8 @@ var currentGameVersion = 1.41;
 var player = {
     gameVersion: 1.41,
     isDead: false,
+    runOnce: false,
+    isAuto: false,
     itemIdNumber: 1,
     stats: 0,
     gold: 0,
@@ -457,7 +459,7 @@ function DrawBattle() {
 //Player miss/hit chance
 function playerAttack(monster) {
     document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
-    if (player.autoBattle == true) {
+    if (player.autoBattle == true && player.isAuto == false) {
             autoBattle(monster);
         }
     var playerHitChance = (player.accuracy() - monsterStats.eva) / 100;
@@ -603,6 +605,7 @@ function weaponSkill(monster) {
         player[subType + "MaxExp"] = Math.floor(player[subType + "MaxExp"] * 1.2);
     };
     CreateWeaponSkillHtml();
+    weaponSkillProgress();
 };
 
 //experience gained from killing a monster
