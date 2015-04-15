@@ -27,3 +27,6 @@ div.inventory {
     height: 500px;
     overflow-y: scroll;
 }
+
+.progress {background: rgba(245, 245, 245, 1); border: 0px solid rgba(245, 245, 245, 1); border-radius: 6px; height: 10px; width: 60%;}
+.progress-bar-custom {background: rgba(66, 139, 202, 1);}
