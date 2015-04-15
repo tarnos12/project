@@ -7,10 +7,8 @@ function CreateWeaponSkillHtml() {
     //Sword
     html += '<tr>' + '<td>';
     html += "Sword Skill Level: " + player.swordLevel;
-    html += '<div class="progress"><div id="SwordBar" class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span id="exppercent">0</span>%</div></div></div>'
     html += '<td>' + "Strength +" + player.swordStrength() + '</td>' + '<td>' + " Agility +" + player.swordAgility() + '</td>';
     html += '</td>' + '</tr>';
-    
 
     //Axe
     html += '<tr>' + '<td>';
