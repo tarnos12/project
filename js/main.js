@@ -153,9 +153,9 @@ var player = {
         return Math.floor((player.totalEndurance()) / 3);
     },
     //Mana
-    mana: 1000,
+    mana: 10,
     maxMana: function () {
-        return (1000 +
+        return (7 +
             player.totalWisdom() * 0.5 +
             player.totalIntelligence() * 0.1);
     },
