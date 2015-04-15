@@ -63,10 +63,6 @@ window.setInterval(function () {
     divArray.style.width = ((exppercent2) + '%');
     document.getElementById("exppercent").innerHTML = exppercent;
 }, 100);
-function weaponSkillProgress() {
-    var swordBar = document.getElementById('SwordBar');
-    swordBar.style.width += 10;
-};
 window.setInterval(function () {
     var healthPercent = (Math.floor((player.health / player.maxhealth()) * 100));
     healthPercent = healthPercent / 2.5;
@@ -281,7 +277,7 @@ function upgradeLuck(event) {
         }
     }
 }
-function autoBattle(monster) {
+function autoAttack(monster) {
     var ManaCost = monster.Stats.manaCost;
     var autoBattle = window.setInterval(function () {
         if (player.mana >= ManaCost && player.autoBattle == true) {
@@ -293,5 +289,5 @@ function autoBattle(monster) {
             clearInterval(autoBattle);
             player.isAuto = false;
         };
-    }, 5000)
+    }, 1000)
 };

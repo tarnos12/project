@@ -460,7 +460,7 @@ function DrawBattle() {
 function playerAttack(monster) {
     document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
     if (player.autoBattle == true && player.isAuto == false) {
-            autoBattle(monster);
+            autoAttack(monster);
         }
     var playerHitChance = (player.accuracy() - monsterStats.eva) / 100;
     var randomHitChance = Math.random();
@@ -605,7 +605,6 @@ function weaponSkill(monster) {
         player[subType + "MaxExp"] = Math.floor(player[subType + "MaxExp"] * 1.2);
     };
     CreateWeaponSkillHtml();
-    weaponSkillProgress();
 };
 
 //experience gained from killing a monster
