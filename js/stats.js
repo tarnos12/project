@@ -281,7 +281,6 @@ function autoAttack(monster) {
     var ManaCost = monster.Stats.manaCost;
     var autoBattle = window.setInterval(function () {
         if (player.mana >= ManaCost && player.autoBattle == true) {
-            player.isAuto = true;
             player.mana -= ManaCost;
             attack(monster)
         }

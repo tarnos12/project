@@ -50,10 +50,7 @@ var player = {
         return Math.floor(
             equippedItems.weapon.strength +
             equippedItems.offHand.strength +
-            equippedItems.armor.strength +
-            equippedItems.ring.strength +
-            equippedItems.amulet.strength +
-            equippedItems.talisman.strength);
+            equippedItems.armor.strength);
     },
     totalStrength: function () {
         return Math.floor(player.baseStrength +
@@ -68,10 +65,7 @@ var player = {
         return Math.floor(
             equippedItems.weapon.endurance +
             equippedItems.offHand.endurance +
-            equippedItems.armor.endurance +
-            equippedItems.ring.endurance +
-            equippedItems.amulet.endurance +
-            equippedItems.talisman.endurance);
+            equippedItems.armor.endurance);
     },
     totalEndurance: function () {
         return Math.floor(
@@ -86,10 +80,7 @@ var player = {
         return Math.floor(
             equippedItems.weapon.agility +
             equippedItems.offHand.agility +
-            equippedItems.armor.agility +
-            equippedItems.ring.agility +
-            equippedItems.amulet.agility +
-            equippedItems.talisman.agility);
+            equippedItems.armor.agility);
     },
     totalAgility: function () {
         return Math.floor(
@@ -103,10 +94,7 @@ var player = {
         return Math.floor(
             equippedItems.weapon.dexterity +
             equippedItems.offHand.dexterity +
-            equippedItems.armor.dexterity +
-            equippedItems.ring.dexterity +
-            equippedItems.amulet.dexterity +
-            equippedItems.talisman.dexterity);
+            equippedItems.armor.dexterity);
     },
     totalDexterity: function () {
         return Math.floor(
@@ -120,10 +108,7 @@ var player = {
         return Math.floor(
             equippedItems.weapon.intelligence +
             equippedItems.offHand.intelligence +
-            equippedItems.armor.intelligence +
-            equippedItems.ring.intelligence +
-            equippedItems.amulet.intelligence +
-            equippedItems.talisman.intelligence);
+            equippedItems.armor.intelligence);
     },
     totalIntelligence: function () {
         return Math.floor(
@@ -137,10 +122,7 @@ var player = {
         return Math.floor(
             equippedItems.weapon.wisdom +
             equippedItems.offHand.wisdom +
-            equippedItems.armor.wisdom +
-            equippedItems.ring.wisdom +
-            equippedItems.amulet.wisdom +
-            equippedItems.talisman.wisdom);
+            equippedItems.armor.wisdom);
     },
     totalWisdom: function () {
         return Math.floor(
@@ -155,10 +137,7 @@ var player = {
         return Math.floor(
             equippedItems.weapon.luck +
             equippedItems.offHand.luck +
-            equippedItems.armor.luck +
-            equippedItems.ring.luck +
-            equippedItems.amulet.luck +
-            equippedItems.talisman.luck);
+            equippedItems.armor.luck);
     },
     totalLuck: function () {
         return Math.floor(
@@ -174,9 +153,9 @@ var player = {
         return Math.floor((player.totalEndurance()) / 3);
     },
     //Mana
-    mana: 10,
+    mana: 1000,
     maxMana: function () {
-        return (7 +
+        return (1000 +
             player.totalWisdom() * 0.5 +
             player.totalIntelligence() * 0.1);
     },
@@ -202,9 +181,7 @@ var player = {
         return (
             (player.totalDexterity() * 0.5) +
             equippedItems.armor.defense +
-            equippedItems.ring.defense +
-            equippedItems.amulet.defense +
-            equippedItems.talisman.defense);
+            equippedItems.offHand.defense);
     },
     evasion: function () {
         if ((5 + (player.totalAgility() * 0.03 + player.totalLuck() * 0.02)) > 20) {
@@ -460,6 +437,7 @@ function DrawBattle() {
 function playerAttack(monster) {
     document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
     if (player.autoBattle == true && player.isAuto == false) {
+            player.isAuto = true;
             autoAttack(monster);
         }
     var playerHitChance = (player.accuracy() - monsterStats.eva) / 100;
