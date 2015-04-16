@@ -1,5 +1,16 @@
 _________________________
-v1.4.2 - 15 april 2015   |
+v1.4.4 - 16 april 2015   |
+-------------------------|
+- Agility now gives bonuses to defense and evasion, while dexterity increase critical chance and critical damage, strength no longer gives you critical damage, and it gives 2 times less damage per point.
+- Weapon skill experience now save too.
+- Base Health increased from 50 to 200
+- Each monster damage has been changed for better balancing
+- Experience gain has been changed, fighting first monster will offer less experience, higher the player level.
+- Hopefully balanced item leveling up, Common, Uncommon have max level of 5, Rare and Epic 10, Legendary max weapon level is 15. Also you gain experience to current weapon with monster kill, not each strike.
+- All item stats, are lowered, they are still random but hopefully won't be too strong at early levels.
+- If player is 4 levels higher than a monster, exp rate will be reduced by 50%.
+_________________________
+v1.4.3 - 15 april 2015   |
 -------------------------|
 - Added progress bar to weapon skills tab.
 - Fixed auto Battle mode (i.e "idle mode"), it now works properly. 

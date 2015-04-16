@@ -331,6 +331,7 @@ function CreateInventoryWeaponHtml() {
                 }
         }
         html += '</table>';
+        html += '<br /><br />'
         html += '</div>';
     }
     html += '</div>';

@@ -25,14 +25,19 @@
         playerTalisman: equippedItems.talisman,
         inventory: playerInventory,
         //Weapon mastery levels and experience
+        SwordExp: player.swordExp,
         SwordMaxExp: player.swordMaxExp,
         SwordLevel: player.swordLevel,
+        AxeExp: player.axeExp,
         AxeMaxExp: player.axeMaxExp,
         AxeLevel: player.axeLevel,
+        MaceExp: player.maceExp,
         MaceMaxExp: player.maceMaxExp,
         MaceLevel: player.maceLevel,
+        StaffExp: player.staffExp,
         StaffMaxExp: player.staffMaxExp,
         StaffLevel: player.staffLevel,
+        RangedExp: player.rangedExp,
         RangedMaxExp: player.rangedMaxExp,
         RangedLevel: player.rangedLevel,
         //Other
@@ -55,14 +60,19 @@ function load() {
     if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
     if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
     if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
+    if (typeof savegame.SwordExp !== "undefined") player.swordExp = savegame.SwordExp;
     if (typeof savegame.SwordMaxExp !== "undefined") player.swordMaxExp = savegame.SwordMaxExp;
     if (typeof savegame.SwordLevel !== "undefined") player.swordLevel = savegame.SwordLevel;
+    if (typeof savegame.AxeExp !== "undefined") player.axeExp = savegame.AxeExp;
     if (typeof savegame.AxeMaxExp !== "undefined") player.axeMaxExp = savegame.AxeMaxExp;
     if (typeof savegame.AxeLevel !== "undefined") player.axeLevel = savegame.AxeLevel;
+    if (typeof savegame.MaceExp !== "undefined") player.maceExp = savegame.MaceExp;
     if (typeof savegame.MaceMaxExp !== "undefined") player.maceMaxExp = savegame.MaceMaxExp;
     if (typeof savegame.MaceLevel !== "undefined") player.maceLevel = savegame.MaceLevel;
+    if (typeof savegame.StaffExp !== "undefined") player.staffExp = savegame.StaffExp;
     if (typeof savegame.StaffMaxExp !== "undefined") player.staffMaxExp = savegame.StaffMaxExp;
     if (typeof savegame.StaffLevel !== "undefined") player.staffLevel = savegame.StaffLevel;
+    if (typeof savegame.RangedExp !== "undefined") player.rangedExp = savegame.RangedExp;
     if (typeof savegame.RangedMaxExp !== "undefined") player.rangedMaxExp = savegame.RangedMaxExp;
     if (typeof savegame.RangedLevel !== "undefined") player.rangedLevel = savegame.RangedLevel;
     //Other

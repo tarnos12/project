@@ -145,12 +145,12 @@ var player = {
             player.equipLuck());
     },
     //Health
-    health: 50,
+    health: 200,
     maxhealth: function () {
-        return (35 + player.totalEndurance() * 3);
+        return (200 + player.totalEndurance() * 3);
     },
     hpregen: function () {
-        return Math.floor((player.totalEndurance()) / 3);
+        return Math.floor(5 + (player.totalEndurance()) / 3);
     },
     //Mana
     mana: 10,
@@ -165,12 +165,12 @@ var player = {
     //Damage
     minDamage: function () {
         return Math.floor(
-            1 + (player.totalStrength() * 0.4) +
+            3 + (player.totalStrength() * 0.2) +
             equippedItems.weapon.minDamage);
     },
     maxDamage: function () {
         return Math.floor(
-            2 + (player.totalStrength() * 0.6) +
+            5 + (player.totalStrength() * 0.3) +
             equippedItems.weapon.maxDamage);
     },
     //Secondary
@@ -179,7 +179,7 @@ var player = {
     },
     defense: function () {
         return (
-            (player.totalDexterity() * 0.5) +
+            (player.totalAgility() * 0.1) +
             equippedItems.armor.defense +
             equippedItems.offHand.defense);
     },
@@ -192,15 +192,15 @@ var player = {
         }
     },
     criticalChance: function () {
-        if ((10 + (player.totalAgility() * 0.03 + player.totalLuck() * 0.01)) > 50) {
+        if ((10 + (player.totalDexterity() * 0.03 + player.totalLuck() * 0.01)) > 50) {
             return 50;
         }
         else {
-            return (10 + (player.totalAgility() * 0.03 + player.totalLuck() * 0.01));
+            return (10 + (player.totalDexterity() * 0.03 + player.totalLuck() * 0.01));
         }
     },
     criticalDamage: function () {
-        return (1.48 + player.totalStrength() * 0.003 + player.totalDexterity() * 0.002).toFixed(2);
+        return (1.48 + player.totalDexterity() * 0.002).toFixed(2);
     },
     //Sword
     swordLevel: 0,
@@ -488,7 +488,6 @@ function playerDamageDeal(damage, monster) {
     damageDealt += damage;
     document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     //Add more stuff like "bonus elemental damage from passive skills or bonus weapon damage
-    itemExperienceGain(monster);
 };
 
 //monster hit chance
@@ -506,7 +505,7 @@ function monsterAttack(monster) {
 //monster damage calculation
 function monsterDamage(monster) {
     var dmg = Math.floor(Math.random() * (monsterStats.maxDmg - monsterStats.minDmg + 1)) + monsterStats.minDmg;
-    dmg = Math.floor(dmg * (10 / (10 + player.defense())));
+    dmg = Math.floor(dmg * (30 / (30 + player.defense())));
     if (dmg >= 1) {
         monsterDamageDeal(dmg, monster);
     };
@@ -554,6 +553,7 @@ function playerDead(monster) {
 //monster kill function
 function monsterKilled(monster) {
     monsterStats.hp = monsterStats.maxHp;
+    itemExperienceGain(monster);
     monsterExperience(monster);
     weaponSkill(monster);
     monsterStats.killCount++;
@@ -571,7 +571,13 @@ function monsterKilled(monster) {
 
 //Weapon skill experience
 function weaponSkill(monster) {
-    var expgain = monsterStats.level;
+    if (player.level > monsterStats.level + 3) {
+        var expgain = monsterStats.level / 2;
+    }
+    else {
+        var expgain = monsterStats.level;
+
+    };
     var subType = equippedItems.weapon.subType;
 
     if (player[subType + "Exp"] < player[subType + "MaxExp"]) {
@@ -587,8 +593,12 @@ function weaponSkill(monster) {
 
 //experience gained from killing a monster
 function monsterExperience(monster) {
-
-    var expgain = (monsterStats.baseExp / (player.level / 3)) * player.expRate();
+    if (player.level > monsterStats.level + 3) {
+        var expgain = ((monsterStats.baseExp / (player.level / monsterStats.level)) * player.expRate() / 2);
+    }
+    else {
+        var expgain = (monsterStats.baseExp / (player.level / monsterStats.level)) * player.expRate();
+    };
     if (player.experience < player.maxExperience) {
         player.experience = Math.floor(player.experience + expgain);
     };
@@ -618,26 +628,35 @@ function itemExperienceGain(monster) {
         };
         if (weaponExp >= weaponMaxExp) {
             weaponLevel += 1;
-            equippedItems.weapon.minDamage += (1 * weaponLevel)
-            equippedItems.weapon.maxDamage += (2 * weaponLevel)
+            equippedItems.weapon.minDamage += (1 * weapon.iLvl);
+            equippedItems.weapon.maxDamage += (2 * weapon.iLvl);
             weaponExp = weaponExp - weaponMaxExp;
             weaponMaxExp = Math.floor(weaponMaxExp * 1.1)
-                if (weapon.subType == "Sword", "Axe", "Bow") {
-                    weapon.minDamage += weapon.iLvl + weapon.power + 2;
-                    weapon.maxDamage += weapon.iLvl + weapon.power + 2;
-                    weapon.strength += weapon.iLvl + weapon.power + 2;
-                    weapon.endurance += weapon.iLvl + weapon.power + 1;
-                    weapon.agility += weapon.iLvl + weapon.power + 2;
-                    weapon.dexterity += weapon.iLvl + weapon.power + 2;
-                }
-                else if (weapon.subType == "Mace", "Staff") {
-                    weapon.minDamage += weapon.iLvl + weapon.power + 2;
-                    weapon.maxDamage += weapon.iLvl + weapon.power + 2;
-                    weapon.strength += weapon.iLvl + weapon.power + 1;
-                    weapon.endurance += weapon.iLvl + weapon.power + 2;
-                    weapon.intelligence += weapon.iLvl + weapon.power + 2;
-                    weapon.wisdom += weapon.iLvl + weapon.power + 2;
-                }
+            if (weapon.subType == "Sword") {
+                weapon.strength += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.agility += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.dexterity += Math.floor(weapon.iLvl + weapon.power * 2);
+            }
+            else if (weapon.subType == "Axe") {
+                weapon.strength += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.endurance += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.agility += Math.floor(weapon.iLvl + weapon.power * 2);
+            }
+            else if (weapon.subType == "Bow") {
+                weapon.strength += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.agility += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.dexterity += Math.floor(weapon.iLvl + weapon.power * 2);
+            }
+            else if (weapon.subType == "Mace") {
+                weapon.strength += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.endurance += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.wisdom += Math.floor(weapon.iLvl + weapon.power * 2);
+            }
+            else if (weapon.subType == "Staff") {
+                weapon.agility += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.intelligence += Math.floor(weapon.iLvl + weapon.power * 2);
+                weapon.wisdom += Math.floor(weapon.iLvl + weapon.power * 2);
+            };
             
         };
         equippedItems.weapon.exp = weaponExp;
@@ -650,7 +669,7 @@ function itemExperienceGain(monster) {
 //gold gained from killing a monster
 function monsterGold(monster) {
     var randomGold = Math.floor(Math.random() * ((monsterStats.level + 5) - monsterStats.level + 1) + monsterStats.level);
-    goldDrop = randomGold * player.goldRate();
+    goldDrop = Math.floor(randomGold * player.goldRate());
     player.gold += goldDrop;
     Log("You loot: " + goldDrop + " gold!");
     document.getElementById("gold").innerHTML = player.gold;
@@ -895,7 +914,10 @@ function unequipItem(id, oldId) {
             intelligence: 0,
             wisdom: 0,
             luck: 0,
-            defense: 0
+            defense: 0,
+            goldRate: 0,
+            expRate: 0,
+            dropRate: 0
         };
         CreateInventoryWeaponHtml();
     }
@@ -911,7 +933,10 @@ function unequipItem(id, oldId) {
             intelligence: 0,
             wisdom: 0,
             luck: 0,
-            defense: 0
+            defense: 0,
+            goldRate: 0,
+            expRate: 0,
+            dropRate: 0
         };
         CreateInventoryWeaponHtml();
     }
@@ -927,7 +952,10 @@ function unequipItem(id, oldId) {
             intelligence: 0,
             wisdom: 0,
             luck: 0,
-            defense: 0
+            defense: 0,
+            goldRate: 0,
+            expRate: 0,
+            dropRate: 0
         };
         CreateInventoryWeaponHtml();
     };
