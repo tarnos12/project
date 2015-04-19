@@ -110,6 +110,8 @@ function load() {
     quest();
     CreateMonsterHtml();
     versionCheck();
+    CreatePlayerSkillsHtml();
+    updateHtml();
 };
 
 function resetCheck() {

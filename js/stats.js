@@ -1,10 +1,10 @@
-﻿window.setInterval(function () {
+﻿function updateHtml() {
     if (player.stats >= 1) { // Show "plus" image when player level up
         document.getElementById("vis1").style.visibility = "visible";
         document.getElementById("vis2").style.visibility = "visible";
         document.getElementById("vis3").style.visibility = "visible";
         document.getElementById("vis4").style.visibility = "visible";
-        //document.getElementById("vis5").style.visibility = "visible";
+        document.getElementById("vis5").style.visibility = "visible";
         document.getElementById("vis6").style.visibility = "visible";
         document.getElementById("vis7").style.visibility = "visible";
     } else {
@@ -16,39 +16,104 @@
         document.getElementById("vis6").style.visibility = "hidden";
         document.getElementById("vis7").style.visibility = "hidden";
     }
-    document.getElementById('mindamage').innerHTML = player.minDamage().toFixed(0);
-    document.getElementById('maxdamage').innerHTML = player.maxDamage().toFixed(0);
-    document.getElementById('strength').innerHTML = player.totalStrength() + " (" + '<font color="blue">' + player.equipStrength() + '</font>' + ")";
-    document.getElementById("maxhealth").innerHTML = player.maxhealth();
-    document.getElementById("hpregen").innerHTML = player.hpregen();
-    document.getElementById("stats").innerHTML = player.stats;
-    document.getElementById("endurance").innerHTML = player.totalEndurance() + " (" + '<font color="blue">' + player.equipEndurance() + '</font>' + ")";
-    document.getElementById("agility").innerHTML = player.totalAgility() + " (" + '<font color="blue">' + player.equipAgility() + '</font>' + ")";
-    document.getElementById("accuracy").innerHTML = player.accuracy().toFixed(2);
-    document.getElementById("dexterity").innerHTML = player.totalDexterity() + " (" + '<font color="blue">' + player.equipDexterity() + '</font>' + ")";
-    document.getElementById("defense").innerHTML = player.defense().toFixed(0);
-    document.getElementById("criticalDamage").innerHTML = (player.criticalDamage() * 100).toFixed(0) + "%";
-    document.getElementById("criticalChance").innerHTML = player.criticalChance().toFixed(1);
-    document.getElementById("intelligence").innerHTML = player.totalIntelligence() + " (" + '<font color="blue">' + player.equipIntelligence() + '</font>' + ")";
-    document.getElementById("mana").innerHTML = player.mana.toFixed(0);
-    document.getElementById("maxmana").innerHTML = player.maxMana().toFixed(0);
-    document.getElementById("wisdom").innerHTML = player.totalWisdom() + " (" + '<font color="blue">' + player.equipWisdom() + '</font>' + ")";
-    document.getElementById("manaRegen").innerHTML = player.manaRegen();
-    document.getElementById("luck").innerHTML = player.totalLuck() + " (" + '<font color="blue">' + player.equipLuck() + '</font>' + ")";
-    document.getElementById("evasion").innerHTML = player.evasion().toFixed(1);
-    document.getElementById("dropRate").innerHTML = (player.dropRate() * 100).toFixed(0);
-    document.getElementById("expRate").innerHTML = (player.expRate() * 100).toFixed(0);
-    document.getElementById("goldRate").innerHTML = (player.goldRate() * 100).toFixed(0);
-    document.getElementById("level").innerHTML = player.level;
-    document.getElementById("maxexperience").innerHTML = player.maxExperience;
-    document.getElementById("experience").innerHTML = player.experience;
-    document.getElementById("gold").innerHTML = player.gold.toFixed(0);
-    document.getElementById("buyBackpack").innerHTML = backpackStatus.price;
-    document.getElementById("buyStat").innerHTML = statStatus.price;
-    document.getElementById('potion').innerHTML = pot;
-    document.getElementById('superPotion').innerHTML = spot;
-    document.getElementById('megaPotion').innerHTML = mpot;
-}, 1);
+    var minDamage;
+    var maxDamage;
+    var strength;
+    var endurance;
+    var agility;
+    var dexterity;
+    var intelligence;
+    var wisdom;
+    var luck;
+    var maxHealth;
+    var hpRegen;
+    var stats;
+    var accuracy;
+    var defense;
+    var criticalDamage;
+    var criticalChance;
+    var mana;
+    var maxMana;
+    var manaRegen;
+    var evasion;
+    var dropRate;
+    var expRate;
+    var goldRate;
+    var level;
+    var maxExperience;
+    var experience;
+    var gold;
+    var buyBackpack;
+    var buyStat;
+    var potion;
+    var superPotion;
+    var megaPotion;
+
+    minDamage = document.getElementById('mindamage');
+    maxDamage = document.getElementById('maxdamage');
+    strength = document.getElementById('strength');
+    endurance = document.getElementById("endurance");
+    maxHealth = document.getElementById("maxhealth");
+    hpRegen = document.getElementById("hpregen");
+    stats = document.getElementById("stats");
+    agility = document.getElementById("agility");
+    dexterity = document.getElementById("dexterity");
+    wisdom = document.getElementById("wisdom");
+    intelligence = document.getElementById("intelligence");
+    luck = document.getElementById("luck");
+    mana = document.getElementById("mana");
+    manaRegen = document.getElementById("manaRegen");
+    maxMana = document.getElementById("maxmana");
+    criticalDamage = document.getElementById("criticalDamage");
+    criticalChance = document.getElementById("criticalChance");
+    defense = document.getElementById("defense");
+    evasion = document.getElementById("evasion");
+    accuracy = document.getElementById("accuracy");
+    dropRate = document.getElementById("dropRate");
+    expRate = document.getElementById("expRate");
+    goldRate = document.getElementById("goldRate");
+    level = document.getElementById("level");
+    maxExperience = document.getElementById("maxexperience");
+    experience = document.getElementById("experience");
+    gold = document.getElementById("gold");
+    buyBackpack = document.getElementById("buyBackpack");
+    buyStat = document.getElementById("buyStat");
+    potion = document.getElementById('potion');
+    superPotion = document.getElementById('superPotion');
+    megaPotion = document.getElementById('megaPotion');
+    minDamage.innerHTML = player.minDamage().toFixed(0);
+    maxDamage.innerHTML = player.maxDamage().toFixed(0);
+    strength.innerHTML = player.totalStrength() + " (" + '<font color="blue">' + player.equipStrength() + '</font>' + ")";
+    endurance.innerHTML = player.totalEndurance() + " (" + '<font color="blue">' + player.equipEndurance() + '</font>' + ")";
+    maxHealth.innerHTML = player.maxhealth();
+    hpRegen.innerHTML = player.hpregen();
+    stats.innerHTML = player.stats;
+    agility.innerHTML = player.totalAgility() + " (" + '<font color="blue">' + player.equipAgility() + '</font>' + ")";
+    accuracy.innerHTML = player.accuracy().toFixed(2);
+    dexterity.innerHTML = player.totalDexterity() + " (" + '<font color="blue">' + player.equipDexterity() + '</font>' + ")";
+    defense.innerHTML = player.defense().toFixed(0);
+    criticalDamage.innerHTML = (player.criticalDamage() * 100).toFixed(0) + "%";
+    criticalChance.innerHTML = player.criticalChance().toFixed(1);
+    intelligence.innerHTML = player.totalIntelligence() + " (" + '<font color="blue">' + player.equipIntelligence() + '</font>' + ")";
+    mana.innerHTML = player.mana.toFixed(0);
+    maxMana.innerHTML = player.maxMana().toFixed(0);
+    wisdom.innerHTML = player.totalWisdom() + " (" + '<font color="blue">' + player.equipWisdom() + '</font>' + ")";
+    manaRegen.innerHTML = player.manaRegen();
+    luck.innerHTML = player.totalLuck() + " (" + '<font color="blue">' + player.equipLuck() + '</font>' + ")";
+    evasion.innerHTML = player.evasion().toFixed(1);
+    dropRate.innerHTML = (player.dropRate() * 100).toFixed(0);
+    expRate.innerHTML = (player.expRate() * 100).toFixed(0);
+    goldRate.innerHTML = (player.goldRate() * 100).toFixed(0);
+    level.innerHTML = player.level;
+    maxExperience.innerHTML = player.maxExperience;
+    experience.innerHTML = player.experience;
+    gold.innerHTML = player.gold.toFixed(0);
+    buyBackpack.innerHTML = backpackStatus.price;
+    buyStat.innerHTML = statStatus.price;
+    potion.innerHTML = pot;
+    superPotion.innerHTML = spot;
+    megaPotion.innerHTML = mpot;
+};
 //auto Save
 window.setInterval(function () {
     save()
@@ -92,6 +157,7 @@ function levelUp() {
     player.baseLuck += 1.6;
     quest();
     CreateMonsterHtml();
+    updateHtml();
 }
 
 function loadIsEquipped() {
@@ -144,6 +210,7 @@ function upgradeStrength(event) {
             player.baseStrength += 1;
         }
     }
+    updateHtml();
 }
 //Endurance
 function upgradeEndurance(event) {
@@ -166,6 +233,7 @@ function upgradeEndurance(event) {
             player.baseEndurance += 1;
         }
     }
+    updateHtml();
 }
 //Agility
 function upgradeAgility(event) {
@@ -188,6 +256,7 @@ function upgradeAgility(event) {
             player.baseAgility += 1;
         }
     }
+    updateHtml();
 }
 //Dexterity
 function upgradeDexterity(event) {
@@ -210,6 +279,7 @@ function upgradeDexterity(event) {
             player.baseDexterity += 1;
         }
     }
+    updateHtml();
 }
 //Wisdom
 function upgradeWisdom(event) {
@@ -232,6 +302,7 @@ function upgradeWisdom(event) {
             player.baseWisdom += 1;
         }
     }
+    updateHtml();
 }
 //Intelligence
 function upgradeIntelligence(event) {
@@ -254,6 +325,7 @@ function upgradeIntelligence(event) {
             player.baseIntelligence += 1;
         }
     }
+    updateHtml();
 }
 //Luck
 function upgradeLuck(event) {
@@ -276,13 +348,14 @@ function upgradeLuck(event) {
             player.baseLuck += 1;
         }
     }
+    updateHtml();
 }
-function autoAttack(monster) {
+function autoAttack(monster, monsterStats) {
     var ManaCost = monster.Stats.manaCost;
     var autoBattle = window.setInterval(function () {
         if (player.mana >= ManaCost && player.autoBattle == true) {
             player.mana -= ManaCost;
-            attack(monster)
+            attack(monster, monsterStats)
         }
         else if (player.autoBattle == false) {
             clearInterval(autoBattle);
