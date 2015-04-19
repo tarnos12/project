@@ -2,13 +2,14 @@
 function CreateWeaponSkillHtml() {
     var html = '';
 
+    html += '<div class="table-responsive">'
     html += '<table class="table">';
 
     //Sword
     html += '<tr>' + '<td>';
     html += "Sword Skill Level: " + player.swordLevel;
     html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.swordExp / player.swordMaxExp) * 100) + '%;"></div></div>'
-    html += '<td>' + "Strength +" + player.swordStrength() + '</td>' + '<td>' + " Agility +" + player.swordAgility() + '</td>';
+    html += '<td>' + "Strength +" + player.swordStr() + '</td>' + '<td>' + " Agility +" + player.swordAgi() + '</td>';
     html += '</td>' + '</tr>';
     
 
@@ -16,31 +17,32 @@ function CreateWeaponSkillHtml() {
     html += '<tr>' + '<td>';
     html += "Axe Skill Level: " + player.axeLevel;
     html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.axeExp / player.axeMaxExp) * 100) + '%;"></div></div>'
-    html += '<td>' + "Strength +" + player.axeStrength() + '</td>' + '<td>' + " Endurance +" + player.axeEndurance() + '</td>';
+    html += '<td>' + "Strength +" + player.axeStr() + '</td>' + '<td>' + " Endurance +" + player.axeEnd() + '</td>';
     html += '</td>' + '</tr>';
 
     //Mace
     html += '<tr>' + '<td>';
     html += "Mace Skill Level: " + player.maceLevel;
     html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.maceExp / player.maceMaxExp) * 100) + '%;"></div></div>'
-    html += '<td>' + "Endurance +" + player.maceEndurance() + '</td>' + '<td>' + " Wisdom +" + player.maceWisdom() + '</td>';
+    html += '<td>' + "Endurance +" + player.maceEnd() + '</td>' + '<td>' + " Wisdom +" + player.maceWis() + '</td>';
     html += '</td>' + '</tr>';
 
     //Staff
     html += '<tr>' + '<td>';
     html += "Staff Skill Level: " + player.staffLevel;
     html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.staffExp / player.staffMaxExp) * 100) + '%;"></div></div>'
-    html += '<td>' + "Intelligence +" + player.staffIntelligence() + '</td>' + '<td>' + " Wisdom +" + player.staffWisdom() + '</td>';
+    html += '<td>' + "Intelligence +" + player.staffInt() + '</td>' + '<td>' + " Wisdom +" + player.staffWis() + '</td>';
     html += '</td>' + '</tr>';
 
     //Bow
     html += '<tr>' + '<td>';
     html += "Bow Skill Level: " + player.rangedLevel;
     html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.rangedExp / player.rangedMaxExp) * 100) + '%;"></div></div>'
-    html += '<td>' + "Strength +" + player.rangedStrength() + '</td>' + '<td>' + " Dexterity +" + player.rangedDexterity() + '</td>';
+    html += '<td>' + "Strength +" + player.rangedStr() + '</td>' + '<td>' + " Dexterity +" + player.rangedDex() + '</td>';
     html += '</td>' + '</tr>';
 
-    html += '</table>';
+    html += '</table>'
+    html += '</div>';
     document.getElementById("weaponSkill").innerHTML = html;
 };
 
@@ -48,6 +50,7 @@ function CreateWeaponSkillHtml() {
 
 function CreateEquipHtml() {
     var html = '';
+    html += '<div class="table-responsive">'
     html += '<table class="table">';
     html += '<tr>' + '<td>' + "Item" + '</td>' + '<td>' + "Name" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
 
@@ -96,12 +99,13 @@ function CreateEquipHtml() {
                 '<td>' + '<font color="' + itemType.color + '">' + itemType.itemQuality + '</font>' + '</td>' +
                 '<td>' + itemType.value + "Value" + '</td>' +
                 '<td>' +
-                '<button type="button" class="btn btn-default" onclick="unequipItem' + "(" + itemType.id + ")" + '">Unequip</button>' +
+                '<button type="button" class="btn btn-sm btn-default" onclick="unequipItem' + "(" + itemType.id + ")" + '">Unequip</button>' +
                 '</td>' + '</tr>';
         }
     }
 
-    html += '</table>';
+    html += '</table>'
+    html += '</div>';
     document.getElementById("equipHtml").innerHTML = html;
 };
 
@@ -164,7 +168,7 @@ function CreateMonsterHtml() {
                         '<br />' +
                         '<img src="images/' + "monster" + monster.Stats.id + '.jpg" alt="' + monster.Stats.displayName + '">' +
                         '<br />' +
-                        '<span type="button" class="btn btn-default" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>'
+                        '<span type="button" class="btn btn-sm btn-default" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>'
                 }
             }
 
@@ -182,7 +186,6 @@ function changedTabInventory(index)
 	inventoryTabActiveNum = index;
 }
 
-//TEST
 function CreateInventoryWeaponHtml() {
     var html = '';
     html += '<div class="c3" width: 100%;>' + "Inventory Slots: " + playerInventory.length + "/" + player.inventory() + '</div>'
@@ -212,6 +215,7 @@ function CreateInventoryWeaponHtml() {
 
         html += 'id="tab_' + InventoryItemTypes[j].type + '">'
 
+        html += '<div class="table-responsive">'
         html += '<table class="table">';
         html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Rarity" + '</td>' + '</tr>';
         for (var i = 0; i < playerInventory.length; i++) {
@@ -319,8 +323,8 @@ function CreateInventoryWeaponHtml() {
                 html += '</span>' + '</a>' + '</td>';
                 html += '<td colspan="3">' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
    
-                 '<td class="col-md-3">' + '<button type="button" class="btn btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' + '</td>' +
-                 '<td class="col-md-3">' + '<button type="button" class="btn btn-default" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
+                 '<td class="col-md-3">' + '<button type="button" class="btn btn-sm btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' + '</td>' +
+                 '<td class="col-md-3">' + '<button type="button" class="btn btn-sm btn-default" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
             }
                 //Else if inventory item type is equal to orb/card/etc...different code here, without item stats etc.
             else if (playerInventory[i].itemType3 === InventoryItemTypes[j].type) {
@@ -330,11 +334,50 @@ function CreateInventoryWeaponHtml() {
                     
                 }
         }
-        html += '</table>';
-        html += '<br /><br />'
-        html += '</div>';
+        html += '</table>'
+        html += '</div>'
+        html += '<br /><br /><br /><br /><br /><br /><br /><br />'
+        html += '</div>'
     }
     html += '</div>';
 
     document.getElementById("inventory").innerHTML = html;
 };
+
+function CreatePlayerSkillsHtml() {
+    html = '';
+    var skill = player.activeSkills;
+    html += '<div class="table-responsive">'
+    html += '<table class="table">';
+
+    //FireBall
+    html += '<tr>' + '<td>';
+    html += skill.fireBall.name + " Level " + skill.fireBall.level;
+    html += "<br />Max Charges " + skill.fireBall.maxCharge();
+    html += "<br /> Active: " + skill.fireBall.isActive;
+    html += "<br />Damage +" + skill.fireBall.damage();
+    html += '<br /><a href="#" class="tooltipA">'
+    html += '<img src="images/questionMark' + '.png" />'
+    html += '<span>'
+    html += "Damage +" + skill.fireBall.damage();
+    html += "<br />10 x Player level + 2 x int"
+    html += "<br />Charges : 1 + <br />(1 for 100 int and 1 for 50 wis)"
+    html += '</span></a>'
+    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.swordExp / player.swordMaxExp) * 100) + '%;"></div></div>'
+    html += '</td>' + '</tr>';
+
+    //Frost Shot
+    html += '<tr>' + '<td>';
+    html += skill.frostShot.name + " Level " + skill.frostShot.level;
+    html += "<br />Max Charges " + skill.frostShot.maxCharge();
+    html += '<a href="#" class="tooltipA">'
+    html += '<img src="images/questionMark' + '.png" />'
+    html += '<span>'
+    html += "Damage +" + skill.frostShot.damage();
+    html += '</span></a>'
+    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.swordExp / player.swordMaxExp) * 100) + '%;"></div></div>'
+    html += '</td>' + '</tr>';
+
+    html += '</table></div>';
+    document.getElementById("playerSkills").innerHTML = html;
+}

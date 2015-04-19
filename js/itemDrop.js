@@ -13,7 +13,8 @@ function itemDropRandom(monster) {
 
     var dropItem;
     var chance = 0;
-    for (var i = 0; i < monsterDrop.length; i++) {
+    var monsterLength = monsterDrop.length;
+    for (var i = 0; i < monsterLength; i++) {
         itemDropChance = monsterDrop[i].chance;
         var randomItemChance = Math.floor(Math.random() * (20000 - 1) + 1);
             if (randomItemChance <= (itemDropChance * player.dropRate())) {
@@ -104,7 +105,7 @@ function itemDropRandom(monster) {
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
-                    dropItem["maxExp"] = 50;
+                    dropItem["maxExp"] = 10;
                     dropItem["power"] = 1; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
                         var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
@@ -135,7 +136,7 @@ function itemDropRandom(monster) {
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
-                    dropItem["maxExp"] = 100;
+                    dropItem["maxExp"] = 10;
                     dropItem["power"] = 2; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 3) + (monsterStats.level * 3));
@@ -164,9 +165,9 @@ function itemDropRandom(monster) {
                 };
                 if (dropItem.itemQuality == "Rare") {
                     dropItem["level"] = 0;
-                    dropItem["maxLevel"] = 10;
+                    dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
-                    dropItem["maxExp"] = 200;
+                    dropItem["maxExp"] = 10;
                     dropItem["power"] = 3; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 3) + (monsterStats.level * 3), (dropItem.iLvl * 4) + (monsterStats.level * 4));
@@ -195,9 +196,9 @@ function itemDropRandom(monster) {
                 };
                 if (dropItem.itemQuality == "Epic") {
                     dropItem["level"] = 0;
-                    dropItem["maxLevel"] = 10;
+                    dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
-                    dropItem["maxExp"] = 300;
+                    dropItem["maxExp"] = 10;
                     dropItem["power"] = 4; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 4) + (monsterStats.level * 4), (dropItem.iLvl * 5) + (monsterStats.level * 5));
@@ -226,9 +227,9 @@ function itemDropRandom(monster) {
                 };
                 if (dropItem.itemQuality == "Legendary") {
                     dropItem["level"] = 0;
-                    dropItem["maxLevel"] = 15;
+                    dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
-                    dropItem["maxExp"] = 400;
+                    dropItem["maxExp"] = 10;
                     dropItem["power"] = 5; //This is used when item level up to determine stat gain, higher quality items give better bonuses.
                     if (dropItem.baseDropRate > 0) {
                         var returnNum = getNum((dropItem.iLvl * 5) + (monsterStats.level * 5), (dropItem.iLvl * 6) + (monsterStats.level * 6));

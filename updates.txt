@@ -1,4 +1,13 @@
 _________________________
+v1.4.5 - 19 april 2015   |
+-------------------------|
+- Added responsive tables, and scrollbars, most of the stuff should now fit, in your screen no matter of the size.
+- All weapons have a max level of 5, no matter what quality. Exp needed also lowered, and stat bonus are much weaker.
+- Working on spells, there are 2 spells, Fire Ball and Frost shot. Fire Ball is currently active, more intelligence = more damage, Charges = how many times can be used in battle.
+- Spells will be updated soon...
+- Temporary fix for displaying last item tooltip in your inventory.
+- All weapon skill bonuses are displayed, no longer need to equip an item to see bonuses.
+_________________________
 v1.4.4 - 16 april 2015   |
 -------------------------|
 - Agility now gives bonuses to defense and evasion, while dexterity increase critical chance and critical damage, strength no longer gives you critical damage, and it gives 2 times less damage per point.

@@ -1391,7 +1391,9 @@ pre code {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: 10px;
+  overflow-y: auto;
+  overflow-x: auto;
 }
 @media (min-width: 768px) {
   .container {
