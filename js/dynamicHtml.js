@@ -385,7 +385,7 @@ function CreatePlayerHotBar() {
     var skill = player.activeSkills;
     for (spell in skill) {
         var selectedSpell = skill[spell];
-        if (selectedSpell.isActive == true) {
+        if (selectedSpell.isActive == true) { // Check if spell is active, and put it in hotbar
             var image = "images/skills/" + skill[spell].image + ".png";
 
             html += '<div class="table-responsive c4">'

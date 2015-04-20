@@ -427,7 +427,6 @@ var player = {
                 return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
             }
         },
-
     }
 };
 //Equipped items object, storing 0 values, so all player stats will work at the beginning of the game
