@@ -347,25 +347,31 @@ function CreateInventoryWeaponHtml() {
 function CreatePlayerSkillsHtml() {
     var html = '';
     var skill = player.activeSkills;
-    html += '<div class="table-responsive">'
+    html += '<div class="table-responsive">';
     html += '<table class="table">';
-    html += '<tr>'
+    html += '<tr>';
 
     for (spell in skill) {
         var selectedSpell = skill[spell];
+        if (selectedSpell.isActive == true) {
+            var activeSpell = '<font color="green">' + '<b>' + "Active" + '</b>' + '</font>';
+        }
+        else {
+            var activeSpell = '<font color="red">' + '<b>' + "Not Active" + '</b>' + '</font>';
+        };
         var image = "images/skills/" + selectedSpell.image + ".png";
 
         html += '<td>';
-        html += '<a href="#" class="tooltipA">'
-        html += '<img src="' + image + '"/>'
-        html += '<span>'
+        html += '<a href="#" class="tooltipA">';
+        html += '<img src="' + image + '"/>';
+        html += '<span>';
         html += 'Name: ' + selectedSpell.name + '<br />';
         html += "Level " + selectedSpell.level;
         html += "<br />Max Charges " + selectedSpell.maxCharge();
-        html += "<br /> Active: " + selectedSpell.isActive;
+        html += "<br />" + activeSpell;
         html += "<br />Damage: " + selectedSpell.damage();
-        html += '</span></a>'
-        html += "<br />" + selectedSpell.name
+        html += '</span></a>';
+        html += "<br />" + selectedSpell.name;
         html += '</td>';
     }
         html += '</tr>';

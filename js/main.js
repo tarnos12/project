@@ -352,6 +352,82 @@ var player = {
                 return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
             }
         },
+        rainOfFire: {
+            isActive: false,
+            level: 1,
+            maxLevel: 5,
+            levelReq: 1,
+            name: "rain of Fire",
+            image: "RainOfFire",
+            damage: function () {
+                return ((10 * player.level) + (player.totalIntelligence() * 2));
+            },
+            charge: 1,
+            maxCharge: function () {
+                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
+            }
+        },
+        Blizzard: {
+            isActive: false,
+            level: 1,
+            maxLevel: 5,
+            levelReq: 1,
+            name: "Blizzard",
+            image: "Blizzard",
+            damage: function () {
+                return ((10 * player.level) + (player.totalIntelligence() * 2));
+            },
+            charge: 1,
+            maxCharge: function () {
+                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
+            }
+        },
+        Frost: {
+            isActive: false,
+            level: 1,
+            maxLevel: 5,
+            levelReq: 1,
+            name: "Frost",
+            image: "Frost",
+            damage: function () {
+                return ((10 * player.level) + (player.totalIntelligence() * 2));
+            },
+            charge: 1,
+            maxCharge: function () {
+                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
+            }
+        },
+        InfernalFlames: {
+            isActive: false,
+            level: 1,
+            maxLevel: 5,
+            levelReq: 1,
+            name: "Infernal Flames",
+            image: "InfernalFlames",
+            damage: function () {
+                return ((10 * player.level) + (player.totalIntelligence() * 2));
+            },
+            charge: 1,
+            maxCharge: function () {
+                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
+            }
+        },
+        LightningStorm: {
+            isActive: false,
+            level: 1,
+            maxLevel: 5,
+            levelReq: 1,
+            name: "Lightning Storm",
+            image: "LightningStorm",
+            damage: function () {
+                return ((10 * player.level) + (player.totalIntelligence() * 2));
+            },
+            charge: 1,
+            maxCharge: function () {
+                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
+            }
+        },
+
     }
 };
 //Equipped items object, storing 0 values, so all player stats will work at the beginning of the game
