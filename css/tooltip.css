@@ -3,11 +3,11 @@ a.tooltipA strong {line-height:30px;}
 a.tooltipA:hover {text-decoration:none;} 
 a.tooltipA span {
     z-index:10;display:none; padding:14px 20px;
-    margin-top:-30px; margin-left:28px;
-    width:300px; line-height:16px;
+    margin-top:-130px; margin-left:-100px;
+    width:auto; line-height:16px;
 }
 a.tooltipA:hover span{
-    display:inline; position:absolute; color:#111;
+    display:inline; position:fixed; color:#111;
     border:1px solid #DCA; background:#fffAF0;}
 .callout {z-index:20;position:absolute;top:30px;border:0;left:-12px;}
     

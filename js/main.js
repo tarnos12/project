@@ -298,6 +298,7 @@ var player = {
             maxLevel: 5,
             levelReq: 1,
             name: "Fireball",
+            image: "Fireball",
             damage: function () {
                 return ((10 * player.level) + (player.totalIntelligence() * 2));
             },
@@ -306,12 +307,13 @@ var player = {
                 return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
             }
         },
-        frostShot: {
-            isActive: false,
+        iceShard: {
+            isActive: true,
             level: 1,
             maxLevel: 5,
             levelReq: 1,
-            name: "Frost Shot",
+            name: "Ice Shard",
+            image: "IceShard",
             damage: function () {
                 return ((10 * player.level) + (player.totalIntelligence() * 2));
             },
@@ -319,7 +321,37 @@ var player = {
             maxCharge: function () {
                 return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
             }
-        }
+        },
+        callLightning: {
+            isActive: false,
+            level: 1,
+            maxLevel: 5,
+            levelReq: 1,
+            name: "Call Lightning",
+            image: "CallLightning",
+            damage: function () {
+                return ((10 * player.level) + (player.totalIntelligence() * 2));
+            },
+            charge: 1,
+            maxCharge: function () {
+                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
+            }
+        },
+        ballOfLightning: {
+            isActive: false,
+            level: 1,
+            maxLevel: 5,
+            levelReq: 1,
+            name: "Ball of Lightning",
+            image: "BallOfLightning",
+            damage: function () {
+                return ((10 * player.level) + (player.totalIntelligence() * 2));
+            },
+            charge: 1,
+            maxCharge: function () {
+                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
+            }
+        },
     }
 };
 //Equipped items object, storing 0 values, so all player stats will work at the beginning of the game
@@ -450,7 +482,7 @@ function DrawBattle() {
         damageDealt = 0;
         magicDamageDealt = 0;
         damageTaken = 0;
-        skill.charge = skill.maxCharge();
+        skillReCharge();
         updateHtml();
     };
 };
@@ -506,12 +538,12 @@ function playerDamage(monster, monsterStats) {
 //player damage deal (base or critical)
 function playerDamageDeal(damage, monster, monsterStats) {
     var skill = player.activeSkills;
-    if (skill.fireBall.isActive == true && skill.fireBall.charge > 0) {
-        magicDamage += player.activeSkills.fireBall.damage();
-        skill.fireBall.charge -= 1;
-    };
-    if (skill.frostShot.isActive == true) {
-        magicDamage += player.activeSkills.frostShot.damage();
+    for (spell in skill) {
+        var selectedStat = skill[spell];
+        if (skill[spell].isActive == true && skill[spell].charge > 0) {
+            magicDamage += skill[spell].damage();
+            skill[spell].charge -= 1;
+        };
     };
     monsterStats.hp -= damage + magicDamage;
     magicDamageDealt += magicDamage;
@@ -583,7 +615,7 @@ function playerDead(monster, monsterStats) {
     magicDamageDealt = 0;
     damageTaken = 0;
     criticalRate = 0;
-    skill.charge = skill.maxCharge();
+    skillReCharge();
     updateHtml();
 }
 
@@ -606,7 +638,7 @@ function monsterKilled(monster, monsterStats) {
     magicDamageDealt = 0;
     damageTaken = 0;
     criticalRate = 0;
-    skill.charge = skill.maxCharge();
+    skillReCharge();
     updateHtml();
     document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
 }
@@ -657,6 +689,14 @@ function monsterExperience(monster, monsterStats) {
     monsterGold(monster, monsterStats);
 };
 
+//Player skill recharge
+function skillReCharge() {
+    var skill = player.activeSkills;
+    for (spell in skill) {
+        var rechargedSkill = skill[spell];
+        skill[spell].charge = skill[spell].maxCharge();
+    };
+};
 //Experience gain for equipped items
 function itemExperienceGain(monster, monsterStats) {
     var weaponExp = equippedItems.weapon.exp;

@@ -180,7 +180,7 @@ function CreateMonsterHtml() {
     document.getElementById("monsterTabs").innerHTML = html;
 };
 
-inventoryTabActiveNum = 0;
+var inventoryTabActiveNum = 0;
 function changedTabInventory(index)
 {
 	inventoryTabActiveNum = index;
@@ -345,39 +345,58 @@ function CreateInventoryWeaponHtml() {
 };
 
 function CreatePlayerSkillsHtml() {
-    html = '';
+    var html = '';
     var skill = player.activeSkills;
     html += '<div class="table-responsive">'
     html += '<table class="table">';
+    html += '<tr>'
 
-    //FireBall
-    html += '<tr>' + '<td>';
-    html += skill.fireBall.name + " Level " + skill.fireBall.level;
-    html += "<br />Max Charges " + skill.fireBall.maxCharge();
-    html += "<br /> Active: " + skill.fireBall.isActive;
-    html += "<br />Damage +" + skill.fireBall.damage();
-    html += '<br /><a href="#" class="tooltipA">'
-    html += '<img src="images/questionMark' + '.png" />'
-    html += '<span>'
-    html += "Damage +" + skill.fireBall.damage();
-    html += "<br />10 x Player level + 2 x int"
-    html += "<br />Charges : 1 + <br />(1 for 100 int and 1 for 50 wis)"
-    html += '</span></a>'
-    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.swordExp / player.swordMaxExp) * 100) + '%;"></div></div>'
-    html += '</td>' + '</tr>';
+    for (spell in skill) {
+        var selectedSpell = skill[spell];
+        var image = "images/skills/" + selectedSpell.image + ".png";
 
-    //Frost Shot
-    html += '<tr>' + '<td>';
-    html += skill.frostShot.name + " Level " + skill.frostShot.level;
-    html += "<br />Max Charges " + skill.frostShot.maxCharge();
-    html += '<a href="#" class="tooltipA">'
-    html += '<img src="images/questionMark' + '.png" />'
-    html += '<span>'
-    html += "Damage +" + skill.frostShot.damage();
-    html += '</span></a>'
-    html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((player.swordExp / player.swordMaxExp) * 100) + '%;"></div></div>'
-    html += '</td>' + '</tr>';
-
+        html += '<td>';
+        html += '<a href="#" class="tooltipA">'
+        html += '<img src="' + image + '"/>'
+        html += '<span>'
+        html += 'Name: ' + selectedSpell.name + '<br />';
+        html += "Level " + selectedSpell.level;
+        html += "<br />Max Charges " + selectedSpell.maxCharge();
+        html += "<br /> Active: " + selectedSpell.isActive;
+        html += "<br />Damage: " + selectedSpell.damage();
+        html += '</span></a>'
+        html += "<br />" + selectedSpell.name
+        html += '</td>';
+    }
+        html += '</tr>';
+    
     html += '</table></div>';
     document.getElementById("playerSkills").innerHTML = html;
-}
+};
+
+function CreatePlayerHotBar() {
+    var html = '';
+    var skill = player.activeSkills;
+    for (spell in skill) {
+        var selectedSpell = skill[spell];
+        if (selectedSpell.isActive == true) {
+            var image = "images/skills/" + skill[spell].image + ".png";
+
+            html += '<div class="table-responsive c4">'
+            html += '<table class="table">'
+            html += '<tr><td>'
+            html += '<a href="#" class="tooltipA">'
+            html += '<img src="' + image + '"/>'
+            html += '<span>'
+            html += 'Name: ' + skill[spell].name + '<br />';
+            html += "Level " + skill[spell].level;
+            html += "<br />Max Charges " + skill[spell].maxCharge();
+            html += "<br /> Active: " + skill[spell].isActive;
+            html += "<br />Damage: " + skill[spell].damage();
+            html += '</span></a>'
+            html += "<br />" + skill[spell].name
+            html += '</td>' + '</tr>' + '</table>' + '</div>';
+        }
+    };
+    document.getElementById("hotBar").innerHTML = html;
+};
