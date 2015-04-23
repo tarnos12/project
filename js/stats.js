@@ -374,10 +374,11 @@ function skillChargeFill() {
     };
 };
 
-function upgradeSpell(selectedSpell) {
-    var selectedSkill = selectedSpell;
-    if (activeSkills.hasOwnProperty(spell)) {
-        var upgrade = selectedSkill.level;
+function upgradeSpell(spellName) {
+
+    if (activeSkills.hasOwnProperty(spellName)) {
+        var selectedSpell = activeSkills[spellName];
+        var upgrade = selectedSpell.level;
         upgrade += 1;
     };
 };

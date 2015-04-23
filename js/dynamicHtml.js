@@ -338,32 +338,34 @@ function CreateInventoryWeaponHtml() {
 function CreatePlayerSkillsHtml() {
     var html = '';
 
-    html += '<div class="row">'
-    for (spell in activeSkills) {
+    html += '<div class="row">';
+    for (var spell in activeSkills) {
         if (activeSkills.hasOwnProperty(spell)) {
             var selectedSpell = activeSkills[spell];
             var image = "images/skills/" + selectedSpell.image + ".png";
-        }
-        if (selectedSpell.isActive == true) {
-            var activeSpell = '<font color="green">' + '<b>' + "Active" + '</b>' + '</font>';
-        }
-        else {
-            var activeSpell = '<font color="red">' + '<b>' + "Not Active" + '</b>' + '</font>';
-        };
 
-        html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
-        html += '<a href="#" class="tooltipA">';
-        html += '<img src="' + image + '"/>';
-        html += '<span>';
-        html += 'Name: ' + selectedSpell.name + '<br />';
-        html += "Level " + selectedSpell.level;
-        html += "<br />Max Charges " + selectedSpell.maxCharge();
-        html += "<br />" + activeSpell;
-        html += "<br />Damage: " + selectedSpell.damage();
-        html += '</span></a>';
-        html += "<br />" + selectedSpell.name;
-        html += '<input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeSpell(' + selectedSpell.name + ');">'
-        html += '</div>';
+            var activeSpell;
+
+            if (selectedSpell.isActive == true) {
+                activeSpell = '<font color="green">' + '<b>' + "Active" + '</b>' + '</font>';
+            } else {
+                activeSpell = '<font color="red">' + '<b>' + "Not Active" + '</b>' + '</font>';
+            };
+
+            html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
+            html += '<a href="#" class="tooltipA">';
+            html += '<img src="' + image + '"/>';
+            html += '<span>';
+            html += 'Name: ' + selectedSpell.name + '<br />';
+            html += "Level " + selectedSpell.level;
+            html += "<br />Max Charges " + selectedSpell.maxCharge();
+            html += "<br />" + activeSpell;
+            html += "<br />Damage: " + selectedSpell.damage();
+            html += '</span></a>';
+            html += "<br />" + selectedSpell.name;
+            html += '<input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeSpell(' + spell + ');">';
+            html += '</div>';
+        }
     };
     html += '</div>';
     document.getElementById("playerSkills").innerHTML = html;
@@ -373,23 +375,24 @@ function CreatePlayerHotBar() {
     var html = '';
     html += '<div class="row">';
     html += '<div class="c3"><b>Active Spells</b></div>';
-    for (spell in activeSkills) {
+    for (var spell in activeSkills) {
         if (activeSkills.hasOwnProperty(spell)) {
             var selectedSpell = activeSkills[spell];
             var image = "images/skills/" + selectedSpell.image + ".png";
-        }
-        if (selectedSpell.isActive == true) { // Check if spell is active, and put it in hotbar
-            html += '<div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">';
-            html += '<a href="#" class="tooltipA">';
-            html += '<img src="' + image + '"/>';
-            html += '<span>';
-            html += 'Name: ' + selectedSpell.name + '<br />';
-            html += "Level " + selectedSpell.level;
-            html += "<br />Max Charges " + selectedSpell.maxCharge();
-            html += "<br />Damage: " + selectedSpell.damage();
-            html += '</span></a>';
-            html += "<br />" + selectedSpell.name;
-            html += '</div>';
+
+            if (selectedSpell.isActive == true) { // Check if spell is active, and put it in hotbar
+                html += '<div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">';
+                html += '<a href="#" class="tooltipA">';
+                html += '<img src="' + image + '"/>';
+                html += '<span>';
+                html += 'Name: ' + selectedSpell.name + '<br />';
+                html += "Level " + selectedSpell.level;
+                html += "<br />Max Charges " + selectedSpell.maxCharge();
+                html += "<br />Damage: " + selectedSpell.damage();
+                html += '</span></a>';
+                html += "<br />" + selectedSpell.name;
+                html += '</div>';
+            }
         };
     };
     html += '</div>';
