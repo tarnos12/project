@@ -113,6 +113,7 @@ function load() {
     CreatePlayerSkillsHtml();
     updateHtml();
     CreatePlayerHotBar();
+    skillChargeFill();
 };
 
 function resetCheck() {

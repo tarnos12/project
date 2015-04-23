@@ -50,9 +50,7 @@ function CreateWeaponSkillHtml() {
 
 function CreateEquipHtml() {
     var html = '';
-    html += '<div class="table-responsive">'
-    html += '<table class="table">';
-    html += '<tr>' + '<td>' + "Item" + '</td>' + '<td>' + "Name" + '</td>' + '<td>' + "Rarity" + '</td>' + '<td>' + "Value" + '</td>' + '</tr>';
+    html += '<div class="row">';
 
     //Weapon
     var item = equippedItems;
@@ -61,10 +59,10 @@ function CreateEquipHtml() {
         if ('weapon, offHand, armor, ring, amulet, talisman'.indexOf(type) != -1) {
             //Getting the actual stat object from the word.
             var itemType = item[type];
-        }
+        };
 
         if (itemType.hasOwnProperty('itemType')) {
-            html += '<tr>' + '<td>';
+            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">';
             html += '<a href="#" class="tooltipA">'
             html += '<img src="images/items/' + itemType.subType + "/" + itemType.image + '.png" />'
             html += '<span>'
@@ -80,6 +78,11 @@ function CreateEquipHtml() {
                 html += '<br />' + "Damage: " + itemType.minDamage + "-"
                 html += itemType.maxDamage
             }
+            if (itemType.itemType == "accessory") {
+                html += '<br />' + 'Drop Rate: ' + itemType.dropRate + "%";
+                html += '<br />' + 'Exp Rate: ' + itemType.expRate + "%";
+                html += '<br />' + 'Gold Rate: ' + itemType.goldRate + "%";
+            };
 
             for (var statName in itemType) { //Here stat will become the word Defense
 
@@ -92,26 +95,23 @@ function CreateEquipHtml() {
                     }
                 }
             };
-
+            
             html += '<br />' + "Value: " + itemType.value + "gold"
-            html += '</span>' + '</a>' + '</td>' +
-                '<td>' + itemType.name + '</td>' +
-                '<td>' + '<font color="' + itemType.color + '">' + itemType.itemQuality + '</font>' + '</td>' +
-                '<td>' + itemType.value + "Value" + '</td>' +
-                '<td>' +
-                '<button type="button" class="btn btn-sm btn-default" onclick="unequipItem' + "(" + itemType.id + ")" + '">Unequip</button>' +
-                '</td>' + '</tr>';
+            html += '</span>' + '</a>' +
+                '<button type="button" class="btn btn-sm btn-default" onclick="unequipItem' + "(" + itemType.id + ")" + '">Unequip</button>'
+
+            html += '</div>';
         }
     }
-
-    html += '</table>'
+    
+    html += '</div>';
     html += '</div>';
     document.getElementById("equipHtml").innerHTML = html;
 };
 
 
 
-monsterTabActiveNum = 0;
+var monsterTabActiveNum = 0;
 function changedTabmonster(index) {
     monsterTabActiveNum = index;
 }
@@ -157,7 +157,7 @@ function CreateMonsterHtml() {
             if (area === monsterAreas[j].type) {
                 if (monster.Stats.isShown == true) {
                     html += '<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">' +
-                        '<div id="' + monster.Stats.id + '" class="c3">' +
+                        '<div id="' + monster.Stats.id + '">' +
                         'Dmg:' + monster.Stats.minDmg + "-" + monster.Stats.maxDmg +
                         '<br />' +
                         'Def:' + monster.Stats.def +
@@ -168,13 +168,12 @@ function CreateMonsterHtml() {
                         '<br />' +
                         '<img src="images/' + "monster" + monster.Stats.id + '.jpg" alt="' + monster.Stats.displayName + '">' +
                         '<br />' +
-                        '<span type="button" class="btn btn-sm btn-default" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>'
-                }
-            }
-
-        }
+                        '<span type="button" class="btn btn-sm btn-default" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>';
+                };
+            };
+        };
         html += '</div>';
-    }
+    };
     html += '</div>';
 
     document.getElementById("monsterTabs").innerHTML = html;
@@ -215,9 +214,7 @@ function CreateInventoryWeaponHtml() {
 
         html += 'id="tab_' + InventoryItemTypes[j].type + '">'
 
-        html += '<div class="table-responsive">'
-        html += '<table class="table">';
-        html += '<tr>' + '<td>' + "Image" + '</td>' + '<td>' + "Rarity" + '</td>' + '</tr>';
+        html += '<div class="row">';
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType === InventoryItemTypes[j].type) {
                 if (playerInventory[i].itemType === "weapon") {
@@ -238,14 +235,15 @@ function CreateInventoryWeaponHtml() {
                 else if (playerInventory[i].subType === "talisman") {
                     var itemStat = equippedItems.talisman;
                 }
-                html += '<tr>' + '<td>';
-                html += '<a href="#" class="tooltipA">'
-                html += '<img src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png" />'
-                html += '<span>'
-                html += '<b>' + playerInventory[i].name + '</b>'
-                html += '<br />'
-                html += 'Rarity: ' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '<br />'
-                html += "Item Type: " + playerInventory[i].subType
+
+                html += '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 c8">';
+                html += '<a href="#" class="tooltipA">';
+                html += '<img src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png" />';
+                html += '<span>';
+                html += '<b>' + playerInventory[i].name + '</b>';
+                html += '<br />';
+                html += 'Rarity: ' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '<br />';
+                html += "Item Type: " + playerInventory[i].subType;
                 if (playerInventory[i].itemType == "weapon") {
                     html += '<br />' + 'Level: ' + playerInventory[i].level + "/" + playerInventory[i].maxLevel;
                     html += '<br />' + 'Experience: ' + playerInventory[i].exp + "/" + playerInventory[i].maxExp;
@@ -294,7 +292,7 @@ function CreateInventoryWeaponHtml() {
                 }
                 else if ((playerInventory[i].dropRate - itemStat.dropRate) == 0 && playerInventory[i].dropRate > 0) {
                     html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (0)" + " to ";
-                }
+                };
                 var item = playerInventory[i];
                 for (var statName in item) { //Here stat will become the word Defense
 
@@ -314,31 +312,24 @@ function CreateInventoryWeaponHtml() {
                             }
                             else {
                                 html += '<br />' + statName + ": " + selectedStat + " (" + '<b style="color:green">' + "+" + selectedStat + '</b>' + ")";
-                            }
-                        }
-                    }
+                            };
+                        };
+                    };
                 };
-            
-                html += '<br />' + "Value: " + playerInventory[i].value + "gold"
+
+                html += '<br />' + "Value: " + playerInventory[i].value + "gold";
                 html += '</span>' + '</a>' + '</td>';
-                html += '<td colspan="3">' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '</td>' +
-   
-                 '<td class="col-md-3">' + '<button type="button" class="btn btn-sm btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' + '</td>' +
-                 '<td class="col-md-3">' + '<button type="button" class="btn btn-sm btn-default" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>' + '</td>' + '</tr>'
-            }
-                //Else if inventory item type is equal to orb/card/etc...different code here, without item stats etc.
-            else if (playerInventory[i].itemType3 === InventoryItemTypes[j].type) {
-                html += '<tr>' + '<td>';
-                html += '<img src="images/items/' + playerInventory[i].itemType + playerInventory[i].itemType2.type + '.png"' + '">' + '</td>' + '</div>';
-                html += '<td>' + playerInventory[i].itemType + " " + '</td>'
-                    
-                }
-        }
-        html += '</table>'
-        html += '</div>'
-        html += '<br /><br /><br /><br /><br /><br /><br /><br />'
-        html += '</div>'
-    }
+                html += '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' +
+
+                 '<button type="button" class="btn btn-sm btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
+                 '<button type="button" class="btn btn-sm btn-default" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>';
+                html += '</div>';
+            };
+        };
+
+        html += '</div>';
+        html += '</div>';
+    };
     html += '</div>';
 
     document.getElementById("inventory").innerHTML = html;
@@ -346,22 +337,21 @@ function CreateInventoryWeaponHtml() {
 
 function CreatePlayerSkillsHtml() {
     var html = '';
-    var skill = player.activeSkills;
-    html += '<div class="table-responsive">';
-    html += '<table class="table">';
-    html += '<tr>';
 
-    for (spell in skill) {
-        var selectedSpell = skill[spell];
+    html += '<div class="row">'
+    for (spell in activeSkills) {
+        if (activeSkills.hasOwnProperty(spell)) {
+            var selectedSpell = activeSkills[spell];
+            var image = "images/skills/" + selectedSpell.image + ".png";
+        }
         if (selectedSpell.isActive == true) {
             var activeSpell = '<font color="green">' + '<b>' + "Active" + '</b>' + '</font>';
         }
         else {
             var activeSpell = '<font color="red">' + '<b>' + "Not Active" + '</b>' + '</font>';
         };
-        var image = "images/skills/" + selectedSpell.image + ".png";
 
-        html += '<td>';
+        html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
         html += '<a href="#" class="tooltipA">';
         html += '<img src="' + image + '"/>';
         html += '<span>';
@@ -372,37 +362,36 @@ function CreatePlayerSkillsHtml() {
         html += "<br />Damage: " + selectedSpell.damage();
         html += '</span></a>';
         html += "<br />" + selectedSpell.name;
-        html += '</td>';
-    }
-        html += '</tr>';
-    
-    html += '</table></div>';
+        html += '<input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeSpell(' + selectedSpell.name + ');">'
+        html += '</div>';
+    };
+    html += '</div>';
     document.getElementById("playerSkills").innerHTML = html;
 };
 
 function CreatePlayerHotBar() {
     var html = '';
-    var skill = player.activeSkills;
-    for (spell in skill) {
-        var selectedSpell = skill[spell];
-        if (selectedSpell.isActive == true) { // Check if spell is active, and put it in hotbar
-            var image = "images/skills/" + skill[spell].image + ".png";
-
-            html += '<div class="table-responsive c4">'
-            html += '<table class="table">'
-            html += '<tr><td>'
-            html += '<a href="#" class="tooltipA">'
-            html += '<img src="' + image + '"/>'
-            html += '<span>'
-            html += 'Name: ' + skill[spell].name + '<br />';
-            html += "Level " + skill[spell].level;
-            html += "<br />Max Charges " + skill[spell].maxCharge();
-            html += "<br /> Active: " + skill[spell].isActive;
-            html += "<br />Damage: " + skill[spell].damage();
-            html += '</span></a>'
-            html += "<br />" + skill[spell].name
-            html += '</td>' + '</tr>' + '</table>' + '</div>';
+    html += '<div class="row">';
+    html += '<div class="c3"><b>Active Spells</b></div>';
+    for (spell in activeSkills) {
+        if (activeSkills.hasOwnProperty(spell)) {
+            var selectedSpell = activeSkills[spell];
+            var image = "images/skills/" + selectedSpell.image + ".png";
         }
+        if (selectedSpell.isActive == true) { // Check if spell is active, and put it in hotbar
+            html += '<div class="col-lg-2 col-md-4 col-sm-4 col-xs-4">';
+            html += '<a href="#" class="tooltipA">';
+            html += '<img src="' + image + '"/>';
+            html += '<span>';
+            html += 'Name: ' + selectedSpell.name + '<br />';
+            html += "Level " + selectedSpell.level;
+            html += "<br />Max Charges " + selectedSpell.maxCharge();
+            html += "<br />Damage: " + selectedSpell.damage();
+            html += '</span></a>';
+            html += "<br />" + selectedSpell.name;
+            html += '</div>';
+        };
     };
+    html += '</div>';
     document.getElementById("hotBar").innerHTML = html;
 };

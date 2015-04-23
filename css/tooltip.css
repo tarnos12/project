@@ -1,22 +1,59 @@
-﻿a.tooltipA {outline:none; }
-a.tooltipA strong {line-height:30px;}
-a.tooltipA:hover {text-decoration:none;} 
-a.tooltipA span {
-    z-index:10;display:none; padding:14px 20px;
-    margin-top:-130px; margin-left:-100px;
-    width:auto; line-height:16px;
+﻿.tooltipA {
+  position: relative;
+  background: #eaeaea;
+  cursor: help;
+  display: inline-block;
+  text-decoration: none;
+  color: #222;
+  outline: none;
 }
-a.tooltipA:hover span{
-    display:inline; position:fixed; color:#111;
-    border:1px solid #DCA; background:#fffAF0;}
-.callout {z-index:20;position:absolute;top:30px;border:0;left:-12px;}
+
+.tooltipA span {
+  visibility: hidden;
+  position: absolute; 
+  bottom: 30px;
+  left: 50%;
+  z-index: 999;
+  width: 230px;
+  margin-left: 40px;
+  margin-bottom: -50px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  opacity: .9;
+  background-color: #ddd;                     
+  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));  
+  border-radius: 4px;  
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;  
+  text-shadow: 0 1px 0 rgba(255,255,255,.4); 
+}
+
+.tooltipA:hover {
+  border: 0; /* IE6 fix */
+}
+
+.tooltipA:hover span {
+  visibility: visible;
+}
+
+.tooltipA span:before,
+.tooltipA span:after {
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -8px;  
+  border-top: 8px solid #ddd;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;        
+  border-bottom: 0;  
+}
+
+.tooltipA span:before {
+  border-top-color: #ccc;
+  bottom: -8px;
+}
     
-/*CSS3 extras*/
-a.tooltipA span
-{
-    border-radius:4px;
-    box-shadow: 5px 5px 8px #CCC;
-}
 div.story {
     width: 100%;
     height: 700px;
@@ -25,7 +62,6 @@ div.story {
 div.inventory {
     width: 100%;
     height: 500px;
-    overflow-y: auto;
 }
 
 .progress {background: rgba(245, 245, 245, 1); border: 0px solid rgba(245, 245, 245, 1); border-radius: 6px; height: 15px; width: 60%;}

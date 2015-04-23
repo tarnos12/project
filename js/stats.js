@@ -155,6 +155,7 @@ function levelUp() {
     player.baseWisdom += 2.3;
     player.baseIntelligence += 3.5;
     player.baseLuck += 1.6;
+    player.skillPoints += 1;
     quest();
     CreateMonsterHtml();
     updateHtml();
@@ -362,4 +363,21 @@ function autoAttack(monster, monsterStats) {
             player.isAuto = false;
         };
     }, 1000)
+};
+
+//All skill charge = maxCharge, when game loads, player equips items i.e change his stats like wisdom/int that can provide more/less charges.
+function skillChargeFill() {
+    var skill = player.activeSkills;
+    for (spell in skill) {
+        var selectedSpell = skill[spell];
+        selectedSpell.charge = selectedSpell.maxCharge();
+    };
+};
+
+function upgradeSpell(selectedSpell) {
+    var selectedSkill = selectedSpell;
+    if (activeSkills.hasOwnProperty(spell)) {
+        var upgrade = selectedSkill.level;
+        upgrade += 1;
+    };
 };

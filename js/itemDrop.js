@@ -2,7 +2,7 @@
     if (playerInventory.length <= player.inventory()) {
 
         itemDropRandom(monster);
-        CreateInventoryWeaponHtml()
+        CreateInventoryWeaponHtml();
     }
 };
 
@@ -17,9 +17,9 @@ function itemDropRandom(monster) {
     for (var i = 0; i < monsterLength; i++) {
         itemDropChance = monsterDrop[i].chance;
         var randomItemChance = Math.floor(Math.random() * (20000 - 1) + 1);
-            if (randomItemChance <= (itemDropChance * player.dropRate())) {
-                var dropItem = monsterDrop[i].item;
-                //test
+        if (randomItemChance <= (itemDropChance * player.dropRate())) {
+            var dropItem = monsterDrop[i].item;
+            //test
 
             //Checks if player used checkbox to auto remove items by quality. Also this code add "id" property to each created item
             if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
@@ -32,7 +32,7 @@ function itemDropRandom(monster) {
                 }
                 else {
                     dropItem["strength"] = 0;
-                }
+                };
                 if (dropItem.baseEndurance > 0) {
                     var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                     bonusEndurance = dropItem.baseEndurance;
@@ -40,7 +40,7 @@ function itemDropRandom(monster) {
                 }
                 else {
                     dropItem["endurance"] = 0;
-                }
+                };
                 if (dropItem.baseAgility > 0) {
                     var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                     bonusAgility = dropItem.baseAgility;
@@ -48,7 +48,7 @@ function itemDropRandom(monster) {
                 }
                 else {
                     dropItem["agility"] = 0;
-                }
+                };
                 if (dropItem.baseDexterity > 0) {
                     var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                     bonusDexterity = dropItem.baseDexterity;
@@ -56,41 +56,41 @@ function itemDropRandom(monster) {
                 }
                 else {
                     dropItem["dexterity"] = 0;
-                }
+                };
                 if (dropItem.baseWisdom > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2))
-                    bonusWisdom = dropItem.baseWisdom
-                    dropItem["wisdom"] = returnNum + bonusWisdom
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
+                    bonusWisdom = dropItem.baseWisdom;
+                    dropItem["wisdom"] = returnNum + bonusWisdom;
                 }
                 else {
                     dropItem["wisdom"] = 0;
-                }
+                };
                 if (dropItem.baseIntelligence > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2))
-                    bonusIntelligence = dropItem.baseIntelligence
-                    dropItem["intelligence"] = returnNum + bonusIntelligence
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
+                    bonusIntelligence = dropItem.baseIntelligence;
+                    dropItem["intelligence"] = returnNum + bonusIntelligence;
                 }
                 else {
                     dropItem["intelligence"] = 0;
-                }
+                };
                 if (dropItem.baseLuck > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2))
-                    bonusLuck = dropItem.baseLuck
-                    dropItem["luck"] = returnNum + bonusLuck
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
+                    bonusLuck = dropItem.baseLuck;
+                    dropItem["luck"] = returnNum + bonusLuck;
                 }
                 else {
                     dropItem["luck"] = 0;
-                }
+                };
                 if (dropItem.baseMinDamage > 0) {
-                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2))
-                    bonusMinDamage = dropItem.baseMinDamage
-                    dropItem["minDamage"] = returnNum + bonusMinDamage
-                }
+                    var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
+                    bonusMinDamage = dropItem.baseMinDamage;
+                    dropItem["minDamage"] = returnNum + bonusMinDamage;
+                };
                 if (dropItem.baseMaxDamage > 0) {
                     var returnNum = getNum((dropItem.iLvl * 2) + (monsterStats.level * 2), (dropItem.iLvl * 3) + (monsterStats.level * 3));
                     bonusMaxDamage = dropItem.baseMaxDamage;
                     dropItem["maxDamage"] = returnNum + bonusMaxDamage;
-                }
+                };
                 if (dropItem.baseDefense > 0) {
                     var returnNum = getNum((dropItem.iLvl) + (monsterStats.level), (dropItem.iLvl * 2) + (monsterStats.level * 2));
                     bonusDefense = dropItem.baseDefense;
@@ -98,8 +98,9 @@ function itemDropRandom(monster) {
                 }
                 else {
                     dropItem["defense"] = 0;
-                }
+                };
 
+                dropItem["value"] = (dropItem.strength * 2 + dropItem.endurance * 2 + dropItem.agility * 2 + dropItem.dexterity * 2 + dropItem.wisdom * 2 + dropItem.intelligence * 2 + dropItem.luck * 2 + dropItem.defense * 2);
                 //Add item level up etc
                 if (dropItem.itemQuality == "Common") {
                     dropItem["level"] = 0;
@@ -256,24 +257,24 @@ function itemDropRandom(monster) {
                         dropItem["goldRate"] = 0;
                     };
                 };
-                
-            var itemHolder = [];
-            itemHolder.push(dropItem);
-            playerInventory.push.apply(
-                playerInventory,
-                JSON.parse(JSON.stringify(itemHolder))
-                );
-            player.itemIdNumber += 1;
+
+                var itemHolder = [];
+                itemHolder.push(dropItem);
+                playerInventory.push.apply(
+                    playerInventory,
+                    JSON.parse(JSON.stringify(itemHolder))
+                    );
+                player.itemIdNumber += 1;
                 Log("<span style=\"color:orange\">You found an item! </span>");
-            }
-        }
-    }
-}
+            };
+        };
+    };
+};
 //Random number, higher number is less likely to happen, and lower number is more common
 function getNum(min, max) // min inclusive, max exclusive
 {
     var num = Math.random();
     num = 1 - Math.sin(num);
     return Math.round(num * (max - min) + min);
-}
+};
 

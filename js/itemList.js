@@ -14,7 +14,7 @@ function MakeItemList() {
         baseMaxDamage: 4,
         baseStrength: 1,
         baseAgility: 2,
-        value: 15
+        
     };
     Weapons.HandAxe = {
         name: 'Hand Axe',
@@ -28,7 +28,7 @@ function MakeItemList() {
         baseMaxDamage: 5,
         baseStrength: 2,
         baseAgility: 1,
-        value: 20
+        
     };
     Weapons.BroadSword = {
         name: 'Broad Sword',
@@ -42,7 +42,7 @@ function MakeItemList() {
         baseMaxDamage: 6,
         baseStrength: 3,
         baseAgility: 4,
-        value: 45
+        
     };
     Weapons.BroadAxe = {
         name: 'Broad Axe',
@@ -56,7 +56,7 @@ function MakeItemList() {
         baseMaxDamage: 8,
         baseStrength: 4,
         baseAgility: 3,
-        value: 50
+        
     };
     Weapons.GreatSword = {
         name: 'Great Sword',
@@ -70,7 +70,7 @@ function MakeItemList() {
         baseMaxDamage: 11,
         baseStrength: 6,
         baseAgility: 8,
-        value: 110
+        
     };
     Weapons.MilitaryAxe = {
         name: 'Military Axe',
@@ -84,7 +84,7 @@ function MakeItemList() {
         baseMaxDamage: 14,
         baseStrength: 8,
         baseAgility: 4,
-        value: 130
+        
     };
     Weapons.Scimitar = {
         name: 'Scimitar',
@@ -99,7 +99,7 @@ function MakeItemList() {
         baseStrength: 20,
         baseAgility: 8,
         baseEndurance: 10,
-        value: 700
+        
     };
     Weapons.DoubleAxe = {
         name: 'Double Axe',
@@ -114,7 +114,7 @@ function MakeItemList() {
         baseStrength: 28,
         baseAgility: 6,
         baseEndurance: 8,
-        value: 800
+        
     };
     Weapons.LongSword = {
         name: 'Long Sword',
@@ -129,7 +129,7 @@ function MakeItemList() {
         baseStrength: 30,
         baseAgility: 14,
         baseEndurance: 15,
-        value: 900
+        
     };
     Weapons.BattleAxe = {
         name: 'Battle Axe',
@@ -144,7 +144,7 @@ function MakeItemList() {
         baseStrength: 38,
         baseAgility: 10,
         baseEndurance: 12,
-        value: 1100
+        
     };
     Weapons.Gladius = {
         name: 'Gladius',
@@ -159,7 +159,7 @@ function MakeItemList() {
         baseStrength: 38,
         baseAgility: 20,
         baseEndurance: 20,
-        value: 1400
+        
     };
     Weapons.BeardedAxe = {
         name: 'Bearded Axe',
@@ -174,7 +174,7 @@ function MakeItemList() {
         baseStrength: 48,
         baseAgility: 14,
         baseEndurance: 18,
-        value: 1500
+        
     };
     Weapons.Sabre = {
         name: 'Sabre',
@@ -189,7 +189,7 @@ function MakeItemList() {
         baseStrength: 50,
         baseAgility: 30,
         baseEndurance: 35,
-        value: 2000
+        
     };
     Weapons.WarAxe = {
         name: 'War Axe',
@@ -204,7 +204,7 @@ function MakeItemList() {
         baseStrength: 60,
         baseAgility: 20,
         baseEndurance: 30,
-        value: 2000
+        
     };
     Weapons.Claymore = {
         name: 'Claymore',
@@ -219,7 +219,7 @@ function MakeItemList() {
         baseStrength: 60,
         baseAgility: 40,
         baseEndurance: 45,
-        value: 2400
+        
     };
     Weapons.GreatAxe = {
         name: 'Great Axe',
@@ -234,7 +234,7 @@ function MakeItemList() {
         baseStrength: 70,
         baseAgility: 30,
         baseEndurance: 40,
-        value: 3000
+        
     };
     Weapons.RuneSword = {
         name: 'Rune Sword',
@@ -249,7 +249,7 @@ function MakeItemList() {
         baseStrength: 75,
         baseAgility: 50,
         baseEndurance: 60,
-        value: 3000
+        
     };
     Weapons.GothicAxe = {
         name: 'Gothic Axe',
@@ -264,7 +264,7 @@ function MakeItemList() {
         baseStrength: 90,
         baseAgility: 50,
         baseEndurance: 50,
-        value: 4000
+        
     };
     Weapons.Falchion = {
         name: 'Falchion',
@@ -279,7 +279,7 @@ function MakeItemList() {
         baseStrength: 80,
         baseAgility: 60,
         baseEndurance: 70,
-        value: 4000
+        
     };
     Weapons.LargeAxe = {
         name: 'Large Axe',
@@ -294,7 +294,7 @@ function MakeItemList() {
         baseStrength: 90,
         baseAgility: 60,
         baseEndurance: 70,
-        value: 6000
+        
     };
     Weapons.WarSword = {
         name: 'War Sword',
@@ -309,7 +309,7 @@ function MakeItemList() {
         baseStrength: 90,
         baseAgility: 70,
         baseEndurance: 80,
-        value: 5000
+        
     };
     Weapons.Cleaver = {
         name: 'Cleaver',
@@ -324,7 +324,7 @@ function MakeItemList() {
         baseStrength: 120,
         baseAgility: 80,
         baseEndurance: 90,
-        value: 7500
+        
     };
     Weapons.AncientSword = {
         name: 'Ancient Sword',
@@ -339,7 +339,7 @@ function MakeItemList() {
         baseStrength: 110,
         baseAgility: 90,
         baseEndurance: 90,
-        value: 6500
+        
     };
     Weapons.Tabar = {
         name: 'Tabar',
@@ -354,7 +354,7 @@ function MakeItemList() {
         baseStrength: 150,
         baseAgility: 100,
         baseEndurance: 110,
-        value: 9000
+        
     };
     Weapons.Club = {
         name: 'Club',
@@ -369,7 +369,7 @@ function MakeItemList() {
         baseStrength: 2,
         baseEndurance: 1,
         baseWisdom: 1,
-        value: 30
+        
     };
     Weapons.WarHammer = {
         name: 'War Hammer',
@@ -384,7 +384,7 @@ function MakeItemList() {
         baseStrength: 4,
         baseEndurance: 2,
         baseWisdom: 2,
-        value: 90
+        
     };
     Weapons.JaggedStar = {
         name: 'Jagged Star',
@@ -399,7 +399,7 @@ function MakeItemList() {
         baseStrength: 7,
         baseEndurance: 4,
         baseWisdom: 4,
-        value: 220
+        
     };
     Weapons.SpikedClub = {
         name: 'Spiked Club',
@@ -414,7 +414,7 @@ function MakeItemList() {
         baseStrength: 14,
         baseEndurance: 8,
         baseWisdom: 6,
-        value: 500
+        
     };
     Weapons.Maul = {
         name: 'Maul',
@@ -429,7 +429,7 @@ function MakeItemList() {
         baseStrength: 18,
         baseEndurance: 10,
         baseWisdom: 8,
-        value: 700
+        
     };
     Weapons.BattleHammer = {
         name: 'Battle Hammer',
@@ -444,7 +444,7 @@ function MakeItemList() {
         baseStrength: 26,
         baseEndurance: 16,
         baseWisdom: 14,
-        value: 1100
+        
     };
     Weapons.MorningStar = {
         name: 'Morning Star',
@@ -459,7 +459,7 @@ function MakeItemList() {
         baseStrength: 35,
         baseEndurance: 20,
         baseWisdom: 25,
-        value: 1500
+        
     };
     Weapons.GreatMaul = {
         name: 'Great Maul',
@@ -474,7 +474,7 @@ function MakeItemList() {
         baseStrength: 45,
         baseEndurance: 30,
         baseWisdom: 35,
-        value: 2000
+        
     };
     Weapons.WarClub = {
         name: 'War Club',
@@ -489,7 +489,7 @@ function MakeItemList() {
         baseStrength: 55,
         baseEndurance: 40,
         baseWisdom: 50,
-        value: 3500
+        
     };
     Weapons.Flail = {
         name: 'Flail',
@@ -504,7 +504,7 @@ function MakeItemList() {
         baseStrength: 60,
         baseEndurance: 50,
         baseWisdom: 50,
-        value: 4000
+        
     };
     Weapons.Cudgel = {
         name: 'Cudgel',
@@ -519,7 +519,7 @@ function MakeItemList() {
         baseStrength: 80,
         baseEndurance: 70,
         baseWisdom: 70,
-        value: 5000
+        
     };
     Weapons.Trucheon = {
         name: 'Trucheon',
@@ -534,7 +534,7 @@ function MakeItemList() {
         baseStrength: 110,
         baseEndurance: 90,
         baseWisdom: 100,
-        value: 7500
+        
     };
     Weapons.ShortStaff = {
         name: 'Short Staff',
@@ -549,7 +549,7 @@ function MakeItemList() {
         baseEndurance: 1,
         baseWisdom: 1,
         baseIntelligence: 3,
-        value: 40
+        
     };
     Weapons.GrimWand = {
         name: 'Grim Wand',
@@ -564,7 +564,7 @@ function MakeItemList() {
         baseEndurance: 2,
         baseWisdom: 1,
         baseIntelligence: 7,
-        value: 100
+        
     };
     Weapons.JoStaff = {
         name: 'Jo Staff',
@@ -579,7 +579,7 @@ function MakeItemList() {
         baseEndurance: 4,
         baseWisdom: 2,
         baseIntelligence: 12,
-        value: 200
+        
     };
     Weapons.LongStaff = {
         name: 'Long Staff',
@@ -594,7 +594,7 @@ function MakeItemList() {
         baseEndurance: 7,
         baseWisdom: 4,
         baseIntelligence: 25,
-        value: 700
+        
     };
     Weapons.BurntWand = {
         name: 'Burnt Wand',
@@ -609,7 +609,7 @@ function MakeItemList() {
         baseEndurance: 10,
         baseWisdom: 7,
         baseIntelligence: 30,
-        value: 900
+        
     };
     Weapons.QuaterStaff = {
         name: 'Quater Staff',
@@ -624,7 +624,7 @@ function MakeItemList() {
         baseEndurance: 15,
         baseWisdom: 12,
         baseIntelligence: 45,
-        value: 1200
+        
     };
     Weapons.Wand = {
         name: 'Wand',
@@ -639,7 +639,7 @@ function MakeItemList() {
         baseEndurance: 20,
         baseWisdom: 15,
         baseIntelligence: 60,
-        value: 2000
+        
     };
     Weapons.GnarledStaff = {
         name: 'Gnarled Staff',
@@ -654,7 +654,7 @@ function MakeItemList() {
         baseEndurance: 35,
         baseWisdom: 25,
         baseIntelligence: 70,
-        value: 2500
+        
     };
     Weapons.ArchonStaff = {
         name: 'Archon Staff',
@@ -669,7 +669,7 @@ function MakeItemList() {
         baseEndurance: 45,
         baseWisdom: 30,
         baseIntelligence: 100,
-        value: 3500
+        
     };
     Weapons.YewWand = {
         name: 'Yew Wand',
@@ -684,7 +684,7 @@ function MakeItemList() {
         baseEndurance: 50,
         baseWisdom: 30,
         baseIntelligence: 120,
-        value: 4500
+        
     };
     Weapons.LichStaff = {
         name: 'Lich Staff',
@@ -699,7 +699,7 @@ function MakeItemList() {
         baseEndurance: 70,
         baseWisdom: 50,
         baseIntelligence: 150,
-        value: 5500
+        
     };
     Weapons.GothicStaff = {
         name: 'Gothic Staff',
@@ -714,7 +714,7 @@ function MakeItemList() {
         baseEndurance: 90,
         baseWisdom: 75,
         baseIntelligence: 200,
-        value: 8000
+        
     };
     Weapons.ShortBow = {
         name: 'Short Bow',
@@ -729,7 +729,7 @@ function MakeItemList() {
         baseStrength: 1,
         baseAgility: 1,
         baseDexterity: 3,
-        value: 40
+        
     };
     Weapons.ShortBattleBow = {
         name: 'Short Battle Bow',
@@ -744,7 +744,7 @@ function MakeItemList() {
         baseStrength: 3,
         baseAgility: 2,
         baseDexterity: 5,
-        value: 110
+        
     };
     Weapons.RazorBow = {
         name: 'Razor Bow',
@@ -759,7 +759,7 @@ function MakeItemList() {
         baseStrength: 5,
         baseAgility: 4,
         baseDexterity: 9,
-        value: 240
+        
     };
     Weapons.HuntersBow = {
         name: 'Hunter\'s Bow',
@@ -774,7 +774,7 @@ function MakeItemList() {
         baseStrength: 10,
         baseAgility: 8,
         baseDexterity: 20,
-        value: 700
+        
     };
     Weapons.LongBattleBow = {
         name: 'Long Battle Bow',
@@ -789,7 +789,7 @@ function MakeItemList() {
         baseStrength: 15,
         baseAgility: 14,
         baseDexterity: 28,
-        value: 900
+        
     };
     Weapons.CedarBow = {
         name: 'Cedar Bow',
@@ -804,7 +804,7 @@ function MakeItemList() {
         baseStrength: 22,
         baseAgility: 20,
         baseDexterity: 38,
-        value: 1200
+        
     };
     Weapons.LongBow = {
         name: 'Long Bow',
@@ -819,7 +819,7 @@ function MakeItemList() {
         baseStrength: 30,
         baseAgility: 30,
         baseDexterity: 40,
-        value: 1700
+        
     };
     Weapons.ShortWarBow = {
         name: 'Short War Bow',
@@ -834,7 +834,7 @@ function MakeItemList() {
         baseStrength: 40,
         baseAgility: 40,
         baseDexterity: 50,
-        value: 2000
+        
     };
     Weapons.DoubleBow = {
         name: 'Double Bow',
@@ -849,7 +849,7 @@ function MakeItemList() {
         baseStrength: 50,
         baseAgility: 60,
         baseDexterity: 70,
-        value: 3000
+        
     };
     Weapons.CompositeBow = {
         name: 'Composite Bow',
@@ -864,7 +864,7 @@ function MakeItemList() {
         baseStrength: 60,
         baseAgility: 60,
         baseDexterity: 90,
-        value: 4000
+        
     };
     Weapons.LongWarBow = {
         name: 'Long War Bow',
@@ -879,7 +879,7 @@ function MakeItemList() {
         baseStrength: 70,
         baseAgility: 80,
         baseDexterity: 100,
-        value: 5500
+        
     };
     Weapons.RuneBow = {
         name: 'Rune Bow',
@@ -894,7 +894,7 @@ function MakeItemList() {
         baseStrength: 90,
         baseAgility: 110,
         baseDexterity: 140,
-        value: 7500
+        
     };
     Weapons.GothicSword = {
         name: 'Gothic Sword',
@@ -908,7 +908,7 @@ function MakeItemList() {
         baseMaxDamage: 15,
         baseStrength: 12,
         baseAgility: 10,
-        value: 300
+        
     };
     Weapons.BerserkerAxe = {
         name: 'Berserker Axe',
@@ -922,7 +922,7 @@ function MakeItemList() {
         baseMaxDamage: 20,
         baseStrength: 18,
         baseAgility: 6,
-        value: 400
+        
     };
     Weapons.TyrantClub = {
         name: 'Tyrant Club',
@@ -937,7 +937,7 @@ function MakeItemList() {
         baseStrength: 12,
         baseEndurance: 7,
         baseWisdom: 8,
-        value: 370
+        
     };
     Weapons.Stalagmite = {
         name: 'Stalagmite',
@@ -952,7 +952,7 @@ function MakeItemList() {
         baseEndurance: 6,
         baseWisdom: 4,
         baseIntelligence: 18,
-        value: 340
+        
     };
     Weapons.GreatBow = {
         name: 'Great Bow',
@@ -967,7 +967,7 @@ function MakeItemList() {
         baseStrength: 9,
         baseAgility: 8,
         baseDexterity: 15,
-        value: 370
+        
     };
     Weapons.TuskSword = {
         name: 'Tusk Sword',
@@ -982,7 +982,7 @@ function MakeItemList() {
         baseStrength: 48,
         baseAgility: 30,
         baseEndurance: 32,
-        value: 1800
+        
     };
     Weapons.SmallCrescent = {
         name: 'Small Crescent',
@@ -997,7 +997,7 @@ function MakeItemList() {
         baseStrength: 60,
         baseAgility: 18,
         baseEndurance: 26,
-        value: 2200
+        
     };
     Weapons.DevilStar = {
         name: 'Devil Star',
@@ -1012,7 +1012,7 @@ function MakeItemList() {
         baseStrength: 35,
         baseEndurance: 22,
         baseWisdom: 20,
-        value: 1500
+        
     };
     Weapons.PetrifiedWand = {
         name: 'Petrified Wand',
@@ -1027,7 +1027,7 @@ function MakeItemList() {
         baseEndurance: 22,
         baseWisdom: 16,
         baseIntelligence: 60,
-        value: 1700
+        
     };
     Weapons.StagBow = {
         name: 'Stag Bow',
@@ -1042,7 +1042,7 @@ function MakeItemList() {
         baseStrength: 30,
         baseAgility: 30,
         baseDexterity: 50,
-        value: 1500
+        
     };
     Weapons.HydraEdge = {
         name: 'Hydra Edge',
@@ -1057,7 +1057,7 @@ function MakeItemList() {
         baseStrength: 90,
         baseAgility: 70,
         baseEndurance: 80,
-        value: 4500
+        
     };
     Weapons.SilverEdgedAxe = {
         name: 'Silver Edged Axe',
@@ -1072,7 +1072,7 @@ function MakeItemList() {
         baseStrength: 110,
         baseAgility: 60,
         baseEndurance: 60,
-        value: 5500
+        
     };
     Weapons.Knout = {
         name: 'Knout',
@@ -1087,7 +1087,7 @@ function MakeItemList() {
         baseStrength: 70,
         baseEndurance: 50,
         baseWisdom: 60,
-        value: 4500
+        
     };
     Weapons.TombWand = {
         name: 'Tomb Wand',
@@ -1102,7 +1102,7 @@ function MakeItemList() {
         baseEndurance: 60,
         baseWisdom: 40,
         baseIntelligence: 140,
-        value: 5000
+        
     };
     Weapons.HydraBow = {
         name: 'Hydra Bow',
@@ -1117,7 +1117,7 @@ function MakeItemList() {
         baseStrength: 60,
         baseAgility: 70,
         baseDexterity: 90,
-        value: 4500
+        
     };
     Weapons.PhaseBlade = {
         name: 'Phase Blade',
@@ -1132,7 +1132,7 @@ function MakeItemList() {
         baseStrength: 130,
         baseAgility: 110,
         baseEndurance: 120,
-        value: 8500
+        
     };
     Weapons.AncientAxe = {
         name: 'Ancient Axe',
@@ -1147,7 +1147,7 @@ function MakeItemList() {
         baseStrength: 170,
         baseAgility: 120,
         baseEndurance: 140,
-        value: 11000
+        
     };
     Weapons.Scourge = {
         name: 'Scourge',
@@ -1162,7 +1162,7 @@ function MakeItemList() {
         baseStrength: 140,
         baseEndurance: 120,
         baseWisdom: 130,
-        value: 9000
+        
     };
     Weapons.GraveWand = {
         name: 'Grave Wand',
@@ -1177,7 +1177,7 @@ function MakeItemList() {
         baseEndurance: 120,
         baseWisdom: 100,
         baseIntelligence: 280,
-        value: 10000
+        
     };
     Weapons.ReflexBow = {
         name: 'Reflex Bow',
@@ -1192,7 +1192,7 @@ function MakeItemList() {
         baseStrength: 120,
         baseAgility: 140,
         baseDexterity: 180,
-        value: 9000
+        
     };
     Weapons.ColossusSword = {
         name: 'Colossus Sword',
@@ -1206,7 +1206,7 @@ function MakeItemList() {
         baseMaxDamage: 25,
         baseStrength: 25,
         baseAgility: 12,
-        value: 550
+        
     };
     Weapons.EttinAxe = {
         name: 'Ettin Axe',
@@ -1220,7 +1220,7 @@ function MakeItemList() {
         baseMaxDamage: 30,
         baseStrength: 35,
         baseAgility: 8,
-        value: 700
+        
     };
     Weapons.ReinforcedMace = {
         name: 'Reinforced Mace',
@@ -1235,7 +1235,7 @@ function MakeItemList() {
         baseStrength: 18,
         baseEndurance: 12,
         baseWisdom: 10,
-        value: 600
+        
     };
     Weapons.GhostWand = {
         name: 'Ghost Wand',
@@ -1250,7 +1250,7 @@ function MakeItemList() {
         baseEndurance: 10,
         baseWisdom: 7,
         baseIntelligence: 30,
-        value: 650
+        
     };
     Weapons.AshwoodBow = {
         name: 'Ashwood Bow',
@@ -1265,7 +1265,7 @@ function MakeItemList() {
         baseStrength: 15,
         baseAgility: 12,
         baseDexterity: 25,
-        value: 550
+        
     };
     Weapons.HighlandBlade = {
         name: 'Highland Blade',
@@ -1280,7 +1280,7 @@ function MakeItemList() {
         baseStrength: 65,
         baseAgility: 45,
         baseEndurance: 50,
-        value: 2500
+        
     };
     Weapons.FeralAxe = {
         chance: 5,
@@ -1296,7 +1296,7 @@ function MakeItemList() {
         baseStrength: 80,
         baseAgility: 30,
         baseEndurance: 45,
-        value: 2800
+        
     };
     Weapons.OgreMaul = {
         chance: 5,
@@ -1312,7 +1312,7 @@ function MakeItemList() {
         baseStrength: 45,
         baseEndurance: 30,
         baseWisdom: 30,
-        value: 2000
+        
     };
     Weapons.UnearthedWand = {
         chance: 5,
@@ -1328,7 +1328,7 @@ function MakeItemList() {
         baseStrength: 30,
         baseWisdom: 22,
         baseIntelligence: 80,
-        value: 2200
+        
     };
     Weapons.CeremonialBow = {
         chance: 5,
@@ -1344,7 +1344,7 @@ function MakeItemList() {
         baseStrength: 45,
         baseAgility: 50,
         baseDexterity: 70,
-        value: 2200
+        
     };
     Weapons.LegendSword = {
         chance: 5,
@@ -1360,7 +1360,7 @@ function MakeItemList() {
         baseStrength: 110,
         baseAgility: 90,
         baseEndurance: 100,
-        value: 6000
+        
     };
     Weapons.Decapitator = {
         chance: 5,
@@ -1376,7 +1376,7 @@ function MakeItemList() {
         baseStrength: 140,
         baseAgility: 90,
         baseEndurance: 80,
-        value: 7000
+        
     };
     Weapons.FlangedMace = {
         chance: 5,
@@ -1392,7 +1392,7 @@ function MakeItemList() {
         baseStrength: 90,
         baseEndurance: 70,
         baseWisdom: 80,
-        value: 6000
+        
     };
     Weapons.ElderStaff = {
         chance: 5,
@@ -1408,7 +1408,7 @@ function MakeItemList() {
         baseEndurance: 80,
         baseWisdom: 60,
         baseIntelligence: 180,
-        value: 7000
+        
     };
     Weapons.MatriarchalBow = {
         chance: 5,
@@ -1424,7 +1424,7 @@ function MakeItemList() {
         baseStrength: 80,
         baseAgility: 90,
         baseDexterity: 120,
-        value: 6000
+        
     };
     Weapons.BalrogBlade = {
         chance: 5,
@@ -1440,7 +1440,7 @@ function MakeItemList() {
         baseStrength: 160,
         baseAgility: 120,
         baseEndurance: 140,
-        value: 10000
+        
     };
     Weapons.GloriousAxe = {
         chance: 5,
@@ -1456,7 +1456,7 @@ function MakeItemList() {
         baseStrength: 200,
         baseAgility: 150,
         baseEndurance: 160,
-        value: 14000
+        
     };
     Weapons.ThunderMaul = {
         chance: 5,
@@ -1472,7 +1472,7 @@ function MakeItemList() {
         baseStrength: 180,
         baseEndurance: 150,
         baseWisdom: 170,
-        value: 11000
+        
     };
     Weapons.Shillelagh = {
         chance: 5,
@@ -1488,7 +1488,7 @@ function MakeItemList() {
         baseEndurance: 150,
         baseWisdom: 120,
         baseIntelligence: 400,
-        value: 15000
+        
     };
     Weapons.GrandMatronBow = {
         chance: 5,
@@ -1504,7 +1504,7 @@ function MakeItemList() {
         baseStrength: 150,
         baseAgility: 180,
         baseDexterity: 240,
-        value: 12000
+        
     };
     ItemList.Weapons = Weapons;
     Armors = {};
@@ -1521,7 +1521,7 @@ function MakeItemList() {
         baseAgility: 3,
         baseDexterity: 2,
         baseEndurance: 1,
-        value: 40
+        
     };
     Armors.ReinforcedLeatherVest = {
         name: 'Reinforced Leather Vest',
@@ -1535,7 +1535,7 @@ function MakeItemList() {
         baseAgility: 3,
         baseDexterity: 2,
         baseEndurance: 1,
-        value: 90
+        
     };
     Armors.StuddedDoublet = {
         chance: 10,
@@ -1550,7 +1550,7 @@ function MakeItemList() {
         baseAgility: 3,
         baseDexterity: 2,
         baseEndurance: 1,
-        value: 180
+        
     };
     //Heavy Armor
     Armors.ScalemailVest = {
@@ -1566,7 +1566,7 @@ function MakeItemList() {
         baseEndurance: 3,
         baseWisdom: 2,
         baseStrength: 1,
-        value: 50
+        
     };
     Armors.ChainmailArmor = {
         chance: 25,
@@ -1581,7 +1581,7 @@ function MakeItemList() {
         baseEndurance: 3,
         baseWisdom: 2,
         baseStrength: 1,
-        value: 150
+        
     };
     Armors.LightMailArmor = {
         chance: 10,
@@ -1596,7 +1596,7 @@ function MakeItemList() {
         baseEndurance: 3,
         baseWisdom: 2,
         baseStrength: 1,
-        value: 300
+        
     };
     //Leather
     Armors.SnowhideVest = {
@@ -1612,7 +1612,7 @@ function MakeItemList() {
         baseAgility: 12,
         baseDexterity: 10,
         baseEndurance: 5,
-        value: 300
+        
     };
     Armors.BattleHarness = {
         chance: 25,
@@ -1627,7 +1627,7 @@ function MakeItemList() {
         baseAgility: 17,
         baseDexterity: 13,
         baseEndurance: 8,
-        value: 550
+        
     };
     Armors.CuredLeatherArmor = {
         chance: 10,
@@ -1642,7 +1642,7 @@ function MakeItemList() {
         baseAgility: 25,
         baseDexterity: 18,
         baseEndurance: 14,
-        value: 800
+        
     };
     //Heavy Armor
     Armors.AugumentedChainVest = {
@@ -1658,7 +1658,7 @@ function MakeItemList() {
         baseEndurance: 20,
         baseWisdom: 10,
         baseStrength: 5,
-        value: 500
+        
     };
     Armors.JaggedChainVest = {
         chance: 25,
@@ -1673,7 +1673,7 @@ function MakeItemList() {
         baseEndurance: 28,
         baseWisdom: 14,
         baseStrength: 8,
-        value: 900
+        
     };
     Armors.RecruitTunic = {
         chance: 10,
@@ -1688,7 +1688,7 @@ function MakeItemList() {
         baseEndurance: 36,
         baseWisdom: 19,
         baseStrength: 12,
-        value: 1500
+        
     };
     //Leather
     Armors.StuddedLeather = {
@@ -1704,7 +1704,7 @@ function MakeItemList() {
         baseAgility: 30,
         baseDexterity: 25,
         baseEndurance: 20,
-        value: 1000
+        
     };
     Armors.HardLeatherTunic = {
         chance: 25,
@@ -1719,7 +1719,7 @@ function MakeItemList() {
         baseAgility: 40,
         baseDexterity: 36,
         baseEndurance: 30,
-        value: 1500
+        
     };
     Armors.StuddedLeatherHarness = {
         chance: 10,
@@ -1734,7 +1734,7 @@ function MakeItemList() {
         baseAgility: 58,
         baseDexterity: 48,
         baseEndurance: 44,
-        value: 2200
+        
     };
     //Heavy Armor
     Armors.GothicPlate = {
@@ -1750,7 +1750,7 @@ function MakeItemList() {
         baseEndurance: 40,
         baseWisdom: 20,
         baseStrength: 12,
-        value: 3000
+        
     };
     Armors.FullPlatemail = {
         chance: 25,
@@ -1765,7 +1765,7 @@ function MakeItemList() {
         baseEndurance: 55,
         baseWisdom: 32,
         baseStrength: 18,
-        value: 4500
+        
     };
     Armors.EmbossedPlate = {
         chance: 10,
@@ -1780,7 +1780,7 @@ function MakeItemList() {
         baseEndurance: 78,
         baseWisdom: 46,
         baseStrength: 26,
-        value: 6000
+        
     };
     //Leather
     Armors.SoftLeatherVest = {
@@ -1796,7 +1796,7 @@ function MakeItemList() {
         baseAgility: 80,
         baseDexterity: 70,
         baseEndurance: 50,
-        value: 3000
+        
     };
     Armors.DarksRangerVest = {
         chance: 25,
@@ -1811,7 +1811,7 @@ function MakeItemList() {
         baseAgility: 110,
         baseDexterity: 90,
         baseEndurance: 70,
-        value: 3800
+        
     };
     Armors.WinterJacket = {
         chance: 10,
@@ -1826,7 +1826,7 @@ function MakeItemList() {
         baseAgility: 140,
         baseDexterity: 120,
         baseEndurance: 100,
-        value: 4900
+        
     };
     //Heavy Armor
     Armors.AncientArmor = {
@@ -1842,7 +1842,7 @@ function MakeItemList() {
         baseEndurance: 90,
         baseWisdom: 50,
         baseStrength: 40,
-        value: 8000
+        
     };
     Armors.OrnatePlate = {
         chance: 25,
@@ -1857,7 +1857,7 @@ function MakeItemList() {
         baseEndurance: 115,
         baseWisdom: 72,
         baseStrength: 64,
-        value: 9000
+        
     };
     Armors.DiamondMail = {
         chance: 10,
@@ -1872,7 +1872,7 @@ function MakeItemList() {
         baseEndurance: 135,
         baseWisdom: 95,
         baseStrength: 83,
-        value: 13000
+        
     };
     //Robes
     Armors.BlackRobes = {
@@ -1888,7 +1888,7 @@ function MakeItemList() {
         baseIntelligence: 3,
         baseAgility: 1,
         baseWisdom: 1,
-        value: 40
+        
     };
     Armors.HoodedRobes = {
         chance: 25,
@@ -1903,7 +1903,7 @@ function MakeItemList() {
         baseIntelligence: 7,
         baseAgility: 3,
         baseWisdom: 4,
-        value: 150
+        
     };
     Armors.MonkRobes = {
         chance: 10,
@@ -1918,7 +1918,7 @@ function MakeItemList() {
         baseIntelligence: 12,
         baseAgility: 6,
         baseWisdom: 7,
-        value: 300
+        
     };
     //Robes
     Armors.RedLinenVest = {
@@ -1934,7 +1934,7 @@ function MakeItemList() {
         baseIntelligence: 15,
         baseAgility: 10,
         baseWisdom: 10,
-        value: 500
+        
     };
     Armors.BeadedRobes = {
         chance: 25,
@@ -1949,7 +1949,7 @@ function MakeItemList() {
         baseIntelligence: 22,
         baseAgility: 15,
         baseWisdom: 18,
-        value: 800
+        
     };
     Armors.AncestralRobe = {
         chance: 10,
@@ -1964,7 +1964,7 @@ function MakeItemList() {
         baseIntelligence: 34,
         baseAgility: 20,
         baseWisdom: 24,
-        value: 1200
+        
     };
     //Robes
     Armors.BarbaricLinenVest = {
@@ -1980,7 +1980,7 @@ function MakeItemList() {
         baseIntelligence: 30,
         baseAgility: 20,
         baseWisdom: 30,
-        value: 1500
+        
     };
     Armors.BarbaricClothVest = {
         chance: 25,
@@ -1995,7 +1995,7 @@ function MakeItemList() {
         baseIntelligence: 45,
         baseAgility: 30,
         baseWisdom: 48,
-        value: 2000
+        
     };
     Armors.JourneymansRobe = {
         chance: 10,
@@ -2010,7 +2010,7 @@ function MakeItemList() {
         baseIntelligence: 60,
         baseAgility: 45,
         baseWisdom: 65,
-        value: 4000
+        
     };
     //Robes
     Armors.FurCoveredRobe = {
@@ -2026,7 +2026,7 @@ function MakeItemList() {
         baseIntelligence: 70,
         baseAgility: 50,
         baseWisdom: 70,
-        value: 7000
+        
     };
     Armors.DurableTunic = {
         chance: 25,
@@ -2041,7 +2041,7 @@ function MakeItemList() {
         baseIntelligence: 95,
         baseAgility: 75,
         baseWisdom: 95,
-        value: 10000
+        
     };
     Armors.CarapaceRobes = {
         chance: 10,
@@ -2056,7 +2056,7 @@ function MakeItemList() {
         baseIntelligence: 120,
         baseAgility: 100,
         baseWisdom: 130,
-        value: 12000
+        
     };
     //Epics
     Armors.MageRobes = {
@@ -2072,7 +2072,7 @@ function MakeItemList() {
         baseIntelligence: 18,
         baseAgility: 10,
         baseWisdom: 12,
-        value: 550
+        
     };
     Armors.DarkIronLeather = {
         chance: 5,
@@ -2087,7 +2087,7 @@ function MakeItemList() {
         baseAgility: 16,
         baseDexterity: 10,
         baseEndurance: 7,
-        value: 300
+        
     };
     Armors.BrigandVest = {
         chance: 5,
@@ -2102,7 +2102,7 @@ function MakeItemList() {
         baseEndurance: 20,
         baseWisdom: 11,
         baseStrength: 7,
-        value: 550
+        
     };
     Armors.MysticsRobe = {
         chance: 5,
@@ -2117,7 +2117,7 @@ function MakeItemList() {
         baseIntelligence: 45,
         baseAgility: 27,
         baseWisdom: 30,
-        value: 1700
+        
     };
     Armors.BlackBearHideVest = {
         chance: 5,
@@ -2132,7 +2132,7 @@ function MakeItemList() {
         baseAgility: 35,
         baseDexterity: 26,
         baseEndurance: 20,
-        value: 1100
+        
     };
     Armors.SiegeBrigadeVest = {
         chance: 5,
@@ -2147,7 +2147,7 @@ function MakeItemList() {
         baseEndurance: 45,
         baseWisdom: 28,
         baseStrength: 19,
-        value: 2500
+        
     };
     Armors.RitualTunic = {
         chance: 5,
@@ -2162,7 +2162,7 @@ function MakeItemList() {
         baseIntelligence: 80,
         baseAgility: 60,
         baseWisdom: 80,
-        value: 6000
+        
     };
     Armors.TannedLeatherJerkin = {
         chance: 5,
@@ -2177,7 +2177,7 @@ function MakeItemList() {
         baseAgility: 74,
         baseDexterity: 64,
         baseEndurance: 60,
-        value: 3500
+        
     };
     Armors.ChaosArmor = {
         chance: 5,
@@ -2192,7 +2192,7 @@ function MakeItemList() {
         baseEndurance: 100,
         baseWisdom: 60,
         baseStrength: 38,
-        value: 8000
+        
     };
     Armors.SagesRobe = {
         chance: 5,
@@ -2207,7 +2207,7 @@ function MakeItemList() {
         baseIntelligence: 150,
         baseAgility: 130,
         baseWisdom: 160,
-        value: 15000
+        
     };
     Armors.PrimalShirt = {
         chance: 5,
@@ -2222,7 +2222,7 @@ function MakeItemList() {
         baseAgility: 180,
         baseDexterity: 160,
         baseEndurance: 140,
-        value: 5700
+        
     };
     Armors.Boneweave = {
         chance: 5,
@@ -2237,7 +2237,7 @@ function MakeItemList() {
         baseEndurance: 165,
         baseWisdom: 120,
         baseStrength: 105,
-        value: 18000
+        
     };
     Armors.MagicWeaverTunic = {
         chance: 5,
@@ -2252,7 +2252,7 @@ function MakeItemList() {
         baseIntelligence: 27,
         baseAgility: 15,
         baseWisdom: 18,
-        value: 800
+        
     };
     Armors.RangersVest = {
         chance: 5,
@@ -2267,7 +2267,7 @@ function MakeItemList() {
         baseAgility: 25,
         baseDexterity: 15,
         baseEndurance: 10,
-        value: 500
+        
     };
     Armors.SalvagedChainArmor = {
         chance: 5,
@@ -2282,7 +2282,7 @@ function MakeItemList() {
         baseEndurance: 28,
         baseWisdom: 17,
         baseStrength: 10,
-        value: 800
+        
     };
     Armors.AncestralTunic = {
         chance: 5,
@@ -2297,7 +2297,7 @@ function MakeItemList() {
         baseIntelligence: 60,
         baseAgility: 35,
         baseWisdom: 45,
-        value: 2200
+        
     };
     Armors.NomadicVest = {
         chance: 5,
@@ -2312,7 +2312,7 @@ function MakeItemList() {
         baseAgility: 45,
         baseDexterity: 34,
         baseEndurance: 28,
-        value: 1500
+        
     };
     Armors.TemplarArmor = {
         chance: 5,
@@ -2327,7 +2327,7 @@ function MakeItemList() {
         baseEndurance: 60,
         baseWisdom: 36,
         baseStrength: 27,
-        value: 4000
+        
     };
     Armors.SagesCloth = {
         chance: 5,
@@ -2342,7 +2342,7 @@ function MakeItemList() {
         baseIntelligence: 110,
         baseAgility: 80,
         baseWisdom: 100,
-        value: 8500
+        
     };
     Armors.ScavengersTunic = {
         chance: 5,
@@ -2357,7 +2357,7 @@ function MakeItemList() {
         baseAgility: 90,
         baseDexterity: 84,
         baseEndurance: 78,
-        value: 4400
+        
     };
     Armors.Wyrmhide = {
         chance: 5,
@@ -2372,7 +2372,7 @@ function MakeItemList() {
         baseEndurance: 125,
         baseWisdom: 78,
         baseStrength: 55,
-        value: 10000
+        
     };
     Armors.RobeoftheDragonSlayer = {
         chance: 5,
@@ -2387,7 +2387,7 @@ function MakeItemList() {
         baseIntelligence: 180,
         baseAgility: 150,
         baseWisdom: 190,
-        value: 20000
+        
     };
     Armors.ScoutHuntersVest = {
         chance: 5,
@@ -2402,7 +2402,7 @@ function MakeItemList() {
         baseAgility: 220,
         baseDexterity: 200,
         baseEndurance: 180,
-        value: 7000
+        
     };
     Armors.BalrogSkin = {
         chance: 5,
@@ -2417,7 +2417,7 @@ function MakeItemList() {
         baseEndurance: 200,
         baseWisdom: 145,
         baseStrength: 128,
-        value: 25000
+        
     };
     ItemList.Armors = Armors;
     //Off Hand list
@@ -2434,7 +2434,7 @@ function MakeItemList() {
         baseDefense: 3,
         baseEndurance: 3,
         baseStrength: 5,
-        value: 100
+        
     };
     OffHand.SpikedShield = {
         name: 'Spiked Shield',
@@ -2447,7 +2447,7 @@ function MakeItemList() {
         baseDefense: 5,
         baseEndurance: 8,
         baseStrength: 6,
-        value: 250
+        
     };
     OffHand.TowerShield = {
         name: 'Tower Shield',
@@ -2460,7 +2460,7 @@ function MakeItemList() {
         baseDefense: 8,
         baseEndurance: 12,
         baseStrength: 10,
-        value: 350
+        
     };
     OffHand.GrimShield = {
         name: 'Grim Shield',
@@ -2473,7 +2473,7 @@ function MakeItemList() {
         baseDefense: 12,
         baseEndurance: 18,
         baseStrength: 14,
-        value: 500
+        
     };
     OffHand.Luna = {
         name: 'Luna',
@@ -2486,7 +2486,7 @@ function MakeItemList() {
         baseDefense: 18,
         baseEndurance: 28,
         baseStrength: 20,
-        value: 1000
+        
     };
     OffHand.SmallShield = {
         name: 'Small Shield',
@@ -2499,7 +2499,7 @@ function MakeItemList() {
         baseDefense: 22,
         baseEndurance: 32,
         baseStrength: 24,
-        value: 1250
+        
     };
     OffHand.BoneShield = {
         name: 'Bone Shield',
@@ -2512,7 +2512,7 @@ function MakeItemList() {
         baseDefense: 28,
         baseEndurance: 40,
         baseStrength: 30,
-        value: 1600
+        
     };
     OffHand.GothicShield = {
         name: 'Gothic Shield',
@@ -2525,7 +2525,7 @@ function MakeItemList() {
         baseDefense: 36,
         baseEndurance: 52,
         baseStrength: 34,
-        value: 2000
+        
     };
     OffHand.AncientShield = {
         name: 'Ancient Shield',
@@ -2538,7 +2538,7 @@ function MakeItemList() {
         baseDefense: 44,
         baseEndurance: 62,
         baseStrength: 44,
-        value: 2600
+        
     };
     OffHand.Hyperion = {
         name: 'Hyperion',
@@ -2551,7 +2551,7 @@ function MakeItemList() {
         baseDefense: 50,
         baseEndurance: 75,
         baseStrength: 55,
-        value: 3200
+        
     };
     OffHand.LargeShield = {
         name: 'Large Shield',
@@ -2564,7 +2564,7 @@ function MakeItemList() {
         baseDefense: 60,
         baseEndurance: 80,
         baseStrength: 60,
-        value: 3500
+        
     };
     OffHand.Defender = {
         name: 'Defender',
@@ -2577,7 +2577,7 @@ function MakeItemList() {
         baseDefense: 75,
         baseEndurance: 95,
         baseStrength: 75,
-        value: 4200
+        
     };
     OffHand.DragonShield = {
         name: 'Dragon Shield',
@@ -2590,7 +2590,7 @@ function MakeItemList() {
         baseDefense: 88,
         baseEndurance: 110,
         baseStrength: 90,
-        value: 4800
+        
     };
     OffHand.Monarch = {
         name: 'Monarch',
@@ -2603,7 +2603,7 @@ function MakeItemList() {
         baseDefense: 110,
         baseEndurance: 130,
         baseStrength: 115,
-        value: 5700
+        
     };
 
     OffHand.TrollNest = {
@@ -2617,7 +2617,7 @@ function MakeItemList() {
         baseDefense: 125,
         baseEndurance: 150,
         baseStrength: 135,
-        value: 6800
+        
     };
     OffHand.KiteShield = {
         name: 'Kite Shield',
@@ -2630,7 +2630,7 @@ function MakeItemList() {
         baseDefense: 140,
         baseEndurance: 160,
         baseStrength: 145,
-        value: 7500
+        
     };
     OffHand.RoundShield = {
         name: 'Round Shield',
@@ -2643,7 +2643,7 @@ function MakeItemList() {
         baseDefense: 160,
         baseEndurance: 175,
         baseStrength: 160,
-        value: 8400
+        
     };
     OffHand.BarbedShield = {
         name: 'Barbed Shield',
@@ -2656,7 +2656,7 @@ function MakeItemList() {
         baseDefense: 175,
         baseEndurance: 190,
         baseStrength: 180,
-        value: 9200
+        
     };
     OffHand.BladeBarrier = {
         name: 'Blade Barrier',
@@ -2669,7 +2669,7 @@ function MakeItemList() {
         baseDefense: 188,
         baseEndurance: 210,
         baseStrength: 195,
-        value: 10500
+        
     };
     OffHand.Aegis = {
         name: 'Aegis',
@@ -2682,7 +2682,7 @@ function MakeItemList() {
         baseDefense: 210,
         baseEndurance: 225,
         baseStrength: 210,
-        value: 12000
+        
     };
     //Orbs
     OffHand.DefenseOrb = {
@@ -2696,7 +2696,7 @@ function MakeItemList() {
         baseDefense: 3,
         baseEndurance: 3,
         baseWisdom: 5,
-        value: 80
+        
     };
     //Daggers
     OffHand.Dagger = {
@@ -2711,7 +2711,7 @@ function MakeItemList() {
         baseStrength: 1,
         baseAgility: 2,
         baseIntelligence: 1,
-        value: 30
+        
     };
     OffHand.Kris = {
         chance: 25,
@@ -2725,7 +2725,7 @@ function MakeItemList() {
         baseStrength: 2,
         baseAgility: 4,
         baseIntelligence: 2,
-        value: 90
+        
     };
     OffHand.MithrilPoint = {
         chance: 10,
@@ -2739,7 +2739,7 @@ function MakeItemList() {
         baseStrength: 5,
         baseAgility: 8,
         baseIntelligence: 4,
-        value: 180
+        
     };
     OffHand.BoneKnife = {
         chance: 5,
@@ -2753,7 +2753,7 @@ function MakeItemList() {
         baseStrength: 10,
         baseAgility: 14,
         baseIntelligence: 7,
-        value: 300
+        
     };
     OffHand.FangedKnife = {
         chance: 5,
@@ -2767,7 +2767,7 @@ function MakeItemList() {
         baseStrength: 15,
         baseAgility: 22,
         baseIntelligence: 12,
-        value: 580
+        
     };
     OffHand.Katar = {
         chance: 50,
@@ -2781,7 +2781,7 @@ function MakeItemList() {
         baseStrength: 10,
         baseAgility: 15,
         baseIntelligence: 10,
-        value: 700
+        
     };
     OffHand.WristBlade = {
         chance: 25,
@@ -2795,7 +2795,7 @@ function MakeItemList() {
         baseStrength: 20,
         baseAgility: 25,
         baseIntelligence: 20,
-        value: 900
+        
     };
     OffHand.BladeTalons = {
         chance: 10,
@@ -2809,7 +2809,7 @@ function MakeItemList() {
         baseStrength: 20,
         baseAgility: 25,
         baseIntelligence: 20,
-        value: 1200
+        
     };
     OffHand.FeralClaws = {
         chance: 5,
@@ -2823,7 +2823,7 @@ function MakeItemList() {
         baseStrength: 30,
         baseAgility: 35,
         baseIntelligence: 30,
-        value: 1700
+        
     };
     OffHand.RunicTalons = {
         chance: 5,
@@ -2837,7 +2837,7 @@ function MakeItemList() {
         baseStrength: 40,
         baseAgility: 45,
         baseIntelligence: 40,
-        value: 2200
+        
     };
     OffHand.Quhab = {
         chance: 50,
@@ -2851,7 +2851,7 @@ function MakeItemList() {
         baseStrength: 30,
         baseAgility: 35,
         baseIntelligence: 30,
-        value: 1700
+        
     };
     OffHand.WristSpike = {
         chance: 25,
@@ -2865,7 +2865,7 @@ function MakeItemList() {
         baseStrength: 40,
         baseAgility: 45,
         baseIntelligence: 40,
-        value: 2200
+        
     };
     OffHand.Cinquedeas = {
         chance: 10,
@@ -2879,7 +2879,7 @@ function MakeItemList() {
         baseStrength: 50,
         baseAgility: 65,
         baseIntelligence: 50,
-        value: 3000
+        
     };
     OffHand.ScissorsSuwayyah = {
         chance: 5,
@@ -2893,7 +2893,7 @@ function MakeItemList() {
         baseStrength: 70,
         baseAgility: 85,
         baseIntelligence: 70,
-        value: 1700
+        
     };
     OffHand.WarFist = {
         name: 'War Fist',
@@ -2906,7 +2906,7 @@ function MakeItemList() {
         baseStrength: 90,
         baseAgility: 110,
         baseIntelligence: 90,
-        value: 5000
+        
     };
     OffHand.CrystalDagger = {
         chance: 50,
@@ -2920,7 +2920,7 @@ function MakeItemList() {
         baseStrength: 60,
         baseAgility: 75,
         baseIntelligence: 65,
-        value: 4000
+        
     };
     OffHand.SharpClaws = {
         chance: 25,
@@ -2934,7 +2934,7 @@ function MakeItemList() {
         baseStrength: 70,
         baseAgility: 95,
         baseIntelligence: 85,
-        value: 5000
+        
     };
     OffHand.Fuscia = {
         chance: 10,
@@ -2948,7 +2948,7 @@ function MakeItemList() {
         baseStrength: 90,
         baseAgility: 120,
         baseIntelligence: 110,
-        value: 7000
+        
     };
     OffHand.BattleCestus = {
         chance: 5,
@@ -2962,7 +2962,7 @@ function MakeItemList() {
         baseStrength: 120,
         baseAgility: 150,
         baseIntelligence: 130,
-        value: 9000
+        
     };
     OffHand.RunicClaws = {
         chance: 5,
@@ -2976,7 +2976,7 @@ function MakeItemList() {
         baseStrength: 140,
         baseAgility: 180,
         baseIntelligence: 150,
-        value: 12000
+        
     };
     ItemList.OffHand = OffHand;
     //Accessory list
@@ -2991,7 +2991,7 @@ function MakeItemList() {
         image: 'Ring001',
         iLvl: 1,
         baseExpRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedRingofLearning = {
         name: 'Damaged Ring of Learning',
@@ -3002,7 +3002,7 @@ function MakeItemList() {
         image: 'Ring002',
         iLvl: 2,
         baseExpRate: 10,
-        value: 200
+        
     };
     Accessory.RingofLearning = {
         name: 'Ring of Learning',
@@ -3013,7 +3013,7 @@ function MakeItemList() {
         image: 'Ring003',
         iLvl: 3,
         baseExpRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeRingofLearning = {
         name: 'Supreme Ring of Learning',
@@ -3024,7 +3024,7 @@ function MakeItemList() {
         image: 'Ring004',
         iLvl: 4,
         baseExpRate: 20,
-        value: 800
+        
     };
     Accessory.AncientRingofLearning = {
         name: 'Ancient Ring of Learning',
@@ -3035,7 +3035,7 @@ function MakeItemList() {
         image: 'Ring005',
         iLvl: 5,
         baseExpRate: 25,
-        value: 1500
+        
     };
     //Ring Endurance
     Accessory.CrackedRingofWealth = {
@@ -3047,7 +3047,7 @@ function MakeItemList() {
         image: 'Ring001',
         iLvl: 1,
         baseGoldRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedRingofWealth = {
         name: 'Damaged Ring of Wealth',
@@ -3058,7 +3058,7 @@ function MakeItemList() {
         image: 'Ring002',
         iLvl: 2,
         baseGoldRate: 10,
-        value: 200
+        
     };
     Accessory.RingofWealth = {
         name: 'Ring of Wealth',
@@ -3069,7 +3069,7 @@ function MakeItemList() {
         image: 'Ring003',
         iLvl: 3,
         baseGoldRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeRingofWealth = {
         name: 'Supreme Ring of Wealth',
@@ -3080,7 +3080,7 @@ function MakeItemList() {
         image: 'Ring004',
         iLvl: 4,
         baseGoldRate: 20,
-        value: 800
+        
     };
     Accessory.AncientRingofWealth = {
         name: 'Ancient Ring of Wealth',
@@ -3091,7 +3091,7 @@ function MakeItemList() {
         image: 'Ring005',
         iLvl: 5,
         baseGoldRate: 25,
-        value: 1500
+        
     };
     //Ring Agility
     Accessory.CrackedRingofOpportunity = {
@@ -3103,7 +3103,7 @@ function MakeItemList() {
         image: 'Ring001',
         iLvl: 1,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedRingofOpportunity = {
         name: 'Damaged Ring of Opportunity',
@@ -3114,7 +3114,7 @@ function MakeItemList() {
         image: 'Ring002',
         iLvl: 2,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.RingofOpportunity = {
         name: 'Ring of Opportunity',
@@ -3125,7 +3125,7 @@ function MakeItemList() {
         image: 'Ring003',
         iLvl: 3,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeRingofOpportunity = {
         name: 'Supreme Ring of Opportunity',
@@ -3136,7 +3136,7 @@ function MakeItemList() {
         image: 'Ring004',
         iLvl: 4,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientRingofOpportunity = {
         name: 'Ancient Ring of Opportunity',
@@ -3147,7 +3147,7 @@ function MakeItemList() {
         image: 'Ring005',
         iLvl: 5,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Ring Dexterity
     Accessory.CrackedRingofFortune = {
@@ -3160,7 +3160,7 @@ function MakeItemList() {
         iLvl: 1,
         baseExpRate: 5,
         baseGoldRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedRingofFortune = {
         name: 'Damaged Ring of Fortune',
@@ -3172,7 +3172,7 @@ function MakeItemList() {
         iLvl: 2,
         baseExpRate: 10,
         baseGoldRate: 10,
-        value: 200
+        
     };
     Accessory.RingofFortune = {
         name: 'Ring of Fortune',
@@ -3184,7 +3184,7 @@ function MakeItemList() {
         iLvl: 3,
         baseExpRate: 15,
         baseGoldRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeRingofFortune = {
         name: 'Supreme Ring of Fortune',
@@ -3196,7 +3196,7 @@ function MakeItemList() {
         iLvl: 4,
         baseExpRate: 20,
         baseGoldRate: 20,
-        value: 800
+        
     };
     Accessory.AncientRingofFortune = {
         name: 'Ancient Ring of Fortune',
@@ -3208,7 +3208,7 @@ function MakeItemList() {
         iLvl: 5,
         baseExpRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Ring Luck
     Accessory.CrackedRingofProsperity = {
@@ -3221,7 +3221,7 @@ function MakeItemList() {
         iLvl: 1,
         baseExpRate: 5,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedRingofProsperity = {
         name: 'Damaged Ring of Prosperity',
@@ -3233,7 +3233,7 @@ function MakeItemList() {
         iLvl: 2,
         baseExpRate: 10,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.RingofProsperity = {
         name: 'Ring of Prosperity',
@@ -3245,7 +3245,7 @@ function MakeItemList() {
         iLvl: 3,
         baseExpRate: 15,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeRingofProsperity = {
         name: 'Supreme Ring of Prosperity',
@@ -3257,7 +3257,7 @@ function MakeItemList() {
         iLvl: 4,
         baseExpRate: 20,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientRingofProsperity = {
         name: 'Ancient Ring of Prosperity',
@@ -3269,7 +3269,7 @@ function MakeItemList() {
         iLvl: 5,
         baseExpRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Ring Defense
     Accessory.CrackedRingofAbundance = {
@@ -3282,7 +3282,7 @@ function MakeItemList() {
         iLvl: 1,
         baseGoldRate: 5,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedRingofAbundance = {
         name: 'Damaged Ring of Abundance',
@@ -3294,7 +3294,7 @@ function MakeItemList() {
         iLvl: 2,
         baseGoldRate: 10,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.RingofAbundance = {
         name: 'Ring of Abundance',
@@ -3306,7 +3306,7 @@ function MakeItemList() {
         iLvl: 3,
         baseGoldRate: 15,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeRingofAbundance = {
         name: 'Supreme Ring of Abundance',
@@ -3318,7 +3318,7 @@ function MakeItemList() {
         iLvl: 4,
         baseGoldRate: 20,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientRingofAbundance = {
         name: 'Ancient Ring of Abundance',
@@ -3330,7 +3330,7 @@ function MakeItemList() {
         iLvl: 5,
         baseGoldRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Ring all 3
     Accessory.CrackedRingofPlenty = {
@@ -3344,7 +3344,7 @@ function MakeItemList() {
         baseGoldRate: 5,
         baseDropRate: 5,
         baseExpRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedRingofPlenty = {
         name: 'Damaged Ring of Plenty',
@@ -3357,7 +3357,7 @@ function MakeItemList() {
         baseGoldRate: 10,
         baseDropRate: 10,
         baseExpRate: 10,
-        value: 200
+        
     };
     Accessory.RingofPlenty = {
         name: 'Ring of Plenty',
@@ -3370,7 +3370,7 @@ function MakeItemList() {
         baseGoldRate: 15,
         baseDropRate: 15,
         baseExpRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeRingofPlenty = {
         name: 'Supreme Ring of Plenty',
@@ -3383,7 +3383,7 @@ function MakeItemList() {
         baseGoldRate: 20,
         baseDropRate: 20,
         baseExpRate: 20,
-        value: 800
+        
     };
     Accessory.AncientRingofPlenty = {
         name: 'Ancient Ring of Plenty',
@@ -3396,7 +3396,7 @@ function MakeItemList() {
         baseGoldRate: 25,
         baseDropRate: 25,
         baseExpRate: 25,
-        value: 1500
+        
     };
     //Amulet
     Accessory.CrackedAmuletofLearning = {
@@ -3408,7 +3408,7 @@ function MakeItemList() {
         image: 'Amulet001',
         iLvl: 1,
         baseExpRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedAmuletofLearning = {
         name: 'Damaged Amulet of Learning',
@@ -3419,7 +3419,7 @@ function MakeItemList() {
         image: 'Amulet002',
         iLvl: 2,
         baseExpRate: 10,
-        value: 200
+        
     };
     Accessory.AmuletofLearning = {
         name: 'Amulet of Learning',
@@ -3430,7 +3430,7 @@ function MakeItemList() {
         image: 'Amulet003',
         iLvl: 3,
         baseExpRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeAmuletofLearning = {
         name: 'Supreme Amulet of Learning',
@@ -3441,7 +3441,7 @@ function MakeItemList() {
         image: 'Amulet004',
         iLvl: 4,
         baseExpRate: 20,
-        value: 800
+        
     };
     Accessory.AncientAmuletofLearning = {
         name: 'Ancient Amulet of Learning',
@@ -3452,7 +3452,7 @@ function MakeItemList() {
         image: 'Amulet005',
         iLvl: 5,
         baseExpRate: 25,
-        value: 1500
+        
     };
     //Amulet Endurance
     Accessory.CrackedAmuletofWealth = {
@@ -3464,7 +3464,7 @@ function MakeItemList() {
         image: 'Amulet001',
         iLvl: 1,
         baseGoldRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedAmuletofWealth = {
         name: 'Damaged Amulet of Wealth',
@@ -3475,7 +3475,7 @@ function MakeItemList() {
         image: 'Amulet002',
         iLvl: 2,
         baseGoldRate: 10,
-        value: 200
+        
     };
     Accessory.AmuletofWealth = {
         name: 'Amulet of Wealth',
@@ -3486,7 +3486,7 @@ function MakeItemList() {
         image: 'Amulet003',
         iLvl: 3,
         baseGoldRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeAmuletofWealth = {
         name: 'Supreme Amulet of Wealth',
@@ -3497,7 +3497,7 @@ function MakeItemList() {
         image: 'Amulet004',
         iLvl: 4,
         baseGoldRate: 20,
-        value: 800
+        
     };
     Accessory.AncientAmuletofWealth = {
         name: 'Ancient Amulet of Wealth',
@@ -3508,7 +3508,7 @@ function MakeItemList() {
         image: 'Amulet005',
         iLvl: 5,
         baseGoldRate: 25,
-        value: 1500
+        
     };
     //Amulet Agility
     Accessory.CrackedAmuletofOpportunity = {
@@ -3520,7 +3520,7 @@ function MakeItemList() {
         image: 'Amulet001',
         iLvl: 1,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedAmuletofOpportunity = {
         name: 'Damaged Amulet of Opportunity',
@@ -3531,7 +3531,7 @@ function MakeItemList() {
         image: 'Amulet002',
         iLvl: 2,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.AmuletofOpportunity = {
         name: 'Amulet of Opportunity',
@@ -3542,7 +3542,7 @@ function MakeItemList() {
         image: 'Amulet003',
         iLvl: 3,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeAmuletofOpportunity = {
         name: 'Supreme Amulet of Opportunity',
@@ -3553,7 +3553,7 @@ function MakeItemList() {
         image: 'Amulet004',
         iLvl: 4,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientAmuletofOpportunity = {
         name: 'Ancient Amulet of Opportunity',
@@ -3564,7 +3564,7 @@ function MakeItemList() {
         image: 'Amulet005',
         iLvl: 5,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Amulet Dexterity
     Accessory.CrackedAmuletofFortune = {
@@ -3577,7 +3577,7 @@ function MakeItemList() {
         iLvl: 1,
         baseExpRate: 5,
         baseGoldRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedAmuletofFortune = {
         name: 'Damaged Amulet of Fortune',
@@ -3589,7 +3589,7 @@ function MakeItemList() {
         iLvl: 2,
         baseExpRate: 10,
         baseGoldRate: 10,
-        value: 200
+        
     };
     Accessory.AmuletofFortune = {
         name: 'Amulet of Fortune',
@@ -3601,7 +3601,7 @@ function MakeItemList() {
         iLvl: 3,
         baseExpRate: 15,
         baseGoldRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeAmuletofFortune = {
         name: 'Supreme Amulet of Fortune',
@@ -3613,7 +3613,7 @@ function MakeItemList() {
         iLvl: 4,
         baseExpRate: 20,
         baseGoldRate: 20,
-        value: 800
+        
     };
     Accessory.AncientAmuletofFortune = {
         name: 'Ancient Amulet of Fortune',
@@ -3625,7 +3625,7 @@ function MakeItemList() {
         iLvl: 5,
         baseExpRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Amulet Luck
     Accessory.CrackedAmuletofProsperity = {
@@ -3638,7 +3638,7 @@ function MakeItemList() {
         iLvl: 1,
         baseExpRate: 5,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedAmuletofProsperity = {
         name: 'Damaged Amulet of Prosperity',
@@ -3650,7 +3650,7 @@ function MakeItemList() {
         iLvl: 2,
         baseExpRate: 10,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.AmuletofProsperity = {
         name: 'Amulet of Prosperity',
@@ -3662,7 +3662,7 @@ function MakeItemList() {
         iLvl: 3,
         baseExpRate: 15,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeAmuletofProsperity = {
         name: 'Supreme Amulet of Prosperity',
@@ -3674,7 +3674,7 @@ function MakeItemList() {
         iLvl: 4,
         baseExpRate: 20,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientAmuletofProsperity = {
         name: 'Ancient Amulet of Prosperity',
@@ -3686,7 +3686,7 @@ function MakeItemList() {
         iLvl: 5,
         baseExpRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Amulet Defense
     Accessory.CrackedAmuletofAbundance = {
@@ -3699,7 +3699,7 @@ function MakeItemList() {
         iLvl: 1,
         baseGoldRate: 5,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedAmuletofAbundance = {
         name: 'Damaged Amulet of Abundance',
@@ -3711,7 +3711,7 @@ function MakeItemList() {
         iLvl: 2,
         baseGoldRate: 10,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.AmuletofAbundance = {
         name: 'Amulet of Abundance',
@@ -3723,7 +3723,7 @@ function MakeItemList() {
         iLvl: 3,
         baseGoldRate: 15,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeAmuletofAbundance = {
         name: 'Supreme Amulet of Abundance',
@@ -3735,7 +3735,7 @@ function MakeItemList() {
         iLvl: 4,
         baseGoldRate: 20,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientAmuletofAbundance = {
         name: 'Ancient Amulet of Abundance',
@@ -3747,7 +3747,7 @@ function MakeItemList() {
         iLvl: 5,
         baseGoldRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Amulet all 3
     Accessory.CrackedAmuletofPlenty = {
@@ -3761,7 +3761,7 @@ function MakeItemList() {
         baseGoldRate: 5,
         baseDropRate: 5,
         baseExpRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedAmuletofPlenty = {
         name: 'Damaged Amulet of Plenty',
@@ -3774,7 +3774,7 @@ function MakeItemList() {
         baseGoldRate: 10,
         baseDropRate: 10,
         baseExpRate: 10,
-        value: 200
+        
     };
     Accessory.AmuletofPlenty = {
         name: 'Amulet of Plenty',
@@ -3787,7 +3787,7 @@ function MakeItemList() {
         baseGoldRate: 15,
         baseDropRate: 15,
         baseExpRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeAmuletofPlenty = {
         name: 'Supreme Amulet of Plenty',
@@ -3800,7 +3800,7 @@ function MakeItemList() {
         baseGoldRate: 20,
         baseDropRate: 20,
         baseExpRate: 20,
-        value: 800
+        
     };
     Accessory.AncientAmuletofPlenty = {
         name: 'Ancient Amulet of Plenty',
@@ -3813,7 +3813,7 @@ function MakeItemList() {
         baseGoldRate: 25,
         baseDropRate: 25,
         baseExpRate: 25,
-        value: 1500
+        
     };
     //Talismans
 
@@ -3827,7 +3827,7 @@ function MakeItemList() {
         image: 'Talisman001',
         iLvl: 1,
         baseExpRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedTalismanofLearning = {
         name: 'Damaged Talisman of Learning',
@@ -3838,7 +3838,7 @@ function MakeItemList() {
         image: 'Talisman002',
         iLvl: 2,
         baseExpRate: 10,
-        value: 200
+        
     };
     Accessory.TalismanofLearning = {
         name: 'Talisman of Learning',
@@ -3849,7 +3849,7 @@ function MakeItemList() {
         image: 'Talisman003',
         iLvl: 3,
         baseExpRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeTalismanofLearning = {
         name: 'Supreme Talisman of Learning',
@@ -3860,7 +3860,7 @@ function MakeItemList() {
         image: 'Talisman004',
         iLvl: 4,
         baseExpRate: 20,
-        value: 800
+        
     };
     Accessory.AncientTalismanofLearning = {
         name: 'Ancient Talisman of Learning',
@@ -3871,7 +3871,7 @@ function MakeItemList() {
         image: 'Talisman005',
         iLvl: 5,
         baseExpRate: 25,
-        value: 1500
+        
     };
     //Talisman Endurance
     Accessory.CrackedTalismanofWealth = {
@@ -3883,7 +3883,7 @@ function MakeItemList() {
         image: 'Talisman001',
         iLvl: 1,
         baseGoldRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedTalismanofWealth = {
         name: 'Damaged Talisman of Wealth',
@@ -3894,7 +3894,7 @@ function MakeItemList() {
         image: 'Talisman002',
         iLvl: 2,
         baseGoldRate: 10,
-        value: 200
+        
     };
     Accessory.TalismanofWealth = {
         name: 'Talisman of Wealth',
@@ -3905,7 +3905,7 @@ function MakeItemList() {
         image: 'Talisman003',
         iLvl: 3,
         baseGoldRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeTalismanofWealth = {
         name: 'Supreme Talisman of Wealth',
@@ -3916,7 +3916,7 @@ function MakeItemList() {
         image: 'Talisman004',
         iLvl: 4,
         baseGoldRate: 20,
-        value: 800
+        
     };
     Accessory.AncientTalismanofWealth = {
         name: 'Ancient Talisman of Wealth',
@@ -3927,7 +3927,7 @@ function MakeItemList() {
         image: 'Talisman005',
         iLvl: 5,
         baseGoldRate: 25,
-        value: 1500
+        
     };
     //Talisman Agility
     Accessory.CrackedTalismanofOpportunity = {
@@ -3939,7 +3939,7 @@ function MakeItemList() {
         image: 'Talisman001',
         iLvl: 1,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedTalismanofOpportunity = {
         name: 'Damaged Talisman of Opportunity',
@@ -3950,7 +3950,7 @@ function MakeItemList() {
         image: 'Talisman002',
         iLvl: 2,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.TalismanofOpportunity = {
         name: 'Talisman of Opportunity',
@@ -3961,7 +3961,7 @@ function MakeItemList() {
         image: 'Talisman003',
         iLvl: 3,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeTalismanofOpportunity = {
         name: 'Supreme Talisman of Opportunity',
@@ -3972,7 +3972,7 @@ function MakeItemList() {
         image: 'Talisman004',
         iLvl: 4,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientTalismanofOpportunity = {
         name: 'Ancient Talisman of Opportunity',
@@ -3983,7 +3983,7 @@ function MakeItemList() {
         image: 'Talisman005',
         iLvl: 5,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Talisman Dexterity
     Accessory.CrackedTalismanofFortune = {
@@ -3996,7 +3996,7 @@ function MakeItemList() {
         iLvl: 1,
         baseExpRate: 5,
         baseGoldRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedTalismanofFortune = {
         name: 'Damaged Talisman of Fortune',
@@ -4008,7 +4008,7 @@ function MakeItemList() {
         iLvl: 2,
         baseExpRate: 10,
         baseGoldRate: 10,
-        value: 200
+        
     };
     Accessory.TalismanofFortune = {
         name: 'Talisman of Fortune',
@@ -4020,7 +4020,7 @@ function MakeItemList() {
         iLvl: 3,
         baseExpRate: 15,
         baseGoldRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeTalismanofFortune = {
         name: 'Supreme Talisman of Fortune',
@@ -4032,7 +4032,7 @@ function MakeItemList() {
         iLvl: 4,
         baseExpRate: 20,
         baseGoldRate: 20,
-        value: 800
+        
     };
     Accessory.AncientTalismanofFortune = {
         name: 'Ancient Talisman of Fortune',
@@ -4044,7 +4044,7 @@ function MakeItemList() {
         iLvl: 5,
         baseExpRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Talisman Luck
     Accessory.CrackedTalismanofProsperity = {
@@ -4057,7 +4057,7 @@ function MakeItemList() {
         iLvl: 1,
         baseExpRate: 5,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedTalismanofProsperity = {
         name: 'Damaged Talisman of Prosperity',
@@ -4069,7 +4069,7 @@ function MakeItemList() {
         iLvl: 2,
         baseExpRate: 10,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.TalismanofProsperity = {
         name: 'Talisman of Prosperity',
@@ -4081,7 +4081,7 @@ function MakeItemList() {
         iLvl: 3,
         baseExpRate: 15,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeTalismanofProsperity = {
         name: 'Supreme Talisman of Prosperity',
@@ -4093,7 +4093,7 @@ function MakeItemList() {
         iLvl: 4,
         baseExpRate: 20,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientTalismanofProsperity = {
         name: 'Ancient Talisman of Prosperity',
@@ -4105,7 +4105,7 @@ function MakeItemList() {
         iLvl: 5,
         baseExpRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Talisman Defense
     Accessory.CrackedTalismanofAbundance = {
@@ -4118,7 +4118,7 @@ function MakeItemList() {
         iLvl: 1,
         baseGoldRate: 5,
         baseDropRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedTalismanofAbundance = {
         name: 'Damaged Talisman of Abundance',
@@ -4130,7 +4130,7 @@ function MakeItemList() {
         iLvl: 2,
         baseGoldRate: 10,
         baseDropRate: 10,
-        value: 200
+        
     };
     Accessory.TalismanofAbundance = {
         name: 'Talisman of Abundance',
@@ -4142,7 +4142,7 @@ function MakeItemList() {
         iLvl: 3,
         baseGoldRate: 15,
         baseDropRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeTalismanofAbundance = {
         name: 'Supreme Talisman of Abundance',
@@ -4154,7 +4154,7 @@ function MakeItemList() {
         iLvl: 4,
         baseGoldRate: 20,
         baseDropRate: 20,
-        value: 800
+        
     };
     Accessory.AncientTalismanofAbundance = {
         name: 'Ancient Talisman of Abundance',
@@ -4166,7 +4166,7 @@ function MakeItemList() {
         iLvl: 5,
         baseGoldRate: 25,
         baseDropRate: 25,
-        value: 1500
+        
     };
     //Talisman all 3
     Accessory.CrackedTalismanofPlenty = {
@@ -4180,7 +4180,7 @@ function MakeItemList() {
         baseGoldRate: 5,
         baseDropRate: 5,
         baseExpRate: 5,
-        value: 50
+        
     };
     Accessory.DamagedTalismanofPlenty = {
         name: 'Damaged Talisman of Plenty',
@@ -4193,7 +4193,7 @@ function MakeItemList() {
         baseGoldRate: 10,
         baseDropRate: 10,
         baseExpRate: 10,
-        value: 200
+        
     };
     Accessory.TalismanofPlenty = {
         name: 'Talisman of Plenty',
@@ -4206,7 +4206,7 @@ function MakeItemList() {
         baseGoldRate: 15,
         baseDropRate: 15,
         baseExpRate: 15,
-        value: 500
+        
     };
     Accessory.SupremeTalismanofPlenty = {
         name: 'Supreme Talisman of Plenty',
@@ -4219,7 +4219,7 @@ function MakeItemList() {
         baseGoldRate: 20,
         baseDropRate: 20,
         baseExpRate: 20,
-        value: 800
+        
     };
     Accessory.AncientTalismanofPlenty = {
         name: 'Ancient Talisman of Plenty',
@@ -4232,7 +4232,7 @@ function MakeItemList() {
         baseGoldRate: 25,
         baseDropRate: 25,
         baseExpRate: 25,
-        value: 1500
+        
     };
     ItemList.Accessory = Accessory;
 };

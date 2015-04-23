@@ -27,6 +27,7 @@ var player = {
     isAuto: false,
     itemIdNumber: 1,
     stats: 0,
+    skillPoints: 0,
     gold: 0,
     autoBattle: false, // testing
     level: 1,
@@ -34,7 +35,7 @@ var player = {
     maxExperience: 100,
     backpackUpgrade: 0,
     dropRate: function () {
-        return (1 + (player.totalLuck() + equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 500);
+        return (1 + (player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100);
     },
     expRate: function () {
         return (1 + (equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100);
@@ -289,145 +290,6 @@ var player = {
     rangedDexterity: function () {
         return player.isRanged ? player.rangedDex() : 0;
     },
-
-    //Skills
-    activeSkills: {
-        fireBall: {
-            isActive: true,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "Fireball",
-            image: "Fireball",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-        iceShard: {
-            isActive: true,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "Ice Shard",
-            image: "IceShard",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-        callLightning: {
-            isActive: false,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "Call Lightning",
-            image: "CallLightning",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-        ballOfLightning: {
-            isActive: false,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "Ball of Lightning",
-            image: "BallOfLightning",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-        rainOfFire: {
-            isActive: false,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "rain of Fire",
-            image: "RainOfFire",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-        Blizzard: {
-            isActive: false,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "Blizzard",
-            image: "Blizzard",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-        Frost: {
-            isActive: false,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "Frost",
-            image: "Frost",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-        InfernalFlames: {
-            isActive: false,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "Infernal Flames",
-            image: "InfernalFlames",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-        LightningStorm: {
-            isActive: false,
-            level: 1,
-            maxLevel: 5,
-            levelReq: 1,
-            name: "Lightning Storm",
-            image: "LightningStorm",
-            damage: function () {
-                return ((10 * player.level) + (player.totalIntelligence() * 2));
-            },
-            charge: 1,
-            maxCharge: function () {
-                return Math.floor(1 + (player.totalIntelligence() / 100 + player.totalWisdom() / 50));
-            }
-        },
-    }
 };
 //Equipped items object, storing 0 values, so all player stats will work at the beginning of the game
 var equippedItems = {
@@ -545,7 +407,6 @@ function attack(monster) {
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
 function DrawBattle() {
     if (battleTurn === 21) {
-        var skill = player.activeSkills.fireBall;
         Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
         Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
         Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
@@ -566,9 +427,9 @@ function DrawBattle() {
 function playerAttack(monster, monsterStats) {
     document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
     if (player.autoBattle == true && player.isAuto == false) {
-            player.isAuto = true;
-            autoAttack(monster, monsterStats);
-        }
+        player.isAuto = true;
+        autoAttack(monster, monsterStats);
+    };
     var playerHitChance = (player.accuracy() - monsterStats.eva) / 100;
     var randomHitChance = Math.random();
     if (playerHitChance > randomHitChance) {
@@ -612,12 +473,11 @@ function playerDamage(monster, monsterStats) {
 
 //player damage deal (base or critical)
 function playerDamageDeal(damage, monster, monsterStats) {
-    var skill = player.activeSkills;
-    for (spell in skill) {
-        var selectedStat = skill[spell];
-        if (skill[spell].isActive == true && skill[spell].charge > 0) {
-            magicDamage += skill[spell].damage();
-            skill[spell].charge -= 1;
+    for (spell in activeSkills) {
+        var selectedSpell = activeSkills[spell];
+        if (selectedSpell.isActive == true && selectedSpell.charge > 0) {
+            magicDamage += selectedSpell.damage();
+            selectedSpell.charge -= 1;
         };
     };
     monsterStats.hp -= damage + magicDamage;
@@ -661,7 +521,6 @@ function monsterDamageDeal(dmg, monster, monsterStats) {
 
 //player dead function
 function playerDead(monster, monsterStats) {
-    var skill = player.activeSkills.fireBall;
     var goldLost = 0;
     var expLost = 0;
     player.isDead = true;
@@ -696,7 +555,6 @@ function playerDead(monster, monsterStats) {
 
 //monster kill function
 function monsterKilled(monster, monsterStats) {
-    var skill = player.activeSkills.fireBall;
     monsterStats.hp = monsterStats.maxHp;
     itemExperienceGain(monster, monsterStats);
     monsterExperience(monster, monsterStats);
@@ -766,10 +624,11 @@ function monsterExperience(monster, monsterStats) {
 
 //Player skill recharge
 function skillReCharge() {
-    var skill = player.activeSkills;
-    for (spell in skill) {
-        var rechargedSkill = skill[spell];
-        skill[spell].charge = skill[spell].maxCharge();
+    for (spell in activeSkills) {
+        if (activeSkills.hasOwnProperty(spell)) {
+            var rechargedSkill = activeSkills[spell];
+            activeSkills[spell].charge = activeSkills[spell].maxCharge();
+        };
     };
 };
 //Experience gain for equipped items
@@ -995,6 +854,7 @@ function equipItem(id) {
     CreateWeaponSkillHtml();
     CreateEquipHtml();
     updateHtml();
+    skillChargeFill();
 };
 
 //Unequip item function
@@ -1136,6 +996,7 @@ function unequipItem(id, oldId) {
     CreateEquipHtml();
     CreateWeaponSkillHtml();
     updateHtml();
+    skillChargeFill();
 };
 
 

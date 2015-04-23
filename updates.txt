@@ -1,6 +1,12 @@
 _________________________
 v1.4.5 - 19 april 2015   |
 -------------------------|
+- Fixed accessories not giving right amount of Drop Rate(They were giving 5 times less).
+- Item values changes depending on item stats (currently only when you drop it, in future upgrading items and chaning stats on it will also increase in value).
+- 
+_________________________
+v1.4.5 - 19 april 2015   |
+-------------------------|
 - Added responsive tables, and scrollbars, most of the stuff should now fit, in your screen no matter of the size.
 - All weapons have a max level of 5, no matter what quality. Exp needed also lowered, and stat bonus are much weaker.
 - Working on spells, there are 2 spells, Fire Ball and Frost shot. Fire Ball is currently active, more intelligence = more damage, Charges = how many times can be used in battle.

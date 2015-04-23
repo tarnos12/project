@@ -51,13 +51,7 @@
     }
 
 }, 1);
-//Auto Battle
-/*window.setInterval(function () {
-    if (player.autoBattle === 1) {
-        document.getElementsByClassName("monsterButton")[0].click();
-        console.log("XD")
-    }
-}, 1000); */
+
 //Using potions
 function usepot() {
     if (player.health == player.maxhealth()) {
