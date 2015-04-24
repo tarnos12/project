@@ -378,7 +378,6 @@ function upgradeSpell(spellName) {
 
     if (activeSkills.hasOwnProperty(spellName)) {
         var selectedSpell = activeSkills[spellName];
-        var upgrade = selectedSpell.level;
-        upgrade += 1;
+        selectedSpell.level++;
     };
 };

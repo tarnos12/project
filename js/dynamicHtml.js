@@ -352,6 +352,8 @@ function CreatePlayerSkillsHtml() {
                 activeSpell = '<font color="red">' + '<b>' + "Not Active" + '</b>' + '</font>';
             };
 
+            var onclickevent = "upgradeSpell('" + spell + "');";
+
             html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
             html += '<a href="#" class="tooltipA">';
             html += '<img src="' + image + '"/>';
@@ -363,7 +365,7 @@ function CreatePlayerSkillsHtml() {
             html += "<br />Damage: " + selectedSpell.damage();
             html += '</span></a>';
             html += "<br />" + selectedSpell.name;
-            html += '<input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeSpell(' + spell + ');">';
+            html += '<input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="'+onclickevent+'">';
             html += '</div>';
         }
     };
