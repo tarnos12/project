@@ -159,6 +159,8 @@ function levelUp() {
     quest();
     CreateMonsterHtml();
     updateHtml();
+    CreatePlayerSkillsHtml();
+    CreatePlayerHotBar();
 }
 
 function loadIsEquipped() {
@@ -378,6 +380,45 @@ function upgradeSpell(spellName) {
 
     if (activeSkills.hasOwnProperty(spellName)) {
         var selectedSpell = activeSkills[spellName];
-        selectedSpell.level++;
+        if (selectedSpell.levelReq <= player.level) {
+            if (selectedSpell.level < 5) {
+                if (player.skillPoints > 0) {
+                    player.skillPoints--;
+                    selectedSpell.level++;
+                    selectedSpell.levelReq++;
+                    Log(selectedSpell.name + " level is now " + selectedSpell.level)
+                }
+                else {
+                    Log("You do not have enough skill points.")
+                }
+            }
+            else {
+                Log(selectedSpell.name + " is already max level.")
+            };
+        }
+        else {
+            Log("Your level is not high enough to upgrade this skill.");
+        };
     };
+    CreatePlayerSkillsHtml();
+    CreatePlayerHotBar();
+};
+var spellTotalManaCost = 0;
+function spellActivation(spellName) {
+    if (activeSkills.hasOwnProperty(spellName)) {
+        var selectedSpell = activeSkills[spellName];
+        if (selectedSpell.isActive == true) {
+            selectedSpell.isActive = false;
+            spellTotalManaCost -= selectedSpell.manaReq;
+        }
+        else if (selectedSpell.levelReq > player.level) {
+            Log("Your level is not high enough to activate it")
+        }
+        else if (spellTotalManaCost + selectedSpell.manaReq <= player.maxMana()){
+            selectedSpell.isActive = true;
+            spellTotalManaCost += selectedSpell.manaReq;
+        };
+    };
+    CreatePlayerSkillsHtml();
+    CreatePlayerHotBar();
 };

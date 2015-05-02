@@ -25,21 +25,21 @@
         playerTalisman: equippedItems.talisman,
         inventory: playerInventory,
         //Weapon mastery levels and experience
-        SwordExp: player.swordExp,
-        SwordMaxExp: player.swordMaxExp,
-        SwordLevel: player.swordLevel,
-        AxeExp: player.axeExp,
-        AxeMaxExp: player.axeMaxExp,
-        AxeLevel: player.axeLevel,
-        MaceExp: player.maceExp,
-        MaceMaxExp: player.maceMaxExp,
-        MaceLevel: player.maceLevel,
-        StaffExp: player.staffExp,
-        StaffMaxExp: player.staffMaxExp,
-        StaffLevel: player.staffLevel,
-        RangedExp: player.rangedExp,
-        RangedMaxExp: player.rangedMaxExp,
-        RangedLevel: player.rangedLevel,
+        SwordExp: weaponMastery.sword.exp,
+        SwordMaxExp: weaponMastery.sword.maxExp,
+        SwordLevel: weaponMastery.sword.level,
+        AxeExp: weaponMastery.axe.exp,
+        AxeMaxExp: weaponMastery.axe.maxExp,
+        AxeLevel: weaponMastery.axe.level,
+        MaceExp: weaponMastery.mace.exp,
+        MaceMaxExp: weaponMastery.mace.maxExp,
+        MaceLevel: weaponMastery.mace.level,
+        StaffExp: weaponMastery.staff.exp,
+        StaffMaxExp: weaponMastery.staff.maxExp,
+        StaffLevel: weaponMastery.staff.level,
+        RangedExp: weaponMastery.ranged.exp,
+        RangedMaxExp: weaponMastery.ranged.maxExp,
+        RangedLevel: weaponMastery.ranged.level,
         //Other
         itemId: player.itemIdNumber,
         backpackUpgrade: player.backpackUpgrade,
@@ -60,21 +60,21 @@ function load() {
     if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
     if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
     if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
-    if (typeof savegame.SwordExp !== "undefined") player.swordExp = savegame.SwordExp;
-    if (typeof savegame.SwordMaxExp !== "undefined") player.swordMaxExp = savegame.SwordMaxExp;
-    if (typeof savegame.SwordLevel !== "undefined") player.swordLevel = savegame.SwordLevel;
-    if (typeof savegame.AxeExp !== "undefined") player.axeExp = savegame.AxeExp;
-    if (typeof savegame.AxeMaxExp !== "undefined") player.axeMaxExp = savegame.AxeMaxExp;
-    if (typeof savegame.AxeLevel !== "undefined") player.axeLevel = savegame.AxeLevel;
-    if (typeof savegame.MaceExp !== "undefined") player.maceExp = savegame.MaceExp;
-    if (typeof savegame.MaceMaxExp !== "undefined") player.maceMaxExp = savegame.MaceMaxExp;
-    if (typeof savegame.MaceLevel !== "undefined") player.maceLevel = savegame.MaceLevel;
-    if (typeof savegame.StaffExp !== "undefined") player.staffExp = savegame.StaffExp;
-    if (typeof savegame.StaffMaxExp !== "undefined") player.staffMaxExp = savegame.StaffMaxExp;
-    if (typeof savegame.StaffLevel !== "undefined") player.staffLevel = savegame.StaffLevel;
-    if (typeof savegame.RangedExp !== "undefined") player.rangedExp = savegame.RangedExp;
-    if (typeof savegame.RangedMaxExp !== "undefined") player.rangedMaxExp = savegame.RangedMaxExp;
-    if (typeof savegame.RangedLevel !== "undefined") player.rangedLevel = savegame.RangedLevel;
+    if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.exp = savegame.SwordExp;
+    if (typeof savegame.SwordMaxExp !== "undefined") weaponMastery.sword.maxExp = savegame.SwordMaxExp;
+    if (typeof savegame.SwordLevel !== "undefined") weaponMastery.sword.level = savegame.SwordLevel;
+    if (typeof savegame.AxeExp !== "undefined") weaponMastery.axe.exp = savegame.AxeExp;
+    if (typeof savegame.AxeMaxExp !== "undefined") weaponMastery.axe.maxExp = savegame.AxeMaxExp;
+    if (typeof savegame.AxeLevel !== "undefined") weaponMastery.axe.level = savegame.AxeLevel;
+    if (typeof savegame.MaceExp !== "undefined") weaponMastery.mace.exp = savegame.MaceExp;
+    if (typeof savegame.MaceMaxExp !== "undefined") weaponMastery.mace.maxExp = savegame.MaceMaxExp;
+    if (typeof savegame.MaceLevel !== "undefined") weaponMastery.mace.level = savegame.MaceLevel;
+    if (typeof savegame.StaffExp !== "undefined") weaponMastery.staff.exp = savegame.StaffExp;
+    if (typeof savegame.StaffMaxExp !== "undefined") weaponMastery.staff.maxExp = savegame.StaffMaxExp;
+    if (typeof savegame.StaffLevel !== "undefined") weaponMastery.staff.level = savegame.StaffLevel;
+    if (typeof savegame.RangedExp !== "undefined") weaponMastery.ranged.exp = savegame.RangedExp;
+    if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.staff.maxExp = savegame.RangedMaxExp;
+    if (typeof savegame.RangedLevel !== "undefined") weaponMastery.staff.level = savegame.RangedLevel;
     //Other
     if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
@@ -123,115 +123,115 @@ function resetCheck() {
 };
 function reset() {
     localStorage.removeItem("save");
-   /*player.gold = 0;
-    player.health = 50;
-    player.stats = 0;
-    player.level = 1;
-    player.baseStrength = 5;
-    player.baseEndurance  = 5;
-    player.baseAgility = 5;
-    player.baseDexterity = 5;
-    player.baseIntelligence = 5;
-    player.baseWisdom = 5;
-    player.baseLuck = 5;
-    player.experience = 0;
-    player.maxExperience = 100;
-    pot = 0;
-    spot = 0;
-    mpot = 0;
-    //Equipped Items
-    equippedItems.weapon = {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        minDamage: 0,
-        maxDamage: 0
-    },
-    equippedItems.offHand = {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0
-    },
-    equippedItems.armor = {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0
-    },
-    equippedItems.ring = {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0
-    },
-    equippedItems.amulet = {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0
-    },
-    equippedItems.talisman = {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0
-    },
-    playerInventory = [];
-    //Weapon mastery levels and experience
-    player.SwordMaxExp = 10;
-    player.SwordExp = 0;
-    player.SwordLevel = 1;
-    player.AxeMaxExp = 10;
-    player.AxeExp = 0;
-    player.AxeLevel = 1;
-    player.MaceMaxExp = 10;
-    player.MaceExp = 0;
-    player.MaceLevel = 1;
-    player.StaffMaxExp = 10;
-    player.StaffExp = 0;
-    player.StaffLevel = 1;
-    player.RangedMaxExp = 10;
-    player.RangedExp = 0;
-    player.RangedLevel = 1;
-    //Other
-    player.itemIdNumber = 1;
-    player.backpackUpgrade = 0,
-    backpackStatus.price = 100,
-    statStatus.price = 500,
-    MakeItemList();
-    MakeMonsterList();
-    CreateInventoryWeaponHtml();
-    CreateEquipHtml();
-    resetIsEquipped();
-    CreateWeaponSkillHtml();
-    quest();
-    CreateMonsterHtml();
-    player.gameVersion = currentGameVersion;*/
+    /*player.gold = 0;
+     player.health = 50;
+     player.stats = 0;
+     player.level = 1;
+     player.baseStrength = 5;
+     player.baseEndurance  = 5;
+     player.baseAgility = 5;
+     player.baseDexterity = 5;
+     player.baseIntelligence = 5;
+     player.baseWisdom = 5;
+     player.baseLuck = 5;
+     player.experience = 0;
+     player.maxExperience = 100;
+     pot = 0;
+     spot = 0;
+     mpot = 0;
+     //Equipped Items
+     equippedItems.weapon = {
+         strength: 0,
+         endurance: 0,
+         agility: 0,
+         dexterity: 0,
+         intelligence: 0,
+         wisdom: 0,
+         luck: 0,
+         minDamage: 0,
+         maxDamage: 0
+     },
+     equippedItems.offHand = {
+         strength: 0,
+         endurance: 0,
+         agility: 0,
+         dexterity: 0,
+         intelligence: 0,
+         wisdom: 0,
+         luck: 0,
+         defense: 0
+     },
+     equippedItems.armor = {
+         strength: 0,
+         endurance: 0,
+         agility: 0,
+         dexterity: 0,
+         intelligence: 0,
+         wisdom: 0,
+         luck: 0,
+         defense: 0
+     },
+     equippedItems.ring = {
+         strength: 0,
+         endurance: 0,
+         agility: 0,
+         dexterity: 0,
+         intelligence: 0,
+         wisdom: 0,
+         luck: 0,
+         defense: 0
+     },
+     equippedItems.amulet = {
+         strength: 0,
+         endurance: 0,
+         agility: 0,
+         dexterity: 0,
+         intelligence: 0,
+         wisdom: 0,
+         luck: 0,
+         defense: 0
+     },
+     equippedItems.talisman = {
+         strength: 0,
+         endurance: 0,
+         agility: 0,
+         dexterity: 0,
+         intelligence: 0,
+         wisdom: 0,
+         luck: 0,
+         defense: 0
+     },
+     playerInventory = [];
+     //Weapon mastery levels and experience
+     player.SwordMaxExp = 10;
+     player.SwordExp = 0;
+     player.SwordLevel = 1;
+     player.AxeMaxExp = 10;
+     player.AxeExp = 0;
+     player.AxeLevel = 1;
+     player.MaceMaxExp = 10;
+     player.MaceExp = 0;
+     player.MaceLevel = 1;
+     player.StaffMaxExp = 10;
+     player.StaffExp = 0;
+     player.StaffLevel = 1;
+     player.RangedMaxExp = 10;
+     player.RangedExp = 0;
+     player.RangedLevel = 1;
+     //Other
+     player.itemIdNumber = 1;
+     player.backpackUpgrade = 0,
+     backpackStatus.price = 100,
+     statStatus.price = 500,
+     MakeItemList();
+     MakeMonsterList();
+     CreateInventoryWeaponHtml();
+     CreateEquipHtml();
+     resetIsEquipped();
+     CreateWeaponSkillHtml();
+     quest();
+     CreateMonsterHtml();
+     player.gameVersion = currentGameVersion;*/
     pageReload();
 };//test
 

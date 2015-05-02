@@ -1,8 +1,13 @@
 _________________________
-v1.4.5 - 19 april 2015   |
+v1.4.5 - 20 april 2015   |
 -------------------------|
 - Fixed accessories not giving right amount of Drop Rate(They were giving 5 times less).
 - Item values changes depending on item stats (currently only when you drop it, in future upgrading items and chaning stats on it will also increase in value).
+- Tooltip info on few pages to help new players understand the game.
+- Spells are working, each require certain amount of max mana to "activate" and has level requirement to upgrade it.
+- You can active as many spells as you can, if you have enough max Mana.
+- All in game tabs has been changed into icons.
+- Weapon Skills, offensive, defensive, counter attack, passive
 - 
 _________________________
 v1.4.5 - 19 april 2015   |

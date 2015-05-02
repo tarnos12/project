@@ -6,6 +6,7 @@
     <link href="css/footer.css" rel="stylesheet" type="text/css">
     <link href="css/text.css" rel="stylesheet" type="text/css">
     <link href="css/tooltip.css" rel="stylesheet" type="text/css">
+    <link href="css/icons.css" rel="stylesheet" type="text/css">
     <link rel="Shortcut icon" href="images/icon.png">
     <title>Legend of the Fallen Warrior</title>
     <style type="text/css">
@@ -17,7 +18,7 @@
     </style>
     <style type="text/css">
         li.bold {
-            font-weight: bold
+            font-weight: bold;
         }
     </style>
     <style type="text/css">
@@ -26,21 +27,45 @@
         }
     </style>
     <style type="text/css">
+        img.Common {
+            outline: 2px solid gray;
+        }
+
+        img.Uncommon {
+            outline: 2px solid green;
+        }
+
+        img.Rare {
+            outline: 2px solid blue;
+        }
+
+        img.Epic {
+            outline: 2px solid orange;
+        }
+
+        img.Legendary {
+            outline: 2px solid red;
+        }
+
         div.c8 {
-            margin-top:5px;
+            margin-top: 5px;
         }
+
         div.c7 {
-            margin-left:60px;
+            margin-left: 60px;
         }
+
         div.c6 {
             margin-top: 10px;
             margin-left: 10px;
             margin-bottom: 5px;
             padding-left: 15px;
         }
+
         div.c5 {
             width: 100%;
         }
+
         div.c4 {
             background-color: #EEDFA6;
         }
@@ -87,10 +112,10 @@
             </div>
             <div class="col-sm-5 col-md-4 .col-lg-2">
                 <div class="container-fluid c4">
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="#tab_a" data-toggle="tab">Player Stats</a></li>
-                        <li><a href="#tab_b" data-toggle="tab">Game Info</a></li>
-                        <li><a href="#tab_c" data-toggle="tab">Story</a></li>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_a" data-toggle="tab"><span class="icons playerStats"></span></a></li>
+                        <li><a href="#tab_b" data-toggle="tab"><span class="icons help"></span></a></li>
+                        <li><a href="#tab_c" data-toggle="tab"><span class="icons gameStory"></span></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_a">
@@ -254,9 +279,22 @@
                                     <td>
                                         <span id="gold">0</span>
                                     </td>
-                                    <td colspan="4">
+                                    <td>
 
                                         <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
+
+                                    </td>
+                                    <td colspan="3">
+                                        <a href="#" class="tooltipA">
+                                            <img src="images/questionMark.png" alt="questionMark">
+                                            <span>
+                                                <ul>
+                                                    <li>Check auto battle box, and attack a monster once, after that you will attack it automatically as long as you have enough mana, displayed next to this box.</li>
+                                                    <br />
+                                                    <li>If you want to change monster, then uncheck auto battle box, check it again and attack different monster.</li>
+                                                </ul>
+                                            </span>
+                                        </a>
                                     </td>
                                 </tr>
                             </table>
@@ -313,11 +351,11 @@
                             <div class="c3">
                                 <h4>Game Tutorial</h4><br />
                             </div>
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#tab_za" data-toggle="tab">Fighting</a></li>
-                                <li><a href="#tab_zb" data-toggle="tab">Items</a></li>
-                                <li><a href="#tab_zc" data-toggle="tab">Potions</a></li>
-                                <li><a href="#tab_zd" data-toggle="tab">Stats</a></li>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_za" data-toggle="tab"><span class="icons fighting"></span></a></li>
+                                <li><a href="#tab_zb" data-toggle="tab"><span class="icons items"></span></a></li>
+                                <li><a href="#tab_zc" data-toggle="tab"><span class="icons potions"></span></a></li>
+                                <li><a href="#tab_zd" data-toggle="tab"><span class="icons stats"></span></a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_za">
@@ -484,26 +522,26 @@
                     <!-- tab content -->
                 </div>
                 <div id="hotBar" class="c6 c4"></div>
-                    <table class="table table-condensed table-striped table-responsive">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span id="logConsole"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <table class="table table-condensed table-striped table-responsive">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span id="logConsole"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <!-- end of container -->
             </div>
 
             <div class=".col-sm-4 col-md-4 .col-lg-5">
                 <div class="container-fluid c4">
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="#tab_a2" data-toggle="tab">Player Inventory</a></li>
-                        <li><a href="#tab_b2" data-toggle="tab">Weapon Skills</a></li>
-                        <li><a href="#tab_c2" data-toggle="tab">Shop</a></li>
-                        <li><a href="#tab_d2" data-toggle="tab">Save &amp; Options</a></li>
-                        <li><a href="#tab_e2" data-toggle="tab">Credits</a></li>
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_a2" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
+                        <li><a href="#tab_b2" data-toggle="tab"><span class="icons weaponSkills"></span></a></li>
+                        <li><a href="#tab_c2" data-toggle="tab"><span class="icons shop"></span></a></li>
+                        <li><a href="#tab_d2" data-toggle="tab"><span class="icons options"></span></a></li>
+                        <li><a href="#tab_e2" data-toggle="tab"><span class="icons credits"></span></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_a2">
@@ -511,11 +549,11 @@
                                 <h4>Player Inventory</h4>
                             </div>
 
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#tab_f1" data-toggle="tab">Potions</a></li>
-                                <li><a href="#tab_f2" data-toggle="tab">Equipment</a></li>
-                                <li><a href="#tab_f3" data-toggle="tab">Inventory</a></li>
-                                <li><a href="#tab_f4" data-toggle="tab">Player Skills</a></li>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_f1" data-toggle="tab"><span class="icons potions"></span></a></li>
+                                <li><a href="#tab_f2" data-toggle="tab"><span class="icons equipment"></span></a></li>
+                                <li><a href="#tab_f3" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
+                                <li><a href="#tab_f4" data-toggle="tab"><span class="icons spells"></span></a></li>
                             </ul>
 
 
@@ -552,6 +590,9 @@
 
                                 <div class="tab-pane" id="tab_f2">
 
+                                    <div class="c3">
+                                        <h4>Equipment</h4>
+                                    </div>
                                     <div id="equipHtml"> </div>
 
                                 </div>
@@ -567,18 +608,25 @@
 
                                 </div>
                                 <div class="tab-pane" id="tab_f4">
+                                    <div class="c3">
+                                        <h4>Spells</h4>
+                                    </div>
+                                    <div id="equipHtml"> </div>
                                     <div id="playerSkills"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_b2">
-
-
+                            <div class="c3">
+                                <h4>Weapon Skills</h4>
+                            </div>
                             <div id="weaponSkill"></div>
 
                         </div>
                         <div class="tab-pane" id="tab_c2">
-                            <h4>Shop</h4>
+                            <div class="c3">
+                                <h4>Shop</h4>
+                            </div>
                             <p>
                                 <img src="images/stat.png" alt="Buy Stat">Stat Points(<span id="buyStat">500</span> gold)
                                 <button type="button" class="btn btn-sm btn-default" onclick="buyStat(1)">Buy</button>
@@ -604,7 +652,9 @@
                         </div>
 
                         <div class="tab-pane" id="tab_d2">
-                            <h4>Save &amp; Options</h4>
+                            <div class="c3">
+                                <h4>Save & Options</h4>
+                            </div>
                             <div class=".col-sm-12 col-md-12 .col-lg-12">
                                 <button type="button" class="btn btn-sm btn-default" onclick="save()">
                                     save
@@ -637,6 +687,7 @@
                             <div class="c3">
                                 <h4>Credits</h4>
                             </div>
+                            <b>Tarnos</b> - Main developer - <a href="http://www.reddit.com/user/tarnos12/">Reddit profile</a><br />
                             <b>Rohan Jain</b> - Help with the code/development - <a href="http://www.reddit.com/user/ArjaaAine">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078">LinkedIn profile</a><br />
                             <b>Darkshadow44</b> - Help with game code - <a href="http://steamcommunity.com/profiles/76561198036405586/">Steam profile</a><br />
                             <b>Jason Lee</b> - Story - <a href="http://www.reddit.com/user/ParanoiDoom">Reddit profile</a><br />
@@ -666,6 +717,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script><!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/skills.js"></script>
+    <script type="text/javascript" src="js/weaponMastery.js"></script>
     <script type="text/javascript" src="js/itemList.js"></script>
     <script type="text/javascript" src="js/monsterList.js"></script>
     <script type="text/javascript" src="js/dynamicHtml.js"></script>

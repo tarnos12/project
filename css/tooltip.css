@@ -1,7 +1,7 @@
 ﻿.tooltipA {
   position: relative;
   background: #eaeaea;
-  cursor: help;
+  cursor: auto;
   display: inline-block;
   text-decoration: none;
   color: #222;
@@ -11,8 +11,8 @@
 .tooltipA span {
   visibility: hidden;
   position: absolute; 
-  bottom: 30px;
-  left: 50%;
+  bottom: auto;
+  left: 30%;
   z-index: 999;
   width: 230px;
   margin-left: 40px;
@@ -54,6 +54,64 @@
   bottom: -8px;
 }
     
+
+/*Tooltip B*/
+.tooltipB {
+  position: relative;
+  background: #eaeaea;
+  cursor:help;
+  display: inline-block;
+  text-decoration: none;
+  color: #222;
+  outline: none;
+}
+
+.tooltipB span {
+  visibility: hidden;
+  position: absolute; 
+  bottom: auto;
+  left: 30%;
+  z-index: 999;
+  width: 230px;
+  margin-left: 40px;
+  margin-bottom: -50px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  opacity: .9;
+  background-color: #ddd;                     
+  background-image: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,0));  
+  border-radius: 4px;  
+  box-shadow: 0 1px 2px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.5) inset;  
+  text-shadow: 0 1px 0 rgba(255,255,255,.4); 
+}
+
+.tooltipB:hover {
+  border: 0; /* IE6 fix */
+}
+
+.tooltipB:hover span {
+  visibility: visible;
+}
+
+.tooltipB span:before,
+.tooltipB span:after {
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  bottom: -7px;
+  left: 50%;
+  margin-left: -8px;  
+  border-top: 8px solid #ddd;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;        
+  border-bottom: 0;  
+}
+
+.tooltipB span:before {
+  border-top-color: #ccc;
+  bottom: -8px;
+}
+
 div.story {
     width: 100%;
     height: 700px;
