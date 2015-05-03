@@ -13,7 +13,7 @@ function Log(data) {
     }
     var logTemp = "";
     for (i = logData.length - 1; i >= 0; i--) {
-        logTemp += "<center>" + logData[i] + "</center>";
+        logTemp += logData[i] + "<br />";
     }
     document.getElementById('logConsole').innerHTML = logTemp;
 };
@@ -209,6 +209,21 @@ var player = {
     criticalDamage: function () {
         return (0.5 + (player.totalDexterity() + weaponSkillList.axe.butchersInsight.damage()) * 0.05);
     },
+    blockChance: function () {
+        return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance())
+    },
+    blockAmount: function () {
+        return Math.floor(weaponSkillList.sword.parryAndRiposte.blockAmount())
+    },
+    counterChance: function () {
+        return Math.floor(weaponSkillList.sword.parryAndRiposte.counterChance())
+    },
+    counterDamage: function () {
+        return Math.floor(weaponSkillList.sword.parryAndRiposte.counterDamage())
+    },
+    lifeSteal: function () {
+        return Math.floor(weaponSkillList.sword.savageStrike.lifeStealAmount())
+    },
 };
 //Equipped items object, storing 0 values, so all player stats will work at the beginning of the game
 var equippedItems = {
@@ -297,6 +312,9 @@ var mpot = 0;
 var playerInventory = [];
 var damageDealt = 0;
 var magicDamage = 0;
+var blockRate = 0;
+var counterDamage = 0;
+var lifeStealAmount = 0;
 var magicDamageDealt = 0;
 var damageTaken = 0;
 var criticalRate = 0;
@@ -327,16 +345,22 @@ function attack(monster) {
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
 function DrawBattle() {
     if (battleTurn === 21) {
-        Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
-        Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
-        Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
-        Log("<span style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
-        Log("<span style=\"color:blue\">Turns: </span>" + (battleTurn - 1));
-        Log("<span style=\"color:blue\">Draw!</span>");
-        Log("--------------------------------------------");
+        Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
+        Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
+        Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
+        Log("<span class =\"bold\" style=\"color:red\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
+        Log("<span class =\"bold\" style=\"color:#04B4AE\">You block: </span>" + blockRate + " " + " damage total.");
+        Log("<span class =\"bold\" style=\"color:purple\">You counter enemy for: </span>" + counterDamage + " " + " damage total.");
+        Log("<span class =\"bold\" style=\"color:green\">You lifesteal for: </span>" + lifeStealAmount + " " + " health.");
+        Log("<span class =\"bold\" style=\"color:blue\">Turns: </span>" + (battleTurn - 1));
+        Log("<span class =\"bold\" style=\"color:blue\">Draw!</span>");
+        Log("<br />");
         battleTurn = -1;
         damageDealt = 0;
         magicDamageDealt = 0;
+        blockRate = 0;
+        lifeStealAmount = 0;
+        counterDamage = 0;
         damageTaken = 0;
         skillReCharge();
         updateHtml();
@@ -399,6 +423,7 @@ function playerDamageDeal(damage, monster, monsterStats) {
             var selectedSpell = activeSkills[spell];
             if (selectedSpell.isActive == true && selectedSpell.charge > 0) {
                 magicDamage += selectedSpell.damage();
+                console.log (selectedSpell.name + " damage: " + selectedSpell.damage())
                 selectedSpell.charge -= 1;
             };
         };
@@ -411,6 +436,7 @@ function playerDamageDeal(damage, monster, monsterStats) {
                     var skillDamage = weaponSkillStat[skill];
                     if (skillDamage.type == "damage" && skillDamage.charge >= 1) {
                         damage += skillDamage.damage();
+                        console.log(skillDamage.name + " damage: " + skillDamage.damage())
                         skillDamage.charge -= 1;
                         if (skillDamage.charge < 1) {
                             skillDamage.charge += skillDamage.coolDown;
@@ -420,7 +446,14 @@ function playerDamageDeal(damage, monster, monsterStats) {
             };
         };
     };
-    
+    if (player.lifeSteal() > 0) {
+        var lifeSteal = Math.floor(damage * (player.lifeSteal() / 100));
+        lifeStealAmount += lifeSteal;
+        player.health += lifeSteal;
+        if (player.health > player.maxhealth()) {
+            player.health = player.maxhealth();
+        };
+    };
     monsterStats.hp -= damage + magicDamage;
     magicDamageDealt += magicDamage;
     magicDamage = 0;
@@ -452,27 +485,24 @@ function monsterDmg(monster, monsterStats) {
 
 //monster damage deal (base or critical)
 function monsterDamageDeal(monsterDamage, monster, monsterStats) {
-    for (var weapon in weaponSkillList) {
-        if (weaponSkillList.hasOwnProperty(weapon)) {
-            var weaponSkillStat = weaponSkillList[weapon];
-            for (var skill in weaponSkillStat) {
-                if (weaponSkillStat.hasOwnProperty(skill)) {
-                    var skillDamage = weaponSkillStat[skill];
-                    if (skillDamage.type == "counter" && skillDamage.charge >= 1) {
-                        skillDamage.charge -= 1;
-                        var damageReduction = (skillDamage.defense() / 100);
-                        var counterDamage = Math.floor(monsterDamage * (skillDamage.damage() / 100));
-                        monsterStats.hp -= counterDamage;
-                        damageDealt += counterDamage;
-                        monsterDamage = Math.floor(monsterDamage * damageReduction);
-                    };
-                    if (skillDamage.charge < 1) {
-                        skillDamage.charge += skillDamage.coolDown;
-                    };
-                };
-            };
+    var randomCounterNumber = Math.floor((Math.random() * 100) + 1);
+    var randomBlockNumber = Math.floor((Math.random() * 100) + 1);
+    if (randomCounterNumber <= player.counterChance()) {
+        var counterDamageDealt = Math.floor(monsterDamage * (player.counterDamage() / 100));
+        monsterStats.hp -= counterDamageDealt;
+        counterDamage += counterDamageDealt;
+    };
+    if (randomBlockNumber <= player.blockChance()) {
+        if (monsterDamage >= player.blockAmount()) {
+            monsterDamage -= player.blockAmount();
+            blockRate += player.blockAmount();
+        }
+        else if (monsterDamage < player.blockAmount()) {
+            blockRate += monsterDamage;
+            monsterDamage = 0;
         };
     };
+                    
     player.health = player.health - monsterDamage;
     damageTaken += monsterDamage;
     document.getElementById("health").innerHTML = player.health;
@@ -500,19 +530,25 @@ function playerDead(monster, monsterStats) {
     document.getElementById("health").innerHTML = player.health;
     document.getElementById("gold").innerHTML = player.gold;
     document.getElementById("experience").innerHTML = player.experience;
-    Log("<span style=\"color:red\">You lost </span>" + goldLost + "gold");
-    Log("<span style=\"color:red\">You lost </span>" + expLost + "experience");
-    Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
-    Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
-    Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "physical damage total");
-    Log("<span style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total");
-    Log("<span style=\"color:blue\">Turns: </span>" + battleTurn);
-    Log("<span style=\"color:red\">You have died!</span>");
-    Log("--------------------------------------------");
+    Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + goldLost + "gold.");
+    Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + expLost + "experience.");
+    Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
+    Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
+    Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
+    Log("<span class =\"bold\" style=\"color:red\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
+    Log("<span class =\"bold\" style=\"color:#04B4AE\">You block: </span>" + blockRate + " " + " damage total.");
+    Log("<span class =\"bold\" style=\"color:purple\">You counter enemy for: </span>" + counterDamage + " " + " damage total.");
+    Log("<span class =\"bold\" style=\"color:green\">You lifesteal for: </span>" + lifeStealAmount + " " + " health.");
+    Log("<span class =\"bold\" style=\"color:blue\">Turns: </span>" + (battleTurn));
+    Log("<span class =\"bold\" style=\"color:red\">You have died!</span>");
     Log("You need to wait 5 seconds before you can fight again!");
+    Log("<br />");
     battleTurn = -1;
     damageDealt = 0;
     magicDamageDealt = 0;
+    blockRate = 0;
+    lifeStealAmount = 0;
+    counterDamage = 0;
     damageTaken = 0;
     criticalRate = 0;
     skillReCharge();
@@ -526,15 +562,21 @@ function monsterKilled(monster, monsterStats) {
     monsterExperience(monster, monsterStats);
     weaponSkill(monster, monsterStats);
     monsterStats.killCount++;
-    Log("<span style=\"color:blue\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
-    Log("<span style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage");
-    Log("<span style=\"color:blue\">You dealt: </span>" + damageDealt + " " + "physical damage total");
-    Log("<span style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total");
-    Log("<span style=\"color:blue\">Turns: </span>" + battleTurn);
-    Log("--------------------------------------------");
+    Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
+    Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
+    Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
+    Log("<span class =\"bold\" style=\"color:red\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
+    Log("<span class =\"bold\" style=\"color:#04B4AE\">You block: </span>" + blockRate + " " + " damage total.");
+    Log("<span class =\"bold\" style=\"color:purple\">You counter enemy for: </span>" + counterDamage + " " + " damage total.");
+    Log("<span class =\"bold\" style=\"color:green\">You lifesteal for: </span>" + lifeStealAmount + " " + " health.");
+    Log("<span class =\"bold\" style=\"color:blue\">Turns: </span>" + (battleTurn));
+    Log("<br />");
     battleTurn = -1;
     damageDealt = 0;
     magicDamageDealt = 0;
+    blockRate = 0;
+    lifeStealAmount = 0;
+    counterDamage = 0;
     damageTaken = 0;
     criticalRate = 0;
     skillReCharge();

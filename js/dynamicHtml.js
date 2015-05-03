@@ -291,7 +291,7 @@ function CreateInventoryWeaponHtml() {
                     html += playerInventory[i].maxDamage + " (" + '<b style="color:green">' + "+" + (playerInventory[i].maxDamage - itemStat.maxDamage) + '</b>' + ")";
                 }
                 else if ((playerInventory[i].maxDamage - itemStat.maxDamage) == 0) {
-                    html += playerInventory[i].maxDamage + " (0)" + " to ";
+                    html += playerInventory[i].maxDamage + " (0)";
                 }
                 if ((playerInventory[i].expRate - itemStat.expRate) < 0) {
                     html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (" + '<b style="color:red">' + (playerInventory[i].expRate - itemStat.expRate) + '</b>' + ")" + " to ";
