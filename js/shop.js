@@ -25,7 +25,7 @@ function potionBuy(type, count) {
 function buyPotion(count) {
     if (potionBuy(potionStatus, count)) {
         pot += count
-        document.getElementById("potion").innerHTML = potionStatus.price;
+        updateHtml();
         Log("You bought " + count + " Potions.");
     };
 };
@@ -33,7 +33,7 @@ function buyPotion(count) {
 function buySuperPotion(count) {
     if (potionBuy(superPotionStatus, count)) {
         spot += count
-        document.getElementById("superPotion").innerHTML = superPotionStatus.price;
+        updateHtml();
         Log("You bought " + count + " Super Potions");
     };
 };
@@ -41,7 +41,7 @@ function buySuperPotion(count) {
 function buyMegaPotion(count) {
     if (potionBuy(megaPotionStatus, count)) {
         mpot += count
-        document.getElementById("megaPotion").innerHTML = megaPotionStatus.price;
+        updateHtml();
         Log("You bought " + count + "Mega Potions");
     };
 };
@@ -75,7 +75,7 @@ function buyStuff(type, count) {
 function buyBackpack(count) {
     if (buyStuff(backpackStatus, count)) {
         player.backpackUpgrade += count;
-        document.getElementById("buyBackpack").innerHTML = backpackStatus.price;
+        updateHtml();
         CreateInventoryWeaponHtml();
         Log("You max inventory slots upgraded by " + count + ", now you have: " + player.inventory() + " inventory slots");
     };
@@ -84,7 +84,7 @@ function buyBackpack(count) {
 function buyStat(count) {
     if (buyStuff(statStatus, count)) {
         player.stats += count;
-        document.getElementById("buyStat").innerHTML = statStatus.price;
+        updateHtml();
         Log("Your stat points increased by " + count + ".");
     };
 };

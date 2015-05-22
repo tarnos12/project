@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/footer.css" rel="stylesheet" type="text/css">
     <link href="css/text.css" rel="stylesheet" type="text/css">
     <link href="css/tooltip.css" rel="stylesheet" type="text/css">
+    <link href="css/icons.css" rel="stylesheet" type="text/css">
     <link rel="Shortcut icon" href="images/icon.png">
     <title>Legend of the Fallen Warrior</title>
     <style type="text/css">
@@ -17,18 +19,46 @@
     </style>
     <style type="text/css">
         li.bold {
-            font-weight: bold
+            font-weight: bold;
         }
     </style>
     <style type="text/css">
-        .container {
-            width: auto;
+        img.Common {
+            outline: 2px solid gray;
         }
-    </style>
-    <style type="text/css">
-        div.c5 {
-            width: 100%;
+
+        img.Uncommon {
+            outline: 2px solid green;
         }
+
+        img.Rare {
+            outline: 2px solid blue;
+        }
+
+        img.Epic {
+            outline: 2px solid orange;
+        }
+
+        img.Legendary {
+            outline: 2px solid red;
+        }
+
+        .bold {
+            font-weight: bold;
+            text-align: left;
+        }
+
+        div.c8 {
+            margin-top: 5px;
+        }
+
+        div.c6 {
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-bottom: 5px;
+            padding-left: 15px;
+        }
+
         div.c4 {
             background-color: #EEDFA6;
         }
@@ -38,19 +68,22 @@
         }
 
         div.c2 {
-            margin-bottom: 5px;
-            margin-left: 26%;
-            margin-right: 34%;
-            width: 40%;
             height: 20px;
         }
 
         div.c1 {
-            margin-bottom: 1px;
-            margin-left: 26%;
-            margin-right: 34%;
-            width: 40%;
             height: 20px;
+        }
+
+        span.scroll {
+            display: block;
+            overflow: auto;
+            height: 400px;
+        }
+
+        div.c0 {
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -69,242 +102,215 @@
     </script>
     <div class="container-fluid">
         <div class="row">
-            <div class="row">
-                <div id="progressBar" class="progress-bar progress-bar c1">Exp: <span id="exppercent">0</span>%</div>
-                <div id="progressBar2" class="progress-bar progress-bar-success progress-bar c2">HP: <span id="health">50</span>/<span id="maxhealth">50</span></div>
+            <div class="col-sm-1 col-md-1 col-lg-1">
             </div>
-            <div class="col-sm-5 col-md-4 .col-lg-2">
-                <div class="container c4">
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="#tab_a" data-toggle="tab">Player Stats</a></li>
-                        <li><a href="#tab_b" data-toggle="tab">Game Info</a></li>
-                        <li><a href="#tab_c" data-toggle="tab">Story</a></li>
+            <div class="col-sm-4 col-md-4 col-lg-4 c4 c0">
+                <div class="row">
+                    Level
+                    <span id="level">1</span>
+                </div>
+                <div class="row">
+                    Exp
+                    <span id="experience">0</span>/<span id="maxexperience">100</span>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="row">
+                    <div id="progressBar" class="progress-bar progress-bar c1">Exp: <span id="exppercent">0</span>%</div>
+                </div>
+                <div class="row">
+                    <div id="progressBar2" class="progress-bar progress-bar-success progress-bar c2">HP: <span id="health">50</span>/<span id="maxhealth">50</span></div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3 c4 c0">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <img src="images/gold.jpg" alt="Gold Coin">
+                    <span id="gold">0</span>
+                </div>
+            </div>
+            <div class="col-md-1 col-lg-1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1 col-lg-1">
+            </div>
+            <div class="col-sm-5 col-md-4 col-lg-4">
+                <div class="row c4">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_a" data-toggle="tab"><span class="icons playerStats"></span></a></li>
+                        <li><a href="#tab_b" data-toggle="tab"><span class="icons help"></span></a></li>
+                        <li><a href="#tab_c" data-toggle="tab"><span class="icons gameStory"></span></a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_a">
                             <div class="c3">
                                 <h4>Player Stats</h4>
                             </div>
-                            <table class="table">
-                                <tr>
-                                    <td>
-                                        Level
-                                    </td>
-                                    <td colspan="2">
-                                        <span id="level">1</span>
-                                    </td>
-                                    <td colspan="3">
-                                        Exp
-                                        <span id="experience">0</span>/<span id="maxexperience">100</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Damage
-                                    </td>
-                                    <td colspan="2">
-                                        <span id="mindamage">2</span>-<span id="maxdamage">4</span>
-                                    </td>
-                                    <td colspan="3">
-                                        Mana
-                                        <span id="mana">50</span>/<span id="maxmana">50</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Str <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                               10 points = 2 Min Damage<br />
-                                               10 points = 3 Max Damage<br />
-                                               10 points = 1 Inventory slot
-                                            </span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span id="strength">5</span><br />
-                                    </td>
-                                    <td>
-                                        <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
-                                    </td>
-                                    <td>
-                                        End <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                1 point = 3 Max Health<br />
-                                                3 points = 1 Health/s
-                                            </span>
-                                        </a>  
-                                    </td>
-                                    <td>
-                                        <span id="endurance">5</span><br />
-                                    </td>
-                                    <td>
-                                        <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Agi <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                100 points = 2% Accuracy<br />
-                                                100 points = 3% Evasion<br />
-                                                5 points = 1 Defense<br />
-                                                
-                                            </span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span id="agility">5</span><br />
-                                    </td>
-                                    <td>
-                                        <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
-                                    </td>
-                                    <td>
-                                        Dex <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                100 points = 3% Critical Chance<br />
-                                                10 points = 2% Critical Damage
-                                            </span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span id="dexterity">5</span><br />
-                                    </td>
-                                    <td>
-                                        <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Int <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            Currently not much use, and it's disabled until more content is added.<br />
-                                            10 points = 1 Max Mana
-                                        </span>
-                                    </a>
-                                    </td>
-                                    <td>
-                                        <span id="intelligence">5</span><br />
-                                    </td>
-                                    <td>
-                                        <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
-                                    </td>
-                                    <td>
-                                        Wis <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                10 points = 1 Mana/s<br />
-                                                2 points = 1 Max Mana</span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <span id="wisdom">5</span><br />
-                                    </td>
-                                    <td>
-                                        <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Luk <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            100 points = 1% Accuracy<br />
-                                            100 points = 2% Evasion(20% cap)<br />
-                                            100 points = 1% Critical Chance<br />
-                                            100 points = 20% drop rate
-                                        </span>
-                                    </a>
-                                   </td>
-                                    <td>
-                                        <span id="luck">5</span>
-                                    </td>
-                                    <td>
-                                        <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck(event);">
-                                    </td>
-                                    <td>
-                                        Stat points
-                                    </td>
-                                    <td colspan="2">
-                                        <span id="stats">0</span>
-                                    </td>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Damage
+                                <span id="mindamage">2</span>-<span id="maxdamage">4</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Mana
+                                <span id="mana">50</span>/<span id="maxmana">50</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Str <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        10 points = 2 Min Damage<br />
+                                        10 points = 3 Max Damage<br />
+                                        10 points = 1 Inventory slot
+                                    </span>
+                                </a>
+                                <span id="strength">5</span><br />
+                                <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                End <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        1 point = 3 Max Health<br />
+                                        3 points = 1 Health/s
+                                    </span>
+                                </a>
+                                <span id="endurance">5</span><br />
 
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src="images/gold.jpg" alt="Gold Coin">
-                                    </td>
-                                    <td>
-                                        <span id="gold">0</span>
-                                    </td>
-                                    <td colspan="4">
+                                <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Agi <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        100 points = 2% Accuracy<br />
+                                        100 points = 3% Evasion<br />
+                                        5 points = 1 Defense<br />
 
-                                        <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
-                                    </td>
-                                </tr>
-                            </table>
+                                    </span>
+                                </a>
+                                <span id="agility">5</span><br />
+
+                                <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Dex <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        100 points = 3% Critical Chance<br />
+                                        10 points = 2% Critical Damage
+                                    </span>
+                                </a>
+                                <span id="dexterity">5</span><br />
+
+                                <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Int <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        Currently not much use, and it's disabled until more content is added.<br />
+                                        10 points = 1 Max Mana
+                                    </span>
+                                </a>
+
+                                <span id="intelligence">5</span><br />
+
+                                <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Wis <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        10 points = 1 Mana/s<br />
+                                        2 points = 1 Max Mana
+                                    </span>
+                                </a>
+
+                                <span id="wisdom">5</span><br />
+
+                                <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Luk <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        100 points = 1% Accuracy<br />
+                                        100 points = 2% Evasion(20% cap)<br />
+                                        100 points = 1% Critical Chance<br />
+                                        100 points = 20% drop rate
+                                    </span>
+                                </a>
+                                <span id="luck">5</span>
+
+                                <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
+
+                                <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        <ul>
+                                            <li>Check auto battle box, and attack a monster once, after that you will attack it automatically as long as you have enough mana, displayed next to this box.</li>
+                                            <br />
+                                            <li>If you want to change monster, then uncheck auto battle box, check it again and attack different monster.</li>
+                                        </ul>
+                                    </span>
+                                </a>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Stat points
+                                <span id="stats">0</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Skill points
+                                <span id="skillPoints">0</span>
+                            </div>
                             <div class="c3">
                                 <h4>Secondary Stats</h4>
                             </div>
-                            <table class="table">
-                                <tr>
-                                    <td class="col-md-3">
-                                        Health regen:<span id="hpregen">2</span>
-                                    </td>
-                                    <td>
-                                        Mana regen:<span id="manaRegen">1</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="col-md-3">
-                                        Defense:<span id="defense">0</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-3">
-                                        Accuracy:<span id="accuracy">100</span>%
-                                    </td>
-                                    <td class="col-md-3">
-                                        Evasion:<span id="evasion">0</span>%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-3">
-                                        Critical chance:<span id="criticalChance">1</span>%
-                                    </td>
-                                    <td class="col-md-3">
-                                        Critical damage:<span id="criticalDamage">1</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="col-md-3">
-                                        Drop rate:<span id="dropRate">0</span>%
-                                    </td>
-                                    <td class="col-md-3">
-                                        Exp rate:<span id="expRate">0</span>%
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2" class="col-md-3">
-                                        Gold rate:<span id="goldRate">0</span>%
-                                    </td>
-                                </tr>
-                            </table>
-
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Health regen:<span id="hpregen">2</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Mana regen:<span id="manaRegen">1</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Defense:<span id="defense">0</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Accuracy:<span id="accuracy">100</span>%
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Evasion:<span id="evasion">0</span>%
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Critical chance:<span id="criticalChance">1</span>%
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Critical damage:<span id="criticalDamage">1</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Drop rate:<span id="dropRate">0</span>%
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Exp rate:<span id="expRate">0</span>%
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Gold rate:<span id="goldRate">0</span>%
+                            </div>
                         </div>
                         <div class="tab-pane" id="tab_b">
                             <div class="c3">
                                 <h4>Game Tutorial</h4><br />
                             </div>
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#tab_za" data-toggle="tab">Fighting</a></li>
-                                <li><a href="#tab_zb" data-toggle="tab">Items</a></li>
-                                <li><a href="#tab_zc" data-toggle="tab">Potions</a></li>
-                                <li><a href="#tab_zd" data-toggle="tab">Stats</a></li>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_za" data-toggle="tab"><span class="icons fighting"></span></a></li>
+                                <li><a href="#tab_zb" data-toggle="tab"><span class="icons items"></span></a></li>
+                                <li><a href="#tab_zc" data-toggle="tab"><span class="icons potions"></span></a></li>
+                                <li><a href="#tab_zd" data-toggle="tab"><span class="icons stats"></span></a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_za">
@@ -462,55 +468,50 @@
                 <!-- end of container -->
             </div>
 
-            <div class="col-sm-3 col-md-4 .col-lg-5">
-                <div class="container c4">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                <div class="row c4">
                     <div id="monsterTabs">
-
                     </div>
-
                     <!-- tab content -->
-                </div>
-                <div class="tablecontainer c4">
-                    <table class="table table-condensed table-striped table-responsive">
-                        <thead>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <span id="logConsole"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                </div> <!--move this div below "logConsole table" to stick log console with monsters...-->
+                <div id="hotBar" class="c6 c4"></div>
+                <table class="table table-condensed table-striped table-responsive">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="scroll" id="logConsole"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
                 <!-- end of container -->
             </div>
 
-            <div class=".col-sm-4 col-md-4 .col-lg-5">
-                <div class="container c4">
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="#tab_a2" data-toggle="tab">Player Inventory</a></li>
-                        <li><a href="#tab_b2" data-toggle="tab">Weapon Skills</a></li>
-                        <li><a href="#tab_c2" data-toggle="tab">Shop</a></li>
-                        <li><a href="#tab_d2" data-toggle="tab">Save &amp; Options</a></li>
-                        <li><a href="#tab_e2" data-toggle="tab">Credits</a></li>
+            <div class="col-sm-4 col-md-4 col-lg-3">
+                <div class="row c4">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab_a2" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
+                        <li><a href="#tab_b2" data-toggle="tab"><span class="icons weaponSkills"></span></a></li>
+                        <li><a href="#tab_c2" data-toggle="tab"><span class="icons shop"></span></a></li>
+                        <li><a href="#tab_d2" data-toggle="tab"><span class="icons options"></span></a></li>
+                        <li><a href="#tab_e2" data-toggle="tab"><span class="icons credits"></span></a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class=".col-sm-12 col-md-12 .col-lg-12 tab-pane active" id="tab_a2">
+                        <div class="tab-pane active" id="tab_a2">
                             <div class="c3">
                                 <h4>Player Inventory</h4>
                             </div>
 
-                            <ul class="nav nav-pills">
-                                <li class="active"><a href="#tab_f1" data-toggle="tab">Potions</a></li>
-                                <li><a href="#tab_f2" data-toggle="tab">Equipment</a></li>
-                                <li><a href="#tab_f3" data-toggle="tab">Inventory</a></li>
-                                <li><a href="#tab_f4" data-toggle="tab">Player Skills</a></li>
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_f1" data-toggle="tab"><span class="icons potions"></span></a></li>
+                                <li><a href="#tab_f2" data-toggle="tab"><span class="icons equipment"></span></a></li>
+                                <li><a href="#tab_f3" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
+                                <li><a href="#tab_f4" data-toggle="tab"><span class="icons spells"></span></a></li>
                             </ul>
 
 
                             <div class="tab-content">
-                                <div class=".col-sm-8 col-md-8 .col-lg-8 tab-pane active" id="tab_f1">
+                                <div class="col-sm-8 col-md-8 col-lg-8 tab-pane active" id="tab_f1">
                                     <table class="table">
                                         <tr>
                                             <td>
@@ -542,6 +543,9 @@
 
                                 <div class="tab-pane" id="tab_f2">
 
+                                    <div class="c3">
+                                        <h4>Equipment</h4>
+                                    </div>
                                     <div id="equipHtml"> </div>
 
                                 </div>
@@ -557,18 +561,25 @@
 
                                 </div>
                                 <div class="tab-pane" id="tab_f4">
+                                    <div class="c3">
+                                        <h4>Spells</h4>
+                                    </div>
+                                    <div id="equipHtml"> </div>
                                     <div id="playerSkills"></div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_b2">
-
-
+                            <div class="c3">
+                                <h4>Weapon Skills</h4>
+                            </div>
                             <div id="weaponSkill"></div>
 
                         </div>
                         <div class="tab-pane" id="tab_c2">
-                            <h4>Shop</h4>
+                            <div class="c3">
+                                <h4>Shop</h4>
+                            </div>
                             <p>
                                 <img src="images/stat.png" alt="Buy Stat">Stat Points(<span id="buyStat">500</span> gold)
                                 <button type="button" class="btn btn-sm btn-default" onclick="buyStat(1)">Buy</button>
@@ -594,8 +605,10 @@
                         </div>
 
                         <div class="tab-pane" id="tab_d2">
-                            <h4>Save &amp; Options</h4>
-                            <div class=".col-sm-12 col-md-12 .col-lg-12">
+                            <div class="c3">
+                                <h4>Save & Options</h4>
+                            </div>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
                                 <button type="button" class="btn btn-sm btn-default" onclick="save()">
                                     save
                                 </button>
@@ -627,6 +640,7 @@
                             <div class="c3">
                                 <h4>Credits</h4>
                             </div>
+                            <b>Tarnos</b> - Main developer - <a href="http://www.reddit.com/user/tarnos12/">Reddit profile</a><br />
                             <b>Rohan Jain</b> - Help with the code/development - <a href="http://www.reddit.com/user/ArjaaAine">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078">LinkedIn profile</a><br />
                             <b>Darkshadow44</b> - Help with game code - <a href="http://steamcommunity.com/profiles/76561198036405586/">Steam profile</a><br />
                             <b>Jason Lee</b> - Story - <a href="http://www.reddit.com/user/ParanoiDoom">Reddit profile</a><br />
@@ -641,7 +655,7 @@
         </div>
 
         <footer class="footer">
-            <div class="container">
+            <div class="row-fluid">
                 <div class="c3 c4">
                     <p class="text-muted credit">
                         All tiles have been drawn by David E. Gervais, and are published under the Creative Commons licence.<br />
@@ -655,9 +669,10 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script><!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/skills.js"></script>
+    <script type="text/javascript" src="js/weaponMastery.js"></script>
     <script type="text/javascript" src="js/itemList.js"></script>
     <script type="text/javascript" src="js/monsterList.js"></script>
-    <script type="text/javascript" src="js/skills.js"></script>
     <script type="text/javascript" src="js/dynamicHtml.js"></script>
     <script type="text/javascript" src="js/gameObjects.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

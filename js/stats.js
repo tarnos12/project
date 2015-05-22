@@ -48,6 +48,7 @@
     var potion;
     var superPotion;
     var megaPotion;
+    var skillPoints;
 
     minDamage = document.getElementById('mindamage');
     maxDamage = document.getElementById('maxdamage');
@@ -81,6 +82,7 @@
     potion = document.getElementById('potion');
     superPotion = document.getElementById('superPotion');
     megaPotion = document.getElementById('megaPotion');
+    skillPoints = document.getElementById('skillPoints');
     minDamage.innerHTML = player.minDamage().toFixed(0);
     maxDamage.innerHTML = player.maxDamage().toFixed(0);
     strength.innerHTML = player.totalStrength() + " (" + '<font color="blue">' + player.equipStrength() + '</font>' + ")";
@@ -113,6 +115,7 @@
     potion.innerHTML = pot;
     superPotion.innerHTML = spot;
     megaPotion.innerHTML = mpot;
+    skillPoints.innerHTML = player.skillPoints;
 };
 //auto Save
 window.setInterval(function () {
@@ -123,14 +126,12 @@ window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
     exppercent = (Math.floor((player.experience / player.maxExperience) * 100));
     var exppercent2 = (Math.floor((player.experience / player.maxExperience) * 100));
-    exppercent2 = exppercent2 / 2.5;
     var divArray = document.getElementById('progressBar');
     divArray.style.width = ((exppercent2) + '%');
     document.getElementById("exppercent").innerHTML = exppercent;
 }, 100);
 window.setInterval(function () {
     var healthPercent = (Math.floor((player.health / player.maxhealth()) * 100));
-    healthPercent = healthPercent / 2.5;
     var divArray = document.getElementById('progressBar2');
     divArray.style.width = ((healthPercent) + '%');
 }, 100);
@@ -155,9 +156,12 @@ function levelUp() {
     player.baseWisdom += 2.3;
     player.baseIntelligence += 3.5;
     player.baseLuck += 1.6;
+    player.skillPoints += 1;
     quest();
     CreateMonsterHtml();
     updateHtml();
+    CreatePlayerSkillsHtml();
+    CreatePlayerHotBar();
 }
 
 function loadIsEquipped() {
@@ -362,4 +366,61 @@ function autoAttack(monster, monsterStats) {
             player.isAuto = false;
         };
     }, 1000)
+};
+
+//All skill charge = maxCharge, when game loads, player equips items i.e change his stats like wisdom/int that can provide more/less charges.
+function skillChargeFill() {
+    var skill = player.activeSpells;
+    for (spell in skill) {
+        var selectedSpell = skill[spell];
+        selectedSpell.charge = selectedSpell.maxCharge();
+    };
+};
+
+function upgradeSpell(spellName) {
+
+    if (activeSpells.hasOwnProperty(spellName)) {
+        var selectedSpell = activeSpells[spellName];
+        if (selectedSpell.levelReq <= player.level) {
+            if (selectedSpell.level < 5) {
+                if (player.skillPoints > 0) {
+                    player.skillPoints--;
+                    selectedSpell.level++;
+                    selectedSpell.levelReq++;
+                    Log(selectedSpell.name + " level is now " + selectedSpell.level)
+                }
+                else {
+                    Log("You do not have enough skill points.")
+                }
+            }
+            else {
+                Log(selectedSpell.name + " is already max level.")
+            };
+        }
+        else {
+            Log("Your level is not high enough to upgrade this skill.");
+        };
+    };
+    CreatePlayerSkillsHtml();
+    CreatePlayerHotBar();
+    updateHtml();
+};
+var spellTotalManaCost = 0;
+function spellActivation(spellName) {
+    if (activeSpells.hasOwnProperty(spellName)) {
+        var selectedSpell = activeSpells[spellName];
+        if (selectedSpell.isActive == true) {
+            selectedSpell.isActive = false;
+            spellTotalManaCost -= selectedSpell.manaReq;
+        }
+        else if (selectedSpell.levelReq > player.level) {
+            Log("Your level is not high enough to activate it")
+        }
+        else if (spellTotalManaCost + selectedSpell.manaReq <= player.maxMana()){
+            selectedSpell.isActive = true;
+            spellTotalManaCost += selectedSpell.manaReq;
+        };
+    };
+    CreatePlayerSkillsHtml();
+    CreatePlayerHotBar();
 };

@@ -2,18 +2,22 @@
     {
         type: 'weapon',
         displayName: 'Weapon',
+        icon: 'weapon',
     },
     {
         type: 'offHand',
         displayName: 'Off-Hand',
+        icon: 'shield',
     },
     {
         type: 'armor',
         displayName: 'Armor',
+        icon: 'armor',
     },
      {
          type: 'accessory',
          displayName: 'Accessory',
+         icon: 'accessory',
      },
       /*{
           type: 'other',
@@ -24,19 +28,23 @@
 var monsterAreas = [
     {
         type: 'BanditHideout',
-        displayName: 'Bandit Hideout'
+        displayName: 'Bandit Hideout',
+        icon: 'banditHideout'
     },
      {
          type: 'ForestofNarsus',
-         displayName: 'Forest of Narsus'
+         displayName: 'Forest of Narsus',
+         icon: 'forestOfNarsus'
      },
       {
           type: 'OzJotnar',
-          displayName: 'Oz Jotnar'
+          displayName: 'Oz Jotnar',
+          icon: 'ozJotnar'
       },
        {
            type: 'AncientCave',
-           displayName: 'Ancient Cave'
+           displayName: 'Ancient Cave',
+           icon: 'ancientCave'
        }
 ];
 CreateMonsterHtml();
