@@ -409,7 +409,7 @@ function playerDamageDeal(damage, monster, monsterStats) {
             var selectedSpell = activeSpells[spell];
             if (selectedSpell.isActive == true && selectedSpell.charge > 0) {
                 magicDamage += selectedSpell.damage();
-                console.log (selectedSpell.name + " damage: " + selectedSpell.damage())
+                //console.log (selectedSpell.name + " damage: " + selectedSpell.damage())
                 selectedSpell.charge -= 1;
             };
         };
@@ -422,7 +422,7 @@ function playerDamageDeal(damage, monster, monsterStats) {
                     var skillDamage = weaponSkillStat[skill];
                     if (skillDamage.type == "damage" && skillDamage.charge >= 1) {
                         damage += skillDamage.damage();
-                        console.log("Turn: " + battleTurn + " " + skillDamage.name + " damage: " + skillDamage.damage())
+                        //console.log("Turn: " + battleTurn + " " + skillDamage.name + " damage: " + skillDamage.damage())
                         skillDamage.charge -= 1;       
                     };
                     if (skillDamage.charge < 1) {
