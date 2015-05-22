@@ -18,8 +18,8 @@ function CreateWeaponSkillHtml() {
             var itemStat = weaponMastery[weapon];
             var image = "images/skills/" + itemStat.image + ".png";
 
-            html += '<div class="col-lg-12 col-md-12 col-sm-4 col-xs-4 c8">';
-            html += '<a href="#" class="tooltipA">';
+            html += '<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 c8">';
+            html += '<a class="tooltipA" data-toggle="collapse" href="#' + itemStat.image + '" aria-expanded="false" aria-controls="' + itemStat.image + '">';
             html += '<img src="' + image + '"/>';
             html += '<span>';
             html += itemStat.name;
@@ -30,23 +30,29 @@ function CreateWeaponSkillHtml() {
                     html += "<br />" + statName + ": " + displayStat();
                 };
             };
+            html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((itemStat.exp / itemStat.maxExp) * 100) + '%;"></div></div>';
+            html += '</span></a>';
+            html += '</div>';
             var skill = weaponSkillList[weapon]
+            html += '<div class="collapse" id="' + itemStat.image + '">';
             for (var skillName in skill) {
                 var displaySkill = skill[skillName]
+                html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 c8">';
+                html += '<div class="c4">';
                 if (itemStat.level < displaySkill.levelReq) {
-                    html += "<br />" + displaySkill.name + ": Unlocks at " + displaySkill.levelReq + " level";
+                    html += "<br />" + '<span class ="bold">' + displaySkill.name + '</span>' + ": Unlocks at " + displaySkill.levelReq + " level";
                 }
                 else {
-                    html += "<br />" + displaySkill.name + ": " + displaySkill.description;
+                    html += "<br />" + '<span class ="bold">' + displaySkill.name + '</span>' + "<br />" + displaySkill.description();
                 };
+                html += '</div>';
+                html += '</div>';
             };
-            html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((itemStat.exp / itemStat.maxExp) * 100) + '%;"></div></div>';
-            html += '</span></a></div>';
-            html += '</div>';
             html += '</div>';
         };
     };
-
+    html += '</div>';
+    html += '</div>';
     document.getElementById("weaponSkill").innerHTML = html;
 };
 
@@ -181,7 +187,6 @@ function CreateMonsterHtml() {
                         '<br />' +
                         "Health: " + '<span class="hp">' + monster.Stats.hp + '</span>' + "/" + monster.Stats.maxHp +
                         '<br />' +
-                      
                         '<span type="button" class="btn btn-sm btn-default" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>';
                 };
             };
@@ -241,6 +246,7 @@ function CreateInventoryWeaponHtml() {
         html += 'id="tab_' + InventoryItemTypes[j].type + '">'
 
         html += '<div class="row">';
+        html += '<div class="c3"><h4>Inventory</h4></div>';
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType === InventoryItemTypes[j].type) {
                 if (playerInventory[i].itemType === "weapon") {
@@ -263,7 +269,6 @@ function CreateInventoryWeaponHtml() {
                 }
 
                 html += '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 c8">';
-                html += '<div class="c3"><h4>Inventory</h4></div>';
                 html += '<a href="#" class="tooltipA">';
                 html += '<img src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png" class="' + playerInventory[i].itemQuality + '"/>';
                 html += '<span>';
@@ -365,11 +370,11 @@ var spellDamageDisplay = 0;
 function CreatePlayerSkillsHtml() {
     var html = '';
     html += '<div class="row">';
-    html += "Mana left: " + (player.maxMana() - spellTotalManaCost);
+    html += '<div class="c3 bold">Mana left: ' + (player.maxMana() - spellTotalManaCost) + "</div>";
     html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
-    for (var spell in activeSkills) {
-        if (activeSkills.hasOwnProperty(spell)) {
-            var selectedSpell = activeSkills[spell];
+    for (var spell in activeSpells) {
+        if (activeSpells.hasOwnProperty(spell)) {
+            var selectedSpell = activeSpells[spell];
             var image = "images/skills/" + selectedSpell.image + ".png";
 
             var activeSpell = '';
@@ -417,13 +422,13 @@ function CreatePlayerHotBar() {
     var html = '';
     html += '<div class="row">';
     html += '<div class="c3"><b>Active Spells</b></div>';
-    for (var spell in activeSkills) {
-        if (activeSkills.hasOwnProperty(spell)) {
-            var selectedSpell = activeSkills[spell];
+    for (var spell in activeSpells) {
+        if (activeSpells.hasOwnProperty(spell)) {
+            var selectedSpell = activeSpells[spell];
             var image = "images/skills/" + selectedSpell.image + ".png";
 
             if (selectedSpell.isActive == true) { // Check if spell is active, and put it in hotbar
-                html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
+                html += '<div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">';
                 html += '<a href="#" class="tooltipA">';
                 html += '<img src="' + image + '"/>';
                 html += '<span>';

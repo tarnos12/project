@@ -48,6 +48,7 @@
     var potion;
     var superPotion;
     var megaPotion;
+    var skillPoints;
 
     minDamage = document.getElementById('mindamage');
     maxDamage = document.getElementById('maxdamage');
@@ -81,6 +82,7 @@
     potion = document.getElementById('potion');
     superPotion = document.getElementById('superPotion');
     megaPotion = document.getElementById('megaPotion');
+    skillPoints = document.getElementById('skillPoints');
     minDamage.innerHTML = player.minDamage().toFixed(0);
     maxDamage.innerHTML = player.maxDamage().toFixed(0);
     strength.innerHTML = player.totalStrength() + " (" + '<font color="blue">' + player.equipStrength() + '</font>' + ")";
@@ -113,6 +115,7 @@
     potion.innerHTML = pot;
     superPotion.innerHTML = spot;
     megaPotion.innerHTML = mpot;
+    skillPoints.innerHTML = player.skillPoints;
 };
 //auto Save
 window.setInterval(function () {
@@ -123,14 +126,12 @@ window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
     exppercent = (Math.floor((player.experience / player.maxExperience) * 100));
     var exppercent2 = (Math.floor((player.experience / player.maxExperience) * 100));
-    exppercent2 = exppercent2 / 2.5;
     var divArray = document.getElementById('progressBar');
     divArray.style.width = ((exppercent2) + '%');
     document.getElementById("exppercent").innerHTML = exppercent;
 }, 100);
 window.setInterval(function () {
     var healthPercent = (Math.floor((player.health / player.maxhealth()) * 100));
-    healthPercent = healthPercent / 2.5;
     var divArray = document.getElementById('progressBar2');
     divArray.style.width = ((healthPercent) + '%');
 }, 100);
@@ -369,7 +370,7 @@ function autoAttack(monster, monsterStats) {
 
 //All skill charge = maxCharge, when game loads, player equips items i.e change his stats like wisdom/int that can provide more/less charges.
 function skillChargeFill() {
-    var skill = player.activeSkills;
+    var skill = player.activeSpells;
     for (spell in skill) {
         var selectedSpell = skill[spell];
         selectedSpell.charge = selectedSpell.maxCharge();
@@ -378,8 +379,8 @@ function skillChargeFill() {
 
 function upgradeSpell(spellName) {
 
-    if (activeSkills.hasOwnProperty(spellName)) {
-        var selectedSpell = activeSkills[spellName];
+    if (activeSpells.hasOwnProperty(spellName)) {
+        var selectedSpell = activeSpells[spellName];
         if (selectedSpell.levelReq <= player.level) {
             if (selectedSpell.level < 5) {
                 if (player.skillPoints > 0) {
@@ -402,11 +403,12 @@ function upgradeSpell(spellName) {
     };
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
+    updateHtml();
 };
 var spellTotalManaCost = 0;
 function spellActivation(spellName) {
-    if (activeSkills.hasOwnProperty(spellName)) {
-        var selectedSpell = activeSkills[spellName];
+    if (activeSpells.hasOwnProperty(spellName)) {
+        var selectedSpell = activeSpells[spellName];
         if (selectedSpell.isActive == true) {
             selectedSpell.isActive = false;
             spellTotalManaCost -= selectedSpell.manaReq;

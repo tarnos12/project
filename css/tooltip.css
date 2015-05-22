@@ -1,6 +1,5 @@
 ﻿.tooltipA {
   position: relative;
-  background: #eaeaea;
   cursor: auto;
   display: inline-block;
   text-decoration: none;
@@ -58,7 +57,6 @@
 /*Tooltip B*/
 .tooltipB {
   position: relative;
-  background: #eaeaea;
   cursor:help;
   display: inline-block;
   text-decoration: none;

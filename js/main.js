@@ -18,10 +18,10 @@ function Log(data) {
     document.getElementById('logConsole').innerHTML = logTemp;
 };
 
-var currentGameVersion = 1.45;
+var currentGameVersion = 1.5;
 //PLAYER STATS
 var player = {
-    gameVersion: 1.45,
+    gameVersion: 1.5,
     isDead: false,
     runOnce: false,
     isAuto: false,
@@ -119,9 +119,10 @@ var player = {
     },
     totalIntelligence: function () {
         return Math.floor(
-            player.baseIntelligence +
+            (player.baseIntelligence +
             player.equipIntelligence() +
-            weaponMastery.staff.staffIntelligence());
+            weaponMastery.staff.staffIntelligence()) *
+            weaponSkillList.staff.spellSimulacrum.damage());
     },
     //Wisdom
     baseWisdom: 5,
@@ -178,7 +179,7 @@ var player = {
     maxDamage: function () {
         return Math.floor(
             5 + (player.totalStrength() * 0.3) +
-            equippedItems.weapon.maxDamage + weaponSkillList.sword.swordFinesse.swordDamage());
+            equippedItems.weapon.maxDamage + weaponSkillList.sword.swordFinesse.damage());
     },
     //Secondary
     accuracy: function () {
@@ -200,14 +201,14 @@ var player = {
     },
     criticalChance: function () {
         if ((10 + (player.totalDexterity() * 0.03 + player.totalLuck() * 0.01)) > 50) {
-            return 50;
+            return 50 + weaponSkillList.ranged.archerFocus.damage();
         }
         else {
-            return (10 + (player.totalDexterity() * 0.03 + player.totalLuck() * 0.01));
+            return (10 + (player.totalDexterity() * 0.03 + player.totalLuck() * 0.01) + weaponSkillList.ranged.archerFocus.damage());
         }
     },
     criticalDamage: function () {
-        return (0.5 + (player.totalDexterity() + weaponSkillList.axe.butchersInsight.damage()) * 0.05);
+        return (0.5 + (player.totalDexterity()) * 0.05);
     },
     blockChance: function () {
         return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance())
@@ -300,7 +301,7 @@ var equippedItems = {
     },
 };
 
-var maxLogLines = 16;
+var maxLogLines = 100;
 var logData = {
     length: 0
 };
@@ -345,25 +346,8 @@ function attack(monster) {
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
 function DrawBattle() {
     if (battleTurn === 21) {
-        Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
-        Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
-        Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
-        Log("<span class =\"bold\" style=\"color:red\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
-        Log("<span class =\"bold\" style=\"color:#04B4AE\">You block: </span>" + blockRate + " " + " damage total.");
-        Log("<span class =\"bold\" style=\"color:purple\">You counter enemy for: </span>" + counterDamage + " " + " damage total.");
-        Log("<span class =\"bold\" style=\"color:green\">You lifesteal for: </span>" + lifeStealAmount + " " + " health.");
-        Log("<span class =\"bold\" style=\"color:blue\">Turns: </span>" + (battleTurn - 1));
-        Log("<span class =\"bold\" style=\"color:blue\">Draw!</span>");
-        Log("<br />");
+        displayLogInfo();
         battleTurn = -1;
-        damageDealt = 0;
-        magicDamageDealt = 0;
-        blockRate = 0;
-        lifeStealAmount = 0;
-        counterDamage = 0;
-        damageTaken = 0;
-        skillReCharge();
-        updateHtml();
     };
 };
 
@@ -380,7 +364,9 @@ function playerAttack(monster, monsterStats) {
     if (playerHitChance > randomHitChance) {
         playerCriticalChance(monster, monsterStats);
         accuracyRate += 1;
-    };
+    }
+    else {
+    }
 };
 
 //player critical chance
@@ -418,9 +404,9 @@ function playerDamage(monster, monsterStats) {
 
 //player damage deal (base or critical)
 function playerDamageDeal(damage, monster, monsterStats) {
-    for (var spell in activeSkills) {
-        if (activeSkills.hasOwnProperty(spell)) {
-            var selectedSpell = activeSkills[spell];
+    for (var spell in activeSpells) {
+        if (activeSpells.hasOwnProperty(spell)) {
+            var selectedSpell = activeSpells[spell];
             if (selectedSpell.isActive == true && selectedSpell.charge > 0) {
                 magicDamage += selectedSpell.damage();
                 console.log (selectedSpell.name + " damage: " + selectedSpell.damage())
@@ -436,12 +422,18 @@ function playerDamageDeal(damage, monster, monsterStats) {
                     var skillDamage = weaponSkillStat[skill];
                     if (skillDamage.type == "damage" && skillDamage.charge >= 1) {
                         damage += skillDamage.damage();
-                        console.log(skillDamage.name + " damage: " + skillDamage.damage())
-                        skillDamage.charge -= 1;
-                        if (skillDamage.charge < 1) {
-                            skillDamage.charge += skillDamage.coolDown;
-                        };
+                        console.log("Turn: " + battleTurn + " " + skillDamage.name + " damage: " + skillDamage.damage())
+                        skillDamage.charge -= 1;       
                     };
+                    if (skillDamage.charge < 1) {
+                        skillDamage.charge += skillDamage.coolDown;
+                    };
+                    if (skillDamage.type == "MagicDamageBuff") {
+                        var randomChance = Math.floor((Math.random() * 100) + 1);
+                        if (randomChance < skillDamage.chance()) {
+                            magicDamage += skillDamage.damage()
+                        }
+                    }
                 };
             };
         };
@@ -530,27 +522,13 @@ function playerDead(monster, monsterStats) {
     document.getElementById("health").innerHTML = player.health;
     document.getElementById("gold").innerHTML = player.gold;
     document.getElementById("experience").innerHTML = player.experience;
+    displayLogInfo();
     Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + goldLost + "gold.");
     Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + expLost + "experience.");
-    Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
-    Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
-    Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
-    Log("<span class =\"bold\" style=\"color:red\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
-    Log("<span class =\"bold\" style=\"color:#04B4AE\">You block: </span>" + blockRate + " " + " damage total.");
-    Log("<span class =\"bold\" style=\"color:purple\">You counter enemy for: </span>" + counterDamage + " " + " damage total.");
-    Log("<span class =\"bold\" style=\"color:green\">You lifesteal for: </span>" + lifeStealAmount + " " + " health.");
-    Log("<span class =\"bold\" style=\"color:blue\">Turns: </span>" + (battleTurn));
     Log("<span class =\"bold\" style=\"color:red\">You have died!</span>");
     Log("You need to wait 5 seconds before you can fight again!");
-    Log("<br />");
+    
     battleTurn = -1;
-    damageDealt = 0;
-    magicDamageDealt = 0;
-    blockRate = 0;
-    lifeStealAmount = 0;
-    counterDamage = 0;
-    damageTaken = 0;
-    criticalRate = 0;
     skillReCharge();
     updateHtml();
 }
@@ -562,23 +540,8 @@ function monsterKilled(monster, monsterStats) {
     monsterExperience(monster, monsterStats);
     weaponSkill(monster, monsterStats);
     monsterStats.killCount++;
-    Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
-    Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
-    Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
-    Log("<span class =\"bold\" style=\"color:red\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
-    Log("<span class =\"bold\" style=\"color:#04B4AE\">You block: </span>" + blockRate + " " + " damage total.");
-    Log("<span class =\"bold\" style=\"color:purple\">You counter enemy for: </span>" + counterDamage + " " + " damage total.");
-    Log("<span class =\"bold\" style=\"color:green\">You lifesteal for: </span>" + lifeStealAmount + " " + " health.");
-    Log("<span class =\"bold\" style=\"color:blue\">Turns: </span>" + (battleTurn));
-    Log("<br />");
+    displayLogInfo();
     battleTurn = -1;
-    damageDealt = 0;
-    magicDamageDealt = 0;
-    blockRate = 0;
-    lifeStealAmount = 0;
-    counterDamage = 0;
-    damageTaken = 0;
-    criticalRate = 0;
     skillReCharge();
     updateHtml();
     document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
@@ -633,9 +596,9 @@ function monsterExperience(monster, monsterStats) {
 
 //Player skill recharge
 function skillReCharge() {
-    for (var spell in activeSkills) {
-        if (activeSkills.hasOwnProperty(spell)) {
-            var rechargedSpell = activeSkills[spell];
+    for (var spell in activeSpells) {
+        if (activeSpells.hasOwnProperty(spell)) {
+            var rechargedSpell = activeSpells[spell];
             rechargedSpell.charge = rechargedSpell.maxCharge();
         };
     };
@@ -714,6 +677,33 @@ function monsterGold(monster, monsterStats) {
     monsterItemDrop(monster);
 
 };
+
+function displayLogInfo() {
+    if (battleTurn > 20) {
+        battleTurn = 20;
+    }
+    Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
+    Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
+    Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
+    Log("<span class =\"bold\" style=\"color:red\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
+    Log("<span class =\"bold\" style=\"color:#04B4AE\">You block: </span>" + blockRate + " " + " damage total.");
+    Log("<span class =\"bold\" style=\"color:purple\">You counter enemy for: </span>" + counterDamage + " " + " damage total.");
+    Log("<span class =\"bold\" style=\"color:green\">You lifesteal for: </span>" + lifeStealAmount + " " + " health.");
+    Log("<span class =\"bold\" style=\"color:blue\">Turns: </span>" + (battleTurn));
+    damageDealt = 0;
+    magicDamageDealt = 0;
+    blockRate = 0;
+    lifeStealAmount = 0;
+    counterDamage = 0;
+    damageTaken = 0;
+    if (battleTurn >= 20) {
+
+        Log("<span class =\"bold\" style=\"color:blue\">Draw!</span>");
+    }
+    Log(" ");
+    skillReCharge();
+    updateHtml();
+}
 
 //Equip item function
 function equipItem(id) {
@@ -874,6 +864,8 @@ function equipItem(id) {
     CreateEquipHtml();
     updateHtml();
     skillChargeFill();
+    CreatePlayerSkillsHtml();
+    CreatePlayerHotBar();
 };
 
 //Unequip item function
@@ -1016,6 +1008,8 @@ function unequipItem(id, oldId) {
     CreateWeaponSkillHtml();
     updateHtml();
     skillChargeFill();
+    CreatePlayerSkillsHtml();
+    CreatePlayerHotBar();
 };
 
 

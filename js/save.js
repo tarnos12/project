@@ -47,6 +47,17 @@
         statStatus: statStatus,
         monsterList: monsterList,
         gameVersion: player.gameVersion,
+        //Spells
+        SkillPoints: player.skillPoints,
+        FireBall: activeSpells.fireBall.level,
+        IceShard: activeSpells.iceShard.level,
+        CallLightning: activeSpells.callLightning.level,
+        RainOfFire: activeSpells.rainOfFire.level,
+        Blizzard: activeSpells.blizzard.level,
+        BallOfLightning: activeSpells.ballOfLightning.level,
+        InfernalFlames: activeSpells.infernalFlames.level,
+        Frost: activeSpells.frost.level,
+        LightningStorm: activeSpells.lightningStorm.level,
     }
     Log("Game Saved")
     localStorage.setItem("save", JSON.stringify(save));
@@ -73,8 +84,19 @@ function load() {
     if (typeof savegame.StaffMaxExp !== "undefined") weaponMastery.staff.maxExp = savegame.StaffMaxExp;
     if (typeof savegame.StaffLevel !== "undefined") weaponMastery.staff.level = savegame.StaffLevel;
     if (typeof savegame.RangedExp !== "undefined") weaponMastery.ranged.exp = savegame.RangedExp;
-    if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.staff.maxExp = savegame.RangedMaxExp;
-    if (typeof savegame.RangedLevel !== "undefined") weaponMastery.staff.level = savegame.RangedLevel;
+    if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.ranged.maxExp = savegame.RangedMaxExp;
+    if (typeof savegame.RangedLevel !== "undefined") weaponMastery.ranged.level = savegame.RangedLevel;
+    //Spells
+    if (typeof savegame.SkillPoints !== "undefined") player.skillPoints = savegame.SkillPoints;
+    if (typeof savegame.FireBall !== "undefined") activeSpells.fireBall.level = savegame.FireBall;
+    if (typeof savegame.IceShard !== "undefined") activeSpells.iceShard.level = savegame.IceShard;
+    if (typeof savegame.CallLightning !== "undefined") activeSpells.callLightning.level = savegame.CallLightning;
+    if (typeof savegame.RainOfFire !== "undefined") activeSpells.rainOfFire.level = savegame.RainOfFire;
+    if (typeof savegame.Blizzard !== "undefined") activeSpells.blizzard.level = savegame.Blizzard;
+    if (typeof savegame.BallOfLightning !== "undefined") activeSpells.ballOfLightning.level = savegame.BallOfLightning;
+    if (typeof savegame.InfernalFlames !== "undefined") activeSpells.infernalFlames.level = savegame.InfernalFlames;
+    if (typeof savegame.Frost !== "undefined") activeSpells.frost.level = savegame.Frost;
+    if (typeof savegame.LightningStorm !== "undefined") activeSpells.lightningStorm.level = savegame.LightningStorm;
     //Other
     if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
     if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
