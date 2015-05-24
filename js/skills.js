@@ -9,26 +9,26 @@ var spell = function (level, maxLevel, id, levelReq, manaReq, name, image) { //d
     this.name = name;
     this.image = image;
     this.damage = function () {
-        return ((10 * player.level) + (player.totalIntelligence() * this.level));
+        return Math.floor((10 * this.level) + (player.totalIntelligence() * 0.1));
     };
     this.charge = 1,
     this.maxCharge = function () {
         return Math.floor(1 + (player.totalIntelligence() / 300 + player.totalWisdom() / 200));
-    }
+    };
     this.description = function () {
         return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + ".";
-    }
-}
+    };
+};
 //level/maxLevel/ID/LevelReq/ManaReq/Name/Image
 var fireBall = new spell(1, 5, 1, 1, 10, "Fireball", "FireBall");
-var iceShard = new spell(1, 5, 2, 1, 10, "ice Shard", "IceShard"); // spell2 method for different damage formula
+var iceShard = new spell(1, 5, 2, 1, 10, "ice Shard", "IceShard");
 var callLightning = new spell(1, 5, 3, 1, 10, "Call Lightning", "CallLightning");
-var rainOfFire = new spell(1, 5, 3, 4, 10, "Rain of Fire", "RainOfFire");
-var blizzard = new spell(1, 5, 3, 5, 10, "Blizzard", "Blizzard");
-var ballOfLightning = new spell(1, 5, 3, 6, 10, "Ball of Lightning", "BallOfLightning");
-var infernalFlames = new spell(1, 5, 3, 7, 10, "Infernal Flames", "InfernalFlames");
-var frost = new spell(1, 5, 3, 8, 10, "Frost", "Frost");
-var lightningStorm = new spell(1, 5, 3, 9, 10, "Lightning Storm", "LightningStorm");
+var rainOfFire = new spell(1, 5, 3, 4, 30, "Rain of Fire", "RainOfFire");
+var blizzard = new spell(1, 5, 3, 5, 30, "Blizzard", "Blizzard");
+var ballOfLightning = new spell(1, 5, 3, 6, 30, "Ball of Lightning", "BallOfLightning");
+var infernalFlames = new spell(1, 5, 3, 7, 50, "Infernal Flames", "InfernalFlames");
+var frost = new spell(1, 5, 3, 8, 50, "Frost", "Frost");
+var lightningStorm = new spell(1, 5, 3, 9, 50, "Lightning Storm", "LightningStorm");
 
 fireBall.description = function () {
     return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + "."
@@ -36,39 +36,38 @@ fireBall.description = function () {
 iceShard.description = function () {
     return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + "."
 };
-
 rainOfFire.damage = function () {
-    return ((30 * player.level) + (player.totalIntelligence() * this.level) * 1.5);
+    return Math.floor((30 * this.level) + (player.totalIntelligence() * 0.3));
 };
 rainOfFire.maxCharge = function () {
     return Math.floor(1 + (player.totalIntelligence() / 400 + player.totalWisdom() / 300));
 };
 blizzard.damage = function () {
-    return ((30 * player.level) + (player.totalIntelligence() * this.level) * 1.5);
+    return Math.floor((30 * this.level) + (player.totalIntelligence() * 0.3));
 };
 blizzard.maxCharge = function () {
     return Math.floor(1 + (player.totalIntelligence() / 400 + player.totalWisdom() / 300));
 };
 ballOfLightning.damage = function () {
-    return ((30 * player.level) + (player.totalIntelligence() * this.level) * 1.5);
+    return Math.floor((30 * this.level) + (player.totalIntelligence() * 0.3));
 };
 ballOfLightning.maxCharge = function () {
     return Math.floor(1 + (player.totalIntelligence() / 400 + player.totalWisdom() / 300));
 };
 infernalFlames.damage = function () {
-    return ((50 * player.level) + (player.totalIntelligence() * this.level) * 2);
+    return Math.floor((50 * this.level) + (player.totalIntelligence() * 0.5));
 };
 infernalFlames.maxCharge = function () {
     return Math.floor(1 + (player.totalIntelligence() / 500 + player.totalWisdom() / 400));
 };
 frost.damage = function () {
-    return ((50 * player.level) + (player.totalIntelligence() * this.level) * 2);
+    return Math.floor((50 * this.level) + (player.totalIntelligence() * 0.5));
 };
 frost.maxCharge = function () {
     return Math.floor(1 + (player.totalIntelligence() / 500 + player.totalWisdom() / 400));
 };
 lightningStorm.damage = function () {
-    return ((50 * player.level) + (player.totalIntelligence() * this.level) * 2);
+    return Math.floor((50 * this.level) + (player.totalIntelligence() * 0.5));
 };
 lightningStorm.maxCharge = function () {
     return Math.floor(1 + (player.totalIntelligence() / 500 + player.totalWisdom() / 400));
@@ -87,25 +86,23 @@ activeSpells.lightningStorm = lightningStorm;
 
 //Weapon Skills
 
-var weaponSkillDamage = function (levelReq, name, image, type) { //default spell object constructor
+var weaponSkillDamage = function (levelReq, name, image, type, type2) { //default spell object constructor
     this.levelReq = levelReq;
     this.name = name;
     this.image = image;
-    this.damage = function () {
-        return ((10 * player.level) + (player.totalIntelligence() * this.level));
-    };
     this.charge = 1;
     this.maxCharge = 1;
     this.cooldown = 0.5;
     this.type = type;
-}
+    this.type2 = type2;
+};
 //Level, name, image, type
 //SWORD SKILL
-var swordFinesse = new weaponSkillDamage(5, "Sword Finesse", "SwordFinesse", "passive");
-var parryAndRiposte = new weaponSkillDamage(10, "Parry and Riposte", "ParryAndRiposte", "counter");
-var savageStrike = new weaponSkillDamage(15, "Savage Strike", "SavageStrike", "damage");
-var sinisterSwing = new weaponSkillDamage(20, "Sinister Swing", "SinisterSwing", "damage");
-var rendingArc = new weaponSkillDamage(25, "Rending Arc", "RendingArc", "damage");
+var swordFinesse = new weaponSkillDamage(5, "Sword Finesse", "SwordFinesse", "passive", "physical");
+var parryAndRiposte = new weaponSkillDamage(10, "Parry and Riposte", "ParryAndRiposte", "counter", "physical");
+var savageStrike = new weaponSkillDamage(15, "Savage Strike", "SavageStrike", "damage", "physical");
+var sinisterSwing = new weaponSkillDamage(20, "Sinister Swing", "SinisterSwing", "damage", "physical");
+var rendingArc = new weaponSkillDamage(25, "Rending Arc", "RendingArc", "damage", "physical");
 
 //SWORD DAMAGE/BUFF/BLOCK ETC.
 
@@ -127,7 +124,7 @@ parryAndRiposte.blockChance = function () {
     return (player.isSword && weaponMastery.sword.level >= 10) ? this.blockChanceDisplay() : 0;
 };
 parryAndRiposte.blockAmountDisplay = function () {
-    return Math.floor(2 * weaponMastery.sword.level + (0.1 * player.totalEndurance()));
+    return Math.floor(weaponMastery.sword.level + (0.05 * player.totalEndurance()));
 };
 parryAndRiposte.blockAmount = function () {
     return (player.isSword && weaponMastery.sword.level >= 10) ? this.blockAmountDisplay() : 0;
@@ -135,7 +132,7 @@ parryAndRiposte.blockAmount = function () {
 
 //COUNTER
 parryAndRiposte.counterChanceDisplay = function () {
-    return Math.floor(30 + weaponMastery.sword.level + (0.02 * player.totalDexterity()));
+    return Math.floor(weaponMastery.sword.level + (0.02 * player.totalDexterity()));
 };
 parryAndRiposte.counterChance = function () {
     return (player.isSword && weaponMastery.sword.level >= 10) ? this.counterChanceDisplay() : 0;
@@ -151,14 +148,15 @@ parryAndRiposte.counterDamage = function () {
 
 //DAMAGE
 savageStrike.damageDisplay = function () {
-    return Math.floor(player.totalStrength() * 0.5)
+    return Math.floor(player.totalStrength() * 0.3)
 };
 savageStrike.damage = function () {
     return (player.isSword && weaponMastery.sword.level >= 15) ? this.damageDisplay() : 0;
 };
+savageStrike.cooldown = 0.4;
 //LIFESTEAL
 savageStrike.lifeSteal = function () {
-    return Math.floor(weaponMastery.sword.level * 2)
+    return Math.floor(weaponMastery.sword.level * 0.5)
 };
 savageStrike.lifeStealAmount = function () {
     return (player.isSword && weaponMastery.sword.level >= 15) ? this.lifeSteal() : 0;
@@ -168,22 +166,22 @@ savageStrike.lifeStealAmount = function () {
 
 //DAMAGE
 sinisterSwing.damageDisplay = function () {
-    return Math.floor(player.minDamage() + player.maxDamage());
+    return Math.floor((player.minDamage() + player.maxDamage()) * 0.5);
 };
 sinisterSwing.damage = function () {
     return (player.isSword && weaponMastery.sword.level >= 20) ? this.damageDisplay() : 0;
 };
-
+sinisterSwing.cooldown = 0.4;
 //RENDING ARC 
 
 //DAMAGE
 rendingArc.damageDisplay = function () {
-    return Math.floor((player.minDamage() + player.maxDamage()) * 2);
+    return Math.floor(player.minDamage() + player.maxDamage());
 };
 rendingArc.damage = function () {
     return (player.isSword && weaponMastery.sword.level >= 25) ? this.damageDisplay() : 0;
 };
-
+rendingArc.cooldown = 0.4;
 
 //SWORD DESCRIPTION
 swordFinesse.description = function () {
@@ -205,11 +203,11 @@ rendingArc.description = function () {
 };
 
 //AXE SKILL
-var butchersInsight = new weaponSkillDamage(5, "Butcher\'s Insight", "ButchersInsight", "passive");
-var hamstring = new weaponSkillDamage(10, "Hamstring", "Hamstring", "damage");
-var whirlwind = new weaponSkillDamage(15, "Whirlwind", "Whirlwind", "damage");
-var flurry = new weaponSkillDamage(20, "Flurry", "Flurry", "damage");
-var frenzy = new weaponSkillDamage(25, "Frenzy", "Frenzy", "buff");
+var butchersInsight = new weaponSkillDamage(5, "Butcher\'s Insight", "ButchersInsight", "passive", "physical");
+var hamstring = new weaponSkillDamage(10, "Hamstring", "Hamstring", "damage", "physical");
+var whirlwind = new weaponSkillDamage(15, "Whirlwind", "Whirlwind", "damage", "physical");
+var flurry = new weaponSkillDamage(20, "Flurry", "Flurry", "damage", "physical");
+var frenzy = new weaponSkillDamage(25, "Frenzy", "Frenzy", "buff", "physical");
 
 //AXE DAMAGE/BUFF/BLOCK ETC.
 
@@ -237,7 +235,7 @@ hamstring.damage = function () {
 
 //DAMAGE
 whirlwind.damageDisplay = function () {
-    return Math.floor(player.totalStrength() * 2);
+    return Math.floor(player.totalStrength() * 1.5);
 };
 whirlwind.damage = function () {
     return (player.isAxe && weaponMastery.axe.level >= 15) ? this.damageDisplay() : 0;
@@ -247,7 +245,7 @@ whirlwind.damage = function () {
 
 //DAMAGE
 flurry.damageDisplay = function () {
-    return Math.floor(player.totalStrength() * 3);
+    return Math.floor(player.totalStrength() * 2);
 };
 flurry.damage = function () {
     return (player.isAxe && weaponMastery.axe.level >= 20) ? this.damageDisplay() : 0;
@@ -281,11 +279,11 @@ frenzy.description = function () {
 };
 
 //MACE SKILL
-var hammerTime = new weaponSkillDamage(5, "Hammer Time", "HammerTime", "damage");
-var dominatingSlam = new weaponSkillDamage(10, "Dominating Slam", "DominatingSlam", "damage");
-var gash = new weaponSkillDamage(15, "Gash", "Gash", "damage");
-var overbearingWallop = new weaponSkillDamage(20, "Overbearing Wallop", "OverbearingWallop", "damage");
-var tremor = new weaponSkillDamage(25, "Tremor", "Tremor", "damage");
+var hammerTime = new weaponSkillDamage(5, "Hammer Time", "HammerTime", "damage", "physical");
+var dominatingSlam = new weaponSkillDamage(10, "Dominating Slam", "DominatingSlam", "damage", "physical");
+var gash = new weaponSkillDamage(15, "Gash", "Gash", "damage", "physical");
+var overbearingWallop = new weaponSkillDamage(20, "Overbearing Wallop", "OverbearingWallop", "damage", "physical");
+var tremor = new weaponSkillDamage(25, "Tremor", "Tremor", "damage", "physical");
 
 //MACE DAMAGE/BUFF/BLOCK ETC.
 
@@ -357,11 +355,11 @@ tremor.description = function () {
 };
 
 //STAFF SKILL
-var intone = new weaponSkillDamage(5, "Intone", "Intone", "MagicDamageBuff");
-var starlight = new weaponSkillDamage(10, "Starlight", "Starlight", "damage");
-var hateCannon = new weaponSkillDamage(15, "Hate Cannon", "HateCannon", "damage");
-var beguilersOrb = new weaponSkillDamage(20, "Beguiler\'s Orb", "BeguilersOrb", "damage");
-var spellSimulacrum = new weaponSkillDamage(25, "Spell Simulacrum", "SpellSimulacrum", "passive");
+var intone = new weaponSkillDamage(5, "Intone", "Intone", "magicDamageBuff", "magical");
+var starlight = new weaponSkillDamage(10, "Starlight", "Starlight", "damage", "magical");
+var hateCannon = new weaponSkillDamage(15, "Hate Cannon", "HateCannon", "damage", "magical");
+var beguilersOrb = new weaponSkillDamage(20, "Beguiler\'s Orb", "BeguilersOrb", "damage", "magical");
+var spellSimulacrum = new weaponSkillDamage(25, "Spell Simulacrum", "SpellSimulacrum", "passive", "magical");
 
 //STAFF DAMAGE/BUFF/BLOCK ETC.
 
@@ -369,7 +367,7 @@ var spellSimulacrum = new weaponSkillDamage(25, "Spell Simulacrum", "SpellSimula
 
 //BUFF
 intone.damageDisplay = function () {
-    return Math.floor(player.totalIntelligence());
+    return Math.floor(player.totalIntelligence() * 0.2);
 };
 intone.damage = function () {
     return (player.isStaff && weaponMastery.staff.level >= 5) ? this.damageDisplay() : 0;
@@ -385,7 +383,7 @@ intone.chance = function () {
 
 //DAMAGE 
 starlight.damageDisplay = function () {
-    return Math.floor(player.totalIntelligence() + player.totalWisdom());
+    return Math.floor(player.totalIntelligence() * 0.5 + player.totalWisdom() * 0.5);
 };
 starlight.damage = function () {
     return (player.isStaff && weaponMastery.staff.level >= 10) ? this.damageDisplay() : 0;
@@ -395,7 +393,7 @@ starlight.damage = function () {
 
 //DAMAGE 
 hateCannon.damageDisplay = function () {
-    return Math.floor(player.totalIntelligence() * 3);
+    return Math.floor(player.totalIntelligence());
 };
 hateCannon.damage = function () {
     return (player.isStaff && weaponMastery.staff.level >= 15) ? this.damageDisplay() : 0;
@@ -405,7 +403,7 @@ hateCannon.damage = function () {
 
 //DAMAGE 
 beguilersOrb.damageDisplay = function () {
-    return Math.floor(player.totalIntelligence() * 5 + player.totalWisdom() * 3);
+    return Math.floor(player.totalIntelligence() * 1.2 + player.totalWisdom());
 };
 beguilersOrb.damage = function () {
     return (player.isStaff && weaponMastery.staff.level >= 20) ? this.damageDisplay() : 0;
@@ -440,11 +438,11 @@ spellSimulacrum.description = function () {
 };
 
 //RANGED SKILL
-var pierceTheVeil = new weaponSkillDamage(5, "Pierce the Veil", "PierceTheVeil", "damage");
-var skyCracker = new weaponSkillDamage(10, "Sky Cracker", "SkyCracker", "damage");
-var archerFocus = new weaponSkillDamage(15, "Archer Focus", "ArcherFocus", "passive");
-var makeItRain = new weaponSkillDamage(20, "Make it Rain", "MakeItRain", "damage");
-var rangersRevenge = new weaponSkillDamage(25, "Ranger\'s Revenge", "RangersRevenge", "damage");
+var pierceTheVeil = new weaponSkillDamage(5, "Pierce the Veil", "PierceTheVeil", "damage", "physical");
+var skyCracker = new weaponSkillDamage(10, "Sky Cracker", "SkyCracker", "damage", "physical");
+var archerFocus = new weaponSkillDamage(15, "Archer Focus", "ArcherFocus", "passive", "physical");
+var makeItRain = new weaponSkillDamage(20, "Make it Rain", "MakeItRain", "damage", "physical");
+var rangersRevenge = new weaponSkillDamage(25, "Ranger\'s Revenge", "RangersRevenge", "damage", "physical");
 
 //RANGED DAMAGE/BUFF/BLOCK ETC.
 

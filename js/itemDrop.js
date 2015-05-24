@@ -100,8 +100,7 @@ function itemDropRandom(monster) {
                     dropItem["defense"] = 0;
                 };
 
-                dropItem["value"] = (dropItem.strength * 2 + dropItem.endurance * 2 + dropItem.agility * 2 + dropItem.dexterity * 2 + dropItem.wisdom * 2 + dropItem.intelligence * 2 + dropItem.luck * 2 + dropItem.defense * 2);
-                //Add item level up etc
+                 //Add item level up etc
                 if (dropItem.itemQuality == "Common") {
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
@@ -257,7 +256,7 @@ function itemDropRandom(monster) {
                         dropItem["goldRate"] = 0;
                     };
                 };
-
+                dropItem["value"] = getItemValue(dropItem); //Get item value function.
                 var itemHolder = [];
                 itemHolder.push(dropItem);
                 playerInventory.push.apply(
@@ -276,5 +275,11 @@ function getNum(min, max) // min inclusive, max exclusive
     var num = Math.random();
     num = 1 - Math.sin(num);
     return Math.round(num * (max - min) + min);
+};
+
+function getItemValue(dropItem) {
+    return Math.floor(dropItem.strength * 2 + dropItem.endurance * 2 + dropItem.agility * 2 + dropItem.dexterity * 2 +
+                      dropItem.wisdom * 2 + dropItem.intelligence * 2 + dropItem.luck * 2 + dropItem.defense * 2 +
+                      dropItem.expRate * 0.5 + dropItem.goldRate * 0.5 + dropItem.dropRate * 0.5);
 };
 

@@ -381,7 +381,7 @@ function upgradeSpell(spellName) {
 
     if (activeSpells.hasOwnProperty(spellName)) {
         var selectedSpell = activeSpells[spellName];
-        if (selectedSpell.levelReq <= player.level) {
+        if (selectedSpell.levelReq < player.level) {
             if (selectedSpell.level < 5) {
                 if (player.skillPoints > 0) {
                     player.skillPoints--;
@@ -419,7 +419,10 @@ function spellActivation(spellName) {
         else if (spellTotalManaCost + selectedSpell.manaReq <= player.maxMana()){
             selectedSpell.isActive = true;
             spellTotalManaCost += selectedSpell.manaReq;
-        };
+        }
+        else {
+            Log("You do not have enough \"Max Mana\" to activate this spell. You need " + selectedSpell.manaReq + " Max Mana.")
+        }
     };
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();

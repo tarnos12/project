@@ -30,7 +30,10 @@ function CreateWeaponSkillHtml() {
                     html += "<br />" + statName + ": " + displayStat();
                 };
             };
-            html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' + ((itemStat.exp / itemStat.maxExp) * 100) + '%;"></div></div>';
+            //Progress bar is not updating on it's own :|
+            html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' +
+                ((itemStat.exp / itemStat.maxExp) * 100) + '%;"></div></div>';
+
             html += '</span></a>';
             html += '</div>';
             var skill = weaponSkillList[weapon]
@@ -107,7 +110,7 @@ function CreateEquipHtml() {
 
                 html += '<br />' + "Value: " + itemType.value + "gold";
                 html += '</span>' + '</a>' +
-                    '<button type="button" class="btn btn-sm btn-default" onclick="unequipItem' + "(" + itemType.id + ")" + '">Unequip</button>';
+                    '<button type="button" class="attack" onclick="unequipItem' + "(" + itemType.id + ")" + '">Unequip</button>';
                 html += '</div>';
             };
         };
@@ -187,7 +190,7 @@ function CreateMonsterHtml() {
                         '<br />' +
                         "Health: " + '<span class="hp">' + monster.Stats.hp + '</span>' + "/" + monster.Stats.maxHp +
                         '<br />' +
-                        '<span type="button" class="btn btn-sm btn-default" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>';
+                        '<span type="button" class="attack" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>';
                 };
             };
         };
@@ -299,31 +302,31 @@ function CreateInventoryWeaponHtml() {
                     html += playerInventory[i].maxDamage + " (0)";
                 }
                 if ((playerInventory[i].expRate - itemStat.expRate) < 0) {
-                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (" + '<b style="color:red">' + (playerInventory[i].expRate - itemStat.expRate) + '</b>' + ")" + " to ";
+                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (" + '<b style="color:red">' + (playerInventory[i].expRate - itemStat.expRate) + '</b>' + ")";
                 }
                 else if ((playerInventory[i].expRate - itemStat.expRate) > 0) {
-                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].expRate - itemStat.expRate) + '</b>' + ")" + " to ";
+                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].expRate - itemStat.expRate) + '</b>' + ")";
                 }
                 else if ((playerInventory[i].expRate - itemStat.expRate) == 0 && playerInventory[i].expRate > 0) {
-                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (0)" + " to ";
+                    html += '<br />' + "Exp Rate: " + playerInventory[i].expRate + " (0)";
                 }
                 if ((playerInventory[i].goldRate - itemStat.goldRate) < 0) {
-                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (" + '<b style="color:red">' + (playerInventory[i].goldRate - itemStat.goldRate) + '</b>' + ")" + " to ";
+                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (" + '<b style="color:red">' + (playerInventory[i].goldRate - itemStat.goldRate) + '</b>' + ")";
                 }
                 else if ((playerInventory[i].goldRate - itemStat.goldRate) > 0) {
-                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].goldRate - itemStat.goldRate) + '</b>' + ")" + " to ";
+                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].goldRate - itemStat.goldRate) + '</b>' + ")";
                 }
                 else if ((playerInventory[i].goldRate - itemStat.goldRate) == 0 && playerInventory[i].goldRate > 0) {
-                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (0)" + " to ";
+                    html += '<br />' + "Gold Rate: " + playerInventory[i].goldRate + " (0)";
                 }
                 if ((playerInventory[i].dropRate - itemStat.dropRate) < 0) {
-                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (" + '<b style="color:red">' + (playerInventory[i].dropRate - itemStat.dropRate) + '</b>' + ")" + " to ";
+                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (" + '<b style="color:red">' + (playerInventory[i].dropRate - itemStat.dropRate) + '</b>' + ")";
                 }
                 else if ((playerInventory[i].dropRate - itemStat.dropRate) > 0) {
-                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].dropRate - itemStat.dropRate) + '</b>' + ")" + " to ";
+                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (" + '<b style="color:green">' + "+" + (playerInventory[i].dropRate - itemStat.dropRate) + '</b>' + ")";
                 }
                 else if ((playerInventory[i].dropRate - itemStat.dropRate) == 0 && playerInventory[i].dropRate > 0) {
-                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (0)" + " to ";
+                    html += '<br />' + "Drop Rate: " + playerInventory[i].dropRate + " (0)";
                 };
                 var item = playerInventory[i];
                 for (var statName in item) { //Here stat will become the word Defense
@@ -352,8 +355,8 @@ function CreateInventoryWeaponHtml() {
                 html += '<br />' + "Value: " + playerInventory[i].value + "gold";
                 html += '</span>' + '</a>' + '</td>' +
 
-                 '<button type="button" class="btn btn-sm btn-default" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
-                 '<button type="button" class="btn btn-sm btn-default" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>';
+                 '<button type="button" class="equip" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
+                 '<button type="button" class="equip" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>';
                 html += '</div>';
             };
         };

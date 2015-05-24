@@ -1,4 +1,13 @@
 _________________________
+v1.5.0 - 24 may 2015     |
+-------------------------|
+- Item values change according to it's stats, so upgrading it/craft (in future) will also change value of the item.
+- Fixed accessories having 0 value.
+- Changed GUI a little, added borders, new buttons.
+- When you hover your mouse over an attack button, your pointer will change into a sword, and will move when you attack.
+- Spells, and weapon skills, deal less damage, sword skill "lifesteal" and "block" give less bonuses. Still working on a better balance, but not all weapon skills are completed yet.
+- All item images are resized, this should fix the problem with equip/sell buttons moving around.
+_________________________
 v1.5.0 - 22 may 2015     |
 -------------------------|
 - Fixed accessories not giving right amount of Drop Rate(They were giving 5 times less).

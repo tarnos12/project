@@ -49,7 +49,7 @@ var player = {
         return (1 + (equippedItems.ring.goldRate + equippedItems.amulet.goldRate + equippedItems.talisman.goldRate) / 100);
     },
     inventory: function () {
-        return Math.floor((20 + (player.totalStrength() / 10) + player.backpackUpgrade)); //Add backpacks "new item type"
+        return Math.floor(20 + (player.totalStrength() / 10) + player.backpackUpgrade); //Add backpacks "new item type"
     },
     //Strength
     baseStrength: 5,
@@ -211,19 +211,19 @@ var player = {
         return (0.5 + (player.totalDexterity()) * 0.05);
     },
     blockChance: function () {
-        return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance())
+        return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance());
     },
     blockAmount: function () {
-        return Math.floor(weaponSkillList.sword.parryAndRiposte.blockAmount())
+        return Math.floor(weaponSkillList.sword.parryAndRiposte.blockAmount());
     },
     counterChance: function () {
-        return Math.floor(weaponSkillList.sword.parryAndRiposte.counterChance())
+        return Math.floor(weaponSkillList.sword.parryAndRiposte.counterChance());
     },
     counterDamage: function () {
-        return Math.floor(weaponSkillList.sword.parryAndRiposte.counterDamage())
+        return Math.floor(weaponSkillList.sword.parryAndRiposte.counterDamage());
     },
     lifeSteal: function () {
-        return Math.floor(weaponSkillList.sword.savageStrike.lifeStealAmount())
+        return Math.floor(weaponSkillList.sword.savageStrike.lifeStealAmount());
     },
 };
 //Equipped items object, storing 0 values, so all player stats will work at the beginning of the game
@@ -420,20 +420,33 @@ function playerDamageDeal(damage, monster, monsterStats) {
             for (var skill in weaponSkillStat) {
                 if (weaponSkillStat.hasOwnProperty(skill)) {
                     var skillDamage = weaponSkillStat[skill];
-                    if (skillDamage.type == "damage" && skillDamage.charge >= 1) {
-                        damage += skillDamage.damage();
-                        //console.log("Turn: " + battleTurn + " " + skillDamage.name + " damage: " + skillDamage.damage())
-                        skillDamage.charge -= 1;       
-                    };
-                    if (skillDamage.charge < 1) {
-                        skillDamage.charge += skillDamage.coolDown;
-                    };
-                    if (skillDamage.type == "MagicDamageBuff") {
-                        var randomChance = Math.floor((Math.random() * 100) + 1);
-                        if (randomChance < skillDamage.chance()) {
-                            magicDamage += skillDamage.damage()
+                    if (skillDamage.charge >= 1) {
+                        if (skillDamage.type == "damage") {
+                            if (skillDamage.type2 == "physycal") {
+                                damage += skillDamage.damage();
+                                skillDamage.charge -= 1;
+                            }
+                            else if (skillDamage.type2 == "magical") {
+                                magicDamage += skillDamage.damage();
+                                //console.log("Turn: " + battleTurn + " " + skillDamage.name + " damage: " + skillDamage.damage())
+                                skillDamage.charge -= 1;
+                            }
+                        };
+                        if (skillDamage.type == "magicDamageBuff") {
+                            var randomChance = Math.floor((Math.random() * 100) + 1);
+                            if (randomChance < skillDamage.chance()) {
+                                magicDamage += skillDamage.damage()
+                                //console.log("Turn: " + battleTurn + " " + skillDamage.name + " damage: " + skillDamage.damage())
+                            }
                         }
-                    }
+                        if (skillDamage.type == "buff") {
+                            damage += skillDamage.damage();
+                            skillDamage.charge -= 1;
+                        };
+                    };
+                };
+                if (skillDamage.charge < 1) {
+                    skillDamage.charge += skillDamage.cooldown;
                 };
             };
         };
@@ -565,9 +578,9 @@ function weaponSkill(monster, monsterStats) {
             weaponMastery[subType]["exp"] -= weaponMastery[subType]["maxExp"];
             weaponMastery[subType]["maxExp"] = Math.floor(weaponMastery[subType]["maxExp"] * 1.2);
             Log("<span style=\"color:green\">You gained level in " + weaponMastery[subType].name + " Mastery!</span>")
+            CreateWeaponSkillHtml();
         };
     };
-    CreateWeaponSkillHtml();
 };
 
 //experience gained from killing a monster
@@ -658,6 +671,8 @@ function itemExperienceGain(monster, monsterStats) {
                 weapon.wisdom += Math.floor(weapon.iLvl + weapon.power);
             };
         };
+        var newItemValue = getItemValue(weapon);
+        equippedItems.weapon.value = newItemValue;
         equippedItems.weapon.exp = weaponExp;
         equippedItems.weapon.maxExp = weaponMaxExp;
         equippedItems.weapon.level = weaponLevel;
@@ -696,6 +711,10 @@ function displayLogInfo() {
     lifeStealAmount = 0;
     counterDamage = 0;
     damageTaken = 0;
+    criticalRate = 0;
+    enemyBlock = 0;
+    accuracyRate = 0;
+    monsterDamage = 0;
     if (battleTurn >= 20) {
 
         Log("<span class =\"bold\" style=\"color:blue\">Draw!</span>");
