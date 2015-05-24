@@ -1,5 +1,5 @@
 _________________________
-v1.5.0 - 24 may 2015     |
+v1.5.1 - 24 may 2015     |
 -------------------------|
 - Item values change according to it's stats, so upgrading it/craft (in future) will also change value of the item.
 - Fixed accessories having 0 value.
