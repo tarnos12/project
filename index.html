@@ -8,9 +8,13 @@
     <link href="css/text.css" rel="stylesheet" type="text/css">
     <link href="css/tooltip.css" rel="stylesheet" type="text/css">
     <link href="css/icons.css" rel="stylesheet" type="text/css">
+    <link href="css/button.css" rel="stylesheet" type="text/css">
     <link rel="Shortcut icon" href="images/icon.png">
     <title>Legend of the Fallen Warrior</title>
     <style type="text/css">
+        html{
+            width:95%;
+        }
         body {
             background-image: url("images/bg.jpg");
             background-color: #cccccc;
@@ -61,6 +65,7 @@
 
         div.c4 {
             background-color: #EEDFA6;
+            border: 2px solid #A6B5EE;
         }
 
         div.c3 {
@@ -74,8 +79,10 @@
         div.c1 {
             height: 20px;
         }
-
-        span.scroll {
+        div.c11{
+            height: 40px;
+        }
+        div.scroll {
             display: block;
             overflow: auto;
             height: 400px;
@@ -84,6 +91,16 @@
         div.c0 {
             margin-top: 5px;
             margin-bottom: 5px;
+        }
+        div.margin{
+            margin-left:2px;
+            margin-right:2px;
+        }
+        .level{
+            font-size:20px;
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color:firebrick;
+            
         }
     </style>
 </head>
@@ -101,36 +118,34 @@
 
     </script>
     <div class="container-fluid">
+        <!--First Row-->
         <div class="row">
             <div class="col-sm-1 col-md-1 col-lg-1">
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4 c4 c0">
-                <div class="row">
+                <div class="row c11 c3 level">
                     Level
                     <span id="level">1</span>
-                </div>
-                <div class="row">
-                    Exp
-                    <span id="experience">0</span>/<span id="maxexperience">100</span>
+                    
+                    (<span id="experience">0</span>/<span id="maxexperience">100</span>)
                 </div>
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="col-sm-3 col-md-3 col-lg-3 c4 c0 margin">
                 <div class="row">
                     <div id="progressBar" class="progress-bar progress-bar c1">Exp: <span id="exppercent">0</span>%</div>
                 </div>
-                <div class="row">
-                    <div id="progressBar2" class="progress-bar progress-bar-success progress-bar c2">HP: <span id="health">50</span>/<span id="maxhealth">50</span></div>
-                </div>
+                    <div class="row">
+                        <div id="progressBar2" class="progress-bar progress-bar-success progress-bar c2">HP: <span id="health">50</span>/<span id="maxhealth">50</span></div>
+                    </div>
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3 c4 c0">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                    <img src="images/gold.jpg" alt="Gold Coin">
+                <div class="row c11 level">
+                    Gold:
                     <span id="gold">0</span>
                 </div>
-            </div>
-            <div class="col-md-1 col-lg-1">
-            </div>
+                </div>
         </div>
+        <!--Second Row-->
         <div class="row">
             <div class="col-md-1 col-lg-1">
             </div>
@@ -272,28 +287,28 @@
                                 <h4>Secondary Stats</h4>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Health regen:<span id="hpregen">2</span>
+                                Health regen:<span id="hpregen">2</span><strong>(End)</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Mana regen:<span id="manaRegen">1</span>
+                                Mana regen:<span id="manaRegen">1</span><strong>(Wis,Int)</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Defense:<span id="defense">0</span>
+                                Defense:<span id="defense">0</span><strong>(Agi)</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Accuracy:<span id="accuracy">100</span>%
+                                Accuracy:<span id="accuracy">100</span>%<strong>(Agi,Luk)</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Evasion:<span id="evasion">0</span>%
+                                Evasion:<span id="evasion">0</span>%<strong>(Agi,Luk)</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Critical chance:<span id="criticalChance">1</span>%
+                                Crit:<span id="criticalChance">1</span>%<strong>(Dex,Luk)</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Critical damage:<span id="criticalDamage">1</span>
+                                Critical Dmg:<span id="criticalDamage">1</span><strong>(Dex)</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Drop rate:<span id="dropRate">0</span>%
+                                Drop rate:<span id="dropRate">0</span>%<strong>(Luk)</strong>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 Exp rate:<span id="expRate">0</span>%
@@ -468,18 +483,18 @@
                 <!-- end of container -->
             </div>
 
-            <div class="col-sm-3 col-md-3 col-lg-3">
+            <div class="col-sm-3 col-md-3 col-lg-3 margin">
                 <div class="row c4">
                     <div id="monsterTabs">
                     </div>
                     <!-- tab content -->
                 </div> <!--move this div below "logConsole table" to stick log console with monsters...-->
                 <div id="hotBar" class="c6 c4"></div>
-                <table class="table table-condensed table-striped table-responsive">
+                <table class="table table-condensed table-striped table-responsive  c4">
                     <tbody>
                         <tr>
                             <td>
-                                <span class="scroll" id="logConsole"></span>
+                                <div class="scroll c4 c3" id="logConsole"></div>
                             </td>
                         </tr>
                     </tbody>
@@ -551,10 +566,10 @@
                                 </div>
                                 <div class="tab-pane " id="tab_f3">
                                     <div class="btn-group btn-group-sm" role="group" aria-label="Left Align">
-                                        <br /><button type="button" class="btn btn-sm btn-default" onclick="sellAllCommon()">Sell All Common</button>
-                                        <button type="button" class="btn btn-sm btn-default" onclick="sellAllUncommon()">Sell All Uncommon</button>
-                                        <button type="button" class="btn btn-sm btn-default" onclick="sellAllRare()">Sell All Rare</button>
-                                        <button type="button" class="btn btn-sm btn-default" onclick="sellAllEpic()">Sell All Epic</button>
+                                        <br /><button type="button" class="sell" onclick="sellAllCommon()">Sell All Common</button>
+                                        <button type="button" class="sell" onclick="sellAllUncommon()">Sell All Uncommon</button>
+                                        <button type="button" class="sell" onclick="sellAllRare()">Sell All Rare</button>
+                                        <button type="button" class="sell" onclick="sellAllEpic()">Sell All Epic</button>
                                     </div>
                                     <div class="inventory" id="inventory"></div>
 
@@ -582,25 +597,25 @@
                             </div>
                             <p>
                                 <img src="images/stat.png" alt="Buy Stat">Stat Points(<span id="buyStat">500</span> gold)
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyStat(1)">Buy</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyStat(10)">Buy 10</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyStat(100)">Buy 100</button><br />
+                                <button type="button" class="buy" onclick="buyStat(1)">Buy</button>
+                                <button type="button" class="buy" onclick="buyStat(10)">Buy 10</button>
+                                <button type="button" class="buy" onclick="buyStat(100)">Buy 100</button><br />
                                 <img src="images/bag.png" alt="Upgrade Backpack">Bag Slots(<span id="buyBackpack">100</span> gold)
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyBackpack(1)">Buy</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyBackpack(10)">Buy 10</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyBackpack(100)">Buy 100</button><br>
+                                <button type="button" class="buy" onclick="buyBackpack(1)">Buy</button>
+                                <button type="button" class="buy" onclick="buyBackpack(10)">Buy 10</button>
+                                <button type="button" class="buy" onclick="buyBackpack(100)">Buy 100</button><br>
                                 <img src="images/hp.png" alt="Buy Potion">Health Potion(20gold each)
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyPotion(1)">Buy</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyPotion(10)">Buy 10</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyPotion(100)">Buy 100</button><br>
+                                <button type="button" class="buy" onclick="buyPotion(1)">Buy</button>
+                                <button type="button" class="buy" onclick="buyPotion(10)">Buy 10</button>
+                                <button type="button" class="buy" onclick="buyPotion(100)">Buy 100</button><br>
                                 <img src="images/hp.png" alt="Buy Super Potion">Super Potion(100gold each)
-                                <button type="button" class="btn btn-sm btn-default" onclick="buySuperPotion(1)">Buy</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buySuperPotion(10)">Buy 10</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buySuperPotion(100)">Buy 100</button><br>
+                                <button type="button" class="buy" onclick="buySuperPotion(1)">Buy</button>
+                                <button type="button" class="buy" onclick="buySuperPotion(10)">Buy 10</button>
+                                <button type="button" class="buy" onclick="buySuperPotion(100)">Buy 100</button><br>
                                 <img src="images/hp.png" alt="Buy Mega Potion">Mega Potion(500gold each)
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyMegaPotion(1)">Buy</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyMegaPotion(10)">Buy 10</button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="buyMegaPotion(100)">Buy 100</button>
+                                <button type="button" class="buy" onclick="buyMegaPotion(1)">Buy</button>
+                                <button type="button" class="buy" onclick="buyMegaPotion(10)">Buy 10</button>
+                                <button type="button" class="buy" onclick="buyMegaPotion(100)">Buy 100</button>
                             </p>
                         </div>
 

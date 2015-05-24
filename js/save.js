@@ -261,7 +261,7 @@ function pageReload() {
     location.reload();
 };
 function versionCheck() {
-    if (player.gameVersion != currentGameVersion) {
+    if (player.gameVersion !== currentGameVersion && player.gameVersion === null) {
         reset();
     };
 };
