@@ -25,7 +25,6 @@
     var intelligence;
     var wisdom;
     var luck;
-    var maxHealth;
     var hpRegen;
     var stats;
     var accuracy;
@@ -54,7 +53,6 @@
     maxDamage = document.getElementById('maxdamage');
     strength = document.getElementById('strength');
     endurance = document.getElementById("endurance");
-    maxHealth = document.getElementById("maxhealth");
     hpRegen = document.getElementById("hpregen");
     stats = document.getElementById("stats");
     agility = document.getElementById("agility");
@@ -87,7 +85,6 @@
     maxDamage.innerHTML = player.maxDamage().toFixed(0);
     strength.innerHTML = player.totalStrength() + " (" + '<font color="blue">' + player.equipStrength() + '</font>' + ")";
     endurance.innerHTML = player.totalEndurance() + " (" + '<font color="blue">' + player.equipEndurance() + '</font>' + ")";
-    maxHealth.innerHTML = player.maxhealth();
     hpRegen.innerHTML = player.hpregen();
     stats.innerHTML = player.stats;
     agility.innerHTML = player.totalAgility() + " (" + '<font color="blue">' + player.equipAgility() + '</font>' + ")";
@@ -128,7 +125,7 @@ window.setInterval(function () {
     var exppercent2 = (Math.floor((player.experience / player.maxExperience) * 100));
     var divArray = document.getElementById('progressBar');
     divArray.style.width = ((exppercent2) + '%');
-    document.getElementById("exppercent").innerHTML = exppercent;
+    document.getElementById("exppercent").innerHTML = exppercent + "%";
 }, 100);
 window.setInterval(function () {
     var healthPercent = (Math.floor((player.health / player.maxhealth()) * 100));
@@ -140,7 +137,7 @@ window.setInterval(function () { //Health regen
         if (player.health < player.maxhealth()) player.health += player.hpregen();
         if (player.health > player.maxhealth()) player.health = player.maxhealth();
     }
-    document.getElementById('health').innerHTML = player.health;
+    document.getElementById('health').innerHTML = player.health + "/" + player.maxhealth();
 }, 1000);
 window.setInterval(function () { //Mana regen
     if (player.mana < player.maxMana()) player.mana += player.manaRegen();
