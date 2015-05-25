@@ -47,4 +47,32 @@ var monsterAreas = [
            icon: 'ancientCave'
        }
 ];
+/*var weaponSkillType = [
+    {
+        type: 'sword',
+        displayName: 'Sword',
+        icon: 'sword',
+    },
+     {
+         type: 'axe',
+         displayName: 'Axe',
+         icon: 'axe'
+     },
+      {
+          type: 'mace',
+          displayName: 'Mace',
+          icon: 'mace'
+      },
+       {
+           type: 'staff',
+           displayName: 'Staff',
+           icon: 'staff'
+       },
+       {
+           type: 'ranged',
+           displayName: 'Ranged',
+           icon: 'ranged'
+       }
+];
+*/
 CreateMonsterHtml();

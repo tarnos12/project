@@ -510,7 +510,7 @@ function monsterDamageDeal(monsterDamage, monster, monsterStats) {
                     
     player.health = player.health - monsterDamage;
     damageTaken += monsterDamage;
-    document.getElementById("health").innerHTML = player.health;
+    document.getElementById("health").innerHTML = player.health + "/" + player.maxhealth();
     document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     if (player.health < 1) {
         playerDead(monster, monsterStats);

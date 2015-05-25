@@ -120,5 +120,28 @@ div.inventory {
     height: 500px;
 }
 
-.progress {background: rgba(245, 245, 245, 1); border: 0px solid rgba(245, 245, 245, 1); border-radius: 6px; height: 15px; width: 60%;}
+.progress {
+    background: rgba(245, 245, 245, 1); 
+    border: 1px solid rgba(66, 139, 202, 1); 
+    border-radius: 6px; 
+    height: 18px; 
+    width: 100%;
+    position: relative;
+}
 .progress-bar-custom {background: rgba(66, 139, 202, 1);}
+
+/**
+ * Progress bars with centered text
+ */
+
+.progress span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: black;
+    font-size:16px;
+    font-weight:700;
+}
+.progressColor{
+    background:#04B431;
+}

@@ -67,43 +67,28 @@
             background-color: #EEDFA6;
             border: 2px solid #A6B5EE;
         }
-
+        div.background{
+            background-color: #EEDFA6;
+        }
         div.c3 {
-            text-align: center;
+            text-align:center;
         }
-
-        div.c2 {
-            height: 20px;
-        }
-
-        div.c1 {
-            height: 20px;
+        div.c2{
+            text-align:left;
         }
         div.c11{
-            height: 40px;
+            height: 60px;
         }
         div.scroll {
             display: block;
             overflow: auto;
             height: 400px;
         }
-
-        div.c0 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        div.margin{
-            margin-left:2px;
-            margin-right:2px;
-        }
         .level{
             font-size:20px;
             font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             color:firebrick;
             text-align:right;
-        }
-        .gold{
-            text-align:left;
         }
     </style>
 </head>
@@ -125,28 +110,32 @@
         <div class="row">
             <div class="col-sm-1 col-md-1 col-lg-1">
             </div>
-            <div class="col-sm-4 col-md-4 col-lg-4 c4 c0">
+            <div class="col-sm-4 col-md-4 col-lg-4 background">
                 <div class="row c11 level">
                     Level
                     <span id="level">1</span>
-                    
+
                     (<span id="experience">0</span>/<span id="maxexperience">100</span>)
                 </div>
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3 c4 c0 margin">
-                <div class="row">
-                    <div id="progressBar" class="progress-bar progress-bar c1">Exp: <span id="exppercent">0</span>%</div>
-                </div>
-                    <div class="row">
-                        <div id="progressBar2" class="progress-bar progress-bar-success progress-bar c2">HP: <span id="health">50</span>/<span id="maxhealth">50</span></div>
+            <div class="col-sm-3 col-md-3 col-lg-3 background">
+                <div class="progress">
+                    <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                        <span id="exppercent">60% Complete</span>
                     </div>
+                </div>
+                <div class="progress">
+                    <div id="progressBar2" class="progress-bar progressColor" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                        <span id="health"></span>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-3 col-md-3 col-lg-3 c4 c0">
-                <div class="row c11 level gold">
+            <div class="col-sm-3 col-md-3 col-lg-3 background">
+                <div class="row c11 level c2">
                     Gold:
                     <span id="gold">0</span>
                 </div>
-                </div>
+            </div>
         </div>
         <!--Second Row-->
         <div class="row">
@@ -160,7 +149,7 @@
                         <li><a href="#tab_c" data-toggle="tab"><span class="icons gameStory"></span></a></li>
                     </ul>
                     <div class="tab-content">
-                        <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active" id="tab_a">
+                        <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active c2" id="tab_a">
                             <div class="c3">
                                 <h4>Player Stats</h4>
                             </div>
@@ -181,7 +170,7 @@
                                         10 points = 1 Inventory slot
                                     </span>
                                 </a>
-                                <span id="strength">5</span><br />
+                                <span id="strength">5</span>
                                 <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -192,7 +181,7 @@
                                         3 points = 1 Health/s
                                     </span>
                                 </a>
-                                <span id="endurance">5</span><br />
+                                <span id="endurance">5</span>
 
                                 <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
                             </div>
@@ -206,7 +195,7 @@
 
                                     </span>
                                 </a>
-                                <span id="agility">5</span><br />
+                                <span id="agility">5</span>
 
                                 <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
                             </div>
@@ -218,7 +207,7 @@
                                         10 points = 2% Critical Damage
                                     </span>
                                 </a>
-                                <span id="dexterity">5</span><br />
+                                <span id="dexterity">5</span>
 
                                 <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
 
@@ -232,7 +221,7 @@
                                     </span>
                                 </a>
 
-                                <span id="intelligence">5</span><br />
+                                <span id="intelligence">5</span>
 
                                 <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
                             </div>
@@ -245,7 +234,7 @@
                                     </span>
                                 </a>
 
-                                <span id="wisdom">5</span><br />
+                                <span id="wisdom">5</span>
 
                                 <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
                             </div>
@@ -493,7 +482,7 @@
                     <!-- tab content -->
                 </div> <!--move this div below "logConsole table" to stick log console with monsters...-->
                 <div id="hotBar" class="c6 c4"></div>
-                <table class="table table-condensed table-striped table-responsive  c4">
+                <table class="table table-condensed table-striped table-responsive c4">
                     <tbody>
                         <tr>
                             <td>
