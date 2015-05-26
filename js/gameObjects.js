@@ -47,7 +47,7 @@ var monsterAreas = [
            icon: 'ancientCave'
        }
 ];
-/*var weaponSkillType = [
+var weaponSkillType = [
     {
         type: 'sword',
         displayName: 'Sword',
@@ -74,5 +74,5 @@ var monsterAreas = [
            icon: 'ranged'
        }
 ];
-*/
+
 CreateMonsterHtml();

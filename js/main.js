@@ -238,7 +238,10 @@ var equippedItems = {
         luck: 0,
         minDamage: 0,
         maxDamage: 0,
-        defense: 0
+        defense: 0,
+        exp: 0,
+        maxExp: 0,
+        subType: "sword",
     },
     offHand: {
         strength: 0,
@@ -569,6 +572,7 @@ function weaponSkill(monster, monsterStats) {
         var expgain = monsterStats.level;
     };
     var subType = equippedItems.weapon.subType;
+    var itemStat = weaponMastery[subType]
     if (weaponMastery[subType] !== undefined) {
         if (weaponMastery[subType]["exp"] < weaponMastery[subType]["maxExp"]) {
             weaponMastery[subType]["exp"] = Math.floor(weaponMastery[subType]["exp"] + expgain);
@@ -581,7 +585,30 @@ function weaponSkill(monster, monsterStats) {
             CreateWeaponSkillHtml();
         };
     };
+    updateBar();
 };
+function updateBar() {
+    var subType = equippedItems.weapon.subType;
+    var itemStat = weaponMastery[subType]
+    var weaponExp = (Math.floor((itemStat.exp / itemStat.maxExp) * 100));
+    var divArray = document.getElementById(subType + "1");
+    divArray.style.width = ((weaponExp) + '%');
+    if (subType === "sword") {
+        document.getElementById("sword").innerHTML = weaponExp + "%";
+    }
+    if (subType === "axe") {
+        document.getElementById("axe").innerHTML = weaponExp + "%";
+    }
+    if (subType === "mace") {
+        document.getElementById("mace").innerHTML = weaponExp + "%";
+    }
+    if (subType === "staff") {
+        document.getElementById("staff").innerHTML = weaponExp + "%";
+    }
+    if (subType === "ranged") {
+        document.getElementById("ranged").innerHTML = weaponExp + "%";
+    };
+}
 
 //experience gained from killing a monster
 function monsterExperience(monster, monsterStats) {
