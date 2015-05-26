@@ -173,12 +173,12 @@ var player = {
     //Damage
     minDamage: function () {
         return Math.floor(
-            3 + (player.totalStrength() * 0.2) +
+            3 + (player.totalStrength() * 0.4) +
             equippedItems.weapon.minDamage);
     },
     maxDamage: function () {
         return Math.floor(
-            5 + (player.totalStrength() * 0.3) +
+            5 + (player.totalStrength() * 0.6) +
             equippedItems.weapon.maxDamage + weaponSkillList.sword.swordFinesse.damage());
     },
     //Secondary
