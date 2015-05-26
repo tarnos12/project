@@ -1,5 +1,5 @@
 ﻿function save() {
-    var save = {
+    var saveGame = {
         playerGold: player.gold,
         playerHealth: player.health,
         playerStats: player.stats,
@@ -60,71 +60,73 @@
         LightningStorm: activeSpells.lightningStorm.level,
     }
     Log("Game Saved")
-    localStorage.setItem("save", JSON.stringify(save));
+    localStorage.setItem("save", JSON.stringify(saveGame));
 }
 
 function load() {
-    var savegame = JSON.parse(localStorage.getItem("save"));
-    if (typeof savegame.itemId !== "undefined") player.itemIdNumber = savegame.itemId;
-    if (typeof savegame.gameVersion !== "undefined") player.gameVersion = savegame.gameVersion;
-    if (typeof savegame.monsterList !== "undefined") monsterList = savegame.monsterList;
-    if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
-    if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
-    if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
-    if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.exp = savegame.SwordExp;
-    if (typeof savegame.SwordMaxExp !== "undefined") weaponMastery.sword.maxExp = savegame.SwordMaxExp;
-    if (typeof savegame.SwordLevel !== "undefined") weaponMastery.sword.level = savegame.SwordLevel;
-    if (typeof savegame.AxeExp !== "undefined") weaponMastery.axe.exp = savegame.AxeExp;
-    if (typeof savegame.AxeMaxExp !== "undefined") weaponMastery.axe.maxExp = savegame.AxeMaxExp;
-    if (typeof savegame.AxeLevel !== "undefined") weaponMastery.axe.level = savegame.AxeLevel;
-    if (typeof savegame.MaceExp !== "undefined") weaponMastery.mace.exp = savegame.MaceExp;
-    if (typeof savegame.MaceMaxExp !== "undefined") weaponMastery.mace.maxExp = savegame.MaceMaxExp;
-    if (typeof savegame.MaceLevel !== "undefined") weaponMastery.mace.level = savegame.MaceLevel;
-    if (typeof savegame.StaffExp !== "undefined") weaponMastery.staff.exp = savegame.StaffExp;
-    if (typeof savegame.StaffMaxExp !== "undefined") weaponMastery.staff.maxExp = savegame.StaffMaxExp;
-    if (typeof savegame.StaffLevel !== "undefined") weaponMastery.staff.level = savegame.StaffLevel;
-    if (typeof savegame.RangedExp !== "undefined") weaponMastery.ranged.exp = savegame.RangedExp;
-    if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.ranged.maxExp = savegame.RangedMaxExp;
-    if (typeof savegame.RangedLevel !== "undefined") weaponMastery.ranged.level = savegame.RangedLevel;
-    //Spells
-    if (typeof savegame.SkillPoints !== "undefined") player.skillPoints = savegame.SkillPoints;
-    if (typeof savegame.FireBall !== "undefined") activeSpells.fireBall.level = savegame.FireBall;
-    if (typeof savegame.IceShard !== "undefined") activeSpells.iceShard.level = savegame.IceShard;
-    if (typeof savegame.CallLightning !== "undefined") activeSpells.callLightning.level = savegame.CallLightning;
-    if (typeof savegame.RainOfFire !== "undefined") activeSpells.rainOfFire.level = savegame.RainOfFire;
-    if (typeof savegame.Blizzard !== "undefined") activeSpells.blizzard.level = savegame.Blizzard;
-    if (typeof savegame.BallOfLightning !== "undefined") activeSpells.ballOfLightning.level = savegame.BallOfLightning;
-    if (typeof savegame.InfernalFlames !== "undefined") activeSpells.infernalFlames.level = savegame.InfernalFlames;
-    if (typeof savegame.Frost !== "undefined") activeSpells.frost.level = savegame.Frost;
-    if (typeof savegame.LightningStorm !== "undefined") activeSpells.lightningStorm.level = savegame.LightningStorm;
-    //Other
-    if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
-    if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
-    if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
-    if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
-    if (typeof savegame.playerExperience !== "undefined") player.experience = savegame.playerExperience;
-    if (typeof savegame.playerMaxExperience !== "undefined") player.maxExperience = savegame.playerMaxExperience;
-    if (typeof savegame.playerStrength !== "undefined") player.baseStrength = savegame.playerStrength;
-    if (typeof savegame.playerEndurance !== "undefined") player.baseEndurance = savegame.playerEndurance;
-    if (typeof savegame.playerAgility !== "undefined") player.baseAgility = savegame.playerAgility;
-    if (typeof savegame.playerDexterity !== "undefined") player.baseDexterity = savegame.playerDexterity;
-    if (typeof savegame.playerIntelligence !== "undefined") player.baseIntelligence = savegame.playerIntelligence;
-    if (typeof savegame.playerWisdom !== "undefined") player.baseWisdom = savegame.playerWisdom;
-    if (typeof savegame.playerLuck !== "undefined") player.baseLuck = savegame.playerLuck;
-    if (typeof savegame.pot !== "undefined") pot = savegame.pot;
-    if (typeof savegame.spot !== "undefined") spot = savegame.spot;
-    if (typeof savegame.mpot !== "undefined") mpot = savegame.mpot;
-    if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
-    if (typeof savegame.playerOffHand !== "undefined") equippedItems.offHand = savegame.playerOffHand;
-    if (typeof savegame.playerArmor !== "undefined") equippedItems.armor = savegame.playerArmor;
-    if (typeof savegame.playerRing !== "undefined") equippedItems.ring = savegame.playerRing;
-    if (typeof savegame.playerAmulet !== "undefined") equippedItems.amulet = savegame.playerAmulet;
-    if (typeof savegame.playerTalisman !== "undefined") equippedItems.talisman = savegame.playerTalisman;
-    if (typeof savegame.inventory !== "undefined") playerInventory = savegame.inventory;
-    document.getElementById('potion').innerHTML = pot;
-    document.getElementById('superPotion').innerHTML = spot;
-    document.getElementById('megaPotion').innerHTML = mpot;
-    document.getElementById("gold").innerHTML = player.gold;
+    if (localStorage['save']) {
+        var savegame = JSON.parse(localStorage.getItem("save"));
+        if (typeof savegame.itemId !== "undefined") player.itemIdNumber = savegame.itemId;
+        if (typeof savegame.gameVersion !== "undefined") player.gameVersion = savegame.gameVersion;
+        if (typeof savegame.monsterList !== "undefined") monsterList = savegame.monsterList;
+        if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
+        if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
+        if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
+        if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.exp = savegame.SwordExp;
+        if (typeof savegame.SwordMaxExp !== "undefined") weaponMastery.sword.maxExp = savegame.SwordMaxExp;
+        if (typeof savegame.SwordLevel !== "undefined") weaponMastery.sword.level = savegame.SwordLevel;
+        if (typeof savegame.AxeExp !== "undefined") weaponMastery.axe.exp = savegame.AxeExp;
+        if (typeof savegame.AxeMaxExp !== "undefined") weaponMastery.axe.maxExp = savegame.AxeMaxExp;
+        if (typeof savegame.AxeLevel !== "undefined") weaponMastery.axe.level = savegame.AxeLevel;
+        if (typeof savegame.MaceExp !== "undefined") weaponMastery.mace.exp = savegame.MaceExp;
+        if (typeof savegame.MaceMaxExp !== "undefined") weaponMastery.mace.maxExp = savegame.MaceMaxExp;
+        if (typeof savegame.MaceLevel !== "undefined") weaponMastery.mace.level = savegame.MaceLevel;
+        if (typeof savegame.StaffExp !== "undefined") weaponMastery.staff.exp = savegame.StaffExp;
+        if (typeof savegame.StaffMaxExp !== "undefined") weaponMastery.staff.maxExp = savegame.StaffMaxExp;
+        if (typeof savegame.StaffLevel !== "undefined") weaponMastery.staff.level = savegame.StaffLevel;
+        if (typeof savegame.RangedExp !== "undefined") weaponMastery.ranged.exp = savegame.RangedExp;
+        if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.ranged.maxExp = savegame.RangedMaxExp;
+        if (typeof savegame.RangedLevel !== "undefined") weaponMastery.ranged.level = savegame.RangedLevel;
+        //Spells
+        if (typeof savegame.SkillPoints !== "undefined") player.skillPoints = savegame.SkillPoints;
+        if (typeof savegame.FireBall !== "undefined") activeSpells.fireBall.level = savegame.FireBall;
+        if (typeof savegame.IceShard !== "undefined") activeSpells.iceShard.level = savegame.IceShard;
+        if (typeof savegame.CallLightning !== "undefined") activeSpells.callLightning.level = savegame.CallLightning;
+        if (typeof savegame.RainOfFire !== "undefined") activeSpells.rainOfFire.level = savegame.RainOfFire;
+        if (typeof savegame.Blizzard !== "undefined") activeSpells.blizzard.level = savegame.Blizzard;
+        if (typeof savegame.BallOfLightning !== "undefined") activeSpells.ballOfLightning.level = savegame.BallOfLightning;
+        if (typeof savegame.InfernalFlames !== "undefined") activeSpells.infernalFlames.level = savegame.InfernalFlames;
+        if (typeof savegame.Frost !== "undefined") activeSpells.frost.level = savegame.Frost;
+        if (typeof savegame.LightningStorm !== "undefined") activeSpells.lightningStorm.level = savegame.LightningStorm;
+        //Other
+        if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
+        if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
+        if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
+        if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
+        if (typeof savegame.playerExperience !== "undefined") player.experience = savegame.playerExperience;
+        if (typeof savegame.playerMaxExperience !== "undefined") player.maxExperience = savegame.playerMaxExperience;
+        if (typeof savegame.playerStrength !== "undefined") player.baseStrength = savegame.playerStrength;
+        if (typeof savegame.playerEndurance !== "undefined") player.baseEndurance = savegame.playerEndurance;
+        if (typeof savegame.playerAgility !== "undefined") player.baseAgility = savegame.playerAgility;
+        if (typeof savegame.playerDexterity !== "undefined") player.baseDexterity = savegame.playerDexterity;
+        if (typeof savegame.playerIntelligence !== "undefined") player.baseIntelligence = savegame.playerIntelligence;
+        if (typeof savegame.playerWisdom !== "undefined") player.baseWisdom = savegame.playerWisdom;
+        if (typeof savegame.playerLuck !== "undefined") player.baseLuck = savegame.playerLuck;
+        if (typeof savegame.pot !== "undefined") pot = savegame.pot;
+        if (typeof savegame.spot !== "undefined") spot = savegame.spot;
+        if (typeof savegame.mpot !== "undefined") mpot = savegame.mpot;
+        if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
+        if (typeof savegame.playerOffHand !== "undefined") equippedItems.offHand = savegame.playerOffHand;
+        if (typeof savegame.playerArmor !== "undefined") equippedItems.armor = savegame.playerArmor;
+        if (typeof savegame.playerRing !== "undefined") equippedItems.ring = savegame.playerRing;
+        if (typeof savegame.playerAmulet !== "undefined") equippedItems.amulet = savegame.playerAmulet;
+        if (typeof savegame.playerTalisman !== "undefined") equippedItems.talisman = savegame.playerTalisman;
+        if (typeof savegame.inventory !== "undefined") playerInventory = savegame.inventory;
+        document.getElementById('potion').innerHTML = pot;
+        document.getElementById('superPotion').innerHTML = spot;
+        document.getElementById('megaPotion').innerHTML = mpot;
+        document.getElementById("gold").innerHTML = player.gold;
+    };
     CreateInventoryWeaponHtml();
     CreateEquipHtml();
     loadIsEquipped();
