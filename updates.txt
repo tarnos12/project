@@ -1,4 +1,9 @@
 _________________________
+v1.5.2 - 26 may 2015     |
+-------------------------|
+- Added tabs for weapon skills
+- Progress bar for each weapon skill, updating each time you gain weapon skill experience
+_________________________
 v1.5.1 - 24 may 2015     |
 -------------------------|
 - Item values change according to it's stats, so upgrading it/craft (in future) will also change value of the item.

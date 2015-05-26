@@ -1,4 +1,8 @@
 //Create player Weapon skill html
+var weaponTabActive = 0;
+function changeTabWeapon(index) {
+    weaponTabActive = index;
+};
 function CreateWeaponSkillHtml() {
     var html = '';
     html += '<div class="c3"><b><a href="#" class="tooltipB">Hover over there, for some Help';
@@ -13,16 +17,36 @@ function CreateWeaponSkillHtml() {
     html += '</div>';
     html += '<div class="row">';
     html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
-    for (var weapon in weaponMastery) {
+    html += '<ul class="nav nav-tabs">';
+    for (var k = 0; k < weaponSkillType.length; k++) {
+
+        if (k === weaponTabActive) {
+            html += '<li class="active" onClick = changeTabWeapon(' + k + ')>';
+        } else {
+            html += '<li onClick = changeTabWeapon(' + k + ')>';
+        }
+
+        html += '<a href="#tab_' + weaponSkillType[k].displayName + '" data-toggle="tab"><span class="icons ' + weaponSkillType[k].icon + '"</span></a></li>';
+    }
+    html += '</ul>';
+    html += '<div class="tab-content" id="tabControl_WeaponSkill">';
+
+    for (weapon in weaponMastery) {
         if (weaponMastery.hasOwnProperty(weapon)) {
             var itemStat = weaponMastery[weapon];
             var image = "images/skills/" + itemStat.image + ".png";
+            if (weapon === weaponTabActive) {
+                html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane active"';
 
-            html += '<div class="col-lg-2 col-md-2 col-sm-4 col-xs-4 c8">';
-            html += '<a class="tooltipA" data-toggle="collapse" href="#' + itemStat.image + '" aria-expanded="false" aria-controls="' + itemStat.image + '">';
-            html += '<img src="' + image + '"/>';
-            html += '<span>';
-            html += itemStat.name;
+            } else {
+                html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane"';
+            }
+
+            html += 'id="tab_' + itemStat.name + '">'
+
+            html += '<div class="row">';
+            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 c8">';
+            html += '<div class="c3"><h4>' + itemStat.name + '</h4>';
             html += '<br />Level: ' + itemStat.level;
             for (var statName in itemStat) {
                 if ('defense, strength, endurance, agility, dexterity, intelligence, wisdom, damage'.indexOf(statName) != -1) {
@@ -31,15 +55,18 @@ function CreateWeaponSkillHtml() {
                 };
             };
             //Progress bar is not updating on it's own :|
-            html += '<div class="progress"><div class="progress-bar progress-bar-custom" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ' +
-                ((itemStat.exp / itemStat.maxExp) * 100) + '%;"></div></div>';
-
-            html += '</span></a>';
+            html += '<div class="progress">';
+            html += '<div id="' + itemStat.image + "1" + '" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">'
+            html += '<span id="' + itemStat.image +'"></span>'
+            html += '</div>'
+            html += '</div>'
             html += '</div>';
+            html += '</div>';
+            html += '</div>';
+
             var skill = weaponSkillList[weapon]
-            html += '<div class="collapse" id="' + itemStat.image + '">';
             for (var skillName in skill) {
-                var displaySkill = skill[skillName]
+                var displaySkill = skill[skillName];
                 html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 c8">';
                 html += '<div class="c4">';
                 if (itemStat.level < displaySkill.levelReq) {
@@ -50,10 +77,11 @@ function CreateWeaponSkillHtml() {
                 };
                 html += '</div>';
                 html += '</div>';
-            };
+            }
             html += '</div>';
         };
     };
+    html += '</div>';
     html += '</div>';
     html += '</div>';
     document.getElementById("weaponSkill").innerHTML = html;
