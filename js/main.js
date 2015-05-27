@@ -40,13 +40,13 @@ var player = {
     maxExperience: 100,
     backpackUpgrade: 0,
     dropRate: function () {
-        return (1 + (player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100);
+        return (1 + (player.totalLuck() / 500) + ((equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100 * bonusDrop));
     },
     expRate: function () {
-        return (1 + (equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100);
+        return (1 + ((equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100 * bonusExp));
     },
     goldRate: function () {
-        return (1 + (equippedItems.ring.goldRate + equippedItems.amulet.goldRate + equippedItems.talisman.goldRate) / 100);
+        return (1 + ((equippedItems.ring.goldRate + equippedItems.amulet.goldRate + equippedItems.talisman.goldRate) / 100 * bonusGold));
     },
     inventory: function () {
         return Math.floor(20 + (player.totalStrength() / 10) + player.backpackUpgrade); //Add backpacks "new item type"
@@ -118,11 +118,11 @@ var player = {
             equippedItems.armor.intelligence);
     },
     totalIntelligence: function () {
-        return Math.floor(
+        return Math.floor((
             (player.baseIntelligence +
             player.equipIntelligence() +
             weaponMastery.staff.staffIntelligence()) *
-            weaponSkillList.staff.spellSimulacrum.damage());
+            weaponSkillList.staff.spellSimulacrum.damage()) * bonusSpellDamage);
     },
     //Wisdom
     baseWisdom: 5,
@@ -133,11 +133,11 @@ var player = {
             equippedItems.armor.wisdom);
     },
     totalWisdom: function () {
-        return Math.floor(
+        return Math.floor((
             player.baseWisdom +
             player.equipWisdom() +
             weaponMastery.staff.staffWisdom() +
-            weaponMastery.mace.maceWisdom());
+            weaponMastery.mace.maceWisdom()) * bonusSpellDamage);
     },
     //Luck
     baseLuck: 5,
@@ -158,7 +158,7 @@ var player = {
         return (475 + player.totalEndurance() * 5);
     },
     hpregen: function () {
-        return Math.floor(20 + (player.totalEndurance()) / 3);
+        return Math.floor((20 + (player.totalEndurance()) / 3) * bonusRegen);
     },
     //Mana
     mana: 10,
@@ -168,18 +168,18 @@ var player = {
             player.totalIntelligence() * 0.1);
     },
     manaRegen: function () {
-        return (player.totalWisdom() / 10);
+        return ((player.totalWisdom() / 10) * bonusRegen);
     },
     //Damage
     minDamage: function () {
-        return Math.floor(
+        return Math.floor((
             3 + (player.totalStrength() * 0.4) +
-            equippedItems.weapon.minDamage);
+            equippedItems.weapon.minDamage) * bonusDamage);
     },
     maxDamage: function () {
-        return Math.floor(
+        return Math.floor((
             5 + (player.totalStrength() * 0.6) +
-            equippedItems.weapon.maxDamage + weaponSkillList.sword.swordFinesse.damage());
+            equippedItems.weapon.maxDamage + weaponSkillList.sword.swordFinesse.damage()) * bonusDamage);
     },
     //Secondary
     accuracy: function () {
@@ -912,6 +912,7 @@ function equipItem(id) {
     skillChargeFill();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
+    updateBar();
 };
 
 //Unequip item function
@@ -951,7 +952,10 @@ function unequipItem(id, oldId) {
             wisdom: 0,
             luck: 0,
             minDamage: 0,
-            maxDamage: 0
+            maxDamage: 0,
+            exp: 0,
+            maxExp: 0,
+            subType: "sword",
         };
         CreateInventoryWeaponHtml();
         updateHtml();
@@ -968,7 +972,7 @@ function unequipItem(id, oldId) {
             intelligence: 0,
             wisdom: 0,
             luck: 0,
-            defense: 0
+            defense: 0,
         };
         CreateInventoryWeaponHtml();
         updateHtml();
@@ -1074,3 +1078,57 @@ function handleClick() {
     checkBoxEpic = document.getElementById("epic").checked;
     player.autoBattle = document.getElementById("autoBattle").checked;
 };
+var eventDay = '';
+var bonusExp = 1;
+var bonusGold = 1;
+var bonusDrop = 1;
+var bonusRegen = 1; //multiplier both health and mana
+var bonusDamage = 1; //Min and Max damage bonus ~50%...
+var bonusSpellDamage = 1; //Add spell power with 50% bonus, currently affect int/wis 20% bonus
+function weekDayEvent() {
+    var eventDate = new Date();
+    var day = eventDate.getDay();
+    var description = '';
+    if (day === 0) {
+        eventDay = "Sunday";
+        description = "base exp/gold/drop rate x2";
+        bonusExp = 2;
+        bonusGold = 2;
+        bonusDrop = 2;
+    }
+    else if (day === 1) {
+        eventDay = "Monday";
+        description = "Hp/mana regen x2";
+        bonusRegen = 2;
+    }
+    else if (day === 2) {
+        eventDay = "Tuesday";
+        description = "Damage 50%";
+        bonusDamage = 1.5;
+    }
+    else if (day === 3) {
+        eventDay = "Wednesday";
+        description = "Int/Wis + 20%";
+        bonusSpellDamage = 1.2;
+    }
+    else if (day === 4) {
+        eventDay = "Thursday";
+        description = "Exp/Gold x2";
+        bonusExp = 2;
+        bonusGold = 2;
+    }
+    else if (day === 5) {
+        eventDay = "Friday";
+        description = "Gold/Drop x2";
+        bonusGold = 2;
+        bonusDrop = 2;
+    }
+    else if (day === 6) {
+        eventDay = "Saturday";
+        description = "Drop/Exp x2";
+        bonusExp = 2;
+        bonusDrop = 2;
+    };
+    document.getElementById("date").innerHTML += eventDay + ": " + description;
+};
+weekDayEvent();
