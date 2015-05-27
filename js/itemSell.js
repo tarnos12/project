@@ -12,6 +12,7 @@ function sellAllCommon() {
     player.gold += total;
     playerInventory = playerInventoryNew;
     CreateInventoryWeaponHtml();
+    document.getElementById("gold").innerHTML = player.gold;
     total = 0;
 };
 function sellAllUncommon() {
@@ -27,6 +28,7 @@ function sellAllUncommon() {
     player.gold += total;
     playerInventory = playerInventoryNew;
     CreateInventoryWeaponHtml();
+    document.getElementById("gold").innerHTML = player.gold;
     total = 0;
 };
 function sellAllRare() {
@@ -42,6 +44,7 @@ function sellAllRare() {
     player.gold += total;
     playerInventory = playerInventoryNew;
     CreateInventoryWeaponHtml();
+    document.getElementById("gold").innerHTML = player.gold;
     total = 0;
 };
 function sellAllEpic() {
@@ -58,6 +61,7 @@ function sellAllEpic() {
         player.gold += total;
         playerInventory = playerInventoryNew;
         CreateInventoryWeaponHtml();
+        document.getElementById("gold").innerHTML = player.gold;
         total = 0;
     };
 };

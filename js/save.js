@@ -1,4 +1,4 @@
-﻿function save() {
+﻿function saveGameFunction() {
     var saveGame = {
         playerGold: player.gold,
         playerHealth: player.health,
@@ -59,13 +59,19 @@
         Frost: activeSpells.frost.level,
         LightningStorm: activeSpells.lightningStorm.level,
     }
-    Log("Game Saved")
-    localStorage.setItem("save", JSON.stringify(saveGame));
-}
+    Log("Game Saved");
+    localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
+};
 
 function load() {
-    if (localStorage['save']) {
-        var savegame = JSON.parse(localStorage.getItem("save"));
+    if (localStorage['save'] || localStorage['EncodedSaveGame']) {
+        if (localStorage['EncodedSaveGame']) {
+            var savegame = JSON.parse(atob(localStorage['EncodedSaveGame']));
+            localStorage.removeItem("save");
+        }
+        else if (localStorage['save']) {
+            var savegame = JSON.parse(atob(localStorage['save']));
+        }
         if (typeof savegame.itemId !== "undefined") player.itemIdNumber = savegame.itemId;
         if (typeof savegame.gameVersion !== "undefined") player.gameVersion = savegame.gameVersion;
         if (typeof savegame.monsterList !== "undefined") monsterList = savegame.monsterList;
