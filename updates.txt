@@ -1,4 +1,8 @@
 _________________________
+v1.5.3 - 26 may 2015     |
+-------------------------|
+- Daily Events! Every day of the week, has different event bonus. Sunday for example gives you x2 exp/gold/drop rate. Monday 2x hp/mana regen, Tuesday 50% bonus damage etc.
+_________________________
 v1.5.2 - 26 may 2015     |
 -------------------------|
 - Added tabs for weapon skills
