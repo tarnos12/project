@@ -154,6 +154,7 @@ function resetCheck() {
 };
 function reset() {
     localStorage.removeItem("save");
+    localStorage.removeItem("EncodedSaveGame");
     /*player.gold = 0;
      player.health = 50;
      player.stats = 0;
