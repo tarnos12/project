@@ -40,13 +40,13 @@ var player = {
     maxExperience: 100,
     backpackUpgrade: 0,
     dropRate: function () {
-        return ((1 + (player.totalLuck() / 500) + ((equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100)) * bonusDrop);
+        return (1 + ((player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100) * bonusDrop);
     },
     expRate: function () {
-        return ((1 + (equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate / 100)) * bonusExp);
+        return (1 + ((equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100)) * bonusExp;
     },
     goldRate: function () {
-        return ((1 + (equippedItems.ring.goldRate + equippedItems.amulet.goldRate + equippedItems.talisman.goldRate) / 100) * bonusGold);
+        return ((1 + (equippedItems.ring.goldRate + equippedItems.amulet.goldRate + equippedItems.talisman.goldRate) / 100)) * bonusGold;
     },
     inventory: function () {
         return Math.floor(20 + (player.totalStrength() / 10) + player.backpackUpgrade); //Add backpacks "new item type"

@@ -110,3 +110,28 @@
 .ranged {
     background: url(../images/icons/ranged.png)
 }
+
+.disabledBackgroundDiv {
+    background-color: #000;
+    bottom: 0;
+    display: none;
+    left: 0;
+    opacity: 0.9;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.partyCreationDiv {
+    -moz-user-select: none;
+    background-color: white;
+    border: 1px solid #345;
+    display: none;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+    top: 15px;
+    width: 440px;
+    z-index: 999;
+}
