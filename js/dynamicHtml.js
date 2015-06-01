@@ -7,13 +7,13 @@ function CreateWeaponSkillHtml() {
     var html = '';
     html += '<div class="c3"><b><a href="#" class="tooltipB">Hover over there, for some Help';
     html += '<span>';
-    html += '<ul>'
+    html += '<ul>';
     html += "<li>There you can find your weapon mastery levels.</li>" + '</br />';
     html += "<li>You increase mastery using certain weapon types like: sword,axe,mace etc.</li>" + '</br />';
     html += "<li>At certain levels of mastery you will unlock special bonuses.</li>" + '<br />';
     html += "<li>Each level of mastery give you little boost to stats, while you equip weapon of that type.</li>" + '<br />';
     html += '</ul>';
-    html += '</span></a></b></div>'
+    html += '</span></a></b></div>';
     html += '</div>';
     html += '<div class="row">';
     html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
@@ -42,7 +42,7 @@ function CreateWeaponSkillHtml() {
                 html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane"';
             }
 
-            html += 'id="tab_' + itemStat.name + '">'
+            html += 'id="tab_' + itemStat.name + '">';
 
             html += '<div class="row">';
             html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 c8">';
@@ -56,10 +56,10 @@ function CreateWeaponSkillHtml() {
             };
             //Progress bar is not updating on it's own :|
             html += '<div class="progress">';
-            html += '<div id="' + itemStat.image + "1" + '" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">'
-            html += '<span id="' + itemStat.image +'"></span>'
-            html += '</div>'
-            html += '</div>'
+            html += '<div id="' + itemStat.image + "1" + '" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">';
+            html += '<span id="' + itemStat.image + '"></span>';
+            html += '</div>';
+            html += '</div>';
             html += '</div>';
             html += '</div>';
             html += '</div>';
@@ -87,8 +87,11 @@ function CreateWeaponSkillHtml() {
     document.getElementById("weaponSkill").innerHTML = html;
 };
 
+//String prototype used to capitalize first letter, use it with "string".capitalizeFirstLetter()
+String.prototype.capitalizeFirstLetter = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
 //Create player Equipped items html
-
 function CreateEquipHtml() {
     var html = '';
     html += '<div class="row">';
@@ -117,22 +120,29 @@ function CreateEquipHtml() {
                 if (itemType.minDamage > 0 && itemType.maxDamage > 0) {
                     html += '<br />' + "Damage: " + itemType.minDamage + "-";
                     html += itemType.maxDamage;
-                }
-                if (itemType.itemType == "accessory") {
-                    html += '<br />' + 'Drop Rate: ' + itemType.dropRate + "%";
-                    html += '<br />' + 'Exp Rate: ' + itemType.expRate + "%";
-                    html += '<br />' + 'Gold Rate: ' + itemType.goldRate + "%";
                 };
 
                 for (var statName in itemType) { //Here stat will become the word Defense
 
-                    if ('defense, strength, endurance, agility, dexterity, intelligence, wisdom, luck'.indexOf(statName) != -1) {
+                    if ('defense, strength, endurance, agility, dexterity, intelligence, wisdom, luck, expRate, dropRate, goldRate'.indexOf(statName) != -1) {
                         //Getting the actual stat object from the word.
-                        var selectedStat = itemType[statName];
 
                         if (itemType[statName] > 0) {
-                            html += "<br />" + statName + ": " + itemType[statName];
-                        };
+                            if (statName === "goldRate" || statName === "expRate" || statName === "dropRate") {
+                                if (statName === "expRate") {
+                                    //$1 and $2 are "separated" words, so I can easly change the order like $2, $1" which would give "Rate exp"(first letter capitalized)
+                                    var statNameSpace = statName.replace(/^(.{3})(.*)$/, "$1 $2");
+                                    html += "<br />" + statNameSpace.capitalizeFirstLetter() + ": " + itemType[statName];
+                                }
+                                else {
+                                    var statNameSpace2 = statName.replace(/^(.{4})(.*)$/, "$1 $2");
+                                    html += "<br />" + statNameSpace2.capitalizeFirstLetter() + ": " + itemType[statName];
+                                }
+                            }
+                            else {
+                                html += "<br />" + statName.capitalizeFirstLetter() + ": " + itemType[statName];
+                            }
+                            };
                     };
                 };
 
