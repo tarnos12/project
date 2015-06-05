@@ -488,12 +488,13 @@ function CreatePlayerHotBar() {
 };
 
 //Character Creation
-function characterCreationRemoveBackground() {
+/*function characterCreationRemoveBackground() {
     var divStyle = document.getElementById('partyCreationDiv');
     divStyle.style.display = "none";
     var divBackgroundStyle = document.getElementById('partyCreationDisabledBackground');
     divBackgroundStyle.style.display = "none";
 };
+*/
 function characterCreationHtml() {
     if (player.heroClass === '') {
         var html = '';
@@ -511,7 +512,7 @@ function characterCreationHtml() {
         html += '</div>';
         html += '</div>';
         html += '</div>';
-        document.getElementById("partCreation").innerHTML = html;
+        //document.getElementById("partCreation").innerHTML = html;
     }
     else {
         for (var hero in characterClasses) {
@@ -530,6 +531,6 @@ function characterCreationHtml() {
 
             };
         };
-        characterCreationRemoveBackground();
+        //characterCreationRemoveBackground();
     }
 };
