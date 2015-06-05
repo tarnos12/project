@@ -75,4 +75,31 @@ var weaponSkillType = [
        }
 ];
 
+
+var characterClass = function (name, strength, endurance, agility, dexterity, intelligence, wisdom, luck) { //default spell object constructor
+    this.name = name;
+    this.strength = strength;
+    this.endurance = endurance;
+    this.agility = agility;
+    this.dexterity = dexterity;
+    this.intelligence = intelligence;
+    this.wisdom = wisdom;
+    this.luck = luck;
+    this.description = function () {
+        return "Stats per level: <br />Strength: " + this.strength + "<br />" + "Endurance: " + this.endurance + "<br />" + "Agility: " + this.agility +
+            "<br />" + "Dexterity: " + this.dexterity + "<br />" + "Intelligence: " + this.intelligence + "<br />" + "Wisdom: " + this.wisdom + "<br />" + "Luck: " + this.luck
+    };
+};
+var warrior = new characterClass('Warrior', 3, 3, 2, 2, 1, 1, 2);
+var apprentice = new characterClass('Apprentice', 1, 1, 2, 2, 3, 3, 2);
+var ranger = new characterClass('Ranger', 3, 2, 2, 3, 1, 1, 3);
+var samurai = new characterClass('Samurai', 3, 2, 3, 2, 1, 1, 3);
+
+var characterClasses = new Object();
+characterClasses.warrior = warrior;
+characterClasses.apprentice = apprentice;
+characterClasses.ranger = ranger;
+characterClasses.samurai = samurai;
+
+
 CreateMonsterHtml();

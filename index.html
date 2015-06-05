@@ -94,6 +94,7 @@
             color:firebrick;
             text-align:right;
         }
+
     </style>
 </head>
 <body onload="load();">
@@ -110,6 +111,7 @@
 
     </script>
     <div class="container-fluid">
+        <div class="partyCreationDiv" id="partyCreationDiv" style="display: block" ;><div id="partCreation wrap" style="width: 300px; word-wrap: break-word;"></div></div>
         <!--First Row-->
         <div class="row">
             <div class="col-sm-1 col-md-1 col-lg-1">
@@ -158,162 +160,165 @@
                             <div class="c3">
                                 <h4>Player Stats</h4>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Damage
-                                <span id="mindamage">2</span>-<span id="maxdamage">4</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Mana
-                                <span id="mana">50</span>/<span id="maxmana">50</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Str <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        10 points = 2 Min Damage<br />
-                                        10 points = 3 Max Damage<br />
-                                        10 points = 1 Inventory slot
-                                    </span>
-                                </a>
-                                <span id="strength">5</span>
-                                <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                End <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        1 point = 3 Max Health<br />
-                                        3 points = 1 Health/s
-                                    </span>
-                                </a>
-                                <span id="endurance">5</span>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div id="characterClass"></div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Damage
+                                    <span id="mindamage">2</span>-<span id="maxdamage">4</span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Mana
+                                    <span id="mana">50</span>/<span id="maxmana">50</span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Str <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            10 points = 2 Min Damage<br />
+                                            10 points = 3 Max Damage<br />
+                                            10 points = 1 Inventory slot
+                                        </span>
+                                    </a>
+                                    <span id="strength">5</span>
+                                    <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    End <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            1 point = 3 Max Health<br />
+                                            3 points = 1 Health/s
+                                        </span>
+                                    </a>
+                                    <span id="endurance">5</span>
 
-                                <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Agi <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        100 points = 2% Accuracy<br />
-                                        100 points = 3% Evasion<br />
-                                        5 points = 1 Defense<br />
+                                    <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Agi <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            100 points = 2% Accuracy<br />
+                                            100 points = 3% Evasion<br />
+                                            5 points = 1 Defense<br />
 
-                                    </span>
-                                </a>
-                                <span id="agility">5</span>
+                                        </span>
+                                    </a>
+                                    <span id="agility">5</span>
 
-                                <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Dex <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        100 points = 3% Critical Chance<br />
-                                        10 points = 2% Critical Damage
-                                    </span>
-                                </a>
-                                <span id="dexterity">5</span>
+                                    <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Dex <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            100 points = 3% Critical Chance<br />
+                                            10 points = 2% Critical Damage
+                                        </span>
+                                    </a>
+                                    <span id="dexterity">5</span>
 
-                                <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
+                                    <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
 
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Int <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        Currently not much use, and it's disabled until more content is added.<br />
-                                        10 points = 1 Max Mana
-                                    </span>
-                                </a>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Int <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            Currently not much use, and it's disabled until more content is added.<br />
+                                            10 points = 1 Max Mana
+                                        </span>
+                                    </a>
 
-                                <span id="intelligence">5</span>
+                                    <span id="intelligence">5</span>
 
-                                <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Wis <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        10 points = 1 Mana/s<br />
-                                        2 points = 1 Max Mana
-                                    </span>
-                                </a>
+                                    <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Wis <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            10 points = 1 Mana/s<br />
+                                            2 points = 1 Max Mana
+                                        </span>
+                                    </a>
 
-                                <span id="wisdom">5</span>
+                                    <span id="wisdom">5</span>
 
-                                <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Luk <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        100 points = 1% Accuracy<br />
-                                        100 points = 2% Evasion(20% cap)<br />
-                                        100 points = 1% Critical Chance<br />
-                                        100 points = 20% drop rate
-                                    </span>
-                                </a>
-                                <span id="luck">5</span>
+                                    <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Luk <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            100 points = 1% Accuracy<br />
+                                            100 points = 2% Evasion(20% cap)<br />
+                                            100 points = 1% Critical Chance<br />
+                                            100 points = 20% drop rate
+                                        </span>
+                                    </a>
+                                    <span id="luck">5</span>
 
-                                <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck(event);">
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
+                                    <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck(event);">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
 
-                                <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        <ul>
-                                            <li>Check auto battle box, and attack a monster once, after that you will attack it automatically as long as you have enough mana, displayed next to this box.</li>
-                                            <br />
-                                            <li>If you want to change monster, then uncheck auto battle box, check it again and attack different monster.</li>
-                                        </ul>
-                                    </span>
-                                </a>
+                                    <a href="#" class="tooltipA">
+                                        <img src="images/questionMark.png" alt="questionMark">
+                                        <span>
+                                            <ul>
+                                                <li>Check auto battle box, and attack a monster once, after that you will attack it automatically as long as you have enough mana, displayed next to this box.</li>
+                                                <br />
+                                                <li>If you want to change monster, then uncheck auto battle box, check it again and attack different monster.</li>
+                                            </ul>
+                                        </span>
+                                    </a>
 
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Stat points
+                                    <span id="stats">0</span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Skill points
+                                    <span id="skillPoints">0</span>
+                                </div>
+                                <div class="c3">
+                                    <h4>Secondary Stats</h4>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Health regen:<span id="hpregen">2</span><strong>(End)</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Mana regen:<span id="manaRegen">1</span><strong>(Wis,Int)</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Defense:<span id="defense">0</span><strong>(Agi)</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Accuracy:<span id="accuracy">100</span>%<strong>(Agi,Luk)</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Evasion:<span id="evasion">0</span>%<strong>(Agi,Luk)</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Crit:<span id="criticalChance">1</span>%<strong>(Dex,Luk)</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Critical Dmg:<span id="criticalDamage">1</span><strong>(Dex)</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Drop rate:<span id="dropRate">0</span>%<strong>(Luk)</strong>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Exp rate:<span id="expRate">0</span>%
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                    Gold rate:<span id="goldRate">0</span>%
+                                </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Stat points
-                                <span id="stats">0</span>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Skill points
-                                <span id="skillPoints">0</span>
-                            </div>
-                            <div class="c3">
-                                <h4>Secondary Stats</h4>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Health regen:<span id="hpregen">2</span><strong>(End)</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Mana regen:<span id="manaRegen">1</span><strong>(Wis,Int)</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Defense:<span id="defense">0</span><strong>(Agi)</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Accuracy:<span id="accuracy">100</span>%<strong>(Agi,Luk)</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Evasion:<span id="evasion">0</span>%<strong>(Agi,Luk)</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Crit:<span id="criticalChance">1</span>%<strong>(Dex,Luk)</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Critical Dmg:<span id="criticalDamage">1</span><strong>(Dex)</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Drop rate:<span id="dropRate">0</span>%<strong>(Luk)</strong>
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Exp rate:<span id="expRate">0</span>%
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                Gold rate:<span id="goldRate">0</span>%
-                            </div>
-                        </div>
                         <div class="tab-pane" id="tab_b">
                             <div class="c3">
                                 <h4>Game Tutorial</h4><br />
@@ -628,6 +633,12 @@
                                 <button type="button" class="btn btn-sm btn-default" onclick="resetCheck()">
                                     reset
                                 </button><br /><br />
+                                <div id="saveTime"></div>
+                                <br /><br />
+                                <button type="button" class="btn btn-sm btn-default" onclick="saveExport()">
+                                    Export
+                                </button>
+                                <div class="scroll c4 c3" id="saveExport"></div>
 
                                 <a href="updates.txt" target="_blank">Changelog</a><br />
                                 <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
@@ -664,9 +675,7 @@
                 </div>
             </div>
         </div>
-        <!--TEST z index 999
         <div id="partyCreationDisabledBackground" class="disabledBackgroundDiv" style="display: block;"></div>
-        <div class="partyCreationDiv" style="display: block" ;>Test<br />test</div>-->
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script><!-- Include all compiled plugins (below), or include individual files as needed -->

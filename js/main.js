@@ -22,6 +22,7 @@ var currentGameVersion = 1.5;
 //PLAYER STATS
 var player = {
     gameVersion: 1.5,
+    heroClass: '',
     isDead: false,
     runOnce: false,
     isAuto: false,
@@ -40,7 +41,7 @@ var player = {
     maxExperience: 100,
     backpackUpgrade: 0,
     dropRate: function () {
-        return (1 + ((player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100) * bonusDrop);
+        return (10000 + ((player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100) * bonusDrop);
     },
     expRate: function () {
         return (1 + ((equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100)) * bonusExp;
@@ -1089,42 +1090,43 @@ function weekDayEvent() {
     var eventDate = new Date();
     var day = eventDate.getDay();
     var description = '';
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     if (day === 0) {
-        eventDay = "Sunday";
+        eventDay = days[day];
         description = "base exp/gold/drop rate x2";
         bonusExp = 2;
         bonusGold = 2;
         bonusDrop = 2;
     }
     else if (day === 1) {
-        eventDay = "Monday";
+        eventDay = days[day];
         description = "Hp/mana regen x2";
         bonusRegen = 2;
     }
     else if (day === 2) {
-        eventDay = "Tuesday";
+        eventDay = days[day];
         description = "Damage 50%";
         bonusDamage = 1.5;
     }
     else if (day === 3) {
-        eventDay = "Wednesday";
+        eventDay = days[day];
         description = "Int/Wis + 20%";
         bonusSpellDamage = 1.2;
     }
     else if (day === 4) {
-        eventDay = "Thursday";
+        eventDay = days[day];
         description = "Exp/Gold x2";
         bonusExp = 2;
         bonusGold = 2;
     }
     else if (day === 5) {
-        eventDay = "Friday";
+        eventDay = days[day];
         description = "Gold/Drop x2";
         bonusGold = 2;
         bonusDrop = 2;
     }
     else if (day === 6) {
-        eventDay = "Saturday";
+        eventDay = days[day];
         description = "Drop/Exp x2";
         bonusExp = 2;
         bonusDrop = 2;
@@ -1132,3 +1134,16 @@ function weekDayEvent() {
     document.getElementById("date").innerHTML += eventDay + ": " + description;
 };
 weekDayEvent();
+
+function changeClass(className) {
+    var characterClass = '';
+    characterClass = className;
+    player.heroClass = characterClass;
+
+    document.getElementById("characterClass").innerHTML = "Class: " + characterClass;
+    characterCreationRemoveBackground();
+};
+
+function saveExport() {
+
+}

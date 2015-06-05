@@ -1,4 +1,18 @@
 ﻿function saveGameFunction() {
+    var d = new Date();
+    var hour = d.getHours();
+    var minute = d.getMinutes();
+    var second = d.getSeconds();
+    if (hour < 10) {
+        hour = "0" + d.getHours();
+    };
+    if (minute < 10) {
+        minute = "0" + d.getMinutes();
+    };
+    if (second < 10) {
+        second = "0" + d.getSeconds();
+    };
+    document.getElementById("saveTime").innerHTML = "Last saved: " + hour + ":" + minute + ":" + second;
     var saveGame = {
         playerGold: player.gold,
         playerHealth: player.health,
@@ -47,6 +61,7 @@
         statStatus: statStatus,
         monsterList: monsterList,
         gameVersion: player.gameVersion,
+        heroClass: player.heroClass,
         //Spells
         SkillPoints: player.skillPoints,
         FireBall: activeSpells.fireBall.level,
@@ -61,6 +76,7 @@
     }
     Log("Game Saved");
     localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
+    document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame'];
 };
 
 function load() {
@@ -73,6 +89,7 @@ function load() {
             var savegame = JSON.parse(atob(localStorage['save']));
         }
         if (typeof savegame.itemId !== "undefined") player.itemIdNumber = savegame.itemId;
+        if (typeof savegame.heroClass !== "undefined") player.heroClass = savegame.heroClass;
         if (typeof savegame.gameVersion !== "undefined") player.gameVersion = savegame.gameVersion;
         if (typeof savegame.monsterList !== "undefined") monsterList = savegame.monsterList;
         if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
@@ -145,6 +162,7 @@ function load() {
     CreatePlayerHotBar();
     skillChargeFill();
     updateBar();
+    characterCreationHtml()
 };
 
 function resetCheck() {

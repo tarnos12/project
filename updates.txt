@@ -1,4 +1,10 @@
 _________________________
+v1.5.5 - 2 june 2015     |
+-------------------------|
+- Added "last saved:" in the save/options tab, and removed "Game saved" notification from player log.(Game is automatically saved every 10 seconds)
+- "Destroy item" by rarity in the options, now gives you 20% of item value
+- Character classes, pick one to gain benefits from it.
+_________________________
 v1.5.4 - 30 may 2015     |
 -------------------------|
 - All stat names are capitalized
@@ -303,7 +309,6 @@ v1.0.2 - 26 december 2014|
 - Changed "Sell  all button" to sell all orbs at once(all quality) 
 - Added Level up system, 5 stats per level, health regeneration, Defense, Strength
 - New monsters, changed weapon requirement to fight them
-
 _________________________
 v1.0.1 - 25 december 2014|
 -------------------------|

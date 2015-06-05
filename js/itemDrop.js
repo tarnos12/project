@@ -22,7 +22,6 @@ function itemDropRandom(monster) {
             //test
 
             //Checks if player used checkbox to auto remove items by quality. Also this code add "id" property to each created item
-            if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
                 dropItem["id"] = player.itemIdNumber;
 
                 if (dropItem.baseStrength > 0) {
@@ -257,15 +256,21 @@ function itemDropRandom(monster) {
                     };
                 };
                 dropItem["value"] = getItemValue(dropItem); //Get item value function.
-                var itemHolder = [];
-                itemHolder.push(dropItem);
-                playerInventory.push.apply(
-                    playerInventory,
-                    JSON.parse(JSON.stringify(itemHolder))
-                    );
-                player.itemIdNumber += 1;
-                Log("<span style=\"color:orange\">You found an item! </span>");
-            };
+                if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
+
+                    var itemHolder = [];
+                    itemHolder.push(dropItem);
+                    playerInventory.push.apply(
+                        playerInventory,
+                        JSON.parse(JSON.stringify(itemHolder))
+                        );
+                    player.itemIdNumber += 1;
+                    Log("<span style=\"color:orange\">You found an item! </span>");
+                }
+                else {
+                    player.gold += Math.floor(dropItem.value * 0.2);
+                    updateHtml();
+                };
         };
     };
 };

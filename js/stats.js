@@ -145,20 +145,25 @@ window.setInterval(function () { //Mana regen
 }, 1000);
 
 function levelUp() {
-    player.baseStrength += 4.6;
-    player.baseEndurance += 4.4;
-    player.baseAgility += 3.4;
-    player.baseDexterity += 2.7;
-    player.baseWisdom += 2.3;
-    player.baseIntelligence += 3.5;
-    player.baseLuck += 1.6;
-    player.skillPoints += 1;
+    for (var hero in characterClasses) {
+        var heroClass = characterClasses[hero];
+        if (player.heroClass === heroClass.name) {
+            player.baseStrength += heroClass.strength;
+            player.baseEndurance += heroClass.endurance;
+            player.baseAgility += heroClass.agility;;
+            player.baseDexterity += heroClass.dexterity;
+            player.baseWisdom += heroClass.wisdom;
+            player.baseIntelligence += heroClass.intelligence;
+            player.baseLuck += heroClass.luck;
+            player.skillPoints += 1;
+        };
+    };
     quest();
     CreateMonsterHtml();
     updateHtml();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
-}
+};
 
 function loadIsEquipped() {
     if (equippedItems.weapon.subType === "sword") {
@@ -175,7 +180,7 @@ function loadIsEquipped() {
     }
     else if (equippedItems.weapon.subType === "ranged") {
         player.isRanged = true;
-    }
+    };
 };
 
 function resetIsEquipped() {
