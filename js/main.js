@@ -41,7 +41,7 @@ var player = {
     maxExperience: 100,
     backpackUpgrade: 0,
     dropRate: function () {
-        return (10000 + ((player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100) * bonusDrop);
+        return (1 + ((player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100)) * bonusDrop;
     },
     expRate: function () {
         return (1 + ((equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100)) * bonusExp;

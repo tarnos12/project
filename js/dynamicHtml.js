@@ -488,49 +488,57 @@ function CreatePlayerHotBar() {
 };
 
 //Character Creation
-/*function characterCreationRemoveBackground() {
+function characterCreationRemoveBackground() {
     var divStyle = document.getElementById('partyCreationDiv');
     divStyle.style.display = "none";
     var divBackgroundStyle = document.getElementById('partyCreationDisabledBackground');
     divBackgroundStyle.style.display = "none";
 };
-*/
+
 function characterCreationHtml() {
     if (player.heroClass === '') {
         var html = '';
         html += '<div class="row">';
         html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-offset-1">';
+        html += 'Pick your class, hover over a class name for more info.';
         html += '<div class="row">';
         for (var hero in characterClasses) {
             var heroClass = characterClasses[hero];
             var onclickevent = "changeClass('" + heroClass.name + "');";
             html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">';
-            html += heroClass.name + "";
+            html += '<a href="#" class="tooltipA">' + heroClass.name + "" +
+                    '<span>' + 'Stats per level: <br />' +
+                    'Strength: ' + heroClass.strength + '<br />' +
+                    'Endurance: ' + heroClass.endurance + '<br />' +
+                    'Agility: ' + heroClass.agility + '<br />' +
+                    'Dexterity: ' + heroClass.dexterity + '<br />' +
+                    'Intelligence: ' + heroClass.intelligence + '<br />' +
+                    'Wisdom: ' + heroClass.wisdom + '<br />' +
+                    'Luck: ' + heroClass.luck + '<br />' +
+                    '</span>' + '</a>';
             html += '<button type="button" class="' + heroClass.name + '" onclick="' + onclickevent + '">Choose</button>'//changeClass function ._.
             html += '</div>';
         };
         html += '</div>';
         html += '</div>';
         html += '</div>';
-        //document.getElementById("partCreation").innerHTML = html;
+        document.getElementById("partCreation").innerHTML = html;
     }
-    else {
-        for (var hero in characterClasses) {
-            var heroStat = characterClasses[hero];
-            if (player.heroClass === heroStat.name) {
-                document.getElementById("characterClass").innerHTML = "Class: " + '<a href="#" class="tooltipA">' + player.heroClass +
-                    '<span>' + 'Stats per level: <br />' +
-                'Strength: ' + heroStat.strength + '<br />' +
-                'Endurance: ' + heroStat.endurance + '<br />' +
-                'Agility: ' + heroStat.agility + '<br />' +
-                'Dexterity: ' + heroStat.dexterity + '<br />' +
-                'Intelligence: ' + heroStat.intelligence + '<br />' +
-                'Wisdom: ' + heroStat.wisdom + '<br />' +
-                'Luck: ' + heroStat.luck + '<br />' +
-                '</span>' + '</a>';
+    for (var hero in characterClasses) {
+        var heroClass = characterClasses[hero];
+        if (player.heroClass === heroClass.name) {
+            document.getElementById("characterClass").innerHTML = "Class: " + '<a href="#" class="tooltipA">' + player.heroClass +
+                '<span>' + 'Stats per level: <br />' +
+            'Strength: ' + heroClass.strength + '<br />' +
+            'Endurance: ' + heroClass.endurance + '<br />' +
+            'Agility: ' + heroClass.agility + '<br />' +
+            'Dexterity: ' + heroClass.dexterity + '<br />' +
+            'Intelligence: ' + heroClass.intelligence + '<br />' +
+            'Wisdom: ' + heroClass.wisdom + '<br />' +
+            'Luck: ' + heroClass.luck + '<br />' +
+            '</span>' + '</a>';
 
-            };
+            characterCreationRemoveBackground();
         };
-        //characterCreationRemoveBackground();
-    }
+    };
 };

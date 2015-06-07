@@ -3,7 +3,8 @@ v1.5.5 - 2 june 2015     |
 -------------------------|
 - Added "last saved:" in the save/options tab, and removed "Game saved" notification from player log.(Game is automatically saved every 10 seconds)
 - "Destroy item" by rarity in the options, now gives you 20% of item value
-- Character classes, pick one to gain benefits from it.
+- Character classes, pick one to gain benefits from it. Just a basic idea right now, each class gives you different stats per level.
+- Fixed x2 drop rate event not working properly.
 _________________________
 v1.5.4 - 30 may 2015     |
 -------------------------|

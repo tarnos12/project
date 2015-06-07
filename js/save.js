@@ -77,6 +77,11 @@
     Log("Game Saved");
     localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
     document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame'];
+    var string = localStorage['EncodedSaveGame'];
+    alert("Size of sample is: " + string.length);
+    var compressed = LZString.compress(string);
+    alert("Size of compressed sample is: " + compressed.length);
+    string = LZString.decompress(compressed); alert("Sample is: " + string);
 };
 
 function load() {
