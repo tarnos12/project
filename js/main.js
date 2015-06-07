@@ -1143,7 +1143,3 @@ function changeClass(className) {
     document.getElementById("characterClass").innerHTML = "Class: " + characterClass;
     characterCreationRemoveBackground();
 };
-
-function saveExport() {
-
-}

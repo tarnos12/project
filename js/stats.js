@@ -116,7 +116,7 @@
 };
 //auto Save
 window.setInterval(function () {
-    saveGameFunction()
+    saveGameFunction("autoSave")
 }, 10000);
 
 window.setInterval(function () {
