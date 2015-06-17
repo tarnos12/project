@@ -72,9 +72,31 @@ var weaponSkillType = [
            type: 'ranged',
            displayName: 'Ranged',
            icon: 'ranged'
-       }
+       },
+       {
+           type: 'fist',
+           displayName: 'Fist',
+           icon: 'fist'
+       },
 ];
 
+var materiaType = [
+    {
+        type: 'materiaSlot_1',
+    },
+    {
+        type: 'materiaSlot_2',
+    },
+    {
+        type: 'materiaSlot_3',
+    },
+    {
+        type: 'materiaSlot_4',
+    },
+    {
+        type: 'materiaSlot_5',
+    },
+]
 
 var characterClass = function (name, strength, endurance, agility, dexterity, intelligence, wisdom, luck) { //default spell object constructor
     this.name = name;

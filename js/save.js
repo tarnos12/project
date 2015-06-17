@@ -1,4 +1,4 @@
-﻿function saveGameFunction() {
+﻿function saveGameFunction(saveType) {
     var d = new Date();
     var hour = d.getHours();
     var minute = d.getMinutes();
@@ -59,7 +59,6 @@
         backpackUpgrade: player.backpackUpgrade,
         backpackStatus: backpackStatus,
         statStatus: statStatus,
-        monsterList: monsterList,
         gameVersion: player.gameVersion,
         heroClass: player.heroClass,
         //Spells
@@ -74,9 +73,16 @@
         Frost: activeSpells.frost.level,
         LightningStorm: activeSpells.lightningStorm.level,
     }
-    Log("Game Saved");
-    localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
-    document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame'];
+    if (saveType === 'autoSave') {
+        localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
+        document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame'];
+    }
+    else if (saveType === 'manualSave') {
+        Log("Game Saved");
+        localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
+        document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame'];
+        console.log(localStorage['EncodedSaveGame'].length)
+    };
 };
 
 function load() {
@@ -91,7 +97,6 @@ function load() {
         if (typeof savegame.itemId !== "undefined") player.itemIdNumber = savegame.itemId;
         if (typeof savegame.heroClass !== "undefined") player.heroClass = savegame.heroClass;
         if (typeof savegame.gameVersion !== "undefined") player.gameVersion = savegame.gameVersion;
-        if (typeof savegame.monsterList !== "undefined") monsterList = savegame.monsterList;
         if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
         if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
         if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
@@ -173,115 +178,6 @@ function resetCheck() {
 function reset() {
     localStorage.removeItem("save");
     localStorage.removeItem("EncodedSaveGame");
-    /*player.gold = 0;
-     player.health = 50;
-     player.stats = 0;
-     player.level = 1;
-     player.baseStrength = 5;
-     player.baseEndurance  = 5;
-     player.baseAgility = 5;
-     player.baseDexterity = 5;
-     player.baseIntelligence = 5;
-     player.baseWisdom = 5;
-     player.baseLuck = 5;
-     player.experience = 0;
-     player.maxExperience = 100;
-     pot = 0;
-     spot = 0;
-     mpot = 0;
-     //Equipped Items
-     equippedItems.weapon = {
-         strength: 0,
-         endurance: 0,
-         agility: 0,
-         dexterity: 0,
-         intelligence: 0,
-         wisdom: 0,
-         luck: 0,
-         minDamage: 0,
-         maxDamage: 0
-     },
-     equippedItems.offHand = {
-         strength: 0,
-         endurance: 0,
-         agility: 0,
-         dexterity: 0,
-         intelligence: 0,
-         wisdom: 0,
-         luck: 0,
-         defense: 0
-     },
-     equippedItems.armor = {
-         strength: 0,
-         endurance: 0,
-         agility: 0,
-         dexterity: 0,
-         intelligence: 0,
-         wisdom: 0,
-         luck: 0,
-         defense: 0
-     },
-     equippedItems.ring = {
-         strength: 0,
-         endurance: 0,
-         agility: 0,
-         dexterity: 0,
-         intelligence: 0,
-         wisdom: 0,
-         luck: 0,
-         defense: 0
-     },
-     equippedItems.amulet = {
-         strength: 0,
-         endurance: 0,
-         agility: 0,
-         dexterity: 0,
-         intelligence: 0,
-         wisdom: 0,
-         luck: 0,
-         defense: 0
-     },
-     equippedItems.talisman = {
-         strength: 0,
-         endurance: 0,
-         agility: 0,
-         dexterity: 0,
-         intelligence: 0,
-         wisdom: 0,
-         luck: 0,
-         defense: 0
-     },
-     playerInventory = [];
-     //Weapon mastery levels and experience
-     player.SwordMaxExp = 10;
-     player.SwordExp = 0;
-     player.SwordLevel = 1;
-     player.AxeMaxExp = 10;
-     player.AxeExp = 0;
-     player.AxeLevel = 1;
-     player.MaceMaxExp = 10;
-     player.MaceExp = 0;
-     player.MaceLevel = 1;
-     player.StaffMaxExp = 10;
-     player.StaffExp = 0;
-     player.StaffLevel = 1;
-     player.RangedMaxExp = 10;
-     player.RangedExp = 0;
-     player.RangedLevel = 1;
-     //Other
-     player.itemIdNumber = 1;
-     player.backpackUpgrade = 0,
-     backpackStatus.price = 100,
-     statStatus.price = 500,
-     MakeItemList();
-     MakeMonsterList();
-     CreateInventoryWeaponHtml();
-     CreateEquipHtml();
-     resetIsEquipped();
-     CreateWeaponSkillHtml();
-     quest();
-     CreateMonsterHtml();
-     player.gameVersion = currentGameVersion;*/
     pageReload();
 };//test
 
@@ -292,4 +188,12 @@ function versionCheck() {
     if (player.gameVersion !== currentGameVersion && player.gameVersion === null) {
         reset();
     };
+};
+
+function importSave() {
+    var importSave = document.getElementById('saveImport').value;
+    var savegame = JSON.parse(atob(importSave));
+    localStorage['EncodedSaveGame'] = btoa(JSON.stringify(savegame));
+    console.log(localStorage['EncodedSaveGame'].length)
+    load();
 };

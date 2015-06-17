@@ -101,6 +101,12 @@ function itemDropRandom(monster) {
 
                  //Add item level up etc
                 if (dropItem.itemQuality == "Common") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 30) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 50) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 70) dropItem["materiaSlot_3"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -132,6 +138,13 @@ function itemDropRandom(monster) {
                     };
                 };
                 if (dropItem.itemQuality == "Uncommon") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 25) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 40) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 60) dropItem["materiaSlot_3"] = 'empty';
+                        if (randomNumber >= 80) dropItem["materiaSlot_4"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -163,6 +176,14 @@ function itemDropRandom(monster) {
                     };
                 };
                 if (dropItem.itemQuality == "Rare") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 20) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 35) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 50) dropItem["materiaSlot_3"] = 'empty';
+                        if (randomNumber >= 70) dropItem["materiaSlot_4"] = 'empty';
+                        if (randomNumber >= 90) dropItem["materiaSlot_5"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -194,6 +215,14 @@ function itemDropRandom(monster) {
                     };
                 };
                 if (dropItem.itemQuality == "Epic") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 10) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 20) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 40) dropItem["materiaSlot_3"] = 'empty';
+                        if (randomNumber >= 60) dropItem["materiaSlot_4"] = 'empty';
+                        if (randomNumber >= 85) dropItem["materiaSlot_5"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -225,6 +254,14 @@ function itemDropRandom(monster) {
                     };
                 };
                 if (dropItem.itemQuality == "Legendary") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 5) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 10) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 30) dropItem["materiaSlot_3"] = 'empty';
+                        if (randomNumber >= 50) dropItem["materiaSlot_4"] = 'empty';
+                        if (randomNumber >= 80) dropItem["materiaSlot_5"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;

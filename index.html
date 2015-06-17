@@ -88,11 +88,25 @@
             margin:0 auto;
 
         }
-        .level{
+        .topBar{
             font-size:20px;
             font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             color:firebrick;
             text-align:right;
+        }
+        #level {
+            display: inline-block;
+            margin-left: 5px;
+            height: 50px;
+            width: 50px;
+            border-radius: 100%;
+            border: 2px solid blue;
+            text-align: center;
+            font-size: 30px;
+            margin-top: 5px;
+        }
+        .centerText{
+            text-align:center;
         }
 
     </style>
@@ -117,7 +131,7 @@
             <div class="col-sm-1 col-md-1 col-lg-1">
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4 background">
-                <div class="row c11 level">
+                <div class="row c11 topBar">
                     Level
                     <span id="level">1</span>
 
@@ -137,11 +151,20 @@
                 </div>
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3 background">
-                <div class="row c11 level c2">
+               
+                <div class="row c11 topBar c2">
                     Gold:
                     <span id="gold">0</span><br />
                     <span id="date"></span><span id="bonus"></span>
                 </div>
+                <!-- Simple audio playback -->
+                <audio id="myAudio" controls="controls" autoplay loop preload="auto" hidden>
+                    <source src="sounds/sound.ogg" type="audio/ogg" />
+                    <source src="sounds/sound.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+                <button onclick="muteAudio();">Mute</button>
+
             </div>
         </div>
         <!--Second Row-->
@@ -162,163 +185,163 @@
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div id="characterClass"></div>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Damage
-                                    <span id="mindamage">2</span>-<span id="maxdamage">4</span>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Mana
-                                    <span id="mana">50</span>/<span id="maxmana">50</span>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Str <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            10 points = 2 Min Damage<br />
-                                            10 points = 3 Max Damage<br />
-                                            10 points = 1 Inventory slot
-                                        </span>
-                                    </a>
-                                    <span id="strength">5</span>
-                                    <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    End <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            1 point = 3 Max Health<br />
-                                            3 points = 1 Health/s
-                                        </span>
-                                    </a>
-                                    <span id="endurance">5</span>
-
-                                    <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Agi <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            100 points = 2% Accuracy<br />
-                                            100 points = 3% Evasion<br />
-                                            5 points = 1 Defense<br />
-
-                                        </span>
-                                    </a>
-                                    <span id="agility">5</span>
-
-                                    <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Dex <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            100 points = 3% Critical Chance<br />
-                                            10 points = 2% Critical Damage
-                                        </span>
-                                    </a>
-                                    <span id="dexterity">5</span>
-
-                                    <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
-
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Int <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            Currently not much use, and it's disabled until more content is added.<br />
-                                            10 points = 1 Max Mana
-                                        </span>
-                                    </a>
-
-                                    <span id="intelligence">5</span>
-
-                                    <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Wis <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            10 points = 1 Mana/s<br />
-                                            2 points = 1 Max Mana
-                                        </span>
-                                    </a>
-
-                                    <span id="wisdom">5</span>
-
-                                    <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Luk <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            100 points = 1% Accuracy<br />
-                                            100 points = 2% Evasion(20% cap)<br />
-                                            100 points = 1% Critical Chance<br />
-                                            100 points = 20% drop rate
-                                        </span>
-                                    </a>
-                                    <span id="luck">5</span>
-
-                                    <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck(event);">
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
-
-                                    <a href="#" class="tooltipA">
-                                        <img src="images/questionMark.png" alt="questionMark">
-                                        <span>
-                                            <ul>
-                                                <li>Check auto battle box, and attack a monster once, after that you will attack it automatically as long as you have enough mana, displayed next to this box.</li>
-                                                <br />
-                                                <li>If you want to change monster, then uncheck auto battle box, check it again and attack different monster.</li>
-                                            </ul>
-                                        </span>
-                                    </a>
-
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Stat points
-                                    <span id="stats">0</span>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Skill points
-                                    <span id="skillPoints">0</span>
-                                </div>
-                                <div class="c3">
-                                    <h4>Secondary Stats</h4>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Health regen:<span id="hpregen">2</span><strong>(End)</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Mana regen:<span id="manaRegen">1</span><strong>(Wis,Int)</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Defense:<span id="defense">0</span><strong>(Agi)</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Accuracy:<span id="accuracy">100</span>%<strong>(Agi,Luk)</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Evasion:<span id="evasion">0</span>%<strong>(Agi,Luk)</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Crit:<span id="criticalChance">1</span>%<strong>(Dex,Luk)</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Critical Dmg:<span id="criticalDamage">1</span><strong>(Dex)</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Drop rate:<span id="dropRate">0</span>%<strong>(Luk)</strong>
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Exp rate:<span id="expRate">0</span>%
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                    Gold rate:<span id="goldRate">0</span>%
-                                </div>
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Damage
+                                <span id="mindamage">2</span>-<span id="maxdamage">4</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Mana
+                                <span id="mana">50</span>/<span id="maxmana">50</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Str <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        10 points = 2 Min Damage<br />
+                                        10 points = 3 Max Damage<br />
+                                        10 points = 1 Inventory slot
+                                    </span>
+                                </a>
+                                <span id="strength">5</span>
+                                <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                End <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        1 point = 3 Max Health<br />
+                                        3 points = 1 Health/s
+                                    </span>
+                                </a>
+                                <span id="endurance">5</span>
+
+                                <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Agi <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        100 points = 2% Accuracy<br />
+                                        100 points = 3% Evasion<br />
+                                        5 points = 1 Defense<br />
+
+                                    </span>
+                                </a>
+                                <span id="agility">5</span>
+
+                                <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Dex <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        100 points = 3% Critical Chance<br />
+                                        10 points = 2% Critical Damage
+                                    </span>
+                                </a>
+                                <span id="dexterity">5</span>
+
+                                <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Int <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        Currently not much use, and it's disabled until more content is added.<br />
+                                        10 points = 1 Max Mana
+                                    </span>
+                                </a>
+
+                                <span id="intelligence">5</span>
+
+                                <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Wis <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        10 points = 1 Mana/s<br />
+                                        2 points = 1 Max Mana
+                                    </span>
+                                </a>
+
+                                <span id="wisdom">5</span>
+
+                                <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Luk <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        100 points = 1% Accuracy<br />
+                                        100 points = 2% Evasion(20% cap)<br />
+                                        100 points = 1% Critical Chance<br />
+                                        100 points = 20% drop rate
+                                    </span>
+                                </a>
+                                <span id="luck">5</span>
+
+                                <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck(event);">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
+
+                                <a href="#" class="tooltipA">
+                                    <img src="images/questionMark.png" alt="questionMark">
+                                    <span>
+                                        <ul>
+                                            <li>Check auto battle box, and attack a monster once, after that you will attack it automatically as long as you have enough mana, displayed next to this box.</li>
+                                            <br />
+                                            <li>If you want to change monster, then uncheck auto battle box, check it again and attack different monster.</li>
+                                        </ul>
+                                    </span>
+                                </a>
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Stat points
+                                <span id="stats">0</span>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Skill points
+                                <span id="skillPoints">0</span>
+                            </div>
+                            <div class="c3">
+                                <h4>Secondary Stats</h4>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Health regen:<span id="hpregen">2</span><strong>(End)</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Mana regen:<span id="manaRegen">1</span><strong>(Wis,Int)</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Defense:<span id="defense">0</span><strong>(Agi)</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Accuracy:<span id="accuracy">100</span>%<strong>(Agi,Luk)</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Evasion:<span id="evasion">0</span>%<strong>(Agi,Luk)</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Crit:<span id="criticalChance">1</span>%<strong>(Dex,Luk)</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Critical Dmg:<span id="criticalDamage">1</span><strong>(Dex)</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Drop rate:<span id="dropRate">0</span>%<strong>(Luk)</strong>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Exp rate:<span id="expRate">0</span>%
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                Gold rate:<span id="goldRate">0</span>%
+                            </div>
+                        </div>
                         <div class="tab-pane" id="tab_b">
                             <div class="c3">
                                 <h4>Game Tutorial</h4><br />
@@ -457,28 +480,30 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_c">
-                            <div class="story" id="story">
-                                <h1><b>Prologue</b></h1><br /><br />
-                                <p class="story">
-                                    The dead stay dead, but in your case that isn't true.
-                                    You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
-                                    On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
-                                    It speaks to you and it desires only one thing: Battle.<br /><br />
-                                    "Become the Legend I was and help me feel alive again."<br /><br />
-                                    You respond by opening your door and taking the first steps towards a new life.
-                                </p>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="story" id="story">
+                                    <h1><b>Prologue</b></h1><br /><br />
+                                    <p class="story">
+                                        The dead stay dead, but in your case that isn't true.
+                                        You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
+                                        On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
+                                        It speaks to you and it desires only one thing: Battle.<br /><br />
+                                        "Become the Legend I was and help me feel alive again."<br /><br />
+                                        You respond by opening your door and taking the first steps towards a new life.
+                                    </p>
 
-                                <h3><b>Varik Grunts</b></h3><br />
-                                <p class="story">
-                                    Of course, you have to start somewhere.
-                                    You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
-                                    Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
-                                    So, you go stir up some trouble with the Varik Grunts and hope someone notices.
-                                    Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
-                                    You started trouble with them by breaking a bottle over one of their heads.
-                                </p>
+                                    <h3><b>Varik Grunts</b></h3><br />
+                                    <p class="story">
+                                        Of course, you have to start somewhere.
+                                        You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
+                                        Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
+                                        So, you go stir up some trouble with the Varik Grunts and hope someone notices.
+                                        Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
+                                        You started trouble with them by breaking a bottle over one of their heads.
+                                    </p>
+                                </div>
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <!-- tab content -->
                 </div>
@@ -624,7 +649,7 @@
                                 <h4>Save & Options</h4>
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <button type="button" class="btn btn-sm btn-default" onclick="saveGameFunction()">
+                                <button type="button" class="btn btn-sm btn-default" onclick="saveGameFunction('manualSave')">
                                     save
                                 </button>
                                 <button type="button" class="btn btn-sm btn-default" onclick="load()">
@@ -638,8 +663,16 @@
                                 <button type="button" class="btn btn-sm btn-default" onclick="saveExport()">
                                     Export
                                 </button>
-                                <div class="scroll c4 c3" id="saveExport" style="width: 300px; word-wrap: break-word;"></div>
-                                <div class="scroll c4 c3" id="saveImport" style="width: 300px; word-wrap: break-word;"></div>
+                                <button type="button" class="btn btn-sm btn-default" onclick="selectText('saveExport')">
+                                    Select all text
+                                </button>
+                                <div class="scroll c4 c3 col-xs-10" id="saveExport" style="height:100px; word-wrap: break-word;"></div><br />
+                                <button type="button" class="btn btn-sm btn-default" onclick="importSave()">
+                                    Import
+                                </button>
+                                <textarea class="scroll c4 c3 col-xs-10" id="saveImport" rows="6" style="word-wrap: break-word;"></textarea><br />
+
+                               
                                 <a href="updates.txt" target="_blank">Changelog</a><br />
                                 <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
                                 <div><label><input type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
@@ -661,13 +694,15 @@
                             <div class="c3">
                                 <h4>Credits</h4>
                             </div>
-                            <b>Tarnos</b> - Main developer - <a href="http://www.reddit.com/user/tarnos12/" target="_blank">Reddit profile</a><br />
-                            <b>Rohan Jain</b> - Help with the code/development - <a href="http://www.reddit.com/user/ArjaaAine" target="_blank">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078" target="_blank">LinkedIn profile</a><br />
-                            <b>Darkshadow44</b> - Help with game code - <a href="http://steamcommunity.com/profiles/76561198036405586/" target="_blank">Steam profile</a><br />
-                            <b>Jason Lee</b> - Story - <a href="http://www.reddit.com/user/ParanoiDoom" target="_blank">Reddit profile</a><br />
-                            <b>Reddit users</b> - Feedback - <a href="http://www.reddit.com/r/incremental_games/" target="_blank">Incremental Reddit</a><br />
-                            <b>David E. Gervais</b> - Monster images - <a href="http://pousse.rapiere.free.fr/tome/" target="_blank">http://pousse.rapiere.free.fr/tome/</a> - published under the Creative Commons licence.
-
+                            <div class="centerText">
+                                <b>Tarnos - Main developer</b><p><a href="http://www.reddit.com/user/tarnos12/" target="_blank">Reddit profile</a></p>
+                                <b>Rohan Jain - Help with the code/development</b><p><a href="http://www.reddit.com/user/ArjaaAine" target="_blank">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078" target="_blank">LinkedIn profile</a></p>
+                                <b>Darkshadow44 - Help with game code</b><p><a href="http://steamcommunity.com/profiles/76561198036405586/" target="_blank">Steam profile</a></p>
+                                <b>Jason Lee - Story</b><p><a href="http://www.reddit.com/user/ParanoiDoom" target="_blank">Reddit profile</a></p>
+                                <b>Reddit users - Feedback</b><p><a href="http://www.reddit.com/r/incremental_games/" target="_blank">Incremental Reddit</a></p>
+                                <b>David E. Gervais - Monster images</b><p><a href="http://pousse.rapiere.free.fr/tome/" target="_blank">http://pousse.rapiere.free.fr/tome/</a><br />Published under the Creative Commons licence.</p>
+                                <b>Music by Eric Matyas</b><p><a href="www.soundimage.org" target="_blank">www.soundimage.org</a></p>
+                            </div>
                         </div>
                         <!-- tab content -->
                     </div>
