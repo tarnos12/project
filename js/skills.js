@@ -31,10 +31,10 @@ var frost = new spell(1, 5, 3, 8, 50, "Frost", "Frost");
 var lightningStorm = new spell(1, 5, 3, 9, 50, "Lightning Storm", "LightningStorm");
 
 fireBall.description = function () {
-    return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + "."
+    return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + ".";
 };
 iceShard.description = function () {
-    return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + "."
+    return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + ".";
 };
 rainOfFire.damage = function () {
     return Math.floor((30 * this.level) + (player.totalIntelligence() * 0.3));

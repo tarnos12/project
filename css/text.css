@@ -1,5 +1,5 @@
 ﻿h1 {
-	font-family: Papyrus;
+	font-family: Century Gothic, sans-serif;
 	font-size: 23px;
 	font-style: italic;
 	font-variant: normal;
@@ -7,7 +7,7 @@
 	line-height: 25.3px;
 }
 h3 {
-	font-family: Papyrus;
+	font-family: Century Gothic, sans-serif;
 	font-size: 20px;
 	font-style: normal;
 	font-variant: normal;
@@ -15,15 +15,15 @@ h3 {
 	line-height: 18.7px;
 }
 p.story {
-	font-family: Papyrus;
-	font-size: 17px;
+	font-family: Century Gothic, sans-serif;
+	font-size: 18px;
 	font-style: italic;
 	font-variant: normal;
 	font-weight: 400;
 	line-height: 20.4px;
 }
 blockquote {
-	font-family: Papyrus,fantasy;
+	font-family: Century Gothic, sans-serif;
 	font-size: 17px;
 	font-style: normal;
 	font-variant: normal;
@@ -31,7 +31,7 @@ blockquote {
 	line-height: 23px;
 }
 pre {
-	font-family: Papyrus;
+	font-family: Century Gothic, sans-serif;
 	font-size: 12px;
 	font-style: normal;
 	font-variant: normal;

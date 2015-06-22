@@ -22,7 +22,6 @@ function itemDropRandom(monster) {
             //test
 
             //Checks if player used checkbox to auto remove items by quality. Also this code add "id" property to each created item
-            if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
                 dropItem["id"] = player.itemIdNumber;
 
                 if (dropItem.baseStrength > 0) {
@@ -102,6 +101,12 @@ function itemDropRandom(monster) {
 
                  //Add item level up etc
                 if (dropItem.itemQuality == "Common") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 30) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 50) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 70) dropItem["materiaSlot_3"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -133,6 +138,13 @@ function itemDropRandom(monster) {
                     };
                 };
                 if (dropItem.itemQuality == "Uncommon") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 25) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 40) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 60) dropItem["materiaSlot_3"] = 'empty';
+                        if (randomNumber >= 80) dropItem["materiaSlot_4"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -164,6 +176,14 @@ function itemDropRandom(monster) {
                     };
                 };
                 if (dropItem.itemQuality == "Rare") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 20) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 35) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 50) dropItem["materiaSlot_3"] = 'empty';
+                        if (randomNumber >= 70) dropItem["materiaSlot_4"] = 'empty';
+                        if (randomNumber >= 90) dropItem["materiaSlot_5"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -195,6 +215,14 @@ function itemDropRandom(monster) {
                     };
                 };
                 if (dropItem.itemQuality == "Epic") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 10) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 20) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 40) dropItem["materiaSlot_3"] = 'empty';
+                        if (randomNumber >= 60) dropItem["materiaSlot_4"] = 'empty';
+                        if (randomNumber >= 85) dropItem["materiaSlot_5"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -226,6 +254,14 @@ function itemDropRandom(monster) {
                     };
                 };
                 if (dropItem.itemQuality == "Legendary") {
+                    var randomNumber = Math.floor((Math.random() * 100) + 1);
+                    if (dropItem.itemType === "weapon") {
+                        if (randomNumber >= 5) dropItem["materiaSlot_1"] = 'empty';
+                        if (randomNumber >= 10) dropItem["materiaSlot_2"] = 'empty';
+                        if (randomNumber >= 30) dropItem["materiaSlot_3"] = 'empty';
+                        if (randomNumber >= 50) dropItem["materiaSlot_4"] = 'empty';
+                        if (randomNumber >= 80) dropItem["materiaSlot_5"] = 'empty';
+                    };
                     dropItem["level"] = 0;
                     dropItem["maxLevel"] = 5;
                     dropItem["exp"] = 0;
@@ -257,15 +293,21 @@ function itemDropRandom(monster) {
                     };
                 };
                 dropItem["value"] = getItemValue(dropItem); //Get item value function.
-                var itemHolder = [];
-                itemHolder.push(dropItem);
-                playerInventory.push.apply(
-                    playerInventory,
-                    JSON.parse(JSON.stringify(itemHolder))
-                    );
-                player.itemIdNumber += 1;
-                Log("<span style=\"color:orange\">You found an item! </span>");
-            };
+                if (dropItem.itemQuality === 'Common' && checkBoxCommon === false || dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false || dropItem.itemQuality === 'Rare' && checkBoxRare === false || dropItem.itemQuality === 'Epic' && checkBoxEpic === false || dropItem.itemQuality === 'Legendary') {
+
+                    var itemHolder = [];
+                    itemHolder.push(dropItem);
+                    playerInventory.push.apply(
+                        playerInventory,
+                        JSON.parse(JSON.stringify(itemHolder))
+                        );
+                    player.itemIdNumber += 1;
+                    Log("<span style=\"color:orange\">You found an item! </span>");
+                }
+                else {
+                    player.gold += Math.floor(dropItem.value * 0.2);
+                    updateHtml();
+                };
         };
     };
 };

@@ -88,12 +88,27 @@
             margin:0 auto;
 
         }
-        .level{
+        .topBar{
             font-size:20px;
             font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             color:firebrick;
             text-align:right;
         }
+        #level {
+            display: inline-block;
+            margin-left: 5px;
+            height: 50px;
+            width: 50px;
+            border-radius: 100%;
+            border: 2px solid blue;
+            text-align: center;
+            font-size: 30px;
+            margin-top: 5px;
+        }
+        .centerText{
+            text-align:center;
+        }
+
     </style>
 </head>
 <body onload="load();">
@@ -110,12 +125,13 @@
 
     </script>
     <div class="container-fluid">
+        <div class="partyCreationDiv" id="partyCreationDiv" style="display: block" ;><div id="partCreation"></div></div>
         <!--First Row-->
         <div class="row">
             <div class="col-sm-1 col-md-1 col-lg-1">
             </div>
             <div class="col-sm-4 col-md-4 col-lg-4 background">
-                <div class="row c11 level">
+                <div class="row c11 topBar">
                     Level
                     <span id="level">1</span>
 
@@ -135,11 +151,20 @@
                 </div>
             </div>
             <div class="col-sm-3 col-md-3 col-lg-3 background">
-                <div class="row c11 level c2">
+               
+                <div class="row c11 topBar c2">
                     Gold:
                     <span id="gold">0</span><br />
                     <span id="date"></span><span id="bonus"></span>
                 </div>
+                <!-- Simple audio playback -->
+                <audio id="myAudio" controls="controls" loop preload="auto" hidden>
+                    <source src="sounds/sound.ogg" type="audio/ogg" />
+                    <source src="sounds/sound.mp3" type="audio/mpeg" />
+                    Your browser does not support the audio element.
+                </audio>
+                <button onclick="muteAudio();">Mute</button>
+
             </div>
         </div>
         <!--Second Row-->
@@ -157,6 +182,9 @@
                         <div class="col-sm-12 col-md-12 col-lg-12 tab-pane active c2" id="tab_a">
                             <div class="c3">
                                 <h4>Player Stats</h4>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div id="characterClass"></div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 Damage
@@ -270,7 +298,6 @@
                                         </ul>
                                     </span>
                                 </a>
-
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 Stat points
@@ -452,28 +479,30 @@
                             </div>
                         </div>
                         <div class="tab-pane" id="tab_c">
-                            <div class="story" id="story">
-                                <h1><b>Prologue</b></h1><br /><br />
-                                <p class="story">
-                                    The dead stay dead, but in your case that isn't true.
-                                    You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
-                                    On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
-                                    It speaks to you and it desires only one thing: Battle.<br /><br />
-                                    "Become the Legend I was and help me feel alive again."<br /><br />
-                                    You respond by opening your door and taking the first steps towards a new life.
-                                </p>
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <div class="story" id="story">
+                                    <h1><b>Prologue</b></h1><br /><br />
+                                    <p class="story">
+                                        The dead stay dead, but in your case that isn't true.
+                                        You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
+                                        On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
+                                        It speaks to you and it desires only one thing: Battle.<br /><br />
+                                        "Become the Legend I was and help me feel alive again."<br /><br />
+                                        You respond by opening your door and taking the first steps towards a new life.
+                                    </p>
 
-                                <h3><b>Varik Grunts</b></h3><br />
-                                <p class="story">
-                                    Of course, you have to start somewhere.
-                                    You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
-                                    Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
-                                    So, you go stir up some trouble with the Varik Grunts and hope someone notices.
-                                    Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
-                                    You started trouble with them by breaking a bottle over one of their heads.
-                                </p>
+                                    <h3><b>Varik Grunts</b></h3><br />
+                                    <p class="story">
+                                        Of course, you have to start somewhere.
+                                        You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
+                                        Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
+                                        So, you go stir up some trouble with the Varik Grunts and hope someone notices.
+                                        Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
+                                        You started trouble with them by breaking a bottle over one of their heads.
+                                    </p>
+                                </div>
+                                </div>
                             </div>
-                        </div>
                     </div>
                     <!-- tab content -->
                 </div>
@@ -619,7 +648,7 @@
                                 <h4>Save & Options</h4>
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-12">
-                                <button type="button" class="btn btn-sm btn-default" onclick="saveGameFunction()">
+                                <button type="button" class="btn btn-sm btn-default" onclick="saveGameFunction('manualSave')">
                                     save
                                 </button>
                                 <button type="button" class="btn btn-sm btn-default" onclick="load()">
@@ -628,7 +657,21 @@
                                 <button type="button" class="btn btn-sm btn-default" onclick="resetCheck()">
                                     reset
                                 </button><br /><br />
+                                <div id="saveTime"></div>
+                                <br /><br />
+                                <button type="button" class="btn btn-sm btn-default" onclick="saveExport()">
+                                    Export
+                                </button>
+                                <button type="button" class="btn btn-sm btn-default" onclick="selectText('saveExport')">
+                                    Select all text
+                                </button>
+                                <div class="scroll c4 c3 col-xs-10" id="saveExport" style="height:100px; word-wrap: break-word;"></div><br />
+                                <button type="button" class="btn btn-sm btn-default" onclick="importSave()">
+                                    Import
+                                </button>
+                                <textarea class="scroll c4 c3 col-xs-10" id="saveImport" rows="6" style="word-wrap: break-word;"></textarea><br />
 
+                               
                                 <a href="updates.txt" target="_blank">Changelog</a><br />
                                 <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
                                 <div><label><input type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
@@ -650,13 +693,15 @@
                             <div class="c3">
                                 <h4>Credits</h4>
                             </div>
-                            <b>Tarnos</b> - Main developer - <a href="http://www.reddit.com/user/tarnos12/" target="_blank">Reddit profile</a><br />
-                            <b>Rohan Jain</b> - Help with the code/development - <a href="http://www.reddit.com/user/ArjaaAine" target="_blank">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078" target="_blank">LinkedIn profile</a><br />
-                            <b>Darkshadow44</b> - Help with game code - <a href="http://steamcommunity.com/profiles/76561198036405586/" target="_blank">Steam profile</a><br />
-                            <b>Jason Lee</b> - Story - <a href="http://www.reddit.com/user/ParanoiDoom" target="_blank">Reddit profile</a><br />
-                            <b>Reddit users</b> - Feedback - <a href="http://www.reddit.com/r/incremental_games/" target="_blank">Incremental Reddit</a><br />
-                            <b>David E. Gervais</b> - Monster images - <a href="http://pousse.rapiere.free.fr/tome/" target="_blank">http://pousse.rapiere.free.fr/tome/</a> - published under the Creative Commons licence.
-
+                            <div class="centerText">
+                                <b>Tarnos - Main developer</b><p><a href="http://www.reddit.com/user/tarnos12/" target="_blank">Reddit profile</a></p>
+                                <b>Rohan Jain - Help with the code/development</b><p><a href="http://www.reddit.com/user/ArjaaAine" target="_blank">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078" target="_blank">LinkedIn profile</a></p>
+                                <b>Darkshadow44 - Help with game code</b><p><a href="http://steamcommunity.com/profiles/76561198036405586/" target="_blank">Steam profile</a></p>
+                                <b>Jason Lee - Story</b><p><a href="http://www.reddit.com/user/ParanoiDoom" target="_blank">Reddit profile</a></p>
+                                <b>Reddit users - Feedback</b><p><a href="http://www.reddit.com/r/incremental_games/" target="_blank">Incremental Reddit</a></p>
+                                <b>David E. Gervais - Monster images</b><p><a href="http://pousse.rapiere.free.fr/tome/" target="_blank">http://pousse.rapiere.free.fr/tome/</a><br />Published under the Creative Commons licence.</p>
+                                <b>Music by Eric Matyas</b><p><a href="www.soundimage.org" target="_blank">www.soundimage.org</a></p>
+                            </div>
                         </div>
                         <!-- tab content -->
                     </div>
@@ -664,9 +709,7 @@
                 </div>
             </div>
         </div>
-        <!--TEST z index 999
         <div id="partyCreationDisabledBackground" class="disabledBackgroundDiv" style="display: block;"></div>
-        <div class="partyCreationDiv" style="display: block" ;>Test<br />test</div>-->
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script><!-- Include all compiled plugins (below), or include individual files as needed -->

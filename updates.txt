@@ -1,4 +1,14 @@
 _________________________
+v1.5.5 - 22 june 2015    |
+-------------------------|
+- Added "last saved:" in the save/options tab, and removed "Game saved" notification from player log.(Game is automatically saved every 10 seconds)
+- "Destroy item" by rarity in the options, now gives you 20% of item value
+- Character classes, pick one to gain benefits from it. Just a basic idea right now, each class gives you different stats per level.
+- Fixed x2 drop rate event not working properly.
+- Import/Export of save file, when you save a game, a code will appear in a box. Copy and paste it in the box below, to load your save.
+- Select all text button, still working on it. First press left mouse button on the box with the save code, then press the button to select text, lastly copy it. You can load a game with "import" button.
+- Background music, mute option in game, and when the game starts. Reset your save, so you can pick a character class.
+_________________________
 v1.5.4 - 30 may 2015     |
 -------------------------|
 - All stat names are capitalized
@@ -303,7 +313,6 @@ v1.0.2 - 26 december 2014|
 - Changed "Sell  all button" to sell all orbs at once(all quality) 
 - Added Level up system, 5 stats per level, health regeneration, Defense, Strength
 - New monsters, changed weapon requirement to fight them
-
 _________________________
 v1.0.1 - 25 december 2014|
 -------------------------|

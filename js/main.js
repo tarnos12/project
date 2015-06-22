@@ -22,6 +22,8 @@ var currentGameVersion = 1.5;
 //PLAYER STATS
 var player = {
     gameVersion: 1.5,
+    heroClass: '',
+    sound: 'off',
     isDead: false,
     runOnce: false,
     isAuto: false,
@@ -30,6 +32,7 @@ var player = {
     isMace: false,
     isStaff: false,
     isRanged: false,
+    isFist: false,
     itemIdNumber: 1,
     stats: 0,
     skillPoints: 0,
@@ -40,7 +43,7 @@ var player = {
     maxExperience: 100,
     backpackUpgrade: 0,
     dropRate: function () {
-        return (1 + ((player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100) * bonusDrop);
+        return (1 + ((player.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100)) * bonusDrop;
     },
     expRate: function () {
         return (1 + ((equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100)) * bonusExp;
@@ -241,7 +244,7 @@ var equippedItems = {
         defense: 0,
         exp: 0,
         maxExp: 0,
-        subType: "sword",
+        subType: "fist",
     },
     offHand: {
         strength: 0,
@@ -251,7 +254,8 @@ var equippedItems = {
         intelligence: 0,
         wisdom: 0,
         luck: 0,
-        defense: 0
+        defense: 0,
+        subType: "fist",
     },
     armor: {
         strength: 0,
@@ -339,7 +343,7 @@ function attack(monster) {
             };
         }
         else {
-            Log("<span style=\"color:red\">You can't fight while being dead. </span>");
+            Log("<span style=\"color:red\">You can not fight whilst you are dead.</span>");
             break;
         };
         battleTurn += 1;
@@ -472,11 +476,8 @@ function playerDamageDeal(damage, monster, monsterStats) {
 
 //monster hit chance
 function monsterAttack(monster, monsterStats) {
-
     var monsterHitChance = (monsterStats.acc - player.evasion()) / 100;
-
     var randomHitChance = Math.random();
-
     if (monsterHitChance > randomHitChance) {
         monsterDmg(monster, monsterStats);
     };
@@ -509,8 +510,7 @@ function monsterDamageDeal(monsterDamage, monster, monsterStats) {
             blockRate += monsterDamage;
             monsterDamage = 0;
         };
-    };
-                    
+    }; 
     player.health = player.health - monsterDamage;
     damageTaken += monsterDamage;
     document.getElementById("health").innerHTML = player.health + "/" + player.maxhealth();
@@ -543,11 +543,10 @@ function playerDead(monster, monsterStats) {
     Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + expLost + "experience.");
     Log("<span class =\"bold\" style=\"color:red\">You have died!</span>");
     Log("You need to wait 5 seconds before you can fight again!");
-    
     battleTurn = -1;
     skillReCharge();
     updateHtml();
-}
+};
 
 //monster kill function
 function monsterKilled(monster, monsterStats) {
@@ -561,7 +560,7 @@ function monsterKilled(monster, monsterStats) {
     skillReCharge();
     updateHtml();
     document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
-}
+};
 
 //Weapon skill experience
 function weaponSkill(monster, monsterStats) {
@@ -572,16 +571,16 @@ function weaponSkill(monster, monsterStats) {
         var expgain = monsterStats.level;
     };
     var subType = equippedItems.weapon.subType;
-    var itemStat = weaponMastery[subType]
+    var itemStat = weaponMastery[subType];
     if (weaponMastery[subType] !== undefined) {
-        if (weaponMastery[subType]["exp"] < weaponMastery[subType]["maxExp"]) {
-            weaponMastery[subType]["exp"] = Math.floor(weaponMastery[subType]["exp"] + expgain);
+        if (weaponMastery[subType]["experience"] < weaponMastery[subType]["maxExperience"]) {
+            weaponMastery[subType]["experience"] = Math.floor(weaponMastery[subType]["experience"] + expgain);
         };
-        if (weaponMastery[subType]["exp"] >= weaponMastery[subType]["maxExp"]) {
+        if (weaponMastery[subType]["experience"] >= weaponMastery[subType]["maxExperience"]) {
             weaponMastery[subType]["level"] += 1;
-            weaponMastery[subType]["exp"] -= weaponMastery[subType]["maxExp"];
-            weaponMastery[subType]["maxExp"] = Math.floor(weaponMastery[subType]["maxExp"] * 1.2);
-            Log("<span style=\"color:green\">You gained level in " + weaponMastery[subType].name + " Mastery!</span>")
+            weaponMastery[subType]["experience"] -= weaponMastery[subType]["maxExperience"];
+            weaponMastery[subType]["maxExperience"] = Math.floor(weaponMastery[subType]["maxExperience"] * 1.2);
+            Log("<span style=\"color:green\">You gained level in " + weaponMastery[subType].name + " Mastery!</span>");
             CreateWeaponSkillHtml();
         };
     };
@@ -589,10 +588,10 @@ function weaponSkill(monster, monsterStats) {
 };
 function updateBar() {
     var subType = equippedItems.weapon.subType;
-    var itemStat = weaponMastery[subType]
-    var weaponExp = (Math.floor((itemStat.exp / itemStat.maxExp) * 100));
-    var divArray = document.getElementById(subType + "1");
-    divArray.style.width = ((weaponExp) + '%');
+    var itemStat = weaponMastery[subType];
+    var weaponExp = (Math.floor((itemStat.experience / itemStat.maxExperience) * 100));
+    var divArray = document.getElementById(subType + '1'); //Doing + 1 so I can use "subType" for a span, which let me center progress bar value.
+    divArray.style.width = ((weaponExp) + '%'); 
     if (subType === "sword") {
         document.getElementById("sword").innerHTML = weaponExp + "%";
     }
@@ -608,7 +607,10 @@ function updateBar() {
     if (subType === "ranged") {
         document.getElementById("ranged").innerHTML = weaponExp + "%";
     };
-}
+    if (subType === "fist") {
+        document.getElementById("fist").innerHTML = weaponExp + "%";
+    };
+};
 
 //experience gained from killing a monster
 function monsterExperience(monster, monsterStats) {
@@ -672,31 +674,31 @@ function itemExperienceGain(monster, monsterStats) {
             equippedItems.weapon.maxDamage += (2 * weapon.iLvl);
             weaponExp = weaponExp - weaponMaxExp;
             weaponMaxExp = Math.floor(weaponMaxExp * 2)
-            if (weapon.subType == "sword") {
+            if (weapon.subType === 'sword') {
                 weapon.strength += Math.floor(weapon.iLvl + weapon.power);
                 weapon.agility += Math.floor(weapon.iLvl + weapon.power);
                 weapon.dexterity += Math.floor(weapon.iLvl + weapon.power);
             }
-            else if (weapon.subType == "axe") {
+            else if (weapon.subType === 'axe') {
                 weapon.strength += Math.floor(weapon.iLvl + weapon.power);
                 weapon.endurance += Math.floor(weapon.iLvl + weapon.power);
                 weapon.agility += Math.floor(weapon.iLvl + weapon.power);
             }
-            else if (weapon.subType == "bow") {
+            else if (weapon.subType === 'ranged') {
                 weapon.strength += Math.floor(weapon.iLvl + weapon.power);
                 weapon.agility += Math.floor(weapon.iLvl + weapon.power);
                 weapon.dexterity += Math.floor(weapon.iLvl + weapon.power);
             }
-            else if (weapon.subType == "mace") {
+            else if (weapon.subType === 'mace') {
                 weapon.strength += Math.floor(weapon.iLvl + weapon.power);
                 weapon.endurance += Math.floor(weapon.iLvl + weapon.power);
                 weapon.wisdom += Math.floor(weapon.iLvl + weapon.power);
             }
-            else if (weapon.subType == "staff") {
+            else if (weapon.subType === 'staff') {
                 weapon.agility += Math.floor(weapon.iLvl + weapon.power);
                 weapon.intelligence += Math.floor(weapon.iLvl + weapon.power);
                 weapon.wisdom += Math.floor(weapon.iLvl + weapon.power);
-            };
+            }
         };
         var newItemValue = getItemValue(weapon);
         equippedItems.weapon.value = newItemValue;
@@ -723,7 +725,7 @@ function monsterGold(monster, monsterStats) {
 function displayLogInfo() {
     if (battleTurn > 20) {
         battleTurn = 20;
-    }
+    };
     Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
     Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
     Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
@@ -743,17 +745,15 @@ function displayLogInfo() {
     accuracyRate = 0;
     monsterDamage = 0;
     if (battleTurn >= 20) {
-
         Log("<span class =\"bold\" style=\"color:blue\">Draw!</span>");
-    }
+    };
     Log(" ");
     skillReCharge();
     updateHtml();
-}
+};
 
 //Equip item function
 function equipItem(id) {
-
     var item = playerInventory.filter(function (obj) {
         return obj.id === id;
     })[0];
@@ -780,6 +780,9 @@ function equipItem(id) {
             }
             else if (equippedItems.weapon.subType === "ranged") {
                 player.isRanged = true;
+            }
+            else if (equippedItems.weapon.subType === "fist") {
+                player.isFist = true;
             }
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id;
@@ -926,6 +929,7 @@ function unequipItem(id, oldId) {
     var talismanId = id;
     //Weapon unequip
     if (weaponId === equippedItems.weapon.id || weaponId === oldId) {
+        var itemType = "weapon";
         equippedItems.weapon.isEquipped = false;
         playerInventory.push(equippedItems.weapon);
         if (equippedItems.weapon.subType === "sword") {
@@ -942,115 +946,65 @@ function unequipItem(id, oldId) {
         }
         else if (equippedItems.weapon.subType === "ranged") {
             player.isRanged = false;
+        }
+        equippedItems.weapon = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
         };
-        equippedItems.weapon = {
-            strength: 0,
-            endurance: 0,
-            agility: 0,
-            dexterity: 0,
-            intelligence: 0,
-            wisdom: 0,
-            luck: 0,
-            minDamage: 0,
-            maxDamage: 0,
-            exp: 0,
-            maxExp: 0,
-            subType: "sword",
-        };
+        itemUnequipProperties(itemType);
         CreateInventoryWeaponHtml();
         updateHtml();
     }
         //Off-Hand unequip
     else if (offHandId === equippedItems.offHand.id || offHandId == oldId) {
+        var itemType = "offHand";
         equippedItems.offHand.isEquipped = false;
         playerInventory.push(equippedItems.offHand);
-        equippedItems.offHand = {
-            strength: 0,
-            endurance: 0,
-            agility: 0,
-            dexterity: 0,
-            intelligence: 0,
-            wisdom: 0,
-            luck: 0,
-            defense: 0,
+        equippedItems.offHand = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
         };
+        itemUnequipProperties(itemType);
         CreateInventoryWeaponHtml();
         updateHtml();
     }
         //Armor unequip
     else if (armorId === equippedItems.armor.id || armorId == oldId) {
+        var itemType = "armor";
         equippedItems.armor.isEquipped = false;
         playerInventory.push(equippedItems.armor);
-        equippedItems.armor = {
-            strength: 0,
-            endurance: 0,
-            agility: 0,
-            dexterity: 0,
-            intelligence: 0,
-            wisdom: 0,
-            luck: 0,
-            defense: 0
+        equippedItems.armor = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
         };
+        itemUnequipProperties(itemType);
         CreateInventoryWeaponHtml();
         updateHtml();
     }
         //Ring unequip
     else if (ringId === equippedItems.ring.id || ringId === oldId) {
+        var itemType = "ring";
         equippedItems.ring.isEquipped = false;
         playerInventory.push(equippedItems.ring);
-        equippedItems.ring = {
-            strength: 0,
-            endurance: 0,
-            agility: 0,
-            dexterity: 0,
-            intelligence: 0,
-            wisdom: 0,
-            luck: 0,
-            defense: 0,
-            goldRate: 0,
-            expRate: 0,
-            dropRate: 0
+        equippedItems.ring = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
         };
+        itemUnequipProperties(itemType);
         CreateInventoryWeaponHtml();
         updateHtml();
     }
         //Amulet unequip
     else if (amuletId === equippedItems.amulet.id || amuletId === oldId) {
+        var itemType = "amulet";
         equippedItems.amulet.isEquipped = false;
         playerInventory.push(equippedItems.amulet);
-        equippedItems.amulet = {
-            strength: 0,
-            endurance: 0,
-            agility: 0,
-            dexterity: 0,
-            intelligence: 0,
-            wisdom: 0,
-            luck: 0,
-            defense: 0,
-            goldRate: 0,
-            expRate: 0,
-            dropRate: 0
+        equippedItems.amulet = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
         };
+        itemUnequipProperties(itemType);
         CreateInventoryWeaponHtml();
         updateHtml();
     }
         //Talisman unequip
     else if (talismanId === equippedItems.talisman.id || talismanId === oldId) {
+        var itemType = "talisman";
         equippedItems.talisman.isEquipped = false;
         playerInventory.push(equippedItems.talisman);
-        equippedItems.talisman = {
-            strength: 0,
-            endurance: 0,
-            agility: 0,
-            dexterity: 0,
-            intelligence: 0,
-            wisdom: 0,
-            luck: 0,
-            defense: 0,
-            goldRate: 0,
-            expRate: 0,
-            dropRate: 0
+        equippedItems.talisman = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
         };
+        itemUnequipProperties(itemType);
         CreateInventoryWeaponHtml();
         updateHtml();
     };
@@ -1062,6 +1016,33 @@ function unequipItem(id, oldId) {
     CreatePlayerHotBar();
 };
 
+function itemUnequipProperties(itemType) {
+    equippedItems[itemType]["strength"] = 0;
+    equippedItems[itemType]["endurance"] = 0;
+    equippedItems[itemType]["agility"] = 0;
+    equippedItems[itemType]["dexterity"] = 0;
+    equippedItems[itemType]["wisdom"] = 0;
+    equippedItems[itemType]["intelligence"] = 0;
+    equippedItems[itemType]["luck"] = 0;
+    equippedItems[itemType]["defense"] = 0;
+    if (itemType === "weapon") {
+        equippedItems[itemType]["minDamage"] = 0;
+        equippedItems[itemType]["maxDamage"] = 0;
+        equippedItems[itemType]["exp"] = 0;
+        equippedItems[itemType]["maxExp"] = 0;
+        equippedItems[itemType]["subType"] = "fist";
+    };
+    if (itemType === "offHand") {
+        equippedItems[itemType]["subType"] = "fist";
+    }
+    if (itemType === "talisman" ||
+        itemType === "amulet" ||
+        itemType === "ring") {
+        equippedItems[itemType]["dropRate"] = 0;
+        equippedItems[itemType]["expRate"] = 0;
+        equippedItems[itemType]["goldRate"] = 0;
+    };
+};
 
 CreateWeaponSkillHtml();
 CreateInventoryWeaponHtml();
@@ -1089,42 +1070,43 @@ function weekDayEvent() {
     var eventDate = new Date();
     var day = eventDate.getDay();
     var description = '';
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     if (day === 0) {
-        eventDay = "Sunday";
+        eventDay = days[day];
         description = "base exp/gold/drop rate x2";
         bonusExp = 2;
         bonusGold = 2;
         bonusDrop = 2;
     }
     else if (day === 1) {
-        eventDay = "Monday";
+        eventDay = days[day];
         description = "Hp/mana regen x2";
         bonusRegen = 2;
     }
     else if (day === 2) {
-        eventDay = "Tuesday";
+        eventDay = days[day];
         description = "Damage 50%";
         bonusDamage = 1.5;
     }
     else if (day === 3) {
-        eventDay = "Wednesday";
+        eventDay = days[day];
         description = "Int/Wis + 20%";
         bonusSpellDamage = 1.2;
     }
     else if (day === 4) {
-        eventDay = "Thursday";
+        eventDay = days[day];
         description = "Exp/Gold x2";
         bonusExp = 2;
         bonusGold = 2;
     }
     else if (day === 5) {
-        eventDay = "Friday";
+        eventDay = days[day];
         description = "Gold/Drop x2";
         bonusGold = 2;
         bonusDrop = 2;
     }
     else if (day === 6) {
-        eventDay = "Saturday";
+        eventDay = days[day];
         description = "Drop/Exp x2";
         bonusExp = 2;
         bonusDrop = 2;
@@ -1132,3 +1114,44 @@ function weekDayEvent() {
     document.getElementById("date").innerHTML += eventDay + ": " + description;
 };
 weekDayEvent();
+
+function changeClass(className) {
+    var characterClass = '';
+    characterClass = className;
+    player.heroClass = characterClass;
+    document.getElementById("characterClass").innerHTML = "Class: " + characterClass;
+    characterCreationRemoveBackground();
+};
+//Set audio starting volume...
+function myAudio(sound) {
+    var myAudio = document.getElementById('myAudio');
+    myAudio.volume = 0.1;
+    if (sound === "on" || player.sound === "on") {
+        myAudio.play();
+        player.sound = "on";
+    }
+    if (sound === "off" || player.sound === "off") {
+        myAudio.pause();
+        player.sound = "off";
+    };
+};
+function muteAudio() {
+    var audio = document.getElementById("myAudio");
+    if (audio.muted === true) {
+        audio.muted = false;
+    }
+    else if (audio.muted === false) {
+        audio.muted = true;
+    };
+};
+function selectText(containerid) {
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(document.getElementById(containerid));
+        range.select();
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(document.getElementById(containerid));
+        window.getSelection().addRange(range);
+    }
+}

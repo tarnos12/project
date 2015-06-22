@@ -116,7 +116,7 @@
 };
 //auto Save
 window.setInterval(function () {
-    saveGameFunction()
+    saveGameFunction("autoSave")
 }, 10000);
 
 window.setInterval(function () {
@@ -145,20 +145,25 @@ window.setInterval(function () { //Mana regen
 }, 1000);
 
 function levelUp() {
-    player.baseStrength += 4.6;
-    player.baseEndurance += 4.4;
-    player.baseAgility += 3.4;
-    player.baseDexterity += 2.7;
-    player.baseWisdom += 2.3;
-    player.baseIntelligence += 3.5;
-    player.baseLuck += 1.6;
-    player.skillPoints += 1;
+    for (var hero in characterClasses) {
+        var heroClass = characterClasses[hero];
+        if (player.heroClass === heroClass.name) {
+            player.baseStrength += heroClass.strength;
+            player.baseEndurance += heroClass.endurance;
+            player.baseAgility += heroClass.agility;;
+            player.baseDexterity += heroClass.dexterity;
+            player.baseWisdom += heroClass.wisdom;
+            player.baseIntelligence += heroClass.intelligence;
+            player.baseLuck += heroClass.luck;
+            player.skillPoints += 1;
+        };
+    };
     quest();
     CreateMonsterHtml();
     updateHtml();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
-}
+};
 
 function loadIsEquipped() {
     if (equippedItems.weapon.subType === "sword") {
@@ -176,6 +181,9 @@ function loadIsEquipped() {
     else if (equippedItems.weapon.subType === "ranged") {
         player.isRanged = true;
     }
+    else if (equippedItems.weapon.subType === "fist") {
+        player.isFist = true;
+    };
 };
 
 function resetIsEquipped() {
@@ -184,9 +192,8 @@ function resetIsEquipped() {
         player.isMace = false;
         player.isStaff = false;
         player.isRanged = false;
+        player.isFist = true; // Set true since no weapon equipped means fighting with "fist" ._.
 };
-
-
 //Upgrading player stats
 
 //Strength
@@ -195,8 +202,8 @@ function upgradeStrength(event) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
             player.baseStrength += 100;
-        }
-    }
+        };
+    };
     if (event.ctrlKey) {
         if (player.stats >= 10) {
             player.stats = player.stats - 10;
@@ -208,18 +215,18 @@ function upgradeStrength(event) {
         if (player.stats >= 1) {
             player.stats = player.stats - 1;
             player.baseStrength += 1;
-        }
-    }
+        };
+    };
     updateHtml();
-}
+};
 //Endurance
 function upgradeEndurance(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
             player.baseEndurance += 100;
-        }
-    }
+        };
+    };
     if (event.ctrlKey) {
         if (player.stats >= 10) {
             player.stats = player.stats - 10;
@@ -231,18 +238,18 @@ function upgradeEndurance(event) {
         if (player.stats >= 1) {
             player.stats = player.stats - 1;
             player.baseEndurance += 1;
-        }
-    }
+        };
+    };
     updateHtml();
-}
+};
 //Agility
 function upgradeAgility(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
             player.baseAgility += 100;
-        }
-    }
+        };
+    };
     if (event.ctrlKey) {
         if (player.stats >= 10) {
             player.stats = player.stats - 10;
@@ -254,18 +261,18 @@ function upgradeAgility(event) {
         if (player.stats >= 1) {
             player.stats = player.stats - 1;
             player.baseAgility += 1;
-        }
-    }
+        };
+    };
     updateHtml();
-}
+};
 //Dexterity
 function upgradeDexterity(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
             player.baseDexterity += 100;
-        }
-    }
+        };
+    };
     if (event.ctrlKey) {
         if (player.stats >= 10) {
             player.stats = player.stats - 10;
@@ -277,18 +284,18 @@ function upgradeDexterity(event) {
         if (player.stats >= 1) {
             player.stats = player.stats - 1;
             player.baseDexterity += 1;
-        }
-    }
+        };
+    };
     updateHtml();
-}
+};
 //Wisdom
 function upgradeWisdom(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
             player.baseWisdom += 100;
-        }
-    }
+        };
+    };
     if (event.ctrlKey) {
         if (player.stats >= 10) {
             player.stats = player.stats - 10;
@@ -300,18 +307,18 @@ function upgradeWisdom(event) {
         if (player.stats >= 1) {
             player.stats = player.stats - 1;
             player.baseWisdom += 1;
-        }
-    }
+        };
+    };
     updateHtml();
-}
+};
 //Intelligence
 function upgradeIntelligence(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
             player.baseIntelligence += 100;
-        }
-    }
+        };
+    };
     if (event.ctrlKey) {
         if (player.stats >= 10) {
             player.stats = player.stats - 10;
@@ -323,18 +330,18 @@ function upgradeIntelligence(event) {
         if (player.stats >= 1) {
             player.stats = player.stats - 1;
             player.baseIntelligence += 1;
-        }
-    }
+        };
+    };
     updateHtml();
-}
+};
 //Luck
 function upgradeLuck(event) {
     if (event.shiftKey) {
         if (player.stats >= 100) {
             player.stats = player.stats - 100;
             player.baseLuck += 100;
-        }
-    }
+        };
+    };
     if (event.ctrlKey) {
         if (player.stats >= 10) {
             player.stats = player.stats - 10;
@@ -346,10 +353,10 @@ function upgradeLuck(event) {
         if (player.stats >= 1) {
             player.stats = player.stats - 1;
             player.baseLuck += 1;
-        }
-    }
+        };
+    };
     updateHtml();
-}
+};
 function autoAttack(monster, monsterStats) {
     var ManaCost = monster.Stats.manaCost;
     var autoBattle = window.setInterval(function () {
@@ -374,7 +381,6 @@ function skillChargeFill() {
 };
 
 function upgradeSpell(spellName) {
-
     if (activeSpells.hasOwnProperty(spellName)) {
         var selectedSpell = activeSpells[spellName];
         if (selectedSpell.levelReq < player.level) {
@@ -383,14 +389,14 @@ function upgradeSpell(spellName) {
                     player.skillPoints--;
                     selectedSpell.level++;
                     selectedSpell.levelReq++;
-                    Log(selectedSpell.name + " level is now " + selectedSpell.level)
+                    Log(selectedSpell.name + " level is now " + selectedSpell.level);
                 }
                 else {
-                    Log("You do not have enough skill points.")
+                    Log("You do not have enough skill points.");
                 }
             }
             else {
-                Log(selectedSpell.name + " is already max level.")
+                Log(selectedSpell.name + " is already max level.");
             };
         }
         else {
@@ -410,15 +416,15 @@ function spellActivation(spellName) {
             spellTotalManaCost -= selectedSpell.manaReq;
         }
         else if (selectedSpell.levelReq > player.level) {
-            Log("Your level is not high enough to activate it")
+            Log("Your level is not high enough to activate it");
         }
-        else if (spellTotalManaCost + selectedSpell.manaReq <= player.maxMana()){
+        else if (spellTotalManaCost + selectedSpell.manaReq <= player.maxMana()) {
             selectedSpell.isActive = true;
             spellTotalManaCost += selectedSpell.manaReq;
         }
         else {
-            Log("You do not have enough \"Max Mana\" to activate this spell. You need " + selectedSpell.manaReq + " Max Mana.")
-        }
+            Log("You do not have enough \"Max Mana\" to activate this spell. You need " + selectedSpell.manaReq + " Max Mana.");
+        };
     };
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();

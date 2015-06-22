@@ -19,51 +19,45 @@ function CreateWeaponSkillHtml() {
     html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
     html += '<ul class="nav nav-tabs">';
     for (var k = 0; k < weaponSkillType.length; k++) {
-
         if (k === weaponTabActive) {
             html += '<li class="active" onClick = changeTabWeapon(' + k + ')>';
-        } else {
-            html += '<li onClick = changeTabWeapon(' + k + ')>';
         }
-
+        else {
+            html += '<li onClick = changeTabWeapon(' + k + ')>';
+        };
         html += '<a href="#tab_' + weaponSkillType[k].displayName + '" data-toggle="tab"><span class="icons ' + weaponSkillType[k].icon + '"</span></a></li>';
-    }
+    };
     html += '</ul>';
     html += '<div class="tab-content" id="tabControl_WeaponSkill">';
-
     for (weapon in weaponMastery) {
         if (weaponMastery.hasOwnProperty(weapon)) {
             var itemStat = weaponMastery[weapon];
             var image = "images/skills/" + itemStat.image + ".png";
             if (weapon === weaponTabActive) {
                 html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane active"';
-
             } else {
                 html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane"';
-            }
-
+            };
             html += 'id="tab_' + itemStat.name + '">';
-
             html += '<div class="row">';
             html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 c8">';
             html += '<div class="c3"><h4>' + itemStat.name + '</h4>';
             html += '<br />Level: ' + itemStat.level;
             for (var statName in itemStat) {
                 if ('defense, strength, endurance, agility, dexterity, intelligence, wisdom, damage'.indexOf(statName) != -1) {
-                    var displayStat = itemStat[statName];
-                    html += "<br />" + statName + ": " + displayStat();
+                    var displayStat = itemStat[statName]();
+                    html += "<br />" + statName + ": " + displayStat;
                 };
             };
             //Progress bar is not updating on it's own :|
-            html += '<div class="progress">';
-            html += '<div id="' + itemStat.image + "1" + '" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">';
+            html += '<div class="progress">';//Doing + 1 below so I can use itemStat.image for a span, which let me center progress bar value.
+            html += '<div id="' + itemStat.image + '1' + '" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">';
             html += '<span id="' + itemStat.image + '"></span>';
             html += '</div>';
             html += '</div>';
             html += '</div>';
             html += '</div>';
             html += '</div>';
-
             var skill = weaponSkillList[weapon]
             for (var skillName in skill) {
                 var displaySkill = skill[skillName];
@@ -77,7 +71,7 @@ function CreateWeaponSkillHtml() {
                 };
                 html += '</div>';
                 html += '</div>';
-            }
+            };
             html += '</div>';
         };
     };
@@ -95,15 +89,12 @@ String.prototype.capitalizeFirstLetter = function () {
 function CreateEquipHtml() {
     var html = '';
     html += '<div class="row">';
-
     //Weapon
     var item = equippedItems;
     for (var type in item) { //Here stat will become the word Defense
-
         if ('weapon, offHand, armor, ring, amulet, talisman'.indexOf(type) != -1) {
             //Getting the actual stat object from the word.
             var itemType = item[type];
-
             if (itemType.hasOwnProperty('itemType')) {
                 html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">';
                 html += '<a href="#" class="tooltipA">';
@@ -121,12 +112,9 @@ function CreateEquipHtml() {
                     html += '<br />' + "Damage: " + itemType.minDamage + "-";
                     html += itemType.maxDamage;
                 };
-
                 for (var statName in itemType) { //Here stat will become the word Defense
-
                     if ('defense, strength, endurance, agility, dexterity, intelligence, wisdom, luck, expRate, dropRate, goldRate'.indexOf(statName) != -1) {
                         //Getting the actual stat object from the word.
-
                         if (itemType[statName] > 0) {
                             if (statName === "goldRate" || statName === "expRate" || statName === "dropRate") {
                                 if (statName === "expRate") {
@@ -137,15 +125,14 @@ function CreateEquipHtml() {
                                 else {
                                     var statNameSpace2 = statName.replace(/^(.{4})(.*)$/, "$1 $2");
                                     html += "<br />" + statNameSpace2.capitalizeFirstLetter() + ": " + itemType[statName];
-                                }
+                                };
                             }
                             else {
                                 html += "<br />" + statName.capitalizeFirstLetter() + ": " + itemType[statName];
-                            }
                             };
+                        };
                     };
                 };
-
                 html += '<br />' + "Value: " + itemType.value + "gold";
                 html += '</span>' + '</a>' +
                     '<button type="button" class="attack" onclick="unequipItem' + "(" + itemType.id + ")" + '">Unequip</button>';
@@ -165,53 +152,45 @@ function changedTabmonster(index) {
     monsterTabActiveNum = index;
 }
 function CreateMonsterHtml() {
-
     var html = '';
     html += '<div class="c3"><b><a href="#" class="tooltipB">Hover over there, for some Help';
     html += '<span>';
-    html += '<ul>'
+    html += '<ul>';
     html += "<li>Attack a monsters here to gain gold/experience and items.</li>" + '</br />';
     html += "<li>Each battle have 20 turns, then it's called a draw.</li>" + '</br />';
     html += "<li>Dying means 5 second revive time and 20% lose of current experience/gold</li>" + '<br />';
     html += "<li>Killing monsters, unlock story and stronger monsters.</li>" + '<br />';
     html += '</ul>';
-    html += '</span></a></b></div>'
+    html += '</span></a></b></div>';
     html += '</div>';
     html += '<ul class="nav nav-tabs">';
-
     for (var k = 0; k < monsterAreas.length; k++) {
-
         if (k === monsterTabActiveNum) {
             html += '<li class="active" onClick = changedTabmonster(' + k + ')>';
-        } else {
-            html += '<li onClick = changedTabmonster(' + k + ')>';
         }
-
+        else {
+            html += '<li onClick = changedTabmonster(' + k + ')>';
+        };
         html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab"><span class="icons ' + monsterAreas[k].icon + '"></span>' + '</a></li>';
-    }
-
+    };
     html += '</ul>';
     html += '<div class="tab-content">';
-
     for (var j = 0; j < monsterAreas.length; j++) {
-
         if (j === monsterTabActiveNum) {
             html += '<div class="tab-pane active" ';
-        } else {
-            html += '<div class="tab-pane" ';
         }
-
+        else {
+            html += '<div class="tab-pane" ';
+        };
         html += 'id="tab_' + monsterAreas[j].type + '">' +
             '<div class="c3">' +
             '<h4>' + monsterAreas[j].displayName + '</h4>' + '<br />' +
             '</div>';
-
         for (var key in monsterList) {
             if (monsterList.hasOwnProperty(key)) {
                 var monster = monsterList[key];
                 var area = monster.Stats.area;
-            }
-
+            };
             if (area === monsterAreas[j].type) {
                 if (monster.Stats.isShown == true) {
                     html += '<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">' +
@@ -249,43 +228,37 @@ function CreateInventoryWeaponHtml() {
     var itemStat;
     html += '<div class="c3"><b><a href="#" class="tooltipB">Hover over there, for some Help';
     html += '<span>';
-    html += '<ul>'
+    html += '<ul>';
     html += "<li>Below you can see, your inventory slots</li>" + '</br />';
     html += "<li>Click on a tab, to see other types of items.</li>" + '</br />';
     html += "<li>There are 5 item qualities as follow: Common, Uncommon, Rare, Epic, Legendary.</li>" + '</br />';
     html += "<li>Each item gives different stats, based on item type i.e. Staff give you more intelligence, while Sword more strength.</li>" + '<br />';
     html += "<li>Each weapon can level up, while you fight monsters with weapon equipped.</li>" + '<br />';
-    html += "<li>Each weapon type has it's own mastery, like \"Sword Mastery\" which increase your stats, as you keep using Swords in battle."
+    html += "<li>Each weapon type has it's own mastery, like \"Sword Mastery\" which increase your stats, as you keep using Swords in battle.";
     html += '</ul>';
-    html += '</span></a></b></div>'
+    html += '</span></a></b></div>';
     html += '</div>';
-    html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length + "/" + player.inventory() + '</div>'
+    html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length + "/" + player.inventory() + '</div>';
     html += '<ul class="nav nav-tabs">';
-
     for (var k = 0; k < 4; k++) {
-
         if (k === inventoryTabActiveNum) {
             html += '<li class="active" onClick = changedTabInventory(' + k + ')>';
-        } else {
+        }
+        else {
             html += '<li onClick = changedTabInventory(' + k + ')>';
         }
-
         html += '<a href="#tab_' + InventoryItemTypes[k].type + '" data-toggle="tab"><span class="icons ' + InventoryItemTypes[k].icon + '"</span></a></li>';
-    }
-
+    };
     html += '</ul>';
     html += '<div class="tab-content" id="tabControl_Inventory">';
     for (var j = 0; j < InventoryItemTypes.length; j++) {
-
         if (j === inventoryTabActiveNum) {
             html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane active"';
-
-        } else {
-            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane"';
         }
-
-        html += 'id="tab_' + InventoryItemTypes[j].type + '">'
-
+        else {
+            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane"';
+        };
+        html += 'id="tab_' + InventoryItemTypes[j].type + '">';
         html += '<div class="row">';
         html += '<div class="c3"><h4>Inventory</h4></div>';
         for (var i = 0; i < playerInventory.length; i++) {
@@ -308,7 +281,6 @@ function CreateInventoryWeaponHtml() {
                 else if (playerInventory[i].subType === "talisman") {
                     itemStat = equippedItems.talisman;
                 }
-
                 html += '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 c8">';
                 html += '<a href="#" class="tooltipA">';
                 html += '<img src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png" class="' + playerInventory[i].itemQuality + '"/>';
@@ -318,17 +290,26 @@ function CreateInventoryWeaponHtml() {
                 html += 'Rarity: ' + '<font color="' + playerInventory[i].color + '">' + playerInventory[i].itemQuality + '</font>' + '<br />';
                 html += "Item Type: " + playerInventory[i].subType;
                 if (playerInventory[i].itemType == "weapon") {
-                    html += '<br />' + 'Level: ' + playerInventory[i].level + "/" + playerInventory[i].maxLevel;
-                    html += '<br />' + 'Experience: ' + playerInventory[i].exp + "/" + playerInventory[i].maxExp;
+                    html += '<br />' + 'Level: ' + playerInventory[i].level + "/" + playerInventory[i].maxLevel + '<br />';
+                    html += 'Experience: ' + playerInventory[i].exp + "/" + playerInventory[i].maxExp + '<br />';
+                    if (playerInventory[i].materiaSlot_1 !== undefined) {
+                        for (var k = 0; k < materiaType.length; k++) {
+                            var materiaKey = materiaType[k].type;
+                            var item = playerInventory[i];
+                            if (item.hasOwnProperty(materiaKey)) {
+                                html += '<img src="images/items/materia/Materia.png"><br />';
+                            };
+                        };
+                    };
                 };
                 if ((playerInventory[i].minDamage - itemStat.minDamage) < 0) {
-                    html += '<br />' + "Damage: " + playerInventory[i].minDamage + " (" + '<b style="color:red">' + (playerInventory[i].minDamage - itemStat.minDamage) + '</b>' + ")" + " to ";
+                    html += "Damage: " + playerInventory[i].minDamage + " (" + '<b style="color:red">' + (playerInventory[i].minDamage - itemStat.minDamage) + '</b>' + ")" + " to ";
                 }
                 else if ((playerInventory[i].minDamage - itemStat.minDamage) > 0) {
-                    html += '<br />' + "Damage: " + playerInventory[i].minDamage + " (" + '<b style="color:green">' + "+" + (playerInventory[i].minDamage - itemStat.minDamage) + '</b>' + ")" + " to ";
+                    html += "Damage: " + playerInventory[i].minDamage + " (" + '<b style="color:green">' + "+" + (playerInventory[i].minDamage - itemStat.minDamage) + '</b>' + ")" + " to ";
                 }
                 else if ((playerInventory[i].minDamage - itemStat.minDamage) == 0) {
-                    html += '<br />' + "Damage: " + playerInventory[i].minDamage + " (0)" + " to ";
+                    html += "Damage: " + playerInventory[i].minDamage + " (0)" + " to ";
                 }
                 if ((playerInventory[i].maxDamage - itemStat.maxDamage) < 0) {
                     html += playerInventory[i].maxDamage + " (" + '<b style="color:red">' + (playerInventory[i].maxDamage - itemStat.maxDamage) + '</b>' + ")";
@@ -368,11 +349,9 @@ function CreateInventoryWeaponHtml() {
                 };
                 var item = playerInventory[i];
                 for (var statName in item) { //Here stat will become the word Defense
-
                     if ('defense, strength, endurance, agility, dexterity, intelligence, wisdom, luck'.indexOf(statName) != -1) {
                         //Getting the actual stat object from the word.
                         var selectedStat = item[statName];
-
                         if (selectedStat > 0 || itemStat[statName] > 0) { //Since itemStat has the stat with the same name
                             if (itemStat[statName] > 0 && (selectedStat - itemStat[statName]) < 0) {
                                 html += '<br />' + statName + ": " + selectedStat + " (" + '<b style="color:red">' + (selectedStat - itemStat[statName]) + '</b>' + ")";
@@ -389,21 +368,17 @@ function CreateInventoryWeaponHtml() {
                         };
                     };
                 };
-
                 html += '<br />' + "Value: " + playerInventory[i].value + "gold";
                 html += '</span>' + '</a>' + '</td>' +
-
                  '<button type="button" class="equip" onclick="equipItem' + "(" + playerInventory[i].id + ")" + '">Equip</button>' +
                  '<button type="button" class="equip" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>';
                 html += '</div>';
             };
         };
-
         html += '</div>';
         html += '</div>';
     };
     html += '</div>';
-
     document.getElementById("inventory").innerHTML = html;
 };
 
@@ -417,18 +392,14 @@ function CreatePlayerSkillsHtml() {
         if (activeSpells.hasOwnProperty(spell)) {
             var selectedSpell = activeSpells[spell];
             var image = "images/skills/" + selectedSpell.image + ".png";
-
             var activeSpell = '';
-
             if (selectedSpell.isActive == true) {
                 activeSpell = '<font color="green">' + '<b>' + "Active" + '</b>' + '</font>';
             } else {
                 activeSpell = '<font color="red">' + '<b>' + "Not Active" + '</b>' + '</font>';
             };
-
             var onclickevent = "upgradeSpell('" + spell + "');";
             var spellonclickevent = "spellActivation('" + spell + "');";
-
             html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
             html += '<a href="#" class="tooltipA">';
             html += '<img src="' + image + '" onclick="' + spellonclickevent + '"/>';
@@ -485,4 +456,69 @@ function CreatePlayerHotBar() {
     };
     html += '</div>';
     document.getElementById("hotBar").innerHTML = html;
+};
+
+//Character Creation
+function characterCreationRemoveBackground() {
+    var divStyle = document.getElementById('partyCreationDiv');
+    divStyle.style.display = "none";
+    var divBackgroundStyle = document.getElementById('partyCreationDisabledBackground');
+    divBackgroundStyle.style.display = "none";
+    var sound = player.sound;
+    myAudio(sound);
+};
+function characterCreationHtml() {
+    if (player.heroClass === '') {
+        var html = '';
+        html += '<div class="row">';
+        html += '<div class ="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
+        html += 'Start the game with sound';
+        html += '<div class="row">';
+        var soundOn = "myAudio('on');";
+        var soundOff = "myAudio('off');";
+        html += '<button type="button" onclick="' + soundOn + '">Sound On</button>';
+        html += '<button type="button" onclick="' + soundOff + '"">Sound Off</button>';
+        html += '</div></div></div>';
+        html += '<div class="row">';
+        html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-offset-1">';
+        html += 'Pick your class, hover over a class name for more info.';
+        html += '<div class="row">';
+        for (var hero in characterClasses) {
+            var heroClass = characterClasses[hero];
+            var onclickevent = "changeClass('" + heroClass.name + "');";
+            html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">';
+            html += '<a href="#" class="tooltipA">' + heroClass.name + "" +
+                    '<span>' + 'Stats per level: <br />' +
+                    'Strength: ' + heroClass.strength + '<br />' +
+                    'Endurance: ' + heroClass.endurance + '<br />' +
+                    'Agility: ' + heroClass.agility + '<br />' +
+                    'Dexterity: ' + heroClass.dexterity + '<br />' +
+                    'Intelligence: ' + heroClass.intelligence + '<br />' +
+                    'Wisdom: ' + heroClass.wisdom + '<br />' +
+                    'Luck: ' + heroClass.luck + '<br />' +
+                    '</span>' + '</a>';
+            html += '<button type="button" class="' + heroClass.name + '" onclick="' + onclickevent + '">Choose</button>'//changeClass function ._.
+            html += '</div>';
+        };
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        document.getElementById("partCreation").innerHTML = html;
+    };
+    for (var hero in characterClasses) {
+        var heroClass = characterClasses[hero];
+        if (player.heroClass === heroClass.name) {
+            document.getElementById("characterClass").innerHTML = "Class: " + '<a href="#" class="tooltipA">' + player.heroClass +
+                '<span>' + 'Stats per level: <br />' +
+            'Strength: ' + heroClass.strength + '<br />' +
+            'Endurance: ' + heroClass.endurance + '<br />' +
+            'Agility: ' + heroClass.agility + '<br />' +
+            'Dexterity: ' + heroClass.dexterity + '<br />' +
+            'Intelligence: ' + heroClass.intelligence + '<br />' +
+            'Wisdom: ' + heroClass.wisdom + '<br />' +
+            'Luck: ' + heroClass.luck + '<br />' +
+            '</span>' + '</a>';
+            characterCreationRemoveBackground();
+        };
+    };
 };
