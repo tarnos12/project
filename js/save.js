@@ -61,6 +61,7 @@
         statStatus: statStatus,
         gameVersion: player.gameVersion,
         heroClass: player.heroClass,
+        sound: player.sound,
         //Spells
         SkillPoints: player.skillPoints,
         FireBall: activeSpells.fireBall.level,
@@ -128,6 +129,7 @@ function load() {
         if (typeof savegame.LightningStorm !== "undefined") activeSpells.lightningStorm.level = savegame.LightningStorm;
         //Other
         if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
+        if (typeof savegame.sound !== "undefined") player.sound = savegame.sound;
         if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
         if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
         if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
@@ -167,7 +169,7 @@ function load() {
     CreatePlayerHotBar();
     skillChargeFill();
     updateBar();
-    characterCreationHtml()
+    characterCreationHtml();
 };
 
 function resetCheck() {

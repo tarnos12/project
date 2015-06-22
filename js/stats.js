@@ -194,8 +194,6 @@ function resetIsEquipped() {
         player.isRanged = false;
         player.isFist = true; // Set true since no weapon equipped means fighting with "fist" ._.
 };
-
-
 //Upgrading player stats
 
 //Strength
@@ -383,7 +381,6 @@ function skillChargeFill() {
 };
 
 function upgradeSpell(spellName) {
-
     if (activeSpells.hasOwnProperty(spellName)) {
         var selectedSpell = activeSpells[spellName];
         if (selectedSpell.levelReq < player.level) {

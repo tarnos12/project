@@ -23,6 +23,7 @@ var currentGameVersion = 1.5;
 var player = {
     gameVersion: 1.5,
     heroClass: '',
+    sound: 'off',
     isDead: false,
     runOnce: false,
     isAuto: false,
@@ -1121,14 +1122,19 @@ function changeClass(className) {
     document.getElementById("characterClass").innerHTML = "Class: " + characterClass;
     characterCreationRemoveBackground();
 };
-
 //Set audio starting volume...
-function myAudio() {
+function myAudio(sound) {
     var myAudio = document.getElementById('myAudio');
     myAudio.volume = 0.1;
-    myAudio.play();
+    if (sound === "on" || player.sound === "on") {
+        myAudio.play();
+        player.sound = "on";
+    }
+    if (sound === "off" || player.sound === "off") {
+        myAudio.pause();
+        player.sound = "off";
+    };
 };
-myAudio();
 function muteAudio() {
     var audio = document.getElementById("myAudio");
     if (audio.muted === true) {
@@ -1138,7 +1144,6 @@ function muteAudio() {
         audio.muted = true;
     };
 };
-
 function selectText(containerid) {
     if (document.selection) {
         var range = document.body.createTextRange();

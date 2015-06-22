@@ -464,11 +464,21 @@ function characterCreationRemoveBackground() {
     divStyle.style.display = "none";
     var divBackgroundStyle = document.getElementById('partyCreationDisabledBackground');
     divBackgroundStyle.style.display = "none";
+    var sound = player.sound;
+    myAudio(sound);
 };
-
 function characterCreationHtml() {
     if (player.heroClass === '') {
         var html = '';
+        html += '<div class="row">';
+        html += '<div class ="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
+        html += 'Start the game with sound';
+        html += '<div class="row">';
+        var soundOn = "myAudio('on');";
+        var soundOff = "myAudio('off');";
+        html += '<button type="button" onclick="' + soundOn + '">Sound On</button>';
+        html += '<button type="button" onclick="' + soundOff + '"">Sound Off</button>';
+        html += '</div></div></div>';
         html += '<div class="row">';
         html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-offset-1">';
         html += 'Pick your class, hover over a class name for more info.';
