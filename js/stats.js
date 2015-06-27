@@ -115,10 +115,14 @@
     skillPoints.innerHTML = player.skillPoints;
 };
 //auto Save
-window.setInterval(function () {
+/*window.setInterval(function () {
     saveGameFunction("autoSave")
 }, 10000);
-
+*/
+function autoSave() {
+    saveGameFunction("autoSave");
+    setTimeout(autoSave, 10000);
+};
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
     exppercent = (Math.floor((player.experience / player.maxExperience) * 100));

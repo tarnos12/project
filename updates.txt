@@ -1,4 +1,11 @@
 _________________________
+v1.5.6 - 27 june 2015    |
+-------------------------|
+- Fixed a bug with weapon skill tabs closing when you gained a level with a skill.
+- Added more story, and changed Oz Jotnar monster names to fit with the story.
+- Added hardcore mode, if you die your save will be removed and page will refresh.(more ideas for hardcore mode are welcome).
+- Added a starting screen, where you can choose to start a new game or continue from your last save. You can also choose hardcore option or mute sound.
+_________________________
 v1.5.5 - 22 june 2015    |
 -------------------------|
 - Added "last saved:" in the save/options tab, and removed "Game saved" notification from player log.(Game is automatically saved every 10 seconds)

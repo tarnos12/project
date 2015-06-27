@@ -25,14 +25,14 @@ var SpiderBeast = {};
 var Narsus = {};
 var JotunnScout = {};
 
-var Giant = {};
-var FrostGiant = {};
-var FrostTroll = {};
-var Wyvern = {};
-var FrostDragon = {};
-var IceElemental = {};
-var FrostGuardian = {};
-var FrostQueen = {};
+var JotnarAmbushSquad = {};
+var LongRangeExterminationSquad = {};
+var BerserkerShockSquad = {};
+var BerserkerShockSquadCaptainRendGrest = {};
+var ArtillerySquad = {};
+var JottunMainInfantry = {};
+var RegentCairLorn = {};
+var DeepKingTarNuk = {};
 
 var Zombie = {};
 var Skeleton = {};
@@ -1998,105 +1998,105 @@ function MakeMonsterList() {
     };
     monsterList.JotunnScout = JotunnScout;
 
-    Giant.Drops = [];
-    Giant.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
-    Giant.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 1));
+    JotnarAmbushSquad.Drops = [];
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 1));
     //Axes
-    Giant.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 1));
     //Maces
-    Giant.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.Knout, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.Knout, 1));
     //Staves
-    Giant.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.TombWand, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.TombWand, 1));
     //Bows
-    Giant.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
-    Giant.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 1));
     //Robes
-    Giant.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
-    Giant.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
-    Giant.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
-    Giant.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 1));
     //Leather
-    Giant.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
-    Giant.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
-    Giant.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
-    Giant.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 1));
     //Heavy
-    Giant.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
-    Giant.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
-    Giant.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
-    Giant.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 1));
     //Shield
-    Giant.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
-    Giant.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
-    Giant.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
-    Giant.Drops.push(NewDrop(ItemList.OffHand.Monarch, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.OffHand.Monarch, 1));
     //Dagger offHand
-    Giant.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
-    Giant.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
-    Giant.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
-    Giant.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 1));
     //Rings
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
     //Epic
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
     //Amulets
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
     //Epic
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
     //Talismans
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
     //Epic
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
-    Giant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
-    Giant.Stats = {
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
+    JotnarAmbushSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
+    JotnarAmbushSquad.Stats = {
         hp: 10000,
         maxHp: 10000,
         def: 120,
@@ -2105,8 +2105,8 @@ function MakeMonsterList() {
         baseExp: 5000,
         acc: 95,
         eva: 5,
-        name: "Giant",
-        displayName: "Giant",
+        name: "JotnarAmbushSquad",
+        displayName: "Jotnar Ambush Squad",
         type: "strong",
         id: 17,
         level: 17,
@@ -2115,107 +2115,107 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 170
     };
-    monsterList.Giant = Giant;
+    monsterList.JotnarAmbushSquad = JotnarAmbushSquad;
 
-    FrostGiant.Drops = [];
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 2));
+    LongRangeExterminationSquad.Drops = [];
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 2));
     //Axes
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 2));
     //Maces
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.Knout, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.Knout, 2));
     //Staves
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.TombWand, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.TombWand, 2));
     //Bows
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 2));
     //Robes
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 2));
     //Leather
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 2));
     //Heavy
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 2));
     //Shield
-    FrostGiant.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.OffHand.Monarch, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.OffHand.Monarch, 2));
     //Dagger offHand
-    FrostGiant.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
-    FrostGiant.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 2));
     //Rings
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
     //Epic
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
     //Amulets
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
     //Epic
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
     //Talismans
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
     //Epic
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
-    FrostGiant.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
-    FrostGiant.Stats = {
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
+    LongRangeExterminationSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
+    LongRangeExterminationSquad.Stats = {
         hp: 11000,
         maxHp: 11000,
         def: 130,
@@ -2224,8 +2224,8 @@ function MakeMonsterList() {
         baseExp: 6000,
         acc: 95,
         eva: 5,
-        name: "FrostGiant",
-        displayName: "Frost Giant",
+        name: "LongRangeExterminationSquad",
+        displayName: "Long Range Extermination Squad",
         type: "strong",
         id: 18,
         level: 18,
@@ -2234,107 +2234,107 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 180
     };
-    monsterList.FrostGiant = FrostGiant;
+    monsterList.LongRangeExterminationSquad = LongRangeExterminationSquad;
 
-    FrostTroll.Drops = [];
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 3));
+    BerserkerShockSquad.Drops = [];
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 3));
     //Axes
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 3));
     //Maces
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.Knout, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.Knout, 3));
     //Staves
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.TombWand, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.TombWand, 3));
     //Bows
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));;
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));;
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 3));
     //Robes
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 3));
     //Leather
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 3));
     //Heavy
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 3));
     //Shield
-    FrostTroll.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.OffHand.Monarch, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.OffHand.Monarch, 3));
     //Dagger offHand
-    FrostTroll.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
-    FrostTroll.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 3));
     //Rings
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
     //Epic
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
     //Amulets
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
     //Epic
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
     //Talismans
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
     //Epic
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
-    FrostTroll.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
-    FrostTroll.Stats = {
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
+    BerserkerShockSquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
+    BerserkerShockSquad.Stats = {
         hp: 12500,
         maxHp: 12500,
         def: 140,
@@ -2343,8 +2343,8 @@ function MakeMonsterList() {
         baseExp: 7000,
         acc: 95,
         eva: 5,
-        name: "FrostTroll",
-        displayName: "Frost troll",
+        name: "BerserkerShockSquad",
+        displayName: "Berserker Shock Squad",
         type: "strong",
         id: 19,
         level: 19,
@@ -2353,107 +2353,107 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 190
     };
-    monsterList.FrostTroll = FrostTroll;
+    monsterList.BerserkerShockSquad = BerserkerShockSquad;
 
-    Wyvern.Drops = [];
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops = [];
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 4));
     //Axes
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 4));
     //Maces
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.Knout, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.Knout, 4));
     //Staves
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.TombWand, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.TombWand, 4));
     //Bows
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));;
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));;
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 4));
     //Robes
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 4));
     //Leather
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 4));
     //Heavy
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 4));
     //Shield
-    Wyvern.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.OffHand.Monarch, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.OffHand.Monarch, 4));
     //Dagger offHand
-    Wyvern.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
-    Wyvern.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 4));
     //Rings
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
     //Epic
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
     //Amulets
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
     //Epic
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
     //Talismans
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
     //Epic
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
-    Wyvern.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
-    Wyvern.Stats = {
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
+    BerserkerShockSquadCaptainRendGrest.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
+    BerserkerShockSquadCaptainRendGrest.Stats = {
         hp: 13500,
         maxHp: 13500,
         def: 150,
@@ -2462,8 +2462,8 @@ function MakeMonsterList() {
         baseExp: 8000,
         acc: 95,
         eva: 5,
-        name: "Wyvern",
-        displayName: "Wyvern",
+        name: "BerserkerShockSquadCaptainRendGrest",
+        displayName: "Berserker ShockSquad Captain, Rend Grest",
         type: "strong",
         id: 20,
         level: 20,
@@ -2472,107 +2472,107 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 200
     };
-    monsterList.Wyvern = Wyvern;
+    monsterList.BerserkerShockSquadCaptainRendGrest = BerserkerShockSquadCaptainRendGrest;
 
-    FrostDragon.Drops = [];
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 5));
+    ArtillerySquad.Drops = [];
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.Sabre, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.Claymore, 25))
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 5));
     //Axes
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 5));
     //Maces
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.Knout, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.WarClub, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.Knout, 5));
     //Staves
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.TombWand, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.Wand, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.TombWand, 5));
     //Bows
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));;
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.LongBow, 50));;
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 5));
     //Robes
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 5));
     //Leather
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 5));
     //Heavy
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 5));
     //Shield
-    FrostDragon.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.OffHand.Monarch, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.OffHand.Defender, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.OffHand.Monarch, 5));
     //Dagger offHand
-    FrostDragon.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
-    FrostDragon.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.OffHand.Quhab, 50));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 5));
     //Rings
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
     //Epic
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
     //Amulets
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
     //Epic
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
     //Talismans
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
     //Epic
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
-    FrostDragon.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
-    FrostDragon.Stats = {
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
+    ArtillerySquad.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
+    ArtillerySquad.Stats = {
         hp: 15000,
         maxHp: 15000,
         def: 170,
@@ -2581,8 +2581,8 @@ function MakeMonsterList() {
         baseExp: 9000,
         acc: 95,
         eva: 5,
-        name: "FrostDragon",
-        displayName: "Frost Dragon",
+        name: "ArtillerySquad",
+        displayName: "Artillery Squad #1-9",
         type: "strong",
         id: 21,
         level: 21,
@@ -2591,107 +2591,107 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 210
     };
-    monsterList.FrostDragon = FrostDragon;
+    monsterList.ArtillerySquad = ArtillerySquad;
 
-    IceElemental.Drops = [];
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.Sabre, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.Claymore, 50))
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 10));
+    JottunMainInfantry.Drops = [];
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.Sabre, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.Claymore, 50))
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 10));
     //Axes
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 10));
     //Maces
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.WarClub, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.Knout, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.WarClub, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.Knout, 10));
     //Staves
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.Wand, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.TombWand, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.Wand, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.TombWand, 10));
     //Bows
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.LongBow, 75));;
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.LongBow, 75));;
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 10));
     //Robes
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 10));
     //Leather
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 10));
     //Heavy
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 10));
     //Shield
-    IceElemental.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.OffHand.Defender, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.OffHand.Monarch, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.OffHand.Defender, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.OffHand.Monarch, 10));
     //Dagger offHand
-    IceElemental.Drops.push(NewDrop(ItemList.OffHand.Quhab, 75));
-    IceElemental.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 50));
-    IceElemental.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.OffHand.Quhab, 75));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 50));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 10));
     //Rings
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
     //Epic
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
     //Amulets
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
     //Epic
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
     //Talismans
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
     //Epic
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
-    IceElemental.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
-    IceElemental.Stats = {
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
+    JottunMainInfantry.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
+    JottunMainInfantry.Stats = {
         hp: 16000,
         maxHp: 16000,
         def: 180,
@@ -2700,8 +2700,8 @@ function MakeMonsterList() {
         baseExp: 10000,
         acc: 95,
         eva: 5,
-        name: "IceElemental",
-        displayName: "Ice Elemental",
+        name: "JottunMainInfantry",
+        displayName: "Jottun Main Infantry",
         type: "strong",
         id: 22,
         level: 22,
@@ -2710,117 +2710,117 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 220
     };
-    monsterList.IceElemental = IceElemental;
+    monsterList.JottunMainInfantry = JottunMainInfantry;
 
-    FrostGuardian.Drops = [];
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.Sabre, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.Claymore, 75))
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.LegendSword, 10));
+    RegentCairLorn.Drops = [];
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.Sabre, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.Claymore, 75))
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.LegendSword, 10));
     //Axes
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.Decapitator, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.Decapitator, 10));
     //Maces
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.WarClub, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.Knout, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.FlangedMace, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.WarClub, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.Knout, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.FlangedMace, 10));
     //Staves
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.Wand, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.TombWand, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.ElderStaff, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.Wand, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.TombWand, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.ElderStaff, 10));
     //Bows
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.LongBow, 100));;
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Weapons.MatriarchalBow, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.LongBow, 100));;
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Weapons.MatriarchalBow, 10));
     //Robes
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.SagesCloth, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.SagesCloth, 10));
     //Leather
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.ScavengersTunic, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.ScavengersTunic, 10));
     //Heavy
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Armors.Wyrmhide, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Armors.Wyrmhide, 10));
     //Shield
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.Defender, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.Monarch, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.TrollNest, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.Defender, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.Monarch, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.TrollNest, 10));
     //Dagger offHand
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.Quhab, 100));
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 75));
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 50));
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.OffHand.WarFist, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.Quhab, 100));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 75));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 50));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.OffHand.WarFist, 10));
     //Rings
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
     //Epic
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
     //Amulets
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
     //Epic
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
     //Talismans
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
     //Epic
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
-    FrostGuardian.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
-    FrostGuardian.Stats = {
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
+    RegentCairLorn.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
+    RegentCairLorn.Stats = {
         hp: 17000,
         maxHp: 17000,
         def: 190,
@@ -2829,8 +2829,8 @@ function MakeMonsterList() {
         baseExp: 11000,
         acc: 95,
         eva: 5,
-        name: "FrostGuardian",
-        displayName: "Frost Guardian",
+        name: "RegentCairLorn",
+        displayName: "Regent Cair Lorn",
         type: "strong",
         id: 23,
         level: 23,
@@ -2839,117 +2839,117 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 230
     };
-    monsterList.FrostGuardian = FrostGuardian;
+    monsterList.RegentCairLorn = RegentCairLorn;
 
-    FrostQueen.Drops = [];
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.Sabre, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.Claymore, 100))
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.LegendSword, 25));
+    DeepKingTarNuk.Drops = [];
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.Sabre, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.Claymore, 100))
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.RuneSword, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.HydraEdge, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.LegendSword, 25));
     //Axes
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.Decapitator, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.WarAxe, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.GreatAxe, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.GothicAxe, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.SilverEdgedAxe, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.Decapitator, 25));
     //Maces
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.WarClub, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.Knout, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.FlangedMace, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.MorningStar, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.GreatMaul, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.WarClub, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.Knout, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.FlangedMace, 25));
     //Staves
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.Wand, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.TombWand, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.ElderStaff, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.Wand, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.GnarledStaff, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.ArchonStaff, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.TombWand, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.ElderStaff, 25));
     //Bows
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.LongBow, 125));;
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.Weapons.MatriarchalBow, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.LongBow, 125));;
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.ShortWarBow, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.DoubleBow, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.HydraBow, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Weapons.MatriarchalBow, 25));
     //Robes
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.SagesCloth, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.BarbaricLinenVest, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.BarbaricClothVest, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.JourneymansRobe, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.RitualTunic, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.SagesCloth, 25));
     //Leather
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.ScavengersTunic, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.StuddedLeather, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.HardLeatherTunic, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.StuddedLeatherHarness, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.TannedLeatherJerkin, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.ScavengersTunic, 25));
     //Heavy
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.Armors.Wyrmhide, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.GothicPlate, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.FullPlatemail, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.EmbossedPlate, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.ChaosArmor, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Armors.Wyrmhide, 25));
     //Shield
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.Defender, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.Monarch, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.TrollNest, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.LargeShield, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.Defender, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.DragonShield, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.Monarch, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.TrollNest, 25));
     //Dagger offHand
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.Quhab, 125));
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 100));
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 75));
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 50));
-    FrostQueen.Drops.push(NewDrop(ItemList.OffHand.WarFist, 10));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.Quhab, 125));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.WristSpike, 100));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.Cinquedeas, 75));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.ScissorsSuwayyah, 50));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.OffHand.WarFist, 10));
     //Rings
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofLearning, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofWealth, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofOpportunity, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofFortune, 20));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofProsperity, 15));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofAbundance, 10));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeRingofPlenty, 5));
     //Epic
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientRingofLearning, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientRingofWealth, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientRingofOpportunity, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientRingofFortune, 4));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientRingofProsperity, 3));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientRingofAbundance, 2));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientRingofPlenty, 1));
     //Amulets
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofLearning, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofWealth, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofOpportunity, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofFortune, 20));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofProsperity, 15));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofAbundance, 10));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeAmuletofPlenty, 5));
     //Epic
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofLearning, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofWealth, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofOpportunity, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofFortune, 4));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofProsperity, 3));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofAbundance, 2));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientAmuletofPlenty, 1));
     //Talismans
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofLearning, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofWealth, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofOpportunity, 25));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofFortune, 20));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofProsperity, 15));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofAbundance, 10));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.SupremeTalismanofPlenty, 5));
     //Epic
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
-    FrostQueen.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
-    FrostQueen.Stats = {
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofLearning, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofWealth, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofOpportunity, 5));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofFortune, 4));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofProsperity, 3));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofAbundance, 2));
+    DeepKingTarNuk.Drops.push(NewDrop(ItemList.Accessory.AncientTalismanofPlenty, 1));
+    DeepKingTarNuk.Stats = {
         hp: 20000,
         maxHp: 20000,
         def: 200,
@@ -2958,8 +2958,8 @@ function MakeMonsterList() {
         baseExp: 12000,
         acc: 95,
         eva: 5,
-        name: "FrostQueen",
-        displayName: "Frost Queen",
+        name: "DeepKingTarNuk",
+        displayName: "Deep King Tar Nuk",
         type: "strong",
         id: 24,
         level: 24,
@@ -2968,7 +2968,7 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 240
     };
-    monsterList.FrostQueen = FrostQueen;
+    monsterList.DeepKingTarNuk = DeepKingTarNuk;
 
     Zombie.Drops = [];
     Zombie.Drops.push(NewDrop(ItemList.Weapons.Falchion, 50));

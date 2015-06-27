@@ -16,14 +16,14 @@
     Narsus: false,
     JotunnScout: false,
 
-    Giant: false,
-    FrostGiant: false,
-    FrostTroll: false,
-    Wyvern: false,
-    FrostDragon: false,
-    IceElemental: false,
-    FrostGuardian: false,
-    FrostQueen: false,
+    JotnarAmbushSquad: false,
+    LongRangeExterminationSquad: false,
+    BerserkerShockSquad: false,
+    BerserkerShockSquadCaptainRendGrest: false,
+    ArtillerySquad: false,
+    JottunMainInfantry: false,
+    RegentCairLorn: false,
+    DeepKingTarNuk: false,
 
 };
 function quest() {
@@ -327,30 +327,54 @@ function quest() {
     };
     if (player.level >= 16) {
         monsterList.JotunnScout.Stats.isShown = true;
+        if (monsterUnlock.JotunnScout == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+            };
+        monsterUnlock.JotunnScout = true;
     };
     if (player.level >= 17) {
-        monsterList.Giant.Stats.isShown = true;
+        monsterList.JotnarAmbushSquad.Stats.isShown = true;
+        if (monsterUnlock.JotunnScout == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Jotnar Ambush Squad</b></h3><br />';
+        };
+        monsterUnlock.JotunnScout = true;
     };
     if (player.level >= 18) {
-        monsterList.FrostGiant.Stats.isShown = true;
+        monsterList.LongRangeExterminationSquad.Stats.isShown = true;
+        if (monsterUnlock.JotunnScout == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+        };
+        monsterUnlock.JotunnScout = true;
     };
     if (player.level >= 19) {
-        monsterList.FrostTroll.Stats.isShown = true;
+        monsterList.BerserkerShockSquad.Stats.isShown = true;
+        if (monsterUnlock.JotunnScout == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+        };
+        monsterUnlock.JotunnScout = true;
     };
     if (player.level >= 20) {
-        monsterList.Wyvern.Stats.isShown = true;
+        monsterList.BerserkerShockSquadCaptainRendGrest.Stats.isShown = true;
+        if (monsterUnlock.JotunnScout == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+        };
+        monsterUnlock.JotunnScout = true;
     };
     if (player.level >= 21) {
-        monsterList.FrostDragon.Stats.isShown = true;
+        monsterList.ArtillerySquad.Stats.isShown = true;
+        if (monsterUnlock.JotunnScout == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+        };
+        monsterUnlock.JotunnScout = true;
     };
     if (player.level >= 22) {
-        monsterList.IceElemental.Stats.isShown = true;
+        monsterList.JottunMainInfantry.Stats.isShown = true;
     };
     if (player.level >= 23) {
-        monsterList.FrostGuardian.Stats.isShown = true;
+        monsterList.RegentCairLorn.Stats.isShown = true;
     };
     if (player.level >= 24) {
-        monsterList.FrostQueen.Stats.isShown = true;
+        monsterList.DeepKingTarNuk.Stats.isShown = true;
     };
     if (player.level >= 25) {
         monsterList.Zombie.Stats.isShown = true;
