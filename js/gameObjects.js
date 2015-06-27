@@ -47,7 +47,7 @@ var monsterAreas = [
            icon: 'ancientCave'
        }
 ];
-var weaponSkillType = [
+var weaponTypeObject = [
     {
         type: 'sword',
         displayName: 'Sword',

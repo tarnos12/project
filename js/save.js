@@ -1,4 +1,14 @@
-﻿function saveGameFunction(saveType) {
+﻿function newGame() {
+    removeStartingScreen();
+    characterCreationRemoveBackground();
+    characterCreationHtml();
+    if (hardcoreMode === true) {
+        player.hardcoreMode = true;
+    };
+    autoSave();
+};
+
+function saveGameFunction(saveType) {
     var d = new Date();
     var hour = d.getHours();
     var minute = d.getMinutes();
@@ -27,6 +37,7 @@
         playerLuck: player.baseLuck,
         playerExperience: player.experience,
         playerMaxExperience: player.maxExperience,
+        hardcoreMode: player.hardcoreMode,
         pot: pot,
         spot: spot,
         mpot: mpot,
@@ -86,6 +97,11 @@
     };
 };
 
+function loadGame() {
+    load();
+    autoSave();
+};
+
 function load() {
     if (localStorage['save'] || localStorage['EncodedSaveGame']) {
         if (localStorage['EncodedSaveGame']) {
@@ -129,6 +145,7 @@ function load() {
         if (typeof savegame.LightningStorm !== "undefined") activeSpells.lightningStorm.level = savegame.LightningStorm;
         //Other
         if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
+        if (typeof savegame.hardcoreMode !== "undefined") player.hardcoreMode = savegame.hardcoreMode;
         if (typeof savegame.sound !== "undefined") player.sound = savegame.sound;
         if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
         if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
@@ -169,6 +186,7 @@ function load() {
     CreatePlayerHotBar();
     skillChargeFill();
     updateBar();
+    removeStartingScreen();
     characterCreationHtml();
 };
 

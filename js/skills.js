@@ -1,4 +1,5 @@
 ﻿//Skills
+(function () {
 var spell = function (level, maxLevel, id, levelReq, manaReq, name, image) { //default spell object constructor
     this.isActive = false;
     this.id = id;
@@ -73,7 +74,7 @@ lightningStorm.maxCharge = function () {
     return Math.floor(1 + (player.totalIntelligence() / 500 + player.totalWisdom() / 400));
 };
 
-var activeSpells = new Object();
+window.activeSpells = new Object();
 activeSpells.fireBall = fireBall;
 activeSpells.iceShard = iceShard;
 activeSpells.callLightning = callLightning;
@@ -549,9 +550,10 @@ ranged.archerFocus = archerFocus;
 ranged.makeItRain = makeItRain;
 ranged.rangersRevenge = rangersRevenge;
 
-var weaponSkillList = new Object();
+window.weaponSkillList = new Object();
 weaponSkillList.sword = sword;
 weaponSkillList.axe = axe;
 weaponSkillList.mace = mace;
 weaponSkillList.staff = staff;
 weaponSkillList.ranged = ranged;
+})();

@@ -24,6 +24,7 @@ var player = {
     gameVersion: 1.5,
     heroClass: '',
     sound: 'off',
+    hardcoreMode: false,
     isDead: false,
     runOnce: false,
     isAuto: false,
@@ -525,27 +526,33 @@ function monsterDamageDeal(monsterDamage, monster, monsterStats) {
 
 //player dead function
 function playerDead(monster, monsterStats) {
-    var goldLost = 0;
-    var expLost = 0;
-    player.isDead = true;
-    player.health = 0;
-    playerRevive();
-    goldLost = Math.floor(player.gold - (player.gold / 1.2));
-    player.gold = Math.floor(player.gold / 1.2);
-    expLost = Math.floor(player.experience - (player.experience / 1.2));
-    player.experience = Math.floor(player.experience / 1.2);
-    //monsterStats.hp = monsterStats.maxHp;
-    document.getElementById("health").innerHTML = player.health;
-    document.getElementById("gold").innerHTML = player.gold;
-    document.getElementById("experience").innerHTML = player.experience;
-    displayLogInfo();
-    Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + goldLost + "gold.");
-    Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + expLost + "experience.");
-    Log("<span class =\"bold\" style=\"color:red\">You have died!</span>");
-    Log("You need to wait 5 seconds before you can fight again!");
-    battleTurn = -1;
-    skillReCharge();
-    updateHtml();
+    if (player.hardcoreMode === false) {
+        var goldLost = 0;
+        var expLost = 0;
+        player.isDead = true;
+        player.health = 0;
+        playerRevive();
+        goldLost = Math.floor(player.gold - (player.gold / 1.2));
+        player.gold = Math.floor(player.gold / 1.2);
+        expLost = Math.floor(player.experience - (player.experience / 1.2));
+        player.experience = Math.floor(player.experience / 1.2);
+        //monsterStats.hp = monsterStats.maxHp;
+        document.getElementById("health").innerHTML = player.health;
+        document.getElementById("gold").innerHTML = player.gold;
+        document.getElementById("experience").innerHTML = player.experience;
+        displayLogInfo();
+        Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + goldLost + "gold.");
+        Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + expLost + "experience.");
+        Log("<span class =\"bold\" style=\"color:red\">You have died!</span>");
+        Log("You need to wait 5 seconds before you can fight again!");
+        battleTurn = -1;
+        skillReCharge();
+        updateHtml();
+    }
+    else {
+        reset();
+        pageReload();
+    };
 };
 
 //monster kill function
@@ -1052,11 +1059,13 @@ var checkBoxCommon = false;
 var checkBoxUncommon = false;
 var checkBoxRare = false;
 var checkBoxEpic = false;
+var hardcoreMode = false;
 function handleClick() {
     checkBoxCommon = document.getElementById("common").checked;
     checkBoxUncommon = document.getElementById("uncommon").checked;
     checkBoxRare = document.getElementById("rare").checked;
     checkBoxEpic = document.getElementById("epic").checked;
+    hardcoreMode = document.getElementById("hardcoreMode").checked;
     player.autoBattle = document.getElementById("autoBattle").checked;
 };
 var eventDay = '';
@@ -1126,11 +1135,11 @@ function changeClass(className) {
 function myAudio(sound) {
     var myAudio = document.getElementById('myAudio');
     myAudio.volume = 0.1;
-    if (sound === "on" || player.sound === "on") {
+    if (player.sound === "on" || sound === "off") {
         myAudio.play();
         player.sound = "on";
     }
-    if (sound === "off" || player.sound === "off") {
+    if (player.sound === "off") {
         myAudio.pause();
         player.sound = "off";
     };

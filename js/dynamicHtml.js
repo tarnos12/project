@@ -1,5 +1,5 @@
 //Create player Weapon skill html
-var weaponTabActive = 0;
+var weaponTabActive = 'swordTest';
 function changeTabWeapon(index) {
     weaponTabActive = index;
 };
@@ -16,16 +16,17 @@ function CreateWeaponSkillHtml() {
     html += '</span></a></b></div>';
     html += '</div>';
     html += '<div class="row">';
-    html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
+    html += '<div class="col-xs-10">';
     html += '<ul class="nav nav-tabs">';
-    for (var k = 0; k < weaponSkillType.length; k++) {
-        if (k === weaponTabActive) {
-            html += '<li class="active" onClick = changeTabWeapon(' + k + ')>';
+    for (var k = 0; k < weaponTypeObject.length; k++) {
+        var weaponType = weaponTypeObject[k].type + 'Test';
+        if (weaponType === weaponTabActive) {
+            html += '<li class="active" onClick = changeTabWeapon("' + weaponType + '")>';
         }
         else {
-            html += '<li onClick = changeTabWeapon(' + k + ')>';
+            html += '<li onClick = changeTabWeapon("' + weaponType + '")>';
         };
-        html += '<a href="#tab_' + weaponSkillType[k].displayName + '" data-toggle="tab"><span class="icons ' + weaponSkillType[k].icon + '"</span></a></li>';
+        html += '<a href="#tab_' + weaponTypeObject[k].displayName + '" data-toggle="tab"><span class="icons ' + weaponTypeObject[k].icon + '"</span></a></li>';
     };
     html += '</ul>';
     html += '<div class="tab-content" id="tabControl_WeaponSkill">';
@@ -33,14 +34,15 @@ function CreateWeaponSkillHtml() {
         if (weaponMastery.hasOwnProperty(weapon)) {
             var itemStat = weaponMastery[weapon];
             var image = "images/skills/" + itemStat.image + ".png";
-            if (weapon === weaponTabActive) {
-                html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane active"';
+            var weaponTest = weapon + "Test";
+            if (weaponTest === weaponTabActive) {
+                html += '<div class="col-xs-12 tab-pane active"';
             } else {
-                html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane"';
+                html += '<div class="col-xs-12 tab-pane"';
             };
             html += 'id="tab_' + itemStat.name + '">';
             html += '<div class="row">';
-            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 c8">';
+            html += '<div class="col-xs-12 c8">';
             html += '<div class="c3"><h4>' + itemStat.name + '</h4>';
             html += '<br />Level: ' + itemStat.level;
             for (var statName in itemStat) {
@@ -61,7 +63,7 @@ function CreateWeaponSkillHtml() {
             var skill = weaponSkillList[weapon]
             for (var skillName in skill) {
                 var displaySkill = skill[skillName];
-                html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 c8">';
+                html += '<div class="col-xs-12 c8">';
                 html += '<div class="c4">';
                 if (itemStat.level < displaySkill.levelReq) {
                     html += "<br />" + '<span class ="bold">' + displaySkill.name + '</span>' + ": Unlocks at " + displaySkill.levelReq + " level";
@@ -96,7 +98,7 @@ function CreateEquipHtml() {
             //Getting the actual stat object from the word.
             var itemType = item[type];
             if (itemType.hasOwnProperty('itemType')) {
-                html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">';
+                html += '<div class="col-xs-12">';
                 html += '<a href="#" class="tooltipA">';
                 html += '<img src="images/items/' + itemType.subType + "/" + itemType.image + '.png" />';
                 html += '<span>';
@@ -193,7 +195,7 @@ function CreateMonsterHtml() {
             };
             if (area === monsterAreas[j].type) {
                 if (monster.Stats.isShown == true) {
-                    html += '<div class="col-lg-3 col-md-6 col-sm-6 col-xs-6">' +
+                    html += '<div class="col-xs-6 col-lg-3">' +
                         '<div id="' + monster.Stats.id + '">' +
                         '<a href="#" class="tooltipA">' +
                         '<img src="images/' + "monster" + monster.Stats.id + '.jpg" alt="' + monster.Stats.displayName + '">' +
@@ -253,10 +255,10 @@ function CreateInventoryWeaponHtml() {
     html += '<div class="tab-content" id="tabControl_Inventory">';
     for (var j = 0; j < InventoryItemTypes.length; j++) {
         if (j === inventoryTabActiveNum) {
-            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane active"';
+            html += '<div class="col-xs-12 tab-pane active"';
         }
         else {
-            html += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 tab-pane"';
+            html += '<div class="col-xs-12 tab-pane"';
         };
         html += 'id="tab_' + InventoryItemTypes[j].type + '">';
         html += '<div class="row">';
@@ -281,7 +283,7 @@ function CreateInventoryWeaponHtml() {
                 else if (playerInventory[i].subType === "talisman") {
                     itemStat = equippedItems.talisman;
                 }
-                html += '<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 c8">';
+                html += '<div class="col-xs-12 col-lg-6 c8">';
                 html += '<a href="#" class="tooltipA">';
                 html += '<img src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png" class="' + playerInventory[i].itemQuality + '"/>';
                 html += '<span>';
@@ -387,7 +389,7 @@ function CreatePlayerSkillsHtml() {
     var html = '';
     html += '<div class="row">';
     html += '<div class="c3 bold">Mana left: ' + (player.maxMana() - spellTotalManaCost) + "</div>";
-    html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
+    html += '<div class="col-xs-10">';
     for (var spell in activeSpells) {
         if (activeSpells.hasOwnProperty(spell)) {
             var selectedSpell = activeSpells[spell];
@@ -400,7 +402,7 @@ function CreatePlayerSkillsHtml() {
             };
             var onclickevent = "upgradeSpell('" + spell + "');";
             var spellonclickevent = "spellActivation('" + spell + "');";
-            html += '<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">';
+            html += '<div class="col-xs-4">';
             html += '<a href="#" class="tooltipA">';
             html += '<img src="' + image + '" onclick="' + spellonclickevent + '"/>';
             html += '<span>';
@@ -440,7 +442,7 @@ function CreatePlayerHotBar() {
             var image = "images/skills/" + selectedSpell.image + ".png";
 
             if (selectedSpell.isActive == true) { // Check if spell is active, and put it in hotbar
-                html += '<div class="col-lg-3 col-md-4 col-sm-4 col-xs-4">';
+                html += '<div class="col-xs-4 col-lg-3">';
                 html += '<a href="#" class="tooltipA">';
                 html += '<img src="' + image + '"/>';
                 html += '<span>';
@@ -460,33 +462,34 @@ function CreatePlayerHotBar() {
 
 //Character Creation
 function characterCreationRemoveBackground() {
-    var divStyle = document.getElementById('partyCreationDiv');
+    var divStyle = document.getElementById('selectClassDiv');
     divStyle.style.display = "none";
-    var divBackgroundStyle = document.getElementById('partyCreationDisabledBackground');
+    var divBackgroundStyle = document.getElementById('selectClassBackground');
     divBackgroundStyle.style.display = "none";
     var sound = player.sound;
     myAudio(sound);
+    startingScreen();
 };
+
+function characterCreationCreateBackground() {
+    var divStyle = document.getElementById('selectClassDiv');
+    divStyle.style.display = "block";
+    var divBackgroundStyle = document.getElementById('selectClassBackground');
+    divBackgroundStyle.style.display = "block";
+};
+
 function characterCreationHtml() {
+    characterCreationCreateBackground();
     if (player.heroClass === '') {
         var html = '';
         html += '<div class="row">';
-        html += '<div class ="col-lg-10 col-md-10 col-sm-10 col-xs-10">';
-        html += 'Start the game with sound';
-        html += '<div class="row">';
-        var soundOn = "myAudio('on');";
-        var soundOff = "myAudio('off');";
-        html += '<button type="button" onclick="' + soundOn + '">Sound On</button>';
-        html += '<button type="button" onclick="' + soundOff + '"">Sound Off</button>';
-        html += '</div></div></div>';
-        html += '<div class="row">';
-        html += '<div class="col-lg-10 col-md-10 col-sm-10 col-xs-offset-1">';
+        html += '<div class="col-sm-10 col-xs-offset-1">';
         html += 'Pick your class, hover over a class name for more info.';
         html += '<div class="row">';
         for (var hero in characterClasses) {
             var heroClass = characterClasses[hero];
             var onclickevent = "changeClass('" + heroClass.name + "');";
-            html += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">';
+            html += '<div class="col-xs-3">';
             html += '<a href="#" class="tooltipA">' + heroClass.name + "" +
                     '<span>' + 'Stats per level: <br />' +
                     'Strength: ' + heroClass.strength + '<br />' +
@@ -503,7 +506,7 @@ function characterCreationHtml() {
         html += '</div>';
         html += '</div>';
         html += '</div>';
-        document.getElementById("partCreation").innerHTML = html;
+        document.getElementById("classCreation").innerHTML = html;
     };
     for (var hero in characterClasses) {
         var heroClass = characterClasses[hero];
@@ -520,5 +523,58 @@ function characterCreationHtml() {
             '</span>' + '</a>';
             characterCreationRemoveBackground();
         };
+    };
+};
+
+function startLogo() {
+    var html = '';
+    html += '<div class="row">';
+    html += '<div class ="col-xs-12">';
+    html += '</div></div>';
+    document.getElementById("gameLogo").innerHTML = html;
+}
+
+function startingScreen() {
+    var html = '';
+    var newGame = "newGame();"; // might pass value to pick a slot for new game
+    var loadGame = "loadGame();"; // later on might need to pass some value when loading, once I add more save slots...
+    var muteSound = "muteAudio();";
+    var myAudio = document.getElementById('myAudio');
+    html += '<div class="row">';
+    html += '<div class ="col-xs-12 newGameButton">';
+    html += '<div class="btn-group-vertical" role="group" aria-label="New game, load game">';
+    html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + newGame + '">New Game</button>';
+    html += '<button type="button" class="btn btn-default border" onclick="' + loadGame + '">Load</button>';
+    html += '<label><input type="checkbox" id="hardcoreMode" onclick="handleClick();">Hardcore Mode?</label>';
+    html += '</div>';
+    html += '</div></div>';
+    html += '<button type="button" class="btn btn-default musicDiv" onclick="' + muteSound + 'changeMusicImage();""><span id="musicImage" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>';
+    document.getElementById("buttonDiv").innerHTML = html;
+    myAudio.volume = 0.1;
+    myAudio.play();
+};
+startingScreen();
+startLogo();
+function removeStartingScreen() {
+    var divStyle = document.getElementById('loadingContainer');
+    var divBackgroundStyle = document.getElementById('loadingOverlay');
+    divStyle.style.display = "none";
+    divBackgroundStyle.style.display = "none";
+};
+
+function changeMusicImage() {
+    var musicImage = document.getElementById('musicImage');
+    var musicImage2 = document.getElementById('musicimage2');
+    if (musicImage.className === "glyphicon glyphicon-volume-off") {
+        musicImage.className = "glyphicon glyphicon-volume-up";
+    }
+    else {
+        musicImage.className = "glyphicon glyphicon-volume-off";
+    };
+    if (musicImage2.className === "glyphicon glyphicon-volume-off") {
+        musicImage2.className = "glyphicon glyphicon-volume-up";
+    }
+    else {
+        musicImage2.className = "glyphicon glyphicon-volume-off";
     };
 };
