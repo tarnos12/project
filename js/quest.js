@@ -328,44 +328,131 @@ function quest() {
     if (player.level >= 16) {
         monsterList.JotunnScout.Stats.isShown = true;
         if (monsterUnlock.JotunnScout == false) {
-            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />' +
+
+                '<p class="story">She just started laughing and didn\'t stop until her throat filled with blood, then she coughed it out and laughed some more.' +
+                'You were hoping to ask some questions but she seems pretty tied up right now.' +
+                'You leave the area and out of the range of that cackle, but soon find yourself at the base of Oz Jotnar.' +
+                'The largest mountain in the region that is part of a one thousand mile long chain of mountains effectively cutting off the lands of Etheria from its sister Zyzx.<br /><br />' +
+ 
+                'You finish gawking and notice a 8 and half foot tall beast walking towards you.  It is not sneaking or walking in an aggressive manner but you are on guard anyway.' +
+                'When it was ten feet away it stopped and started to speak.<br /><br />' +
+ 
+                'Jotunn Scout: "State your business, human." Its voice sounded like rocks rumbling in a bag made of marble.<br /><br />' +
+ 
+                'You appreciate that it didn\'t attack you on sight and chose to respond:  "I seek the Temple of Legends, and plan on attempting the Rite."<br /><br />' +
+ 
+                'Jotunn Scout: "Oh really, then as a prospective Legend, you won\'t mind if I send word to my master." You don\'t like where this is going.<br /><br />' +
+ 
+                'You: "Actually I was hoping to go through without any problems."<br /><br />' +
+ 
+                'Jotunn Scout: "Ha, Legends are problems and we are also compelled to stop anyone from trying the Rite."<br /><br />' +
+                'He took a stick out of his belt , raised his arm and pointed the stick towards the sky then pulled a string at the bottom of the stick.<br /><br />' +
+                'The sound was deafening and a red light shot into the air.  "Now they know you are here, have fun."<br /><br />' +
+ 
+                'You respond by attacking him and starting a battle.</p>';
             };
         monsterUnlock.JotunnScout = true;
     };
     if (player.level >= 17) {
         monsterList.JotnarAmbushSquad.Stats.isShown = true;
-        if (monsterUnlock.JotunnScout == false) {
-            document.getElementById("story").innerHTML += '<h3><b>Jotnar Ambush Squad</b></h3><br />';
+        if (monsterUnlock.JotnarAmbushSquad == false) {
+            document.getElementById("story").innerHTML += '<h1><b>Oz Jotnar</b></h1>' +
+
+            '<p class="story">Why is that wherever you go someone wants to kill you?' +
+            'To be fair, you started the fight with bandits, and you were on forbidden territory in the forest, but this time it isn\'t even your fault.' +
+            'You sought peaceful passage and still have people wanting to kill you.<br /><br />' +
+
+            'Voice:  "Get over it, this is the life of a Legend. For grand power you have to sacrifice something and in this case you have to sacrifice all social contact."<br /><br />' +
+
+            'You: "You could have told me sooner, then I would have lived my life instead of taking other lives."<br /><br />' +
+
+            'Voice: "If I did that I would be trapped in mediocrity and die of boredom. Now quit whining, there is no turning back now."<br /><br />' +
+
+            'You sigh and continue the walk to the mountain path.' +
+            'At the start of the path is a giant arch which has an engraving on the top: "This path was made for humans by Jotnar under the treaty put in place by Archon Harghest."<br /><br />' +
+
+            'Voice: "Harghest? He became the Archon?"<br /><br />' +
+
+            'You: "Well, yeah but that was around 450 years ago.  It seems that the Jotnar have taken good care of it."<br /><br />' +
+
+            'Voice: "450 YEARS!? I\'ve been dead for that long! Oh my god, my kingdom, my soldiers, Mariah, all of them gone.' +
+            'We have to keep moving, rebuild and bring back the Legends. When was the last Legend around?"<br /><br />' +
+
+            'You: Close to 23 years, she is the one who built Old Hemlock and also made sure the Forest of Narsus never overtook any other cities."<br /><br />' +
+
+            'Voice: "Then it sounds like its about time for a new Legend. Go, I have your back for this one and if you succeed you can have whats left of my kingdom."<br /><br />' +
+
+            'You: "I\'m sorry abou-"<br /><br />' +
+
+            'Voice: "Don\'t, none of that. I am fine and need no sympathy."<br /><br />' +
+
+            'You then walk past the arch into the long winding path of Oz Jotnar.<br /><br /></p>' +
+
+
+            '<h3><b>Jotnar Ambush Squad</b></h3>' +
+
+            '<p class="story">You don\'t like this place; there are too many caves to hide in that are looming over the path and you are starting to hear what sounds like drums but very distant.' +
+            'Someday you will get to have a moment to relax but for now it is best to just enjoy the excitement of being hunted.<br /><br />' +
+
+            'After a few more minutes of walking and losing a bit of focus, you trip on a near-invisible wire which caused spikes to fire from the  mountain wall and fire to burst from the ground.' +
+            'You are inexperienced with traps but you have no trouble weathering the damage and decide to just lie still and let your wounds heal.' +
+            'Thirty seconds passed and you flipped yourself over to find a Jotunn falling towards you, you roll away and the Jotunn\'s knee slams into the ground leaving a small crater.' +
+            'That would have hurt.<br /><br />' +
+
+             'The Jotunn quickly recover and faster than a creature of that size should move climbs the mountain wall where it then hides in a cave.' +
+             'Right when it reaches a cave another Jotunn sneaks up behind you and attempts to shank your kidney.' +
+             'You quickly spin around and disarm the assassin and then throw him to the ground.<br /><br />' +
+
+             'It looks like another fight has begun, best of luck to you.</p>';
         };
-        monsterUnlock.JotunnScout = true;
+        monsterUnlock.JotnarAmbushSquad = true;
     };
     if (player.level >= 18) {
         monsterList.LongRangeExterminationSquad.Stats.isShown = true;
-        if (monsterUnlock.JotunnScout == false) {
-            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+        if (monsterUnlock.LongRangeExterminationSquad == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Long Range Extermination Squad</b></h3><br />' +
+
+            '<p class="story">After stepping on a hundred caltrops,' +
+            'falling into a spike pit, and having poison launched into your face you managed to eliminate the rest of the ambushers.<br /><br />' +
+ 
+            'Voice: "Oh what fun, and to think you are only a few miles into the mountains. Don\'t stop now".<br /><br />' +
+ 
+            'You sigh and continue walking down the long rocky path.' +
+            'You finally get the chance to view your surroundings:' +
+            'to your left is a steep drop that leads into a deep stone valley and your right is too steep to climb without gear but you can still see many caves and drops above you.' +
+            'In front of you is a perfect view of the sunset and the mountains reaching out as far as you can see.' +
+            'The clouds dance atop many of the mountains and you can smell crisp clean air.<br /><br />' +
+ 
+            'Then you hear a snap and a buzz like a bee flying by your head and you see a glint of light far ahead on the path.' +
+            'Whatever it was it missed and now you need to burn rubber running down the attackers.<br /><br />' +
+ 
+            'Voice: "All these new weapons, how did the trolls learn to make these?"<br /><br />' +
+ 
+            'You wince at the racist comment and quickly shoot off, "Hey, don\'t be racist." Then continued running towards battle.</p>';
         };
-        monsterUnlock.JotunnScout = true;
+        monsterUnlock.LongRangeExterminationSquad = true;
     };
     if (player.level >= 19) {
         monsterList.BerserkerShockSquad.Stats.isShown = true;
-        if (monsterUnlock.JotunnScout == false) {
-            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+        if (monsterUnlock.BerserkerShockSquad == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Berserker ShockSquad</b></h3><br />';
         };
-        monsterUnlock.JotunnScout = true;
+        monsterUnlock.BerserkerShockSquad = true;
     };
     if (player.level >= 20) {
         monsterList.BerserkerShockSquadCaptainRendGrest.Stats.isShown = true;
-        if (monsterUnlock.JotunnScout == false) {
-            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+        if (monsterUnlock.BerserkerShockSquadCaptainRendGrest == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Berserker Shock Squad Captain, Rend Grest</b></h3><br />';
         };
-        monsterUnlock.JotunnScout = true;
+        monsterUnlock.BerserkerShockSquadCaptainRendGrest = true;
     };
     if (player.level >= 21) {
         monsterList.ArtillerySquad.Stats.isShown = true;
-        if (monsterUnlock.JotunnScout == false) {
-            document.getElementById("story").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />';
+        if (monsterUnlock.ArtillerySquad == false) {
+            document.getElementById("story").innerHTML += '<h3><b>Artillery Squad</b></h3><br />';
         };
-        monsterUnlock.JotunnScout = true;
+        monsterUnlock.ArtillerySquad = true;
     };
     if (player.level >= 22) {
         monsterList.JottunMainInfantry.Stats.isShown = true;

@@ -331,16 +331,16 @@ var enemyBlock = 0;
 var accuracyRate = 0;
 var monsterDamage = 0;
 
-function attack(monster) {
+function attack(monsterStat) {
     battleTurn = 1;
-    var monsterStats = monster.Stats;
+    var monsterStats = monsterStat.Stats;
     while (battleTurn > 0 && battleTurn <= 20) {
         if (monsterStats.hp >= 1 && player.isDead == false) {
-            playerAttack(monster, monsterStats);
+            playerAttack(monsterStat, monsterStats);
             if (monsterStats.hp < 1) {
-                monsterKilled(monster, monsterStats);
+                monsterKilled(monsterStat, monsterStats);
             } else {
-                monsterAttack(monster, monsterStats);
+                monsterAttack(monsterStat, monsterStats);
             };
         }
         else {
@@ -360,17 +360,17 @@ function DrawBattle() {
 };
 
 //Player miss/hit chance
-function playerAttack(monster, monsterStats) {
+function playerAttack(monsterStat, monsterStats) {
     CreateMonsterHtml()
     document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
     if (player.autoBattle == true && player.isAuto == false) {
         player.isAuto = true;
-        autoAttack(monster, monsterStats);
+        autoAttack(monsterStat, monsterStats);
     };
     var playerHitChance = (player.accuracy() - monsterStats.eva) / 100;
     var randomHitChance = Math.random();
     if (playerHitChance > randomHitChance) {
-        playerCriticalChance(monster, monsterStats);
+        playerCriticalChance(monsterStat, monsterStats);
         accuracyRate += 1;
     }
     else {
@@ -378,40 +378,40 @@ function playerAttack(monster, monsterStats) {
 };
 
 //player critical chance
-function playerCriticalChance(monster, monsterStats) {
+function playerCriticalChance(monsterStat, monsterStats) {
     var playerCriticalChance = player.criticalChance() / 100;
 
     var randomCritChance = Math.random();
 
     if (playerCriticalChance > randomCritChance) {
-        playerCriticalDamage(monster, monsterStats);
+        playerCriticalDamage(monsterStat, monsterStats);
         criticalRate += 1;
     }
     else {
-        playerDamage(monster, monsterStats);
+        playerDamage(monsterStat, monsterStats);
     };
 };
 
 //player critical damage calculation
-function playerCriticalDamage(monster, monsterStats) {
+function playerCriticalDamage(monsterStat, monsterStats) {
     var damage = Math.floor(Math.random() * (player.maxDamage() - player.minDamage() + 1)) + player.minDamage();
     damage = Math.floor(damage * player.criticalDamage() * (10 / (10 + monsterStats.def)));
     if (damage >= 1) {
-        playerDamageDeal(damage, monster, monsterStats);
+        playerDamageDeal(damage, monsterStat, monsterStats);
     };
 };
 
 //player normal damage calculation
-function playerDamage(monster, monsterStats) {
+function playerDamage(monsterStat, monsterStats) {
     var damage = Math.floor(Math.random() * (player.maxDamage() - player.minDamage() + 1)) + player.minDamage();
     damage = Math.floor(damage * (10 / (10 + monsterStats.def)));
     if (damage >= 1) {
-        playerDamageDeal(damage, monster, monsterStats);
+        playerDamageDeal(damage, monsterStat, monsterStats);
     };
 };
 
 //player damage deal (base or critical)
-function playerDamageDeal(damage, monster, monsterStats) {
+function playerDamageDeal(damage, monsterStat, monsterStats) {
     for (var spell in activeSpells) {
         if (activeSpells.hasOwnProperty(spell)) {
             var selectedSpell = activeSpells[spell];
@@ -476,25 +476,25 @@ function playerDamageDeal(damage, monster, monsterStats) {
 };
 
 //monster hit chance
-function monsterAttack(monster, monsterStats) {
+function monsterAttack(monsterStat, monsterStats) {
     var monsterHitChance = (monsterStats.acc - player.evasion()) / 100;
     var randomHitChance = Math.random();
     if (monsterHitChance > randomHitChance) {
-        monsterDmg(monster, monsterStats);
+        monsterDmg(monsterStat, monsterStats);
     };
 };
 
 //monster damage calculation
-function monsterDmg(monster, monsterStats) {
+function monsterDmg(monsterStat, monsterStats) {
     monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg - monsterStats.minDmg + 1)) + monsterStats.minDmg;
     monsterDamage = Math.floor(monsterDamage * (30 / (30 + player.defense())));
     if (monsterDamage >= 1) {
-        monsterDamageDeal(monsterDamage, monster, monsterStats);
+        monsterDamageDeal(monsterDamage, monsterStat, monsterStats);
     };
 };
 
 //monster damage deal (base or critical)
-function monsterDamageDeal(monsterDamage, monster, monsterStats) {
+function monsterDamageDeal(monsterDamage, monsterStat, monsterStats) {
     var randomCounterNumber = Math.floor((Math.random() * 100) + 1);
     var randomBlockNumber = Math.floor((Math.random() * 100) + 1);
     if (randomCounterNumber <= player.counterChance()) {
@@ -517,15 +517,15 @@ function monsterDamageDeal(monsterDamage, monster, monsterStats) {
     document.getElementById("health").innerHTML = player.health + "/" + player.maxhealth();
     document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     if (player.health < 1) {
-        playerDead(monster, monsterStats);
+        playerDead(monsterStat, monsterStats);
     };
     if (monsterStats.hp < 1) {
-        monsterKilled(monster, monsterStats);
+        monsterKilled(monsterStat, monsterStats);
     };
 };
 
 //player dead function
-function playerDead(monster, monsterStats) {
+function playerDead(monsterStat, monsterStats) {
     if (player.hardcoreMode === false) {
         var goldLost = 0;
         var expLost = 0;
@@ -556,11 +556,11 @@ function playerDead(monster, monsterStats) {
 };
 
 //monster kill function
-function monsterKilled(monster, monsterStats) {
+function monsterKilled(monsterStat, monsterStats) {
     monsterStats.hp = monsterStats.maxHp;
-    itemExperienceGain(monster, monsterStats);
-    monsterExperience(monster, monsterStats);
-    weaponSkill(monster, monsterStats);
+    itemExperienceGain(monsterStat, monsterStats);
+    monsterExperience(monsterStat, monsterStats);
+    weaponSkill(monsterStat, monsterStats);
     monsterStats.killCount++;
     displayLogInfo();
     battleTurn = -1;
@@ -570,7 +570,7 @@ function monsterKilled(monster, monsterStats) {
 };
 
 //Weapon skill experience
-function weaponSkill(monster, monsterStats) {
+function weaponSkill(monsterStat, monsterStats) {
     if (player.level > monsterStats.level + 3) {
         var expgain = monsterStats.level / 2;
     }
@@ -620,7 +620,7 @@ function updateBar() {
 };
 
 //experience gained from killing a monster
-function monsterExperience(monster, monsterStats) {
+function monsterExperience(monsterStat, monsterStats) {
     if (player.level > monsterStats.level + 2) {
         var expgain = ((monsterStats.baseExp / (player.level / monsterStats.level)) * player.expRate() / 2);
     }
@@ -640,7 +640,7 @@ function monsterExperience(monster, monsterStats) {
     }
     else Log("You gain: " + Math.floor(expgain) + " experience!");
     updateHtml();
-    monsterGold(monster, monsterStats);
+    monsterGold(monsterStat, monsterStats);
 };
 
 //Player skill recharge
@@ -664,7 +664,7 @@ function skillReCharge() {
     };
 };
 //Experience gain for equipped items
-function itemExperienceGain(monster, monsterStats) {
+function itemExperienceGain(monsterStat, monsterStats) {
     var weaponExp = equippedItems.weapon.exp;
     var weaponMaxExp = equippedItems.weapon.maxExp;
     var weaponLevel = equippedItems.weapon.level;
@@ -718,14 +718,14 @@ function itemExperienceGain(monster, monsterStats) {
 };
 
 //gold gained from killing a monster
-function monsterGold(monster, monsterStats) {
+function monsterGold(monsterStat, monsterStats) {
     var goldDrop = 0;
     var randomGold = Math.floor(Math.random() * ((monsterStats.level + 5) - monsterStats.level + 1) + monsterStats.level);
     goldDrop = Math.floor(randomGold * player.goldRate());
     player.gold += goldDrop;
     Log("You loot: " + goldDrop + " gold!");
     document.getElementById("gold").innerHTML = player.gold;
-    monsterItemDrop(monster);
+    monsterItemDrop(monsterStat);
 
 };
 
