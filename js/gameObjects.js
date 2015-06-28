@@ -42,10 +42,10 @@ var monsterAreas = [
           icon: 'ozJotnar'
       },
        {
-           type: 'AncientCave',
-           displayName: 'Ancient Cave',
-           icon: 'ancientCave'
-       }
+           type: 'TwistedMarrow',
+           displayName: 'Twisted Marrow',
+           icon: 'twistedMarrow'
+       },
 ];
 var weaponTypeObject = [
     {
