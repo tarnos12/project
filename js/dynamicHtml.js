@@ -209,7 +209,7 @@ function CreateMonsterHtml() {
                         '<br />' +
                         "Health: " + '<span class="hp">' + monster.Stats.hp + '</span>' + "/" + monster.Stats.maxHp +
                         '<br />' +
-                        '<span type="button" class="attack" onclick="attack' + "(" + monster.Stats.name + ")" + '">' + "Attack" + '</span>' + '</div></div>';
+                        '<span type="button" class="attack" onclick="attack(' + monster.Stats.name + ')">' + 'Attack' + '</span>' + '</div></div>';
                 };
             };
         };
