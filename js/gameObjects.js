@@ -98,7 +98,7 @@ var materiaType = [
     },
 ]
 
-var characterClass = function (name, strength, endurance, agility, dexterity, intelligence, wisdom, luck) { //default spell object constructor
+var characterRace = function (name, strength, endurance, agility, dexterity, intelligence, wisdom, luck) {
     this.name = name;
     this.strength = strength;
     this.endurance = endurance;
@@ -112,16 +112,16 @@ var characterClass = function (name, strength, endurance, agility, dexterity, in
             "<br />" + "Dexterity: " + this.dexterity + "<br />" + "Intelligence: " + this.intelligence + "<br />" + "Wisdom: " + this.wisdom + "<br />" + "Luck: " + this.luck
     };
 };
-var warrior = new characterClass('Warrior', 3, 3, 2, 2, 1, 1, 2);
-var apprentice = new characterClass('Apprentice', 1, 1, 2, 2, 3, 3, 2);
-var ranger = new characterClass('Ranger', 3, 2, 2, 3, 1, 1, 3);
-var samurai = new characterClass('Samurai', 3, 2, 3, 2, 1, 1, 3);
+var human = new characterRace('Human', 3, 3, 3, 3, 3, 3 , 3);
+var halfElf = new characterRace('Half Elf', 2, 2, 4, 3, 4, 4, 2);
+var dwarf = new characterRace('Dwarf', 4, 2, 4, 4, 1, 1, 5);
+var orc = new characterRace('Orc', 5, 5, 2, 5, 1, 1, 2);
 
-var characterClasses = new Object();
-characterClasses.warrior = warrior;
-characterClasses.apprentice = apprentice;
-characterClasses.ranger = ranger;
-characterClasses.samurai = samurai;
+var characterRaces = new Object();
+characterRaces.human = human;
+characterRaces.halfElf = halfElf;
+characterRaces.dwarf = dwarf;
+characterRaces.orc = orc;
 
 
 CreateMonsterHtml();

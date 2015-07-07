@@ -14,81 +14,80 @@
     var fist = new weaponSkillType(0, 0, 10, "fist", "Fist");
 
     sword.strength = function () {
-        return this.level * 2;
+        return (1 + (this.level * 1.6) / 100);
     };
     sword.swordStrength = function () {
-        return player.isSword ? this.strength() : 0;
+        return player.properties.isSword ? this.strength() : 1;
     };
     sword.agility = function () {
-        return this.level * 1.5;
+        return (1 + (this.level * 2) / 100);
     };
     sword.swordAgility = function () {
-        return player.isSword ? this.agility() : 0
+        return player.properties.isSword ? this.agility() : 1;
     };
 
     axe.strength = function () {
-        return this.level * 2;
+        return (1 + (this.level * 2) / 100);
     };
     axe.axeStrength = function () {
-        return player.isAxe ? this.strength() : 0;
+        return player.properties.isAxe ? this.strength() : 1;
     };
     axe.endurance = function () {
-        return this.level * 1.5;
+        return (1 + (this.level * 1.6) / 100);
     };
     axe.axeEndurance = function () {
-        return player.isAxe ? this.endurance() : 0;
+        return player.properties.isAxe ? this.endurance() : 1;
     };
 
     mace.endurance = function () {
-        return this.level * 2;
+        return (1 + (this.level * 1.6) / 100);
     };
     mace.maceEndurance = function () {
-        return player.isMace ? this.endurance() : 0;
+        return player.properties.isMace ? this.endurance() : 1;
     };
     mace.wisdom = function () {
-        return this.level * 1.5;
+        return (1 + (this.level * 2) / 100);
     };
     mace.maceWisdom = function () {
-        return player.isMace ? this.wisdom() : 0;
+        return player.properties.isMace ? this.wisdom() : 1;
     };
 
     staff.intelligence = function () {
-        return this.level * 2;
+        return (1 + (this.level * 2) / 100);
     };
     staff.staffIntelligence = function () {
-        return player.isStaff ? this.intelligence() : 0;
+        return player.properties.isStaff ? this.intelligence() : 1;
     };
     staff.wisdom = function () {
-        return this.level * 1.5;
+        return (1 + (this.level * 1.6) / 100);
     };
     staff.staffWisdom = function () {
-        return player.isStaff ? this.wisdom() : 0;
+        return player.properties.isStaff ? this.wisdom() : 1;
     };
-
     ranged.strength = function () {
-        return this.level * 1.5;
+        return (1 + (this.level * 1.6) / 100);
     };
     ranged.rangedStrength = function () {
-        return player.isRanged ? this.strength() : 0;
+        return player.properties.isRanged ? this.strength() : 1;
     };
     ranged.dexterity = function () {
-        return this.level * 2;
+        return (1 + (this.level * 2) / 100);
     };
     ranged.rangedDexterity = function () {
-        return player.isRanged ? this.dexterity() : 0;
+        return player.properties.isRanged ? this.dexterity() : 1;
     };
 
     fist.agility = function () {
-        return this.level * 1.5;
+        return (1 + (this.level * 2) / 100);
     };
     fist.fistAgility = function () {
-        return player.isFist ? this.agility() : 0;
+        return player.properties.isFist ? this.agility() : 1;
     };
     fist.dexterity = function () {
-        return this.level * 2;
+        return (1 + (this.level * 3) / 100);
     };
     fist.fistDexterity = function () {
-        return player.isFist ? this.dexterity() : 0;
+        return player.properties.isFist ? this.dexterity() : 1;
     };
 
     window.weaponMastery = new Object();

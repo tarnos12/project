@@ -3082,7 +3082,7 @@ function MakeMonsterList() {
         type: "boss",
         id: 25,
         level: 25,
-        area: "AncientCave",
+        area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 250
@@ -3201,7 +3201,7 @@ function MakeMonsterList() {
         type: "boss",
         id: 26,
         level: 26,
-        area: "AncientCave",
+        area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 260
@@ -3320,7 +3320,7 @@ function MakeMonsterList() {
         type: "boss",
         id: 27,
         level: 27,
-        area: "AncientCave",
+        area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 270
@@ -3439,7 +3439,7 @@ function MakeMonsterList() {
         type: "boss",
         id: 28,
         level: 28,
-        area: "AncientCave",
+        area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 280
@@ -3558,7 +3558,7 @@ function MakeMonsterList() {
         type: "boss",
         id: 29,
         level: 29,
-        area: "AncientCave",
+        area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 290
@@ -3677,7 +3677,7 @@ function MakeMonsterList() {
         type: "boss",
         id: 30,
         level: 30,
-        area: "AncientCave",
+        area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 300
@@ -3806,7 +3806,7 @@ function MakeMonsterList() {
         type: "boss",
         id: 31,
         level: 31,
-        area: "AncientCave",
+        area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 310
@@ -3935,7 +3935,7 @@ function MakeMonsterList() {
         type: "boss",
         id: 32,
         level: 32,
-        area: "AncientCave",
+        area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 320

@@ -48,7 +48,7 @@ function CreateWeaponSkillHtml() {
             for (var statName in itemStat) {
                 if ('defense, strength, endurance, agility, dexterity, intelligence, wisdom, damage'.indexOf(statName) != -1) {
                     var displayStat = itemStat[statName]();
-                    html += "<br />" + statName + ": " + displayStat;
+                    html += "<br />" + statName + ": " + ((displayStat * 100).toFixed(0) - 100) + "%";
                 };
             };
             //Progress bar is not updating on it's own :|
@@ -240,7 +240,7 @@ function CreateInventoryWeaponHtml() {
     html += '</ul>';
     html += '</span></a></b></div>';
     html += '</div>';
-    html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length + "/" + player.inventory() + '</div>';
+    html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length + "/" + player.functions.inventory() + '</div>';
     html += '<ul class="nav nav-tabs">';
     for (var k = 0; k < 4; k++) {
         if (k === inventoryTabActiveNum) {
@@ -388,7 +388,7 @@ var spellDamageDisplay = 0;
 function CreatePlayerSkillsHtml() {
     var html = '';
     html += '<div class="row">';
-    html += '<div class="c3 bold">Mana left: ' + (player.maxMana() - spellTotalManaCost) + "</div>";
+    html += '<div class="c3 bold">Mana left: ' + (player.functions.maxMana() - spellTotalManaCost) + "</div>";
     html += '<div class="col-xs-10">';
     for (var spell in activeSpells) {
         if (activeSpells.hasOwnProperty(spell)) {
@@ -460,72 +460,7 @@ function CreatePlayerHotBar() {
     document.getElementById("hotBar").innerHTML = html;
 };
 
-//Character Creation
-function characterCreationRemoveBackground() {
-    var divStyle = document.getElementById('selectClassDiv');
-    divStyle.style.display = "none";
-    var divBackgroundStyle = document.getElementById('selectClassBackground');
-    divBackgroundStyle.style.display = "none";
-    var sound = player.sound;
-    myAudio(sound);
-    startingScreen();
-};
-
-function characterCreationCreateBackground() {
-    var divStyle = document.getElementById('selectClassDiv');
-    divStyle.style.display = "block";
-    var divBackgroundStyle = document.getElementById('selectClassBackground');
-    divBackgroundStyle.style.display = "block";
-};
-
-function characterCreationHtml() {
-    characterCreationCreateBackground();
-    if (player.heroClass === '') {
-        var html = '';
-        html += '<div class="row">';
-        html += '<div class="col-sm-10 col-xs-offset-1">';
-        html += 'Pick your class, hover over a class name for more info.';
-        html += '<div class="row">';
-        for (var hero in characterClasses) {
-            var heroClass = characterClasses[hero];
-            var onclickevent = "changeClass('" + heroClass.name + "');";
-            html += '<div class="col-xs-3">';
-            html += '<a href="#" class="tooltipA">' + heroClass.name + "" +
-                    '<span>' + 'Stats per level: <br />' +
-                    'Strength: ' + heroClass.strength + '<br />' +
-                    'Endurance: ' + heroClass.endurance + '<br />' +
-                    'Agility: ' + heroClass.agility + '<br />' +
-                    'Dexterity: ' + heroClass.dexterity + '<br />' +
-                    'Intelligence: ' + heroClass.intelligence + '<br />' +
-                    'Wisdom: ' + heroClass.wisdom + '<br />' +
-                    'Luck: ' + heroClass.luck + '<br />' +
-                    '</span>' + '</a>';
-            html += '<button type="button" class="' + heroClass.name + '" onclick="' + onclickevent + '">Choose</button>'//changeClass function ._.
-            html += '</div>';
-        };
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        document.getElementById("classCreation").innerHTML = html;
-    };
-    for (var hero in characterClasses) {
-        var heroClass = characterClasses[hero];
-        if (player.heroClass === heroClass.name) {
-            document.getElementById("characterClass").innerHTML = "Class: " + '<a href="#" class="tooltipA">' + player.heroClass +
-                '<span>' + 'Stats per level: <br />' +
-            'Strength: ' + heroClass.strength + '<br />' +
-            'Endurance: ' + heroClass.endurance + '<br />' +
-            'Agility: ' + heroClass.agility + '<br />' +
-            'Dexterity: ' + heroClass.dexterity + '<br />' +
-            'Intelligence: ' + heroClass.intelligence + '<br />' +
-            'Wisdom: ' + heroClass.wisdom + '<br />' +
-            'Luck: ' + heroClass.luck + '<br />' +
-            '</span>' + '</a>';
-            characterCreationRemoveBackground();
-        };
-    };
-};
-
+//Adds a logo to the starting screen
 function startLogo() {
     var html = '';
     html += '<div class="row">';
@@ -534,6 +469,7 @@ function startLogo() {
     document.getElementById("gameLogo").innerHTML = html;
 }
 
+//This screen shows up everytime you load a page...
 function startingScreen() {
     var html = '';
     var newGame = "newGame();"; // might pass value to pick a slot for new game
@@ -555,11 +491,89 @@ function startingScreen() {
 };
 startingScreen();
 startLogo();
+
+function newGame() {
+    characterCreationHtml();
+    if (hardcoreMode === true) {
+        player.properties.hardcoreMode = true;
+    };
+    autoSave();
+};
+
+function characterCreationCreateBackground() {
+    var divStyle = document.getElementById('loadingContainer'); // Whole background of starting screen "a container"
+    divStyle.style.display = "block"; //block = display it
+    var divStyle3 = document.getElementById('startingScreen'); // Starting buttons: new game/ load game/ sound button etc
+    divStyle3.style.display = "none"; // none = not displayed
+    var divStyle4 = document.getElementById('raceDiv'); // Race select screen
+    divStyle4.style.display = "block";
+};
+
+function backToStartingScreen() {
+
+}
+
+function characterCreationHtml() {
+    characterCreationCreateBackground();
+    if (player.properties.heroRace === '') { // If you press "New game" race property will be empty, allowing you to pick a race, otherwise you will load a game with a race already picked :)
+        var html = '';
+        var html2 = '';
+        html2 += '<div class="row">';
+        html2 += '<div class="col-sm-6 col-xs-offset-3">';
+        html2 += 'Pick your race, hover over a race name for more info.';
+        html2 += '</div></div>';
+        html += '<div class="row">';
+        html += '<div class="col-sm-10 col-xs-offset-1">';
+        html += '<div class="row">';
+        for (var hero in characterRaces) {
+            var heroRace = characterRaces[hero];
+            var onclickevent = "changeRace('" + heroRace.name + "');";
+            html += '<div class="col-xs-3 col-xs-offset-3">';
+            html += '<a href="#" class="tooltipA">' + heroRace.name + "" +
+                    '<span>' + 'Stats per level: <br />' +
+                    'Strength: ' + heroRace.strength + '<br />' +
+                    'Endurance: ' + heroRace.endurance + '<br />' +
+                    'Agility: ' + heroRace.agility + '<br />' +
+                    'Dexterity: ' + heroRace.dexterity + '<br />' +
+                    'Intelligence: ' + heroRace.intelligence + '<br />' +
+                    'Wisdom: ' + heroRace.wisdom + '<br />' +
+                    'Luck: ' + heroRace.luck + '<br />' +
+                    '</span>' + '</a>';
+            html += '</div>';
+            html += '<div class="col-xs-3">';
+            html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" class="' + heroRace.name + '" onclick="' + onclickevent + '">Choose</button>'//changeRace function ._.
+            html += '</div>';
+        };
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+        document.getElementById("raceCreation").innerHTML = html;
+        document.getElementById("raceText").innerHTML = html2;
+    };
+    checkHeroRace();
+};
+
+function checkHeroRace() {
+    for (var hero in characterRaces) {
+        var race = characterRaces[hero];
+        if (player.properties.heroRace === race.name) {
+            document.getElementById("characterRace").innerHTML = "Race: " + '<a href="#" class="tooltipA">' + player.properties.heroRace +
+                '<span>' + 'Stats per level: <br />' +
+            'Strength: ' + race.strength + '<br />' +
+            'Endurance: ' + race.endurance + '<br />' +
+            'Agility: ' + race.agility + '<br />' +
+            'Dexterity: ' + race.dexterity + '<br />' +
+            'Intelligence: ' + race.intelligence + '<br />' +
+            'Wisdom: ' + race.wisdom + '<br />' +
+            'Luck: ' + race.luck + '<br />' +
+            '</span>' + '</a>';
+        };
+    };
+};
+
 function removeStartingScreen() {
     var divStyle = document.getElementById('loadingContainer');
-    var divBackgroundStyle = document.getElementById('loadingOverlay');
     divStyle.style.display = "none";
-    divBackgroundStyle.style.display = "none";
 };
 
 function changeMusicImage() {

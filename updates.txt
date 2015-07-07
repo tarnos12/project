@@ -1,4 +1,11 @@
 _________________________
+v1.5.7 - 27 june 2015    |
+-------------------------|
+- Fixed a bug when saving a dead character would result in being dead forever ._.
+- Changed all weapon masteries to give you % bonus instead of flat. Fist gives higher bonus than others.
+- If you unequip a weapon, you will start fighting with "Fist", you gain more benefit when not using a weapon.
+- 
+_________________________
 v1.5.6 - 27 june 2015    |
 -------------------------|
 - Fixed a bug with weapon skill tabs closing when you gained a level with a skill.

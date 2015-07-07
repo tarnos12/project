@@ -1,5 +1,5 @@
 ﻿function updateHtml() {
-    if (player.stats >= 1) { // Show "plus" image when player level up
+    if (player.properties.stats >= 1) { // Show "plus" image when player level up
         document.getElementById("vis1").style.visibility = "visible";
         document.getElementById("vis2").style.visibility = "visible";
         document.getElementById("vis3").style.visibility = "visible";
@@ -81,38 +81,38 @@
     superPotion = document.getElementById('superPotion');
     megaPotion = document.getElementById('megaPotion');
     skillPoints = document.getElementById('skillPoints');
-    minDamage.innerHTML = player.minDamage().toFixed(0);
-    maxDamage.innerHTML = player.maxDamage().toFixed(0);
-    strength.innerHTML = player.totalStrength() + " (" + '<font color="blue">' + player.equipStrength() + '</font>' + ")";
-    endurance.innerHTML = player.totalEndurance() + " (" + '<font color="blue">' + player.equipEndurance() + '</font>' + ")";
-    hpRegen.innerHTML = player.hpregen();
-    stats.innerHTML = player.stats;
-    agility.innerHTML = player.totalAgility() + " (" + '<font color="blue">' + player.equipAgility() + '</font>' + ")";
-    accuracy.innerHTML = player.accuracy().toFixed(2);
-    dexterity.innerHTML = player.totalDexterity() + " (" + '<font color="blue">' + player.equipDexterity() + '</font>' + ")";
-    defense.innerHTML = player.defense().toFixed(0);
-    criticalDamage.innerHTML = (player.criticalDamage() * 100).toFixed(0) + "%";
-    criticalChance.innerHTML = player.criticalChance().toFixed(1);
-    intelligence.innerHTML = player.totalIntelligence() + " (" + '<font color="blue">' + player.equipIntelligence() + '</font>' + ")";
-    mana.innerHTML = player.mana.toFixed(0);
-    maxMana.innerHTML = player.maxMana().toFixed(0);
-    wisdom.innerHTML = player.totalWisdom() + " (" + '<font color="blue">' + player.equipWisdom() + '</font>' + ")";
-    manaRegen.innerHTML = player.manaRegen();
-    luck.innerHTML = player.totalLuck() + " (" + '<font color="blue">' + player.equipLuck() + '</font>' + ")";
-    evasion.innerHTML = player.evasion().toFixed(1);
-    dropRate.innerHTML = (player.dropRate() * 100).toFixed(0);
-    expRate.innerHTML = (player.expRate() * 100).toFixed(0);
-    goldRate.innerHTML = (player.goldRate() * 100).toFixed(0);
-    level.innerHTML = player.level;
-    maxExperience.innerHTML = player.maxExperience;
-    experience.innerHTML = player.experience;
-    gold.innerHTML = player.gold.toFixed(0);
+    minDamage.innerHTML = player.functions.minDamage().toFixed(0);
+    maxDamage.innerHTML = player.functions.maxDamage().toFixed(0);
+    strength.innerHTML = player.functions.totalStrength() + " (" + '<font color="blue">' + player.functions.equipStrength() + '</font>' + ")";
+    endurance.innerHTML = player.functions.totalEndurance() + " (" + '<font color="blue">' + player.functions.equipEndurance() + '</font>' + ")";
+    hpRegen.innerHTML = player.functions.hpregen();
+    stats.innerHTML = player.properties.stats;
+    agility.innerHTML = player.functions.totalAgility() + " (" + '<font color="blue">' + player.functions.equipAgility() + '</font>' + ")";
+    accuracy.innerHTML = player.functions.accuracy().toFixed(2);
+    dexterity.innerHTML = player.functions.totalDexterity() + " (" + '<font color="blue">' + player.functions.equipDexterity() + '</font>' + ")";
+    defense.innerHTML = player.functions.defense().toFixed(0);
+    criticalDamage.innerHTML = (player.functions.criticalDamage() * 100).toFixed(0) + "%";
+    criticalChance.innerHTML = player.functions.criticalChance().toFixed(1);
+    intelligence.innerHTML = player.functions.totalIntelligence() + " (" + '<font color="blue">' + player.functions.equipIntelligence() + '</font>' + ")";
+    mana.innerHTML = player.properties.mana.toFixed(0);
+    maxMana.innerHTML = player.functions.maxMana().toFixed(0);
+    wisdom.innerHTML = player.functions.totalWisdom() + " (" + '<font color="blue">' + player.functions.equipWisdom() + '</font>' + ")";
+    manaRegen.innerHTML = player.functions.manaRegen();
+    luck.innerHTML = player.functions.totalLuck() + " (" + '<font color="blue">' + player.functions.equipLuck() + '</font>' + ")";
+    evasion.innerHTML = player.functions.evasion().toFixed(1);
+    dropRate.innerHTML = (player.functions.dropRate() * 100).toFixed(0);
+    expRate.innerHTML = (player.functions.expRate() * 100).toFixed(0);
+    goldRate.innerHTML = (player.functions.goldRate() * 100).toFixed(0);
+    level.innerHTML = player.properties.level;
+    maxExperience.innerHTML = player.properties.maxExperience;
+    experience.innerHTML = player.properties.experience;
+    gold.innerHTML = player.properties.gold.toFixed(0);
     buyBackpack.innerHTML = backpackStatus.price;
     buyStat.innerHTML = statStatus.price;
     potion.innerHTML = pot;
     superPotion.innerHTML = spot;
     megaPotion.innerHTML = mpot;
-    skillPoints.innerHTML = player.skillPoints;
+    skillPoints.innerHTML = player.properties.skillPoints;
 };
 //auto Save
 /*window.setInterval(function () {
@@ -125,41 +125,41 @@ function autoSave() {
 };
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
-    exppercent = (Math.floor((player.experience / player.maxExperience) * 100));
+    exppercent = (Math.floor((player.properties.experience / player.properties.maxExperience) * 100));
     var divArray = document.getElementById('progressBar');
     divArray.style.width = ((exppercent) + '%');
     document.getElementById("exppercent").innerHTML = exppercent + "%";
 }, 100);
 window.setInterval(function () {
-    var healthPercent = (Math.floor((player.health / player.maxhealth()) * 100));
+    var healthPercent = (Math.floor((player.properties.health / player.functions.maxhealth()) * 100));
     var divArray = document.getElementById('progressBar2');
     divArray.style.width = ((healthPercent) + '%');
 }, 100);
 window.setInterval(function () { //Health regen
-    if (player.isDead == false) {
-        if (player.health < player.maxhealth()) player.health += player.hpregen();
-        if (player.health > player.maxhealth()) player.health = player.maxhealth();
+    if (player.properties.isDead == false) {
+        if (player.properties.health < player.functions.maxhealth()) player.properties.health += player.functions.hpregen();
+        if (player.properties.health > player.functions.maxhealth()) player.properties.health = player.functions.maxhealth();
     }
-    document.getElementById('health').innerHTML = player.health + "/" + player.maxhealth();
+    document.getElementById('health').innerHTML = player.properties.health + "/" + player.functions.maxhealth();
 }, 1000);
 window.setInterval(function () { //Mana regen
-    if (player.mana < player.maxMana()) player.mana += player.manaRegen();
-    if (player.mana > player.maxMana()) player.mana = player.maxMana();
-    document.getElementById('mana').innerHTML = player.mana.toFixed(0);
+    if (player.properties.mana < player.functions.maxMana()) player.properties.mana += player.functions.manaRegen();
+    if (player.properties.mana > player.functions.maxMana()) player.properties.mana = player.functions.maxMana();
+    document.getElementById('mana').innerHTML = player.properties.mana.toFixed(0);
 }, 1000);
 
 function levelUp() {
-    for (var hero in characterClasses) {
-        var heroClass = characterClasses[hero];
-        if (player.heroClass === heroClass.name) {
-            player.baseStrength += heroClass.strength;
-            player.baseEndurance += heroClass.endurance;
-            player.baseAgility += heroClass.agility;;
-            player.baseDexterity += heroClass.dexterity;
-            player.baseWisdom += heroClass.wisdom;
-            player.baseIntelligence += heroClass.intelligence;
-            player.baseLuck += heroClass.luck;
-            player.skillPoints += 1;
+    for (var hero in characterRaces) {
+        var heroRace = characterRaces[hero];
+        if (player.properties.heroRace === heroRace.name) {
+            player.properties.baseStrength += heroRace.strength;
+            player.properties.baseEndurance += heroRace.endurance;
+            player.properties.baseAgility += heroRace.agility;;
+            player.properties.baseDexterity += heroRace.dexterity;
+            player.properties.baseWisdom += heroRace.wisdom;
+            player.properties.baseIntelligence += heroRace.intelligence;
+            player.properties.baseLuck += heroRace.luck;
+            player.properties.skillPoints += 1;
         };
     };
     quest();
@@ -171,54 +171,54 @@ function levelUp() {
 
 function loadIsEquipped() {
     if (equippedItems.weapon.subType === "sword") {
-        player.isSword = true;
+        player.properties.isSword = true;
     }
     else if (equippedItems.weapon.subType === "axe") {
-        player.isAxe = true;
+        player.properties.isAxe = true;
     }
     else if (equippedItems.weapon.subType === "mace") {
-        player.isMace = true;
+        player.properties.isMace = true;
     }
     else if (equippedItems.weapon.subType === "staff") {
-        player.isStaff = true;
+        player.properties.isStaff = true;
     }
     else if (equippedItems.weapon.subType === "ranged") {
-        player.isRanged = true;
+        player.properties.isRanged = true;
     }
     else if (equippedItems.weapon.subType === "fist") {
-        player.isFist = true;
+        player.properties.isFist = true;
     };
 };
 
 function resetIsEquipped() {
-        player.isSword = false;
-        player.isAxe = false;
-        player.isMace = false;
-        player.isStaff = false;
-        player.isRanged = false;
-        player.isFist = true; // Set true since no weapon equipped means fighting with "fist" ._.
+    player.properties.isSword = false;
+    player.properties.isAxe = false;
+    player.properties.isMace = false;
+    player.properties.isStaff = false;
+    player.properties.isRanged = false;
+    player.properties.isFist = true; // Set true since no weapon equipped means fighting with "fist" ._.
 };
 //Upgrading player stats
 
 //Strength
 function upgradeStrength(event) {
     if (event.shiftKey) {
-        if (player.stats >= 100) {
-            player.stats = player.stats - 100;
-            player.baseStrength += 100;
+        if (player.properties.stats >= 100) {
+            player.properties.stats = player.properties.stats - 100;
+            player.properties.baseStrength += 100;
         };
     };
     if (event.ctrlKey) {
-        if (player.stats >= 10) {
-            player.stats = player.stats - 10;
-            player.baseStrength += 10;
+        if (player.properties.stats >= 10) {
+            player.properties.stats = player.properties.stats - 10;
+            player.properties.baseStrength += 10;
 
         }
     }
     else if (!event.shiftKey && !event.ctrlKey) {
-        if (player.stats >= 1) {
-            player.stats = player.stats - 1;
-            player.baseStrength += 1;
+        if (player.properties.stats >= 1) {
+            player.properties.stats = player.properties.stats - 1;
+            player.properties.baseStrength += 1;
         };
     };
     updateHtml();
@@ -226,22 +226,22 @@ function upgradeStrength(event) {
 //Endurance
 function upgradeEndurance(event) {
     if (event.shiftKey) {
-        if (player.stats >= 100) {
-            player.stats = player.stats - 100;
-            player.baseEndurance += 100;
+        if (player.properties.stats >= 100) {
+            player.properties.stats = player.properties.stats - 100;
+            player.properties.baseEndurance += 100;
         };
     };
     if (event.ctrlKey) {
-        if (player.stats >= 10) {
-            player.stats = player.stats - 10;
-            player.baseEndurance += 10;
+        if (player.properties.stats >= 10) {
+            player.properties.stats = player.properties.stats - 10;
+            player.properties.baseEndurance += 10;
 
         }
     }
     else if (!event.shiftKey && !event.ctrlKey) {
-        if (player.stats >= 1) {
-            player.stats = player.stats - 1;
-            player.baseEndurance += 1;
+        if (player.properties.stats >= 1) {
+            player.properties.stats = player.properties.stats - 1;
+            player.properties.baseEndurance += 1;
         };
     };
     updateHtml();
@@ -249,22 +249,22 @@ function upgradeEndurance(event) {
 //Agility
 function upgradeAgility(event) {
     if (event.shiftKey) {
-        if (player.stats >= 100) {
-            player.stats = player.stats - 100;
-            player.baseAgility += 100;
+        if (player.properties.stats >= 100) {
+            player.properties.stats = player.properties.stats - 100;
+            player.properties.baseAgility += 100;
         };
     };
     if (event.ctrlKey) {
-        if (player.stats >= 10) {
-            player.stats = player.stats - 10;
-            player.baseAgility += 10;
+        if (player.properties.stats >= 10) {
+            player.properties.stats = player.properties.stats - 10;
+            player.properties.baseAgility += 10;
 
         }
     }
     else if (!event.shiftKey && !event.ctrlKey) {
-        if (player.stats >= 1) {
-            player.stats = player.stats - 1;
-            player.baseAgility += 1;
+        if (player.properties.stats >= 1) {
+            player.properties.stats = player.properties.stats - 1;
+            player.properties.baseAgility += 1;
         };
     };
     updateHtml();
@@ -272,22 +272,22 @@ function upgradeAgility(event) {
 //Dexterity
 function upgradeDexterity(event) {
     if (event.shiftKey) {
-        if (player.stats >= 100) {
-            player.stats = player.stats - 100;
-            player.baseDexterity += 100;
+        if (player.properties.stats >= 100) {
+            player.properties.stats = player.properties.stats - 100;
+            player.properties.baseDexterity += 100;
         };
     };
     if (event.ctrlKey) {
-        if (player.stats >= 10) {
-            player.stats = player.stats - 10;
-            player.baseDexterity += 10;
+        if (player.properties.stats >= 10) {
+            player.properties.stats = player.properties.stats - 10;
+            player.properties.baseDexterity += 10;
 
         }
     }
     else if (!event.shiftKey && !event.ctrlKey) {
-        if (player.stats >= 1) {
-            player.stats = player.stats - 1;
-            player.baseDexterity += 1;
+        if (player.properties.stats >= 1) {
+            player.properties.stats = player.properties.stats - 1;
+            player.properties.baseDexterity += 1;
         };
     };
     updateHtml();
@@ -295,22 +295,22 @@ function upgradeDexterity(event) {
 //Wisdom
 function upgradeWisdom(event) {
     if (event.shiftKey) {
-        if (player.stats >= 100) {
-            player.stats = player.stats - 100;
-            player.baseWisdom += 100;
+        if (player.properties.stats >= 100) {
+            player.properties.stats = player.properties.stats - 100;
+            player.properties.baseWisdom += 100;
         };
     };
     if (event.ctrlKey) {
-        if (player.stats >= 10) {
-            player.stats = player.stats - 10;
-            player.baseWisdom += 10;
+        if (player.properties.stats >= 10) {
+            player.properties.stats = player.properties.stats - 10;
+            player.properties.baseWisdom += 10;
 
         }
     }
     else if (!event.shiftKey && !event.ctrlKey) {
-        if (player.stats >= 1) {
-            player.stats = player.stats - 1;
-            player.baseWisdom += 1;
+        if (player.properties.stats >= 1) {
+            player.properties.stats = player.properties.stats - 1;
+            player.properties.baseWisdom += 1;
         };
     };
     updateHtml();
@@ -318,22 +318,22 @@ function upgradeWisdom(event) {
 //Intelligence
 function upgradeIntelligence(event) {
     if (event.shiftKey) {
-        if (player.stats >= 100) {
-            player.stats = player.stats - 100;
-            player.baseIntelligence += 100;
+        if (player.properties.stats >= 100) {
+            player.properties.stats = player.properties.stats - 100;
+            player.properties.baseIntelligence += 100;
         };
     };
     if (event.ctrlKey) {
-        if (player.stats >= 10) {
-            player.stats = player.stats - 10;
-            player.baseIntelligence += 10;
+        if (player.properties.stats >= 10) {
+            player.properties.stats = player.properties.stats - 10;
+            player.properties.baseIntelligence += 10;
 
         }
     }
     else if (!event.shiftKey && !event.ctrlKey) {
-        if (player.stats >= 1) {
-            player.stats = player.stats - 1;
-            player.baseIntelligence += 1;
+        if (player.properties.stats >= 1) {
+            player.properties.stats = player.properties.stats - 1;
+            player.properties.baseIntelligence += 1;
         };
     };
     updateHtml();
@@ -341,22 +341,22 @@ function upgradeIntelligence(event) {
 //Luck
 function upgradeLuck(event) {
     if (event.shiftKey) {
-        if (player.stats >= 100) {
-            player.stats = player.stats - 100;
-            player.baseLuck += 100;
+        if (player.properties.stats >= 100) {
+            player.properties.stats = player.properties.stats - 100;
+            player.properties.baseLuck += 100;
         };
     };
     if (event.ctrlKey) {
-        if (player.stats >= 10) {
-            player.stats = player.stats - 10;
-            player.baseLuck += 10;
+        if (player.properties.stats >= 10) {
+            player.properties.stats = player.properties.stats - 10;
+            player.properties.baseLuck += 10;
 
         }
     }
     else if (!event.shiftKey && !event.ctrlKey) {
-        if (player.stats >= 1) {
-            player.stats = player.stats - 1;
-            player.baseLuck += 1;
+        if (player.properties.stats >= 1) {
+            player.properties.stats = player.properties.stats - 1;
+            player.properties.baseLuck += 1;
         };
     };
     updateHtml();
@@ -364,20 +364,20 @@ function upgradeLuck(event) {
 function autoAttack(monster, monsterStats) {
     var ManaCost = monster.Stats.manaCost;
     var autoBattle = window.setInterval(function () {
-        if (player.mana >= ManaCost && player.autoBattle == true) {
-            player.mana -= ManaCost;
+        if (player.properties.mana >= ManaCost && player.properties.autoBattle == true) {
+            player.properties.mana -= ManaCost;
             attack(monster, monsterStats)
         }
-        else if (player.autoBattle == false) {
+        else if (player.properties.autoBattle == false) {
             clearInterval(autoBattle);
-            player.isAuto = false;
+            player.properties.isAuto = false;
         };
     }, 1000)
 };
 
 //All skill charge = maxCharge, when game loads, player equips items i.e change his stats like wisdom/int that can provide more/less charges.
 function skillChargeFill() {
-    var skill = player.activeSpells;
+    var skill = activeSpells;
     for (spell in skill) {
         var selectedSpell = skill[spell];
         selectedSpell.charge = selectedSpell.maxCharge();
@@ -387,10 +387,10 @@ function skillChargeFill() {
 function upgradeSpell(spellName) {
     if (activeSpells.hasOwnProperty(spellName)) {
         var selectedSpell = activeSpells[spellName];
-        if (selectedSpell.levelReq < player.level) {
+        if (selectedSpell.levelReq < player.properties.level) {
             if (selectedSpell.level < 5) {
-                if (player.skillPoints > 0) {
-                    player.skillPoints--;
+                if (player.properties.skillPoints > 0) {
+                    player.properties.skillPoints--;
                     selectedSpell.level++;
                     selectedSpell.levelReq++;
                     Log(selectedSpell.name + " level is now " + selectedSpell.level);
@@ -419,10 +419,10 @@ function spellActivation(spellName) {
             selectedSpell.isActive = false;
             spellTotalManaCost -= selectedSpell.manaReq;
         }
-        else if (selectedSpell.levelReq > player.level) {
+        else if (selectedSpell.levelReq > player.properties.level) {
             Log("Your level is not high enough to activate it");
         }
-        else if (spellTotalManaCost + selectedSpell.manaReq <= player.maxMana()) {
+        else if (spellTotalManaCost + selectedSpell.manaReq <= player.functions.maxMana()) {
             selectedSpell.isActive = true;
             spellTotalManaCost += selectedSpell.manaReq;
         }
