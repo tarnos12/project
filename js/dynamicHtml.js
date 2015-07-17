@@ -528,7 +528,7 @@ function characterCreationHtml() {
         for (var hero in characterRaces) {
             var heroRace = characterRaces[hero];
             var onclickevent = "changeRace('" + heroRace.name + "');";
-            html += '<div class="col-xs-3 col-xs-offset-3">';
+            html += '<div class="col-xs-4 col-xs-offset-2">';
             html += '<a href="#" class="tooltipA">' + heroRace.name + "" +
                     '<span>' + 'Stats per level: <br />' +
                     'Strength: ' + heroRace.strength + '<br />' +
@@ -540,7 +540,7 @@ function characterCreationHtml() {
                     'Luck: ' + heroRace.luck + '<br />' +
                     '</span>' + '</a>';
             html += '</div>';
-            html += '<div class="col-xs-3">';
+            html += '<div class="col-xs-4">';
             html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" class="' + heroRace.name + '" onclick="' + onclickevent + '">Choose</button>'//changeRace function ._.
             html += '</div>';
         };
@@ -574,6 +574,8 @@ function checkHeroRace() {
 function removeStartingScreen() {
     var divStyle = document.getElementById('loadingContainer');
     divStyle.style.display = "none";
+    var divStyle2 = document.getElementById('startingGameContainer');
+    divStyle2.style.display = "none";
 };
 
 function changeMusicImage() {

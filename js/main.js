@@ -13,7 +13,7 @@ function Log(data) {
     }
     var logTemp = "";
     for (i = logData.length - 1; i >= 0; i--) {
-        logTemp += logData[i] + "<br />";
+        logTemp += logData[i];
     }
     document.getElementById('logConsole').innerHTML = logTemp;
 };
@@ -403,12 +403,12 @@ function playerAttack(monsterStat, monsterStats) {
     };
     var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
     var randomHitChance = Math.random();
-    if (playerHitChance > randomHitChance) {
+    if (playerHitChance > randomHitChance) { // accuracy, if you miss then do "nothing" so it's "else { };"
         playerCriticalChance(monsterStat, monsterStats);
         accuracyRate += 1;
     }
     else {
-    }
+    };
 };
 
 //player critical chance
@@ -672,7 +672,16 @@ function monsterExperience(monsterStat, monsterStats) {
         player.properties.maxExperience = Math.floor(player.properties.maxExperience * 1.5);
         Log("<span style=\"color:blue\">You leveled up! Your current level is: </span>" + player.properties.level);
     }
-    else Log("You gain: " + Math.floor(expgain) + " experience!");
+    else {
+        Log('<span id=\"expGain\" class =\"bold\" style=\"display:none;\">You gain:'  + Math.floor(expgain) + " experience!" + "<br />" + "</span>");
+        $(document).ready(function () {
+            $(".attack").click(function () {
+                //  $("#playerLog").delay(100).fadeIn();
+                $("#expGain").delay(1800).fadeIn();
+
+            });
+        });
+    }
     updateHtml();
     monsterGold(monsterStat, monsterStats);
 };
@@ -757,7 +766,14 @@ function monsterGold(monsterStat, monsterStats) {
     var randomGold = Math.floor(Math.random() * ((monsterStats.level + 5) - monsterStats.level + 1) + monsterStats.level);
     goldDrop = Math.floor(randomGold * player.functions.goldRate());
     player.properties.gold += goldDrop;
-    Log("You loot: " + goldDrop + " gold!");
+    Log('<span id=\"goldDrop\" class =\"bold\" style=\"display:none;\">You loot: ' + goldDrop + " gold!" + "<br />" + "</span>");
+    $(document).ready(function () {
+        $(".attack").click(function () {
+            //  $("#playerLog").delay(100).fadeIn();
+            $("#goldDrop").delay(1600).fadeIn();
+
+        });
+    });
     document.getElementById("gold").innerHTML = player.properties.gold;
     monsterItemDrop(monsterStat);
 
@@ -767,14 +783,26 @@ function displayLogInfo() {
     if (battleTurn > 20) {
         battleTurn = 20;
     };
-    Log("<span class =\"bold\" style=\"color:#FF8000\">Critical Rating: </span>" + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%");
-    Log("<span class =\"bold\" style=\"color:red\">Enemy dealt: </span>" + damageTaken + " " + "damage.");
-    Log("<span class =\"bold\" style=\"color:blue\">You dealt: </span>" + magicDamageDealt + " " + "magic damage total.");
-    Log("<span class =\"bold\" style=\"color:red\">You dealt: </span>" + damageDealt + " " + "physical damage total.");
-    Log("<span class =\"bold\" style=\"color:#04B4AE\">You block: </span>" + blockRate + " " + " damage total.");
-    Log("<span class =\"bold\" style=\"color:purple\">You counter enemy for: </span>" + counterDamage + " " + " damage total.");
-    Log("<span class =\"bold\" style=\"color:green\">You lifesteal for: </span>" + lifeStealAmount + " " + " health.");
-    Log("<span class =\"bold\" style=\"color:blue\">Turns: </span>" + (battleTurn));
+    Log('<span id=\"test1\" class =\"bold\" style=\"color:#FF8000; display:none;\">Critical Rating: ' + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%" + "<br />" + "</span>");
+    Log('<span id=\"test2\" class =\"bold\" style=\"color:red; display:none;\">Enemy dealt: ' + damageTaken + " " + "damage." + "<br />" + "</span>");
+    Log('<span id=\"test3\" class =\"bold\" style=\"color:blue; display:none;\">You dealt: ' + magicDamageDealt + " " + "magic damage total." + "<br />" + "</span>");
+    Log('<span id=\"test4\" class =\"bold\" style=\"color:red; display:none;\">You dealt: ' + damageDealt + " " + "physical damage total." + "<br />" + "</span>");
+    Log('<span id=\"test5\" class =\"bold\" style=\"color:#04B4AE; display:none;\">You block: ' + blockRate + " " + " damage total." + "<br />" + "</span>");
+    Log('<span id=\"test6\" class =\"bold\" style=\"color:purple; display:none;\">You counter enemy for: ' + counterDamage + " " + " damage total." + "<br />" + "</span>");
+    Log('<span id=\"test7\" class =\"bold\" style=\"color:green; display:none;\">You lifesteal for: ' + lifeStealAmount + " " + " health." + "<br />" + "</span>");
+    Log('<span id=\"test8\" class =\"bold\" style=\"color:blue; display:none;\">Turns: ' + (battleTurn) + "<br />" + "</span>");
+
+    $(".attack").click(function () {
+  
+            $("#test1").fadeOut().delay(1600).fadeIn();
+            $("#test2").fadeOut().delay(1400).fadeIn();
+            $("#test3").fadeOut().delay(1200).fadeIn();
+            $("#test4").fadeOut().delay(1000).fadeIn();
+            $("#test5").fadeOut().delay(800).fadeIn();
+            $("#test6").fadeOut().delay(600).fadeIn();
+            $("#test7").fadeOut().delay(400).fadeIn();
+            $("#test8").fadeOut().delay(200).fadeIn();
+    });
     damageDealt = 0;
     magicDamageDealt = 0;
     blockRate = 0;
