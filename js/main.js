@@ -791,18 +791,17 @@ function displayLogInfo() {
     Log('<span id=\"test6\" class =\"bold\" style=\"color:purple; display:none;\">You counter enemy for: ' + counterDamage + " " + " damage total." + "<br />" + "</span>");
     Log('<span id=\"test7\" class =\"bold\" style=\"color:green; display:none;\">You lifesteal for: ' + lifeStealAmount + " " + " health." + "<br />" + "</span>");
     Log('<span id=\"test8\" class =\"bold\" style=\"color:blue; display:none;\">Turns: ' + (battleTurn) + "<br />" + "</span>");
-
-    $(".attack").click(function () {
-  
-            $("#test1").fadeOut().delay(1600).fadeIn();
-            $("#test2").fadeOut().delay(1400).fadeIn();
-            $("#test3").fadeOut().delay(1200).fadeIn();
-            $("#test4").fadeOut().delay(1000).fadeIn();
-            $("#test5").fadeOut().delay(800).fadeIn();
-            $("#test6").fadeOut().delay(600).fadeIn();
-            $("#test7").fadeOut().delay(400).fadeIn();
-            $("#test8").fadeOut().delay(200).fadeIn();
-    });
+    
+        $(".attack").click(function () {
+            $("#test1").delay(1600).fadeIn();
+            $("#test2").delay(1400).fadeIn();
+            $("#test3").delay(1200).fadeIn();
+            $("#test4").delay(1000).fadeIn();
+            $("#test5").delay(800).fadeIn();
+            $("#test6").delay(600).fadeIn();
+            $("#test7").delay(400).fadeIn();
+            $("#test8").delay(200).fadeIn();
+        });
     damageDealt = 0;
     magicDamageDealt = 0;
     blockRate = 0;
