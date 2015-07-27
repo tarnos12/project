@@ -11,7 +11,6 @@
     var mace = new weaponSkillType(0, 0, 10, "mace", "Mace");
     var staff = new weaponSkillType(0, 0, 10, "staff", "Staff");
     var ranged = new weaponSkillType(0, 0, 10, "ranged", "Ranged");
-    var fist = new weaponSkillType(0, 0, 10, "fist", "Fist");
 
     sword.strength = function () {
         return (1 + (this.level * 1.6) / 100);
@@ -77,18 +76,6 @@
         return player.properties.isRanged ? this.dexterity() : 1;
     };
 
-    fist.agility = function () {
-        return (1 + (this.level * 2) / 100);
-    };
-    fist.fistAgility = function () {
-        return player.properties.isFist ? this.agility() : 1;
-    };
-    fist.dexterity = function () {
-        return (1 + (this.level * 3) / 100);
-    };
-    fist.fistDexterity = function () {
-        return player.properties.isFist ? this.dexterity() : 1;
-    };
 
     window.weaponMastery = new Object();
     weaponMastery.sword = sword;
@@ -96,5 +83,4 @@
     weaponMastery.mace = mace;
     weaponMastery.staff = staff;
     weaponMastery.ranged = ranged;
-    weaponMastery.fist = fist;
 })();

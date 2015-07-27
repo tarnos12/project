@@ -20,8 +20,11 @@
         mpot: mpot,
         //Equipped Items
         playerWeapon: equippedItems.weapon,
-        playerOffHand: equippedItems.offHand,
-        playerArmor: equippedItems.armor,
+        playerShield: equippedItems.shield,
+        playerChest: equippedItems.chest,
+        playerHelmet: equippedItems.helmet,
+        playerLegs: equippedItems.legs,
+        playerBoots: equippedItems.boots,
         playerRing: equippedItems.ring,
         playerAmulet: equippedItems.amulet,
         playerTalisman: equippedItems.talisman,
@@ -115,8 +118,11 @@ function load() {
         if (typeof savegame.spot !== "undefined") spot = savegame.spot;
         if (typeof savegame.mpot !== "undefined") mpot = savegame.mpot;
         if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
-        if (typeof savegame.playerOffHand !== "undefined") equippedItems.offHand = savegame.playerOffHand;
-        if (typeof savegame.playerArmor !== "undefined") equippedItems.armor = savegame.playerArmor;
+        if (typeof savegame.playerShield !== "undefined") equippedItems.shield = savegame.playerShield;
+        if (typeof savegame.playerChest !== "undefined") equippedItems.chest = savegame.playerChest;
+        if (typeof savegame.playerHelmet !== "undefined") equippedItems.helmet = savegame.playerHelmet;
+        if (typeof savegame.playerLegs !== "undefined") equippedItems.legs = savegame.playerLegs;
+        if (typeof savegame.playerBoots !== "undefined") equippedItems.boots = savegame.playerBoots;
         if (typeof savegame.playerRing !== "undefined") equippedItems.ring = savegame.playerRing;
         if (typeof savegame.playerAmulet !== "undefined") equippedItems.amulet = savegame.playerAmulet;
         if (typeof savegame.playerTalisman !== "undefined") equippedItems.talisman = savegame.playerTalisman;
@@ -141,6 +147,7 @@ function load() {
     characterCreationHtml();
     playerReviveCheck();
     removeStartingScreen();
+    unequipItemLoad();
 };
 
 function resetCheck() {

@@ -83,22 +83,22 @@
     skillPoints = document.getElementById('skillPoints');
     minDamage.innerHTML = player.functions.minDamage().toFixed(0);
     maxDamage.innerHTML = player.functions.maxDamage().toFixed(0);
-    strength.innerHTML = player.functions.totalStrength() + " (" + '<font color="blue">' + player.functions.equipStrength() + '</font>' + ")";
-    endurance.innerHTML = player.functions.totalEndurance() + " (" + '<font color="blue">' + player.functions.equipEndurance() + '</font>' + ")";
+    strength.innerHTML = player.functions.totalStrength() + " (" + '<font color="blue">' + player.functions.totalStrengthBonus() + '</font>' + ")";
+    endurance.innerHTML = player.functions.totalEndurance() + " (" + '<font color="blue">' + player.functions.totalEnduranceBonus() + '</font>' + ")";
     hpRegen.innerHTML = player.functions.hpregen();
     stats.innerHTML = player.properties.stats;
-    agility.innerHTML = player.functions.totalAgility() + " (" + '<font color="blue">' + player.functions.equipAgility() + '</font>' + ")";
+    agility.innerHTML = player.functions.totalAgility() + " (" + '<font color="blue">' + player.functions.totalAgilityBonus() + '</font>' + ")";
     accuracy.innerHTML = player.functions.accuracy().toFixed(2);
-    dexterity.innerHTML = player.functions.totalDexterity() + " (" + '<font color="blue">' + player.functions.equipDexterity() + '</font>' + ")";
+    dexterity.innerHTML = player.functions.totalDexterity() + " (" + '<font color="blue">' + player.functions.totalDexterityBonus() + '</font>' + ")";
     defense.innerHTML = player.functions.defense().toFixed(0);
     criticalDamage.innerHTML = (player.functions.criticalDamage() * 100).toFixed(0) + "%";
     criticalChance.innerHTML = player.functions.criticalChance().toFixed(1);
-    intelligence.innerHTML = player.functions.totalIntelligence() + " (" + '<font color="blue">' + player.functions.equipIntelligence() + '</font>' + ")";
+    intelligence.innerHTML = player.functions.totalIntelligence() + " (" + '<font color="blue">' + player.functions.totalIntelligenceBonus() + '</font>' + ")";
     mana.innerHTML = player.properties.mana.toFixed(0);
     maxMana.innerHTML = player.functions.maxMana().toFixed(0);
-    wisdom.innerHTML = player.functions.totalWisdom() + " (" + '<font color="blue">' + player.functions.equipWisdom() + '</font>' + ")";
+    wisdom.innerHTML = player.functions.totalWisdom() + " (" + '<font color="blue">' + player.functions.totalWisdomBonus() + '</font>' + ")";
     manaRegen.innerHTML = player.functions.manaRegen();
-    luck.innerHTML = player.functions.totalLuck() + " (" + '<font color="blue">' + player.functions.equipLuck() + '</font>' + ")";
+    luck.innerHTML = player.functions.totalLuck() + " (" + '<font color="blue">' + player.functions.totalLuckBonus() + '</font>' + ")";
     evasion.innerHTML = player.functions.evasion().toFixed(1);
     dropRate.innerHTML = (player.functions.dropRate() * 100).toFixed(0);
     expRate.innerHTML = (player.functions.expRate() * 100).toFixed(0);
@@ -185,9 +185,6 @@ function loadIsEquipped() {
     else if (equippedItems.weapon.subType === "ranged") {
         player.properties.isRanged = true;
     }
-    else if (equippedItems.weapon.subType === "fist") {
-        player.properties.isFist = true;
-    };
 };
 
 function resetIsEquipped() {
@@ -196,7 +193,6 @@ function resetIsEquipped() {
     player.properties.isMace = false;
     player.properties.isStaff = false;
     player.properties.isRanged = false;
-    player.properties.isFist = true; // Set true since no weapon equipped means fighting with "fist" ._.
 };
 //Upgrading player stats
 

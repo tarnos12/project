@@ -514,22 +514,6 @@ rangersRevenge.description = function () {
     return "Deals damage based on dexterity and strength(" + this.damageDisplay() + ").";
 };
 
-    //Fist
-
-var fistFury = new weaponSkillDamage(5, "Fist Fury", "FistFury", "damage", "physical");
-
-    //FIST FURY
-fistFury.damageDisplay = function () {
-    return Math.floor(player.functions.totalAgility() * 5 + player.functions.totalDexterity() * 5);
-};
-fistFury.damage = function () {
-    return (player.properties.isFist && weaponMastery.fist.level >= 5) ? this.damageDisplay() : 0;
-};
-
-    //FIST DESCRIPTION
-fistFury.description = function () {
-    return "Deals damage based on dexterity and agility(" + this.damageDisplay() + ").";
-};
 
 var sword = new Object();
 sword.swordFinesse = swordFinesse;
@@ -567,14 +551,10 @@ ranged.archerFocus = archerFocus;
 ranged.makeItRain = makeItRain;
 ranged.rangersRevenge = rangersRevenge;
 
-var fist = new Object();
-fist.fistFury = fistFury;
-
 window.weaponSkillList = new Object();
 weaponSkillList.sword = sword;
 weaponSkillList.axe = axe;
 weaponSkillList.mace = mace;
 weaponSkillList.staff = staff;
 weaponSkillList.ranged = ranged;
-weaponSkillList.fist = fist;
 })();

@@ -2,9 +2,14 @@ _________________________
 v1.5.7 - 27 june 2015    |
 -------------------------|
 - Fixed a bug when saving a dead character would result in being dead forever ._.
-- Changed all weapon masteries to give you % bonus instead of flat. Fist gives higher bonus than others.
-- If you unequip a weapon, you will start fighting with "Fist", you gain more benefit when not using a weapon.
-- 
+- Changed all weapon masteries to give you % bonus instead of flat.
+- Battle will take ~3 seconds, in that time, battle log will be displayed.
+- Battle log text display effects.
+- New item types! Chest/Helmet/Legs/Boots. Changed off-hand to Shield.
+- Merged off-hand and armor tab in inventory together.
+- Each weapon and armor have a 50% chance to drop with a bonus damage/armor.(This bonus is basic, it does not change amount of bonuses you gain from item drop.)
+- Redesigned item loot, each item can gain different amount of bonuses based on its rarity: Common(1-2), Uncommon(2-3), Rare(3-4), Epic(4-6), Legendary(6-7).
+-
 _________________________
 v1.5.6 - 27 june 2015    |
 -------------------------|

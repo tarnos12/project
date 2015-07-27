@@ -100,6 +100,14 @@
         .centerText{
             text-align:center;
         }
+        .buttonDisable{
+            pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: .65;
+        }
         h1{
             text-align:center;
         }
@@ -585,7 +593,7 @@
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#tab_f1" data-toggle="tab"><span class="icons potions"></span></a></li>
                                         <li><a href="#tab_f2" data-toggle="tab"><span class="icons equipment"></span></a></li>
-                                        <li><a href="#tab_f3" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
+                                        <li><a href="#tab_f3" data-toggle="tab"><span class="icons playerInventory" id="playerInventory"></span></a></li>
                                         <li><a href="#tab_f4" data-toggle="tab"><span class="icons spells"></span></a></li>
                                     </ul>
 

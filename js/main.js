@@ -1,4 +1,5 @@
 "use strict";
+
 //Player log
 function Log(data) {
     var i;
@@ -21,11 +22,12 @@ function Log(data) {
 var currentGameVersion = 1.5;
 //PLAYER STATS
 var player = {
-    properties:{
+    properties: {
         gameVersion: 1.5,
         heroRace: '',
         sound: 'off',
         hardcoreMode: false,
+        isLoading: true,
         isDead: false,
         runOnce: false,
         isAuto: false,
@@ -34,7 +36,6 @@ var player = {
         isMace: false,
         isStaff: false,
         isRanged: false,
-        isFist: false,
         itemIdNumber: 1,
         stats: 0,
         skillPoints: 0,
@@ -44,6 +45,10 @@ var player = {
         experience: 0,
         maxExperience: 100,
         backpackUpgrade: 0,
+        goldDrop: 0, //Display values in player log after defeating a monster
+        expGain: 0,
+        goldLost: 0,
+        expLost: 0,
 
         //Strength
         baseStrength: 5,
@@ -72,26 +77,234 @@ var player = {
         //Mana
         mana: 10,
     },
-    functions:{
+    functions: {
+        weapon: '',
+        shield: '',
+        chest: '',
+        helmet: '',
+        legs: '',
+        boots: '',
+        ring: '',
+        amulet: '',
+        talisman: '',
+        totalAllAttributesBonus: function () {
+            return (equippedItems.weapon['All attributes'] +
+                equippedItems.shield['All attributes'] +
+                equippedItems.chest['All attributes'] +
+                equippedItems.helmet['All attributes'] +
+                equippedItems.legs['All attributes'] +
+                equippedItems.boots['All attributes'] +
+                equippedItems.ring['All attributes'] +
+                equippedItems.amulet['All attributes'] +
+                equippedItems.talisman['All attributes']);
+        },
+        totalStrengthBonus: function () {
+            return (equippedItems.weapon['Strength'] +
+                equippedItems.shield['Strength'] +
+                equippedItems.chest['Strength'] +
+                equippedItems.helmet['Strength'] +
+                equippedItems.legs['Strength'] +
+                equippedItems.boots['Strength'] +
+                equippedItems.ring['Strength'] +
+                equippedItems.amulet['Strength'] +
+                equippedItems.talisman['Strength'] +
+                player.functions.totalAllAttributesBonus());
+        },
+        totalEnduranceBonus: function(){
+            return (equippedItems.weapon['Endurance'] +
+                equippedItems.shield['Endurance'] +
+                equippedItems.chest['Endurance'] +
+                equippedItems.helmet['Endurance'] +
+                equippedItems.legs['Endurance'] +
+                equippedItems.boots['Endurance'] +
+                equippedItems.ring['Endurance'] +
+                equippedItems.amulet['Endurance'] +
+                equippedItems.talisman['Endurance'] +
+                player.functions.totalAllAttributesBonus());
+        },
+        totalAgilityBonus: function(){
+            return (equippedItems.weapon['Agility'] +
+                equippedItems.shield['Agility'] +
+                equippedItems.chest['Agility'] +
+                equippedItems.helmet['Agility'] +
+                equippedItems.legs['Agility'] +
+                equippedItems.boots['Agility'] +
+                equippedItems.ring['Agility'] +
+                equippedItems.amulet['Agility'] +
+                equippedItems.talisman['Agility'] +
+                player.functions.totalAllAttributesBonus());
+        },
+        totalDexterityBonus: function(){
+            return (equippedItems.weapon['Dexterity'] +
+                equippedItems.shield['Dexterity'] +
+                equippedItems.chest['Dexterity'] +
+                equippedItems.helmet['Dexterity'] +
+                equippedItems.legs['Dexterity'] +
+                equippedItems.boots['Dexterity'] +
+                equippedItems.ring['Dexterity'] +
+                equippedItems.amulet['Dexterity'] +
+                equippedItems.talisman['Dexterity'] +
+                player.functions.totalAllAttributesBonus());
+        },
+        totalWisdomBonus: function(){
+            return (equippedItems.weapon['Wisdom'] +
+                equippedItems.shield['Wisdom'] +
+                equippedItems.chest['Wisdom'] +
+                equippedItems.helmet['Wisdom'] +
+                equippedItems.legs['Wisdom'] +
+                equippedItems.boots['Wisdom'] +
+                equippedItems.ring['Wisdom'] +
+                equippedItems.amulet['Wisdom'] +
+                equippedItems.talisman['Wisdom'] +
+                player.functions.totalAllAttributesBonus());
+        },
+        totalIntelligenceBonus: function(){
+            return (equippedItems.weapon['Intelligence'] +
+                equippedItems.shield['Intelligence'] +
+                equippedItems.chest['Intelligence'] +
+                equippedItems.helmet['Intelligence'] +
+                equippedItems.legs['Intelligence'] +
+                equippedItems.boots['Intelligence'] +
+                equippedItems.ring['Intelligence'] +
+                equippedItems.amulet['Intelligence'] +
+                equippedItems.talisman['Intelligence'] +
+                player.functions.totalAllAttributesBonus());
+        },
+        totalLuckBonus: function(){
+            return (equippedItems.weapon['Luck'] +
+                equippedItems.shield['Luck'] +
+                equippedItems.chest['Luck'] +
+                equippedItems.helmet['Luck'] +
+                equippedItems.legs['Luck'] +
+                equippedItems.boots['Luck'] +
+                equippedItems.ring['Luck'] +
+                equippedItems.amulet['Luck'] +
+                equippedItems.talisman['Luck'] +
+                player.functions.totalAllAttributesBonus());
+        },
+        totalBlockChance: function () {
+            return (equippedItems.shield['Block chance']);
+        },
+        totalBlockAmount: function () {
+            return (equippedItems.shield['Block amount']);
+        },
+        totalEvasionChance: function () {
+            return (equippedItems.weapon['Evasion'] +
+                equippedItems.shield['Evasion'] +
+                equippedItems.chest['Evasion'] +
+                equippedItems.helmet['Evasion'] +
+                equippedItems.legs['Evasion'] +
+                equippedItems.boots['Evasion'] +
+                equippedItems.ring['Evasion'] +
+                equippedItems.amulet['Evasion'] +
+                equippedItems.talisman['Evasion']);
+        },
+        totalLifeGainOnHit: function () {
+            return (equippedItems.weapon['Life gain on hit']);
+        },
+        totalCriticalDamage: function () {
+            return (equippedItems.weapon['Critical damage']);
+        },
+        totalCriticalChance: function () {
+            return (equippedItems.weapon['Critical chance']);
+        },
+        totalArmorBonus: function () {
+            return (equippedItems.shield['defense'] +
+                equippedItems.chest['defense'] +
+                equippedItems.helmet['defense'] +
+                equippedItems.legs['defense'] +
+                equippedItems.boots['defense']);
+        },
+        totalLifeBonus: function () {
+            return (equippedItems.weapon['Bonus life'] +
+                equippedItems.shield['Bonus life'] +
+                equippedItems.chest['Bonus life'] +
+                equippedItems.helmet['Bonus life'] +
+                equippedItems.legs['Bonus life'] +
+                equippedItems.boots['Bonus life'] +
+                equippedItems.ring['Bonus life'] +
+                equippedItems.amulet['Bonus life'] +
+                equippedItems.talisman['Bonus life']);
+        },
+        totalManaBonus: function () {
+            return (equippedItems.weapon['Bonus mana'] +
+                equippedItems.shield['Bonus mana'] +
+                equippedItems.chest['Bonus mana'] +
+                equippedItems.helmet['Bonus mana'] +
+                equippedItems.legs['Bonus mana'] +
+                equippedItems.boots['Bonus mana'] +
+                equippedItems.ring['Bonus mana'] +
+                equippedItems.amulet['Bonus mana'] +
+                equippedItems.talisman['Bonus mana']);
+        },
+        totalHealthRegen: function () {
+            return (equippedItems.weapon['Health regen'] +
+                equippedItems.shield['Health regen'] +
+                equippedItems.chest['Health regen'] +
+                equippedItems.helmet['Health regen'] +
+                equippedItems.legs['Health regen'] +
+                equippedItems.boots['Health regen'] +
+                equippedItems.ring['Health regen'] +
+                equippedItems.amulet['Health regen'] +
+                equippedItems.talisman['Health regen']);
+        },
+        totalManaRegen: function () {
+            return (equippedItems.weapon['Mana regen'] +
+                equippedItems.shield['Mana regen'] +
+                equippedItems.chest['Mana regen'] +
+                equippedItems.helmet['Mana regen'] +
+                equippedItems.legs['Mana regen'] +
+                equippedItems.boots['Mana regen'] +
+                equippedItems.ring['Mana regen'] +
+                equippedItems.amulet['Mana regen'] +
+                equippedItems.talisman['Mana regen']);
+        },
+        totalMagicFind: function () {
+            return (equippedItems.weapon['Magic find'] +
+                equippedItems.shield['Magic find'] +
+                equippedItems.chest['Magic find'] +
+                equippedItems.helmet['Magic find'] +
+                equippedItems.legs['Magic find'] +
+                equippedItems.boots['Magic find'] +
+                equippedItems.ring['Magic find'] +
+                equippedItems.amulet['Magic find'] +
+                equippedItems.talisman['Magic find']);
+        },
+        totalGoldDrop: function () {
+            return (equippedItems.weapon['Gold drop'] +
+                equippedItems.shield['Gold drop'] +
+                equippedItems.chest['Gold drop'] +
+                equippedItems.helmet['Gold drop'] +
+                equippedItems.legs['Gold drop'] +
+                equippedItems.boots['Gold drop'] +
+                equippedItems.ring['Gold drop'] +
+                equippedItems.amulet['Gold drop'] +
+                equippedItems.talisman['Gold drop']);
+        },
+        totalExperienceRate: function () {
+            return (equippedItems.weapon['Experience rate'] +
+                equippedItems.shield['Experience rate'] +
+                equippedItems.chest['Experience rate'] +
+                equippedItems.helmet['Experience rate'] +
+                equippedItems.legs['Experience rate'] +
+                equippedItems.boots['Experience rate'] +
+                equippedItems.ring['Experience rate'] +
+                equippedItems.amulet['Experience rate'] +
+                equippedItems.talisman['Experience rate']);
+        },
         dropRate: function () {
-            return (1 + ((player.functions.totalLuck() / 500) + (equippedItems.ring.dropRate + equippedItems.amulet.dropRate + equippedItems.talisman.dropRate) / 100)) * bonusDrop;
+            return (1 + ((player.functions.totalLuck() / 500) + (player.functions.totalMagicFind()) / 100)) * bonusDrop;
         },
         expRate: function () {
-            return (1 + ((equippedItems.ring.expRate + equippedItems.amulet.expRate + equippedItems.talisman.expRate) / 100)) * bonusExp;
+            return (1 + ((player.functions.totalExperienceRate()) / 100)) * bonusExp;
         },
         goldRate: function () {
-            return ((1 + (equippedItems.ring.goldRate + equippedItems.amulet.goldRate + equippedItems.talisman.goldRate) / 100)) * bonusGold;
+            return ((1 + (player.functions.totalGoldDrop()) / 100)) * bonusGold;
         },
         inventory: function () {
             return Math.floor(20 + (player.functions.totalStrength() / 10) + player.properties.backpackUpgrade); //Add backpacks "new item type"
         },
-        equipStrength: function () {
-            return Math.floor(
-                equippedItems.weapon.strength +
-                equippedItems.offHand.strength +
-                equippedItems.armor.strength);
-        },
-        masteryStrength: function (){
+        masteryStrength: function () {
             return (weaponMastery.axe.axeStrength() *
                 weaponMastery.ranged.rangedStrength() *
                 weaponMastery.sword.swordStrength())
@@ -99,123 +312,88 @@ var player = {
         totalStrength: function () {
             return Math.floor(
                 (player.properties.baseStrength +
-                player.functions.equipStrength()) *
+                player.functions.totalStrengthBonus()) *
                 player.functions.masteryStrength());
         },
-        masteryEndurance: function (){
+        masteryEndurance: function () {
             return (weaponMastery.mace.maceEndurance() *
             weaponMastery.axe.axeEndurance());
-        },
-        equipEndurance: function () {
-            return Math.floor(
-                equippedItems.weapon.endurance +
-                equippedItems.offHand.endurance +
-                equippedItems.armor.endurance);
         },
         totalEndurance: function () {
             return Math.floor((
                 player.properties.baseEndurance +
-                player.functions.equipEndurance()) *
+                player.functions.totalEnduranceBonus()) *
                 player.functions.masteryEndurance());
         },
-        masteryAgility: function (){
+        masteryAgility: function () {
             return (weaponMastery.sword.swordAgility());
-        },
-        equipAgility: function () {
-            return Math.floor(
-                equippedItems.weapon.agility +
-                equippedItems.offHand.agility +
-                equippedItems.armor.agility);
         },
         totalAgility: function () {
             return Math.floor((
                 player.properties.baseAgility +
-                player.functions.equipAgility()) *
+                player.functions.totalAgilityBonus()) *
                 player.functions.masteryAgility());
         },
-        masteryDexterity: function (){
+        masteryDexterity: function () {
             return (weaponMastery.ranged.rangedDexterity());
-        },
-        equipDexterity: function () {
-            return Math.floor(
-                equippedItems.weapon.dexterity +
-                equippedItems.offHand.dexterity +
-                equippedItems.armor.dexterity);
         },
         totalDexterity: function () {
             return Math.floor((
                 player.properties.baseDexterity +
-                player.functions.equipDexterity()) *
+                player.functions.totalDexterityBonus()) *
                 player.functions.masteryDexterity());
         },
-        masteryIntelligence: function (){
+        masteryIntelligence: function () {
             return (weaponMastery.staff.staffIntelligence());
-        },
-        equipIntelligence: function () {
-            return Math.floor(
-                equippedItems.weapon.intelligence +
-                equippedItems.offHand.intelligence +
-                equippedItems.armor.intelligence);
         },
         totalIntelligence: function () {
             return Math.floor(((
                 (player.properties.baseIntelligence +
-                player.functions.equipIntelligence()) *
+                player.functions.totalIntelligenceBonus()) *
                 player.functions.masteryIntelligence()) *
                 weaponSkillList.staff.spellSimulacrum.damage()) * bonusSpellDamage);
         },
-        masteryWisdom: function (){
+        masteryWisdom: function () {
             return (weaponMastery.staff.staffWisdom() *
                 weaponMastery.mace.maceWisdom());
-        },
-        equipWisdom: function () {
-            return Math.floor(
-                equippedItems.weapon.wisdom +
-                equippedItems.offHand.wisdom +
-                equippedItems.armor.wisdom);
         },
         totalWisdom: function () {
             return Math.floor(((
                 player.properties.baseWisdom +
-                player.functions.equipWisdom()) *
+                player.functions.totalWisdomBonus()) *
                 player.functions.masteryWisdom()) * bonusSpellDamage);
-        },
-        equipLuck: function () {
-            return Math.floor(
-                equippedItems.weapon.luck +
-                equippedItems.offHand.luck +
-                equippedItems.armor.luck);
         },
         totalLuck: function () {
             return Math.floor(
                 player.properties.baseLuck +
-                player.functions.equipLuck());
+                player.functions.totalLuckBonus());
         },
         maxhealth: function () {
-            return (475 + player.functions.totalEndurance() * 5);
+            return (475 + player.functions.totalLifeBonus() + (player.functions.totalEndurance() * 5));
         },
         hpregen: function () {
-            return Math.floor((20 + (player.functions.totalEndurance()) / 3) * bonusRegen);
+            return Math.floor((20 + (player.functions.totalEndurance() / 3) + player.functions.totalHealthRegen()) * bonusRegen);
         },
         //Mana
         maxMana: function () {
             return Math.floor(7 +
+                player.functions.totalManaBonus() +
                 player.functions.totalWisdom() * 0.5 +
                 player.functions.totalIntelligence() * 0.1);
         },
         manaRegen: function () {
-            return ((player.functions.totalWisdom() / 10) * bonusRegen);
+            return ((((player.functions.totalWisdom() / 10)) * (1 + (player.functions.totalManaRegen() / 100))) * bonusRegen);
         },
         //Damage
         minDamage: function () {
             return Math.floor((
                 3 + (player.functions.totalStrength() * 0.4) +
-                equippedItems.weapon.minDamage) * bonusDamage);
+                equippedItems.weapon.MinDamage) * bonusDamage);
         },
         maxDamage: function () {
             return Math.floor((
                 5 + (player.functions.totalStrength() * 0.6) +
-                equippedItems.weapon.maxDamage + weaponSkillList.sword.swordFinesse.damage()) * bonusDamage);
+                equippedItems.weapon.MaxDamage + weaponSkillList.sword.swordFinesse.damage()) * bonusDamage);
         },
         //Secondary
         accuracy: function () {
@@ -224,33 +402,32 @@ var player = {
         defense: function () {
             return (
                 (player.functions.totalAgility() * 0.1) +
-                equippedItems.armor.defense +
-                equippedItems.offHand.defense);
+                player.functions.totalArmorBonus());
         },
         evasion: function () {
-            if ((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) > 20) {
+            if (((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance()))) > 20) {
                 return 20;
             }
             else {
-                return (5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02));
+                return ((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance())));
             }
         },
         criticalChance: function () {
-            if ((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) > 50) {
+            if (((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance()))) > 50) {
                 return 50 + weaponSkillList.ranged.archerFocus.damage();
             }
             else {
-                return (10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01) + weaponSkillList.ranged.archerFocus.damage());
+                return ((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance())));
             }
         },
         criticalDamage: function () {
-            return (0.5 + (player.functions.totalDexterity()) * 0.05);
+            return ((0.5 + (player.functions.totalDexterity()) * 0.05) + player.functions.totalCriticalDamage());
         },
         blockChance: function () {
-            return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance());
+            return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance());
         },
         blockAmount: function () {
-            return Math.floor(weaponSkillList.sword.parryAndRiposte.blockAmount());
+            return Math.floor(weaponSkillList.sword.parryAndRiposte.blockAmount() + player.functions.totalBlockAmount());
         },
         counterChance: function () {
             return Math.floor(weaponSkillList.sword.parryAndRiposte.counterChance());
@@ -259,89 +436,63 @@ var player = {
             return Math.floor(weaponSkillList.sword.parryAndRiposte.counterDamage());
         },
         lifeSteal: function () {
-            return Math.floor(weaponSkillList.sword.savageStrike.lifeStealAmount());
+            return Math.floor(weaponSkillList.sword.savageStrike.lifeStealAmount() + player.functions.totalLifeGainOnHit());
         },
     },
 };
 
 //Equipped items object, storing 0 values, so all player stats will work at the beginning of the game
-var equippedItems = {
-    weapon: {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        minDamage: 0,
-        maxDamage: 0,
-        defense: 0,
-        exp: 0,
-        maxExp: 0,
-        subType: "fist",
-    },
-    offHand: {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0,
-        subType: "fist",
-    },
-    armor: {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0
-    },
-    ring: {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0,
-        dropRate: 0,
-        expRate: 0,
-        goldRate: 0
-    },
-    amulet: {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0,
-        dropRate: 0,
-        expRate: 0,
-        goldRate: 0
-    },
-    talisman: {
-        strength: 0,
-        endurance: 0,
-        agility: 0,
-        dexterity: 0,
-        intelligence: 0,
-        wisdom: 0,
-        luck: 0,
-        defense: 0,
-        dropRate: 0,
-        expRate: 0,
-        goldRate: 0
-    },
+var equippedItems = {};
+function createEquippedItemsObject(typeOfTheItem) {
+    for (var key in loadingEquippedItems) {
+        var itemKey = loadingEquippedItems[key];
+        if (itemKey.hasOwnProperty("type")) {
+            if (typeOfTheItem === itemKey.type || typeOfTheItem === "all") {
+                var itemType = itemKey.type;
+                if (equippedItems[itemType] === undefined || equippedItems[itemType].isEquipped === false) {
+                    equippedItems[itemType] = {};
+                    equippedItems[itemType]["All attributes"] = 0;
+                    equippedItems[itemType]["Strength"] = 0;
+                    equippedItems[itemType]["Endurance"] = 0;
+                    equippedItems[itemType]["Agility"] = 0;
+                    equippedItems[itemType]["Dexterity"] = 0;
+                    equippedItems[itemType]["Wisdom"] = 0;
+                    equippedItems[itemType]["Intelligence"] = 0;
+                    equippedItems[itemType]["Luck"] = 0;
+                    equippedItems[itemType]["Evasion"] = 0;
+                    equippedItems[itemType]["Bonus life"] = 0;
+                    equippedItems[itemType]["Bonus mana"] = 0;
+                    equippedItems[itemType]["Health regen"] = 0;
+                    equippedItems[itemType]["Mana regen"] = 0;
+                    equippedItems[itemType]["Magic find"] = 0;
+                    equippedItems[itemType]["Gold drop"] = 0;
+                    equippedItems[itemType]["Experience rate"] = 0;
+                    equippedItems[itemType]["isEquipped"] = false;
+                    if (itemType === "shield") {
+                        equippedItems[itemType]["Block chance"] = 0;
+                        equippedItems[itemType]["Block amount"] = 0;
+                        equippedItems[itemType]["Bonus armor"] = 0;
+                        equippedItems[itemType]["defense"] = 0;
+                    }
+                    else if (itemType === "chest" || itemType === "helmet" || itemType === "legs" || itemType === "boots") {
+                        equippedItems[itemType]["Bonus armor"] = 0;
+                        equippedItems[itemType]["defense"] = 0;
+                    }
+                    else if (itemType === "weapon") {
+                        equippedItems[itemType]["Life gain on hit"] = 0;
+                        equippedItems[itemType]["Critical damage"] = 0;
+                        equippedItems[itemType]["Critical chance"] = 0;
+                        equippedItems[itemType]["Bonus damage"] = 0;
+                        equippedItems[itemType]["MinDamage"] = 0;
+                        equippedItems[itemType]["MaxDamage"] = 0;
+                    };
+                };
+            };
+        };
+    };
 };
+
+createEquippedItemsObject('all');
 
 var maxLogLines = 100;
 var logData = {
@@ -365,6 +516,11 @@ var enemyBlock = 0;
 var accuracyRate = 0;
 var monsterDamage = 0;
 
+
+function disableButtons() {
+    $("span.attack").toggleClass("buttonDisable");
+};
+
 function attack(monsterStat) {
     battleTurn = 1;
     var monsterStats = monsterStat.Stats;
@@ -378,12 +534,15 @@ function attack(monsterStat) {
             };
         }
         else {
-            Log("<span style=\"color:red\">You can not fight whilst you are dead.</span>");
+            Log("<span id=\"isDead\" class =\"bold\" style=\"color:red; display:none;\">You can not fight whilst you are dead." + "<br />" + "</span>");
+            isDeadLog();
+            disableButtons();
             break;
         };
         battleTurn += 1;
     };
     DrawBattle();
+    disableButtons();
 };
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
 function DrawBattle() {
@@ -545,7 +704,7 @@ function monsterDamageDeal(monsterDamage, monsterStat, monsterStats) {
             blockRate += monsterDamage;
             monsterDamage = 0;
         };
-    }; 
+    };
     player.properties.health = player.properties.health - monsterDamage;
     damageTaken += monsterDamage;
     document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
@@ -561,8 +720,8 @@ function monsterDamageDeal(monsterDamage, monsterStat, monsterStats) {
 //player dead function
 function playerDead(monsterStat, monsterStats) {
     if (player.properties.hardcoreMode === false) {
-        var goldLost = 0;
-        var expLost = 0;
+        var goldLost = player.properties.goldLost;
+        var expLost = player.properties.expLost;
         player.properties.isDead = true;
         player.properties.health = 0;
         playerRevive();
@@ -574,14 +733,17 @@ function playerDead(monsterStat, monsterStats) {
         document.getElementById("health").innerHTML = player.properties.health;
         document.getElementById("gold").innerHTML = player.properties.gold;
         document.getElementById("experience").innerHTML = player.properties.experience;
-        displayLogInfo();
-        Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + goldLost + "gold.");
-        Log("<span class =\"bold\" style=\"color:red\">You lost </span>" + expLost + "experience.");
-        Log("<span class =\"bold\" style=\"color:red\">You have died!</span>");
-        Log("You need to wait 5 seconds before you can fight again!");
+        Log("<span id=\"goldLost\" class =\"bold\" style=\"color:red; display:none;\">You lost " + goldLost + " gold." + "<br />" + "</span>");
+        Log("<span id=\"expLost\" class =\"bold\" style=\"color:red; display:none;\">You lost " + expLost + " experience." + "<br />" + "</span>");
+        Log("<span id=\"playerDead\" class =\"bold\" style=\"color:red; display:none;\">You have died." + "<br />" + "</span>");
+        Log("<span id=\"playerDead2\" class =\"bold\" style=\"color:red; display:none;\">You need to wait 5 seconds before you can fight again." + "<br />" + "</span>");
         battleTurn = -1;
         skillReCharge();
+        displayLogInfo();
+        deathLog();
         updateHtml();
+        player.properties.goldLost = goldLost;
+        player.properties.expLost = expLost;
     }
     else {
         reset();
@@ -591,8 +753,8 @@ function playerDead(monsterStat, monsterStats) {
 
 //monster kill function
 function monsterKilled(monsterStat, monsterStats) {
+    console.log("TEST");
     monsterStats.hp = monsterStats.maxHp;
-    itemExperienceGain(monsterStat, monsterStats);
     monsterExperience(monsterStat, monsterStats);
     weaponSkill(monsterStat, monsterStats);
     monsterStats.killCount++;
@@ -621,48 +783,49 @@ function weaponSkill(monsterStat, monsterStats) {
             weaponMastery[subType]["level"] += 1;
             weaponMastery[subType]["experience"] -= weaponMastery[subType]["maxExperience"];
             weaponMastery[subType]["maxExperience"] = Math.floor(weaponMastery[subType]["maxExperience"] * 1.2);
-            Log("<span style=\"color:green\">You gained level in " + weaponMastery[subType].name + " Mastery!</span>");
+            Log("<span id=\"weaponMastery\" class =\"bold\" style=\"color:green; display:none;\">You gained level in " + weaponMastery[subType].name + " Mastery!" + "<br />" + "</span>");
             CreateWeaponSkillHtml();
+            masteryLog();
         };
     };
     updateBar();
 };
 function updateBar() {
-    var subType = equippedItems.weapon.subType;
-    var itemStat = weaponMastery[subType];
-    var weaponExp = (Math.floor((itemStat.experience / itemStat.maxExperience) * 100));
-    var divArray = document.getElementById(subType + '1'); //Doing + 1 so I can use "subType" for a span, which let me center progress bar value.
-    divArray.style.width = ((weaponExp) + '%'); 
-    if (subType === "sword") {
-        document.getElementById("sword").innerHTML = weaponExp + "%";
+    if (equippedItems.weapon.isEquipped === true) {
+        var subType = equippedItems.weapon.subType;
+        var itemStat = weaponMastery[subType];
+        var weaponExp = (Math.floor((itemStat.experience / itemStat.maxExperience) * 100));
+        var divArray = document.getElementById(subType + '1'); //Doing + 1 so I can use "subType" for a span, which let me center progress bar value.
+        divArray.style.width = ((weaponExp) + '%');
+        if (subType === "sword") {
+            document.getElementById("sword").innerHTML = weaponExp + "%";
+        }
+        if (subType === "axe") {
+            document.getElementById("axe").innerHTML = weaponExp + "%";
+        }
+        if (subType === "mace") {
+            document.getElementById("mace").innerHTML = weaponExp + "%";
+        }
+        if (subType === "staff") {
+            document.getElementById("staff").innerHTML = weaponExp + "%";
+        }
+        if (subType === "ranged") {
+            document.getElementById("ranged").innerHTML = weaponExp + "%";
+        };
     }
-    if (subType === "axe") {
-        document.getElementById("axe").innerHTML = weaponExp + "%";
-    }
-    if (subType === "mace") {
-        document.getElementById("mace").innerHTML = weaponExp + "%";
-    }
-    if (subType === "staff") {
-        document.getElementById("staff").innerHTML = weaponExp + "%";
-    }
-    if (subType === "ranged") {
-        document.getElementById("ranged").innerHTML = weaponExp + "%";
-    };
-    if (subType === "fist") {
-        document.getElementById("fist").innerHTML = weaponExp + "%";
-    };
 };
 
 //experience gained from killing a monster
 function monsterExperience(monsterStat, monsterStats) {
     if (player.properties.level > monsterStats.level + 2) {
-        var expgain = ((monsterStats.baseExp / (player.properties.level / monsterStats.level)) * player.functions.expRate() / 2);
+        var expGain = player.properties.expGain;
+        expGain = ((monsterStats.baseExp / (player.properties.level / monsterStats.level)) * player.functions.expRate() / 2);
     }
     else {
-        var expgain = (monsterStats.baseExp / (player.properties.level / monsterStats.level)) * player.functions.expRate();
+        expGain = (monsterStats.baseExp / (player.properties.level / monsterStats.level)) * player.functions.expRate();
     };
     if (player.properties.experience < player.properties.maxExperience) {
-        player.properties.experience = Math.floor(player.properties.experience + expgain);
+        player.properties.experience = Math.floor(player.properties.experience + expGain);
     };
     if (player.properties.experience >= player.properties.maxExperience) {
         player.properties.level += 1;
@@ -670,18 +833,13 @@ function monsterExperience(monsterStat, monsterStats) {
         player.properties.stats += 10;
         player.properties.experience = player.properties.experience - player.properties.maxExperience;
         player.properties.maxExperience = Math.floor(player.properties.maxExperience * 1.5);
-        Log("<span style=\"color:blue\">You leveled up! Your current level is: </span>" + player.properties.level);
+        Log('<span id=\"levelUpLog\" style=\"color:blue; display:none;\" class =\"bold\">Level up!' + "<br />" + "</span>");
+        levelUpLog();
     }
     else {
-        Log('<span id=\"expGain\" class =\"bold\" style=\"display:none;\">You gain:'  + Math.floor(expgain) + " experience!" + "<br />" + "</span>");
-        $(document).ready(function () {
-            $(".attack").click(function () {
-                //  $("#playerLog").delay(100).fadeIn();
-                $("#expGain").delay(1800).fadeIn();
-
-            });
-        });
+        Log('<span id=\"expGain\" class =\"bold\" style=\"display:none;\">You gain:' + Math.floor(expGain) + " experience!" + "<br />" + "</span>");
     }
+    player.properties.expGain = expGain;
     updateHtml();
     monsterGold(monsterStat, monsterStats);
 };
@@ -706,77 +864,20 @@ function skillReCharge() {
         };
     };
 };
-//Experience gain for equipped items
-function itemExperienceGain(monsterStat, monsterStats) {
-    var weaponExp = equippedItems.weapon.exp;
-    var weaponMaxExp = equippedItems.weapon.maxExp;
-    var weaponLevel = equippedItems.weapon.level;
-    var weaponMaxLevel = equippedItems.weapon.maxLevel;
-    var monsterExp = monsterStats.level;
-    var weapon = equippedItems.weapon;
-    if (weaponLevel != weaponMaxLevel) {
-        if (weaponExp < weaponMaxExp) {
-            weaponExp += monsterExp;
-        };
-        if (weaponExp >= weaponMaxExp) {
-            weaponLevel += 1;
-            equippedItems.weapon.minDamage += (1 * weapon.iLvl);
-            equippedItems.weapon.maxDamage += (2 * weapon.iLvl);
-            weaponExp = weaponExp - weaponMaxExp;
-            weaponMaxExp = Math.floor(weaponMaxExp * 2)
-            if (weapon.subType === 'sword') {
-                weapon.strength += Math.floor(weapon.iLvl + weapon.power);
-                weapon.agility += Math.floor(weapon.iLvl + weapon.power);
-                weapon.dexterity += Math.floor(weapon.iLvl + weapon.power);
-            }
-            else if (weapon.subType === 'axe') {
-                weapon.strength += Math.floor(weapon.iLvl + weapon.power);
-                weapon.endurance += Math.floor(weapon.iLvl + weapon.power);
-                weapon.agility += Math.floor(weapon.iLvl + weapon.power);
-            }
-            else if (weapon.subType === 'ranged') {
-                weapon.strength += Math.floor(weapon.iLvl + weapon.power);
-                weapon.agility += Math.floor(weapon.iLvl + weapon.power);
-                weapon.dexterity += Math.floor(weapon.iLvl + weapon.power);
-            }
-            else if (weapon.subType === 'mace') {
-                weapon.strength += Math.floor(weapon.iLvl + weapon.power);
-                weapon.endurance += Math.floor(weapon.iLvl + weapon.power);
-                weapon.wisdom += Math.floor(weapon.iLvl + weapon.power);
-            }
-            else if (weapon.subType === 'staff') {
-                weapon.agility += Math.floor(weapon.iLvl + weapon.power);
-                weapon.intelligence += Math.floor(weapon.iLvl + weapon.power);
-                weapon.wisdom += Math.floor(weapon.iLvl + weapon.power);
-            }
-        };
-        var newItemValue = getItemValue(weapon);
-        equippedItems.weapon.value = newItemValue;
-        equippedItems.weapon.exp = weaponExp;
-        equippedItems.weapon.maxExp = weaponMaxExp;
-        equippedItems.weapon.level = weaponLevel;
-        CreateEquipHtml();
-        updateHtml();
-    };
-};
+
 
 //gold gained from killing a monster
 function monsterGold(monsterStat, monsterStats) {
-    var goldDrop = 0;
+    var goldDrop = player.properties.goldDrop;
+    goldDrop = 0;
     var randomGold = Math.floor(Math.random() * ((monsterStats.level + 5) - monsterStats.level + 1) + monsterStats.level);
     goldDrop = Math.floor(randomGold * player.functions.goldRate());
     player.properties.gold += goldDrop;
     Log('<span id=\"goldDrop\" class =\"bold\" style=\"display:none;\">You loot: ' + goldDrop + " gold!" + "<br />" + "</span>");
-    $(document).ready(function () {
-        $(".attack").click(function () {
-            //  $("#playerLog").delay(100).fadeIn();
-            $("#goldDrop").delay(1600).fadeIn();
-
-        });
-    });
     document.getElementById("gold").innerHTML = player.properties.gold;
+    player.properties.goldDrop = goldDrop;
     monsterItemDrop(monsterStat);
-
+    updateHtml();
 };
 
 function displayLogInfo() {
@@ -791,17 +892,7 @@ function displayLogInfo() {
     Log('<span id=\"test6\" class =\"bold\" style=\"color:purple; display:none;\">You counter enemy for: ' + counterDamage + " " + " damage total." + "<br />" + "</span>");
     Log('<span id=\"test7\" class =\"bold\" style=\"color:green; display:none;\">You lifesteal for: ' + lifeStealAmount + " " + " health." + "<br />" + "</span>");
     Log('<span id=\"test8\" class =\"bold\" style=\"color:blue; display:none;\">Turns: ' + (battleTurn) + "<br />" + "</span>");
-    
-        $(".attack").click(function () {
-            $("#test1").delay(1600).fadeIn();
-            $("#test2").delay(1400).fadeIn();
-            $("#test3").delay(1200).fadeIn();
-            $("#test4").delay(1000).fadeIn();
-            $("#test5").delay(800).fadeIn();
-            $("#test6").delay(600).fadeIn();
-            $("#test7").delay(400).fadeIn();
-            $("#test8").delay(200).fadeIn();
-        });
+
     damageDealt = 0;
     magicDamageDealt = 0;
     blockRate = 0;
@@ -813,11 +904,61 @@ function displayLogInfo() {
     accuracyRate = 0;
     monsterDamage = 0;
     if (battleTurn >= 20) {
-        Log("<span class =\"bold\" style=\"color:blue\">Draw!</span>");
+        Log('<span id=\"draw\" class =\"bold\" style=\"color:blue; display:none;\">' + "Draw" + "<br />" + "</span>");
+        drawLog();
     };
-    Log(" ");
     skillReCharge();
     updateHtml();
+    mainLog();
+    dropLog();
+    setTimeout(disableButtons, 3000); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
+};
+
+function itemDropLog() {
+    console.log("TEST2");
+    $("#itemDrop").delay(2000).fadeIn();
+};
+
+function levelUpLog() {
+    $("#levelUpLog").delay(1800).fadeIn();
+};
+function mainLog() {
+    if (player.properties.isDead === false) {
+        $("#test1").delay(1600).fadeIn();
+        $("#test2").delay(1400).fadeIn();
+        $("#test3").delay(1200).fadeIn();
+        $("#test4").delay(1000).fadeIn();
+        $("#test5").delay(800).fadeIn();
+        $("#test6").delay(600).fadeIn();
+        $("#test7").delay(400).fadeIn();
+        $("#test8").delay(200).fadeIn();
+    };
+};
+function deathLog() {
+    $("#playerDead").delay(200)
+       .fadeIn()
+    $("#playerDead2").delay(100)
+    .fadeIn()
+    $("#goldLost").delay(400)
+    .fadeIn();
+    $("#expLost").delay(400)
+    .fadeIn();
+
+};
+function drawLog() {
+    $("#draw").delay(100).fadeIn();
+};
+function isDeadLog() {
+    $("#isDead").delay(100).fadeIn();
+};
+function masteryLog() {
+
+};
+function dropLog() {
+    $("#goldDrop").delay(1800)
+            .fadeIn();
+    $("#expGain").delay(2000)
+            .fadeIn();
 };
 
 //Equip item function
@@ -827,8 +968,9 @@ function equipItem(id) {
     })[0];
     if (item.itemType === "weapon") {
         if (equippedItems.weapon.isEquipped === true) {
-            var oldId = equippedItems.weapon.id;
-            unequipItem(oldId);
+            var currentId = equippedItems.weapon.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
         }
         if (item.id === id) {
             equippedItems.weapon = item;
@@ -857,17 +999,19 @@ function equipItem(id) {
                 playerInventory.splice(index, 1);
             };
         };
-        CreateInventoryWeaponHtml();
+        player.functions.weapon = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
         updateHtml();
     }
-    else if (item.itemType === "offHand") {
-        if (equippedItems.offHand.isEquipped === true) {
-            var oldId = equippedItems.offHand.id;
-            unequipItem(oldId);
+    else if (item.subType === "shield") {
+        if (equippedItems.shield.isEquipped === true) {
+            var currentId = equippedItems.shield.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
         };
         if (item.id === id) {
-            equippedItems.offHand = item;
-            equippedItems.offHand.isEquipped = true;
+            equippedItems.shield = item;
+            equippedItems.shield.isEquipped = true;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id;
             })[0];
@@ -876,17 +1020,19 @@ function equipItem(id) {
                 playerInventory.splice(index, 1);
             };
         };
-        CreateInventoryWeaponHtml();
+        player.functions.shield = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
         updateHtml();
     }
-    else if (item.itemType === "armor") {
-        if (equippedItems.armor.isEquipped === true) {
-            var oldId = equippedItems.armor.id;
-            unequipItem(oldId);
+    else if (item.subType === "chest") {
+        if (equippedItems.chest.isEquipped === true) {
+            var currentId = equippedItems.chest.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
         };
         if (item.id === id) {
-            equippedItems.armor = item;
-            equippedItems.armor.isEquipped = true;
+            equippedItems.chest = item;
+            equippedItems.chest.isEquipped = true;
             var item = playerInventory.filter(function (obj) {
                 return obj.id === id;
             })[0];
@@ -895,13 +1041,78 @@ function equipItem(id) {
                 playerInventory.splice(index, 1);
             };
         };
-        CreateInventoryWeaponHtml();
+        player.functions.chest = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
+        updateHtml();
+    }
+    else if (item.subType === "helmet") {
+        if (equippedItems.helmet.isEquipped === true) {
+            var currentId = equippedItems.helmet.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
+        };
+        if (item.id === id) {
+            equippedItems.helmet = item;
+            equippedItems.helmet.isEquipped = true;
+            var item = playerInventory.filter(function (obj) {
+                return obj.id === id;
+            })[0];
+            var index = playerInventory.indexOf(item, 0);
+            if (index > -1) {
+                playerInventory.splice(index, 1);
+            };
+        };
+        player.functions.helmet = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
+        updateHtml();
+    }
+    else if (item.subType === "legs") {
+        if (equippedItems.legs.isEquipped === true) {
+            var currentId = equippedItems.legs.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
+        };
+        if (item.id === id) {
+            equippedItems.legs = item;
+            equippedItems.legs.isEquipped = true;
+            var item = playerInventory.filter(function (obj) {
+                return obj.id === id;
+            })[0];
+            var index = playerInventory.indexOf(item, 0);
+            if (index > -1) {
+                playerInventory.splice(index, 1);
+            };
+        };
+        player.functions.legs = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
+        updateHtml();
+    }
+    else if (item.subType === "boots") {
+        if (equippedItems.boots.isEquipped === true) {
+            var currentId = equippedItems.boots.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
+        };
+        if (item.id === id) {
+            equippedItems.boots = item;
+            equippedItems.boots.isEquipped = true;
+            var item = playerInventory.filter(function (obj) {
+                return obj.id === id;
+            })[0];
+            var index = playerInventory.indexOf(item, 0);
+            if (index > -1) {
+                playerInventory.splice(index, 1);
+            };
+        };
+        player.functions.boots = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
         updateHtml();
     }
     else if (item.subType === "ring") {
         if (equippedItems.ring.isEquipped === true) {
-            var oldId = equippedItems.ring.id;
-            unequipItem(oldId);
+            var currentId = equippedItems.ring.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
         };
         if (item.id === id) {
             equippedItems.ring = item;
@@ -914,13 +1125,15 @@ function equipItem(id) {
                 playerInventory.splice(index, 1);
             };
         };
-        CreateInventoryWeaponHtml();
+        player.functions.ring = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
         updateHtml();
     }
     else if (item.subType === "amulet") {
         if (equippedItems.amulet.isEquipped === true) {
-            var oldId = equippedItems.amulet.id;
-            unequipItem(oldId);
+            var currentId = equippedItems.amulet.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
         };
         if (item.id === id) {
             equippedItems.amulet = item;
@@ -933,13 +1146,15 @@ function equipItem(id) {
                 playerInventory.splice(index, 1);
             };
         };
-        CreateInventoryWeaponHtml();
+        player.functions.amulet = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
         updateHtml();
     }
     else if (item.subType === "talisman") {
         if (equippedItems.talisman.isEquipped === true) {
-            var oldId = equippedItems.talisman.id;
-            unequipItem(oldId);
+            var currentId = equippedItems.talisman.id
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(currentId, typeItem);
         };
         if (item.id === id) {
             equippedItems.talisman = item;
@@ -952,13 +1167,14 @@ function equipItem(id) {
                 playerInventory.splice(index, 1);
             };
         };
-        CreateInventoryWeaponHtml();
+        player.functions.talisman = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
         updateHtml();
     }
     else if (item.itemType === "BackPack") {
         if (equippedItems.backpack.isEquipped === true) {
-            var oldId = equippedItems.backpack.id
-            unequipItem(oldId);
+            var typeItem = 'duo'; // It means that we equip item while another item is already equipped
+            unequipItem(typeItem);
         };
         if (item.id === id) {
             equippedItems.backpack = item;
@@ -971,7 +1187,8 @@ function equipItem(id) {
                 playerInventory.splice(index, 1);
             };
         };
-        CreateInventoryWeaponHtml();
+        player.functions.backpack = $("#testingItem" + id);
+        $("#testingItem" + id).remove();
         updateHtml();
     };
     CreateWeaponSkillHtml();
@@ -981,21 +1198,22 @@ function equipItem(id) {
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
     updateBar();
-    checkPlayerFist();
 };
 
 //Unequip item function
-function unequipItem(id, oldId) {
+function unequipItem(id, type) {
     //item id for every slot
     var weaponId = id;
-    var offHandId = id;
-    var armorId = id;
+    var shieldId = id;
+    var chestId = id;
+    var helmetId = id;
+    var legsId = id;
+    var bootsId = id;
     var ringId = id;
     var amuletId = id;
     var talismanId = id;
     //Weapon unequip
-    if (weaponId === equippedItems.weapon.id || weaponId === oldId) {
-        var itemType = "weapon";
+    if (weaponId === equippedItems.weapon.id) {
         equippedItems.weapon.isEquipped = false;
         playerInventory.push(equippedItems.weapon);
         if (equippedItems.weapon.subType === "sword") {
@@ -1013,112 +1231,110 @@ function unequipItem(id, oldId) {
         else if (equippedItems.weapon.subType === "ranged") {
             player.properties.isRanged = false;
         }
-        equippedItems.weapon = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
+        $("#inventorySpaceweapon").append(player.functions.weapon);
+        if (type === "solo") {
+            createEquippedItemsObject('weapon');
         };
-        itemUnequipProperties(itemType);
-        CreateInventoryWeaponHtml();
+        $("#equippedItem" + id).remove();
         updateHtml();
     }
-        //Off-Hand unequip
-    else if (offHandId === equippedItems.offHand.id || offHandId == oldId) {
-        var itemType = "offHand";
-        equippedItems.offHand.isEquipped = false;
-        playerInventory.push(equippedItems.offHand);
-        equippedItems.offHand = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
+        //Shield unequip
+    else if (shieldId === equippedItems.shield.id) {
+        equippedItems.shield.isEquipped = false;
+        playerInventory.push(equippedItems.shield);
+        $("#inventorySpacearmor").append(player.functions.shield);
+        $("#equippedItem" + id).remove();
+        if (type === "solo") {
+            createEquippedItemsObject('shield');
         };
-        itemUnequipProperties(itemType);
-        CreateInventoryWeaponHtml();
         updateHtml();
     }
-        //Armor unequip
-    else if (armorId === equippedItems.armor.id || armorId == oldId) {
-        var itemType = "armor";
-        equippedItems.armor.isEquipped = false;
-        playerInventory.push(equippedItems.armor);
-        equippedItems.armor = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
+        //chest unequip
+    else if (chestId === equippedItems.chest.id) {
+        equippedItems.chest.isEquipped = false;
+        playerInventory.push(equippedItems.chest);
+        $("#inventorySpacearmor").append(player.functions.chest);
+        $("#equippedItem" + id).remove();
+        if (type === "solo") {
+            createEquippedItemsObject('chest');
         };
-        itemUnequipProperties(itemType);
-        CreateInventoryWeaponHtml();
+        updateHtml();
+    }
+        //helmet unequip
+    else if (helmetId === equippedItems.helmet.id) {
+        equippedItems.helmet.isEquipped = false;
+        playerInventory.push(equippedItems.helmet);
+        $("#inventorySpacearmor").append(player.functions.helmet);
+        $("#equippedItem" + id).remove();
+        if (type === "solo") {
+            createEquippedItemsObject('helmet');
+        };
+        updateHtml();
+    }
+        //legs unequip
+    else if (legsId === equippedItems.legs.id) {
+        equippedItems.legs.isEquipped = false;
+        playerInventory.push(equippedItems.legs);
+        $("#inventorySpacearmor").append(player.functions.legs);
+        $("#equippedItem" + id).remove();
+        if (type === "solo") {
+            createEquippedItemsObject('legs');
+        };
+        updateHtml();
+    }
+        //boots unequip
+    else if (bootsId === equippedItems.boots.id) {
+        equippedItems.boots.isEquipped = false;
+        playerInventory.push(equippedItems.boots);
+        $("#inventorySpacearmor").append(player.functions.boots);
+        $("#equippedItem" + id).remove();
+        if (type === "solo") {
+            createEquippedItemsObject('boots');
+        };
         updateHtml();
     }
         //Ring unequip
-    else if (ringId === equippedItems.ring.id || ringId === oldId) {
-        var itemType = "ring";
+    else if (ringId === equippedItems.ring.id) {
         equippedItems.ring.isEquipped = false;
         playerInventory.push(equippedItems.ring);
-        equippedItems.ring = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
+        $("#inventorySpaceaccessory").append(player.functions.ring);
+        $("#equippedItem" + id).remove();
+        if (type === "solo") {
+            createEquippedItemsObject('ring');
         };
-        itemUnequipProperties(itemType);
-        CreateInventoryWeaponHtml();
         updateHtml();
     }
         //Amulet unequip
-    else if (amuletId === equippedItems.amulet.id || amuletId === oldId) {
-        var itemType = "amulet";
+    else if (amuletId === equippedItems.amulet.id) {
         equippedItems.amulet.isEquipped = false;
         playerInventory.push(equippedItems.amulet);
-        equippedItems.amulet = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
+        $("#inventorySpaceaccessory").append(player.functions.amulet);
+        $("#equippedItem" + id).remove();
+        if (type === "solo") {
+            createEquippedItemsObject('amulet');
         };
-        itemUnequipProperties(itemType);
-        CreateInventoryWeaponHtml();
         updateHtml();
     }
         //Talisman unequip
-    else if (talismanId === equippedItems.talisman.id || talismanId === oldId) {
-        var itemType = "talisman";
+    else if (talismanId === equippedItems.talisman.id) {
         equippedItems.talisman.isEquipped = false;
         playerInventory.push(equippedItems.talisman);
-        equippedItems.talisman = { //Probably a reference error, so I cannot delete this part, but I can still add values with different function allowing me to write less code ._.
+        $("#inventorySpaceaccessory").append(player.functions.talisman);
+        $("#equippedItem" + id).remove();
+        if (type === "solo") {
+            createEquippedItemsObject('talisman');
         };
-        itemUnequipProperties(itemType);
-        CreateInventoryWeaponHtml();
         updateHtml();
     };
-    CreateEquipHtml();
     CreateWeaponSkillHtml();
     updateHtml();
     skillChargeFill();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
-    checkPlayerFist();
 };
 
-function checkPlayerFist() {
-    if (equippedItems.weapon.subType === "fist") {
-        player.properties.isFist = true;
-    }
-    else {
-        player.properties.isFist = false;
-    };
-};
 
-function itemUnequipProperties(itemType) {
-    equippedItems[itemType]["strength"] = 0;
-    equippedItems[itemType]["endurance"] = 0;
-    equippedItems[itemType]["agility"] = 0;
-    equippedItems[itemType]["dexterity"] = 0;
-    equippedItems[itemType]["wisdom"] = 0;
-    equippedItems[itemType]["intelligence"] = 0;
-    equippedItems[itemType]["luck"] = 0;
-    equippedItems[itemType]["defense"] = 0;
-    if (itemType === "weapon") {
-        equippedItems[itemType]["minDamage"] = 0;
-        equippedItems[itemType]["maxDamage"] = 0;
-        equippedItems[itemType]["exp"] = 0;
-        equippedItems[itemType]["maxExp"] = 0;
-        equippedItems[itemType]["subType"] = "fist";
-    };
-    if (itemType === "offHand") {
-        equippedItems[itemType]["subType"] = "fist";
-    }
-    if (itemType === "talisman" ||
-        itemType === "amulet" ||
-        itemType === "ring") {
-        equippedItems[itemType]["dropRate"] = 0;
-        equippedItems[itemType]["expRate"] = 0;
-        equippedItems[itemType]["goldRate"] = 0;
-    };
-};
+
 
 CreateWeaponSkillHtml();
 CreateInventoryWeaponHtml();
@@ -1212,7 +1428,10 @@ function myAudio(sound) {
         myAudio.pause();
         player.properties.sound = "off";
     };
+
 };
+
+document.getElementById('myAudio').pause();
 function muteAudio() {
     var audio = document.getElementById("myAudio");
     if (audio.muted === true) {
@@ -1231,5 +1450,11 @@ function selectText(containerid) {
         var range = document.createRange();
         range.selectNode(document.getElementById(containerid));
         window.getSelection().addRange(range);
-    }
-}
+    };
+};
+
+//Will show a number on a tab like inventory, displaying amount of NEW items, player have not seen yet.
+function showNumber() {
+    var number = playerInventory.length;
+    document.getElementById('playerInventory').innerHTML = "<p>" + number + "</p>";
+};
