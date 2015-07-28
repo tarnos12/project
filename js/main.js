@@ -1192,12 +1192,12 @@ function equipItem(id) {
         updateHtml();
     };
     CreateWeaponSkillHtml();
-    CreateEquipHtml();
     updateHtml();
     skillChargeFill();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
     updateBar();
+    checkIfEquippedEmpty();
 };
 
 //Unequip item function
@@ -1331,6 +1331,7 @@ function unequipItem(id, type) {
     skillChargeFill();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
+    checkIfEquippedEmpty();
 };
 
 
@@ -1338,7 +1339,6 @@ function unequipItem(id, type) {
 
 CreateWeaponSkillHtml();
 CreateInventoryWeaponHtml();
-CreateEquipHtml();
 
 var checkBoxCommon = false;
 var checkBoxUncommon = false;

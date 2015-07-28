@@ -133,7 +133,6 @@ function load() {
         document.getElementById("gold").innerHTML = player.properties.gold;
     };
     CreateInventoryWeaponHtml();
-    CreateEquipHtml();
     loadIsEquipped();
     CreateWeaponSkillHtml();
     quest();
@@ -148,6 +147,9 @@ function load() {
     playerReviveCheck();
     removeStartingScreen();
     unequipItemLoad();
+    secondaryStatUpdate();
+    EquippedItemsEmpty();
+    checkIfEquippedEmpty();
 };
 
 function resetCheck() {

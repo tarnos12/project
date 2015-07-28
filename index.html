@@ -20,6 +20,7 @@
         body {
             background-image: url("images/bg.jpg");
             background-size: 100% auto;
+            background-color: #EEDFA6;
         }
     </style>
     <style type="text/css">
@@ -47,20 +48,24 @@
         img.Legendary {
             outline: 2px solid red;
         }
-
+        div.rightAlign {
+            text-align: right;
+        }
+        div.simpleBorder {
+            border: 2px solid gray;
+        }
         .bold {
             font-weight: bold;
             text-align: left;
         }
-        div.c1{
-            padding:30px;
-        }
         div.c4 {
             background-color: #EEDFA6;
-            border: 2px solid #A6B5EE;
         }
         div.background{
             background-color: #EEDFA6;
+        }
+        div.darkBackground{
+            background-color: #baa65a;
         }
         div.c3 {
             text-align:center;
@@ -79,6 +84,9 @@
         .img-center {
             margin:0 auto;
 
+        }
+        div.marginTest{
+            margin-bottom: 5px;
         }
         .topBar{
             font-size:20px;
@@ -144,7 +152,7 @@
         <!--First Row-->
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-                <div class="row">
+                <div class="row" style="background-color:#EEDFA6;">
                     <div class="col-sm-4 background">
                         <div class="row topBar">
                             Level
@@ -166,20 +174,20 @@
                         </div>
                     </div>
                     <div class="col-sm-4 background">
-
                         <div class="row topBar c2">
                             Gold:
                             <span id="gold">0</span><br />
                             <span id="date"></span><span id="bonus"></span>
-                        </div>
-                        <!-- Simple audio playback -->
-                        <audio id="myAudio" controls="controls" loop preload="auto" hidden>
-                            <source src="sounds/sound.ogg" type="audio/ogg" />
-                            <source src="sounds/sound.mp3" type="audio/mpeg" />
-                            Your browser does not support the audio element.
-                        </audio>
-                        <button type="button" class="btn btn-default" onclick="muteAudio(); changeMusicImage();"><span id="musicimage2" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>
+                            <!-- Simple audio playback -->
+                            <audio id="myAudio" controls="controls" loop preload="auto" hidden>
+                                <source src="sounds/sound.ogg" type="audio/ogg" />
+                                <source src="sounds/sound.mp3" type="audio/mpeg" />
+                                Your browser does not support the audio element.
+                            </audio>
+                            <button type="button" class="btn btn-default" onclick="muteAudio(); changeMusicImage();"><span id="musicimage2" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>
 
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -316,47 +324,7 @@
                                             </span>
                                         </a>
                                     </div>
-                                    <div class="col-xs-6">
-                                        Stat points
-                                        <span id="stats">0</span>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Skill points
-                                        <span id="skillPoints">0</span>
-                                    </div>
-                                    <div class="c3">
-                                        <h4>Secondary Stats</h4>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Health regen:<span id="hpregen">2</span><strong>(End)</strong>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Mana regen:<span id="manaRegen">1</span><strong>(Wis,Int)</strong>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Defense:<span id="defense">0</span><strong>(Agi)</strong>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Accuracy:<span id="accuracy">100</span>%<strong>(Agi,Luk)</strong>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Evasion:<span id="evasion">0</span>%<strong>(Agi,Luk)</strong>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Crit:<span id="criticalChance">1</span>%<strong>(Dex,Luk)</strong>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Critical Dmg:<span id="criticalDamage">1</span><strong>(Dex)</strong>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Drop rate:<span id="dropRate">0</span>%<strong>(Luk)</strong>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Exp rate:<span id="expRate">0</span>%
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Gold rate:<span id="goldRate">0</span>%
-                                    </div>
+                                    <div id="secondaryStat"></div>
                                 </div>
                                 <div class="tab-pane" id="tab_b">
                                     <div class="c3">
@@ -556,14 +524,14 @@
                         </div>
                         <!-- end of container -->
                     </div>
-                    <div class="col-sm-3 col-md-5 c1">
+                    <div class="col-sm-3 col-md-5">
                         <div class="row c4">
                             <div id="monsterTabs">
                             </div>
                             <!-- tab content -->
                         </div> <!--move this div below "logConsole table" to stick log console with monsters...-->
                         <div id="hotBar" class="c4"></div> <!--Add margin top/bottom for better look ._.-->
-                        <table class="table table-condensed table-striped table-responsive c4">
+                        <table class="table table-condensed table-striped table-responsive">
                             <tbody>
                                 <tr>
                                     <td>
@@ -652,7 +620,6 @@
                                             <div class="c3">
                                                 <h4>Spells</h4>
                                             </div>
-                                            <div id="equipHtml"> </div>
                                             <div id="playerSkills"></div>
                                         </div>
                                     </div>

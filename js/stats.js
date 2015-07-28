@@ -25,19 +25,8 @@
     var intelligence;
     var wisdom;
     var luck;
-    var hpRegen;
-    var stats;
-    var accuracy;
-    var defense;
-    var criticalDamage;
-    var criticalChance;
     var mana;
     var maxMana;
-    var manaRegen;
-    var evasion;
-    var dropRate;
-    var expRate;
-    var goldRate;
     var level;
     var maxExperience;
     var experience;
@@ -47,30 +36,18 @@
     var potion;
     var superPotion;
     var megaPotion;
-    var skillPoints;
 
     minDamage = document.getElementById('mindamage');
     maxDamage = document.getElementById('maxdamage');
     strength = document.getElementById('strength');
     endurance = document.getElementById("endurance");
-    hpRegen = document.getElementById("hpregen");
-    stats = document.getElementById("stats");
     agility = document.getElementById("agility");
     dexterity = document.getElementById("dexterity");
     wisdom = document.getElementById("wisdom");
     intelligence = document.getElementById("intelligence");
     luck = document.getElementById("luck");
     mana = document.getElementById("mana");
-    manaRegen = document.getElementById("manaRegen");
     maxMana = document.getElementById("maxmana");
-    criticalDamage = document.getElementById("criticalDamage");
-    criticalChance = document.getElementById("criticalChance");
-    defense = document.getElementById("defense");
-    evasion = document.getElementById("evasion");
-    accuracy = document.getElementById("accuracy");
-    dropRate = document.getElementById("dropRate");
-    expRate = document.getElementById("expRate");
-    goldRate = document.getElementById("goldRate");
     level = document.getElementById("level");
     maxExperience = document.getElementById("maxexperience");
     experience = document.getElementById("experience");
@@ -80,29 +57,17 @@
     potion = document.getElementById('potion');
     superPotion = document.getElementById('superPotion');
     megaPotion = document.getElementById('megaPotion');
-    skillPoints = document.getElementById('skillPoints');
     minDamage.innerHTML = player.functions.minDamage().toFixed(0);
     maxDamage.innerHTML = player.functions.maxDamage().toFixed(0);
     strength.innerHTML = player.functions.totalStrength() + " (" + '<font color="blue">' + player.functions.totalStrengthBonus() + '</font>' + ")";
     endurance.innerHTML = player.functions.totalEndurance() + " (" + '<font color="blue">' + player.functions.totalEnduranceBonus() + '</font>' + ")";
-    hpRegen.innerHTML = player.functions.hpregen();
-    stats.innerHTML = player.properties.stats;
     agility.innerHTML = player.functions.totalAgility() + " (" + '<font color="blue">' + player.functions.totalAgilityBonus() + '</font>' + ")";
-    accuracy.innerHTML = player.functions.accuracy().toFixed(2);
     dexterity.innerHTML = player.functions.totalDexterity() + " (" + '<font color="blue">' + player.functions.totalDexterityBonus() + '</font>' + ")";
-    defense.innerHTML = player.functions.defense().toFixed(0);
-    criticalDamage.innerHTML = (player.functions.criticalDamage() * 100).toFixed(0) + "%";
-    criticalChance.innerHTML = player.functions.criticalChance().toFixed(1);
     intelligence.innerHTML = player.functions.totalIntelligence() + " (" + '<font color="blue">' + player.functions.totalIntelligenceBonus() + '</font>' + ")";
     mana.innerHTML = player.properties.mana.toFixed(0);
     maxMana.innerHTML = player.functions.maxMana().toFixed(0);
     wisdom.innerHTML = player.functions.totalWisdom() + " (" + '<font color="blue">' + player.functions.totalWisdomBonus() + '</font>' + ")";
-    manaRegen.innerHTML = player.functions.manaRegen();
     luck.innerHTML = player.functions.totalLuck() + " (" + '<font color="blue">' + player.functions.totalLuckBonus() + '</font>' + ")";
-    evasion.innerHTML = player.functions.evasion().toFixed(1);
-    dropRate.innerHTML = (player.functions.dropRate() * 100).toFixed(0);
-    expRate.innerHTML = (player.functions.expRate() * 100).toFixed(0);
-    goldRate.innerHTML = (player.functions.goldRate() * 100).toFixed(0);
     level.innerHTML = player.properties.level;
     maxExperience.innerHTML = player.properties.maxExperience;
     experience.innerHTML = player.properties.experience;
@@ -112,13 +77,9 @@
     potion.innerHTML = pot;
     superPotion.innerHTML = spot;
     megaPotion.innerHTML = mpot;
-    skillPoints.innerHTML = player.properties.skillPoints;
+    secondaryStatUpdate();
 };
-//auto Save
-/*window.setInterval(function () {
-    saveGameFunction("autoSave")
-}, 10000);
-*/
+
 function autoSave() {
     saveGameFunction("autoSave");
     setTimeout(autoSave, 10000);

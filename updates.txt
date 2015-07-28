@@ -9,7 +9,8 @@ v1.5.7 - 27 june 2015    |
 - Merged off-hand and armor tab in inventory together.
 - Each weapon and armor have a 50% chance to drop with a bonus damage/armor.(This bonus is basic, it does not change amount of bonuses you gain from item drop.)
 - Redesigned item loot, each item can gain different amount of bonuses based on its rarity: Common(1-2), Uncommon(2-3), Rare(3-4), Epic(4-6), Legendary(6-7).
--
+- Added more secondary stats: Block/Counter/Life on hit. All bonuses can be obtained with items. Some of them can roll on a certain piece of equipment, for example "Block" can be found only on shields.
+- 
 _________________________
 v1.5.6 - 27 june 2015    |
 -------------------------|

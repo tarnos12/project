@@ -1,4 +1,109 @@
-﻿var loadingEquippedItems = [
+﻿var secondaryStatInfo = [
+     {
+         type: 'Stats',
+         info: 'stats',
+         isPercent: false,
+         number: 1,
+     },
+     {
+         type: 'Skill points',
+         info: 'skillPoints',
+         isPercent: false,
+         number: 2,
+     },
+    {
+        type: 'Hp /s',
+        info: 'hpregen',
+        isPercent: false,
+        number: 1,
+    },
+    {
+        type: 'Mana /s',
+        info: 'manaRegen',
+        isPercent: false,
+        number: 2,
+    },
+    {
+        type: 'Defense',
+        info: 'defense',
+        isPercent: false,
+        number: 1,
+    },
+    {
+        type: 'Accuracy',
+        info: 'accuracy',
+        isPercent: true,
+        number: 2,
+    },
+    {
+        type: 'Evasion',
+        info: 'evasion',
+        isPercent: true,
+        number: 1,
+    },
+    {
+        type: 'Life on hit',
+        info: 'lifeSteal',
+        isPercent: false,
+        number: 2,
+    },
+    {
+        type: 'Counter chance',
+        info: 'counterChance',
+        isPercent: true,
+        number: 1,
+    },
+    {
+        type: 'Counter dmg',
+        info: 'counterDamage',
+        isPercent: false,
+        number: 2,
+    },
+    {
+        type: 'Block chance',
+        info: 'blockChance',
+        isPercent: true,
+        number: 1,
+    },
+    {
+        type: 'Block amount',
+        info: 'blockAmount',
+        isPercent: false,
+        number: 2,
+    },
+    {
+        type: 'Crit chance',
+        info: 'criticalChance',
+        isPercent: true,
+        number: 1,
+    },
+    {
+        type: 'Crit damage',
+        info: 'criticalDamage',
+        isPercent: true,
+        number: 2,
+    },
+    {
+        type: 'Magic find',
+        info: 'dropRate',
+        isPercent: true,
+        number: 1,
+    },
+    {
+        type: 'Gold drop',
+        info: 'goldRate',
+        isPercent: true,
+        number: 2,
+    },
+    {
+        type: 'Experience rate',
+        info: 'expRate',
+        isPercent: true,
+        number: 1,
+    },
+];
+
+var loadingEquippedItems = [
     {
         type: 'weapon',
     },
@@ -426,6 +531,36 @@ var itemModifiers = {
         },
     ],
 };
+
+var emptyItemSlotInfo = [
+    {
+        type: 'talisman',
+    },
+    {
+        type: 'helmet',
+    },
+    {
+        type: "amulet",
+    },
+    {
+        type: "weapon",
+    },
+    {
+        type: "chest",
+    },
+    {
+        type: "shield",
+    },
+    {
+        type: 'legs',
+    },
+    {
+        type: 'ring',
+    },
+    {
+        type: 'boots',
+    },
+];
 
 var InventoryItemTypes = [
     {

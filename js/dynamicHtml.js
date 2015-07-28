@@ -86,69 +86,12 @@ function CreateWeaponSkillHtml() {
 //String prototype used to capitalize first letter, use it with "string".capitalizeFirstLetter()
 String.prototype.capitalizeFirstLetter = function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
-}
-//Create player Equipped items html
-function CreateEquipHtml() {
-    var html = '';
-    html += '<div class="row">';
-    //Weapon
-    var item = equippedItems;
-    for (var type in item) { //Here stat will become the word Defense
-        if ('weapon, shield, chest, helmet, legs, boots, ring, amulet, talisman'.indexOf(type) != -1) {
-            //Getting the actual stat object from the word.
-            var itemType = item[type];
-            if (itemType.hasOwnProperty('itemType')) {
-                html += '<div class="col-xs-12"' + 'id="equippedItem' + itemType.id + '"' + '>';
-                html += '<a href="#" class="tooltipA">';
-                html += '<img src="images/items/' + itemType.subType + "/" + itemType.image + '.png" />';
-                html += '<span>';
-                html += '<b>' + itemType.name + '</b>';
-                html += '<br />';
-                html += 'Rarity: ' + '<font color="' + itemType.color + '">' + itemType.itemQuality + '</font>' + '<br />';
-                html += "Item Type: " + itemType.subType;
-                if (itemType.minDamage > 0 && itemType.maxDamage > 0) {
-                    html += '<br />' + "Damage: " + itemType.minDamage + "-";
-                    html += itemType.maxDamage;
-                };
-                for (var statName in itemType) { //Here stat will become the word Defense
-                    if ('All attributes, Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Block chance, Evasion, Bonus damage, Bonus armor, Bonus life, Bonus mana, Health regen, Mana regen, Magic find, Gold drop, Experience rate, Life gain on hit, Critical damage, Critical chance, defense'.indexOf(statName) != -1) {
-                        //Getting the actual stat object from the word.
-                        if (itemType[statName] > 0) {
-                            if (statName === "goldRate" || statName === "expRate" || statName === "dropRate") {
-                                if (statName === "expRate") {
-                                    //$1 and $2 are "separated" words, so I can easly change the order like $2, $1" which would give "Rate exp"(first letter capitalized)
-                                    var statNameSpace = statName.replace(/^(.{3})(.*)$/, "$1 $2");
-                                    html += "<br />" + statNameSpace.capitalizeFirstLetter() + ": " + itemType[statName];
-                                }
-                                else {
-                                    var statNameSpace2 = statName.replace(/^(.{4})(.*)$/, "$1 $2");
-                                    html += "<br />" + statNameSpace2.capitalizeFirstLetter() + ": " + itemType[statName];
-                                };
-                            }
-                            else {
-                                html += "<br />" + statName.capitalizeFirstLetter() + ": " + itemType[statName];
-                            };
-                        };
-                    };
-                };
-                html += '<br />' + "Value: " + itemType.value + "gold";
-                html += '</span>' + '</a>' +
-                    '<button type="button" class="attack" onclick="unequipItem' + "(" + itemType.id + ', ' + "'solo'" + ")" + '">Unequip</button>';
-                html += '</div>';
-            };
-        };
-    };
-    html += '</div>';
-    html += '</div>';
-    document.getElementById("equipHtml").innerHTML = html;
 };
-
-
 
 var monsterTabActiveNum = 0;
 function changedTabmonster(index) {
     monsterTabActiveNum = index;
-}
+};
 function CreateMonsterHtml() {
     var html = '';
     html += '<div class="c3"><b><a href="#" class="tooltipB">Hover over there, for some Help';
@@ -531,6 +474,8 @@ function newGame() {
         player.properties.hardcoreMode = true;
     };
     autoSave();
+    EquippedItemsEmpty();
+    secondaryStatUpdate();
 };
 
 function characterCreationCreateBackground() {
@@ -541,10 +486,6 @@ function characterCreationCreateBackground() {
     var divStyle4 = document.getElementById('raceDiv'); // Race select screen
     divStyle4.style.display = "block";
 };
-
-function backToStartingScreen() {
-
-}
 
 function characterCreationHtml() {
     characterCreationCreateBackground();
@@ -626,4 +567,169 @@ function changeMusicImage() {
     else {
         musicImage2.className = "glyphicon glyphicon-volume-off";
     };
+};
+
+function secondaryStatUpdate(){
+    var html = '';
+    for (var key in secondaryStatInfo) {
+        var currentBonus = secondaryStatInfo[key]
+        var statInfo = secondaryStatInfo[key].info;
+        var number = secondaryStatInfo[key].number;
+        if (currentBonus.type === "Stats" || currentBonus.type === "Skill points") {
+            var statDisplay = player.properties[statInfo];
+        }
+        else {
+            var statDisplay = player.functions[statInfo]();
+        }
+        var statDisplay2 = secondaryStatInfo[key].type;
+        if (number === 1) {
+            var background = "darkBackground";
+        }
+        else if (number === 2) {
+            var background = "background";
+        }
+        html += '<div class="col-xs-6 ' + background + '">';
+        html += statDisplay2 + ":";
+        html += '</div>';
+        html += '<div class="col-xs-6 rightAlign '  + background + '">';
+        if (currentBonus.type === "Magic find" || currentBonus.type === "Gold drop" || currentBonus.type === "Experience rate" || currentBonus.type === "Critical damage") {
+            html += ((statDisplay - 1) * 100).toFixed(0);
+        }
+        else if (currentBonus.type === "Stats" || currentBonus.type === "Skill points") {
+            html += statDisplay.toFixed(0);
+        }
+        else {
+            html += statDisplay.toFixed(2);
+        }
+        if (currentBonus.isPercent === true) {
+            html += '%';
+        };
+        html += '</div>';
+    };
+    document.getElementById("secondaryStat").innerHTML = html;
+};
+
+function EquippedItemsEmpty() {
+    var html = '';
+    html += '<div class="row">';
+    for (var itemType in emptyItemSlotInfo) {
+        var item = emptyItemSlotInfo[itemType].type;
+        var itemEmpty = item + "Empty";
+        if (item === "talisman" || item === "helmet" || item === "amulet") {
+            if (item === "talisman") {
+                html += '<div class="col-xs-6 col-xs-offset-3">';
+                html += '<div class="row">';
+            }
+            html += '<div class="col-xs-4 marginTest"' + 'id="' + itemEmpty + '">';
+            html += '<img src=images/' + itemEmpty + '.png>';
+            html += '</div>';
+            if (item === "amulet") {
+                html += '</div>';
+                html += '</div>';
+            };
+        }
+        else if (item === "weapon" || item === "chest" || item === "shield") {
+            if (item === "weapon") {
+                html += '<div class="col-xs-6 col-xs-offset-3">';
+                html += '<div class="row">';
+            }
+            html += '<div class="col-xs-4 marginTest"' + 'id="' + itemEmpty + '">';
+            html += '<img src=images/' + itemEmpty + '.png>';
+            html += '</div>';
+            if (item === "shield") {
+
+                html += '</div>';
+                html += '</div>';
+            }
+        }
+        else if (item === "legs" || item === "ring") {
+            if (item === "legs") {
+                html += '<div class="col-xs-6 col-xs-offset-3">';
+                html += '<div class="row">';
+                html += '<div class="col-xs-4 marginTest">';
+                html += '</div>';
+            }
+            html += '<div class="col-xs-4 marginTest"' + 'id="' + itemEmpty + '">';
+            html += '<img src=images/' + itemEmpty + '.png>';
+            html += '</div>';
+            if (item === "ring") {
+                html += '</div>';
+                html += '</div>';
+            }
+        }
+        else if (item === "boots") {
+            html += '<div class="col-xs-6 col-xs-offset-3">';
+            html += '<div class="row">';
+            html += '<div class="col-xs-4 col-xs-offset-4"' + 'id="' + itemEmpty + '">';
+            html += '<img src=images/' + itemEmpty + '.png>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+        };
+    };
+    html += '</div>';
+    document.getElementById("equipHtml").innerHTML = html;
+};
+
+function checkIfEquippedEmpty() {
+    var html = '';
+    for (var item in equippedItems) {
+        var itemType = equippedItems[item];
+        if (itemType.isEquipped === true) {
+            var testItem = checkEquippedItemType(item);
+            $('#' + item + "Empty" + '').empty().append(testItem);
+        }
+        else if (itemType.isEquipped === false) {
+            var currentItem = '<img src=images/' + item + "Empty" + '.png>';
+            $('#' + item + "Empty" + '').empty().append(currentItem);
+        }
+    }
+};
+
+function checkEquippedItemType(newItem) {
+    var html = '';
+    //Weapon
+    var item = equippedItems[newItem];
+            //Getting the actual stat object from the word.
+            var itemType = item;
+            if (itemType.hasOwnProperty('itemType')) {
+                html += '<div id="equippedItem' + itemType.id + '"' + '>';
+                html += '<a href="#" class="tooltipA">';
+                html += '<img src="images/items/' + itemType.subType + "/" + itemType.image + '.png" onclick="unequipItem' + "(" + itemType.id + ', ' + "'solo'" + ")" + '" />';
+                html += '<span>';
+                html += '<b>' + itemType.name + '</b>';
+                html += '<br />';
+                html += 'Rarity: ' + '<font color="' + itemType.color + '">' + itemType.itemQuality + '</font>' + '<br />';
+                html += "Item Type: " + itemType.subType;
+                if (itemType.minDamage > 0 && itemType.maxDamage > 0) {
+                    html += '<br />' + "Damage: " + itemType.minDamage + "-";
+                    html += itemType.maxDamage;
+                };
+                for (var statName in itemType) { //Here stat will become the word Defense
+                    if ('All attributes, Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Block chance, Evasion, Bonus damage, Bonus armor, Bonus life, Bonus mana, Health regen, Mana regen, Magic find, Gold drop, Experience rate, Life gain on hit, Critical damage, Critical chance, defense'.indexOf(statName) != -1) {
+                        //Getting the actual stat object from the word.
+                        if (itemType[statName] > 0) {
+                            if (statName === "goldRate" || statName === "expRate" || statName === "dropRate") {
+                                if (statName === "expRate") {
+                                    //$1 and $2 are "separated" words, so I can easly change the order like $2, $1" which would give "Rate exp"(first letter capitalized)
+                                    var statNameSpace = statName.replace(/^(.{3})(.*)$/, "$1 $2");
+                                    html += "<br />" + statNameSpace.capitalizeFirstLetter() + ": " + itemType[statName];
+                                }
+                                else {
+                                    var statNameSpace2 = statName.replace(/^(.{4})(.*)$/, "$1 $2");
+                                    html += "<br />" + statNameSpace2.capitalizeFirstLetter() + ": " + itemType[statName];
+                                };
+                            }
+                            else {
+                                html += "<br />" + statName.capitalizeFirstLetter() + ": " + itemType[statName];
+                            };
+                        };
+                    };
+                };
+                html += '<br />' + "Value: " + itemType.value + "gold";
+                html += '</span>' + '</a>';
+                html += '</div>';
+    };
+    html += '</div>';
+    return html;
 };
