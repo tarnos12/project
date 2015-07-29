@@ -1,14 +1,4 @@
-﻿function newGame() {
-    removeStartingScreen();
-    characterCreationRemoveBackground();
-    characterCreationHtml();
-    if (hardcoreMode === true) {
-        player.hardcoreMode = true;
-    };
-    autoSave();
-};
-
-function saveGameFunction(saveType) {
+﻿function saveGameFunction(saveType) {
     var d = new Date();
     var hour = d.getHours();
     var minute = d.getMinutes();
@@ -24,27 +14,17 @@ function saveGameFunction(saveType) {
     };
     document.getElementById("saveTime").innerHTML = "Last saved: " + hour + ":" + minute + ":" + second;
     var saveGame = {
-        playerGold: player.gold,
-        playerHealth: player.health,
-        playerStats: player.stats,
-        playerLevel: player.level,
-        playerStrength: player.baseStrength,
-        playerEndurance: player.baseEndurance,
-        playerAgility: player.baseAgility,
-        playerDexterity: player.baseDexterity,
-        playerIntelligence: player.baseIntelligence,
-        playerWisdom: player.baseWisdom,
-        playerLuck: player.baseLuck,
-        playerExperience: player.experience,
-        playerMaxExperience: player.maxExperience,
-        hardcoreMode: player.hardcoreMode,
+        playerProperties: player.properties,
         pot: pot,
         spot: spot,
         mpot: mpot,
         //Equipped Items
         playerWeapon: equippedItems.weapon,
-        playerOffHand: equippedItems.offHand,
-        playerArmor: equippedItems.armor,
+        playerShield: equippedItems.shield,
+        playerChest: equippedItems.chest,
+        playerHelmet: equippedItems.helmet,
+        playerLegs: equippedItems.legs,
+        playerBoots: equippedItems.boots,
         playerRing: equippedItems.ring,
         playerAmulet: equippedItems.amulet,
         playerTalisman: equippedItems.talisman,
@@ -66,15 +46,9 @@ function saveGameFunction(saveType) {
         RangedMaxExp: weaponMastery.ranged.maxExp,
         RangedLevel: weaponMastery.ranged.level,
         //Other
-        itemId: player.itemIdNumber,
-        backpackUpgrade: player.backpackUpgrade,
         backpackStatus: backpackStatus,
         statStatus: statStatus,
-        gameVersion: player.gameVersion,
-        heroClass: player.heroClass,
-        sound: player.sound,
         //Spells
-        SkillPoints: player.skillPoints,
         FireBall: activeSpells.fireBall.level,
         IceShard: activeSpells.iceShard.level,
         CallLightning: activeSpells.callLightning.level,
@@ -111,10 +85,7 @@ function load() {
         else if (localStorage['save']) {
             var savegame = JSON.parse(atob(localStorage['save']));
         }
-        if (typeof savegame.itemId !== "undefined") player.itemIdNumber = savegame.itemId;
-        if (typeof savegame.heroClass !== "undefined") player.heroClass = savegame.heroClass;
-        if (typeof savegame.gameVersion !== "undefined") player.gameVersion = savegame.gameVersion;
-        if (typeof savegame.backpackUpgrade !== "undefined") player.backpackUpgrade = savegame.backpackUpgrade;
+        if (typeof savegame.playerProperties !== "undefined") player.properties = savegame.playerProperties;
         if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
         if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
         if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.exp = savegame.SwordExp;
@@ -133,7 +104,6 @@ function load() {
         if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.ranged.maxExp = savegame.RangedMaxExp;
         if (typeof savegame.RangedLevel !== "undefined") weaponMastery.ranged.level = savegame.RangedLevel;
         //Spells
-        if (typeof savegame.SkillPoints !== "undefined") player.skillPoints = savegame.SkillPoints;
         if (typeof savegame.FireBall !== "undefined") activeSpells.fireBall.level = savegame.FireBall;
         if (typeof savegame.IceShard !== "undefined") activeSpells.iceShard.level = savegame.IceShard;
         if (typeof savegame.CallLightning !== "undefined") activeSpells.callLightning.level = savegame.CallLightning;
@@ -144,27 +114,15 @@ function load() {
         if (typeof savegame.Frost !== "undefined") activeSpells.frost.level = savegame.Frost;
         if (typeof savegame.LightningStorm !== "undefined") activeSpells.lightningStorm.level = savegame.LightningStorm;
         //Other
-        if (typeof savegame.playerGold !== "undefined") player.gold = savegame.playerGold;
-        if (typeof savegame.hardcoreMode !== "undefined") player.hardcoreMode = savegame.hardcoreMode;
-        if (typeof savegame.sound !== "undefined") player.sound = savegame.sound;
-        if (typeof savegame.playerHealth !== "undefined") player.health = savegame.playerHealth;
-        if (typeof savegame.playerStats !== "undefined") player.stats = savegame.playerStats;
-        if (typeof savegame.playerLevel !== "undefined") player.level = savegame.playerLevel;
-        if (typeof savegame.playerExperience !== "undefined") player.experience = savegame.playerExperience;
-        if (typeof savegame.playerMaxExperience !== "undefined") player.maxExperience = savegame.playerMaxExperience;
-        if (typeof savegame.playerStrength !== "undefined") player.baseStrength = savegame.playerStrength;
-        if (typeof savegame.playerEndurance !== "undefined") player.baseEndurance = savegame.playerEndurance;
-        if (typeof savegame.playerAgility !== "undefined") player.baseAgility = savegame.playerAgility;
-        if (typeof savegame.playerDexterity !== "undefined") player.baseDexterity = savegame.playerDexterity;
-        if (typeof savegame.playerIntelligence !== "undefined") player.baseIntelligence = savegame.playerIntelligence;
-        if (typeof savegame.playerWisdom !== "undefined") player.baseWisdom = savegame.playerWisdom;
-        if (typeof savegame.playerLuck !== "undefined") player.baseLuck = savegame.playerLuck;
         if (typeof savegame.pot !== "undefined") pot = savegame.pot;
         if (typeof savegame.spot !== "undefined") spot = savegame.spot;
         if (typeof savegame.mpot !== "undefined") mpot = savegame.mpot;
         if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
-        if (typeof savegame.playerOffHand !== "undefined") equippedItems.offHand = savegame.playerOffHand;
-        if (typeof savegame.playerArmor !== "undefined") equippedItems.armor = savegame.playerArmor;
+        if (typeof savegame.playerShield !== "undefined") equippedItems.shield = savegame.playerShield;
+        if (typeof savegame.playerChest !== "undefined") equippedItems.chest = savegame.playerChest;
+        if (typeof savegame.playerHelmet !== "undefined") equippedItems.helmet = savegame.playerHelmet;
+        if (typeof savegame.playerLegs !== "undefined") equippedItems.legs = savegame.playerLegs;
+        if (typeof savegame.playerBoots !== "undefined") equippedItems.boots = savegame.playerBoots;
         if (typeof savegame.playerRing !== "undefined") equippedItems.ring = savegame.playerRing;
         if (typeof savegame.playerAmulet !== "undefined") equippedItems.amulet = savegame.playerAmulet;
         if (typeof savegame.playerTalisman !== "undefined") equippedItems.talisman = savegame.playerTalisman;
@@ -172,22 +130,27 @@ function load() {
         document.getElementById('potion').innerHTML = pot;
         document.getElementById('superPotion').innerHTML = spot;
         document.getElementById('megaPotion').innerHTML = mpot;
-        document.getElementById("gold").innerHTML = player.gold;
+        document.getElementById("gold").innerHTML = player.properties.gold;
     };
     CreateInventoryWeaponHtml();
-    CreateEquipHtml();
     loadIsEquipped();
     CreateWeaponSkillHtml();
     quest();
     CreateMonsterHtml();
     versionCheck();
     CreatePlayerSkillsHtml();
-    updateHtml();
     CreatePlayerHotBar();
     skillChargeFill();
     updateBar();
-    removeStartingScreen();
     characterCreationHtml();
+    playerReviveCheck();
+    removeStartingScreen();
+    unequipItemLoad();
+    primaryStatUpdate();
+    secondaryStatUpdate();
+    EquippedItemsEmpty();
+    checkIfEquippedEmpty();
+    updateHtml();
 };
 
 function resetCheck() {
@@ -205,7 +168,7 @@ function pageReload() {
     location.reload();
 };
 function versionCheck() {
-    if (player.gameVersion !== currentGameVersion && player.gameVersion === null) {
+    if (player.properties.gameVersion !== currentGameVersion && player.properties.gameVersion === null) {
         reset();
     };
 };

@@ -1,4 +1,20 @@
 _________________________
+v1.6.0 - 29 july 2015    |
+-------------------------|
+- Fixed a bug when saving a dead character would result in being dead forever ._.
+- Changed all weapon masteries to give you % bonus instead of flat.
+- Battle will take ~3 seconds, in that time, battle log will be displayed.
+- Battle log text display effects.
+- New item types! Chest/Helmet/Legs/Boots. Changed off-hand to Shield.
+- Merged off-hand and armor tab in inventory together.
+- Each weapon and armor have a 50% chance to drop with a bonus damage/armor.(This bonus is basic, it does not change amount of bonuses you gain from item drop.)
+- Redesigned item loot, each item can gain different amount of bonuses based on its rarity: Common(1-2), Uncommon(2-3), Rare(3-4), Epic(4-6), Legendary(6-7).
+- Added more secondary stats: Block/Counter/Life on hit. All bonuses can be obtained with items. Some of them can roll on a certain piece of equipment, for example "Block" can be found only on shields.
+- Changed item drop mechanics... You can drop betweem 1-5 items, for each monster kill as long as you have enough inventory space. You will make a roll for each item, and if its successful, you will drop an item.
+- Magic find increase odds of finding an item(it will increase a chance of a good "roll" which means you can drop items more often). It does not increase item rarity chance.
+- Removed equip/umequip/attack buttons. Instead click on item/monster image.
+- Removed item "levels", you can no longer level up your weapon. (Might change in future).
+_________________________
 v1.5.6 - 27 june 2015    |
 -------------------------|
 - Fixed a bug with weapon skill tabs closing when you gained a level with a skill.

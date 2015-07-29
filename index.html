@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/jquery-1.11.3.min.js"></script>
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="css/footer.css" rel="stylesheet" type="text/css">
     <link href="css/text.css" rel="stylesheet" type="text/css">
@@ -18,8 +19,8 @@
         }
         body {
             background-image: url("images/bg.jpg");
-            background-color: #cccccc;
             background-size: 100% auto;
+            background-color: #EEDFA6;
         }
     </style>
     <style type="text/css">
@@ -47,29 +48,24 @@
         img.Legendary {
             outline: 2px solid red;
         }
-
+        .rightAlign {
+            text-align: right;
+        }
+        div.simpleBorder {
+            border: 2px solid gray;
+        }
         .bold {
             font-weight: bold;
             text-align: left;
         }
-
-        div.c8 {
-            margin-top: 5px;
-        }
-
-        div.c6 {
-            margin-top: 10px;
-            margin-left: 10px;
-            margin-bottom: 5px;
-            padding-left: 15px;
-        }
-
         div.c4 {
             background-color: #EEDFA6;
-            border: 2px solid #A6B5EE;
         }
         div.background{
             background-color: #EEDFA6;
+        }
+        div.darkBackground{
+            background-color: #baa65a;
         }
         div.c3 {
             text-align:center;
@@ -83,11 +79,14 @@
         div.scroll {
             display: block;
             overflow: auto;
-            height: 400px;
+            height: 300px;
         }
         .img-center {
             margin:0 auto;
 
+        }
+        div.marginTest{
+            margin-bottom: 5px;
         }
         .topBar{
             font-size:20px;
@@ -109,6 +108,14 @@
         .centerText{
             text-align:center;
         }
+        .buttonDisable{
+            pointer-events: none;
+  cursor: not-allowed;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  opacity: .65;
+        }
         h1{
             text-align:center;
         }
@@ -129,631 +136,489 @@
 
     </script>
     <div class="container-fluid">
-        <div id="loadingOverlay" class="loadingOverlay">
-            <div id="loadingContainer" class="loadingContainer">
-                        <div class="gameLogo" id="gameLogo"></div>
-                        <div class="buttonDiv" id="buttonDiv"></div>
-                </div>
+        <div id="loadingContainer" class="loadingContainer">
         </div>
-        <div class="partyCreationDiv" id="selectClassDiv" style="display: none" ;><div id="classCreation"></div></div>
+        <div class="startingGameContainer" id="startingGameContainer">
+            <div id="startingScreen">
+                <div class="gameLogo" id="gameLogo"></div>
+                <div class="buttonDiv" id="buttonDiv"></div>
+            </div>
+            <div id="raceDiv" style="display:none;">
+                <div class="raceText" id="raceText"></div>
+                <div class="raceCreation" id="raceCreation"></div> <!--Style set for "none" so it wont override starting screen an "invisible wall"...-->
+            </div>
+        </div>
+
         <!--First Row-->
         <div class="row">
-            <div class="col-sm-1">
-            </div>
-            <div class="col-sm-4 background">
-                <div class="row c11 topBar">
-                    Level
-                    <span id="level">1</span>
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="row" style="background-color:#EEDFA6;">
+                    <div class="col-sm-4 background">
+                        <div class="row topBar">
+                            Level
+                            <span id="level">1</span>
 
-                    (<span id="experience">0</span>/<span id="maxexperience">100</span>)
-                </div>
-            </div>
-            <div class="col-sm-3 background">
-                <div class="progress">
-                    <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                        <span id="exppercent">60% Complete</span>
+                            (<span id="experience">0</span>/<span id="maxexperience">100</span>)
+                        </div>
+                    </div>
+                    <div class="col-sm-4 background">
+                        <div class="progress">
+                            <div id="progressBar" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                                <span id="exppercent">60% Complete</span>
+                            </div>
+                        </div>
+                        <div class="progress">
+                            <div id="progressBar2" class="progress-bar progressColor" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                                <span id="health"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 background">
+                        <div class="row topBar c2">
+                            Gold:
+                            <span id="gold">0</span><br />
+                            <span id="date"></span><span id="bonus"></span>
+                            <!-- Simple audio playback -->
+                            <audio id="myAudio" controls="controls" loop preload="auto" hidden>
+                                <source src="sounds/sound.ogg" type="audio/ogg" />
+                                <source src="sounds/sound.mp3" type="audio/mpeg" />
+                                Your browser does not support the audio element.
+                            </audio>
+                            <button type="button" class="btn btn-default" onclick="muteAudio(); changeMusicImage();"><span id="musicimage2" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>
+
+                        </div>
+                        
                     </div>
                 </div>
-                <div class="progress">
-                    <div id="progressBar2" class="progress-bar progressColor" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                        <span id="health"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 background">
-               
-                <div class="row c11 topBar c2">
-                    Gold:
-                    <span id="gold">0</span><br />
-                    <span id="date"></span><span id="bonus"></span>
-                </div>
-                <!-- Simple audio playback -->
-                <audio id="myAudio" controls="controls" loop preload="auto" hidden>
-                    <source src="sounds/sound.ogg" type="audio/ogg" />
-                    <source src="sounds/sound.mp3" type="audio/mpeg" />
-                    Your browser does not support the audio element.
-                </audio>
-                <button type="button" class="btn btn-default" onclick="muteAudio(); changeMusicImage();"><span id="musicimage2" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>
-
             </div>
         </div>
         <!--Second Row-->
         <div class="row">
-            <div class="col-md-1">
-            </div>
-            <div class="col-sm-5 col-md-4">
-                <div class="row c4">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_a" data-toggle="tab"><span class="icons playerStats"></span></a></li>
-                        <li><a href="#tab_b" data-toggle="tab"><span class="icons help"></span></a></li>
-                        <li><a href="#tab_c" data-toggle="tab"><span class="icons gameStory"></span></a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="col-sm-12 tab-pane active c2" id="tab_a">
-                            <div class="c3">
-                                <h4>Player Stats</h4>
-                            </div>
-                            <div class=" col-xs-12">
-                                <div id="characterClass"></div>
-                            </div>
-                            <div class="col-xs-6">
-                                Damage
-                                <span id="mindamage">2</span>-<span id="maxdamage">4</span>
-                            </div>
-                            <div class="col-xs-6">
-                                Mana
-                                <span id="mana">50</span>/<span id="maxmana">50</span>
-                            </div>
-                            <div class="col-xs-6">
-                                Str <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        10 points = 2 Min Damage<br />
-                                        10 points = 3 Max Damage<br />
-                                        10 points = 1 Inventory slot
-                                    </span>
-                                </a>
-                                <span id="strength">5</span>
-                                <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
-                            </div>
-                            <div class="col-xs-6">
-                                End <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        1 point = 3 Max Health<br />
-                                        3 points = 1 Health/s
-                                    </span>
-                                </a>
-                                <span id="endurance">5</span>
-
-                                <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
-                            </div>
-                            <div class="col-xs-6">
-                                Agi <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        100 points = 2% Accuracy<br />
-                                        100 points = 3% Evasion<br />
-                                        5 points = 1 Defense<br />
-
-                                    </span>
-                                </a>
-                                <span id="agility">5</span>
-
-                                <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
-                            </div>
-                            <div class="col-xs-6">
-                                Dex <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        100 points = 3% Critical Chance<br />
-                                        10 points = 2% Critical Damage
-                                    </span>
-                                </a>
-                                <span id="dexterity">5</span>
-
-                                <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
-
-                            </div>
-                            <div class="col-xs-6">
-                                Int <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        Currently not much use, and it's disabled until more content is added.<br />
-                                        10 points = 1 Max Mana
-                                    </span>
-                                </a>
-
-                                <span id="intelligence">5</span>
-
-                                <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
-                            </div>
-                            <div class="col-xs-6">
-                                Wis <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        10 points = 1 Mana/s<br />
-                                        2 points = 1 Max Mana
-                                    </span>
-                                </a>
-
-                                <span id="wisdom">5</span>
-
-                                <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
-                            </div>
-                            <div class="col-xs-6">
-                                Luk <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        100 points = 1% Accuracy<br />
-                                        100 points = 2% Evasion(20% cap)<br />
-                                        100 points = 1% Critical Chance<br />
-                                        100 points = 20% drop rate
-                                    </span>
-                                </a>
-                                <span id="luck">5</span>
-
-                                <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck(event);">
-                            </div>
-                            <div class="col-xs-6">
-                                <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
-
-                                <a href="#" class="tooltipA">
-                                    <img src="images/questionMark.png" alt="questionMark">
-                                    <span>
-                                        <ul>
-                                            <li>Check auto battle box, and attack a monster once, after that you will attack it automatically as long as you have enough mana, displayed next to this box.</li>
-                                            <br />
-                                            <li>If you want to change monster, then uncheck auto battle box, check it again and attack different monster.</li>
-                                        </ul>
-                                    </span>
-                                </a>
-                            </div>
-                            <div class="col-xs-6">
-                                Stat points
-                                <span id="stats">0</span>
-                            </div>
-                            <div class="col-xs-6">
-                                Skill points
-                                <span id="skillPoints">0</span>
-                            </div>
-                            <div class="c3">
-                                <h4>Secondary Stats</h4>
-                            </div>
-                            <div class="col-xs-6">
-                                Health regen:<span id="hpregen">2</span><strong>(End)</strong>
-                            </div>
-                            <div class="col-xs-6">
-                                Mana regen:<span id="manaRegen">1</span><strong>(Wis,Int)</strong>
-                            </div>
-                            <div class="col-xs-6">
-                                Defense:<span id="defense">0</span><strong>(Agi)</strong>
-                            </div>
-                            <div class="col-xs-6">
-                                Accuracy:<span id="accuracy">100</span>%<strong>(Agi,Luk)</strong>
-                            </div>
-                            <div class="col-xs-6">
-                                Evasion:<span id="evasion">0</span>%<strong>(Agi,Luk)</strong>
-                            </div>
-                            <div class="col-xs-6">
-                                Crit:<span id="criticalChance">1</span>%<strong>(Dex,Luk)</strong>
-                            </div>
-                            <div class="col-xs-6">
-                                Critical Dmg:<span id="criticalDamage">1</span><strong>(Dex)</strong>
-                            </div>
-                            <div class="col-xs-6">
-                                Drop rate:<span id="dropRate">0</span>%<strong>(Luk)</strong>
-                            </div>
-                            <div class="col-xs-6">
-                                Exp rate:<span id="expRate">0</span>%
-                            </div>
-                            <div class="col-xs-6">
-                                Gold rate:<span id="goldRate">0</span>%
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab_b">
-                            <div class="c3">
-                                <h4>Game Tutorial</h4><br />
-                            </div>
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="row">
+                    <div class="col-sm-5 col-md-4">
+                        <div class="row c4">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_za" data-toggle="tab"><span class="icons fighting"></span></a></li>
-                                <li><a href="#tab_zb" data-toggle="tab"><span class="icons items"></span></a></li>
-                                <li><a href="#tab_zc" data-toggle="tab"><span class="icons potions"></span></a></li>
-                                <li><a href="#tab_zd" data-toggle="tab"><span class="icons stats"></span></a></li>
+                                <li class="active"><a href="#tab_a" data-toggle="tab"><span class="icons playerStats"></span></a></li>
+                                <li><a href="#tab_b" data-toggle="tab"><span class="icons help"></span></a></li>
+                                <li><a href="#tab_c" data-toggle="tab"><span class="icons gameStory"></span></a></li>
                             </ul>
                             <div class="tab-content">
-                                <div class="col-sm-12 tab-pane active" id="tab_za">
+                                <div class="col-sm-12 tab-pane active c2" id="tab_a">
                                     <div class="c3">
-                                        <h5><b>FIGHTING</b></h5>
+                                        <h4>Player Stats</h4>
                                     </div>
-                                    <ul>
-                                        <li>
-                                            Each fight consist of 20 battle turns.<br />
-                                        </li>
-                                        <li>
-                                            Monster health will go down as you fight, even if you don't finish him of within 20 turns.(Considering to add monster health regeneration)<br />
-                                        </li>
-                                        <li>
-                                            If player dies, you will lose 20% of current gold/experience, and will be unable to fight for 5 seconds.<br />
-                                        </li>
-                                        <li>
-                                            If monster dies, player will have a chance to find a drop, it is possible to drop multiple items at once.<br />
-                                        </li>
-                                        <li>
-                                            It is possible that neither a player or a monster dies, it will be called a draw.<br />
-                                        </li>
-                                        <li>
-                                            You wont lose anything but you also won't gain anything when fight is a draw.<br />
-                                        </li>
-                                    </ul>
+                                    <div class=" col-xs-12">
+                                        <div id="characterRace"></div>
+                                    </div>
+                                    <div id="primaryStat"></div>
+                                    <div class="col-xs-6">
+                                        <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
+                                    </div>
+                                    <div id="secondaryStat"></div>
                                 </div>
+                                <div class="tab-pane" id="tab_b">
+                                    <div class="c3">
+                                        <h4>Game Tutorial</h4><br />
+                                    </div>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#tab_za" data-toggle="tab"><span class="icons fighting"></span></a></li>
+                                        <li><a href="#tab_zb" data-toggle="tab"><span class="icons items"></span></a></li>
+                                        <li><a href="#tab_zc" data-toggle="tab"><span class="icons potions"></span></a></li>
+                                        <li><a href="#tab_zd" data-toggle="tab"><span class="icons stats"></span></a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="col-sm-12 tab-pane active" id="tab_za">
+                                            <div class="c3">
+                                                <h5><b>FIGHTING</b></h5>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    Each fight consist of 20 battle turns.<br />
+                                                </li>
+                                                <li>
+                                                    Monster health will go down as you fight, even if you don't finish him of within 20 turns.(Considering to add monster health regeneration)<br />
+                                                </li>
+                                                <li>
+                                                    If player dies, you will lose 20% of current gold/experience, and will be unable to fight for 5 seconds.<br />
+                                                </li>
+                                                <li>
+                                                    If monster dies, player will have a chance to find a drop, it is possible to drop multiple items at once.<br />
+                                                </li>
+                                                <li>
+                                                    It is possible that neither a player or a monster dies, it will be called a draw.<br />
+                                                </li>
+                                                <li>
+                                                    You wont lose anything but you also won't gain anything when fight is a draw.<br />
+                                                </li>
+                                            </ul>
+                                        </div>
 
-                                <div class="col-sm-12 tab-pane" id="tab_zb">
-                                    <div class="c3"><h5><b>ITEMS</b></h5></div>
-                                    <ul>
-                                        <li>
-                                            All monster drop Common, Uncommon, Rare, Epic items, higher level monster have more chance to drop each of those items.<br />
-                                        </li>
-                                        <li>
-                                            Last monster on each map is a boss monster, and it has a low chance to drop Legendary item.<br />
-                                        </li>
-                                        <li>
-                                            Boss can also drop any other item and it will be slightly stronger, they will drop more often too.<br />
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-12 tab-pane" id="tab_zc">
-                                    <div class="c3"><h5><b>Potions</b></h5></div>
-                                    <ul>
-                                        <li>
-                                            If you have 30% hp or less potions will be used.
-                                            <br />
-                                        </li>
-                                        <li>
-                                            Mega potion will be used when your max health is 500 or more.
-                                            <br />
-                                        </li>
-                                        <li>
-                                            Super potion when its 300 or more.
-                                            <br />
-                                        </li>
-                                        <li>
-                                            Normal potion when your max health is less than 300.
-                                            <br />
-                                        </li>
-                                        <li>
-                                            Note that potion is healing you after your battle, not while you fight.
-                                            <br />
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-sm-12 tab-pane" id="tab_zd">
-                                    <div class="c3"><h5><b>Stats</b></h5></div>
-                                    Each player stat, gives you different bonuses to your secondary stats:
-                                    <ol>
-                                        <li>
+                                        <div class="col-sm-12 tab-pane" id="tab_zb">
+                                            <div class="c3"><h5><b>ITEMS</b></h5></div>
                                             <ul>
-                                                <li class="bold">Strength:</li>
-                                                <li>10 points: 4 Min Damage</li>
-                                                <li>10 points: 6 Max Damage</li>
-                                                <li>10 points: 3% Critical Damage</li>
-                                                <li>10 points: 1 Inventory Slot</li>
+                                                <li>
+                                                    All monster drop Common, Uncommon, Rare, Epic items, higher level monster have more chance to drop each of those items.<br />
+                                                </li>
+                                                <li>
+                                                    Last monster on each map is a boss monster, and it has a low chance to drop Legendary item.<br />
+                                                </li>
+                                                <li>
+                                                    Boss can also drop any other item and it will be slightly stronger, they will drop more often too.<br />
+                                                </li>
                                             </ul>
-                                        </li>
-                                        <li>
+                                        </div>
+                                        <div class="col-sm-12 tab-pane" id="tab_zc">
+                                            <div class="c3"><h5><b>Potions</b></h5></div>
                                             <ul>
-                                                <li class="bold">Endurance:</li>
-                                                <li>1 point: 3 Max Health</li>
-                                                <li>3 points: 1 Health/second</li>
+                                                <li>
+                                                    If you have 30% hp or less potions will be used.
+                                                    <br />
+                                                </li>
+                                                <li>
+                                                    Mega potion will be used when your max health is 500 or more.
+                                                    <br />
+                                                </li>
+                                                <li>
+                                                    Super potion when its 300 or more.
+                                                    <br />
+                                                </li>
+                                                <li>
+                                                    Normal potion when your max health is less than 300.
+                                                    <br />
+                                                </li>
+                                                <li>
+                                                    Note that potion is healing you after your battle, not while you fight.
+                                                    <br />
+                                                </li>
                                             </ul>
-                                        </li>
-                                        <li>
-                                            <ul>
-                                                <li class="bold">Agility:</li>
-                                                <li>100 points: 2% Accuracy</li>
-                                                <li>100 points: 3% Evasion</li>
-                                                <li>100 points: 3% Critical Chance</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <ul>
-                                                <li class="bold">Dexterity:</li>
-                                                <li>2 points: 1 Defense</li>
-                                                <li>5 points: 1% Critical damage</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <ul>
-                                                <li class="bold">Wisdom:</li>
-                                                <li>2 points: 1 Max Mana</li>
-                                                <li>5 points: 1 Mana/seconds</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <ul>
-                                                <li class="bold">Intelligence:</li>
-                                                <li>10 points: 1 Max Mana</li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <ul>
-                                                <li class="bold">Luck:</li>
-                                                <li>100 points: 1% Accuracy</li>
-                                                <li>100 points: 2% Evasion</li>
-                                                <li>100 points: 1% Critical Chance</li>
-                                                <li>10 points: 2% Drop Rate</li>
-                                            </ul>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab_c">
-                            <div class="col-sm-12">
-                                <ul class="nav nav-tabs">
-                                    <li role="presentation" class="active"><a href="#tab_prologue" data-toggle="tab">Prologue</a></li>
-                                    <li role="presentation"><a href="#tab_varik" data-toggle="tab">Varik's Hideout</a></li>
-                                    <li role="presentation"><a href="#tab_forest" data-toggle="tab">Forest of Narus</a></li>
-                                    <li role="presentation"><a href="#tab_ozJotnar" data-toggle="tab">Oz Jotnar</a></li>
-                                    <li role="presentation"><a href="#tab_twistedMarrow" data-toggle="tab">Twisted Marrow</a></li>
-                                </ul>
-                                <div class="tab-content">
-
-                                    <div class="tab-pane active" id="tab_prologue">
-                                        <div class="story" id="story">
-                                            <h1><b>Prologue</b></h1><br /><br />
-                                            <p class="story">
-                                                The dead stay dead, but in your case that isn't true.
-                                                You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
-                                                On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
-                                                It speaks to you and it desires only one thing: Battle.<br /><br />
-                                                "Become the Legend I was and help me feel alive again."<br /><br />
-                                                You respond by opening your door and taking the first steps towards a new life.
-                                            </p>
+                                        </div>
+                                        <div class="col-sm-12 tab-pane" id="tab_zd">
+                                            <div class="c3"><h5><b>Stats</b></h5></div>
+                                            Each player stat, gives you different bonuses to your secondary stats:
+                                            <ol>
+                                                <li>
+                                                    <ul>
+                                                        <li class="bold">Strength:</li>
+                                                        <li>10 points: 4 Min Damage</li>
+                                                        <li>10 points: 6 Max Damage</li>
+                                                        <li>10 points: 3% Critical Damage</li>
+                                                        <li>10 points: 1 Inventory Slot</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul>
+                                                        <li class="bold">Endurance:</li>
+                                                        <li>1 point: 3 Max Health</li>
+                                                        <li>3 points: 1 Health/second</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul>
+                                                        <li class="bold">Agility:</li>
+                                                        <li>100 points: 2% Accuracy</li>
+                                                        <li>100 points: 3% Evasion</li>
+                                                        <li>100 points: 3% Critical Chance</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul>
+                                                        <li class="bold">Dexterity:</li>
+                                                        <li>2 points: 1 Defense</li>
+                                                        <li>5 points: 1% Critical damage</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul>
+                                                        <li class="bold">Wisdom:</li>
+                                                        <li>2 points: 1 Max Mana</li>
+                                                        <li>5 points: 1 Mana/seconds</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul>
+                                                        <li class="bold">Intelligence:</li>
+                                                        <li>10 points: 1 Max Mana</li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <ul>
+                                                        <li class="bold">Luck:</li>
+                                                        <li>100 points: 1% Accuracy</li>
+                                                        <li>100 points: 2% Evasion</li>
+                                                        <li>100 points: 1% Critical Chance</li>
+                                                        <li>10 points: 2% Drop Rate</li>
+                                                    </ul>
+                                                </li>
+                                            </ol>
                                         </div>
                                     </div>
-                                    <div class="tab-pane" id="tab_varik">
-                                        <div class="story" id="varik">
-                                            <h1><b>Varik's Hideout</b></h1><br />
-                                            <h3><b>Varik Grunts</b></h3><br />
-                                            <p class="story">
-                                                Of course, you have to start somewhere.
-                                                You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
-                                                Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
-                                                So, you go stir up some trouble with the Varik Grunts and hope someone notices.
-                                                Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
-                                                You started trouble with them by breaking a bottle over one of their heads.
-                                            </p>
+                                </div>
+                                <div class="tab-pane" id="tab_c">
+                                    <div class="col-sm-12">
+                                        <ul class="nav nav-tabs">
+                                            <li role="presentation" class="active"><a href="#tab_prologue" data-toggle="tab">Prologue</a></li>
+                                            <li role="presentation"><a href="#tab_varik" data-toggle="tab">Varik's Hideout</a></li>
+                                            <li role="presentation"><a href="#tab_forest" data-toggle="tab">Forest of Narus</a></li>
+                                            <li role="presentation"><a href="#tab_ozJotnar" data-toggle="tab">Oz Jotnar</a></li>
+                                            <li role="presentation"><a href="#tab_twistedMarrow" data-toggle="tab">Twisted Marrow</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+
+                                            <div class="tab-pane active" id="tab_prologue">
+                                                <div class="story" id="story">
+                                                    <h1><b>Prologue</b></h1><br /><br />
+                                                    <p class="story">
+                                                        The dead stay dead, but in your case that isn't true.
+                                                        You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
+                                                        On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
+                                                        It speaks to you and it desires only one thing: Battle.<br /><br />
+                                                        "Become the Legend I was and help me feel alive again."<br /><br />
+                                                        You respond by opening your door and taking the first steps towards a new life.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="tab_varik">
+                                                <div class="story" id="varik">
+                                                    <h1><b>Varik's Hideout</b></h1><br />
+                                                    <h3><b>Varik Grunts</b></h3><br />
+                                                    <p class="story">
+                                                        Of course, you have to start somewhere.
+                                                        You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
+                                                        Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
+                                                        So, you go stir up some trouble with the Varik Grunts and hope someone notices.
+                                                        Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
+                                                        You started trouble with them by breaking a bottle over one of their heads.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="tab_forest">
+                                                <div class="story" id="forestOfNarsus">
+                                                    <h1><b>Forest of Narsus</b></h1><br />
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="tab_ozJotnar">
+                                                <div class="story" id="ozJotnar">
+                                                    <h1><b>Oz Jotnar</b></h1><br />
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="tab_twistedMarrow">
+                                                <div class="story" id="twistedMarrow">
+                                                    <h1><b>Twisted Marrow</b></h1><br />
+                                                </div>
                                             </div>
                                         </div>
-                                    <div class="tab-pane" id="tab_forest">
-                                        <div class="story" id="forestOfNarsus">
-                                            <h1><b>Forest of Narsus</b></h1><br />
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab_ozJotnar">
-                                        <div class="story" id="ozJotnar">
-                                            <h1><b>Oz Jotnar</b></h1><br />
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane" id="tab_twistedMarrow">
-                                        <div class="story" id="twistedMarrow">
-                                            <h1><b>Twisted Marrow</b></h1><br />
-                                        </div>
                                     </div>
                                 </div>
-                                </div>
                             </div>
+                            <!-- tab content -->
+                        </div>
+                        <!-- end of container -->
                     </div>
-                    <!-- tab content -->
-                </div>
-                <!-- end of container -->
-            </div>
-            <div class="col-sm-3">
-                <div class="row c4">
-                    <div id="monsterTabs">
-                    </div>
-                    <!-- tab content -->
-                </div> <!--move this div below "logConsole table" to stick log console with monsters...-->
-                <div id="hotBar" class="c6 c4"></div>
-                <table class="table table-condensed table-striped table-responsive c4">
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="scroll c4 c3" id="logConsole"></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <!-- end of container -->
-            </div>
-            <div class="col-sm-4 col-lg-3">
-                <div class="row c4">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_a2" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
-                        <li><a href="#tab_b2" data-toggle="tab"><span class="icons weaponSkills"></span></a></li>
-                        <li><a href="#tab_c2" data-toggle="tab"><span class="icons shop"></span></a></li>
-                        <li><a href="#tab_d2" data-toggle="tab"><span class="icons options"></span></a></li>
-                        <li><a href="#tab_e2" data-toggle="tab"><span class="icons credits"></span></a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_a2">
-                            <div class="c3">
-                                <h4>Player Inventory</h4>
+                    <div class="col-sm-3 col-md-5">
+                        <div class="row c4">
+                            <div id="monsterTabs">
                             </div>
-
+                            <!-- tab content -->
+                        </div> <!--move this div below "logConsole table" to stick log console with monsters...-->
+                        <div id="hotBar" class="c4"></div> <!--Add margin top/bottom for better look ._.-->
+                        <table class="table table-condensed table-striped table-responsive">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="scroll c4 c3" id="logConsole">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- end of container -->
+                    </div>
+                    <div class="col-sm-4 col-md-3">
+                        <div class="row c4">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_f1" data-toggle="tab"><span class="icons potions"></span></a></li>
-                                <li><a href="#tab_f2" data-toggle="tab"><span class="icons equipment"></span></a></li>
-                                <li><a href="#tab_f3" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
-                                <li><a href="#tab_f4" data-toggle="tab"><span class="icons spells"></span></a></li>
+                                <li class="active"><a href="#tab_a2" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
+                                <li><a href="#tab_b2" data-toggle="tab"><span class="icons weaponSkills"></span></a></li>
+                                <li><a href="#tab_c2" data-toggle="tab"><span class="icons shop"></span></a></li>
+                                <li><a href="#tab_d2" data-toggle="tab"><span class="icons options"></span></a></li>
+                                <li><a href="#tab_e2" data-toggle="tab"><span class="icons credits"></span></a></li>
                             </ul>
-
-
                             <div class="tab-content">
-                                <div class="col-sm-8 tab-pane active" id="tab_f1">
-                                    <table class="table">
-                                        <tr>
-                                            <td>
-                                                <img src="images/hp.png" alt="Health Potion">(20hp): <span id="potion">0</span>
-                                            </td>
-                                            <td>
-                                                <input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="images/hp.png" alt="Super Potion">(100hp):<span id="superPotion">0</span>
-                                            </td>
-                                            <td>
-                                                <input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="images/hp.png" alt="Mega Potion">(500hp):<span id="megaPotion">0</span>
-                                            </td>
-                                            <td>
-                                                <input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-
-
-                                <div class="tab-pane" id="tab_f2">
-
+                                <div class="tab-pane active" id="tab_a2">
                                     <div class="c3">
-                                        <h4>Equipment</h4>
+                                        <h4>Player Inventory</h4>
                                     </div>
-                                    <div id="equipHtml"> </div>
 
-                                </div>
-                                <div class="tab-pane " id="tab_f3">
-                                    <div class="btn-group btn-group-sm" role="group" aria-label="Left Align">
-                                        <br /><button type="button" class="sell" onclick="sellAllCommon()">Sell All Common</button>
-                                        <button type="button" class="sell" onclick="sellAllUncommon()">Sell All Uncommon</button>
-                                        <button type="button" class="sell" onclick="sellAllRare()">Sell All Rare</button>
-                                        <button type="button" class="sell" onclick="sellAllEpic()">Sell All Epic</button>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#tab_f1" data-toggle="tab"><span class="icons potions"></span></a></li>
+                                        <li><a href="#tab_f2" data-toggle="tab"><span class="icons equipment"></span></a></li>
+                                        <li><a href="#tab_f3" data-toggle="tab"><span class="icons playerInventory" id="playerInventory"></span></a></li>
+                                        <li><a href="#tab_f4" data-toggle="tab"><span class="icons spells"></span></a></li>
+                                    </ul>
+
+
+                                    <div class="tab-content">
+                                        <div class="col-sm-8 tab-pane active" id="tab_f1">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                        <img src="images/hp.png" alt="Health Potion">(20hp): <span id="potion">0</span>
+                                                    </td>
+                                                    <td>
+                                                        <input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="images/hp.png" alt="Super Potion">(100hp):<span id="superPotion">0</span>
+                                                    </td>
+                                                    <td>
+                                                        <input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <img src="images/hp.png" alt="Mega Potion">(500hp):<span id="megaPotion">0</span>
+                                                    </td>
+                                                    <td>
+                                                        <input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+
+                                        <div class="tab-pane" id="tab_f2">
+
+                                            <div class="c3">
+                                                <h4>Equipment</h4>
+                                            </div>
+                                            <div id="equipHtml"> </div>
+
+                                        </div>
+                                        <div class="tab-pane " id="tab_f3">
+                                            <div class="btn-group btn-group-sm" role="group" aria-label="Left Align">
+                                                <br /><button type="button" class="sell" onclick="sellAllCommon()">Sell All Common</button>
+                                                <button type="button" class="sell" onclick="sellAllUncommon()">Sell All Uncommon</button>
+                                                <button type="button" class="sell" onclick="sellAllRare()">Sell All Rare</button>
+                                                <button type="button" class="sell" onclick="sellAllEpic()">Sell All Epic</button>
+                                            </div>
+                                            <div class="inventory" id="inventory"></div>
+
+
+                                        </div>
+                                        <div class="tab-pane" id="tab_f4">
+                                            <div class="c3">
+                                                <h4>Spells</h4>
+                                            </div>
+                                            <div id="playerSkills"></div>
+                                        </div>
                                     </div>
-                                    <div class="inventory" id="inventory"></div>
-
-
                                 </div>
-                                <div class="tab-pane" id="tab_f4">
+                                <div class="tab-pane" id="tab_b2">
                                     <div class="c3">
-                                        <h4>Spells</h4>
+                                        <h4>Weapon Skills</h4>
                                     </div>
-                                    <div id="equipHtml"> </div>
-                                    <div id="playerSkills"></div>
+                                    <div id="weaponSkill"></div>
+
                                 </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tab_b2">
-                            <div class="c3">
-                                <h4>Weapon Skills</h4>
-                            </div>
-                            <div id="weaponSkill"></div>
-
-                        </div>
-                        <div class="tab-pane" id="tab_c2">
-                            <div class="c3">
-                                <h4>Shop</h4>
-                            </div>
-                            <p>
-                                <img src="images/stat.png" alt="Buy Stat">Stat Points(<span id="buyStat">500</span> gold)
-                                <button type="button" class="buy" onclick="buyStat(1)">Buy</button>
-                                <button type="button" class="buy" onclick="buyStat(10)">Buy 10</button>
-                                <button type="button" class="buy" onclick="buyStat(100)">Buy 100</button><br />
-                                <img src="images/bag.png" alt="Upgrade Backpack">Bag Slots(<span id="buyBackpack">100</span> gold)
-                                <button type="button" class="buy" onclick="buyBackpack(1)">Buy</button>
-                                <button type="button" class="buy" onclick="buyBackpack(10)">Buy 10</button>
-                                <button type="button" class="buy" onclick="buyBackpack(100)">Buy 100</button><br>
-                                <img src="images/hp.png" alt="Buy Potion">Health Potion(20gold each)
-                                <button type="button" class="buy" onclick="buyPotion(1)">Buy</button>
-                                <button type="button" class="buy" onclick="buyPotion(10)">Buy 10</button>
-                                <button type="button" class="buy" onclick="buyPotion(100)">Buy 100</button><br>
-                                <img src="images/hp.png" alt="Buy Super Potion">Super Potion(100gold each)
-                                <button type="button" class="buy" onclick="buySuperPotion(1)">Buy</button>
-                                <button type="button" class="buy" onclick="buySuperPotion(10)">Buy 10</button>
-                                <button type="button" class="buy" onclick="buySuperPotion(100)">Buy 100</button><br>
-                                <img src="images/hp.png" alt="Buy Mega Potion">Mega Potion(500gold each)
-                                <button type="button" class="buy" onclick="buyMegaPotion(1)">Buy</button>
-                                <button type="button" class="buy" onclick="buyMegaPotion(10)">Buy 10</button>
-                                <button type="button" class="buy" onclick="buyMegaPotion(100)">Buy 100</button>
-                            </p>
-                        </div>
-
-                        <div class="tab-pane" id="tab_d2">
-                            <div class="c3">
-                                <h4>Save & Options</h4>
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="button" class="btn btn-sm btn-default" onclick="saveGameFunction('manualSave')">
-                                    save
-                                </button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="load()">
-                                    load
-                                </button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="resetCheck()">
-                                    reset
-                                </button><br /><br />
-                                <div id="saveTime"></div>
-                                <br /><br />
-                                <button type="button" class="btn btn-sm btn-default" onclick="saveExport()">
-                                    Export
-                                </button>
-                                <button type="button" class="btn btn-sm btn-default" onclick="selectText('saveExport')">
-                                    Select all text
-                                </button>
-                                <div class="scroll c4 c3 col-xs-10" id="saveExport" style="height:100px; word-wrap: break-word;"></div><br />
-                                <button type="button" class="btn btn-sm btn-default" onclick="importSave()">
-                                    Import
-                                </button>
-                                <textarea class="scroll c4 c3 col-xs-10" id="saveImport" rows="6" style="word-wrap: break-word;"></textarea><br />
-
-                               
-                                <a href="updates.txt" target="_blank">Changelog</a><br />
-                                <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
-                                <div><label><input type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
-                                <div><label><input type='checkbox' id="uncommon" onclick='handleClick();'>Destroy all Uncommon</label></div>
-                                <div><label><input type='checkbox' id="rare" onclick='handleClick();'>Destroy all Rare</label></div>
-                                <div><label><input type='checkbox' id="epic" onclick='handleClick();'>Destroy all Epic</label></div><br />
-                                <div class="c3">
-                                    <b>Game is free, but donations are always welcome.</b>
-                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                        <input type="hidden" name="hosted_button_id" value="A9UAZH8H9XHFQ">
-                                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                        <img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
-                                    </form>
+                                <div class="tab-pane" id="tab_c2">
+                                    <div class="c3">
+                                        <h4>Shop</h4>
+                                    </div>
+                                    <p>
+                                        <img src="images/stat.png" alt="Buy Stat">Stat Points(<span id="buyStat">500</span> gold)
+                                        <button type="button" class="buy" onclick="buyStat(1)">Buy</button>
+                                        <button type="button" class="buy" onclick="buyStat(10)">Buy 10</button>
+                                        <button type="button" class="buy" onclick="buyStat(100)">Buy 100</button><br />
+                                        <img src="images/bag.png" alt="Upgrade Backpack">Bag Slots(<span id="buyBackpack">100</span> gold)
+                                        <button type="button" class="buy" onclick="buyBackpack(1)">Buy</button>
+                                        <button type="button" class="buy" onclick="buyBackpack(10)">Buy 10</button>
+                                        <button type="button" class="buy" onclick="buyBackpack(100)">Buy 100</button><br>
+                                        <img src="images/hp.png" alt="Buy Potion">Health Potion(20gold each)
+                                        <button type="button" class="buy" onclick="buyPotion(1)">Buy</button>
+                                        <button type="button" class="buy" onclick="buyPotion(10)">Buy 10</button>
+                                        <button type="button" class="buy" onclick="buyPotion(100)">Buy 100</button><br>
+                                        <img src="images/hp.png" alt="Buy Super Potion">Super Potion(100gold each)
+                                        <button type="button" class="buy" onclick="buySuperPotion(1)">Buy</button>
+                                        <button type="button" class="buy" onclick="buySuperPotion(10)">Buy 10</button>
+                                        <button type="button" class="buy" onclick="buySuperPotion(100)">Buy 100</button><br>
+                                        <img src="images/hp.png" alt="Buy Mega Potion">Mega Potion(500gold each)
+                                        <button type="button" class="buy" onclick="buyMegaPotion(1)">Buy</button>
+                                        <button type="button" class="buy" onclick="buyMegaPotion(10)">Buy 10</button>
+                                        <button type="button" class="buy" onclick="buyMegaPotion(100)">Buy 100</button>
+                                    </p>
                                 </div>
+
+                                <div class="tab-pane" id="tab_d2">
+                                    <div class="c3">
+                                        <h4>Save & Options</h4>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-sm btn-default" onclick="saveGameFunction('manualSave')">
+                                            save
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-default" onclick="load()">
+                                            load
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-default" onclick="resetCheck()">
+                                            reset
+                                        </button><br /><br />
+                                        <div id="saveTime"></div>
+                                        <br /><br />
+                                        <button type="button" class="btn btn-sm btn-default" onclick="saveExport()">
+                                            Export
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-default" onclick="selectText('saveExport')">
+                                            Select all text
+                                        </button>
+                                        <div class="scroll c4 c3 col-xs-10" id="saveExport" style="height:100px; word-wrap: break-word;"></div><br />
+                                        <button type="button" class="btn btn-sm btn-default" onclick="importSave()">
+                                            Import
+                                        </button>
+                                        <textarea class="scroll c4 c3 col-xs-10" id="saveImport" rows="6" style="word-wrap: break-word;"></textarea><br />
+
+
+                                        <a href="updates.txt" target="_blank">Changelog</a><br />
+                                        <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
+                                        <div><label><input type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
+                                        <div><label><input type='checkbox' id="uncommon" onclick='handleClick();'>Destroy all Uncommon</label></div>
+                                        <div><label><input type='checkbox' id="rare" onclick='handleClick();'>Destroy all Rare</label></div>
+                                        <div><label><input type='checkbox' id="epic" onclick='handleClick();'>Destroy all Epic</label></div><br />
+                                        <div class="c3">
+                                            <b>Game is free, but donations are always welcome.</b>
+                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                                <input type="hidden" name="cmd" value="_s-xclick">
+                                                <input type="hidden" name="hosted_button_id" value="A9UAZH8H9XHFQ">
+                                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                                <img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_e2">
+                                    <div class="c3">
+                                        <h4>Credits</h4>
+                                    </div>
+                                    <div class="centerText">
+                                        <b>Tarnos - Main developer</b><p><a href="http://www.reddit.com/user/tarnos12/" target="_blank">Reddit profile</a></p>
+                                        <b>Rohan Jain - Help with the code/development</b><p><a href="http://www.reddit.com/user/ArjaaAine" target="_blank">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078" target="_blank">LinkedIn profile</a></p>
+                                        <b>Darkshadow44 - Help with game code</b><p><a href="http://steamcommunity.com/profiles/76561198036405586/" target="_blank">Steam profile</a></p>
+                                        <b>Jason Lee - Story</b><p><a href="http://www.reddit.com/user/ParanoiDoom" target="_blank">Reddit profile</a></p>
+                                        <b>Reddit users - Feedback</b><p><a href="http://www.reddit.com/r/incremental_games/" target="_blank">Incremental Reddit</a></p>
+                                        <b>David E. Gervais - Monster images</b><p><a href="http://pousse.rapiere.free.fr/tome/" target="_blank">http://pousse.rapiere.free.fr/tome/</a><br />Published under the Creative Commons licence.</p>
+                                        <b>Music by Eric Matyas</b><p><a href="www.soundimage.org" target="_blank">www.soundimage.org</a></p>
+                                    </div>
+                                </div>
+                                <!-- tab content -->
                             </div>
+                            <!-- end of container -->
                         </div>
-                        <div class="tab-pane" id="tab_e2">
-                            <div class="c3">
-                                <h4>Credits</h4>
-                            </div>
-                            <div class="centerText">
-                                <b>Tarnos - Main developer</b><p><a href="http://www.reddit.com/user/tarnos12/" target="_blank">Reddit profile</a></p>
-                                <b>Rohan Jain - Help with the code/development</b><p><a href="http://www.reddit.com/user/ArjaaAine" target="_blank">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078" target="_blank">LinkedIn profile</a></p>
-                                <b>Darkshadow44 - Help with game code</b><p><a href="http://steamcommunity.com/profiles/76561198036405586/" target="_blank">Steam profile</a></p>
-                                <b>Jason Lee - Story</b><p><a href="http://www.reddit.com/user/ParanoiDoom" target="_blank">Reddit profile</a></p>
-                                <b>Reddit users - Feedback</b><p><a href="http://www.reddit.com/r/incremental_games/" target="_blank">Incremental Reddit</a></p>
-                                <b>David E. Gervais - Monster images</b><p><a href="http://pousse.rapiere.free.fr/tome/" target="_blank">http://pousse.rapiere.free.fr/tome/</a><br />Published under the Creative Commons licence.</p>
-                                <b>Music by Eric Matyas</b><p><a href="www.soundimage.org" target="_blank">www.soundimage.org</a></p>
-                            </div>
-                        </div>
-                        <!-- tab content -->
                     </div>
-                    <!-- end of container -->
                 </div>
             </div>
         </div>
-        <div id="selectClassBackground" class="disabledBackgroundDiv" style="display: none;"></div>
     </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" type="text/javascript"></script><!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/skills.js"></script>
     <script type="text/javascript" src="js/weaponMastery.js"></script>

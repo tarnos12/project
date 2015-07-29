@@ -29,7 +29,7 @@
 
 };
 function quest() {
-    if (player.level >= 2) {
+    if (player.properties.level >= 2) {
         monsterList.VarikSoldier.Stats.isShown = true;
         if (monsterUnlock.VarikSoldier == false) {
             document.getElementById("varik").innerHTML += '<h3><b>Varik Soldiers</b></h3><br />' +
@@ -43,7 +43,7 @@ function quest() {
         };
         monsterUnlock.VarikSoldier = true;
     };
-    if (player.level >= 3) {
+    if (player.properties.level >= 3) {
         monsterList.VarikMarksmen.Stats.isShown = true;
         if (monsterUnlock.VarikMarksmen == false) {
             document.getElementById("varik").innerHTML += '<h3><b>Varik Marksmen</b></h3><br />' +
@@ -57,7 +57,7 @@ function quest() {
         };
         monsterUnlock.VarikMarksmen = true;
     };
-    if (player.level >= 4) {
+    if (player.properties.level >= 4) {
         monsterList.VarikVulture.Stats.isShown = true;
         if (monsterUnlock.VarikVulture == false) {
             document.getElementById("varik").innerHTML += '<h3><b>Varik Vulture</b></h3><br />' +
@@ -70,7 +70,7 @@ function quest() {
         };
         monsterUnlock.VarikVulture = true;
     };
-    if (player.level >= 5) {
+    if (player.properties.level >= 5) {
         monsterList.VarikEvader.Stats.isShown = true;
         if (monsterUnlock.VarikEvader == false) {
             document.getElementById("varik").innerHTML += '<h3><b>Varik Evader</b></h3><br />' +
@@ -87,7 +87,7 @@ function quest() {
         };
         monsterUnlock.VarikEvader = true;
     };
-    if (player.level >= 6) {
+    if (player.properties.level >= 6) {
         monsterList.VariksLiar.Stats.isShown = true;
         if (monsterUnlock.VariksLiar == false) {
             document.getElementById("varik").innerHTML += '<h3><b>Variks Liar</b></h3><br />' +
@@ -102,7 +102,7 @@ function quest() {
         };
         monsterUnlock.VariksLiar = true;
     };
-    if (player.level >= 7) {
+    if (player.properties.level >= 7) {
         monsterList.VariksQueen.Stats.isShown = true;
         if (monsterUnlock.VariksQueen == false) {
             document.getElementById("varik").innerHTML += '<h3><b>Variks Queen</b></h3><br />' +
@@ -120,7 +120,7 @@ function quest() {
         };
         monsterUnlock.VariksQueen = true;
     };
-    if (player.level >= 8) {
+    if (player.properties.level >= 8) {
         monsterList.LordVarik.Stats.isShown = true;
         if (monsterUnlock.LordVarik == false) {
             document.getElementById("varik").innerHTML += '<h3><b>Lord Varik</b></h3><br />' +
@@ -141,7 +141,7 @@ function quest() {
         };
         monsterUnlock.LordVarik = true;
     };
-    if (player.level >= 9) {
+    if (player.properties.level >= 9) {
         monsterList.ToxicFlies.Stats.isShown = true;
         if (monsterUnlock.ToxicFlies == false) {
             document.getElementById("varik").innerHTML += '<h3><b>The End of Lord Varik</b></h3><br />' +
@@ -178,7 +178,7 @@ function quest() {
         };
         monsterUnlock.ToxicFlies = true;
     };
-    if (player.level >= 10) {
+    if (player.properties.level >= 10) {
         monsterList.Stalker.Stats.isShown = true;
         if (monsterUnlock.Stalker == false) {
             document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Stalker</b></h3><br />' +
@@ -192,7 +192,7 @@ function quest() {
         };
         monsterUnlock.Stalker = true;
     };
-    if (player.level >= 11) {
+    if (player.properties.level >= 11) {
         monsterList.AlphaStalker.Stats.isShown = true;
         if (monsterUnlock.AlphaStalker == false) {
             document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Alpha Stalker</b></h3><br />' +
@@ -216,7 +216,7 @@ function quest() {
         };
         monsterUnlock.AlphaStalker = true;
     };
-    if (player.level >= 12) {
+    if (player.properties.level >= 12) {
         monsterList.StalkerPack.Stats.isShown = true;
         if (monsterUnlock.StalkerPack == false) {
             document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Stalker Pack</b></h3><br />' +
@@ -231,7 +231,7 @@ function quest() {
         };
         monsterUnlock.StalkerPack = true;
     };
-    if (player.level >= 13) {
+    if (player.properties.level >= 13) {
         monsterList.JumpingSpider.Stats.isShown = true;
         if (monsterUnlock.JumpingSpider == false) {
             document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Jumping Spider</b></h3><br />' +
@@ -252,7 +252,7 @@ function quest() {
         };
         monsterUnlock.JumpingSpider = true;
     };
-    if (player.level >= 14) {
+    if (player.properties.level >= 14) {
         monsterList.SpiderBeast.Stats.isShown = true;
         if (monsterUnlock.SpiderBeast == false) {
             document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Spider Beast</b></h3><br />' +
@@ -278,7 +278,7 @@ function quest() {
         };
         monsterUnlock.SpiderBeast = true;
     };
-    if (player.level >= 15) {
+    if (player.properties.level >= 15) {
         monsterList.Narsus.Stats.isShown = true;
         if (monsterUnlock.Narsus == false) {
             document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Narsus</b></h3><br />' +
@@ -325,7 +325,7 @@ function quest() {
         };
         monsterUnlock.Narsus = true;
     };
-    if (player.level >= 16) {
+    if (player.properties.level >= 16) {
         monsterList.JotunnScout.Stats.isShown = true;
         if (monsterUnlock.JotunnScout == false) {
             document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />' +
@@ -354,7 +354,7 @@ function quest() {
         };
         monsterUnlock.JotunnScout = true;
     };
-    if (player.level >= 17) {
+    if (player.properties.level >= 17) {
         monsterList.JotnarAmbushSquad.Stats.isShown = true;
         if (monsterUnlock.JotnarAmbushSquad == false) {
             document.getElementById("ozJotnar").innerHTML += '<p class="story">Why is that wherever you go someone wants to kill you?' +
@@ -406,7 +406,7 @@ function quest() {
         };
         monsterUnlock.JotnarAmbushSquad = true;
     };
-    if (player.level >= 18) {
+    if (player.properties.level >= 18) {
         monsterList.LongRangeExterminationSquad.Stats.isShown = true;
         if (monsterUnlock.LongRangeExterminationSquad == false) {
             document.getElementById("ozJotnar").innerHTML += '<h3><b>Long Range Extermination Squad</b></h3><br />' +
@@ -431,7 +431,7 @@ function quest() {
         };
         monsterUnlock.LongRangeExterminationSquad = true;
     };
-    if (player.level >= 19) {
+    if (player.properties.level >= 19) {
         monsterList.BerserkerShockSquad.Stats.isShown = true;
         if (monsterUnlock.BerserkerShockSquad == false) {
             document.getElementById("ozJotnar").innerHTML += '<h3><b>Berserker ShockSquad</b></h3><br />' +
@@ -464,7 +464,7 @@ function quest() {
         };
         monsterUnlock.BerserkerShockSquad = true;
     };
-    if (player.level >= 20) {
+    if (player.properties.level >= 20) {
         monsterList.BerserkerShockSquadCaptainRendGrest.Stats.isShown = true;
         if (monsterUnlock.BerserkerShockSquadCaptainRendGrest == false) {
             document.getElementById("ozJotnar").innerHTML += '<h3><b>Berserker Shock Squad Captain, Rend Grest</b></h3><br />' +
@@ -488,7 +488,7 @@ function quest() {
         };
         monsterUnlock.BerserkerShockSquadCaptainRendGrest = true;
     };
-    if (player.level >= 21) {
+    if (player.properties.level >= 21) {
         monsterList.ArtillerySquad.Stats.isShown = true;
         if (monsterUnlock.ArtillerySquad == false) {
             document.getElementById("ozJotnar").innerHTML += '<h3><b>Artillery Squad #1-9</b></h3><br />' +
@@ -522,7 +522,7 @@ function quest() {
         };
         monsterUnlock.ArtillerySquad = true;
     };
-    if (player.level >= 22) {
+    if (player.properties.level >= 22) {
         monsterList.JottunMainInfantry.Stats.isShown = true;
         if (monsterUnlock.JottunMainInfantry == false) {
             document.getElementById("ozJotnar").innerHTML += '<h3><b>Jottun Main Infantry</b></h3><br />' +
@@ -550,7 +550,7 @@ function quest() {
             };
         monsterUnlock.JottunMainInfantry = true;
     };
-    if (player.level >= 23) {
+    if (player.properties.level >= 23) {
         monsterList.RegentCairLorn.Stats.isShown = true;
         if (monsterUnlock.RegentCairLorn == false) {
             document.getElementById("ozJotnar").innerHTML += '<h3><b>Regent Cair Lorn</b></h3><br />' +
@@ -574,7 +574,7 @@ function quest() {
             };
         monsterUnlock.RegentCairLorn = true;
     };
-    if (player.level >= 24) {
+    if (player.properties.level >= 24) {
         monsterList.DeepKingTarNuk.Stats.isShown = true;
         if (monsterUnlock.DeepKingTarNuk == false) {
             document.getElementById("ozJotnar").innerHTML += '<h3><b>Deep King Tar Nuk</b></h3><br />' +
@@ -601,7 +601,7 @@ function quest() {
         };
         monsterUnlock.DeepKingTarNuk = true;
     };
-    if (player.level >= 25) {
+    if (player.properties.level >= 25) {
         monsterList.Zombie.Stats.isShown = true;
         if (monsterUnlock.Zombie == false) {
             document.getElementById("ozJotnar").innerHTML += '<h1><b>Oz Jotnar Epilogue</b></h1><br />' +
@@ -647,25 +647,25 @@ function quest() {
         };
         monsterUnlock.Zombie = true;
     };
-    if (player.level >= 26) {
+    if (player.properties.level >= 26) {
         monsterList.Skeleton.Stats.isShown = true;
     };
-    if (player.level >= 27) {
+    if (player.properties.level >= 27) {
         monsterList.SkeletonSoldier.Stats.isShown = true;
     };
-    if (player.level >= 28) {
+    if (player.properties.level >= 28) {
         monsterList.SkeletonArcher.Stats.isShown = true;
     };
-    if (player.level >= 29) {
+    if (player.properties.level >= 29) {
         monsterList.SkeletonMage.Stats.isShown = true;
     };
-    if (player.level >= 30) {
+    if (player.properties.level >= 30) {
         monsterList.SkeletonHealer.Stats.isShown = true;
     };
-    if (player.level >= 31) {
+    if (player.properties.level >= 31) {
         monsterList.Wraith.Stats.isShown = true;
     };
-    if (player.level >= 32) {
+    if (player.properties.level >= 32) {
         monsterList.LichKing.Stats.isShown = true;
     };
     CreateMonsterHtml();
