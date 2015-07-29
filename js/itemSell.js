@@ -4,15 +4,15 @@ function sellAllCommon() {
 
     for (var i = 0; i < playerInventory.length; i++) {
         if (playerInventory[i].itemQuality === "Common") {
-            total += playerInventory[i].value << 0;
+            total += playerInventory[i].Value << 0;
         } else {
             playerInventoryNew.push(playerInventory[i]);
         }
     }
-    player.gold += total;
+    player.properties.gold += total;
     playerInventory = playerInventoryNew;
     CreateInventoryWeaponHtml();
-    document.getElementById("gold").innerHTML = player.gold;
+    document.getElementById("gold").innerHTML = player.properties.gold;
     total = 0;
 };
 function sellAllUncommon() {
@@ -20,15 +20,15 @@ function sellAllUncommon() {
 
     for (var i = 0; i < playerInventory.length; i++) {
         if (playerInventory[i].itemQuality === "Uncommon") {
-            total += playerInventory[i].value << 0;
+            total += playerInventory[i].Value << 0;
         } else {
             playerInventoryNew.push(playerInventory[i]);
         };
     };
-    player.gold += total;
+    player.properties.gold += total;
     playerInventory = playerInventoryNew;
     CreateInventoryWeaponHtml();
-    document.getElementById("gold").innerHTML = player.gold;
+    document.getElementById("gold").innerHTML = player.properties.gold;
     total = 0;
 };
 function sellAllRare() {
@@ -36,15 +36,15 @@ function sellAllRare() {
 
     for (var i = 0; i < playerInventory.length; i++) {
         if (playerInventory[i].itemQuality === "Rare") {
-            total += playerInventory[i].value << 0;
+            total += playerInventory[i].Value << 0;
         } else {
             playerInventoryNew.push(playerInventory[i]);
         };
     };
-    player.gold += total;
+    player.properties.gold += total;
     playerInventory = playerInventoryNew;
     CreateInventoryWeaponHtml();
-    document.getElementById("gold").innerHTML = player.gold;
+    document.getElementById("gold").innerHTML = player.properties.gold;
     total = 0;
 };
 function sellAllEpic() {
@@ -53,15 +53,15 @@ function sellAllEpic() {
 
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemQuality === "Epic") {
-                total += playerInventory[i].value << 0;
+                total += playerInventory[i].Value << 0;
             } else {
                 playerInventoryNew.push(playerInventory[i]);
             };
         };
-        player.gold += total;
+        player.properties.gold += total;
         playerInventory = playerInventoryNew;
         CreateInventoryWeaponHtml();
-        document.getElementById("gold").innerHTML = player.gold;
+        document.getElementById("gold").innerHTML = player.properties.gold;
         total = 0;
     };
 };
@@ -74,7 +74,7 @@ function itemSell(id) {
     if (index > -1) {
         playerInventory.splice(index, 1);
     }
-    player.gold += item.value;
+    player.properties.gold += item.Value;
     CreateInventoryWeaponHtml();
-    document.getElementById("gold").innerHTML = player.gold;
+    document.getElementById("gold").innerHTML = player.properties.gold;
 };

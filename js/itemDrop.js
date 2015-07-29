@@ -1,9 +1,21 @@
 ﻿function monsterItemDrop(monster) {
-    if (playerInventory.length <= player.functions.inventory()) {
-
-        getItemType(monster);
-        CreateInventoryWeaponHtml();
-    }
+    var itemDropNumber = 0;
+    var randomItemAmount = Math.floor(Math.random() * 5) + 1; // 1-5 item drop per monster kill
+    for (var i = 0; i < randomItemAmount; i++) {
+        var randomItemChance = Math.floor(Math.random() * (1000 - 1) + 1);
+        if (randomItemChance * player.functions.dropRate() >= 500) {
+            if (playerInventory.length <= player.functions.inventory()) {
+                getItemType(monster); // Call getItemType(monster); several times, for multiple item drop per monster kill/ random amount of items per kill...
+                itemDropNumber += 1;
+            }
+            else {
+                Log('<span id=\"inventoryFull\" style=\"color:red;\">' + "Your inventory is full.<br />" + "</span>");
+            }
+        };
+    };
+    Log('<span id=\"itemDropNew\" style=\"color:orange; display:none;\">You found ' + (itemDropNumber + 1) + " items! <br />" + "</span>");
+    itemDropLog();
+    CreateInventoryWeaponHtml();
 };
 
 function getItemType(monster) {
@@ -20,7 +32,7 @@ function getItemType(monster) {
     }
     else {
         var monsterMinLevel = monsterStats.level / 2;
-        itemLevel = Math.floor(Math.random() * (monsterStats.level - monsterMinLevel + 1)) + monsterMinLevel; // get itemLevel based on monster max level and maxLevel / 2...
+        itemLevel = Math.floor(Math.random() * (monsterStats.level - monsterMinLevel + 1)) + monsterMinLevel; // get itemLevel based on monster level / 2 and monster level.
     };
     dropItem["iLvl"] = itemLevel;
     dropItem["id"] = player.properties.itemIdNumber;
@@ -95,6 +107,8 @@ function getItemRarity(monster, dropItem) {
             dropItem["minMods"] = itemType2.minMods;
             dropItem["maxMods"] = itemType2.maxMods;
             dropItem["image"] = dropItem.subType + dropItem.itemQuality;
+            dropItem["color"] = itemColor;
+            dropItem["power"] = itemType2.power;
             break;
         };
     };
@@ -103,9 +117,9 @@ function getItemRarity(monster, dropItem) {
 
 function getItemBaseStats(monster, dropItem) {
     if (dropItem.itemType === "weapon") {
-        var randomNumber = Math.floor(Math.random() * (dropItem.iLvl - 1 + 1)) + 1;
-        dropItem["MinDamage"] = randomNumber;
-        dropItem["MaxDamage"] = randomNumber + dropItem.iLvl;
+        var randomNumber = Math.floor(Math.random() * ((dropItem.iLvl + dropItem.power) - 1 + 1)) + 1;
+        dropItem["MinDamage"] = randomNumber
+        dropItem["MaxDamage"] = randomNumber + dropItem.iLvl
     }
     else if (dropItem.itemType === "armor") {
         var randomNumber = Math.floor(Math.random() * (dropItem.iLvl - 1 + 1)) + 1;
@@ -158,62 +172,79 @@ function getBonusItemMod(monster, dropItem) {
     var itemModLevelLength = itemModLevel.length;
     var randomModAmount = Math.floor(Math.random() * (maxMods - minMods + 1)) + minMods; //Random value between min/max(both inclusive !important)
     newArray = itemModLevel.slice(); // Copy an array so we can remove array values so we dont get double of the same bonus on the item
+    dropItem['Value'] = 0;
     for (var i = 0; i < itemModLevelLength; i++) {
-        randomMod = newArray[Math.floor(Math.random() * newArray.length)]; // picks a random bonus
-        //console.log("1st: " + itemModLevelLength + " 2nd: " + newArray.length + " Mod: " + randomMod.type + " item type: " + dropItem.itemType);
-        if (randomMod.type === "Block chance" && dropItem.itemType !== "armor") {
-            console.log("item Type: " + dropItem.itemType)
-        }
+        console.log(i + " + " + itemModLevelLength)
+        randomMod = newArray[Math.floor(Math.random() * (newArray.length))]; // picks a random bonus
         if (currentMods < randomModAmount) {
             if (randomMod.type === "Life gain on hit" && dropItem.itemType === "weapon") {
-                    var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                    dropItem[randomMod.type] = randomModValue;
-                    var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
-                    newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
-                    currentMods += 1;
-            }
-            else if (randomMod.type === "Critical chance" || randomMod.type === "Critical Damage" && dropItem.itemType === "weapon") {
-                    var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                    dropItem[randomMod.type] = randomModValue;
-                    var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
-                    newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
-                    currentMods += 1;
-            }
-            else if (randomMod.type === "Bonus damage" && dropItem.itemType === "weapon") {
-                    var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                    dropItem[randomMod.type] = randomModValue;
-                    dropItem.MinDamage = dropItem.MinDamage + (dropItem.MinDamage * randomModValue / 100);
-                    dropItem.MaxDamage = dropItem.MaxDamage + (dropItem.MaxDamage * randomModValue / 100);
-                    var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
-                    newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
-                    currentMods += 1;
-            }
-            else if (randomMod.type === "Block chance" && dropItem.subType === "shield" && dropItem.itemType === "armor") {
-                    var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                    dropItem[randomMod.type] = randomModValue;
-                    dropItem['Block amount'] = randomModValue * 5;
-                    var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
-                    newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
-                    currentMods += 1;
-            }
-            else if (randomMod.type === "Bonus armor" && dropItem.itemType === "armor") {
-                    var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                    dropItem[randomMod.type] = randomModValue;
-                    dropItem.defense += randomModValue;
-                    var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
-                    newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
-                    currentMods += 1;
-            }
-            else if (randomMod.type !== "Block chance" || randomMod.type !== "Bonus damage" || randomMod.type !== "Bonus armor" || randomMod.type !== "Life gain on hit" || randomMod.type !== "Critical chance" || randomMod.type !== "Critical damage") {
                 var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
                 dropItem[randomMod.type] = randomModValue;
+                dropItem.Value += randomMod.baseValue * randomModValue;
                 var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
                 newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
                 currentMods += 1;
             }
+            else if (randomMod.type === "Critical chance" || randomMod.type === "Critical Damage" && dropItem.itemType === "weapon") {
+                var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
+                dropItem[randomMod.type] = randomModValue;
+                dropItem.Value += randomMod.baseValue * randomModValue;
+                var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
+                newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
+                currentMods += 1;
+            }
+            else if (randomMod.type === "Bonus damage" && dropItem.itemType === "weapon") {
+                var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
+                dropItem[randomMod.type] = randomModValue + "%"
+                dropItem.Value += randomMod.baseValue * randomModValue;
+                dropItem.MinDamage = Math.floor(dropItem.MinDamage + (dropItem.MinDamage * randomModValue / 100));
+                dropItem.MaxDamage = Math.floor(dropItem.MaxDamage + (dropItem.MaxDamage * randomModValue / 100));
+                var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
+                newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
+                currentMods += 1;
+            }
+            else if (randomMod.type === "Block chance" && dropItem.subType === "shield" && dropItem.itemType === "armor") {
+                var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
+                dropItem[randomMod.type] = randomModValue;
+                dropItem.Value += randomMod.baseValue * randomModValue;
+                dropItem['Block amount'] = randomModValue * 5;
+                var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
+                newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
+                currentMods += 1;
+            }
+            else if (randomMod.type === "Bonus armor" && dropItem.itemType === "armor") {
+                var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
+                dropItem[randomMod.type] = randomModValue;
+                dropItem.Value += randomMod.baseValue * randomModValue;
+                dropItem.defense += randomModValue;
+                var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
+                newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
+                currentMods += 1;
+            }
+            else if (randomMod.type !== "Block chance" && randomMod.type !== "Bonus damage" && randomMod.type !== "Bonus armor" && randomMod.type !== "Life gain on hit" && randomMod.type !== "Critical chance" && randomMod.type !== "Critical damage") {
+                var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
+                dropItem[randomMod.type] = randomModValue;
+                dropItem.Value += randomMod.baseValue * randomModValue;
+                var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
+                newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
+                currentMods += 1;
+            }
+            else {
+                dropItem[randomMod.type] = 0;
+                if (dropItem["Block chance"] === undefined){
+                    dropItem['Block amount'] += 0;
+                }
+                var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
+                newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
+                currentMods += 1;
+            }
+
         }
         else {
             dropItem[randomMod.type] = 0;
+            if (dropItem["Block chance"] === undefined){
+                dropItem['Block amount'] += 0;
+            }
             var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
             newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
             currentMods += 1;
@@ -232,7 +263,6 @@ function getBonusItemMod(monster, dropItem) {
             JSON.parse(JSON.stringify(itemHolder))
             );
         player.properties.itemIdNumber += 1;
-        Log("<span style=\"color:orange\">You found an item! <br /> </span>");
     }
     else {
         //player.properties.gold += Math.floor(dropItem.value * 0.2);

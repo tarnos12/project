@@ -139,7 +139,6 @@ function load() {
     CreateMonsterHtml();
     versionCheck();
     CreatePlayerSkillsHtml();
-    updateHtml();
     CreatePlayerHotBar();
     skillChargeFill();
     updateBar();
@@ -147,9 +146,11 @@ function load() {
     playerReviveCheck();
     removeStartingScreen();
     unequipItemLoad();
+    primaryStatUpdate();
     secondaryStatUpdate();
     EquippedItemsEmpty();
     checkIfEquippedEmpty();
+    updateHtml();
 };
 
 function resetCheck() {

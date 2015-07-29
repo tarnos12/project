@@ -494,7 +494,7 @@ function createEquippedItemsObject(typeOfTheItem) {
 
 createEquippedItemsObject('all');
 
-var maxLogLines = 100;
+var maxLogLines = 12;
 var logData = {
     length: 0
 };
@@ -518,7 +518,7 @@ var monsterDamage = 0;
 
 
 function disableButtons() {
-    $("span.attack").toggleClass("buttonDisable");
+    $("img.monster").toggleClass("buttonDisable");
 };
 
 function attack(monsterStat) {
@@ -775,15 +775,15 @@ function weaponSkill(monsterStat, monsterStats) {
     };
     var subType = equippedItems.weapon.subType;
     var itemStat = weaponMastery[subType];
-    if (weaponMastery[subType] !== undefined) {
-        if (weaponMastery[subType]["experience"] < weaponMastery[subType]["maxExperience"]) {
-            weaponMastery[subType]["experience"] = Math.floor(weaponMastery[subType]["experience"] + expgain);
+    if (itemStat !== undefined) {
+        if (itemStat["experience"] < itemStat["maxExperience"]) {
+            itemStat["experience"] = Math.floor(itemStat["experience"] + expgain);
         };
-        if (weaponMastery[subType]["experience"] >= weaponMastery[subType]["maxExperience"]) {
-            weaponMastery[subType]["level"] += 1;
-            weaponMastery[subType]["experience"] -= weaponMastery[subType]["maxExperience"];
-            weaponMastery[subType]["maxExperience"] = Math.floor(weaponMastery[subType]["maxExperience"] * 1.2);
-            Log("<span id=\"weaponMastery\" class =\"bold\" style=\"color:green; display:none;\">You gained level in " + weaponMastery[subType].name + " Mastery!" + "<br />" + "</span>");
+        if (itemStat["experience"] >= itemStat["maxExperience"]) {
+            itemStat["level"] += 1;
+            itemStat["experience"] -= itemStat["maxExperience"];
+            itemStat["maxExperience"] = Math.floor(itemStat["maxExperience"] * 1.2);
+            Log("<span id=\"weaponMastery\" class =\"bold\" style=\"color:green; display:none;\">You gained level in " + itemStat.name + " Mastery!" + "<br />" + "</span>");
             CreateWeaponSkillHtml();
             masteryLog();
         };
@@ -915,8 +915,8 @@ function displayLogInfo() {
 };
 
 function itemDropLog() {
+    $("#itemDropNew").fadeIn();
     console.log("TEST2");
-    $("#itemDrop").delay(2000).fadeIn();
 };
 
 function levelUpLog() {
@@ -1431,7 +1431,6 @@ function myAudio(sound) {
 
 };
 
-document.getElementById('myAudio').pause();
 function muteAudio() {
     var audio = document.getElementById("myAudio");
     if (audio.muted === true) {

@@ -1,32 +1,21 @@
 ﻿function updateHtml() {
     if (player.properties.stats >= 1) { // Show "plus" image when player level up
-        document.getElementById("vis1").style.visibility = "visible";
-        document.getElementById("vis2").style.visibility = "visible";
-        document.getElementById("vis3").style.visibility = "visible";
-        document.getElementById("vis4").style.visibility = "visible";
-        document.getElementById("vis5").style.visibility = "visible";
-        document.getElementById("vis6").style.visibility = "visible";
-        document.getElementById("vis7").style.visibility = "visible";
+        document.getElementById("Strength").style.visibility = "visible";
+        document.getElementById("Endurance").style.visibility = "visible";
+        document.getElementById("Agility").style.visibility = "visible";
+        document.getElementById("Dexterity").style.visibility = "visible";
+        document.getElementById("Wisdom").style.visibility = "visible";
+        document.getElementById("Intelligence").style.visibility = "visible";
+        document.getElementById("Luck").style.visibility = "visible";
     } else {
-        document.getElementById("vis1").style.visibility = "hidden";
-        document.getElementById("vis2").style.visibility = "hidden";
-        document.getElementById("vis3").style.visibility = "hidden";
-        document.getElementById("vis4").style.visibility = "hidden";
-        document.getElementById("vis5").style.visibility = "hidden";
-        document.getElementById("vis6").style.visibility = "hidden";
-        document.getElementById("vis7").style.visibility = "hidden";
+        document.getElementById("Strength").style.visibility = "hidden";
+        document.getElementById("Endurance").style.visibility = "hidden";
+        document.getElementById("Agility").style.visibility = "hidden";
+        document.getElementById("Dexterity").style.visibility = "hidden";
+        document.getElementById("Wisdom").style.visibility = "hidden";
+        document.getElementById("Intelligence").style.visibility = "hidden";
+        document.getElementById("Luck").style.visibility = "hidden";
     }
-    var minDamage;
-    var maxDamage;
-    var strength;
-    var endurance;
-    var agility;
-    var dexterity;
-    var intelligence;
-    var wisdom;
-    var luck;
-    var mana;
-    var maxMana;
     var level;
     var maxExperience;
     var experience;
@@ -37,17 +26,6 @@
     var superPotion;
     var megaPotion;
 
-    minDamage = document.getElementById('mindamage');
-    maxDamage = document.getElementById('maxdamage');
-    strength = document.getElementById('strength');
-    endurance = document.getElementById("endurance");
-    agility = document.getElementById("agility");
-    dexterity = document.getElementById("dexterity");
-    wisdom = document.getElementById("wisdom");
-    intelligence = document.getElementById("intelligence");
-    luck = document.getElementById("luck");
-    mana = document.getElementById("mana");
-    maxMana = document.getElementById("maxmana");
     level = document.getElementById("level");
     maxExperience = document.getElementById("maxexperience");
     experience = document.getElementById("experience");
@@ -57,17 +35,6 @@
     potion = document.getElementById('potion');
     superPotion = document.getElementById('superPotion');
     megaPotion = document.getElementById('megaPotion');
-    minDamage.innerHTML = player.functions.minDamage().toFixed(0);
-    maxDamage.innerHTML = player.functions.maxDamage().toFixed(0);
-    strength.innerHTML = player.functions.totalStrength() + " (" + '<font color="blue">' + player.functions.totalStrengthBonus() + '</font>' + ")";
-    endurance.innerHTML = player.functions.totalEndurance() + " (" + '<font color="blue">' + player.functions.totalEnduranceBonus() + '</font>' + ")";
-    agility.innerHTML = player.functions.totalAgility() + " (" + '<font color="blue">' + player.functions.totalAgilityBonus() + '</font>' + ")";
-    dexterity.innerHTML = player.functions.totalDexterity() + " (" + '<font color="blue">' + player.functions.totalDexterityBonus() + '</font>' + ")";
-    intelligence.innerHTML = player.functions.totalIntelligence() + " (" + '<font color="blue">' + player.functions.totalIntelligenceBonus() + '</font>' + ")";
-    mana.innerHTML = player.properties.mana.toFixed(0);
-    maxMana.innerHTML = player.functions.maxMana().toFixed(0);
-    wisdom.innerHTML = player.functions.totalWisdom() + " (" + '<font color="blue">' + player.functions.totalWisdomBonus() + '</font>' + ")";
-    luck.innerHTML = player.functions.totalLuck() + " (" + '<font color="blue">' + player.functions.totalLuckBonus() + '</font>' + ")";
     level.innerHTML = player.properties.level;
     maxExperience.innerHTML = player.properties.maxExperience;
     experience.innerHTML = player.properties.experience;
@@ -77,6 +44,7 @@
     potion.innerHTML = pot;
     superPotion.innerHTML = spot;
     megaPotion.innerHTML = mpot;
+    primaryStatUpdate();
     secondaryStatUpdate();
 };
 
@@ -106,7 +74,7 @@ window.setInterval(function () { //Health regen
 window.setInterval(function () { //Mana regen
     if (player.properties.mana < player.functions.maxMana()) player.properties.mana += player.functions.manaRegen();
     if (player.properties.mana > player.functions.maxMana()) player.properties.mana = player.functions.maxMana();
-    document.getElementById('mana').innerHTML = player.properties.mana.toFixed(0);
+   // document.getElementById('mana').innerHTML = player.properties.mana.toFixed(0);
 }, 1000);
 
 function levelUp() {

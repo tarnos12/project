@@ -48,7 +48,7 @@
         img.Legendary {
             outline: 2px solid red;
         }
-        div.rightAlign {
+        .rightAlign {
             text-align: right;
         }
         div.simpleBorder {
@@ -79,7 +79,7 @@
         div.scroll {
             display: block;
             overflow: auto;
-            height: 400px;
+            height: 300px;
         }
         .img-center {
             margin:0 auto;
@@ -211,118 +211,9 @@
                                     <div class=" col-xs-12">
                                         <div id="characterRace"></div>
                                     </div>
-                                    <div class="col-xs-6">
-                                        Damage
-                                        <span id="mindamage">2</span>-<span id="maxdamage">4</span>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Mana
-                                        <span id="mana">50</span>/<span id="maxmana">50</span>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Str <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                10 points = 2 Min Damage<br />
-                                                10 points = 3 Max Damage<br />
-                                                10 points = 1 Inventory slot
-                                            </span>
-                                        </a>
-                                        <span id="strength">5</span>
-                                        <input id="vis1" type="image" src="images/plus.jpg" alt="Sign Me Up!" data-toggle="tooltip" title="Tooltip on left" onclick="upgradeStrength(event);">
-                                    </div>
-                                    <div class="col-xs-6">
-                                        End <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                1 point = 3 Max Health<br />
-                                                3 points = 1 Health/s
-                                            </span>
-                                        </a>
-                                        <span id="endurance">5</span>
-
-                                        <input id="vis2" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeEndurance(event);">
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Agi <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                100 points = 2% Accuracy<br />
-                                                100 points = 3% Evasion<br />
-                                                5 points = 1 Defense<br />
-
-                                            </span>
-                                        </a>
-                                        <span id="agility">5</span>
-
-                                        <input id="vis3" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeAgility(event);">
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Dex <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                100 points = 3% Critical Chance<br />
-                                                10 points = 2% Critical Damage
-                                            </span>
-                                        </a>
-                                        <span id="dexterity">5</span>
-
-                                        <input id="vis4" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeDexterity(event);">
-
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Int <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                Currently not much use, and it's disabled until more content is added.<br />
-                                                10 points = 1 Max Mana
-                                            </span>
-                                        </a>
-
-                                        <span id="intelligence">5</span>
-
-                                        <input id="vis5" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeIntelligence(event);">
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Wis <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                10 points = 1 Mana/s<br />
-                                                2 points = 1 Max Mana
-                                            </span>
-                                        </a>
-
-                                        <span id="wisdom">5</span>
-
-                                        <input id="vis6" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeWisdom(event);">
-                                    </div>
-                                    <div class="col-xs-6">
-                                        Luk <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                100 points = 1% Accuracy<br />
-                                                100 points = 2% Evasion(20% cap)<br />
-                                                100 points = 1% Critical Chance<br />
-                                                100 points = 20% drop rate
-                                            </span>
-                                        </a>
-                                        <span id="luck">5</span>
-
-                                        <input id="vis7" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgradeLuck(event);">
-                                    </div>
+                                    <div id="primaryStat"></div>
                                     <div class="col-xs-6">
                                         <div><label><input type='checkbox' id="autoBattle" onclick='handleClick();'>Auto Battle</label></div><div class="manaCost" id="manaCost"></div>
-
-                                        <a href="#" class="tooltipA">
-                                            <img src="images/questionMark.png" alt="questionMark">
-                                            <span>
-                                                <ul>
-                                                    <li>Check auto battle box, and attack a monster once, after that you will attack it automatically as long as you have enough mana, displayed next to this box.</li>
-                                                    <br />
-                                                    <li>If you want to change monster, then uncheck auto battle box, check it again and attack different monster.</li>
-                                                </ul>
-                                            </span>
-                                        </a>
                                     </div>
                                     <div id="secondaryStat"></div>
                                 </div>
