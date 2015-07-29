@@ -174,7 +174,6 @@ function getBonusItemMod(monster, dropItem) {
     newArray = itemModLevel.slice(); // Copy an array so we can remove array values so we dont get double of the same bonus on the item
     dropItem['Value'] = 0;
     for (var i = 0; i < itemModLevelLength; i++) {
-        console.log(i + " + " + itemModLevelLength)
         randomMod = newArray[Math.floor(Math.random() * (newArray.length))]; // picks a random bonus
         if (currentMods < randomModAmount) {
             if (randomMod.type === "Life gain on hit" && dropItem.itemType === "weapon") {

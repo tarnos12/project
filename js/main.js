@@ -610,7 +610,6 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
             var selectedSpell = activeSpells[spell];
             if (selectedSpell.isActive == true && selectedSpell.charge > 0) {
                 magicDamage += selectedSpell.damage();
-                //console.log (selectedSpell.name + " damage: " + selectedSpell.damage())
                 selectedSpell.charge -= 1;
             };
         };
@@ -629,7 +628,6 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
                             }
                             else if (skillDamage.type2 == "magical") {
                                 magicDamage += skillDamage.damage();
-                                //console.log("Turn: " + battleTurn + " " + skillDamage.name + " damage: " + skillDamage.damage())
                                 skillDamage.charge -= 1;
                             }
                         };
@@ -637,7 +635,6 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
                             var randomChance = Math.floor((Math.random() * 100) + 1);
                             if (randomChance < skillDamage.chance()) {
                                 magicDamage += skillDamage.damage()
-                                //console.log("Turn: " + battleTurn + " " + skillDamage.name + " damage: " + skillDamage.damage())
                             }
                         }
                         if (skillDamage.type == "buff") {
@@ -753,7 +750,6 @@ function playerDead(monsterStat, monsterStats) {
 
 //monster kill function
 function monsterKilled(monsterStat, monsterStats) {
-    console.log("TEST");
     monsterStats.hp = monsterStats.maxHp;
     monsterExperience(monsterStat, monsterStats);
     weaponSkill(monsterStat, monsterStats);
@@ -916,7 +912,6 @@ function displayLogInfo() {
 
 function itemDropLog() {
     $("#itemDropNew").fadeIn();
-    console.log("TEST2");
 };
 
 function levelUpLog() {
