@@ -413,11 +413,11 @@ var player = {
             }
         },
         criticalChance: function () {
-            if (((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance()))) > 50) {
+            if (((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance() / 10))) > 50) {
                 return 50 + weaponSkillList.ranged.archerFocus.damage();
             }
             else {
-                return ((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance())));
+                return ((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance() / 10)));
             }
         },
         criticalDamage: function () {

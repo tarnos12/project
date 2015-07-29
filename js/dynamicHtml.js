@@ -244,7 +244,7 @@ function CreateInventoryWeaponHtml() {
                     if ('All attributes, Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Block chance, Evasion, Bonus damage, Bonus armor, Bonus life, Bonus mana, Health regen, Mana regen, Magic find, Gold drop, Experience rate, Life gain on hit, Critical damage, Critical chance, defense'.indexOf(statName) != -1) {
                         //Getting the actual stat object from the word.
                         var selectedStat = item[statName];
-                        if (selectedStat > 0 || statName === "Bonus damage") {
+                        if (selectedStat > 0 || selectedStat > 0 && statName === "Bonus damage") {
                             html += '<br />' + statName + ": " + selectedStat;
                         }
                     };
