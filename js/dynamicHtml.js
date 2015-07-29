@@ -410,6 +410,7 @@ function newGame() {
     };
     autoSave();
     EquippedItemsEmpty();
+    primaryStatUpdate();
     secondaryStatUpdate();
 };
 
