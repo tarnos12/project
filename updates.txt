@@ -1,3 +1,4 @@
+New Changelog at http://tarnos12.github.io/project/updates.html
 _________________________
 v1.6.0 - 29 july 2015    |
 -------------------------|
@@ -12,8 +13,9 @@ v1.6.0 - 29 july 2015    |
 - Added more secondary stats: Block/Counter/Life on hit. All bonuses can be obtained with items. Some of them can roll on a certain piece of equipment, for example "Block" can be found only on shields.
 - Changed item drop mechanics... You can drop betweem 1-5 items, for each monster kill as long as you have enough inventory space. You will make a roll for each item, and if its successful, you will drop an item.
 - Magic find increase odds of finding an item(it will increase a chance of a good "roll" which means you can drop items more often). It does not increase item rarity chance.
-- Removed equip/umequip/attack buttons. Instead click on item/monster image.
+- Removed equip/unequip/attack buttons. Instead click on item/monster image.
 - Removed item "levels", you can no longer level up your weapon. (Might change in future).
+- Added sorting function for items by Rarity/Value.
 _________________________
 v1.5.6 - 27 june 2015    |
 -------------------------|

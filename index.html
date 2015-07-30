@@ -53,6 +53,9 @@
         div.simpleBorder {
             border: 2px solid gray;
         }
+        .passiveMargin{
+            margin-bottom:15px;
+        }
         .bold {
             font-weight: bold;
             text-align: left;
@@ -183,7 +186,7 @@
                                 Your browser does not support the audio element.
                             </audio>
                             <button type="button" class="btn btn-default" onclick="muteAudio(); changeMusicImage();"><span id="musicimage2" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>
-
+                            <a href="updates.html" target="_blank">Changelog</a>
                         </div>
                         
                     </div>
@@ -448,7 +451,6 @@
                                     </div>
 
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#tab_f1" data-toggle="tab"><span class="icons potions"></span></a></li>
                                         <li><a href="#tab_f2" data-toggle="tab"><span class="icons equipment"></span></a></li>
                                         <li><a href="#tab_f3" data-toggle="tab"><span class="icons playerInventory" id="playerInventory"></span></a></li>
                                         <li><a href="#tab_f4" data-toggle="tab"><span class="icons spells"></span></a></li>
@@ -456,37 +458,7 @@
 
 
                                     <div class="tab-content">
-                                        <div class="col-sm-8 tab-pane active" id="tab_f1">
-                                            <table class="table">
-                                                <tr>
-                                                    <td>
-                                                        <img src="images/hp.png" alt="Health Potion">(20hp): <span id="potion">0</span>
-                                                    </td>
-                                                    <td>
-                                                        <input type="image" src="images/plus.jpg" alt="usepot" onclick="usepot();">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="images/hp.png" alt="Super Potion">(100hp):<span id="superPotion">0</span>
-                                                    </td>
-                                                    <td>
-                                                        <input type="image" src="images/plus.jpg" alt="usepot" onclick="usespot();">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <img src="images/hp.png" alt="Mega Potion">(500hp):<span id="megaPotion">0</span>
-                                                    </td>
-                                                    <td>
-                                                        <input type="image" src="images/plus.jpg" alt="usepot" onclick="usempot();">
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </div>
-
-
-                                        <div class="tab-pane" id="tab_f2">
+                                        <div class="tab-pane active" id="tab_f2">
 
                                             <div class="c3">
                                                 <h4>Equipment</h4>
@@ -495,11 +467,13 @@
 
                                         </div>
                                         <div class="tab-pane " id="tab_f3">
-                                            <div class="btn-group btn-group-sm" role="group" aria-label="Left Align">
-                                                <br /><button type="button" class="sell" onclick="sellAllCommon()">Sell All Common</button>
-                                                <button type="button" class="sell" onclick="sellAllUncommon()">Sell All Uncommon</button>
-                                                <button type="button" class="sell" onclick="sellAllRare()">Sell All Rare</button>
-                                                <button type="button" class="sell" onclick="sellAllEpic()">Sell All Epic</button>
+                                            
+                                            <div class="centerText">
+                                                <strong>Sell All</strong>
+                                                <br /><button type="button" class="sell" onclick="sellAllCommon()">Common</button>
+                                                <button type="button" class="sell" onclick="sellAllUncommon()">Uncommon</button>
+                                                <button type="button" class="sell" onclick="sellAllRare()">Rare</button>
+                                                <button type="button" class="sell" onclick="sellAllEpic()">Epic</button>
                                             </div>
                                             <div class="inventory" id="inventory"></div>
 
@@ -507,7 +481,7 @@
                                         </div>
                                         <div class="tab-pane" id="tab_f4">
                                             <div class="c3">
-                                                <h4>Spells</h4>
+                                                <h4>Passive skills</h4>
                                             </div>
                                             <div id="playerSkills"></div>
                                         </div>
@@ -533,18 +507,18 @@
                                         <button type="button" class="buy" onclick="buyBackpack(1)">Buy</button>
                                         <button type="button" class="buy" onclick="buyBackpack(10)">Buy 10</button>
                                         <button type="button" class="buy" onclick="buyBackpack(100)">Buy 100</button><br>
-                                        <img src="images/hp.png" alt="Buy Potion">Health Potion(20gold each)
-                                        <button type="button" class="buy" onclick="buyPotion(1)">Buy</button>
-                                        <button type="button" class="buy" onclick="buyPotion(10)">Buy 10</button>
-                                        <button type="button" class="buy" onclick="buyPotion(100)">Buy 100</button><br>
-                                        <img src="images/hp.png" alt="Buy Super Potion">Super Potion(100gold each)
+                                        <img src="images/SmallPotion.png" alt="Buy Potion">Health Potion(20gold each)
+                                        <button type="button" class="buy" onclick="buySmallPotion(1)">Buy</button>
+                                        <button type="button" class="buy" onclick="buySmallPotion(10)">Buy 10</button>
+                                        <button type="button" class="buy" onclick="buySmallPotion(100)">Buy 100</button><br>
+                                        <img src="images/MediumPotion.png" alt="Buy Super Potion">Super Potion(100gold each)
+                                        <button type="button" class="buy" onclick="buyMediumPotion(1)">Buy</button>
+                                        <button type="button" class="buy" onclick="buyMediumPotion(10)">Buy 10</button>
+                                        <button type="button" class="buy" onclick="buyMediumPotion(100)">Buy 100</button><br>
+                                        <img src="images/SuperPotion.png" alt="Buy Mega Potion">Mega Potion(500gold each)
                                         <button type="button" class="buy" onclick="buySuperPotion(1)">Buy</button>
                                         <button type="button" class="buy" onclick="buySuperPotion(10)">Buy 10</button>
-                                        <button type="button" class="buy" onclick="buySuperPotion(100)">Buy 100</button><br>
-                                        <img src="images/hp.png" alt="Buy Mega Potion">Mega Potion(500gold each)
-                                        <button type="button" class="buy" onclick="buyMegaPotion(1)">Buy</button>
-                                        <button type="button" class="buy" onclick="buyMegaPotion(10)">Buy 10</button>
-                                        <button type="button" class="buy" onclick="buyMegaPotion(100)">Buy 100</button>
+                                        <button type="button" class="buy" onclick="buySuperPotion(100)">Buy 100</button>
                                     </p>
                                 </div>
 
@@ -577,7 +551,7 @@
                                         <textarea class="scroll c4 c3 col-xs-10" id="saveImport" rows="6" style="word-wrap: break-word;"></textarea><br />
 
 
-                                        <a href="updates.txt" target="_blank">Changelog</a><br />
+                                        <a href="updates.html" target="_blank">Changelog</a><br />
                                         <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
                                         <div><label><input type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
                                         <div><label><input type='checkbox' id="uncommon" onclick='handleClick();'>Destroy all Uncommon</label></div>

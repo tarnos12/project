@@ -13,34 +13,34 @@ function potionBuy(type, count) {
         priceTemp = priceTemp;
     };
 
-    if (player.gold >= priceToPay) {
+    if (player.properties.gold >= priceToPay) {
         type.price = priceTemp;
-        player.gold -= priceToPay;
+        player.properties.gold -= priceToPay;
         return true;
     };
-    Log("You do not have enough money to buy this. You need " + (priceToPay - player.gold) + " more gold.");
+    Log("You do not have enough money to buy this. You need " + (priceToPay - player.properties.gold) + " more gold.");
     return false;
 };
 //Buy potions
-function buyPotion(count) {
+function buySmallPotion(count) {
     if (potionBuy(potionStatus, count)) {
-        pot += count
+        player.properties.smallPotion += count
         updateHtml();
         Log("You bought " + count + " Potions.");
     };
 };
 //Buy Super potions
-function buySuperPotion(count) {
+function buyMediumPotion(count) {
     if (potionBuy(superPotionStatus, count)) {
-        spot += count
+        player.properties.mediumPotion += count
         updateHtml();
         Log("You bought " + count + " Super Potions");
     };
 };
 //Buy Mega potions
-function buyMegaPotion(count) {
+function buySuperPotion(count) {
     if (potionBuy(megaPotionStatus, count)) {
-        mpot += count
+        player.properties.superPotion += count
         updateHtml();
         Log("You bought " + count + "Mega Potions");
     };
@@ -63,27 +63,27 @@ function buyStuff(type, count) {
         priceTemp = Math.round(priceTemp * type.multiplier);
     };
 
-    if (player.gold >= priceToPay) {
+    if (player.properties.gold >= priceToPay) {
         type.price = priceTemp;
-        player.gold -= priceToPay;
+        player.properties.gold -= priceToPay;
         return true;
     };
-    Log("You do not have enough money to buy this. You need " + (priceToPay - player.gold) + " more gold.");
+    Log("You do not have enough money to buy this. You need " + (priceToPay - player.properties.gold) + " more gold.");
     return false;
 };
 //Buy backpack
 function buyBackpack(count) {
     if (buyStuff(backpackStatus, count)) {
-        player.backpackUpgrade += count;
+        player.properties.backpackUpgrade += count;
         updateHtml();
         CreateInventoryWeaponHtml();
-        Log("You max inventory slots upgraded by " + count + ", now you have: " + player.inventory() + " inventory slots");
+        Log("You max inventory slots upgraded by " + count + ", now you have: " + player.functions.inventory() + " inventory slots");
     };
 };
 //Buy Stat points
 function buyStat(count) {
     if (buyStuff(statStatus, count)) {
-        player.stats += count;
+        player.properties.stats += count;
         updateHtml();
         Log("Your stat points increased by " + count + ".");
     };

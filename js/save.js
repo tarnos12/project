@@ -15,9 +15,6 @@
     document.getElementById("saveTime").innerHTML = "Last saved: " + hour + ":" + minute + ":" + second;
     var saveGame = {
         playerProperties: player.properties,
-        pot: pot,
-        spot: spot,
-        mpot: mpot,
         //Equipped Items
         playerWeapon: equippedItems.weapon,
         playerShield: equippedItems.shield,
@@ -45,19 +42,16 @@
         RangedExp: weaponMastery.ranged.exp,
         RangedMaxExp: weaponMastery.ranged.maxExp,
         RangedLevel: weaponMastery.ranged.level,
+        //Passive Skill level
+        DamageBonus: playerPassive.brawler.level,
+        DamageBonus2: playerPassive.overpower.level,
+        HealthBonus: playerPassive.vitality.level,
+        HealthBonus2: playerPassive.fortitude.level,
+        MagicFindBonus: playerPassive.looter.level,
+        MagicFindBonus2: playerPassive.explorer.level,
         //Other
         backpackStatus: backpackStatus,
         statStatus: statStatus,
-        //Spells
-        FireBall: activeSpells.fireBall.level,
-        IceShard: activeSpells.iceShard.level,
-        CallLightning: activeSpells.callLightning.level,
-        RainOfFire: activeSpells.rainOfFire.level,
-        Blizzard: activeSpells.blizzard.level,
-        BallOfLightning: activeSpells.ballOfLightning.level,
-        InfernalFlames: activeSpells.infernalFlames.level,
-        Frost: activeSpells.frost.level,
-        LightningStorm: activeSpells.lightningStorm.level,
     }
     if (saveType === 'autoSave') {
         localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
@@ -103,16 +97,13 @@ function load() {
         if (typeof savegame.RangedExp !== "undefined") weaponMastery.ranged.exp = savegame.RangedExp;
         if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.ranged.maxExp = savegame.RangedMaxExp;
         if (typeof savegame.RangedLevel !== "undefined") weaponMastery.ranged.level = savegame.RangedLevel;
-        //Spells
-        if (typeof savegame.FireBall !== "undefined") activeSpells.fireBall.level = savegame.FireBall;
-        if (typeof savegame.IceShard !== "undefined") activeSpells.iceShard.level = savegame.IceShard;
-        if (typeof savegame.CallLightning !== "undefined") activeSpells.callLightning.level = savegame.CallLightning;
-        if (typeof savegame.RainOfFire !== "undefined") activeSpells.rainOfFire.level = savegame.RainOfFire;
-        if (typeof savegame.Blizzard !== "undefined") activeSpells.blizzard.level = savegame.Blizzard;
-        if (typeof savegame.BallOfLightning !== "undefined") activeSpells.ballOfLightning.level = savegame.BallOfLightning;
-        if (typeof savegame.InfernalFlames !== "undefined") activeSpells.infernalFlames.level = savegame.InfernalFlames;
-        if (typeof savegame.Frost !== "undefined") activeSpells.frost.level = savegame.Frost;
-        if (typeof savegame.LightningStorm !== "undefined") activeSpells.lightningStorm.level = savegame.LightningStorm;
+        //Passive Skills
+        if (typeof savegame.DamageBonus !== "undefined") playerPassive.brawler.level = savegame.DamageBonus;
+        if (typeof savegame.DamageBonus2 !== "undefined") playerPassive.overpower.level = savegame.DamageBonus2;
+        if (typeof savegame.HealthBonus !== "undefined") playerPassive.vitality.level = savegame.HealthBonus;
+        if (typeof savegame.HealthBonus2 !== "undefined") playerPassive.fortitude.level = savegame.HealthBonus2;
+        if (typeof savegame.MagicFindBonus !== "undefined") playerPassive.looter.level = savegame.MagicFindBonus;
+        if (typeof savegame.MagicFindBonus2 !== "undefined") playerPassive.explorer.level = savegame.MagicFindBonus2;
         //Other
         if (typeof savegame.pot !== "undefined") pot = savegame.pot;
         if (typeof savegame.spot !== "undefined") spot = savegame.spot;
@@ -127,9 +118,6 @@ function load() {
         if (typeof savegame.playerAmulet !== "undefined") equippedItems.amulet = savegame.playerAmulet;
         if (typeof savegame.playerTalisman !== "undefined") equippedItems.talisman = savegame.playerTalisman;
         if (typeof savegame.inventory !== "undefined") playerInventory = savegame.inventory;
-        document.getElementById('potion').innerHTML = pot;
-        document.getElementById('superPotion').innerHTML = spot;
-        document.getElementById('megaPotion').innerHTML = mpot;
         document.getElementById("gold").innerHTML = player.properties.gold;
     };
     CreateInventoryWeaponHtml();
@@ -139,8 +127,6 @@ function load() {
     CreateMonsterHtml();
     versionCheck();
     CreatePlayerSkillsHtml();
-    CreatePlayerHotBar();
-    skillChargeFill();
     updateBar();
     characterCreationHtml();
     playerReviveCheck();
@@ -151,6 +137,7 @@ function load() {
     EquippedItemsEmpty();
     checkIfEquippedEmpty();
     updateHtml();
+    CreatePlayerHotBar();
 };
 
 function resetCheck() {

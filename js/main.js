@@ -49,7 +49,9 @@ var player = {
         expGain: 0,
         goldLost: 0,
         expLost: 0,
-
+        smallPotion: 0,
+        mediumPotion: 0,
+        superPotion: 0,
         //Strength
         baseStrength: 5,
 
@@ -292,8 +294,52 @@ var player = {
                 equippedItems.amulet['Experience rate'] +
                 equippedItems.talisman['Experience rate']);
         },
+        bonusDamage: function () {
+            var damage = 0;
+            if (playerPassive.brawler.level > 0) {
+                damage += playerPassive.brawler.bonusTotal();
+            }
+            if (playerPassive.overpower.level > 0) {
+                damage += playerPassive.overpower.bonusTotal();
+            }
+            return damage;
+        },
+        bonusMana: function(){
+            var mana = 0;
+            if (playerPassive.spiritualAttunement.level > 0){
+                mana += playerPassive.spiritualAttunement.bonusTotal();
+            };
+            return mana;
+        },
+        bonusHealth: function () {
+            var health = 0;
+            if (playerPassive.vitality.level > 0) {
+                health += playerPassive.vitality.bonusTotal();
+            }
+            if (playerPassive.fortitude.level > 0) {
+                health += playerPassive.fortitude.bonusTotal();
+            }
+            return health;
+        },
+        bonusMagicFind: function () {
+            var magicFind = 0;
+            if (playerPassive.looter.level > 0) {
+                magicFind += playerPassive.looter.bonusTotal();
+            }
+            if (playerPassive.explorer.level > 0) {
+                magicFind += playerPassive.explorer.bonusTotal();
+            }
+            return magicFind;
+        },
+        bonusEvasion: function(){
+            var evasion = 0;
+            if (playerPassive.sixthSense.level > 0){
+                evasion += playerPassive.sixthSense.bonusTotal();
+            };
+            return evasion;
+        },
         dropRate: function () {
-            return (1 + ((player.functions.totalLuck() / 500) + (player.functions.totalMagicFind()) / 100)) * bonusDrop;
+            return (((1 + ((player.functions.totalLuck() / 500) + (player.functions.totalMagicFind()) / 100)) * (1 + (player.functions.bonusMagicFind() / 100))) * bonusDrop);
         },
         expRate: function () {
             return (1 + ((player.functions.totalExperienceRate()) / 100)) * bonusExp;
@@ -369,7 +415,7 @@ var player = {
                 player.functions.totalLuckBonus());
         },
         maxhealth: function () {
-            return (475 + player.functions.totalLifeBonus() + (player.functions.totalEndurance() * 5));
+            return Math.floor(((475 + player.functions.totalLifeBonus() + (player.functions.totalEndurance() * 5)) * (1 + (player.functions.bonusHealth() / 100))));
         },
         hpregen: function () {
             return Math.floor((20 + (player.functions.totalEndurance() / 3) + player.functions.totalHealthRegen()) * bonusRegen);
@@ -377,6 +423,7 @@ var player = {
         //Mana
         maxMana: function () {
             return Math.floor(7 +
+                player.functions.bonusMana() +
                 player.functions.totalManaBonus() +
                 player.functions.totalWisdom() * 0.5 +
                 player.functions.totalIntelligence() * 0.1);
@@ -386,14 +433,14 @@ var player = {
         },
         //Damage
         minDamage: function () {
-            return Math.floor((
+            return Math.floor(((
                 3 + (player.functions.totalStrength() * 0.4) +
-                equippedItems.weapon.MinDamage) * bonusDamage);
+                equippedItems.weapon.MinDamage + weaponSkillList.sword.swordFinesse.damage()) * (1 + (player.functions.bonusDamage() / 100))) * bonusDamage);
         },
         maxDamage: function () {
-            return Math.floor((
+            return Math.floor(((
                 5 + (player.functions.totalStrength() * 0.6) +
-                equippedItems.weapon.MaxDamage + weaponSkillList.sword.swordFinesse.damage()) * bonusDamage);
+                equippedItems.weapon.MinDamage + weaponSkillList.sword.swordFinesse.damage()) * (1 + (player.functions.bonusDamage() / 100))) * bonusDamage);
         },
         //Secondary
         accuracy: function () {
@@ -405,11 +452,11 @@ var player = {
                 player.functions.totalArmorBonus());
         },
         evasion: function () {
-            if (((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance()))) > 20) {
+            if ((((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance()))) > 20) * (1 + (player.functions.bonusEvasion() / 100))) {
                 return 20;
             }
             else {
-                return ((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance())));
+                return (((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance()))) * (1 + (player.functions.bonusEvasion() / 100)));
             }
         },
         criticalChance: function () {
@@ -421,7 +468,7 @@ var player = {
             }
         },
         criticalDamage: function () {
-            return ((0.5 + (player.functions.totalDexterity()) * 0.05) + player.functions.totalCriticalDamage());
+            return ((1 + (player.functions.totalDexterity()) * 0.05) + player.functions.totalCriticalDamage());
         },
         blockChance: function () {
             return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance());
@@ -499,9 +546,6 @@ var logData = {
     length: 0
 };
 var battleTurn;
-var pot = 0;
-var spot = 0;
-var mpot = 0;
 //Array to store player items
 var playerInventory = [];
 var damageDealt = 0;
@@ -605,15 +649,6 @@ function playerDamage(monsterStat, monsterStats) {
 
 //player damage deal (base or critical)
 function playerDamageDeal(damage, monsterStat, monsterStats) {
-    for (var spell in activeSpells) {
-        if (activeSpells.hasOwnProperty(spell)) {
-            var selectedSpell = activeSpells[spell];
-            if (selectedSpell.isActive == true && selectedSpell.charge > 0) {
-                magicDamage += selectedSpell.damage();
-                selectedSpell.charge -= 1;
-            };
-        };
-    };
     for (var weapon in weaponSkillList) {
         if (weaponSkillList.hasOwnProperty(weapon)) {
             var weaponSkillStat = weaponSkillList[weapon];
@@ -842,12 +877,6 @@ function monsterExperience(monsterStat, monsterStats) {
 
 //Player skill recharge
 function skillReCharge() {
-    for (var spell in activeSpells) {
-        if (activeSpells.hasOwnProperty(spell)) {
-            var rechargedSpell = activeSpells[spell];
-            rechargedSpell.charge = rechargedSpell.maxCharge();
-        };
-    };
     for (var weapon in weaponSkillList) {
         if (weaponSkillList.hasOwnProperty(weapon)) {
             var weaponSkill = weaponSkillList[weapon];
@@ -1188,7 +1217,6 @@ function equipItem(id) {
     };
     CreateWeaponSkillHtml();
     updateHtml();
-    skillChargeFill();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
     updateBar();
@@ -1323,7 +1351,6 @@ function unequipItem(id, type) {
     };
     CreateWeaponSkillHtml();
     updateHtml();
-    skillChargeFill();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
     checkIfEquippedEmpty();
@@ -1451,4 +1478,18 @@ function selectText(containerid) {
 function showNumber() {
     var number = playerInventory.length;
     document.getElementById('playerInventory').innerHTML = "<p>" + number + "</p>";
+};
+
+function sortInventory(type) {
+    if (type === "Value") {
+        playerInventory.sort(function (a, b) {
+            return b.Value - a.Value
+        })
+    }
+    else if (type === "Rarity") {
+        playerInventory.sort(function (a, b) {
+            return b.power - a.power
+        })
+    }
+    CreateInventoryWeaponHtml();
 };

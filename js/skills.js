@@ -1,89 +1,113 @@
 ﻿//Skills
 (function () {
-var spell = function (level, maxLevel, id, levelReq, manaReq, name, image) { //default spell object constructor
-    this.isActive = false;
+    var newPassive = function (level, maxLevel, id, levelReq, name, image, bonus) { //default spell object constructor
     this.id = id;
     this.level = level;
     this.maxLevel = maxLevel;
     this.levelReq = levelReq;
-    this.manaReq = manaReq;
     this.name = name;
     this.image = image;
-    this.damage = function () {
-        return Math.floor((10 * this.level) + (player.functions.totalIntelligence() * 0.1));
+    this.bonus = bonus;
+    this.type = "Single";
+    this.bonusTotal = function () {
+        return Math.floor(this.bonus * this.level);
     };
-    this.charge = 1,
-    this.maxCharge = function () {
-        return Math.floor(1 + (player.functions.totalIntelligence() / 300 + player.functions.totalWisdom() / 200));
-    };
-    this.description = function () {
-        return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + ".";
+    this.requirements = function () {
+        return true;
     };
 };
-//level/maxLevel/ID/LevelReq/ManaReq/Name/Image
-var fireBall = new spell(1, 5, 1, 1, 10, "Fireball", "FireBall");
-var iceShard = new spell(1, 5, 2, 1, 10, "ice Shard", "IceShard");
-var callLightning = new spell(1, 5, 3, 1, 10, "Call Lightning", "CallLightning");
-var rainOfFire = new spell(1, 5, 3, 4, 30, "Rain of Fire", "RainOfFire");
-var blizzard = new spell(1, 5, 3, 5, 30, "Blizzard", "Blizzard");
-var ballOfLightning = new spell(1, 5, 3, 6, 30, "Ball of Lightning", "BallOfLightning");
-var infernalFlames = new spell(1, 5, 3, 7, 50, "Infernal Flames", "InfernalFlames");
-var frost = new spell(1, 5, 3, 8, 50, "Frost", "Frost");
-var lightningStorm = new spell(1, 5, 3, 9, 50, "Lightning Storm", "LightningStorm");
+    //level/maxLevel/ID/LevelReq/Name/Image/bonus
+    var brawler = new newPassive(0, 5, 1, 1, "Brawler", "DmgUp", 10);
+    var vitality = new newPassive(0, 5, 2, 1, "Vitality", "HpUp", 5);
+    var looter = new newPassive(0, 5, 3, 1, "Looter", "MfUp", 10);
+    var overpower = new newPassive(0, 1, 4, 5, "Overpower", "DmgUp2", 20);
+    var fortitude = new newPassive(0, 1, 5, 5, "Fortitude", "HpUp2", 20);
+    var explorer = new newPassive(0, 1, 6, 5, "Explorer", "MfUp2", 50);
+    var sixthSense = new newPassive(0, 5, 7, 10, "Sixth Sense", "SixthSense", 10);
+    var spiritualAttunement = new newPassive(0, 5, 8, 10, "Spiritual Attunement", "Spiritual", 20);
 
-fireBall.description = function () {
-    return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + ".";
-};
-iceShard.description = function () {
-    return "This spell deals " + this.damage() + " total damage. Currently being at level " + this.level + ".";
-};
-rainOfFire.damage = function () {
-    return Math.floor((30 * this.level) + (player.functions.totalIntelligence() * 0.3));
-};
-rainOfFire.maxCharge = function () {
-    return Math.floor(1 + (player.functions.totalIntelligence() / 400 + player.functions.totalWisdom() / 300));
-};
-blizzard.damage = function () {
-    return Math.floor((30 * this.level) + (player.functions.totalIntelligence() * 0.3));
-};
-blizzard.maxCharge = function () {
-    return Math.floor(1 + (player.functions.totalIntelligence() / 400 + player.functions.totalWisdom() / 300));
-};
-ballOfLightning.damage = function () {
-    return Math.floor((30 * this.level) + (player.functions.totalIntelligence() * 0.3));
-};
-ballOfLightning.maxCharge = function () {
-    return Math.floor(1 + (player.functions.totalIntelligence() / 400 + player.functions.totalWisdom() / 300));
-};
-infernalFlames.damage = function () {
-    return Math.floor((50 * this.level) + (player.functions.totalIntelligence() * 0.5));
-};
-infernalFlames.maxCharge = function () {
-    return Math.floor(1 + (player.functions.totalIntelligence() / 500 + player.functions.totalWisdom() / 400));
-};
-frost.damage = function () {
-    return Math.floor((50 * this.level) + (player.functions.totalIntelligence() * 0.5));
-};
-frost.maxCharge = function () {
-    return Math.floor(1 + (player.functions.totalIntelligence() / 500 + player.functions.totalWisdom() / 400));
-};
-lightningStorm.damage = function () {
-    return Math.floor((50 * this.level) + (player.functions.totalIntelligence() * 0.5));
-};
-lightningStorm.maxCharge = function () {
-    return Math.floor(1 + (player.functions.totalIntelligence() / 500 + player.functions.totalWisdom() / 400));
-};
+    brawler.description = function () {
+        return "Increase damage by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br />";
+    };
+    overpower.description = function () {
+        return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br /> " +
+            brawler.name + " level " + brawler.maxLevel;
+    };
+    overpower.requirements = function () {
+        if (brawler.level === brawler.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    vitality.description = function () {
+        return "Increase health by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br />";
+    };
+    fortitude.description = function () {
+        return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br /> " +
+            vitality.name + " level " + vitality.maxLevel;
+    };
+    fortitude.requirements = function () {
+        if (vitality.level === vitality.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    looter.description = function () {
+        return "Increase magic find by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% magic find. <br /><br />Requires: <br />";
+    };
+    explorer.description = function () {
+        return "Increase magic find by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% magic find. <br /><br />Requires: <br /> " +
+            looter.name + " level " + looter.maxLevel;
+    };
+    explorer.requirements = function () {
+        if (looter.level === looter.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
 
-window.activeSpells = new Object();
-activeSpells.fireBall = fireBall;
-activeSpells.iceShard = iceShard;
-activeSpells.callLightning = callLightning;
-activeSpells.rainOfFire = rainOfFire;
-activeSpells.blizzard = blizzard;
-activeSpells.ballOfLightning = ballOfLightning;
-activeSpells.infernalFlames = infernalFlames;
-activeSpells.frost = frost;
-activeSpells.lightningStorm = lightningStorm;
+    sixthSense.description = function () {
+        return "Increase total Evasion by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% Evasion. <br /><br />Requires: <br /> " +
+            overpower.name + " level " + overpower.maxLevel + '<br />' + fortitude.name + " level " + fortitude.maxLevel;
+    };
+    sixthSense.type = "Double";
+    sixthSense.requirements = function () {
+        if (overpower.level === overpower.maxLevel && fortitude.level === fortitude.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    spiritualAttunement.description = function () {
+        return "Increase maximum mana by " + this.bonus + " <br /> Currently grants: " + this.bonusTotal() + " maximum mana. <br /><br />Requires: <br /> " +
+            fortitude.name + " level " + fortitude.maxLevel + '<br />' + explorer.name + " level " + explorer.maxLevel;
+    };
+    spiritualAttunement.type = "Double";
+    spiritualAttunement.requirements = function () {
+        if (fortitude.level === fortitude.maxLevel && explorer.level === explorer.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+
+    window.playerPassive = new Object();
+    playerPassive.brawler = brawler;
+    playerPassive.vitality = vitality;
+    playerPassive.looter = looter;
+    playerPassive.overpower = overpower;
+    playerPassive.fortitude = fortitude;
+    playerPassive.explorer = explorer;
+    playerPassive.sixthSense = sixthSense;
+    playerPassive.spiritualAttunement = spiritualAttunement;
 
 //Weapon Skills
 

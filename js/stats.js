@@ -22,9 +22,6 @@
     var gold;
     var buyBackpack;
     var buyStat;
-    var potion;
-    var superPotion;
-    var megaPotion;
 
     level = document.getElementById("level");
     maxExperience = document.getElementById("maxexperience");
@@ -32,20 +29,15 @@
     gold = document.getElementById("gold");
     buyBackpack = document.getElementById("buyBackpack");
     buyStat = document.getElementById("buyStat");
-    potion = document.getElementById('potion');
-    superPotion = document.getElementById('superPotion');
-    megaPotion = document.getElementById('megaPotion');
     level.innerHTML = player.properties.level;
     maxExperience.innerHTML = player.properties.maxExperience;
     experience.innerHTML = player.properties.experience;
     gold.innerHTML = player.properties.gold.toFixed(0);
     buyBackpack.innerHTML = backpackStatus.price;
     buyStat.innerHTML = statStatus.price;
-    potion.innerHTML = pot;
-    superPotion.innerHTML = spot;
-    megaPotion.innerHTML = mpot;
     primaryStatUpdate();
     secondaryStatUpdate();
+    CreatePlayerHotBar();
 };
 
 function autoSave() {
@@ -300,61 +292,37 @@ function autoAttack(monster, monsterStats) {
     }, 1000)
 };
 
-//All skill charge = maxCharge, when game loads, player equips items i.e change his stats like wisdom/int that can provide more/less charges.
-function skillChargeFill() {
-    var skill = activeSpells;
-    for (spell in skill) {
-        var selectedSpell = skill[spell];
-        selectedSpell.charge = selectedSpell.maxCharge();
-    };
-};
 
-function upgradeSpell(spellName) {
-    if (activeSpells.hasOwnProperty(spellName)) {
-        var selectedSpell = activeSpells[spellName];
-        if (selectedSpell.levelReq < player.properties.level) {
-            if (selectedSpell.level < 5) {
-                if (player.properties.skillPoints > 0) {
-                    player.properties.skillPoints--;
-                    selectedSpell.level++;
-                    selectedSpell.levelReq++;
-                    Log(selectedSpell.name + " level is now " + selectedSpell.level);
+
+function upgradePassive(skillName) {
+    if (playerPassive.hasOwnProperty(skillName)) {
+        var selectedSkill = playerPassive[skillName];
+        if (selectedSkill.maxLevel !== selectedSkill.level) {
+            if (player.properties.skillPoints > 0) {
+                if (player.properties.level >= selectedSkill.levelReq) {
+                    if (selectedSkill.requirements() === true) {
+                        selectedSkill.level += 1;
+                        player.properties.skillPoints -= 1;
+                        Log("Upgraded skill!<br />");
+                    }
+                    else {
+                        Log("You do not meet requirements for this skill<br />");
+                    }
                 }
                 else {
-                    Log("You do not have enough skill points.");
+                    Log("Your level is not high enough<br />");
                 }
             }
             else {
-                Log(selectedSpell.name + " is already max level.");
-            };
+                Log("Not enough skill points!<br />");
+            }
         }
         else {
-            Log("Your level is not high enough to upgrade this skill.");
-        };
+            Log("Skill has reached max level!<br />");
+        }
+        
     };
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
     updateHtml();
-};
-var spellTotalManaCost = 0;
-function spellActivation(spellName) {
-    if (activeSpells.hasOwnProperty(spellName)) {
-        var selectedSpell = activeSpells[spellName];
-        if (selectedSpell.isActive == true) {
-            selectedSpell.isActive = false;
-            spellTotalManaCost -= selectedSpell.manaReq;
-        }
-        else if (selectedSpell.levelReq > player.properties.level) {
-            Log("Your level is not high enough to activate it");
-        }
-        else if (spellTotalManaCost + selectedSpell.manaReq <= player.functions.maxMana()) {
-            selectedSpell.isActive = true;
-            spellTotalManaCost += selectedSpell.manaReq;
-        }
-        else {
-            Log("You do not have enough \"Max Mana\" to activate this spell. You need " + selectedSpell.manaReq + " Max Mana.");
-        };
-    };
-    CreatePlayerSkillsHtml();
-    CreatePlayerHotBar();
 };
