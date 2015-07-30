@@ -1,51 +1,51 @@
 ﻿window.setInterval(function () {
     var hppercent = 100; //This function heal player automatically using potions.
     hppercent = (Math.floor((player.properties.health / player.functions.maxhealth()) * 100));
-    if (player.functions.maxhealth() >= 500 & mpot >= 1 & player.properties.isDead == false) {
+    if (player.functions.maxhealth() >= 500 & player.properties.superPotion >= 1 & player.properties.isDead == false) {
         if (hppercent <= 30) {
             if (player.properties.health + 500 >= player.functions.maxhealth()) {
                 player.properties.health = player.functions.maxhealth();
-                mpot -= 1;
+                player.properties.superPotion -= 1;
                 document.getElementById("health").innerHTML = player.properties.health;
-                document.getElementById("megaPotion").innerHTML = mpot;
+                document.getElementById("SuperPotion").innerHTML = player.properties.superPotion;
             }
             else {
                 player.properties.health += 500;
-                mpot -= 1;
+                player.properties.superPotion -= 1;
                 document.getElementById("health").innerHTML = player.properties.health;
-                document.getElementById("megaPotion").innerHTML = mpot;
+                document.getElementById("SuperPotion").innerHTML = player.properties.superPotion;
             }
         }
     }
-    else if (player.functions.maxhealth() >= 300 & spot >= 1 & player.properties.isDead == false) {
+    else if (player.functions.maxhealth() >= 300 & player.properties.mediumPotion >= 1 & player.properties.isDead == false) {
         if (hppercent <= 30) {
             if (player.properties.health + 100 >= player.functions.maxhealth()) {
                 player.properties.health = player.functions.maxhealth();
-                spot -= 1;
+                player.properties.mediumPotion -= 1;
                 document.getElementById("health").innerHTML = player.properties.health;
-                document.getElementById("superPotion").innerHTML = spot;
+                document.getElementById("MediumPotion").innerHTML = player.properties.mediumPotion;
             }
             else {
                 player.properties.health += 100;
-                spot -= 1;
+                player.properties.mediumPotion -= 1;
                 document.getElementById("health").innerHTML = player.properties.health;
-                document.getElementById("superPotion").innerHTML = spot;
+                document.getElementById("MediumPotion").innerHTML = player.properties.mediumPotion;
             }
         }
     }
-    else if (pot >= 1 & player.properties.isDead == false) {
+    else if (player.properties.smallPotion >= 1 & player.properties.isDead == false) {
         if (hppercent <= 30) {
             if (player.properties.health + 20 >= player.functions.maxhealth()) {
                 player.properties.health = player.functions.maxhealth();
-                pot -= 1;
+                player.properties.smallPotion -= 1;
                 document.getElementById("health").innerHTML = player.properties.health;
-                document.getElementById("potion").innerHTML = pot;
+                document.getElementById("SmallPotion").innerHTML = player.properties.smallPotion;
             }
             else {
                 player.properties.health += 20;
-                pot -= 1;
+                player.properties.smallPotion -= 1;
                 document.getElementById("health").innerHTML = player.properties.health;
-                document.getElementById("potion").innerHTML = pot;
+                document.getElementById("SmallPotion").innerHTML = player.properties.smallPotion;
             }
         }
     }
@@ -53,53 +53,53 @@
 }, 1);
 
 //Using potions
-function usepot() {
+function useSmallPotion() {
     if (player.properties.health == player.functions.maxhealth()) {
         Log("Your health is full!");
-    } else if (player.properties.health + 20 >= player.functions.maxhealth() & pot >= 1) {
-        pot = pot - 1;
+    } else if (player.properties.health + 20 >= player.functions.maxhealth() & player.properties.smallPotion >= 1) {
+        player.properties.smallPotion = player.properties.smallPotion - 1;
         player.properties.health = player.functions.maxhealth();
-        document.getElementById('potion').innerHTML = pot;
+        document.getElementById('SmallPotion').innerHTML = player.properties.smallPotion;
         document.getElementById('health').innerHTML = player.properties.health;
         Log("You heal for 20 <span style=\"color:green\">health!</span>");
-    } else if (player.properties.health + 20 < player.functions.maxhealth() & pot >= 1) {
-        pot = pot - 1;
+    } else if (player.properties.health + 20 < player.functions.maxhealth() & player.properties.smallPotion >= 1) {
+        player.properties.smallPotion = player.properties.smallPotion - 1;
         player.properties.health = player.properties.health + 20;
-        document.getElementById('potion').innerHTML = pot;
+        document.getElementById('SmallPotion').innerHTML = player.properties.smallPotion;
         document.getElementById('health').innerHTML = player.properties.health;
     }
 };
 
-function usespot() {
+function useMediumPotion() {
     if (player.properties.health == player.functions.maxhealth()) {
         Log("Your health is full!");
-    } else if (player.properties.health + 100 >= player.functions.maxhealth() & spot >= 1) {
-        spot = spot - 1;
+    } else if (player.properties.health + 100 >= player.functions.maxhealth() & player.properties.mediumPotion >= 1) {
+        player.properties.mediumPotion = player.properties.mediumPotion - 1;
         player.properties.health = player.functions.maxhealth();
-        document.getElementById('superPotion').innerHTML = spot;
+        document.getElementById('MediumPotion').innerHTML = player.properties.mediumPotion;
         document.getElementById('health').innerHTML = player.properties.health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
-    } else if (player.properties.health + 100 < player.functions.maxhealth() & spot >= 1) {
-        spot = spot - 1;
+    } else if (player.properties.health + 100 < player.functions.maxhealth() & player.properties.mediumPotion >= 1) {
+        player.properties.mediumPotion = player.properties.mediumPotion - 1;
         player.properties.health = player.properties.health + 100;
-        document.getElementById('superPotion').innerHTML = spot;
+        document.getElementById('MediumPotion').innerHTML = player.properties.mediumPotion;
         document.getElementById('health').innerHTML = player.properties.health;
     }
 };
 
-function usempot() {
+function useSuperPotion() {
     if (player.properties.health == player.functions.maxhealth()) {
         Log("Your health is full!");
-    } else if (player.properties.health + 500 >= player.functions.maxhealth() & mpot >= 1) {
-        mpot = mpot - 1;
+    } else if (player.properties.health + 500 >= player.functions.maxhealth() & player.properties.superPotion >= 1) {
+        player.properties.superPotion = player.properties.superPotion - 1;
         player.properties.health = player.functions.maxhealth();
-        document.getElementById('megaPotion').innerHTML = mpot;
+        document.getElementById('megaPotion').innerHTML = player.properties.superPotion;
         document.getElementById('health').innerHTML = player.properties.health;
         Log("You heal for 100 <span style=\"color:green\">health!</span>");
-    } else if (player.properties.health + 500 < player.functions.maxhealth() & mpot >= 1) {
-        mpot = mpot - 1;
+    } else if (player.properties.health + 500 < player.functions.maxhealth() & player.properties.superPotion >= 1) {
+        player.properties.superPotion = player.properties.superPotion - 1;
         player.properties.health = player.properties.health + 500;
-        document.getElementById('megaPotion').innerHTML = mpot;
+        document.getElementById('megaPotion').innerHTML = player.properties.superPotion;
         document.getElementById('health').innerHTML = player.properties.health;
     }
 };

@@ -230,9 +230,12 @@ function getBonusItemMod(monster, dropItem) {
             }
             else {
                 dropItem[randomMod.type] = 0;
-                if (dropItem["Block chance"] === undefined){
-                    dropItem['Block amount'] += 0;
+                if (dropItem["Block chance"] === undefined) {
+                    dropItem["Block chance"] = 0;
+                    dropItem['Block amount'] = 0;
                 }
+                dropItem["Block chance"] += 0;
+                dropItem['Block amount'] += 0;
                 var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
                 newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
                 currentMods += 1;
@@ -241,9 +244,12 @@ function getBonusItemMod(monster, dropItem) {
         }
         else {
             dropItem[randomMod.type] = 0;
-            if (dropItem["Block chance"] === undefined){
-                dropItem['Block amount'] += 0;
+            if (dropItem["Block chance"] === undefined) {
+                dropItem["Block chance"] = 0;
+                dropItem['Block amount'] = 0;
             }
+            dropItem["Block chance"] += 0;
+            dropItem['Block amount'] += 0;
             var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
             newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
             currentMods += 1;
@@ -264,7 +270,7 @@ function getBonusItemMod(monster, dropItem) {
         player.properties.itemIdNumber += 1;
     }
     else {
-        //player.properties.gold += Math.floor(dropItem.value * 0.2);
+        player.properties.gold += Math.floor(dropItem.Value * 0.2);
         updateHtml();
     };
 };

@@ -200,7 +200,13 @@ function CreateInventoryWeaponHtml() {
         };
         html += 'id="tab_' + InventoryItemTypes[j].type + '">';
         html += '<div class="row" id="' + "inventorySpace" + InventoryItemTypes[j].type + '"' + '>';
-        html += '<div class="c3"><h4>Inventory</h4></div>';
+        html += '<div class="c3"><h4>Inventory</h4>';
+        html += '<div class="c3">Sort by:</div>';
+        var sortItemValue = 'onclick="sortInventory' + "(" + "'Value'" + ")"
+        var sortItemRarity = 'onclick="sortInventory' + "(" + "'Rarity'" + ")"
+        html += '<button ' + sortItemValue + '">Value</button>';
+        html += '<button ' + sortItemRarity + '">Rarity</button>';
+        html += '</div><br />';
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType === InventoryItemTypes[j].type) {
                 if (playerInventory[i].itemType === "weapon") {
@@ -295,49 +301,35 @@ function unequipItemLoad() { // Create a variable inside player.properties which
         };
     };
 };
-var spellDamageDisplay = 0;
 function CreatePlayerSkillsHtml() {
     var html = '';
+    var number = 0
     html += '<div class="row">';
-    html += '<div class="c3 bold">Mana left: ' + (player.functions.maxMana() - spellTotalManaCost) + "</div>";
-    html += '<div class="col-xs-10">';
-    for (var spell in activeSpells) {
-        if (activeSpells.hasOwnProperty(spell)) {
-            var selectedSpell = activeSpells[spell];
-            var image = "images/skills/" + selectedSpell.image + ".png";
-            var activeSpell = '';
-            if (selectedSpell.isActive == true) {
-                activeSpell = '<font color="green">' + '<b>' + "Active" + '</b>' + '</font>';
-            } else {
-                activeSpell = '<font color="red">' + '<b>' + "Not Active" + '</b>' + '</font>';
-            };
-            var onclickevent = "upgradeSpell('" + spell + "');";
-            var spellonclickevent = "spellActivation('" + spell + "');";
+    html += '<div class="col-xs-12 col-xs-offset-1">';
+    html += '<div class="row">';
+    for (var passiveSkill in playerPassive) {
+        var passive = playerPassive[passiveSkill];
+        var onclickevent = "upgradePassive('" + passiveSkill + "');";
+        if (passive.type === "Double") {
+
+            html += '<div class="col-xs-2 col-xs-offset-2">';
+        }
+        else {
+
             html += '<div class="col-xs-4">';
-            html += '<a href="#" class="tooltipA">';
-            html += '<img src="' + image + '" onclick="' + spellonclickevent + '"/>';
-            html += '<span>';
-            html += 'Name: ' + selectedSpell.name + '<br />';
-            html += "Level " + selectedSpell.level;
-            html += "<br />Mana Cost: " + selectedSpell.manaReq;
-            html += "<br />Max Charges " + selectedSpell.maxCharge();
-            html += "<br />" + activeSpell;
-            html += "<br />Damage: " + selectedSpell.damage();
-            html += '</span></a>';
-            html += '<input type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="' + onclickevent + '">';
-            html += '</div>';
-        };
-    };
-    html += '<div class="c3"><b><a href="#" class="tooltipB">Hover over there, for some Help';
-    html += '<span>';
-    html += "Each spell:";
-    html += '<ul>';
-    html += "<li>Deal damage based on player intelligence and spell level.</li>" + '</br />';
-    html += "<li>Has level requirement to upgrade it.</li>" + '<br />';
-    html += "<li>Require certain amount of maximum Mana to be activated, you can activate as many spells as you want, as long as you have required max Mana</li>" + '<br />';
-    html += "<li>Has certain amount of charges(i.e. how many times will be casted during battle(1 cast per turn)) Can be increased with Wisdom.";
-    html += '</ul>';
-    html += '</span></a></b></div>';
+        }
+        html += '<a href="#" class="tooltipA">';
+        html += '<img class="passiveMargin"' + 'onclick="' + onclickevent + '"' + 'src="images/passive/' + passive.image + '.png">';
+        html += '<span>';
+        html += passive.name + '<br />';
+        html += passive.description();
+        html += '<br />Level: ' + passive.levelReq;
+        html += '<br />Level: ' + passive.level + '/' + passive.maxLevel;
+        html += '</span></a>';
+        html += '</div>';
+        number += 1;
+    }
+    html += '</div>';
     html += '</div>';
     html += '</div>';
     document.getElementById("playerSkills").innerHTML = html;
@@ -346,27 +338,20 @@ function CreatePlayerSkillsHtml() {
 function CreatePlayerHotBar() {
     var html = '';
     html += '<div class="row">';
-    html += '<div class="c3"><b>Active Spells</b></div>';
-    for (var spell in activeSpells) {
-        if (activeSpells.hasOwnProperty(spell)) {
-            var selectedSpell = activeSpells[spell];
-            var image = "images/skills/" + selectedSpell.image + ".png";
+    html += '<div class="col-xs-10 col-xs-offset-1">';
+    html += '<div class="row">';
+    html += '<div class="col-xs-4">';
+    html += '<img src="images/SmallPotion.png" onclick="useSmallPotion();" alt="Health Potion">' + player.properties.smallPotion + '<br />(20hp): ';
+    html += '</div>';
+    html += '<div class="col-xs-4">';
+    html += '<img src="images/MediumPotion.png" onclick="useMediumPotion();" alt="Health Potion">' + player.properties.mediumPotion + '<br />(100hp): ';
+    html += '</div>';
+    html += '<div class="col-xs-4">';
+    html += '<img src="images/SuperPotion.png" onclick="useSuperPotion();" alt="Health Potion">' + player.properties.superPotion + '<br />(500hp): ';
+    html += '</div>';
 
-            if (selectedSpell.isActive == true) { // Check if spell is active, and put it in hotbar
-                html += '<div class="col-xs-4 col-lg-3">';
-                html += '<a href="#" class="tooltipA">';
-                html += '<img src="' + image + '"/>';
-                html += '<span>';
-                html += 'Name: ' + selectedSpell.name + '<br />';
-                html += "Level " + selectedSpell.level;
-                html += "<br />Max Charges " + selectedSpell.maxCharge();
-                html += "<br />Damage: " + selectedSpell.damage();
-                html += '</span></a>';
-                html += "<br />" + selectedSpell.name;
-                html += '</div>';
-            };
-        };
-    };
+    html += '</div>';
+    html += '</div>';
     html += '</div>';
     document.getElementById("hotBar").innerHTML = html;
 };
@@ -412,6 +397,8 @@ function newGame() {
     EquippedItemsEmpty();
     primaryStatUpdate();
     secondaryStatUpdate();
+    CreatePlayerHotBar();
+    CreatePlayerSkillsHtml();
 };
 
 function characterCreationCreateBackground() {
@@ -564,11 +551,14 @@ function secondaryStatUpdate(){
         html += statDisplay2 + ":";
         html += '</div>';
         html += '<div class="col-xs-6 rightAlign '  + background + '">';
-        if (currentBonus.type === "Magic find" || currentBonus.type === "Gold drop" || currentBonus.type === "Experience rate" || currentBonus.type === "Critical damage") {
+        if (currentBonus.type === "Magic find" || currentBonus.type === "Gold drop" || currentBonus.type === "Experience rate") {
             html += ((statDisplay - 1) * 100).toFixed(0);
         }
         else if (currentBonus.type === "Stats" || currentBonus.type === "Skill points") {
             html += statDisplay.toFixed(0);
+        }
+        else if (currentBonus.type === "Crit damage") {
+            html += (statDisplay * 100).toFixed(0);
         }
         else {
             html += statDisplay.toFixed(2);
