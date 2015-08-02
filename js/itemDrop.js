@@ -19,7 +19,7 @@
 };
 
 function getItemType(monster) {
-    var monsterStats = monster.Stats;
+    var monsterStats = monster;
     var dropItem = {};
     var totalChance = 0;
     var randomNumber = 0;
@@ -27,12 +27,12 @@ function getItemType(monster) {
     var itemChanceTotal = itemTypes[itemTypes.length - 1]; // Gets the value "chance" of last index in my object array. I wont need to edit functions in the future if I add more stuff.
     totalChance = itemChanceTotal.chance;
     randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
-    if (monsterStats.level <= 10) {
-        itemLevel = Math.floor(Math.random() * (monsterStats.level - 1 + 1)) + 1; // Get itemLevel based on monster, 1-10
+    if (monsterStats <= 10) {
+        itemLevel = Math.floor(Math.random() * (monsterStats - 1 + 1)) + 1; // Get itemLevel based on monster, 1-10
     }
     else {
-        var monsterMinLevel = monsterStats.level / 2;
-        itemLevel = Math.floor(Math.random() * (monsterStats.level - monsterMinLevel + 1)) + monsterMinLevel; // get itemLevel based on monster level / 2 and monster level.
+        var monsterMinLevel = monsterStats / 2;
+        itemLevel = Math.floor(Math.random() * (monsterStats - monsterMinLevel + 1)) + monsterMinLevel; // get itemLevel based on monster level / 2 and monster level.
     };
     dropItem["iLvl"] = itemLevel;
     dropItem["id"] = player.properties.itemIdNumber;
@@ -56,12 +56,16 @@ function getItemSubType(monster, dropItem) {
         randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
         for (var itemType in itemWeaponSubType) {
             var itemChance = itemWeaponSubType[itemType].chance;
-            var itemType = itemWeaponSubType[itemType].type;
+            var itemType2 = itemWeaponSubType[itemType].type;
             if (randomNumber <= itemChance) {
-                dropItem["subType"] = itemType;
+                var randomLoreArray = itemWeaponSubType[itemType].lore;
+                var randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+                dropItem["lore"] = randomLore.text;
+                dropItem["subType"] = itemType2;
                 break;
             };
         };
+        
     }
     else if (dropItem.itemType === "armor") {
         var itemChanceTotal = itemArmorSubType[itemArmorSubType.length - 1];
@@ -69,9 +73,12 @@ function getItemSubType(monster, dropItem) {
         randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
         for (var itemType in itemArmorSubType) {
             var itemChance = itemArmorSubType[itemType].chance;
-            var itemType = itemArmorSubType[itemType].type;
+            var itemType2 = itemArmorSubType[itemType].type;
             if (randomNumber <= itemChance) {
-                dropItem["subType"] = itemType;
+                var randomLoreArray = itemArmorSubType[itemType].lore;
+                var randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+                dropItem["lore"] = randomLore.text;
+                dropItem["subType"] = itemType2;
                 break;
             };
         };
@@ -82,9 +89,12 @@ function getItemSubType(monster, dropItem) {
         randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
         for (var itemType in itemAccessorySubType) {
             var itemChance = itemAccessorySubType[itemType].chance;
-            var itemType = itemAccessorySubType[itemType].type;
+            var itemType2 = itemAccessorySubType[itemType].type;
             if (randomNumber <= itemChance) {
-                dropItem["subType"] = itemType;
+                var randomLoreArray = itemAccessorySubType[itemType].lore;
+                var randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+                dropItem["lore"] = randomLore.text;
+                dropItem["subType"] = itemType2;
                 break;
             };
         };
@@ -116,8 +126,10 @@ function getItemRarity(monster, dropItem) {
 };
 
 function getItemBaseStats(monster, dropItem) {
+    var minDmg = dropItem.iLvl * dropItem.power;
+    var maxDmg = dropItem.iLvl * (dropItem.power * 2);
     if (dropItem.itemType === "weapon") {
-        var randomNumber = Math.floor(Math.random() * ((dropItem.iLvl + dropItem.power) - 1 + 1)) + 1;
+        var randomNumber = Math.floor(Math.random() * (maxDmg - minDmg + 1)) + minDmg;
         dropItem["MinDamage"] = randomNumber
         dropItem["MaxDamage"] = randomNumber + dropItem.iLvl
     }
@@ -166,7 +178,7 @@ function getBonusItemMod(monster, dropItem) {
     else if (itemLevel <= 20) {
         var itemModLevel = itemModifiers.level20;
     }
-    else if (itemLevel <= 30) {
+    else {
         var itemModLevel = itemModifiers.level30;
     }
     var itemModLevelLength = itemModLevel.length;

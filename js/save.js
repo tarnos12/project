@@ -49,6 +49,16 @@
         HealthBonus2: playerPassive.fortitude.level,
         MagicFindBonus: playerPassive.looter.level,
         MagicFindBonus2: playerPassive.explorer.level,
+        SixthSenseBonus: playerPassive.sixthSense.level,
+        SpiritualAttunement: playerPassive.spiritualAttunement.level,
+        Mighty: playerPassive.mighty.level,
+        Constitution: playerPassive.constitution.level,
+        Curiosity: playerPassive.curiosity.level,
+        MasterofArms: playerPassive.masterofArms.level,
+        Robust: playerPassive.robust.level,
+        AncientKnowledge: playerPassive.ancientKnowledge.level,
+        BalancedWarrior: playerPassive.balancedWarrior.level,
+        MentalMastery: playerPassive.mentalMastery.level,
         //Other
         backpackStatus: backpackStatus,
         statStatus: statStatus,
@@ -104,6 +114,16 @@ function load() {
         if (typeof savegame.HealthBonus2 !== "undefined") playerPassive.fortitude.level = savegame.HealthBonus2;
         if (typeof savegame.MagicFindBonus !== "undefined") playerPassive.looter.level = savegame.MagicFindBonus;
         if (typeof savegame.MagicFindBonus2 !== "undefined") playerPassive.explorer.level = savegame.MagicFindBonus2;
+        if (typeof savegame.SixthSenseBonus !== "undefined") playerPassive.sixthSense.level = savegame.SixthSenseBonus;
+        if (typeof savegame.SpiritualAttunement !== "undefined") playerPassive.spiritualAttunement.level = savegame.SpiritualAttunement;
+        if (typeof savegame.Mighty !== "undefined") playerPassive.mighty.level = savegame.Mighty;
+        if (typeof savegame.Constitution !== "undefined") playerPassive.constitution.level = savegame.Constitution;
+        if (typeof savegame.Curiosity !== "undefined") playerPassive.curiosity.level = savegame.Curiosity;
+        if (typeof savegame.MasterofArms !== "undefined") playerPassive.masterofArms.level = savegame.MasterofArms;
+        if (typeof savegame.Robust !== "undefined") playerPassive.robust.level = savegame.Robust;
+        if (typeof savegame.AncientKnowledge !== "undefined") playerPassive.ancientKnowledge.level = savegame.AncientKnowledge;
+        if (typeof savegame.BalancedWarrior !== "undefined") playerPassive.balancedWarrior.level = savegame.BalancedWarrior;
+        if (typeof savegame.MentalMastery !== "undefined") playerPassive.mentalMastery.level = savegame.MentalMastery;
         //Other
         if (typeof savegame.pot !== "undefined") pot = savegame.pot;
         if (typeof savegame.spot !== "undefined") spot = savegame.spot;
@@ -120,7 +140,6 @@ function load() {
         if (typeof savegame.inventory !== "undefined") playerInventory = savegame.inventory;
         document.getElementById("gold").innerHTML = player.properties.gold;
     };
-    CreateInventoryWeaponHtml();
     loadIsEquipped();
     CreateWeaponSkillHtml();
     quest();
@@ -132,6 +151,7 @@ function load() {
     playerReviveCheck();
     removeStartingScreen();
     unequipItemLoad();
+    CreateInventoryWeaponHtml();
     primaryStatUpdate();
     secondaryStatUpdate();
     EquippedItemsEmpty();
