@@ -294,6 +294,65 @@ var player = {
                 equippedItems.amulet['Experience rate'] +
                 equippedItems.talisman['Experience rate']);
         },
+        raceBonusGoldExpDrop:function(){
+            if (player.properties.heroRace === "Human") {
+                return characterRaces.human.bonusExpGoldDrop();
+            }
+            else {
+                return 0;
+            };
+        },
+        raceBonusGold: function () {
+            if (player.properties.heroRace === "Dwarf") {
+                return characterRaces.dwarf.bonusGold()
+            }
+            else {
+                return 0;
+            };
+        },
+        raceBonusDrop: function () {
+            if (player.properties.heroRace === "Half Elf") {
+                return characterRaces.halfElf.bonusDrop();
+            }
+            else {
+                return 0;
+            };
+        },
+        raceBonusAllStat: function () {
+            if (player.properties.heroRace === "Human") {
+                return characterRaces.human.allStatsBonus() / 100;
+            }
+            else if (player.properties.heroRace === "Orc") {
+                return characterRaces.orc.allStatsBonus() / 100;
+            }
+            else {
+                return 0;
+            };
+        },
+        raceBonusHealth: function () {
+            if (player.properties.heroRace === "Orc") {
+                return characterRaces.orc.bonusHealth();
+            }
+            else {
+                return 0;
+            };
+        },
+        raceBaseCritical:function(){
+            if (player.properties.heroRace === "Half Elf") {
+                return characterRaces.halfElf.criticalChance();
+            }
+            else {
+                return 0;
+            };
+        },
+        raceBaseEvasion:function(){
+            if (player.properties.heroRace === "Dwarf") {
+                return characterRaces.dwarf.evasionChance();
+            }
+            else {
+                return 0;
+            };
+        },
         bonusDamage: function () {
             var damage = 0;
             if (playerPassive.brawler.level > 0) {
@@ -302,6 +361,15 @@ var player = {
             if (playerPassive.overpower.level > 0) {
                 damage += playerPassive.overpower.bonusTotal();
             }
+            if (playerPassive.mighty.level > 0) {
+                damage += playerPassive.mighty.bonusTotal();
+            }
+            if (playerPassive.masterofArms.level > 0) {
+                damage += playerPassive.masterofArms.bonusTotal();
+            }
+            if (playerPassive.balancedWarrior.level > 0) {
+                damage += playerPassive.balancedWarrior.bonusTotal();
+            }
             return damage;
         },
         bonusMana: function(){
@@ -309,6 +377,9 @@ var player = {
             if (playerPassive.spiritualAttunement.level > 0){
                 mana += playerPassive.spiritualAttunement.bonusTotal();
             };
+            if (playerPassive.mentalMastery.level > 0) {
+                mana += playerPassive.mentalMastery.bonusTotal();
+            }
             return mana;
         },
         bonusHealth: function () {
@@ -319,6 +390,16 @@ var player = {
             if (playerPassive.fortitude.level > 0) {
                 health += playerPassive.fortitude.bonusTotal();
             }
+            if (playerPassive.constitution.level > 0) {
+                health += playerPassive.constitution.bonusTotal();
+            }
+            if (playerPassive.robust.level > 0) {
+                health += playerPassive.robust.bonusTotal();
+            }
+            if (playerPassive.balancedWarrior.level > 0) {
+                health += playerPassive.balancedWarrior.bonusTotal();
+            }
+            health += player.functions.raceBonusHealth();
             return health;
         },
         bonusMagicFind: function () {
@@ -329,7 +410,27 @@ var player = {
             if (playerPassive.explorer.level > 0) {
                 magicFind += playerPassive.explorer.bonusTotal();
             }
+            if (playerPassive.ancientKnowledge.level > 0) {
+                magicFind += playerPassive.ancientKnowledge.bonusTotal();
+            }
             return magicFind;
+        },
+        bonusGoldDrop: function () {
+            var goldDrop = 0;
+            if (playerPassive.ancientKnowledge.level > 0) {
+                goldDrop += playerPassive.ancientKnowledge.bonusTotal();
+            }
+            return goldDrop;
+        },
+        bonusExpRate: function(){
+            var expRate = 0;
+            if (playerPassive.curiosity.level > 0) {
+                expRate += playerPassive.curiosity.bonusTotal();
+            }
+            if (playerPassive.ancientKnowledge.level > 0) {
+                expRate += playerPassive.ancientKnowledge.bonusTotal();
+            }
+            return expRate;
         },
         bonusEvasion: function(){
             var evasion = 0;
@@ -339,13 +440,15 @@ var player = {
             return evasion;
         },
         dropRate: function () {
-            return (((1 + ((player.functions.totalLuck() / 500) + (player.functions.totalMagicFind()) / 100)) * (1 + (player.functions.bonusMagicFind() / 100))) * bonusDrop);
+            return (((1 + ((player.functions.totalLuck() / 500) + (1 + ((player.functions.raceBonusDrop() + player.functions.raceBonusGoldExpDrop() +
+                player.functions.totalMagicFind() + 
+                player.functions.bonusMagicFind()))) / 100) * bonusDrop)));
         },
         expRate: function () {
-            return (1 + ((player.functions.totalExperienceRate()) / 100)) * bonusExp;
+            return ((1 + (((player.functions.totalExperienceRate()) / 100) + (1 + ((player.functions.bonusExpRate() + player.functions.raceBonusGoldExpDrop()) / 100))) * bonusExp));
         },
         goldRate: function () {
-            return ((1 + (player.functions.totalGoldDrop()) / 100)) * bonusGold;
+            return ((1 + (((player.functions.totalGoldDrop()) / 100) + (1 + ((player.functions.bonusGoldDrop() + player.functions.raceBonusGoldExpDrop()) / 100))) * bonusGold));
         },
         inventory: function () {
             return Math.floor(20 + (player.functions.totalStrength() / 10) + player.properties.backpackUpgrade); //Add backpacks "new item type"
@@ -359,7 +462,7 @@ var player = {
             return Math.floor(
                 (player.properties.baseStrength +
                 player.functions.totalStrengthBonus()) *
-                player.functions.masteryStrength());
+                (player.functions.masteryStrength() + player.functions.raceBonusAllStat()));
         },
         masteryEndurance: function () {
             return (weaponMastery.mace.maceEndurance() *
@@ -369,7 +472,7 @@ var player = {
             return Math.floor((
                 player.properties.baseEndurance +
                 player.functions.totalEnduranceBonus()) *
-                player.functions.masteryEndurance());
+                (player.functions.masteryEndurance() + player.functions.raceBonusAllStat()));
         },
         masteryAgility: function () {
             return (weaponMastery.sword.swordAgility());
@@ -378,7 +481,7 @@ var player = {
             return Math.floor((
                 player.properties.baseAgility +
                 player.functions.totalAgilityBonus()) *
-                player.functions.masteryAgility());
+                (player.functions.masteryAgility() + player.functions.raceBonusAllStat()));
         },
         masteryDexterity: function () {
             return (weaponMastery.ranged.rangedDexterity());
@@ -387,7 +490,7 @@ var player = {
             return Math.floor((
                 player.properties.baseDexterity +
                 player.functions.totalDexterityBonus()) *
-                player.functions.masteryDexterity());
+                (player.functions.masteryDexterity() + player.functions.raceBonusAllStat()));
         },
         masteryIntelligence: function () {
             return (weaponMastery.staff.staffIntelligence());
@@ -396,7 +499,7 @@ var player = {
             return Math.floor(((
                 (player.properties.baseIntelligence +
                 player.functions.totalIntelligenceBonus()) *
-                player.functions.masteryIntelligence()) *
+                (player.functions.masteryIntelligence() + player.functions.raceBonusAllStat())) *
                 weaponSkillList.staff.spellSimulacrum.damage()) * bonusSpellDamage);
         },
         masteryWisdom: function () {
@@ -407,12 +510,12 @@ var player = {
             return Math.floor(((
                 player.properties.baseWisdom +
                 player.functions.totalWisdomBonus()) *
-                player.functions.masteryWisdom()) * bonusSpellDamage);
+                (player.functions.masteryWisdom() + player.functions.raceBonusAllStat())) * bonusSpellDamage);
         },
         totalLuck: function () {
-            return Math.floor(
+            return Math.floor((
                 player.properties.baseLuck +
-                player.functions.totalLuckBonus());
+                player.functions.totalLuckBonus()) * (1 + player.functions.raceBonusAllStat()));
         },
         maxhealth: function () {
             return Math.floor(((475 + player.functions.totalLifeBonus() + (player.functions.totalEndurance() * 5)) * (1 + (player.functions.bonusHealth() / 100))));
@@ -422,11 +525,10 @@ var player = {
         },
         //Mana
         maxMana: function () {
-            return Math.floor(7 +
-                player.functions.bonusMana() +
+            return Math.floor((7 +
                 player.functions.totalManaBonus() +
                 player.functions.totalWisdom() * 0.5 +
-                player.functions.totalIntelligence() * 0.1);
+                player.functions.totalIntelligence() * 0.1) * (1 + (player.functions.bonusMana() / 100)));
         },
         manaRegen: function () {
             return ((((player.functions.totalWisdom() / 10)) * (1 + (player.functions.totalManaRegen() / 100))) * bonusRegen);
@@ -452,19 +554,19 @@ var player = {
                 player.functions.totalArmorBonus());
         },
         evasion: function () {
-            if ((((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance()))) > 20) * (1 + (player.functions.bonusEvasion() / 100))) {
+            if ((((5 + (player.functions.raceBaseEvasion()) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance()))) > 20) * (1 + (player.functions.bonusEvasion() / 100))) {
                 return 20;
             }
             else {
-                return (((5 + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance()))) * (1 + (player.functions.bonusEvasion() / 100)));
+                return (((5 + (player.functions.raceBaseEvasion()) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.02)) * (1 + (player.functions.totalEvasionChance()))) * (1 + (player.functions.bonusEvasion() / 100)));
             }
         },
         criticalChance: function () {
-            if (((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance() / 10))) > 50) {
+            if (((10 + (player.functions.raceBaseCritical()) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance() / 10))) > 50) {
                 return 50 + weaponSkillList.ranged.archerFocus.damage();
             }
             else {
-                return ((10 + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance() / 10)));
+                return ((10 + (player.functions.raceBaseCritical()) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance() / 10)));
             }
         },
         criticalDamage: function () {
@@ -541,7 +643,7 @@ function createEquippedItemsObject(typeOfTheItem) {
 
 createEquippedItemsObject('all');
 
-var maxLogLines = 12;
+var maxLogLines = 30;
 var logData = {
     length: 0
 };
@@ -894,6 +996,7 @@ function skillReCharge() {
 //gold gained from killing a monster
 function monsterGold(monsterStat, monsterStats) {
     var goldDrop = player.properties.goldDrop;
+    var monsterLvl = monsterStats.level;
     goldDrop = 0;
     var randomGold = Math.floor(Math.random() * ((monsterStats.level + 5) - monsterStats.level + 1) + monsterStats.level);
     goldDrop = Math.floor(randomGold * player.functions.goldRate());
@@ -901,7 +1004,7 @@ function monsterGold(monsterStat, monsterStats) {
     Log('<span id=\"goldDrop\" class =\"bold\" style=\"display:none;\">You loot: ' + goldDrop + " gold!" + "<br />" + "</span>");
     document.getElementById("gold").innerHTML = player.properties.gold;
     player.properties.goldDrop = goldDrop;
-    monsterItemDrop(monsterStat);
+    monsterItemDrop(monsterLvl);
     updateHtml();
 };
 
@@ -1221,6 +1324,7 @@ function equipItem(id) {
     CreatePlayerHotBar();
     updateBar();
     checkIfEquippedEmpty();
+    CreateInventoryWeaponHtml();
 };
 
 //Unequip item function
@@ -1354,6 +1458,9 @@ function unequipItem(id, type) {
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
     checkIfEquippedEmpty();
+    if (type === "solo") {
+        CreateInventoryWeaponHtml();
+    };
 };
 
 
@@ -1492,4 +1599,14 @@ function sortInventory(type) {
         })
     }
     CreateInventoryWeaponHtml();
+};
+
+function resetPassiveSkills() {
+        for (var key in playerPassive) {
+            playerPassive[key].level = 0;
+        };
+        player.properties.skillPoints = player.properties.level - 1;
+        CreatePlayerSkillsHtml();
+        primaryStatUpdate();
+        secondaryStatUpdate();
 };

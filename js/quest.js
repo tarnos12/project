@@ -32,7 +32,7 @@ function quest() {
     if (player.properties.level >= 2) {
         monsterList.VarikSoldier.Stats.isShown = true;
         if (monsterUnlock.VarikSoldier == false) {
-            document.getElementById("varik").innerHTML += '<h3><b>Varik Soldiers</b></h3><br />' +
+            var varikElement = '<h3><b>Varik Soldiers</b></h3><br />' +
             '<p class="story">After your victory over the grunts you notice another group approaching.' +
             'The Varik Soldiers have arrived and they aren\'t happy.' +
             'You stand in front of them and yell at them to stop.' +
@@ -40,13 +40,15 @@ function quest() {
             'When they noticed the bodies a laugh sounded out from the group.' + '<br /><br />' +
             '"You just beat up a bunch of potential recruits and think that you are some tough guy now, well let us show you what tough guys get around here."' + '<br /><br />' +
             'All you do in response is walk towards them and start the battle.</p>';
+            document.getElementById("varik").innerHTML += varikElement;
+            $("#storyLog").prepend(varikElement);
         };
         monsterUnlock.VarikSoldier = true;
     };
     if (player.properties.level >= 3) {
         monsterList.VarikMarksmen.Stats.isShown = true;
         if (monsterUnlock.VarikMarksmen == false) {
-            document.getElementById("varik").innerHTML += '<h3><b>Varik Marksmen</b></h3><br />' +
+         var varikElement = '<h3><b>Varik Marksmen</b></h3><br />' +
           '<p class="story">"What in the name Asmodeus are you? Why won\'t you die?"' + '<br /><br />' +
           'You stare as the soldier departs from this world.' +
           'You feel a pang of sadness over this but quickly remember these thugs are responsible for burning down New Hemlock.' +
@@ -54,26 +56,30 @@ function quest() {
           '"Darn it, I missed. HEY, stay still!"' + '<br /><br />' +
           'Another marksmen stands behind the one who fired at the now dead soldier.' +
           'They laugh at the dead and attack comrades, and they just continue to make things worse for themselves.</p>';
+         document.getElementById("varik").innerHTML += varikElement;
+         $("#storyLog").prepend(varikElement);
         };
         monsterUnlock.VarikMarksmen = true;
     };
     if (player.properties.level >= 4) {
         monsterList.VarikVulture.Stats.isShown = true;
         if (monsterUnlock.VarikVulture == false) {
-            document.getElementById("varik").innerHTML += '<h3><b>Varik Vulture</b></h3><br />' +
+            var varikElement = '<h3><b>Varik Vulture</b></h3><br />' +
             '<p class="story">You might have been hit a few times but you are quickly discovering that immortality is a pretty huge advantage.' +
             'Your kind of immortality is one where you never actually die, you just fall down and wake back up after your healing kicks in.' +
             'The marksmen have been taken care of and now you continue deeper into their hideout.' + '<br /><br />' +
             '"Hey, did you have to kill them? I mean come on, do you know how long it takes to train a decent archer?' +
             'You don\'t care do you? Well come here, I\'m gonna teach about the wonderful ways of pain."' + '<br /><br />' +
             'As stoic as ever you handle the words without a grimace and charge at the murderer.</p>';
+            document.getElementById("varik").innerHTML += varikElement;
+            $("#storyLog").prepend(varikElement);
         };
         monsterUnlock.VarikVulture = true;
     };
     if (player.properties.level >= 5) {
         monsterList.VarikEvader.Stats.isShown = true;
         if (monsterUnlock.VarikEvader == false) {
-            document.getElementById("varik").innerHTML += '<h3><b>Varik Evader</b></h3><br />' +
+            var varikElement = '<h3><b>Varik Evader</b></h3><br />' +
             '<p class="story">"Haha, that was fun, little pup. Go on and get killed already. Let me die alone!"' + '<br /><br />' +
             'The Buzzard was fast and strong but you were faster and stronger and with every victory you felt your strength growing.' +
             'Maybe you might make as much of a presence to be noticed by the Temple of Legends but that is far ahead and out of your league. The Voice returns:' + '<br /><br />' +
@@ -84,13 +90,15 @@ function quest() {
             'What makes it think you can fight a Lich? Anyway, better move forward.' + '<br /><br />' +
             'The knife was just a little too slow and you ducked out of the way.' + '<br /><br />' +
             '"Good you aren\'t dead yet. Let us put you to rest, Immortal."</p>';
+            $("#storyLog").prepend(varikElement);
+            document.getElementById("varik").innerHTML += varikElement;
         };
         monsterUnlock.VarikEvader = true;
     };
     if (player.properties.level >= 6) {
         monsterList.VariksLiar.Stats.isShown = true;
         if (monsterUnlock.VariksLiar == false) {
-            document.getElementById("varik").innerHTML += '<h3><b>Variks Liar</b></h3><br />' +
+            var varikElement = '<h3><b>Variks Liar</b></h3><br />' +
             '<p class="story">The Evader thought he had you but it seems that immortality isn\'t your only gift,' +
             'because it is becoming apparent that you are developing into a decent fighter as even the Evader couldn\'t pin you down.' +
             'The Evader lived up to his name though but was still defeated because where he had skill, you had endurance and patience.' + '<br /><br />' +
@@ -99,13 +107,15 @@ function quest() {
             'This one seems weak, but don\'t let your eyes deceive you.' +
             'The Liar is known as one of the best illusionist in the Seven Cities.' +
             'He could end up slowing you down to the point where you just give up. So watch him and don\'t get distracted.</p>';
+            $("#storyLog").prepend(varikElement);
+            document.getElementById("varik").innerHTML += varikElement;
         };
         monsterUnlock.VariksLiar = true;
     };
     if (player.properties.level >= 7) {
         monsterList.VariksQueen.Stats.isShown = true;
         if (monsterUnlock.VariksQueen == false) {
-            document.getElementById("varik").innerHTML += '<h3><b>Variks Queen</b></h3><br />' +
+            var varikElement = '<h3><b>Variks Queen</b></h3><br />' +
             '<p class="story">The Liar had some nasty tricks up his sleeve,' +
             'multiple times he had refracted on image of himself in different directions causing you to slam right into the ground, wall, or table.' +
             'He even managed to make you think your weapon became a snake which didn\'t last long.' +
@@ -117,13 +127,15 @@ function quest() {
             'You just barely duck under her swing and she yells out.' +
             '"Well, fight me or better yet, just stand there and die!"' + '<br /><br />' +
             'No time to think, another battle has begun.</p>';
+            $("#storyLog").prepend(varikElement);
+            document.getElementById("varik").innerHTML += varikElement;
         };
         monsterUnlock.VariksQueen = true;
     };
     if (player.properties.level >= 8) {
         monsterList.LordVarik.Stats.isShown = true;
         if (monsterUnlock.LordVarik == false) {
-            document.getElementById("varik").innerHTML += '<h3><b>Lord Varik</b></h3><br />' +
+            var varikElement = '<h3><b>Lord Varik</b></h3><br />' +
             '<p class="story">She lay there bleeding out, "You are going to burn, even your immortality won\'t protect you from judgment."' +
             'She died sitting against a wall in a dingy hideout that smelled of alcohol and ginger.' + '<br /><br />' +
 
@@ -138,13 +150,15 @@ function quest() {
             '"Really? Well, you can have your fight, you animal. I will show why they call me LORD!"' +
             'He is glowing and wields a spear fashioned of a green tassel and a bronze metal.' +
             'He lunges at you and the battle begins.</p>';
+            $("#storyLog").prepend(varikElement);
+            document.getElementById("varik").innerHTML += varikElement;
         };
         monsterUnlock.LordVarik = true;
     };
     if (player.properties.level >= 9) {
         monsterList.ToxicFlies.Stats.isShown = true;
         if (monsterUnlock.ToxicFlies == false) {
-            document.getElementById("varik").innerHTML += '<h3><b>The End of Lord Varik</b></h3><br />' +
+            var varikElement = '<h3><b>The End of Lord Varik</b></h3><br />' +
             '<p class="story">Just like the rest of his gang, he lay there bleeding and feeling woefully mortal.' +
             '"How? How did you become immortal? Why you? Why not me? I DESERVE IT! I won\'t die to this! Not here, Not today!"' + '<br /><br />' +
 
@@ -161,7 +175,10 @@ function quest() {
             'Now is not the time for introspection though, you need to feel battle again and the next viable place is the Forest of Narsus.' + '<br />' +
             'After that comes Old Crones Mountain and then... just maybe you can rest.</p><br />';
 
-            document.getElementById("forestOfNarsus").innerHTML += '<p class="story">You stand at the edge of the forest. This is it, the point of no return. ' +
+            $("#storyLog").prepend(varikElement);
+            document.getElementById("varik").innerHTML += varikElement;
+
+            var forestElement = '<p class="story">You stand at the edge of the forest. This is it, the point of no return. ' +
             'It is said that those who enter the forest are cursed to never return home, you are here to prove them wrong.' +
             'The deep grime of the place really sticks out, every footfall ends in a snapped twig or a crushed leaf.' +
             'The smell of rot and the sound of insects fill your senses as your take the first tentative step into the Spider Queens territory.</p>' +
@@ -175,13 +192,16 @@ function quest() {
             'It looks like you might be here for a while.' + '<br /><br />' +
 
             'Voice: "Why are you fighting flies? Get a move on already! I want to see something more impressive than flies."</p>';
+
+            $("#storyLog").prepend(forestElement);
+            document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.ToxicFlies = true;
     };
     if (player.properties.level >= 10) {
         monsterList.Stalker.Stats.isShown = true;
         if (monsterUnlock.Stalker == false) {
-            document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Stalker</b></h3><br />' +
+            var forestElement = '<h3><b>Stalker</b></h3><br />' +
                 '<p class="story">It took the rest of the day and part of the night to clear out the rest of the flies.' +
                 'Maybe this wasn\'t a good idea, but it is too late to turn back now.' +
                 'As you trudge through the darkness you notice glimpses of movement and slowly these glimpses become full views of the creature.' +
@@ -189,13 +209,15 @@ function quest() {
                 'It howled and the sound was like a groan from a far larger creature.  It dashed off into the woods but common sense tells you that it is still around.' + '<br /><br />' +
 
                 'But just as you think it left, it comes dashing from your right and attempts to tackle you and the fight for survival has begun.</p>';
+            $("#storyLog").prepend(forestElement);
+            document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.Stalker = true;
     };
     if (player.properties.level >= 11) {
         monsterList.AlphaStalker.Stats.isShown = true;
         if (monsterUnlock.AlphaStalker == false) {
-            document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Alpha Stalker</b></h3><br />' +
+            var forestElement = '<h3><b>Alpha Stalker</b></h3><br />' +
 
                 '<p class="story">Voice: "What a poor doggy. Did you have to kill it? Try to tame the next one."<br /><br />' +
 
@@ -213,13 +235,15 @@ function quest() {
                 'Voice: "YOU HAVE TO TAME THAT!"<br /><br />' +
 
                 'You ignore the Voice again and focus on the battle.</p>';
+            $("#storyLog").prepend(forestElement);
+            document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.AlphaStalker = true;
     };
     if (player.properties.level >= 12) {
         monsterList.StalkerPack.Stats.isShown = true;
         if (monsterUnlock.StalkerPack == false) {
-            document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Stalker Pack</b></h3><br />' +
+            var forestElement = '<h3><b>Stalker Pack</b></h3><br />' +
 
                 '<p class="story">After you managed to put the beast down you can tell that the battle isn\'t over yet.' +
                 'The howling started after you killed the alpha, a sad, mourning howl.' +
@@ -228,13 +252,15 @@ function quest() {
                 'Voice: "Well, good luck, see you in the morning!"<br /><br />' +
 
                 'Suddenly, Stalkers were everywhere snarling, barking, and snapping at you.  It is going to be a very long night.</p>';
+            $("#storyLog").prepend(forestElement);
+            document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.StalkerPack = true;
     };
     if (player.properties.level >= 13) {
         monsterList.JumpingSpider.Stats.isShown = true;
         if (monsterUnlock.JumpingSpider == false) {
-            document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Jumping Spider</b></h3><br />' +
+            var forestElement = '<h3><b>Jumping Spider</b></h3><br />' +
 
                 '<p class="story">The sun has risen and you stand amongst the dead pack of Stalkers but just as you begin to rest another creature comes.' +
                 'It seems that this forest really doesn\'t like you.' +
@@ -249,13 +275,15 @@ function quest() {
                 'Voice: "Well, I am going back to bed. Wake me when you done with your friends."<br /><br />' +
 
                 'You charge and the battle begins.</p>';
+            $("#storyLog").prepend(forestElement);
+            document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.JumpingSpider = true;
     };
     if (player.properties.level >= 14) {
         monsterList.SpiderBeast.Stats.isShown = true;
         if (monsterUnlock.SpiderBeast == false) {
-            document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Spider Beast</b></h3><br />' +
+            var forestElement = '<h3><b>Spider Beast</b></h3><br />' +
 
                 '<p class="story">Forget last night, today was unbearable.' +
                 'Being chased through the forest by a legion of man-eating spiders is significantly worse than dealing with Stalkers.' +
@@ -275,13 +303,15 @@ function quest() {
                 'You ignore the fact that every creature here has attacked you first because you did come here looking for a fight.<br /><br />' +
 
                 'It lifted its leg off of you and proceeded to bite you, but being a trained warrior you rolled out of the way and started the counterattack.</p>';
+            $("#storyLog").prepend(forestElement);
+            document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.SpiderBeast = true;
     };
     if (player.properties.level >= 15) {
         monsterList.Narsus.Stats.isShown = true;
         if (monsterUnlock.Narsus == false) {
-            document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Narsus</b></h3><br />' +
+            var forestElement = '<h3><b>Narsus</b></h3><br />' +
 
                 '<p class="story">That was a very angry spider and you are quite sure why.' +
                 'You didn\'t intend to come here and murder legions of spiders that are related to an insane and brooding giant tarantula.' +
@@ -322,13 +352,15 @@ function quest() {
                 '"Hold on-"<br /><br />' +
 
                 'She started weaving a web and covering the area making it hard to move.  The fight has begun and nothing can stop it.</p>';
+            $("#storyLog").prepend(forestElement);
+            document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.Narsus = true;
     };
     if (player.properties.level >= 16) {
         monsterList.JotunnScout.Stats.isShown = true;
         if (monsterUnlock.JotunnScout == false) {
-            document.getElementById("forestOfNarsus").innerHTML += '<h3><b>Jotunn Scout</b></h3><br />' +
+            var forestElement = '<h3><b>Jotunn Scout</b></h3><br />' +
 
                 '<p class="story">She just started laughing and didn\'t stop until her throat filled with blood, then she coughed it out and laughed some more.' +
                 'You were hoping to ask some questions but she seems pretty tied up right now.' +
@@ -351,13 +383,15 @@ function quest() {
                 'The sound was deafening and a red light shot into the air.  "Now they know you are here, have fun."<br /><br />' +
 
                 'You respond by attacking him and starting a battle.</p>';
+            $("#storyLog").prepend(forestElement);
+            document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.JotunnScout = true;
     };
     if (player.properties.level >= 17) {
         monsterList.JotnarAmbushSquad.Stats.isShown = true;
         if (monsterUnlock.JotnarAmbushSquad == false) {
-            document.getElementById("ozJotnar").innerHTML += '<p class="story">Why is that wherever you go someone wants to kill you?' +
+            var ozJotnarElement = '<p class="story">Why is that wherever you go someone wants to kill you?' +
             'To be fair, you started the fight with bandits, and you were on forbidden territory in the forest, but this time it isn\'t even your fault.' +
             'You sought peaceful passage and still have people wanting to kill you.<br /><br />' +
 
@@ -403,13 +437,16 @@ function quest() {
              'You quickly spin around and disarm the assassin and then throw him to the ground.<br /><br />' +
 
              'It looks like another fight has begun, best of luck to you.</p>';
+
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.JotnarAmbushSquad = true;
     };
     if (player.properties.level >= 18) {
         monsterList.LongRangeExterminationSquad.Stats.isShown = true;
         if (monsterUnlock.LongRangeExterminationSquad == false) {
-            document.getElementById("ozJotnar").innerHTML += '<h3><b>Long Range Extermination Squad</b></h3><br />' +
+            var ozJotnarElement = '<h3><b>Long Range Extermination Squad</b></h3><br />' +
 
             '<p class="story">After stepping on a hundred caltrops,' +
             'falling into a spike pit, and having poison launched into your face you managed to eliminate the rest of the ambushers.<br /><br />' +
@@ -428,13 +465,15 @@ function quest() {
             'Voice: "All these new weapons, how did the trolls learn to make these?"<br /><br />' +
 
             'You wince at the racist comment and quickly shoot off, "Hey, don\'t be racist." Then continued running towards battle.</p>';
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.LongRangeExterminationSquad = true;
     };
     if (player.properties.level >= 19) {
         monsterList.BerserkerShockSquad.Stats.isShown = true;
         if (monsterUnlock.BerserkerShockSquad == false) {
-            document.getElementById("ozJotnar").innerHTML += '<h3><b>Berserker ShockSquad</b></h3><br />' +
+            var ozJotnarElement = '<h3><b>Berserker ShockSquad</b></h3><br />' +
 
             '<p class="story">They were pretty far away and you got hit a couple of times;<br />' +
             'it was like being hit by someone swinging an oak tree, but you managed to reach them and end them.  You collapse and stare at the sky for a while.<br /><br />' +
@@ -461,13 +500,15 @@ function quest() {
             'You: "It is nice to speak with someone before they try to kill but I am itching to fight so lets get this show on the road."<br /><br />' +
 
             'Weg: "With pleasure." He then unsheathed a massive great sword and started roaring. You were eager to start the battle and began charging him.</p><br /><br />';
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.BerserkerShockSquad = true;
     };
     if (player.properties.level >= 20) {
         monsterList.BerserkerShockSquadCaptainRendGrest.Stats.isShown = true;
         if (monsterUnlock.BerserkerShockSquadCaptainRendGrest == false) {
-            document.getElementById("ozJotnar").innerHTML += '<h3><b>Berserker Shock Squad Captain, Rend Grest</b></h3><br />' +
+            var ozJotnarElement = '<h3><b>Berserker Shock Squad Captain, Rend Grest</b></h3><br />' +
 
             '<p class="story">They were strong like gorillas and fast like lightning but you are immortal and could taking a lot more damage than they could dish out.<br />' +
             'It still took two days to beat all three of them and by the end of Dun Lu Weg is awake and watching the fight.<br /><br />' +
@@ -485,13 +526,15 @@ function quest() {
             'Voice: "ASMODEUS BLESS, WHAT IN THE WORLD WAS THAT?"<br /><br />' +
 
             'You quickly get up, still dazed and rocked, but ready.  Rend is already in front of you and wheeling his fist back. Good Luck.</p>';
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.BerserkerShockSquadCaptainRendGrest = true;
     };
     if (player.properties.level >= 21) {
         monsterList.ArtillerySquad.Stats.isShown = true;
         if (monsterUnlock.ArtillerySquad == false) {
-            document.getElementById("ozJotnar").innerHTML += '<h3><b>Artillery Squad #1-9</b></h3><br />' +
+            var ozJotnarElement = '<h3><b>Artillery Squad #1-9</b></h3><br />' +
 
                 '<p class="story">Five days. Five days to beat that monster.  He never tired, never stopped, and was always aggressive.<br />' +
             'Five days to wear him down and best him.  Even the Voice was giving you advice and if it didn\'t you probably wouldn\'t have beaten him.<br />' +
@@ -519,13 +562,15 @@ function quest() {
  
             'In a huge crater you see nine groups of four Jottun surrounding their own machines.<br />' +
             'They see you and start firing their elongated pipes at you.  The fight has started.</p>';
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.ArtillerySquad = true;
     };
     if (player.properties.level >= 22) {
         monsterList.JottunMainInfantry.Stats.isShown = true;
         if (monsterUnlock.JottunMainInfantry == false) {
-            document.getElementById("ozJotnar").innerHTML += '<h3><b>Jottun Main Infantry</b></h3><br />' +
+            var ozJotnarElement = '<h3><b>Jottun Main Infantry</b></h3><br />' +
 
             '<p class="story">Your body is pockmarked with dozens of holes from the weapons they were holding.<br />' +
             'You watch the metal chunks get pushed out of your body and the holes slowly heal leaving little evidence that you just had a hole in your body.<br />' +
@@ -546,6 +591,8 @@ function quest() {
             'After a few hours of walking you begin to hear the telltale clang of an army and the tunnel opens up and you walk into a massive cavern.<br />' +
             'It is hundreds of feet long and you can just barely see the ceiling looming over you, but more alarmingly is what is in front of you.<br />' +
             'Hundreds of Jotnar preparing for war and you seem to be their target.  When one set his eyes on you, he yelled for the alarm and the battle begun.</p>';
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
 
             };
         monsterUnlock.JottunMainInfantry = true;
@@ -553,7 +600,7 @@ function quest() {
     if (player.properties.level >= 23) {
         monsterList.RegentCairLorn.Stats.isShown = true;
         if (monsterUnlock.RegentCairLorn == false) {
-            document.getElementById("ozJotnar").innerHTML += '<h3><b>Regent Cair Lorn</b></h3><br />' +
+            var ozJotnarElement = '<h3><b>Regent Cair Lorn</b></h3><br />' +
 
                 '<p class="story">Voice: "I can\'t believe you actually fought them all!"<br /><br />' +
             
@@ -570,6 +617,8 @@ function quest() {
             'You have been here long enough to learn to kick things they throw away.<br />' +
             'It soared away and exploded against the cavern wall causing a series of tremors.<br />' +
             'She doesn\'t stop for a second and continues her battle with you.</p>';
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
 
             };
         monsterUnlock.RegentCairLorn = true;
@@ -577,7 +626,7 @@ function quest() {
     if (player.properties.level >= 24) {
         monsterList.DeepKingTarNuk.Stats.isShown = true;
         if (monsterUnlock.DeepKingTarNuk == false) {
-            document.getElementById("ozJotnar").innerHTML += '<h3><b>Deep King Tar Nuk</b></h3><br />' +
+            var ozJotnarElement = '<h3><b>Deep King Tar Nuk</b></h3><br />' +
 
                 '<p class="story">Cair Lorn: "Stop you win, follow me. Be quick about it!"<br />' +
             'She gets up turns towards the tunnel she came from and you follow her quickly away from the ensuing cave-in.<br /><br />' +
@@ -597,6 +646,8 @@ function quest() {
               'He charged with as much ferocity as the regent but this time he was too fast for you.  No matter, you have dealt with fast fighters before.<br />' +
             'He isn\'t just trying to wear you down though, you get tossed around like a sack of rice.<br />' +
             'You are patient and take your time understanding his movements and then you struck.</p>';
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
 
         };
         monsterUnlock.DeepKingTarNuk = true;
@@ -604,7 +655,7 @@ function quest() {
     if (player.properties.level >= 25) {
         monsterList.Zombie.Stats.isShown = true;
         if (monsterUnlock.Zombie == false) {
-            document.getElementById("ozJotnar").innerHTML += '<h1><b>Oz Jotnar Epilogue</b></h1><br />' +
+            var ozJotnarElement = '<h1><b>Oz Jotnar Epilogue</b></h1><br />' +
                 
                 '<p class="story">The Voice:  "I have never seen a troll fight like that,' +
                 'I wonder where he learned that from?" Its voice rung like a bell within your head, is it getting stronger?<br /><br />' +
@@ -644,6 +695,8 @@ function quest() {
                 'As she finished talking you walked into a cavern with a metal door at the other end.<br />' +
                 '"This is where I leave, remember what I said. If you fail, I will find someway to make your eternal life as miserable as possible."<br />' +
                 'With her kind words she walked away and left you with the tall steel door.</p>';
+            $("#storyLog").prepend(ozJotnarElement);
+            document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.Zombie = true;
     };

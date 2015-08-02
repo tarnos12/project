@@ -8,7 +8,9 @@
     this.name = name;
     this.image = image;
     this.bonus = bonus;
-    this.type = "Single";
+    this.type = "Triple";
+    this.newRow = false;
+    this.lastRow = false;
     this.bonusTotal = function () {
         return Math.floor(this.bonus * this.level);
     };
@@ -16,19 +18,43 @@
         return true;
     };
 };
-    //level/maxLevel/ID/LevelReq/Name/Image/bonus
-    var brawler = new newPassive(0, 5, 1, 1, "Brawler", "DmgUp", 10);
-    var vitality = new newPassive(0, 5, 2, 1, "Vitality", "HpUp", 5);
-    var looter = new newPassive(0, 5, 3, 1, "Looter", "MfUp", 10);
-    var overpower = new newPassive(0, 1, 4, 5, "Overpower", "DmgUp2", 20);
-    var fortitude = new newPassive(0, 1, 5, 5, "Fortitude", "HpUp2", 20);
-    var explorer = new newPassive(0, 1, 6, 5, "Explorer", "MfUp2", 50);
-    var sixthSense = new newPassive(0, 5, 7, 10, "Sixth Sense", "SixthSense", 10);
+                                         //lvl/maxLvl/ID/Req/Name/Image/bonus
+    var brawler =             new newPassive(0, 5, 1, 1, "Brawler", "DmgUp", 5);
+    var vitality =            new newPassive(0, 5, 2, 1, "Vitality", "HpUp", 5);
+    var looter =              new newPassive(0, 5, 3, 1, "Looter", "MfUp", 10);
+    var overpower =           new newPassive(0, 1, 4, 5, "Overpower", "DmgUp2", 25);
+    var fortitude =           new newPassive(0, 1, 5, 5, "Fortitude", "HpUp2", 20);
+    var explorer =            new newPassive(0, 1, 6, 5, "Explorer", "MfUp2", 50);
+    var sixthSense =          new newPassive(0, 5, 7, 10, "Sixth Sense", "SixthSense", 10);
     var spiritualAttunement = new newPassive(0, 5, 8, 10, "Spiritual Attunement", "Spiritual", 20);
+    var mighty =              new newPassive(0, 5, 9, 15, "Mighty", "Mighty", 10);
+    var constitution =        new newPassive(0, 5, 10, 15, "Constitution", "Constitution", 20);
+    var curiosity =           new newPassive(0, 5, 11, 15, "Curiosity", "Curiosity", 20);
+    var masterofArms =        new newPassive(0, 1, 12, 20, "Master of Arms", "MasterofArms", 50);
+    var robust =              new newPassive(0, 1, 13, 20, "Robust", "Robust", 100);
+    var ancientKnowledge =    new newPassive(0, 1, 14, 20, "Ancient Knowledge", "AncientKnowledge", 50);
+    var balancedWarrior =     new newPassive(0, 1, 15, 25, "Balanced Warrior", "BalancedWarrior", 50);
+    var mentalMastery =       new newPassive(0, 1, 15, 25, "Mental Mastery", "MentalMastery", 50);
+
+    //Need this, for my html, to work properly...
+    looter.lastRow = true;
+    explorer.lastRow = true;
+    spiritualAttunement.lastRow = true;
+    curiosity.lastRow = true;
+    ancientKnowledge.lastRow = true;
+    mentalMastery.lastRow = true;
+    brawler.newRow = true;
+    overpower.newRow = true;
+    sixthSense.newRow = true;
+    mighty.newRow = true;
+    masterofArms.newRow = true;
+    balancedWarrior.newRow = true;
 
     brawler.description = function () {
-        return "Increase damage by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br />";
+        return "Increase damage by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires:";
     };
+    brawler.newRow = true;
+    overpower.newRow = true;
     overpower.description = function () {
         return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br /> " +
             brawler.name + " level " + brawler.maxLevel;
@@ -42,7 +68,7 @@
         };
     };
     vitality.description = function () {
-        return "Increase health by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br />";
+        return "Increase health by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires:";
     };
     fortitude.description = function () {
         return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br /> " +
@@ -57,7 +83,7 @@
         };
     };
     looter.description = function () {
-        return "Increase magic find by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% magic find. <br /><br />Requires: <br />";
+        return "Increase magic find by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% magic find. <br /><br />Requires:";
     };
     explorer.description = function () {
         return "Increase magic find by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% magic find. <br /><br />Requires: <br /> " +
@@ -86,12 +112,112 @@
         };
     };
     spiritualAttunement.description = function () {
-        return "Increase maximum mana by " + this.bonus + " <br /> Currently grants: " + this.bonusTotal() + " maximum mana. <br /><br />Requires: <br /> " +
+        return "Increase mana by " + this.bonus + " <br /> Currently grants: " + this.bonusTotal() + " maximum mana. <br /><br />Requires: <br /> " +
             fortitude.name + " level " + fortitude.maxLevel + '<br />' + explorer.name + " level " + explorer.maxLevel;
     };
     spiritualAttunement.type = "Double";
     spiritualAttunement.requirements = function () {
         if (fortitude.level === fortitude.maxLevel && explorer.level === explorer.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    mighty.description = function () {
+        return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br /> " +
+            overpower.name + " level " + overpower.maxLevel;
+    };
+    mighty.requirements = function () {
+        if (overpower.level === overpower.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    constitution.description = function () {
+        return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br /> " +
+            fortitude.name + " level " + fortitude.maxLevel;
+    };
+    constitution.requirements = function () {
+        if (fortitude.level === fortitude.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    curiosity.description = function () {
+        return "Increase experience rate by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus experience rate. <br /><br />Requires: <br /> " +
+            explorer.name + " level " + explorer.maxLevel;
+    };
+    curiosity.requirements = function () {
+        if (explorer.level === explorer.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+
+    masterofArms.description = function () {
+        return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage.<br /><br />Requires: <br /> " +
+            mighty.name + " level " + mighty.maxLevel;
+    };
+    masterofArms.requirements = function () {
+        if (mighty.level === mighty.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    robust.description = function () {
+        return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus health.<br /><br />Requires: <br /> " +
+            constitution.name + " level " + constitution.maxLevel;
+    };
+    robust.requirements = function () {
+        if (constitution.level === constitution.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+
+    ancientKnowledge.description = function () {
+        return "Increase gold/exp/drop rates by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus gold/exp/drop rate.<br /><br />Requires: <br /> " +
+            curiosity.name + " level " + curiosity.maxLevel;
+    };
+    ancientKnowledge.requirements = function () {
+        if (curiosity.level === curiosity.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    balancedWarrior.type = "Double";
+    balancedWarrior.description = function () {
+        return "Increase damage and health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage and health. <br /><br />Requires: <br /> " +
+            sixthSense.name + " level " + sixthSense.maxLevel;
+    };
+    balancedWarrior.requirements = function () {
+        if (sixthSense.level === sixthSense.maxLevel) {
+            return true;
+        }
+        else {
+            return false;
+        };
+    };
+    mentalMastery.type = "Double";
+    mentalMastery.description = function () {
+        return "Increase max mana by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% max mana. <br /><br />Requires: <br /> " +
+            spiritualAttunement.name + " level " + spiritualAttunement.maxLevel;
+    };
+    mentalMastery.requirements = function () {
+        if (spiritualAttunement.level === spiritualAttunement.maxLevel) {
             return true;
         }
         else {
@@ -108,6 +234,14 @@
     playerPassive.explorer = explorer;
     playerPassive.sixthSense = sixthSense;
     playerPassive.spiritualAttunement = spiritualAttunement;
+    playerPassive.mighty = mighty;
+    playerPassive.constitution = constitution;
+    playerPassive.curiosity = curiosity;
+    playerPassive.masterofArms = masterofArms;
+    playerPassive.robust = robust;
+    playerPassive.ancientKnowledge = ancientKnowledge;
+    playerPassive.balancedWarrior = balancedWarrior;
+    playerPassive.mentalMastery = mentalMastery;
 
 //Weapon Skills
 
