@@ -1,9 +1,9 @@
 ﻿var potionStatus = {};
 potionStatus.price = 20;
+var mediumPotionStatus = {};
+mediumPotionStatus.price = 100;
 var superPotionStatus = {};
-superPotionStatus.price = 100;
-var megaPotionStatus = {};
-megaPotionStatus.price = 500;
+superPotionStatus.price = 500;
 //Buy Stuff -_-
 function potionBuy(type, count) {
     var priceTemp = type.price;
@@ -18,7 +18,8 @@ function potionBuy(type, count) {
         player.properties.gold -= priceToPay;
         return true;
     };
-    Log("You do not have enough money to buy this. You need " + (priceToPay - player.properties.gold) + " more gold.");
+    Log('<span id=\"notEnoughMoney\" class =\"bold\" style=\"color:red; display:none;\">You do not have enough money to buy this. You need : ' + (priceToPay - player.properties.gold) + " more gold.<br />" + "</span>");
+    notEnoughMoneyLog();
     return false;
 };
 //Buy potions
@@ -26,24 +27,33 @@ function buySmallPotion(count) {
     if (potionBuy(potionStatus, count)) {
         player.properties.smallPotion += count
         updateHtml();
-        Log("You bought " + count + " Potions.");
+        var potionType = "Potions";
+        Log('<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : ' + count + " " + potionType + ".<br />" + "</span>");
+        potionBuyLog();
     };
+    shopOther();
 };
 //Buy Super potions
 function buyMediumPotion(count) {
-    if (potionBuy(superPotionStatus, count)) {
+    if (potionBuy(mediumPotionStatus, count)) {
         player.properties.mediumPotion += count
         updateHtml();
-        Log("You bought " + count + " Super Potions");
+        var potionType = "Medium Potions";
+        Log('<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : ' + count + " " + potionType + ".<br />" + "</span>");
+        potionBuyLog();
     };
+    shopOther();
 };
 //Buy Mega potions
 function buySuperPotion(count) {
-    if (potionBuy(megaPotionStatus, count)) {
+    if (potionBuy(superPotionStatus, count)) {
         player.properties.superPotion += count
         updateHtml();
-        Log("You bought " + count + "Mega Potions");
+        var potionType = "Super Potions";
+        Log('<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : ' + count + " " + potionType + ".<br />" + "</span>");
+        potionBuyLog();
     };
+    shopOther();
 };
 
 var backpackStatus = {};
@@ -68,7 +78,8 @@ function buyStuff(type, count) {
         player.properties.gold -= priceToPay;
         return true;
     };
-    Log("You do not have enough money to buy this. You need " + (priceToPay - player.properties.gold) + " more gold.");
+    Log('<span id=\"notEnoughMoney\" class =\"bold\" style=\"color:red; display:none;\">You do not have enough money to buy this. You need : ' + (priceToPay - player.properties.gold) + " more gold.<br />" + "</span>");
+    notEnoughMoneyLog();
     return false;
 };
 //Buy backpack
@@ -77,14 +88,18 @@ function buyBackpack(count) {
         player.properties.backpackUpgrade += count;
         updateHtml();
         CreateInventoryWeaponHtml();
-        Log("You max inventory slots upgraded by " + count + ", now you have: " + player.functions.inventory() + " inventory slots");
+        Log('<span id=\"inventoryBuy\" class =\"bold\" style=\"color:green; display:none;\">Inventory slots upgraded by: ' + count + ", now you have: " + player.functions.inventory() + " inventory slots.<br />" + "</span>");
+        inventoryBuyLog();
     };
+    shopOther();
 };
 //Buy Stat points
 function buyStat(count) {
     if (buyStuff(statStatus, count)) {
         player.properties.stats += count;
         updateHtml();
-        Log("Your stat points increased by " + count + ".");
+        Log('<span id=\"statBuy\" class =\"bold\" style=\"color:green; display:none;\">Your stat points increased by: ' + count + ".<br />" + "</span>");
+        statBuyLog();
     };
+    shopOther();
 };

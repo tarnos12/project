@@ -1,11 +1,11 @@
 ﻿function monsterItemDrop(monster) {
     var itemDropNumber = 0;
-    var randomItemAmount = Math.floor(Math.random() * 5) + 1; // 1-5 item drop per monster kill
+    var randomItemAmount = Math.floor(Math.random() * 3) + 1; // 1-5 item drop per monster kill
     for (var i = 0; i < randomItemAmount; i++) {
         var randomItemChance = Math.floor(Math.random() * (1000 - 1) + 1);
         if (randomItemChance * player.functions.dropRate() >= 500) {
             if (playerInventory.length <= player.functions.inventory()) {
-                getItemType(monster); // Call getItemType(monster); several times, for multiple item drop per monster kill/ random amount of items per kill...
+                getItemType(monster, true); // Call getItemType(monster); several times, for multiple item drop per monster kill/ random amount of items per kill...
                 itemDropNumber += 1;
             }
             else {
@@ -13,12 +13,13 @@
             }
         };
     };
-    Log('<span id=\"itemDropNew\" style=\"color:orange; display:none;\">You found ' + (itemDropNumber + 1) + " items! <br />" + "</span>");
+    Log('<span id=\"itemDropNew\" class =\"bold\" style=\"color:orange; display:none;\">You found ' + (itemDropNumber) + " items! <br />" + "</span>");
+
     itemDropLog();
     CreateInventoryWeaponHtml();
 };
 
-function getItemType(monster) {
+function getItemType(monster, isDrop) { //isDrop will check if generated item is monster drop or item sold in shop
     var monsterStats = monster;
     var dropItem = {};
     var totalChance = 0;
@@ -44,10 +45,10 @@ function getItemType(monster) {
             break;
         };
     };
-    getItemSubType(monster, dropItem)
+    getItemSubType(monster, dropItem, isDrop)
 };
 
-function getItemSubType(monster, dropItem) {
+function getItemSubType(monster, dropItem, isDrop) {
     var totalChance = 0;
     var randomNumber = 0;
     if (dropItem.itemType === "weapon") {
@@ -99,10 +100,10 @@ function getItemSubType(monster, dropItem) {
             };
         };
     };
-    getItemRarity(monster, dropItem);
+    getItemRarity(monster, dropItem, isDrop);
 };
 
-function getItemRarity(monster, dropItem) {
+function getItemRarity(monster, dropItem, isDrop) {
     var totalChance = 0;
     var randomNumber = 0;
     var itemChanceTotal = itemRarity[itemRarity.length - 1];
@@ -112,35 +113,76 @@ function getItemRarity(monster, dropItem) {
         var itemChance = itemRarity[itemType].chance;
         var itemType2 = itemRarity[itemType];
         var itemColor = itemRarity[itemType].color;
+        var rarityValue = itemRarity[itemType].rarityValue
         if (randomNumber <= itemChance) {
-            dropItem["itemQuality"] = itemType2.type;
+            dropItem["itemRarity"] = itemType2.type;
             dropItem["minMods"] = itemType2.minMods;
             dropItem["maxMods"] = itemType2.maxMods;
-            dropItem["image"] = dropItem.subType + dropItem.itemQuality;
+            dropItem["image"] = dropItem.subType + dropItem.itemRarity;
             dropItem["color"] = itemColor;
             dropItem["power"] = itemType2.power;
+            dropItem["rarityValue"] = rarityValue;
             break;
         };
     };
-    getItemBaseStats(monster, dropItem)
+    getItemPower(monster, dropItem, isDrop);
+};
+function getItemPower(monster, dropItem, isDrop) {
+    for (var key in itemPower) {
+        var randomNumber = Math.floor(Math.random() * (100 - 1) + 1);
+        var itemPowerChance = itemPower[key].chance;
+        var itemPowerType = itemPower[key].type;
+        if (randomNumber <= itemPowerChance) {
+            if (itemPowerType === "Inferior") {
+                dropItem["itemQuality"] = itemPowerType;
+            }
+            else if (itemPowerType === "Normal") {
+                dropItem.power += 1;
+                dropItem["itemQuality"] = itemPowerType;
+            }
+            else if (itemPowerType === "Superior") {
+                if (dropItem.itemRarity !== "Epic" || dropItem.itemRarity !== "Legendary") {
+                    dropItem.power += 3;
+                }
+                else if (dropItem.itemRarity === "Epic") {
+                    dropItem.power += 4;
+                }
+                else if (dropItem.itemRarity === "Legendary") {
+                    dropItem.power += 5;
+                };
+                dropItem["itemQuality"] = itemPowerType;
+            };
+            break; //Break here so it will stop once it rolls an item quality...
+        };
+    };
+    getItemBaseStats(monster, dropItem, isDrop)
 };
 
-function getItemBaseStats(monster, dropItem) {
+function getItemBaseStats(monster, dropItem, isDrop) {
     var minDmg = dropItem.iLvl * dropItem.power;
     var maxDmg = dropItem.iLvl * (dropItem.power * 2);
+    dropItem['Value'] = 0;
     if (dropItem.itemType === "weapon") {
         var randomNumber = Math.floor(Math.random() * (maxDmg - minDmg + 1)) + minDmg;
         dropItem["MinDamage"] = randomNumber
         dropItem["MaxDamage"] = randomNumber + dropItem.iLvl
+        dropItem.Value += (dropItem.MinDamage + dropItem.MaxDamage) * 5;
     }
     else if (dropItem.itemType === "armor") {
         var randomNumber = Math.floor(Math.random() * (dropItem.iLvl - 1 + 1)) + 1;
         dropItem["defense"] = randomNumber;
+        dropItem.Value += dropItem.defense * 10;
     };
-    getBaseItemMod(monster, dropItem);
+    if (dropItem.itemQuality !== "Normal"){
+        dropItem["name"] = dropItem.itemQuality + ' ' + dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
+        }
+    else{
+        dropItem["name"] = dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
+    }
+    getBaseItemMod(monster, dropItem, isDrop);
 };
 
-function getBaseItemMod(monster, dropItem) {
+function getBaseItemMod(monster, dropItem, isDrop) {
     var totalChance = 0;
     var randomNumber = 0;
     var currentMods = 0;
@@ -161,10 +203,10 @@ function getBaseItemMod(monster, dropItem) {
         newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
         currentMods += 1;
     };
-    getBonusItemMod(monster, dropItem);
+    getBonusItemMod(monster, dropItem, isDrop);
 };
 
-function getBonusItemMod(monster, dropItem) {
+function getBonusItemMod(monster, dropItem, isDrop) {
     var itemLevel = dropItem.iLvl;
     var itemLevelValue = 0;
     var currentMods = 0;
@@ -184,7 +226,6 @@ function getBonusItemMod(monster, dropItem) {
     var itemModLevelLength = itemModLevel.length;
     var randomModAmount = Math.floor(Math.random() * (maxMods - minMods + 1)) + minMods; //Random value between min/max(both inclusive !important)
     newArray = itemModLevel.slice(); // Copy an array so we can remove array values so we dont get double of the same bonus on the item
-    dropItem['Value'] = 0;
     for (var i = 0; i < itemModLevelLength; i++) {
         randomMod = newArray[Math.floor(Math.random() * (newArray.length))]; // picks a random bonus
         if (currentMods < randomModAmount) {
@@ -214,15 +255,6 @@ function getBonusItemMod(monster, dropItem) {
                 newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
                 currentMods += 1;
             }
-            else if (randomMod.type === "Block chance" && dropItem.subType === "shield" && dropItem.itemType === "armor") {
-                var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                dropItem[randomMod.type] = randomModValue;
-                dropItem.Value += randomMod.baseValue * randomModValue;
-                dropItem['Block amount'] = randomModValue * 5;
-                var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
-                newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
-                currentMods += 1;
-            }
             else if (randomMod.type === "Bonus armor" && dropItem.itemType === "armor") {
                 var randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
                 dropItem[randomMod.type] = randomModValue;
@@ -242,12 +274,6 @@ function getBonusItemMod(monster, dropItem) {
             }
             else {
                 dropItem[randomMod.type] = 0;
-                if (dropItem["Block chance"] === undefined) {
-                    dropItem["Block chance"] = 0;
-                    dropItem['Block amount'] = 0;
-                }
-                dropItem["Block chance"] += 0;
-                dropItem['Block amount'] += 0;
                 var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
                 newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
                 currentMods += 1;
@@ -256,34 +282,76 @@ function getBonusItemMod(monster, dropItem) {
         }
         else {
             dropItem[randomMod.type] = 0;
-            if (dropItem["Block chance"] === undefined) {
-                dropItem["Block chance"] = 0;
-                dropItem['Block amount'] = 0;
-            }
-            dropItem["Block chance"] += 0;
-            dropItem['Block amount'] += 0;
             var arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
             newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
             currentMods += 1;
         }
     };
-    if (dropItem.itemQuality === 'Common' && checkBoxCommon === false ||
-                        dropItem.itemQuality === 'Uncommon' && checkBoxUncommon === false ||
-                        dropItem.itemQuality === 'Rare' && checkBoxRare === false ||
-                        dropItem.itemQuality === 'Epic' && checkBoxEpic === false ||
-                        dropItem.itemQuality === 'Legendary') {
+    if (dropItem.subType === "shield") {
+        dropItem['Block chance'] = dropItem.power * dropItem.rarityValue;
+        dropItem['Block amount'] = (dropItem.power * dropItem.rarityValue) * 10;
+        dropItem.Value += (dropItem['Block chance'] * 5 + dropItem['Block amount'] * 5);
+    };
+    if (dropItem.Value > 0) {
+        if (isDrop === true) {
+            if (dropItem.itemRarity === 'Common' && checkBoxCommon === false ||
+                                dropItem.itemRarity === 'Uncommon' && checkBoxUncommon === false ||
+                                dropItem.itemRarity === 'Rare' && checkBoxRare === false ||
+                                dropItem.itemRarity === 'Epic' && checkBoxEpic === false ||
+                                dropItem.itemRarity === 'Legendary') {
 
-        var itemHolder = [];
-        itemHolder.push(dropItem);
-        playerInventory.push.apply(
-            playerInventory,
-            JSON.parse(JSON.stringify(itemHolder))
-            );
-        player.properties.itemIdNumber += 1;
-    }
-    else {
-        player.properties.gold += Math.floor(dropItem.Value * 0.2);
-        updateHtml();
+                var itemHolder = [];
+                itemHolder.push(dropItem);
+                playerInventory.push.apply(
+                    playerInventory,
+                    JSON.parse(JSON.stringify(itemHolder))
+                    );
+                player.properties.itemIdNumber += 1;
+            }
+            else {
+                player.properties.gold += Math.floor(dropItem.Value * 0.2);
+                updateHtml();
+            };
+        }
+        else {
+            if (accessoryAmount < 10 && dropItem.itemType === "accessory" ||
+                weaponAmount < 10 && dropItem.itemType === "weapon" ||
+                armorAmount < 10 && dropItem.itemType === "armor") {
+                if (dropItem.itemType === "accessory") {
+                    accessoryAmount += 1;
+                    dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
+                    var itemHolder = [];
+                    itemHolder.push(dropItem);
+                    itemShopAccessory.push.apply(
+                        itemShopAccessory,
+                        JSON.parse(JSON.stringify(itemHolder))
+                        );
+                    player.properties.itemIdNumber += 1;
+                }
+                else if (dropItem.itemType === "weapon") {
+                    weaponAmount += 1;
+                    dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
+                    var itemHolder = [];
+                    itemHolder.push(dropItem);
+                    itemShopWeapon.push.apply(
+                        itemShopWeapon,
+                        JSON.parse(JSON.stringify(itemHolder))
+                        );
+                    player.properties.itemIdNumber += 1;
+                }
+                else if (dropItem.itemType === "armor") {
+                    armorAmount += 1;
+                    dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
+                    var itemHolder = [];
+                    itemHolder.push(dropItem);
+                    itemShopArmor.push.apply(
+                        itemShopArmor,
+                        JSON.parse(JSON.stringify(itemHolder))
+                        );
+                    player.properties.itemIdNumber += 1;
+                };
+            };
+        };
     };
 };
 

@@ -68,9 +68,13 @@
     cursor: url(images/icon.png), auto;
 }
 .equip{
-    width: 50px;
+    width: 100px;
 }
 .sell{
     width: 100px;
     margin-bottom:5px;
+}
+.shopButton{
+    width: 100px;
+    margin-right: 5px;
 }

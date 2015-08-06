@@ -126,13 +126,13 @@ span.ranged {
 
 .gameLogo{
     position:absolute;
-    width: 100%;
+    width: 95%;
     height: 20%;
     top: 10%;
     left: 0%;
     z-index: 2;
     background-image: url(..//images/logo.png);
-    background-size: 100% auto;
+    background-size: 90% auto;
     background-repeat:no-repeat;
 }
 
@@ -140,17 +140,17 @@ span.ranged {
     position:absolute;
     width: 30%;
     height: 30%;
-    top: 30%;
+    top: 40%;
     left: 30%;
     z-index: 2;
 }
 
 .newGameButton{
     position:absolute;
-    width: 30%;
+    width: 80%;
     height: 30%;
-    top: 30%;
-    left: 30%;
+    top: 10%;
+    left: 50%;
     z-index: 2;
 }
 

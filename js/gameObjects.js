@@ -649,6 +649,21 @@ var itemAccessorySubType = [
     },
 ];
 
+var itemPower = [
+    {
+        type: 'Superior',
+        chance: 10,
+    },
+    {
+        type: 'Inferior',
+        chance: 50,
+    },
+    {
+        type: 'Normal',
+        chance: 100,
+    },
+];
+
 var itemRarity = [
 {
     type: 'Legendary',
@@ -657,6 +672,7 @@ var itemRarity = [
     chance: 10,
     color: 'red',
     power: 5,
+    rarityValue: 5,
 },
 {
     type: 'Epic',
@@ -665,6 +681,7 @@ var itemRarity = [
     chance: 50,
     color: 'orange',
     power: 4,
+    rarityValue: 4,
 },
 {
     type: 'Rare',
@@ -673,6 +690,7 @@ var itemRarity = [
     chance: 200,
     color: '#0033FF',
     power: 3,
+    rarityValue: 3,
 },
 {
     type: 'Uncommon',
@@ -681,6 +699,7 @@ var itemRarity = [
     chance: 400,
     color: '#00CC33',
     power: 2,
+    rarityValue: 2,
 },
 {
     type: 'Common',
@@ -689,6 +708,7 @@ var itemRarity = [
     chance: 600,
     color: 'white',
     power: 1,
+    rarityValue: 1,
 }];
 
 var itemBaseMod = [
@@ -763,13 +783,6 @@ var itemModifiers = {
             maxValue: 12,
             chance: 10,
             baseValue: 2,
-        },
-        {
-            type: "Block chance",
-            minValue: 1,
-            maxValue: 3,
-            chance: 10,
-            baseValue: 5,
         },
         {
             type: "Evasion",
@@ -921,13 +934,6 @@ var itemModifiers = {
             baseValue: 2,
         },
         {
-            type: "Block chance",
-            minValue: 3,
-            maxValue: 5,
-            chance: 10,
-            baseValue: 5,
-        },
-        {
             type: "Evasion",
             minValue: 5,
             maxValue: 7,
@@ -1075,13 +1081,6 @@ var itemModifiers = {
             maxValue: 22,
             chance: 10,
             baseValue: 2,
-        },
-        {
-            type: "Block chance",
-            minValue: 5,
-            maxValue: 7,
-            chance: 10,
-            baseValue: 5,
         },
         {
             type: "Evasion",

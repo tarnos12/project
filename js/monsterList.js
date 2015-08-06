@@ -39,12 +39,12 @@ var LichKing = {};
 
 function MakeMonsterList() {
     VarikGrunt.Stats = {
-        hp: 30,
-        maxHp: 30,
+        hp: 75,
+        maxHp: 75,
         def: 0,
-        minDmg: 5,
-        maxDmg: 8,
-        baseExp: 10,
+        minDmg: 7,
+        maxDmg: 12,
+        baseExp: 20,
         acc: 95,
         eva: 5,
         name: "VarikGrunt",
@@ -59,11 +59,11 @@ function MakeMonsterList() {
     };
     monsterList.VarikGrunt = VarikGrunt;
     VarikSoldier.Stats = {
-        hp: 100,
-        maxHp: 100,
+        hp: 140,
+        maxHp: 140,
         def: 2,
         minDmg: 10,
-        maxDmg: 18,
+        maxDmg: 15,
         baseExp: 40,
         acc: 95,
         eva: 5,
@@ -79,12 +79,12 @@ function MakeMonsterList() {
     };
     monsterList.VarikSoldier = VarikSoldier;
     VarikMarksmen.Stats = {
-        hp: 250,
-        maxHp: 250,
+        hp: 220,
+        maxHp: 220,
         def: 5,
-        minDmg: 15,
+        minDmg: 16,
         maxDmg: 22,
-        baseExp: 100,
+        baseExp: 80,
         acc: 95,
         eva: 5,
         name: "VarikMarksmen",
@@ -99,12 +99,12 @@ function MakeMonsterList() {
     };
     monsterList.VarikMarksmen = VarikMarksmen;
     VarikVulture.Stats = {
-        hp: 400,
-        maxHp: 400,
+        hp: 350,
+        maxHp: 350,
         def: 8,
         minDmg: 20,
         maxDmg: 25,
-        baseExp: 150,
+        baseExp: 140,
         acc: 95,
         eva: 5,
         name: "VarikVulture",
@@ -119,12 +119,12 @@ function MakeMonsterList() {
     };
     monsterList.VarikVulture = VarikVulture;
     VarikEvader.Stats = {
-        hp: 700,
-        maxHp: 700,
-        def: 13,
+        hp: 500,
+        maxHp: 500,
+        def: 10,
         minDmg: 25,
         maxDmg: 30,
-        baseExp: 250,
+        baseExp: 200,
         acc: 95,
         eva: 5,
         name: "VarikEvader",
@@ -139,12 +139,12 @@ function MakeMonsterList() {
     };
     monsterList.VarikEvader = VarikEvader;
     VariksLiar.Stats = {
-        hp: 1000,
-        maxHp: 1000,
-        def: 25,
-        minDmg: 30,
+        hp: 750,
+        maxHp: 750,
+        def: 15,
+        minDmg: 35,
         maxDmg: 40,
-        baseExp: 400,
+        baseExp: 340,
         acc: 95,
         eva: 5,
         name: "VariksLiar",
@@ -159,16 +159,16 @@ function MakeMonsterList() {
     };
     monsterList.VariksLiar = VariksLiar;
     VariksQueen.Stats = {
-        hp: 1350,
-        maxHp: 1350,
-        def: 30,
-        minDmg: 40,
-        maxDmg: 55,
-        baseExp: 600,
+        hp: 950,
+        maxHp: 950,
+        def: 20,
+        minDmg: 45,
+        maxDmg: 60,
+        baseExp: 450,
         acc: 95,
         eva: 5,
         name: "VariksQueen",
-        displayName: "Variks Queen",
+        displayName: "Variks Queen(ELITE)",
         type: "weak",
         id: 7,
         level: 7,
@@ -179,16 +179,16 @@ function MakeMonsterList() {
     };
     monsterList.VariksQueen = VariksQueen;
     LordVarik.Stats = {
-        hp: 1600,
-        maxHp: 1600,
-        def: 35,
-        minDmg: 50,
-        maxDmg: 60,
-        baseExp: 750,
+        hp: 1337,
+        maxHp: 1337,
+        def: 30,
+        minDmg: 70,
+        maxDmg: 90,
+        baseExp: 650,
         acc: 95,
         eva: 5,
         name: "LordVarik",
-        displayName: "Lord Varik",
+        displayName: "Lord Varik(BOSS)",
         type: "weak",
         id: 8,
         level: 8,
@@ -199,12 +199,12 @@ function MakeMonsterList() {
     };
     monsterList.LordVarik = LordVarik;
     ToxicFlies.Stats = {
-        hp: 2000,
-        maxHp: 2000,
-        def: 40,
-        minDmg: 65,
-        maxDmg: 75,
-        baseExp: 1000,
+        hp: 1500,
+        maxHp: 1500,
+        def: 35,
+        minDmg: 50,
+        maxDmg: 65,
+        baseExp: 850,
         acc: 95,
         eva: 5,
         name: "ToxicFlies",
@@ -219,12 +219,12 @@ function MakeMonsterList() {
     };
     monsterList.ToxicFlies = ToxicFlies;
     Stalker.Stats = {
-        hp: 2400,
-        maxHp: 2400,
-        def: 50,
-        minDmg: 80,
-        maxDmg: 100,
-        baseExp: 1250,
+        hp: 1800,
+        maxHp: 1800,
+        def: 40,
+        minDmg: 70,
+        maxDmg: 85,
+        baseExp: 1100,
         acc: 95,
         eva: 5,
         name: "Stalker",
@@ -239,12 +239,12 @@ function MakeMonsterList() {
     };
     monsterList.Stalker = Stalker;
     AlphaStalker.Stats = {
-        hp: 3000,
-        maxHp: 3000,
-        def: 60,
-        minDmg: 100,
-        maxDmg: 115,
-        baseExp: 1500,
+        hp: 2200,
+        maxHp: 2200,
+        def: 45,
+        minDmg: 90,
+        maxDmg: 110,
+        baseExp: 1400,
         acc: 95,
         eva: 5,
         name: "AlphaStalker",
@@ -259,10 +259,10 @@ function MakeMonsterList() {
     };
     monsterList.AlphaStalker = AlphaStalker;
     StalkerPack.Stats = {
-        hp: 3500,
-        maxHp: 3500,
-        def: 70,
-        minDmg: 120,
+        hp: 2600,
+        maxHp: 2600,
+        def: 50,
+        minDmg: 110,
         maxDmg: 140,
         baseExp: 1800,
         acc: 95,
@@ -279,12 +279,12 @@ function MakeMonsterList() {
     };
     monsterList.StalkerPack = StalkerPack;
     JumpingSpider.Stats = {
-        hp: 4200,
-        maxHp: 4200,
-        def: 80,
-        minDmg: 150,
-        maxDmg: 180,
-        baseExp: 2200,
+        hp: 3400,
+        maxHp: 3400,
+        def: 55,
+        minDmg: 130,
+        maxDmg: 160,
+        baseExp: 2500,
         acc: 95,
         eva: 5,
         name: "JumpingSpider",
@@ -299,16 +299,16 @@ function MakeMonsterList() {
     };
     monsterList.JumpingSpider = JumpingSpider;
     SpiderBeast.Stats = {
-        hp: 4800,
-        maxHp: 4800,
-        def: 90,
-        minDmg: 170,
-        maxDmg: 200,
-        baseExp: 2700,
+        hp: 4000,
+        maxHp: 4000,
+        def: 60,
+        minDmg: 150,
+        maxDmg: 175,
+        baseExp: 3200,
         acc: 95,
         eva: 5,
         name: "SpiderBeast",
-        displayName: "Spider Beast",
+        displayName: "Spider Beast(ELITE)",
         type: "average",
         id: 14,
         level: 14,
@@ -319,16 +319,16 @@ function MakeMonsterList() {
     };
     monsterList.SpiderBeast = SpiderBeast;
     Narsus.Stats = {
-        hp: 6000,
-        maxHp: 6000,
-        def: 100,
-        minDmg: 200,
-        maxDmg: 220,
-        baseExp: 3500,
+        hp: 4800,
+        maxHp: 4800,
+        def: 70,
+        minDmg: 180,
+        maxDmg: 210,
+        baseExp: 4000,
         acc: 95,
         eva: 5,
         name: "Narsus",
-        displayName: "Narsus",
+        displayName: "Narsus(BOSS)",
         type: "average",
         id: 15,
         level: 15,
@@ -339,12 +339,12 @@ function MakeMonsterList() {
     };
     monsterList.Narsus = Narsus;
     JotunnScout.Stats = {
-        hp: 8000,
-        maxHp: 8000,
-        def: 110,
+        hp: 6000,
+        maxHp: 6000,
+        def: 80,
         minDmg: 220,
         maxDmg: 240,
-        baseExp: 4000,
+        baseExp: 6000,
         acc: 95,
         eva: 5,
         name: "JotunnScout",
@@ -359,12 +359,12 @@ function MakeMonsterList() {
     };
     monsterList.JotunnScout = JotunnScout;
     JotnarAmbushSquad.Stats = {
-        hp: 10000,
-        maxHp: 10000,
-        def: 120,
-        minDmg: 230,
-        maxDmg: 250,
-        baseExp: 5000,
+        hp: 7500,
+        maxHp: 7500,
+        def: 90,
+        minDmg: 200,
+        maxDmg: 220,
+        baseExp: 7000,
         acc: 95,
         eva: 5,
         name: "JotnarAmbushSquad",
@@ -379,12 +379,12 @@ function MakeMonsterList() {
     };
     monsterList.JotnarAmbushSquad = JotnarAmbushSquad;
     LongRangeExterminationSquad.Stats = {
-        hp: 11000,
-        maxHp: 11000,
-        def: 130,
-        minDmg: 250,
-        maxDmg: 270,
-        baseExp: 6000,
+        hp: 9000,
+        maxHp: 9000,
+        def: 100,
+        minDmg: 230,
+        maxDmg: 250,
+        baseExp: 8500,
         acc: 95,
         eva: 5,
         name: "LongRangeExterminationSquad",
@@ -399,12 +399,12 @@ function MakeMonsterList() {
     };
     monsterList.LongRangeExterminationSquad = LongRangeExterminationSquad;
     BerserkerShockSquad.Stats = {
-        hp: 12500,
-        maxHp: 12500,
-        def: 140,
-        minDmg: 250,
-        maxDmg: 270,
-        baseExp: 7000,
+        hp: 11000,
+        maxHp: 11000,
+        def: 110,
+        minDmg: 270,
+        maxDmg: 300,
+        baseExp: 10000,
         acc: 95,
         eva: 5,
         name: "BerserkerShockSquad",
@@ -419,12 +419,12 @@ function MakeMonsterList() {
     };
     monsterList.BerserkerShockSquad = BerserkerShockSquad;
     BerserkerShockSquadCaptainRendGrest.Stats = {
-        hp: 13500,
-        maxHp: 13500,
-        def: 150,
-        minDmg: 270,
-        maxDmg: 300,
-        baseExp: 8000,
+        hp: 13000,
+        maxHp: 13000,
+        def: 120,
+        minDmg: 300,
+        maxDmg: 350,
+        baseExp: 13000,
         acc: 95,
         eva: 5,
         name: "BerserkerShockSquadCaptainRendGrest",
@@ -439,12 +439,12 @@ function MakeMonsterList() {
     };
     monsterList.BerserkerShockSquadCaptainRendGrest = BerserkerShockSquadCaptainRendGrest;
     ArtillerySquad.Stats = {
-        hp: 15000,
-        maxHp: 15000,
-        def: 170,
-        minDmg: 300,
-        maxDmg: 350,
-        baseExp: 9000,
+        hp: 16000,
+        maxHp: 16000,
+        def: 130,
+        minDmg: 350,
+        maxDmg: 420,
+        baseExp: 15000,
         acc: 95,
         eva: 5,
         name: "ArtillerySquad",
@@ -459,12 +459,12 @@ function MakeMonsterList() {
     };
     monsterList.ArtillerySquad = ArtillerySquad;
     JottunMainInfantry.Stats = {
-        hp: 16000,
-        maxHp: 16000,
-        def: 180,
-        minDmg: 300,
-        maxDmg: 350,
-        baseExp: 10000,
+        hp: 20000,
+        maxHp: 20000,
+        def: 140,
+        minDmg: 400,
+        maxDmg: 450,
+        baseExp: 18000,
         acc: 95,
         eva: 5,
         name: "JottunMainInfantry",
@@ -479,16 +479,16 @@ function MakeMonsterList() {
     };
     monsterList.JottunMainInfantry = JottunMainInfantry;
     RegentCairLorn.Stats = {
-        hp: 17000,
-        maxHp: 17000,
-        def: 190,
-        minDmg: 350,
-        maxDmg: 400,
-        baseExp: 11000,
+        hp: 25000,
+        maxHp: 25000,
+        def: 150,
+        minDmg: 440,
+        maxDmg: 500,
+        baseExp: 25000,
         acc: 95,
         eva: 5,
         name: "RegentCairLorn",
-        displayName: "Regent Cair Lorn",
+        displayName: "Regent Cair Lorn(ELITE)",
         type: "strong",
         id: 23,
         level: 23,
@@ -499,16 +499,16 @@ function MakeMonsterList() {
     };
     monsterList.RegentCairLorn = RegentCairLorn;
     DeepKingTarNuk.Stats = {
-        hp: 20000,
-        maxHp: 20000,
+        hp: 33333,
+        maxHp: 33333,
         def: 200,
-        minDmg: 400,
-        maxDmg: 450,
-        baseExp: 12000,
+        minDmg: 500,
+        maxDmg: 700,
+        baseExp: 40000,
         acc: 95,
         eva: 5,
         name: "DeepKingTarNuk",
-        displayName: "Deep King Tar Nuk",
+        displayName: "Deep King Tar Nuk(BOSS)",
         type: "strong",
         id: 24,
         level: 24,
@@ -519,12 +519,12 @@ function MakeMonsterList() {
     };
     monsterList.DeepKingTarNuk = DeepKingTarNuk;
     Zombie.Stats = {
-        hp: 22000,
-        maxHp: 22000,
-        def: 220,
-        minDmg: 450,
-        maxDmg: 500,
-        baseExp: 13000,
+        hp: 35000,
+        maxHp: 35000,
+        def: 160,
+        minDmg: 500,
+        maxDmg: 600,
+        baseExp: 45000,
         acc: 95,
         eva: 5,
         name: "Zombie",
@@ -539,12 +539,12 @@ function MakeMonsterList() {
     };
     monsterList.Zombie = Zombie;
     Skeleton.Stats = {
-        hp: 24000,
-        maxHp: 24000,
-        def: 230,
-        minDmg: 500,
-        maxDmg: 550,
-        baseExp: 14000,
+        hp: 40000,
+        maxHp: 40000,
+        def: 170,
+        minDmg: 600,
+        maxDmg: 700,
+        baseExp: 55000,
         acc: 95,
         eva: 5,
         name: "Skeleton",
@@ -559,12 +559,12 @@ function MakeMonsterList() {
     };
     monsterList.Skeleton = Skeleton;
     SkeletonSoldier.Stats = {
-        hp: 26000,
-        maxHp: 26000,
-        def: 250,
-        minDmg: 600,
-        maxDmg: 700,
-        baseExp: 15000,
+        hp: 50000,
+        maxHp: 50000,
+        def: 180,
+        minDmg: 700,
+        maxDmg: 800,
+        baseExp: 65000,
         acc: 95,
         eva: 5,
         name: "SkeletonSoldier",
@@ -579,12 +579,12 @@ function MakeMonsterList() {
     };
     monsterList.SkeletonSoldier = SkeletonSoldier;
     SkeletonArcher.Stats = {
-        hp: 27000,
-        maxHp: 27000,
-        def: 260,
-        minDmg: 700,
-        maxDmg: 800,
-        baseExp: 16000,
+        hp: 60000,
+        maxHp: 60000,
+        def: 190,
+        minDmg: 800,
+        maxDmg: 900,
+        baseExp: 80000,
         acc: 95,
         eva: 5,
         name: "SkeletonArcher",
@@ -599,12 +599,12 @@ function MakeMonsterList() {
     };
     monsterList.SkeletonArcher = SkeletonArcher;
     SkeletonMage.Stats = {
-        hp: 29000,
-        maxHp: 29000,
-        def: 270,
-        minDmg: 800,
-        maxDmg: 900,
-        baseExp: 18000,
+        hp: 75000,
+        maxHp: 75000,
+        def: 200,
+        minDmg: 900,
+        maxDmg: 1000,
+        baseExp: 100000,
         acc: 95,
         eva: 5,
         name: "SkeletonMage",
@@ -619,12 +619,12 @@ function MakeMonsterList() {
     };
     monsterList.SkeletonMage = SkeletonMage;
     SkeletonHealer.Stats = {
-        hp: 32000,
-        maxHp: 32000,
-        def: 300,
-        minDmg: 900,
-        maxDmg: 1000,
-        baseExp: 20000,
+        hp: 90000,
+        maxHp: 90000,
+        def: 210,
+        minDmg: 1000,
+        maxDmg: 1100,
+        baseExp: 120000,
         acc: 95,
         eva: 5,
         name: "SkeletonHealer",
@@ -639,16 +639,16 @@ function MakeMonsterList() {
     };
     monsterList.SkeletonHealer = SkeletonHealer;
     Wraith.Stats = {
-        hp: 35000,
-        maxHp: 35000,
-        def: 350,
-        minDmg: 1200,
-        maxDmg: 1500,
-        baseExp: 25000,
+        hp: 110000,
+        maxHp: 110000,
+        def: 220,
+        minDmg: 1100,
+        maxDmg: 1250,
+        baseExp: 150000,
         acc: 95,
         eva: 5,
         name: "Wraith",
-        displayName: "Wraith",
+        displayName: "Wraith(ELITE)",
         type: "boss",
         id: 31,
         level: 31,
@@ -659,16 +659,16 @@ function MakeMonsterList() {
     };
     monsterList.Wraith = Wraith;
     LichKing.Stats = {
-        hp: 50000,
-        maxHp: 50000,
-        def: 500,
-        minDmg: 1500,
-        maxDmg: 2000,
-        baseExp: 50000,
+        hp: 133700,
+        maxHp: 133700,
+        def: 230,
+        minDmg: 1337,
+        maxDmg: 1337,
+        baseExp: 250000,
         acc: 95,
         eva: 5,
         name: "LichKing",
-        displayName: "Lich King",
+        displayName: "Lich King(BOSS)",
         type: "boss",
         id: 32,
         level: 32,
