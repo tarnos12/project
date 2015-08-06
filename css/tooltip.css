@@ -6,6 +6,7 @@ a.tooltips span {
   position: absolute;
   width:450px;
   right: 40%;
+  bottom: 10%;
   color: #FFFFFF;
   background: #000000;
   border: 2px solid #B3AB86;
