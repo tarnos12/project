@@ -1180,7 +1180,7 @@ function itemBuy(id) {
     })[0];
     if (item !== undefined) {
         
-        if (item.shopPrice <= player.properties.gold) {
+        if (player.properties.gold - item.shopPrice >= 0) {
             var index = itemShopWeapon.indexOf(item, 0);
             playerInventory.push(item);
             if (index > -1) {
@@ -1197,7 +1197,7 @@ function itemBuy(id) {
             })[0];
             if (item !== undefined) {
                 
-                if (item.shopPrice <= player.properties.gold) {
+                if (player.properties.gold - item.shopPrice >= 0) {
                     index = itemShopArmor.indexOf(item, 0);
                     playerInventory.push(item);
 
@@ -1214,7 +1214,7 @@ function itemBuy(id) {
                 })[0];
                 if (item !== undefined) {
                     
-                    if (item.shopPrice <= player.properties.gold) {
+                    if (player.properties.gold - item.shopPrice >= 0) {
                         index = itemShopAccessory.indexOf(item, 0);
                         playerInventory.push(item);
 
@@ -1227,7 +1227,7 @@ function itemBuy(id) {
                 };
             };
         };
-        if (item !== undefined) {
+        if (item !== undefined && player.properties.gold - item.shopPrice >= 0) {
             player.properties.gold -= item.shopPrice;
             document.getElementById("gold").innerHTML = player.properties.gold;
         };
