@@ -212,7 +212,7 @@ function CreateInventoryWeaponHtml() {
                     itemStat = equippedItems.talisman;
                 }
                 html += '<div class="col-xs-12 col-lg-6 c8"' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + '>';
-                html += '<a href="#" class="tooltips" style="cursor:pointer;">';
+                html += '<a class="tooltips" style="cursor:pointer;">';
                 html += '<label> <input type="radio" name="inventoryItem" value=' + playerInventory[i].id + '>';
                 if (playerInventory[i].itemType === "weapon"){
                     html += '<img class="' + playerInventory[i].itemType;
@@ -320,7 +320,7 @@ function unequipItemLoad() { // Create a variable inside player.properties which
         var itemStat = equippedItems[i];
         if (itemStat.subType !== undefined) {
             html += '<div class="col-xs-12 col-lg-6 c8"' + 'id="' + 'testingItem' + itemStat.id + '"' + '>';
-            html += '<a href="#" class="tooltips" style="cursor:pointer;">';
+            html += '<a class="tooltips" style="cursor:pointer;">';
             if (itemStat.itemType === "weapon") {
                 html += '<img class="' + itemStat.itemType;
             }
@@ -437,7 +437,7 @@ function CreatePlayerSkillsHtml() {
         else {
             html += '<div class="col-xs-4">';
         }
-        html += '<a href="#" class="tooltips">';
+        html += '<a class="tooltips">';
         html += '<img class="passiveMargin"' + 'onclick="' + onclickevent + '"' + 'src="images/passive/' + passive.image + '.png">';
         html += '<span>';
         html += passive.name + '<br />';
@@ -655,7 +655,7 @@ function characterCreationHtml() {
             var heroRace = characterRaces[hero];
             var onclickevent = "changeRace('" + heroRace.name + "');";
             html += '<div class="col-xs-4 col-xs-offset-2">';
-            html += '<a href="#" class="tooltips">' + heroRace.name + "" +
+            html += '<a class="tooltips">' + heroRace.name + "" +
                     '<span style="width:230px;">' +
                     '<div class="row">' +
                     '<div class="col-xs-10 col-xs-offset-1">' +
@@ -908,7 +908,7 @@ function checkEquippedItemType(newItem, check) {
     var itemType = item;
     if (itemType.hasOwnProperty('itemType')) {
         html += '<div id="equippedItem' + itemType.id + '"' + '>';
-        html += '<a href="#" class="tooltips" style="cursor:pointer;">';
+        html += '<a class="tooltips" style="cursor:pointer;">';
         if (itemType.itemType === "weapon") {
             html += '<img class="' + itemType.itemType;
         }
@@ -1060,7 +1060,7 @@ function displayShopItems(type) {
                     itemStat = equippedItems.talisman;
                 }
                 html += '<div class="col-xs-6">';
-                html += '<a href="#" class="tooltips" style="cursor:pointer;">';
+                html += '<a class="tooltips" style="cursor:pointer;">';
                 html += '<label> <input type="radio" name="shopItem" value=' + ItemDisplay.id + '>';
                 if (ItemDisplay.itemType === "weapon") {
                     html += '<img class="' + ItemDisplay.itemType;
