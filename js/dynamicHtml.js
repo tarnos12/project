@@ -1179,46 +1179,60 @@ function itemBuy(id) {
         return obj.id === id;
     })[0];
     if (item !== undefined) {
-        var index = itemShopWeapon.indexOf(item, 0);
-        playerInventory.push(item);
-        if (index > -1) {
-            itemShopWeapon.splice(index, 1);
-        };
-        displayShopItems(itemShopWeapon);
-        weaponAmount--;
-    };
-    
-    if (item === undefined) {
-        item = itemShopArmor.filter(function (obj) {
-            return obj.id === id;
-        })[0];
-        if (item !== undefined) {
-            index = itemShopArmor.indexOf(item, 0);
+        
+        if (item.shopPrice <= player.properties.gold) {
+            var index = itemShopWeapon.indexOf(item, 0);
             playerInventory.push(item);
-
             if (index > -1) {
-                itemShopArmor.splice(index, 1);
+                itemShopWeapon.splice(index, 1);
             };
-            displayShopItems(itemShopArmor);
-            armorAmount--;
+            displayShopItems(itemShopWeapon);
+            weaponAmount--;
         };
+        };
+
         if (item === undefined) {
-            item = itemShopAccessory.filter(function (obj) {
+            item = itemShopArmor.filter(function (obj) {
                 return obj.id === id;
             })[0];
             if (item !== undefined) {
-                index = itemShopAccessory.indexOf(item, 0);
-                playerInventory.push(item);
+                
+                if (item.shopPrice <= player.properties.gold) {
+                    index = itemShopArmor.indexOf(item, 0);
+                    playerInventory.push(item);
 
-                if (index > -1) {
-                    itemShopAccessory.splice(index, 1);
+                    if (index > -1) {
+                        itemShopArmor.splice(index, 1);
+                    };
+                    displayShopItems(itemShopArmor);
+                    armorAmount--;
                 };
-                displayShopItems(itemShopAccessory);
-                accessoryAmount--;
+            };
+            if (item === undefined) {
+                item = itemShopAccessory.filter(function (obj) {
+                    return obj.id === id;
+                })[0];
+                if (item !== undefined) {
+                    
+                    if (item.shopPrice <= player.properties.gold) {
+                        index = itemShopAccessory.indexOf(item, 0);
+                        playerInventory.push(item);
+
+                        if (index > -1) {
+                            itemShopAccessory.splice(index, 1);
+                        };
+                        displayShopItems(itemShopAccessory);
+                        accessoryAmount--;
+                    };
+                };
             };
         };
-    };
-    CreateInventoryWeaponHtml();
+        if (item !== undefined) {
+            player.properties.gold -= item.shopPrice;
+            document.getElementById("gold").innerHTML = player.properties.gold;
+        };
+        CreateInventoryWeaponHtml();
+    
 };
 
 
