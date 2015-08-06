@@ -27,23 +27,15 @@
     maxExperience = document.getElementById("maxexperience");
     experience = document.getElementById("experience");
     gold = document.getElementById("gold");
-    buyBackpack = document.getElementById("buyBackpack");
-    buyStat = document.getElementById("buyStat");
     level.innerHTML = player.properties.level;
     maxExperience.innerHTML = player.properties.maxExperience;
     experience.innerHTML = player.properties.experience;
     gold.innerHTML = player.properties.gold.toFixed(0);
-    buyBackpack.innerHTML = backpackStatus.price;
-    buyStat.innerHTML = statStatus.price;
     primaryStatUpdate();
     secondaryStatUpdate();
     CreatePlayerHotBar();
 };
 
-function autoSave() {
-    saveGameFunction("autoSave");
-    setTimeout(autoSave, 10000);
-};
 window.setInterval(function () {
     var exppercent = 0; //Player experience in % values at the top bar
     exppercent = (Math.floor((player.properties.experience / player.properties.maxExperience) * 100));
@@ -290,7 +282,7 @@ function autoAttack(monster, monsterStats) {
             clearInterval(autoBattle);
             player.properties.isAuto = false;
         };
-    }, 1000)
+    }, 10000)
 };
 
 
@@ -304,26 +296,30 @@ function upgradePassive(skillName) {
                     if (selectedSkill.requirements() === true) {
                         selectedSkill.level += 1;
                         player.properties.skillPoints -= 1;
-                        Log("Upgraded skill!<br />");
+                        Log('<span id=\"skillLog\" class =\"bold\" style=\"color:green; display:none;\">' + "Upgraded skill." + "<br />" + "</span>");
                     }
                     else {
-                        Log("You do not meet requirements for this skill<br />");
+                        Log('<span id=\"skillLog\" class =\"bold\" style=\"color:red; display:none;\">' + "You do not meet requirements for this skill." + "<br />" + "</span>");
                     }
                 }
                 else {
-                    Log("Your level is not high enough<br />");
+                    Log('<span id=\"skillLog\" class =\"bold\" style=\"color:red; display:none;\">' + "Your level is not high enough." + "<br />" + "</span>");
                 }
             }
             else {
-                Log("Not enough skill points!<br />");
+                Log('<span id=\"skillLog\" class =\"bold\" style=\"color:red; display:none;\">' + "Not enough skill points." + "<br />" + "</span>");
             }
         }
         else {
-            Log("Skill has reached max level!<br />");
+            Log('<span id=\"skillLog\" class =\"bold\" style=\"color:blue; display:none;\">' + "Skill has reached max level." + "<br />" + "</span>");
         }
         
     };
+    skillLog();
     CreatePlayerSkillsHtml();
     CreatePlayerHotBar();
     updateHtml();
+};
+function skillLog() {
+    $("#skillLog").delay(100).fadeIn().delay(1000).fadeOut(500, function () { $(this).remove(); });
 };

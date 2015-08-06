@@ -16,7 +16,7 @@ a.tooltips span:before {
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 30%;
   margin-left: -12px;
   width: 0; height: 0;
   border-top: 12px solid #B3AB86;
@@ -27,7 +27,7 @@ a.tooltips span:after {
   content: '';
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 30%;
   margin-left: -8px;
   width: 0; height: 0;
   border-top: 8px solid #000000;
@@ -38,7 +38,7 @@ a.tooltips:hover span {
   visibility: visible;
   opacity: 1;
   bottom: 30px;
-  left: 50%;
+  right: 10%;
   margin-left: -76px;
   z-index: 999;
 }
