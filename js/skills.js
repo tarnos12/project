@@ -245,7 +245,7 @@
 
 //Weapon Skills
 
-var weaponSkillDamage = function (levelReq, name, image, type, type2) { //default spell object constructor
+var weaponSkillDamage = function (levelReq, name, image, type, type2, id) { //default spell object constructor
     this.levelReq = levelReq;
     this.name = name;
     this.image = image;
@@ -254,14 +254,15 @@ var weaponSkillDamage = function (levelReq, name, image, type, type2) { //defaul
     this.cooldown = 0.5;
     this.type = type;
     this.type2 = type2;
+    this.id = id;
 };
 //Level, name, image, type
 //SWORD SKILL
-var swordFinesse = new weaponSkillDamage(5, "Sword Finesse", "SwordFinesse", "passive", "physical");
-var parryAndRiposte = new weaponSkillDamage(10, "Parry and Riposte", "ParryAndRiposte", "counter", "physical");
-var savageStrike = new weaponSkillDamage(15, "Savage Strike", "SavageStrike", "damage", "physical");
-var sinisterSwing = new weaponSkillDamage(20, "Sinister Swing", "SinisterSwing", "damage", "physical");
-var rendingArc = new weaponSkillDamage(25, "Rending Arc", "RendingArc", "damage", "physical");
+var swordFinesse = new weaponSkillDamage(5, "Sword Finesse", "SwordFinesse", "passive", "physical", 1);
+var parryAndRiposte = new weaponSkillDamage(10, "Parry and Riposte", "ParryAndRiposte", "counter", "physical", 6);
+var savageStrike = new weaponSkillDamage(15, "Savage Strike", "SavageStrike", "damage", "physical", 11);
+var sinisterSwing = new weaponSkillDamage(20, "Sinister Swing", "SinisterSwing", "damage", "physical", 16);
+var rendingArc = new weaponSkillDamage(25, "Rending Arc", "RendingArc", "damage", "physical", 21);
 
 //SWORD DAMAGE/BUFF/BLOCK ETC.
 
@@ -344,29 +345,29 @@ rendingArc.cooldown = 0.4;
 
 //SWORD DESCRIPTION
 swordFinesse.description = function () {
-    return "20% total dexterity added to your min and max damage.(" + this.damageDisplay() + ")";
+    return "Damage increase:" + this.damageDisplay() + '<br />' + "20% total dexterity added to your min and max damage.";
 };
 parryAndRiposte.description = function () {
-    return "Chance to block(" + this.blockChanceDisplay() + "%)" + " " + this.blockAmountDisplay() + " damage.<br />" +
-				"Chance to counter enemy attack(" + this.counterChanceDisplay() + "%)" + " for " + this.counterDamageDisplay() + " damage.<br />";
+    return "Block chance: " + this.blockChanceDisplay() + "%" + " of " + this.blockAmountDisplay() + " damage.<br />" +
+				"Counter chance: " + this.counterChanceDisplay() + "%" + " for " + this.counterDamageDisplay() + " damage.<br />";
 };
 savageStrike.description = function () {
-    return "Deals damage to the enemy based on strength(" + this.damageDisplay() + ").<br />" +
-				"Adds life steal to your attacks, which heals you by " + this.lifeSteal() + "% damage dealt, including damage from skills."
+    return "Damage: " + this.damageDisplay() + "(Strength based).<br />" +
+				"Life steal: " + this.lifeSteal() + "% (damage from skills heals too)."
 };
 sinisterSwing.description = function () {
-    return "Swing your sword dealing your min + max damage, total: " + this.damageDisplay() + " damage."
+    return "Damage: " + this.damageDisplay() + "(Min + Max damage)."
 };
 rendingArc.description = function () {
-    return "Deals double damage to the enemy based on your min + max damage, total " + this.damageDisplay() + " damage."
+    return "Damage: " + this.damageDisplay() + "(Min + Max damage * 2)."
 };
 
 //AXE SKILL
-var butchersInsight = new weaponSkillDamage(5, "Butcher\'s Insight", "ButchersInsight", "passive", "physical");
-var hamstring = new weaponSkillDamage(10, "Hamstring", "Hamstring", "damage", "physical");
-var whirlwind = new weaponSkillDamage(15, "Whirlwind", "Whirlwind", "damage", "physical");
-var flurry = new weaponSkillDamage(20, "Flurry", "Flurry", "damage", "physical");
-var frenzy = new weaponSkillDamage(25, "Frenzy", "Frenzy", "buff", "physical");
+var butchersInsight = new weaponSkillDamage(5, "Butcher\'s Insight", "ButchersInsight", "passive", "physical", 2);
+var hamstring = new weaponSkillDamage(10, "Hamstring", "Hamstring", "damage", "physical", 7);
+var whirlwind = new weaponSkillDamage(15, "Whirlwind", "Whirlwind", "damage", "physical", 12);
+var flurry = new weaponSkillDamage(20, "Flurry", "Flurry", "damage", "physical", 17);
+var frenzy = new weaponSkillDamage(25, "Frenzy", "Frenzy", "buff", "physical", 22);
 
 //AXE DAMAGE/BUFF/BLOCK ETC.
 
@@ -422,27 +423,27 @@ frenzy.damage = function () {
 
 //AXE DESCRIPTION
 butchersInsight.description = function () {
-    return "Passively increase your critical Damage, based on intelligence (" + this.damageDisplay() + ").";
+    return "Critical damage:" + this.damageDisplay() + " %(Intelligence based).";
 };
 hamstring.description = function () {
-    return "Deals damage based on player total strength(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength based).";
 };
 whirlwind.description = function () {
-    return "Deals high damage to the enemy(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength based).";
 };
 flurry.description = function () {
-    return "Deals a lot of damage to the enemy(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength based).";
 };
 frenzy.description = function () {
-    return "Buff: Your next attack deal bonus damage based on your total strength(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength based).";
 };
 
 //MACE SKILL
-var hammerTime = new weaponSkillDamage(5, "Hammer Time", "HammerTime", "damage", "physical");
-var dominatingSlam = new weaponSkillDamage(10, "Dominating Slam", "DominatingSlam", "damage", "physical");
-var gash = new weaponSkillDamage(15, "Gash", "Gash", "damage", "physical");
-var overbearingWallop = new weaponSkillDamage(20, "Overbearing Wallop", "OverbearingWallop", "damage", "physical");
-var tremor = new weaponSkillDamage(25, "Tremor", "Tremor", "damage", "physical");
+var hammerTime = new weaponSkillDamage(5, "Hammer Time", "HammerTime", "damage", "physical", 3);
+var dominatingSlam = new weaponSkillDamage(10, "Dominating Slam", "DominatingSlam", "damage", "physical", 8);
+var gash = new weaponSkillDamage(15, "Gash", "Gash", "damage", "physical", 13);
+var overbearingWallop = new weaponSkillDamage(20, "Overbearing Wallop", "OverbearingWallop", "damage", "physical", 18);
+var tremor = new weaponSkillDamage(25, "Tremor", "Tremor", "damage", "physical", 23);
 
 //MACE DAMAGE/BUFF/BLOCK ETC.
 
@@ -498,27 +499,27 @@ tremor.damage = function () {
 
 //MACE DESCRIPTION
 hammerTime.description = function () {
-    return "Deal bonus damage every turn based on your total strength(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength based).";
 };
 dominatingSlam.description = function () {
-    return "Deal bonus damage every 2nd turn based on your total strength and endurance(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength + Endurance based).";
 };
 gash.description = function () {
-    return "Deal bonus damage every 4th turn based on your total strength and endurance(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength + Endurance based).";
 };
 overbearingWallop.description = function () {
-    return "Deal bonus damage every turn based on your total strength(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength based).";
 };
 tremor.description = function () {
-    return "Deal bonus damage every 2nd turn based on your total strength and wisdom(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Strength + Wisdom based).";
 };
 
 //STAFF SKILL
-var intone = new weaponSkillDamage(5, "Intone", "Intone", "magicDamageBuff", "magical");
-var starlight = new weaponSkillDamage(10, "Starlight", "Starlight", "damage", "magical");
-var hateCannon = new weaponSkillDamage(15, "Hate Cannon", "HateCannon", "damage", "magical");
-var beguilersOrb = new weaponSkillDamage(20, "Beguiler\'s Orb", "BeguilersOrb", "damage", "magical");
-var spellSimulacrum = new weaponSkillDamage(25, "Spell Simulacrum", "SpellSimulacrum", "passive", "magical");
+var intone = new weaponSkillDamage(5, "Intone", "Intone", "magicDamageBuff", "magical", 4);
+var starlight = new weaponSkillDamage(10, "Starlight", "Starlight", "damage", "magical", 9);
+var hateCannon = new weaponSkillDamage(15, "Hate Cannon", "HateCannon", "damage", "magical", 14);
+var beguilersOrb = new weaponSkillDamage(20, "Beguiler\'s Orb", "BeguilersOrb", "damage", "magical", 19);
+var spellSimulacrum = new weaponSkillDamage(25, "Spell Simulacrum", "SpellSimulacrum", "passive", "magical", 24);
 
 //STAFF DAMAGE/BUFF/BLOCK ETC.
 
@@ -584,24 +585,24 @@ intone.description = function () {
 	"It work's for each active spell in battle.";
 };
 starlight.description = function () {
-    return "Deals magic damage based on intelligence and wisdom(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Intelligence + Wisdom based).";
 };
 hateCannon.description = function () {
-    return "Deals magic damage based on intelligence(" + this.damageDisplay() + ")";
+    return "Damage:" + this.damageDisplay() + "(Intelligence based).";
 };
 beguilersOrb.description = function () {
-    return "Deals high damage based on intelligence and wisdom(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Intelligence + Wisdom based).";
 };
 spellSimulacrum.description = function () {
     return "Increase your total intelligence(" + (this.damageDisplay() - 100) + "%)";
 };
 
 //RANGED SKILL
-var pierceTheVeil = new weaponSkillDamage(5, "Pierce the Veil", "PierceTheVeil", "damage", "physical");
-var skyCracker = new weaponSkillDamage(10, "Sky Cracker", "SkyCracker", "damage", "physical");
-var archerFocus = new weaponSkillDamage(15, "Archer Focus", "ArcherFocus", "passive", "physical");
-var makeItRain = new weaponSkillDamage(20, "Make it Rain", "MakeItRain", "damage", "physical");
-var rangersRevenge = new weaponSkillDamage(25, "Ranger\'s Revenge", "RangersRevenge", "damage", "physical");
+var pierceTheVeil = new weaponSkillDamage(5, "Pierce the Veil", "PierceTheVeil", "damage", "physical", 5);
+var skyCracker = new weaponSkillDamage(10, "Sky Cracker", "SkyCracker", "damage", "physical", 10);
+var archerFocus = new weaponSkillDamage(15, "Archer Focus", "ArcherFocus", "passive", "physical", 15);
+var makeItRain = new weaponSkillDamage(20, "Make it Rain", "MakeItRain", "damage", "physical", 20);
+var rangersRevenge = new weaponSkillDamage(25, "Ranger\'s Revenge", "RangersRevenge", "damage", "physical", 25);
 
 //RANGED DAMAGE/BUFF/BLOCK ETC.
 
@@ -657,21 +658,20 @@ rangersRevenge.damage = function () {
 
 //RANGED DESCRIPTION
 pierceTheVeil.description = function () {
-    return "Deals damage based on dexterity(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Dexterity based).";
 };
 skyCracker.description = function () {
-    return "Deals damage based on dexterity(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Dexterity based).";
 };
 archerFocus.description = function () {
-    return "Increase critical Chance(" + this.damageDisplay() + "%) Can increase it over 50% which is max without this passive.";
+    return "Critical Chance: " + this.damageDisplay() + "% (Can increase it over 50% cap).";
 };
 makeItRain.description = function () {
-    return "Deals damage based on dexterity and agility(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Dexterity + Agility based).";
 };
 rangersRevenge.description = function () {
-    return "Deals damage based on dexterity and strength(" + this.damageDisplay() + ").";
+    return "Damage:" + this.damageDisplay() + "(Dexterity + Strength based).";
 };
-
 
 var sword = new Object();
 sword.swordFinesse = swordFinesse;

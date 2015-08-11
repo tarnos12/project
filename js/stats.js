@@ -34,6 +34,7 @@
     primaryStatUpdate();
     secondaryStatUpdate();
     CreatePlayerHotBar();
+    CreateWeaponSkillHtml();
 };
 
 window.setInterval(function () {
@@ -58,7 +59,6 @@ window.setInterval(function () { //Health regen
 window.setInterval(function () { //Mana regen
     if (player.properties.mana < player.functions.maxMana()) player.properties.mana += player.functions.manaRegen();
     if (player.properties.mana > player.functions.maxMana()) player.properties.mana = player.functions.maxMana();
-    //document.getElementById('mana').innerHTML = player.properties.mana.toFixed(0);
     primaryStatUpdate();
 }, 1000);
 

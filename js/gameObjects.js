@@ -115,36 +115,43 @@ var primaryStatInfo = [
         type: 'Strength',
         info: 'totalStrength',
         item: 'totalStrengthBonus',
+        tooltip: '10 Strength = 1 inventory slot \n 10 Strength = 4 min damage \n 10 Strength = 6 max damage',
     },
     {
         type: 'Endurance',
         info: 'totalEndurance',
         item: 'totalEnduranceBonus',
+        tooltip: '10 Endurance = 50 max health \n 3 Endurance = 1 health per second',
     },
     {
         type: 'Agility',
         info: 'totalAgility',
         item: 'totalAgilityBonus',
+        tooltip: '100 Agility = 2% accuracy \n 100 Agility = 3% evasion \n 10 Agility = 1 defense',
     },
     {
         type: 'Dexterity',
         info: 'totalDexterity',
         item: 'totalDexterityBonus',
+        tooltip: '100 Dexterity = 3% critical chance \n 10 dexterity = 5% critical damage',
     },
     {
         type: 'Wisdom',
         info: 'totalWisdom',
         item: 'totalWisdomBonus',
+        tooltip: '10 Wisdom = 5 max mana \n 10 Wisdom = 1 mana regen per second',
     },
     {
         type: 'Intelligence',
         info: 'totalIntelligence',
         item: 'totalIntelligenceBonus',
+        tooltip: '10 Intelligence = 1 max Mana',
     },
     {
         type: 'Luck',
         info: 'totalLuck',
         item: 'totalLuckBonus',
+        tooltip: '10 Luck = 2% magic find \n 100 luck = 1% evasion \n 100 luck = 1% critical chance',
     },
 ];
 
@@ -688,7 +695,7 @@ var itemRarity = [
     minMods: 3,
     maxMods: 4,
     chance: 200,
-    color: '#0033FF',
+    color: '#800080',
     power: 3,
     rarityValue: 3,
 },
@@ -1231,7 +1238,7 @@ var InventoryItemTypes = [
 var monsterAreas = [
     {
         type: 'BanditHideout',
-        displayName: 'Bandit Hideout',
+        displayName: 'Varik\'s Hideout',
         icon: 'banditHideout'
     },
      {
@@ -1255,26 +1262,31 @@ var weaponTypeObject = [
         type: 'sword',
         displayName: 'Sword',
         icon: 'sword',
+        type2: 'swordSkill',
     },
      {
          type: 'axe',
          displayName: 'Axe',
-         icon: 'axe'
+         icon: 'axe',
+         type2: 'axeSkill',
      },
       {
           type: 'mace',
           displayName: 'Mace',
-          icon: 'mace'
+          icon: 'mace',
+          type2: 'maceSkill',
       },
        {
            type: 'staff',
            displayName: 'Staff',
-           icon: 'staff'
+           icon: 'staff',
+           type2: 'staffSkill',
        },
        {
            type: 'ranged',
            displayName: 'Ranged',
-           icon: 'ranged'
+           icon: 'ranged',
+           type2: 'rangedSkill',
        },
 ];
 
@@ -1296,7 +1308,7 @@ var materiaType = [
     },
 ]
 
-var characterRace = function (name, strength, endurance, agility, dexterity, intelligence, wisdom, luck) {
+var characterRace = function (name, strength, endurance, agility, dexterity, intelligence, wisdom, luck, image) {
     this.name = name;
     this.strength = strength;
     this.endurance = endurance;
@@ -1305,45 +1317,125 @@ var characterRace = function (name, strength, endurance, agility, dexterity, int
     this.intelligence = intelligence;
     this.wisdom = wisdom;
     this.luck = luck;
+    this.image = image;
     this.description = function () {
         return "Stats per level: <br />Strength: " + this.strength + "<br />" + "Endurance: " + this.endurance + "<br />" + "Agility: " + this.agility +
             "<br />" + "Dexterity: " + this.dexterity + "<br />" + "Intelligence: " + this.intelligence + "<br />" + "Wisdom: " + this.wisdom + "<br />" + "Luck: " + this.luck
     };
+    this.lore = function () {
+        return 'test';
+    }
 };
-var human = new characterRace('Human', 3, 3, 3, 3, 3, 3 , 3);
-var halfElf = new characterRace('Half Elf', 2, 2, 4, 3, 4, 4, 2);
-var dwarf = new characterRace('Dwarf', 4, 2, 4, 4, 1, 1, 5);
-var orc = new characterRace('Orc', 5, 5, 2, 5, 1, 1, 2);
-human.bonusExpGoldDrop = function () {
-    return 15;
-};
-human.allStatsBonus = function () {
+var human = new characterRace('Human', 3, 3, 3, 3, 3, 3 , 3, "human");
+var halfElf = new characterRace('Half Elf', 3, 3, 3, 3, 3, 3, 3, "halfelf");
+var dwarf = new characterRace('Dwarf', 3, 5, 3, 1, 2, 4, 3, "dwarf");
+var orc = new characterRace('Orc', 6, 3, 4, 3, 1, 1, 3, "orc");
+var elf = new characterRace('Elf', 1, 1, 3, 6, 5, 2, 3, "elf");
+var halfing = new characterRace('Halfing', 1, 2, 3, 5, 3, 4, 3, "halfing");
+var sylph = new characterRace('Sylph', 2, 1, 2, 5, 6, 2, 3, "sylph");
+var giant = new characterRace('Giant', 6, 3, 1, 1, 1, 6, 3, "giant");
+human.raceAllStats = function () {
     return 10;
 };
-halfElf.criticalChance = function () {
-    return 5;
-};
-halfElf.bonusDrop = function () {
-    return 50;
-};
-dwarf.bonusGold = function () {
-    return 50;
-};
-dwarf.evasionChance = function () {
-    return 5;
-};
-orc.bonusHealth = function () {
+human.raceExpRate = function () {
     return 20;
 };
-orc.allStatsBonus = function () {
+human.raceDropRate = function () {
+    return 20;
+};
+halfElf.raceAllStats = function () {
+    return 10;
+};
+halfElf.raceGoldDrop = function () {
+    return 20;
+};
+halfElf.raceDropRate = function () {
+    return 20;
+};
+dwarf.raceEvasion = function () {
     return 5;
 };
-
+dwarf.raceGoldDrop = function () {
+    return 10;
+};
+dwarf.raceDropRate = function () {
+    return 10;
+};
+orc.raceDamage = function () {
+    return 20;
+};
+orc.raceHealth = function () {
+    return 30;
+};
+orc.raceExpRate = function () {
+    return -50;
+};
+elf.raceAccuracy = function () {
+    return 100; //Never miss
+};
+elf.raceCriticalChance = function () {
+    return 5;
+};
+elf.raceDamage = function () {
+    return -20;
+};
+halfing.raceEvasion = function () {
+    return 10;
+};
+halfing.raceDamage = function () {
+    return -10;
+};
+halfing.raceDefense = function () {
+    return -10;
+};
+sylph.raceManaRegen = function () {
+    return 100;
+};
+sylph.raceMaxMana = function () {
+    return 50;
+};
+giant.raceDamage = function () {
+    return 50;
+};
+giant.raceHealth = function () {
+    return 100;
+};
+giant.raceEvasion = function () {
+    return "Can't evade";
+}
+human.lore = function () {
+    return '\"Humans possess exceptional drive and a great capacity to endure and expand, and as such are currently the dominant race in the world.\"';
+};
+halfElf.lore = function () {
+    return '\"Elves have long drawn the covetous gazes of other races. Their generous lifespans, magical affinity, and inherent grace each contribute to the admiration or bitter envy of their neighbors.\"'
+};
+dwarf.lore = function () {
+    return '\"Dwarves are a stoic but stern race, ensconced in cities carved from the hearts of mountains and fiercely determined to repel the depredations of savage races like orcs and goblins.\"';
+};
+orc.lore = function () {
+    return '\"Orcs are aggressive, callous, and domineering. Bullies by nature, they respect strength and power as the highest virtues. On an almost instinctive level, orcs believe they are entitled to anything they want unless someone stronger can stop them from seizing it.\"';
+};
+elf.lore = function () {
+    return '\"The long-lived elves are children of the natural world, similar in many superficial ways to fey creatures, though with key differences.\"';
+};
+halfing.lore = function () {
+    return '\"Optimistic and cheerful by nature, blessed with uncanny luck, and driven by a powerful wanderlust, halflings make up for their short stature with an abundance of bravado and curiosity.\"';
+};
+sylph.lore = function () {
+    return '\"Born from the descendants of humans and beings of elemental air such as djinn, sylphs are a shy and reclusive race consumed by intense curiosity.\"';
+};
+giant.lore = function () {
+    return '\"\"';
+};
 var characterRaces = new Object();
 characterRaces.human = human;
 characterRaces.halfElf = halfElf;
 characterRaces.dwarf = dwarf;
 characterRaces.orc = orc;
+characterRaces.elf = elf;
+characterRaces.halfing = halfing;
+characterRaces.sylph = sylph;
+characterRaces.giant = giant;
 
 
 CreateMonsterHtml();

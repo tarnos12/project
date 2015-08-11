@@ -64,6 +64,10 @@
         statStatus: statStatus,
     }
     if (saveType === 'autoSave') {
+        if (slot === 0) {
+            localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
+            document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame'];
+        }
         if (slot === 1) {
             localStorage['EncodedSaveGame1'] = btoa(JSON.stringify(saveGame));
             document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame1'];
@@ -79,6 +83,11 @@
     }
     else if (saveType === 'manualSave') {
         Log("Game Saved");
+        if (slot === 0) {
+            localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
+            document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame'];
+            console.log(localStorage['EncodedSaveGame'].length)
+        }
         if (slot === 1) {
             localStorage['EncodedSaveGame1'] = btoa(JSON.stringify(saveGame));
             document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame1'];
@@ -91,7 +100,7 @@
         }
         else if (slot === 3) {
             localStorage['EncodedSaveGame3'] = btoa(JSON.stringify(saveGame));
-
+            document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame3'];
             console.log(localStorage['EncodedSaveGame3'].length)
         };
     };
@@ -114,6 +123,12 @@ function load(slot) {
         if (localStorage['EncodedSaveGame1']) {
             var savegame = JSON.parse(atob(localStorage['EncodedSaveGame1']));
             if (typeof savegame.playerProperties.saveslot !== "undefined") player.properties.saveSlot = 1;
+        };
+    }
+    else if (slot === 0) {
+        if (localStorage['EncodedSaveGame']) {
+            var savegame = JSON.parse(atob(localStorage['EncodedSaveGame']));
+            if (typeof savegame.playerProperties.saveslot !== "undefined") player.properties.saveSlot = 0;
         };
     }
     else if (slot === 2) {
@@ -214,6 +229,9 @@ function resetCheck() {
     };
 };
 function reset(slot) {
+    if (slot === 0) {
+        localStorage.removeItem("EncodedSaveGame");
+    }
     if (slot === 1) {
         localStorage.removeItem("EncodedSaveGame1");
     }
@@ -243,6 +261,10 @@ function importSave() {
     if (slot === 1) {
         localStorage['EncodedSaveGame1'] = btoa(JSON.stringify(savegame));
         console.log(localStorage['EncodedSaveGame1'].length)
+    }
+    else if (slot === 0) {
+        localStorage['EncodedSaveGame'] = btoa(JSON.stringify(savegame));
+        console.log(localStorage['EncodedSaveGame'].length)
     }
     else if (slot === 2) {
         localStorage['EncodedSaveGame2'] = btoa(JSON.stringify(savegame));

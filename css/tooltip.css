@@ -2,7 +2,7 @@
   position: relative;
   display: inline;
 }
-a.tooltips span {
+a.tooltips > span {
   position: absolute;
   width:450px;
   right: 40%;
@@ -14,7 +14,7 @@ a.tooltips span {
   visibility: hidden;
   border-radius: 8px;
 }
-a.tooltips span:before {
+a.tooltips > span:before {
   content: '';
   position: absolute;
   top: 100%;
@@ -25,7 +25,7 @@ a.tooltips span:before {
   border-right: 12px solid transparent;
   border-left: 12px solid transparent;
 }
-a.tooltips span:after {
+a.tooltips > span:after {
   content: '';
   position: absolute;
   top: 100%;
@@ -36,7 +36,7 @@ a.tooltips span:after {
   border-right: 8px solid transparent;
   border-left: 8px solid transparent;
 }
-a.tooltips:hover span {
+a.tooltips:hover > span {
   visibility: visible;
   opacity: 1;
   bottom: 30px;
@@ -160,7 +160,7 @@ a.tooltips:hover span {
 
 div.story {
     width: 100%;
-    height: 500px;
+    height: 400px;
     overflow-y: auto;
 }
 div.inventory {
