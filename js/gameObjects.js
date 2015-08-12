@@ -104,13 +104,13 @@
 ];
 var primaryStatInfo = [
     {
-        type: 'Damage',
+        type: 'damage',
         short: 'Dmg',
         info: 'damage',
         tooltip: 'Damage dealt.',
     },
     {
-        type: 'Mana',
+        type: 'mana',
         short: 'MP',
         info: 'mana',
         tooltip: 'Your mana.',

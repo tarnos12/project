@@ -869,10 +869,10 @@ function primaryStatUpdate() {
         var statInfo = primaryStatInfo[key].info;
         var statDisplay2 = primaryStatInfo[key].type;
         var short = primaryStatInfo[key].short;
-        if (currentBonus.type === "Damage") {
+        if (currentBonus.type === "damage") {
             var statDisplay = '<span id="' + statInfo + '"></span>';
         }
-        else if (currentBonus.type === "Mana") {
+        else if (currentBonus.type === "mana") {
             var statDisplay = '<span id="' + statInfo + '"></span>';
         }
         else {
