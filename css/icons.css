@@ -176,6 +176,14 @@ border: 1px solid black;
     left: 10%;
     z-index: 2;
 }
+.sliderDiv{
+    position:absolute;
+    width: 20%;
+    height: 30%;
+    top: 28%;
+    left: 30%;
+    z-index: 2;
+}
 
 .raceCreation {
     position:absolute;

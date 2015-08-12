@@ -682,7 +682,6 @@ function playerAttack(monsterStat, monsterStats) {
             accuracyRate += 1;
         }
         else {
-            console.log("XD")
         };
 };
 
@@ -871,7 +870,15 @@ function monsterKilled(monsterStat, monsterStats) {
 //Weapon skill experience
 function weaponSkill(monsterStat, monsterStats) {
     // if (monsterStat.type === boss){ give x5 experience} else if normal {x1 exp}
-    var expgain = 1;
+    if (monsterStat.level > player.properties.level) {
+        var expgain = 3;
+    }
+    else if (monsterStat.level === player.properties.level) {
+        var expgain = 2;
+    }
+    else {
+        var expgain = 1;
+    };
     var subType = equippedItems.weapon.subType;
     var itemStat = weaponMastery[subType];
     if (itemStat !== undefined) {

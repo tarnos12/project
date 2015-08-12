@@ -130,13 +130,13 @@ function levelUp() {
     for (var hero in characterRaces) {
         var heroRace = characterRaces[hero];
         if (player.properties.heroRace === heroRace.name) {
-            player.properties.baseStrength += heroRace.strength;
-            player.properties.baseEndurance += heroRace.endurance;
-            player.properties.baseAgility += heroRace.agility;;
-            player.properties.baseDexterity += heroRace.dexterity;
-            player.properties.baseWisdom += heroRace.wisdom;
-            player.properties.baseIntelligence += heroRace.intelligence;
-            player.properties.baseLuck += heroRace.luck;
+            player.properties.baseStrength += heroRace.strength();
+            player.properties.baseEndurance += heroRace.endurance();
+            player.properties.baseAgility += heroRace.agility();
+            player.properties.baseDexterity += heroRace.dexterity();
+            player.properties.baseWisdom += heroRace.wisdom();
+            player.properties.baseIntelligence += heroRace.intelligence();
+            player.properties.baseLuck += heroRace.luck();
             player.properties.skillPoints += 1;
         };
     };

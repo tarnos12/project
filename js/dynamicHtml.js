@@ -97,12 +97,12 @@ function CreateMonsterHtml() {
         };
         html += 'id="tab_' + monsterAreas[j].type + '">' +
             '<div class="panel panel-default">' +
-            '<div class="panel-heading">' +
+            '<div class="panel-heading" style="background-color:green;">' +
             '<div class="c3">' +
-            '<h3 class="panel-title">' + monsterAreas[j].displayName + '</h3>' +
+            '<h3 class="panel-title" >' + monsterAreas[j].displayName + '</h3>' +
             '</div>' +
             '</div>' +
-            '<div class="panel-body">';
+            '<div class="panel-body" style="background-color:green;">';
         for (var key in monsterList) {
             if (monsterList.hasOwnProperty(key)) {
                 var monster = monsterList[key];
@@ -111,12 +111,18 @@ function CreateMonsterHtml() {
             if (area === monsterAreas[j].type) {
                 if (monster.Stats.isShown == true) {
                     var monsterPercent = ((monster.Stats.hp / monster.Stats.maxHp) * 100);
+                    if (monster.Stats.type !== "mining") {
+                        var onclickevent = 'attack(' + monster.Stats.name + ');';
+                    }
+                    else if (monster.Stats.type === "mining") {
+                        var onclickevent = 'mine(' + monster.Stats.name + ');';
+                    }
                     html += '<div class="col-xs-6 col-lg-3"">' +
                         '<div class="row">' +
                         '<div class="col-xs-10 col-xs-offset-1" style="width:85%;">' +
                         '<div id="' + monster.Stats.id + '">' +
                         '<a href="#" class="tooltipA" id="monsterButton">' +
-                        '<img class="monster" src="images/' + "monster" + monster.Stats.id + '.png" alt="' + monster.Stats.displayName + '" onclick="attack(' + monster.Stats.name + ')">' +
+                        '<img class="monster" src="images/' + "monster" + monster.Stats.id + '.png" alt="' + monster.Stats.displayName + '" onclick="' + onclickevent + '">' +
                         '<span>' +
                         '<b>' + monster.Stats.displayName + '</b>' +
                         '<br />' +
@@ -142,6 +148,7 @@ function CreateMonsterHtml() {
     html += '</div>';
 
     document.getElementById("monsterTabs").innerHTML = html;
+    testss();
 };
 
 var inventoryTabActiveNum = 0;
@@ -180,10 +187,12 @@ function CreateInventoryWeaponHtml() {
         var sellAllUncommon = "sellAllUncommon('" + InventoryItemTypes[j].type + "');";
         var sellAllRare = "sellAllRare('" + InventoryItemTypes[j].type + "');";
         var sellAllEpic = "sellAllEpic('" + InventoryItemTypes[j].type + "');";
+        var sellAllLegendary = "sellAllLegendary('" + InventoryItemTypes[j].type + "');";
         html += '<br /><button type="button" class="sell" onclick=' + sellAllCommon + '>Common</button>';
         html += '<button type="button" class="sell" onclick=' + sellAllUncommon + '>Uncommon</button>';
         html += '<button type="button" class="sell" onclick=' + sellAllRare + '>Rare</button>';
         html += '<button type="button" class="sell" onclick=' + sellAllEpic + '>Epic</button>';
+        html += '<button type="button" class="sell" onclick=' + sellAllLegendary + '>Legendary</button>';
         html += '</div>';
         html += '<div class="c3">Sort by:</div>';
         var sortItemValue = 'onclick="sortInventory' + "(" + "'Value'" + ")"
@@ -318,6 +327,7 @@ function CreateInventoryWeaponHtml() {
     };
     html += '</div>';
     document.getElementById("inventory").innerHTML = html;
+    testss();
 };
 
 function unequipItemLoad() { // Create a variable inside player.properties which store currently equipped item, for easy access...
@@ -675,8 +685,8 @@ function characterCreationHtml() {
         var html = '';
         var html2 = '';
         html2 += '<div class="row">';
-        html2 += '<div class="col-xs-8 col-xs-offset-2">';
-        html2 += 'Pick your race, hover over a race name for more info.';
+        html2 += '<div class="col-xs-6 col-xs-offset-3">';
+        html2 += 'Press ' + '<p class="glyphicon glyphicon-info-sign" style="color:black"></p>' + ' for more info about a class.';
         html2 += '</div></div>';
         html += '<div class="row">';
         html += '<div class="col-xs-12 col-xs-offset-1">';
@@ -685,37 +695,36 @@ function characterCreationHtml() {
             var heroRace = characterRaces[hero];
             var onclickevent = "changeRace('" + heroRace.name + "');";
             html += '<div class="col-xs-6 col-xs-offset-2">';
-            html += '<img src="images/races/' + heroRace.image + '.png">';
+            html += '<img src="images/races/' + heroRace.image() + '.png">';
             html += heroRace.name + " ";
             html += '<a class="tooltips">' + '<p class="glyphicon glyphicon-info-sign" style="color:black"></p>' +
-                    '<span style="width:350px; left: 10%">' +
+                    '<span style="width:350px; right: 10%; bottom:30px; text-align:left;">' +
                     '<div class="row">' +
                     '<div class="col-xs-10 col-xs-offset-1">' +
                     heroRace.name +
                     '</div></div>' +
                     '<div class="row">' +
-                    '<div class="col-xs-5">';
+                    '<div class="col-xs-5" style="padding-left:46px;">';
             for (var stat in heroRace) {
                 if ('strength, endurance, agility, dexterity, wisdom, intelligence, luck'.indexOf(stat) != -1) {
-                    html += stat.capitalizeFirstLetter() + ': ';
-                    for (var i = 0; i < heroRace[stat]; i++) {
-                        if (heroRace[stat] === 6) {
+                    html += stat.substring(0, 3).capitalizeFirstLetter() + ': ';
+                    for (var i = 0; i < heroRace[stat]() ; i++) {
+                        if (heroRace[stat]() >= 6) {
                             html += '<font color="orange">+</font>';
                         }
-                       else if (heroRace[stat] >= 4) {
+                        else if (heroRace[stat]() >= 4) {
                             html += '<font color="green">+</font>';
                         }
-                        else if (heroRace[stat] === 3) {
+                        else if (heroRace[stat]() === 3) {
                             html += '<font color="blue">+</font>';
                         }
-                        else if (heroRace[stat] < 3) {
+                        else if (heroRace[stat]() < 3) {
                             html += '<font color="red">+</font>';
-                        }
-                    }
+                        };
+                    };
                     html += '<br />';
-                }
-               
-            }
+                };
+            };
             html += '</div>';
             html += '<div class="col-xs-7">';
                     html += 'Bonuses:<br />';
@@ -737,8 +746,7 @@ function characterCreationHtml() {
                             }
                         }
                     }
-
-            html += '<br /><img src="images/races/' + heroRace.image + '.png">';
+            html += '<br /><img src="images/races/' + heroRace.image() + '.png">';
             html += '</div>';
             html += '</div>';
             html += '<div class="row">';
@@ -757,25 +765,75 @@ function characterCreationHtml() {
         document.getElementById("raceCreation").innerHTML = html;
         document.getElementById("raceText").innerHTML = html2;
     };
+    var divStyle2 = document.getElementById('sliderDivID');
+    divStyle2.style.display = "block";
     checkHeroRace();
+    getAge();
 };
-
 function checkHeroRace() {
+    var html = '';
     for (var hero in characterRaces) {
-        var race = characterRaces[hero];
-        if (player.properties.heroRace === race.name) {
-            document.getElementById("characterRace").innerHTML = "Race: " + '<a href="#" class="tooltipA">' + player.properties.heroRace +
-                '<span>' + 'Stats per level: <br />' +
-            'Strength: ' + race.strength + '<br />' +
-            'Endurance: ' + race.endurance + '<br />' +
-            'Agility: ' + race.agility + '<br />' +
-            'Dexterity: ' + race.dexterity + '<br />' +
-            'Intelligence: ' + race.intelligence + '<br />' +
-            'Wisdom: ' + race.wisdom + '<br />' +
-            'Luck: ' + race.luck + '<br />' +
+        var heroRace = characterRaces[hero];
+        if (player.properties.heroRace === heroRace.name) {
+            html += '<a href="#" class="tooltipA">' + '<img src="images/races/' + heroRace.image() + '.png">' + '<span style="width:350px; right: 10%; top:10px; text-align:left;">' +
+                '<div class="row">' +
+                    '<div class="col-xs-10 col-xs-offset-1">' +
+                    heroRace.name +
+                    '</div></div>' +
+                    '<div class="row">' +
+                    '<div class="col-xs-5" style="padding-left:46px;">';
+            for (var stat in heroRace) {
+                if ('strength, endurance, agility, dexterity, wisdom, intelligence, luck'.indexOf(stat) != -1) {
+                    html += stat.substring(0, 3).capitalizeFirstLetter() + ': ';
+                    for (var i = 0; i < heroRace[stat]() ; i++) {
+                        if (heroRace[stat]() >= 6) {
+                            html += '<font color="orange">+</font>';
+                        }
+                        else if (heroRace[stat]() >= 4) {
+                            html += '<font color="green">+</font>';
+                        }
+                        else if (heroRace[stat]() === 3) {
+                            html += '<font color="blue">+</font>';
+                        }
+                        else if (heroRace[stat]() < 3) {
+                            html += '<font color="red">+</font>';
+                        };
+                    };
+                    html += '<br />';
+                };
+            };
+            html += '</div>';
+            html += '<div class="col-xs-7">';
+            html += 'Bonuses:<br />';
+            for (var stat in heroRace) {
+                if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) != -1) {
+                    var string = stat.substring('race'.length);
+                    if (stat === "raceAccuracy" && heroRace[stat]() < 111) {
+                        html += 'Never Miss<br />';
+                    }
+                    else if (stat === "raceEvasion" && heroRace[stat]() === "Can't evade") {
+                        html += "Can't Evade";
+                    }
+                    else {
+                        html += string.replace(/([a-z])([A-Z])/g, '$1 $2') + ': ';
+                        if (heroRace[stat]() > 0) {
+                            html += '+';
+                        };
+                        html += heroRace[stat]() + '%' + '<br />'
+                    }
+                }
+            }
+            html += '<br /><img src="images/races/' + heroRace.image() + '.png">';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="row">';
+            html += '<div class="col-xs-10 col-xs-offset-1">';
+            html += '<br /><font color="#CC6633">' + heroRace.lore() + '</font>';
+            html += '</div>' + '</div>' +
             '</span>' + '</a>';
         };
     };
+    document.getElementById("characterRace").innerHTML = html;
     raceStats(); // Function which add all bonuses from races to player properties.
 };
 
@@ -1383,4 +1441,37 @@ function testss() {
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     })
+};
+
+var raceAgeArray = [
+    "Adulthood",
+    "Middle Age",
+    "Old",
+    "Venerable",
+];
+
+    $(function () {
+        $("#slider-range-min").slider({
+            value: 0,
+            min: 0,
+            max: 3,
+            step: 1,
+            slide: function (event, ui) {
+                $("#amount").val(raceAgeArray[ui.value]);
+                getAge();
+                characterCreationHtml();
+            }
+        });
+        $("#amount").val(raceAgeArray[$("#slider-range-min").slider("value")]);
+    });
+function getAge() {
+    var test = document.getElementById('amount').value;
+    characterRaces.human.raceAge = test;
+    characterRaces.halfElf.raceAge = test;
+    characterRaces.dwarf.raceAge = test;
+    characterRaces.orc.raceAge = test;
+    characterRaces.elf.raceAge = test;
+    characterRaces.halfing.raceAge = test;
+    characterRaces.sylph.raceAge = test;
+    characterRaces.giant.raceAge = test;
 };

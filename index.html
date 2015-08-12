@@ -12,7 +12,10 @@
     <link href="css/tooltip.css" rel="stylesheet" type="text/css">
     <link href="css/icons.css" rel="stylesheet" type="text/css">
     <link href="css/button.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="jquery/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
     <script>
         $(function () {
@@ -157,14 +160,14 @@
         }
         
         .unselectable {
-  -webkit-user-select: none;  /* Chrome all / Safari all */
-  -moz-user-select: none;     /* Firefox all */
-  -ms-user-select: none;      /* IE 10+ */
+          -webkit-user-select: none;  /* Chrome all / Safari all */
+          -moz-user-select: none;     /* Firefox all */
+          -ms-user-select: none;      /* IE 10+ */
 
-  /* No support for these yet, use at own risk */
-  -o-user-select: none;
-  user-select: none;
-}
+          /* No support for these yet, use at own risk */
+          -o-user-select: none;
+          user-select: none;
+        }
     </style>
     <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
 </head>
@@ -191,7 +194,14 @@
             </div>
             <div id="raceDiv" style="display:none;">
                 <div class="raceText" id="raceText"></div>
-                <div class="raceCreation" id="raceCreation"></div> <!--Style set for "none" so it wont override starting screen an "invisible wall"...-->
+                <div class="sliderDiv" id="sliderDivID" style="display:none">
+                    <p>
+                        <label for="amount">Choose your age:</label>
+                        <input type="text" id="amount" readonly style="border:0; font-weight:bold;">
+                    </p>
+                    <div id="slider-range-min"></div>
+                </div>
+                <div class="raceCreation" id="raceCreation"></div>
             </div>
         </div>
 
@@ -253,7 +263,7 @@
                                     <div class="c3">
                                         <h4>Player Stats</h4>
                                     </div>
-                                    <div class=" col-xs-12">
+                                    <div class=" col-xs-4 col-xs-offset-4">
                                         <div id="characterRace"></div>
                                     </div>
                                     <div id="primaryStat"></div>
@@ -411,7 +421,6 @@
                             <!-- tab content -->
                             <div id="hotBar"></div> <!--Add margin top/bottom for better look ._.-->
                         </div>
-                        
                         <div class="row c4" style="border:1px solid;margin-top:10px;margin-bottom:10px;">
                             <div class="col-xs-10 col-xs-offset-1 c4">
                                 <div class="row">
@@ -435,11 +444,11 @@
 
                             <div class="tab-pane c4" id="tab_storyLog" style="border:1px solid;">
                                 <ul class=" nav nav-tabs">
-                                <li role="presentation" class="active"><a href="#tab_prologue" data-toggle="tab">Prologue</a></li>
-                                <li role="presentation"><a href="#tab_varik" data-toggle="tab">Varik's Hideout</a></li>
-                                <li role="presentation"><a href="#tab_forest" data-toggle="tab">Forest of Narus</a></li>
-                                <li role="presentation"><a href="#tab_ozJotnar" data-toggle="tab">Oz Jotnar</a></li>
-                                <li role="presentation"><a href="#tab_twistedMarrow" data-toggle="tab">Twisted Marrow</a></li>
+                                    <li role="presentation" class="active"><a href="#tab_prologue" data-toggle="tab">Prologue</a></li>
+                                    <li role="presentation"><a href="#tab_varik" data-toggle="tab">Varik's Hideout</a></li>
+                                    <li role="presentation"><a href="#tab_forest" data-toggle="tab">Forest of Narus</a></li>
+                                    <li role="presentation"><a href="#tab_ozJotnar" data-toggle="tab">Oz Jotnar</a></li>
+                                    <li role="presentation"><a href="#tab_twistedMarrow" data-toggle="tab">Twisted Marrow</a></li>
                                 </ul>
                                 <div class="tab-content">
 
@@ -641,6 +650,7 @@
     <script type="text/javascript" src="js/save.js"></script>
     <script type="text/javascript" src="js/shop.js"></script>
     <script type="text/javascript" src="js/stats.js"></script>
+    <script type="text/javascript" src="js/professions.js"></script>
 
     <script id="cid0020000089850597842" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 200px;height: 300px;">{"handle":"lotfw","arch":"js","styles":{"a":"cc9933","b":100,"c":"000000","d":"000000","k":"cc9933","l":"cc9933","m":"cc9933","p":"10","q":"cc9933","r":100,"pos":"br","cv":1,"cvbg":"cc9933","cvfg":"000000","cvw":75,"cvh":30,"ticker":1,"fwtickm":1}}</script>
 

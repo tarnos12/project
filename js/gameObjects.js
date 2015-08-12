@@ -1267,6 +1267,11 @@ var monsterAreas = [
            displayName: 'Twisted Marrow',
            icon: 'twistedMarrow'
        },
+       /*{
+           type: 'Mining',
+           displayName: 'Mining Cave',
+           icon: 'twistedMarrow',
+       },*/
 ];
 var weaponTypeObject = [
     {
@@ -1317,25 +1322,28 @@ var materiaType = [
     {
         type: 'materiaSlot_5',
     },
-]
+];
 
-var characterRace = function (name, strength, endurance, agility, dexterity, intelligence, wisdom, luck, image) {
+var characterRace = function (name, baseStrength, baseEndurance, baseAgility, baseDexterity, baseIntelligence, baseWisdom, baseLuck, image) {
     this.name = name;
-    this.strength = strength;
-    this.endurance = endurance;
-    this.agility = agility;
-    this.dexterity = dexterity;
-    this.intelligence = intelligence;
-    this.wisdom = wisdom;
-    this.luck = luck;
-    this.image = image;
+    this.raceAge = "Adulthood";
+    this.baseStrength = baseStrength;
+    this.baseEndurance = baseEndurance;
+    this.baseAgility = baseAgility;
+    this.baseDexterity = baseDexterity;
+    this.baseWisdom = baseWisdom;
+    this.baseIntelligence = baseIntelligence;
+    this.baseLuck = baseLuck;
+    this.image = function () {
+        return image
+    };
     this.description = function () {
         return "Stats per level: <br />Strength: " + this.strength + "<br />" + "Endurance: " + this.endurance + "<br />" + "Agility: " + this.agility +
             "<br />" + "Dexterity: " + this.dexterity + "<br />" + "Intelligence: " + this.intelligence + "<br />" + "Wisdom: " + this.wisdom + "<br />" + "Luck: " + this.luck
     };
     this.lore = function () {
         return 'test';
-    }
+    };
 };
 var human = new characterRace('Human', 3, 3, 3, 3, 3, 3 , 3, "human");
 var halfElf = new characterRace('Half Elf', 3, 3, 3, 3, 3, 3, 3, "halfelf");
@@ -1345,6 +1353,912 @@ var elf = new characterRace('Elf', 1, 1, 3, 6, 5, 2, 3, "elf");
 var halfing = new characterRace('Halfing', 1, 2, 3, 5, 3, 4, 3, "halfing");
 var sylph = new characterRace('Sylph', 2, 1, 2, 5, 6, 2, 3, "sylph");
 var giant = new characterRace('Giant', 6, 3, 1, 1, 1, 6, 3, "giant");
+
+//Human stats
+human.image = function () {
+    if (this.raceAge === "Adulthood") {
+        return 'AdulthoodHuman';
+    }
+      else if (this.raceAge === "Middle Age") {
+          return 'Middle-AgedHuman';
+      }
+      else if (this.raceAge === "Old") {
+          return 'OldHuman';
+      }
+      else if (this.raceAge === "Venerable") {
+          return 'VenerableHuman';
+      };
+};
+human.strength = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseStrength - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseStrength - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseStrength - 2;
+    };
+};
+human.endurance = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseEndurance - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseEndurance - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseEndurance - 2;
+    }
+};
+human.agility = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseAgility + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseAgility - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseAgility - 1;
+    }
+};
+human.dexterity = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseDexterity + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseDexterity - 1;
+    }
+};
+human.wisdom = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseWisdom - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseWisdom + 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseWisdom + 3;
+    }
+};
+human.intelligence = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseIntelligence - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseIntelligence + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseIntelligence + 2;
+    }
+};
+human.luck = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseLuck + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseLuck + 1;
+    }
+};
+//Half Elf stats
+halfElf.image = function () {
+    if (this.raceAge === "Adulthood") {
+        return 'AdulthoodHalfElf';
+    }
+    else if (this.raceAge === "Middle Age") {
+        return 'Middle-AgedHalfElf';
+    }
+    else if (this.raceAge === "Old") {
+        return 'OldHalfElf';
+    }
+    else if (this.raceAge === "Venerable") {
+        return 'VenerableHalfElf';
+    };
+};
+halfElf.strength = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseStrength - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseStrength - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseStrength;
+    };
+};
+halfElf.endurance = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseEndurance - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseEndurance - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseEndurance;
+    }
+};
+halfElf.agility = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseAgility + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseAgility + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseAgility + 2;
+    }
+};
+halfElf.dexterity = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseDexterity + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseDexterity + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseDexterity + 2;
+    }
+};
+halfElf.wisdom = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseWisdom + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseWisdom + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseWisdom;
+    }
+};
+halfElf.intelligence = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseIntelligence + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseIntelligence + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseIntelligence;
+    }
+};
+halfElf.luck = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseLuck - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseLuck - 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseLuck - 1;
+    }
+};
+//Dwarf stats
+dwarf.image = function () {
+    if (this.raceAge === "Adulthood") {
+        return 'AdulthoodDwarf';
+    }
+    else if (this.raceAge === "Middle Age") {
+        return 'Middle-AgedDwarf';
+    }
+    else if (this.raceAge === "Old") {
+        return 'OldDwarf';
+    }
+    else if (this.raceAge === "Venerable") {
+        return 'VenerableDwarf';
+    };
+};
+dwarf.strength = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseStrength - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseStrength + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseStrength;
+    };
+};
+dwarf.endurance = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseEndurance - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseEndurance - 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseEndurance - 2;
+    }
+};
+dwarf.agility = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseAgility + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseAgility - 1;
+    }
+};
+dwarf.dexterity = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseDexterity + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseDexterity + 1;
+    }
+};
+dwarf.wisdom = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseWisdom - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseWisdom + 2;
+    }
+};
+dwarf.intelligence = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseIntelligence - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseIntelligence - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseIntelligence + 1;
+    }
+};
+dwarf.luck = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseLuck + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseLuck + 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseLuck - 1;
+    }
+};
+//Orc stats
+orc.image = function () {
+    if (this.raceAge === "Adulthood") {
+        return 'AdulthoodOrc';
+    }
+    else if (this.raceAge === "Middle Age") {
+        return 'Middle-AgedOrc';
+    }
+    else if (this.raceAge === "Old") {
+        return 'OldOrc';
+    }
+    else if (this.raceAge === "Venerable") {
+        return 'VenerableOrc';
+    };
+};
+orc.strength = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseStrength - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseStrength - 2;
+    };
+};
+orc.endurance = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseEndurance + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseEndurance + 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseEndurance;
+    }
+};
+orc.agility = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseAgility + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseAgility + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseAgility - 1;
+    }
+};
+orc.dexterity = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseDexterity + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseDexterity - 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseDexterity + 1;
+    }
+};
+orc.wisdom = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseWisdom + 4;
+    }
+};
+orc.intelligence = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseIntelligence;
+    }
+};
+orc.luck = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseLuck + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseLuck - 2;
+    }
+};
+//Elf stats
+elf.image = function () {
+    if (this.raceAge === "Adulthood") {
+        return 'AdulthoodElf';
+    }
+    else if (this.raceAge === "Middle Age") {
+        return 'Middle-AgedElf';
+    }
+    else if (this.raceAge === "Old") {
+        return 'OldElf';
+    }
+    else if (this.raceAge === "Venerable") {
+        return 'VenerableElf';
+    };
+};
+elf.strength = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseStrength + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseStrength;
+    };
+};
+elf.endurance = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseEndurance + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseEndurance;
+    }
+};
+elf.agility = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseAgility + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseAgility - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseAgility - 2;
+    }
+};
+elf.dexterity = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseDexterity - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseDexterity;
+    }
+};
+elf.wisdom = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseWisdom - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseWisdom + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseWisdom + 3;
+    }
+};
+elf.intelligence = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseIntelligence - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseIntelligence + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseIntelligence + 1;
+    }
+};
+elf.luck = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseLuck - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseLuck - 2;
+    }
+};
+//Halfing stats
+halfing.image = function () {
+    if (this.raceAge === "Adulthood") {
+        return 'AdulthoodHalfing';
+    }
+    else if (this.raceAge === "Middle Age") {
+        return 'Middle-AgedHalfing';
+    }
+    else if (this.raceAge === "Old") {
+        return 'OldHalfing';
+    }
+    else if (this.raceAge === "Venerable") {
+        return 'VenerableHalfing';
+    };
+};
+halfing.strength = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseStrength + 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseStrength + 1;
+    };
+};
+halfing.endurance = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseEndurance - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseEndurance + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseEndurance;
+    }
+};
+halfing.agility = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseAgility + 3;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseAgility - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseAgility - 1;
+    }
+};
+halfing.dexterity = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseDexterity + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseDexterity - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseDexterity - 2;
+    }
+};
+halfing.wisdom = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseWisdom - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseWisdom + 2;
+    }
+};
+halfing.intelligence = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseIntelligence - 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseIntelligence + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseIntelligence + 2;
+    }
+};
+halfing.luck = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseLuck + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseLuck - 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseLuck - 2;
+    }
+};
+//Sylph stats
+sylph.image = function () {
+    if (this.raceAge === "Adulthood") {
+        return 'AdulthoodSylph';
+    }
+    else if (this.raceAge === "Middle Age") {
+        return 'Middle-AgedSylph';
+    }
+    else if (this.raceAge === "Old") {
+        return 'OldSylph';
+    }
+    else if (this.raceAge === "Venerable") {
+        return 'VenerableSylph';
+    };
+};
+sylph.strength = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseStrength - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseStrength + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseStrength;
+    };
+};
+sylph.endurance = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseEndurance;
+    }
+};
+sylph.agility = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseAgility + 2;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseAgility - 1;
+    }
+};
+sylph.dexterity = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseDexterity + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseDexterity - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseDexterity - 1;
+    }
+};
+sylph.wisdom = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseWisdom - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseWisdom + 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseWisdom + 4;
+    }
+};
+sylph.intelligence = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseIntelligence - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseIntelligence;
+    }
+};
+sylph.luck = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseLuck - 2;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseLuck - 2;
+    }
+};
+//Giant stats
+giant.image = function () {
+    if (this.raceAge === "Adulthood") {
+        return 'AdulthoodGiant';
+    }
+    else if (this.raceAge === "Middle Age") {
+        return 'Middle-AgedGiant';
+    }
+    else if (this.raceAge === "Old") {
+        return 'OldGiant';
+    }
+    else if (this.raceAge === "Venerable") {
+        return 'VenerableGiant';
+    };
+};
+giant.strength = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseStrength - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseStrength;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseStrength;
+    };
+};
+giant.endurance = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseEndurance;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseEndurance + 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseEndurance + 3;
+    }
+};
+giant.agility = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseAgility + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseAgility;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseAgility;
+    }
+};
+giant.dexterity = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseDexterity + 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseDexterity;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseDexterity;
+    }
+};
+giant.wisdom = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseWisdom - 1;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseWisdom;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseWisdom + 1;
+    }
+};
+giant.intelligence = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseIntelligence;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseIntelligence;
+    }
+};
+giant.luck = function () {
+    if (this.raceAge === "Adulthood") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Middle Age") {
+        return this.baseLuck;
+    }
+    else if (this.raceAge === "Old") {
+        return this.baseLuck - 1;
+    }
+    else if (this.raceAge === "Venerable") {
+        return this.baseLuck - 2;
+    }
+};
+
 human.raceAllStats = function () {
     return 10;
 };
@@ -1436,7 +2350,7 @@ sylph.lore = function () {
     return '\"Born from the descendants of humans and beings of elemental air such as djinn, sylphs are a shy and reclusive race consumed by intense curiosity.\"';
 };
 giant.lore = function () {
-    return '\"\"';
+    return '\"Their great size and strength lends them arguable advantages on the battlefield where they tower over their enemies. Dimwitted and slow moving, giants have use for neither speed nor intelligence, using brawn over brain to overcome obstacles.\"';
 };
 var characterRaces = new Object();
 characterRaces.human = human;

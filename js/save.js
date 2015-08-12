@@ -27,20 +27,20 @@
         playerTalisman: equippedItems.talisman,
         inventory: playerInventory,
         //Weapon mastery levels and experience
-        SwordExp: weaponMastery.sword.exp,
-        SwordMaxExp: weaponMastery.sword.maxExp,
+        SwordExp: weaponMastery.sword.experience,
+        SwordMaxExp: weaponMastery.sword.maxExperience,
         SwordLevel: weaponMastery.sword.level,
-        AxeExp: weaponMastery.axe.exp,
-        AxeMaxExp: weaponMastery.axe.maxExp,
+        AxeExp: weaponMastery.axe.experience,
+        AxeMaxExp: weaponMastery.axe.maxExperience,
         AxeLevel: weaponMastery.axe.level,
-        MaceExp: weaponMastery.mace.exp,
-        MaceMaxExp: weaponMastery.mace.maxExp,
+        MaceExp: weaponMastery.mace.experience,
+        MaceMaxExp: weaponMastery.mace.maxExperience,
         MaceLevel: weaponMastery.mace.level,
-        StaffExp: weaponMastery.staff.exp,
-        StaffMaxExp: weaponMastery.staff.maxExp,
+        StaffExp: weaponMastery.staff.experience,
+        StaffMaxExp: weaponMastery.staff.maxExperience,
         StaffLevel: weaponMastery.staff.level,
-        RangedExp: weaponMastery.ranged.exp,
-        RangedMaxExp: weaponMastery.ranged.maxExp,
+        RangedExp: weaponMastery.ranged.experience,
+        RangedMaxExp: weaponMastery.ranged.maxExperience,
         RangedLevel: weaponMastery.ranged.level,
         //Passive Skill level
         DamageBonus: playerPassive.brawler.level,
@@ -164,20 +164,20 @@ function load(slot) {
         if (typeof savegame.playerProperties !== "undefined") player.properties = savegame.playerProperties;
         if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
         if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
-        if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.exp = savegame.SwordExp;
-        if (typeof savegame.SwordMaxExp !== "undefined") weaponMastery.sword.maxExp = savegame.SwordMaxExp;
+        if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.experience = savegame.SwordExp;
+        if (typeof savegame.SwordMaxExp !== "undefined") weaponMastery.sword.maxExperience = savegame.SwordMaxExp;
         if (typeof savegame.SwordLevel !== "undefined") weaponMastery.sword.level = savegame.SwordLevel;
-        if (typeof savegame.AxeExp !== "undefined") weaponMastery.axe.exp = savegame.AxeExp;
-        if (typeof savegame.AxeMaxExp !== "undefined") weaponMastery.axe.maxExp = savegame.AxeMaxExp;
+        if (typeof savegame.AxeExp !== "undefined") weaponMastery.axe.experience = savegame.AxeExp;
+        if (typeof savegame.AxeMaxExp !== "undefined") weaponMastery.axe.maxExperience = savegame.AxeMaxExp;
         if (typeof savegame.AxeLevel !== "undefined") weaponMastery.axe.level = savegame.AxeLevel;
-        if (typeof savegame.MaceExp !== "undefined") weaponMastery.mace.exp = savegame.MaceExp;
-        if (typeof savegame.MaceMaxExp !== "undefined") weaponMastery.mace.maxExp = savegame.MaceMaxExp;
+        if (typeof savegame.MaceExp !== "undefined") weaponMastery.mace.experience = savegame.MaceExp;
+        if (typeof savegame.MaceMaxExp !== "undefined") weaponMastery.mace.maxExperience = savegame.MaceMaxExp;
         if (typeof savegame.MaceLevel !== "undefined") weaponMastery.mace.level = savegame.MaceLevel;
-        if (typeof savegame.StaffExp !== "undefined") weaponMastery.staff.exp = savegame.StaffExp;
-        if (typeof savegame.StaffMaxExp !== "undefined") weaponMastery.staff.maxExp = savegame.StaffMaxExp;
+        if (typeof savegame.StaffExp !== "undefined") weaponMastery.staff.experience = savegame.StaffExp;
+        if (typeof savegame.StaffMaxExp !== "undefined") weaponMastery.staff.maxExperience = savegame.StaffMaxExp;
         if (typeof savegame.StaffLevel !== "undefined") weaponMastery.staff.level = savegame.StaffLevel;
-        if (typeof savegame.RangedExp !== "undefined") weaponMastery.ranged.exp = savegame.RangedExp;
-        if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.ranged.maxExp = savegame.RangedMaxExp;
+        if (typeof savegame.RangedExp !== "undefined") weaponMastery.ranged.experience = savegame.RangedExp;
+        if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.ranged.maxExperience = savegame.RangedMaxExp;
         if (typeof savegame.RangedLevel !== "undefined") weaponMastery.ranged.level = savegame.RangedLevel;
         //Passive Skills
         if (typeof savegame.DamageBonus !== "undefined") playerPassive.brawler.level = savegame.DamageBonus;

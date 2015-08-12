@@ -37,3 +37,8 @@
     playerProfession.alchemy = alchemy;
 
 })();
+
+function mine(monsterStat) {
+    var monsterStats = monsterStat.Stats;
+    console.log(monsterStats.displayName)
+};
