@@ -6,64 +6,61 @@ function changeTabWeapon(index) {
 function CreateWeaponSkillHtml() {
     var html = '';
     html += '<div class="row">';
-    html += '<div class="col-xs-10">';
-    html += '<ul class="nav nav-tabs">';
-    for (var k = 0; k < weaponTypeObject.length; k++) {
-        var weaponType = weaponTypeObject[k].type + 'Test';
-        if (weaponType === weaponTabActive) {
-            html += '<li class="active" onClick = changeTabWeapon("' + weaponType + '")>';
-        }
-        else {
-            html += '<li onClick = changeTabWeapon("' + weaponType + '")>';
-        };
-        html += '<a href="#tab_' + weaponTypeObject[k].displayName + '" data-toggle="tab"><span class="icons ' + weaponTypeObject[k].icon + '"</span></a></li>';
-    };
-    html += '</ul>';
-    html += '<div class="tab-content" id="tabControl_WeaponSkill">';
-    for (weapon in weaponMastery) {
-        if (weaponMastery.hasOwnProperty(weapon)) {
-            var itemStat = weaponMastery[weapon];
-            var image = "images/skills/" + itemStat.image + ".png";
-            var weaponTest = weapon + "Test";
-            if (weaponTest === weaponTabActive) {
-                html += '<div class="col-xs-12 tab-pane active"';
-            } else {
-                html += '<div class="col-xs-12 tab-pane"';
-            };
-            html += 'id="tab_' + itemStat.name + '">';
+        html += '<div class="col-xs-10 col-xs-offset-1">';
             html += '<div class="row">';
-            html += '<div class="col-xs-12 c8">';
-            html += '<div class="c3"><h4>' + itemStat.name + '</h4>';
-            html += '<br />Level: ' + itemStat.level;
-            for (var statName in itemStat) {
-                if ('defense, strength, endurance, agility, dexterity, intelligence, wisdom, damage'.indexOf(statName) != -1) {
-                    var displayStat = itemStat[statName]();
-                    html += "<br />" + statName + ": " + ((displayStat * 100).toFixed(0) - 100) + "%";
+                for (var itemType in weaponTypeObject) {
+                    var item = weaponTypeObject[itemType];
+                    var itemType2 = item.type;
+                    var itemType3 = item.type2;
+                    var weaponStat = weaponMastery[itemType2];
+                    html += '<div class="col-xs-2 passiveMargin">';
+                    html += '<a class="tooltips">';
+                    html += '<img class="skillBorder" src="images/skills/' + item.type + '.png">';
+                    html += '<span>';
+                    html += '<div class="col-xs-12">';
+                    html += item.displayName + ' skill progress:<br />';
+                    html += 'Level: ' + weaponStat.level + '<br />';
+                    html += '<div class="progress">';
+                    html += '<div style="width: ' + player.properties[itemType3] + '%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + item.type + "1" + '">';
+                    html += '<span id="' + item.type + '">' + player.properties[itemType3] + '%' + '</span></div></div>';
+                    html += '</div>';
+                    html += 'Stat Multiplier:<br />';
+                    for (var statName in weaponStat) {
+                        if ('strength, endurance, agility, dexterity, intelligence, wisdom, luck'.indexOf(statName) != -1) {
+                            html += statName.capitalizeFirstLetter() + ': ' + (weaponStat[statName]() * 100).toFixed(0) + '%' + '<br />';
+                        }
+                    }
+                    html += '</span></a>';
+                    html += '</div>';
                 };
-            };
-            //Progress bar is not updating on it's own :|
-            html += '<div class="progress">';//Doing + 1 below so I can use itemStat.image for a span, which let me center progress bar value.
-            html += '<div id="' + itemStat.image + '1' + '" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">';
-            html += '<span id="' + itemStat.image + '"></span>';
             html += '</div>';
+            html += '<div class="row">';
+                for (var type in weaponSkillList) {
+                    var weaponType = weaponSkillList[type];
+                    html += '<div class="col-xs-2">';
+                    html += '<div class="row">';
+                            for (var skill in weaponType) {
+                                var weaponSkill = weaponType[skill];
+                                html += '<div class="col-xs-12 passiveMargin">';
+                                html += '<a class="tooltips">';
+                                html += '<img class="skillBorder" src="images/skills/' + weaponSkill.image + '.png">';
+                                html += '<span>';
+                                html += weaponSkill.name + '<br />';
+                                html += 'Weapon skill required: ' + weaponSkill.levelReq + '<br />';
+                                html += weaponSkill.description();
+                                html += '</span></a>';
+                                html += '<div class="row">';
+                                html += '<div class="col-xs-8 col-xs-offset-2">';
+                                html += '<img class="skillBorder" src="images/arrow.png">';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '</div>';
+                            };
+                        html += '</div>';
+                    html += '</div>';
+                };
             html += '</div>';
-            html += '</div>';
-            html += '</div>';
-            html += '</div>';
-            var skill = weaponSkillList[weapon]
-            for (var skillName in skill) {
-                var displaySkill = skill[skillName];
-                html += '<div class="col-xs-12 c8">';
-                html += '<div class="c4">';
-                html += "<br />" + '<span class ="bold">' + displaySkill.name + '</span>' + "<br />" + displaySkill.description();
-                html += '</div>';
-                html += '</div>';
-            };
-            html += '</div>';
-        };
-    };
-    html += '</div>';
-    html += '</div>';
+        html += '</div>';
     html += '</div>';
     document.getElementById("weaponSkill").innerHTML = html;
 };
@@ -87,7 +84,7 @@ function CreateMonsterHtml() {
         else {
             html += '<li onClick = changedTabmonster(' + k + ')>';
         };
-        html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab"><span class="icons ' + monsterAreas[k].icon + '"></span>' + '</a></li>';
+        html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab"><span class="icons ' + monsterAreas[k].icon + '" data-toggle="tooltip" data-placement="right" title="' + monsterAreas[k].displayName + '"></span>' + '</a></li>';
     };
     html += '</ul>';
     html += '<div class="tab-content">';
@@ -99,9 +96,13 @@ function CreateMonsterHtml() {
             html += '<div class="tab-pane" ';
         };
         html += 'id="tab_' + monsterAreas[j].type + '">' +
+            '<div class="panel panel-default">' +
+            '<div class="panel-heading" style="background-color:green;">' +
             '<div class="c3">' +
-            '<h4>' + monsterAreas[j].displayName + '</h4>' + '<br />' +
-            '</div>';
+            '<h3 class="panel-title" >' + monsterAreas[j].displayName + '</h3>' +
+            '</div>' +
+            '</div>' +
+            '<div class="panel-body" style="background-color:green;">';
         for (var key in monsterList) {
             if (monsterList.hasOwnProperty(key)) {
                 var monster = monsterList[key];
@@ -109,10 +110,19 @@ function CreateMonsterHtml() {
             };
             if (area === monsterAreas[j].type) {
                 if (monster.Stats.isShown == true) {
-                    html += '<div class="col-xs-6 col-lg-3">' +
+                    var monsterPercent = ((monster.Stats.hp / monster.Stats.maxHp) * 100);
+                    if (monster.Stats.type !== "mining") {
+                        var onclickevent = 'attack(' + monster.Stats.name + ');';
+                    }
+                    else if (monster.Stats.type === "mining") {
+                        var onclickevent = 'mine(' + monster.Stats.name + ');';
+                    }
+                    html += '<div class="col-xs-6 col-lg-3"">' +
+                        '<div class="row">' +
+                        '<div class="col-xs-10 col-xs-offset-1" style="width:85%;">' +
                         '<div id="' + monster.Stats.id + '">' +
-                        '<a href="#" class="tooltipA">' +
-                        '<img type="button" class="monster" src="images/' + "monster" + monster.Stats.id + '.jpg" alt="' + monster.Stats.displayName + '" onclick="attack(' + monster.Stats.name + ')">' +
+                        '<a href="#" class="tooltipA" id="monsterButton">' +
+                        '<img class="monster" src="images/' + "monster" + monster.Stats.id + '.png" alt="' + monster.Stats.displayName + '" onclick="' + onclickevent + '">' +
                         '<span>' +
                         '<b>' + monster.Stats.displayName + '</b>' +
                         '<br />' +
@@ -120,17 +130,25 @@ function CreateMonsterHtml() {
                         '<br />' +
                         'Def:' + monster.Stats.def +
                         '</span></a>' +
-                        '<br />' +
-                        "Health: " + '<span class="hp">' + monster.Stats.hp + '</span>' + "/" + monster.Stats.maxHp +
-                        '</div></div>';
+                        '<br /></div>';
+                    html += '<div class="progress">';
+                    html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.Stats.name + "1" + '">';
+                    html += '<span style="font-size:16px;">' + monster.Stats.hp + ' HP</span>' + '</div></div>';
+                    html += '</div>';
+                    
+                   
+                    html += '</div></div>';
                 };
             };
         };
+        html += '</div>';
+        html += '</div>';
         html += '</div>';
     };
     html += '</div>';
 
     document.getElementById("monsterTabs").innerHTML = html;
+    testss();
 };
 
 var inventoryTabActiveNum = 0;
@@ -149,7 +167,7 @@ function CreateInventoryWeaponHtml() {
         else {
             html += '<li onClick = changedTabInventory(' + k + ')>';
         }
-        html += '<a href="#tab_' + InventoryItemTypes[k].type + '" data-toggle="tab"><span class="icons ' + InventoryItemTypes[k].icon + '"</span></a></li>';
+        html += '<a href="#tab_' + InventoryItemTypes[k].type + '" data-toggle="tab"><span class="icons ' + InventoryItemTypes[k].icon + '" data-toggle="tooltip" data-placement="top" title="' + InventoryItemTypes[k].displayName + '"></span></a></li>';
     };
     html += '</ul>';
     html += '<div class="tab-content" id="tabControl_Inventory">';
@@ -169,18 +187,18 @@ function CreateInventoryWeaponHtml() {
         var sellAllUncommon = "sellAllUncommon('" + InventoryItemTypes[j].type + "');";
         var sellAllRare = "sellAllRare('" + InventoryItemTypes[j].type + "');";
         var sellAllEpic = "sellAllEpic('" + InventoryItemTypes[j].type + "');";
+        var sellAllLegendary = "sellAllLegendary('" + InventoryItemTypes[j].type + "');";
         html += '<br /><button type="button" class="sell" onclick=' + sellAllCommon + '>Common</button>';
         html += '<button type="button" class="sell" onclick=' + sellAllUncommon + '>Uncommon</button>';
         html += '<button type="button" class="sell" onclick=' + sellAllRare + '>Rare</button>';
         html += '<button type="button" class="sell" onclick=' + sellAllEpic + '>Epic</button>';
+        html += '<button type="button" class="sell" onclick=' + sellAllLegendary + '>Legendary</button>';
         html += '</div>';
         html += '<div class="c3">Sort by:</div>';
         var sortItemValue = 'onclick="sortInventory' + "(" + "'Value'" + ")"
         var sortItemRarity = 'onclick="sortInventory' + "(" + "'Rarity'" + ")"
         html += '<button ' + sortItemValue + '">Value</button>';
         html += '<button ' + sortItemRarity + '">Rarity</button>';
-        html += '<div class="itemEquipAndSell">';
-        html += '</div>';
         html += '</div><br />';
         for (var i = 0; i < playerInventory.length; i++) {
             if (playerInventory[i].itemType === InventoryItemTypes[j].type) {
@@ -213,15 +231,14 @@ function CreateInventoryWeaponHtml() {
                 }
                 html += '<div class="col-xs-12 col-lg-6 c8"' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + '>';
                 html += '<a class="tooltips" style="cursor:pointer;">';
-                html += '<label> <input type="radio" name="inventoryItem" value=' + playerInventory[i].id + '>';
                 if (playerInventory[i].itemType === "weapon"){
                     html += '<img class="' + playerInventory[i].itemType;
                 }
                 else{
                     html += '<img class="' + playerInventory[i].subType;
                 }
-                html += '"' + 'src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png" id="' + playerInventory[i].itemRarity + '"/>';
-                html += '</label>';
+                html += '"' + 'src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png"' + 'onclick="equipItem' + "(" + playerInventory[i].id + ")" + '"/>';
+                
                 if (itemStat.hasOwnProperty('itemType')) {
                     html += '<span>';
                 }
@@ -294,13 +311,14 @@ function CreateInventoryWeaponHtml() {
                 html += "Value: " + playerInventory[i].Value + " gold<br />";
                 html += '<font color="#CC6633">' + playerInventory[i].lore +'</font>';
                 html += '</div>';
-                html += '<strong>Left-Click to select</strong>';
+                html += '<strong>Left-Click to equip</strong>';
                 html += '</div></div>';
                 html += '</div>';
                 if (itemStat.hasOwnProperty('itemType')) {
                     html += '</div>';
                 }
-                html += '</span>' + '</a>';
+                html += '</span>' + '</a>'
+                html += '<button type="button" class="inventorySell" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>';
                 html += '</div>';
             };
         };
@@ -309,8 +327,7 @@ function CreateInventoryWeaponHtml() {
     };
     html += '</div>';
     document.getElementById("inventory").innerHTML = html;
-
-    equipAndSellItem();
+    testss();
 };
 
 function unequipItemLoad() { // Create a variable inside player.properties which store currently equipped item, for easy access...
@@ -327,7 +344,7 @@ function unequipItemLoad() { // Create a variable inside player.properties which
             else {
                 html += '<img class="' + itemStat.subType;
             }
-            html += '"' + 'src="images/items/' + itemStat.subType + "/" + itemStat.image + '.png" id="' + itemStat.itemRarity + '"onclick="equipItem' + "(" + itemStat.id + ")" + '"/>';
+            html += '"' + 'src="images/items/' + itemStat.subType + "/" + itemStat.image + '.png" onclick="equipItem' + "(" + itemStat.id + ")" + '"/>';
             if (itemStat.hasOwnProperty('itemType')) {
                 html += '<span>';
             }
@@ -400,7 +417,7 @@ function unequipItemLoad() { // Create a variable inside player.properties which
             html += "Value: " + itemStat.Value + " gold<br />";
             html += '<font color="#CC6633">' + itemStat.lore + '</font>';
             html += '</div>';
-            html += '<strong>Left-Click to select</strong>';
+            html += '<strong>Left-Click to equip</strong>';
             html += '</div></div>'
             html += '</div>';
             if (itemStat.hasOwnProperty('itemType')) {
@@ -419,7 +436,7 @@ function CreatePlayerSkillsHtml() {
     html += '<div class="col-xs-10 col-xs-offset-1">';
     html += '<div class="row">';
     html += '<div class="col-xs-4 col-xs-offset-4">';
-    html += '<button onclick="resetPassiveSkills();">Reset</button>';
+    html += '<button class="passiveMargin" onclick="resetPassiveSkills();">Reset</button>';
     html += '</div>';
     html += '</div>';
     html += '<div class="row">';
@@ -458,9 +475,9 @@ function CreatePlayerSkillsHtml() {
 
 function CreatePlayerHotBar() {
     var html = '';
-    html += '<div class="row c4">';
+    html += '<div class="row" style="margin-top:10px;margin-bottom:10px;">';
     html += '<div class="col-xs-10 col-xs-offset-1">';
-    html += '<div class="row">';
+    html += '<div class="row" style="border:2px solid;">';
     html += '<div class="col-xs-4">';
     html += '<img src="images/SmallPotion.png" onclick="useSmallPotion();" alt="Health Potion">' + player.properties.smallPotion + '<br />(20hp): ';
     html += '</div>';
@@ -511,9 +528,21 @@ startLogo();
 function newGameSlot() {
     characterCreationCreateBackground();
     var html = '';
+    var newGameSlot0 = "newGame(0);";
     var newGameSlot1 = "newGame(1);";
     var newGameSlot2 = "newGame(2);";
     var newGameSlot3 = "newGame(3);";
+
+    if (localStorage['EncodedSaveGame']) {
+        var saveInfo = JSON.parse(atob(localStorage['EncodedSaveGame']));
+        var DisplayInfo0 = "Current save: Level - " + saveInfo.playerProperties.level + ' Race: ' + saveInfo.playerProperties.heroRace;
+        if (saveInfo.playerProperties.hardcoreMode === true) {
+            DisplayInfo0 += " <strong>Hardcore</strong>"
+        };
+    }
+    else {
+        var DisplayInfo0 = "Empty Slot";
+    }
 
     if (localStorage['EncodedSaveGame1']) {
         var saveInfo = JSON.parse(atob(localStorage['EncodedSaveGame1']));
@@ -559,6 +588,9 @@ function newGameSlot() {
     html += '<div class ="col-xs-12">';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + newGameSlot3 + '">New Game 3</button> ' + DisplayInfo3;
     html += '</div>';
+    html += '<div class ="col-xs-12">';
+    html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + newGameSlot0 + '">New game 0</button> ' + DisplayInfo0;
+    html += '</div>';
     html += '</div></div></div></div>';
     
     document.getElementById("raceCreation").innerHTML = html;
@@ -568,9 +600,14 @@ function newGameSlot() {
 function loadGameSlot() {
     characterCreationCreateBackground();
     var html = '';
+    var loadGameSlot0 = "loadGame(0);";
     var loadGameSlot1 = "loadGame(1);";
     var loadGameSlot2 = "loadGame(2);";
     var loadGameSlot3 = "loadGame(3);";
+    if (localStorage['EncodedSaveGame']) {
+        var saveInfo = JSON.parse(atob(localStorage['EncodedSaveGame']));
+        var DisplayInfo0 = "Level - " + saveInfo.playerProperties.level + ' Race: ' + saveInfo.playerProperties.heroRace;
+    }
     if (localStorage['EncodedSaveGame1']) {
         var saveInfo = JSON.parse(atob(localStorage['EncodedSaveGame1']));
         var DisplayInfo = "Level - " + saveInfo.playerProperties.level + ' Race: ' + saveInfo.playerProperties.heroRace;
@@ -605,6 +642,9 @@ function loadGameSlot() {
     html += '</div>';
     html += '<div class ="col-xs-12">';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + loadGameSlot3 + '">Load Game 3</button> ' + DisplayInfo3;
+    html += '</div>';
+    html += '<div class ="col-xs-12">';
+    html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + loadGameSlot0 + '">Load Game 0</button> ' + DisplayInfo0;
     html += '</div>';
     html += '</div></div></div></div>';
 
@@ -645,49 +685,77 @@ function characterCreationHtml() {
         var html = '';
         var html2 = '';
         html2 += '<div class="row">';
-        html2 += '<div class="col-xs-8 col-xs-offset-2">';
-        html2 += 'Pick your race, hover over a race name for more info.';
+        html2 += '<div class="col-xs-6 col-xs-offset-3">';
+        html2 += 'Press ' + '<p class="glyphicon glyphicon-info-sign" style="color:black"></p>' + ' for more info about a class.';
         html2 += '</div></div>';
         html += '<div class="row">';
-        html += '<div class="col-xs-10 col-xs-offset-1">';
+        html += '<div class="col-xs-12 col-xs-offset-1">';
         html += '<div class="row">';
         for (var hero in characterRaces) {
             var heroRace = characterRaces[hero];
             var onclickevent = "changeRace('" + heroRace.name + "');";
-            html += '<div class="col-xs-4 col-xs-offset-2">';
-            html += '<a class="tooltips">' + heroRace.name + "" +
-                    '<span style="width:230px;">' +
+            html += '<div class="col-xs-6 col-xs-offset-2">';
+            html += '<img src="images/races/' + heroRace.image() + '.png">';
+            html += heroRace.name + " ";
+            html += '<a class="tooltips">' + '<p class="glyphicon glyphicon-info-sign" style="color:black"></p>' +
+                    '<span style="width:350px; right: 10%; bottom:30px; text-align:left;">' +
                     '<div class="row">' +
                     '<div class="col-xs-10 col-xs-offset-1">' +
-                    'Stats per level: <br />' +
-                    'Strength: ' + heroRace.strength + '<br />' +
-                    'Endurance: ' + heroRace.endurance + '<br />' +
-                    'Agility: ' + heroRace.agility + '<br />' +
-                    'Dexterity: ' + heroRace.dexterity + '<br />' +
-                    'Intelligence: ' + heroRace.intelligence + '<br />' +
-                    'Wisdom: ' + heroRace.wisdom + '<br />' +
-                    'Luck: ' + heroRace.luck + '<br />' +
-                    'Other Bonuses:<br />';
-            if (heroRace.name === "Human") {
-                html += 'Exp/Gold/Exp rate: ' + heroRace.bonusExpGoldDrop() + '%<br />';
-                html += 'All stats boost: ' + heroRace.allStatsBonus() + '%';
-            }
-            else if (heroRace.name === "Half Elf") {
-                html += 'Drop rate: ' + heroRace.bonusDrop() + '%<br />';
-                html += 'Base critical chance:  ' + heroRace.criticalChance() + '%';
-            }
-            else if (heroRace.name === "Dwarf") {
-                html += 'Gold drop: ' + heroRace.bonusGold() + '%<br />';
-                html += 'Base evasion chance:  ' + heroRace.evasionChance() + '%';
-            }
-            else if (heroRace.name === "Orc") {
-                html += 'Bonus health: ' + heroRace.bonusHealth() + '%<br />';
-                html += 'All stats boost:  ' + heroRace.allStatsBonus() + '%';
-            }
+                    heroRace.name +
+                    '</div></div>' +
+                    '<div class="row">' +
+                    '<div class="col-xs-5" style="padding-left:46px;">';
+            for (var stat in heroRace) {
+                if ('strength, endurance, agility, dexterity, wisdom, intelligence, luck'.indexOf(stat) != -1) {
+                    html += stat.substring(0, 3).capitalizeFirstLetter() + ': ';
+                    for (var i = 0; i < heroRace[stat]() ; i++) {
+                        if (heroRace[stat]() >= 6) {
+                            html += '<font color="orange">+</font>';
+                        }
+                        else if (heroRace[stat]() >= 4) {
+                            html += '<font color="green">+</font>';
+                        }
+                        else if (heroRace[stat]() === 3) {
+                            html += '<font color="blue">+</font>';
+                        }
+                        else if (heroRace[stat]() < 3) {
+                            html += '<font color="red">+</font>';
+                        };
+                    };
+                    html += '<br />';
+                };
+            };
+            html += '</div>';
+            html += '<div class="col-xs-7">';
+                    html += 'Bonuses:<br />';
+                    for (var stat in heroRace) {
+                        if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) != -1) {
+                            var string = stat.substring('race'.length);
+                            if (stat === "raceAccuracy" && heroRace[stat]() < 111) {
+                                html += 'Never Miss<br />';
+                            }
+                            else if (stat === "raceEvasion" && heroRace[stat]() === "Can't evade") {
+                                html += "Can't Evade";
+                            }
+                            else {
+                                html += string.replace(/([a-z])([A-Z])/g, '$1 $2') + ': ';
+                                if (heroRace[stat]() > 0) {
+                                    html += '+';
+                                };
+                                html += heroRace[stat]() + '%' + '<br />'
+                            }
+                        }
+                    }
+            html += '<br /><img src="images/races/' + heroRace.image() + '.png">';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="row">';
+            html += '<div class="col-xs-10 col-xs-offset-1">';
+            html += '<br /><font color="#CC6633">' + heroRace.lore() + '</font>';
             html += '</div>' + '</div>' +
             '</span>' + '</a>';
             html += '</div>';
-            html += '<div class="col-xs-4">';
+            html += '<div class="col-xs-2">';
             html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" class="' + heroRace.name + '" onclick="' + onclickevent + '">Choose</button>'//changeRace function ._.
             html += '</div>';
         };
@@ -697,25 +765,76 @@ function characterCreationHtml() {
         document.getElementById("raceCreation").innerHTML = html;
         document.getElementById("raceText").innerHTML = html2;
     };
+    var divStyle2 = document.getElementById('sliderDivID');
+    divStyle2.style.display = "block";
     checkHeroRace();
+    getAge();
 };
-
 function checkHeroRace() {
+    var html = '';
     for (var hero in characterRaces) {
-        var race = characterRaces[hero];
-        if (player.properties.heroRace === race.name) {
-            document.getElementById("characterRace").innerHTML = "Race: " + '<a href="#" class="tooltipA">' + player.properties.heroRace +
-                '<span>' + 'Stats per level: <br />' +
-            'Strength: ' + race.strength + '<br />' +
-            'Endurance: ' + race.endurance + '<br />' +
-            'Agility: ' + race.agility + '<br />' +
-            'Dexterity: ' + race.dexterity + '<br />' +
-            'Intelligence: ' + race.intelligence + '<br />' +
-            'Wisdom: ' + race.wisdom + '<br />' +
-            'Luck: ' + race.luck + '<br />' +
+        var heroRace = characterRaces[hero];
+        if (player.properties.heroRace === heroRace.name) {
+            html += '<a href="#" class="tooltipA">' + '<img src="images/races/' + heroRace.image() + '.png">' + '<span style="width:350px; right: 10%; top:10px; text-align:left;">' +
+                '<div class="row">' +
+                    '<div class="col-xs-10 col-xs-offset-1">' +
+                    heroRace.name +
+                    '</div></div>' +
+                    '<div class="row">' +
+                    '<div class="col-xs-5" style="padding-left:46px;">';
+            for (var stat in heroRace) {
+                if ('strength, endurance, agility, dexterity, wisdom, intelligence, luck'.indexOf(stat) != -1) {
+                    html += stat.substring(0, 3).capitalizeFirstLetter() + ': ';
+                    for (var i = 0; i < heroRace[stat]() ; i++) {
+                        if (heroRace[stat]() >= 6) {
+                            html += '<font color="orange">+</font>';
+                        }
+                        else if (heroRace[stat]() >= 4) {
+                            html += '<font color="green">+</font>';
+                        }
+                        else if (heroRace[stat]() === 3) {
+                            html += '<font color="blue">+</font>';
+                        }
+                        else if (heroRace[stat]() < 3) {
+                            html += '<font color="red">+</font>';
+                        };
+                    };
+                    html += '<br />';
+                };
+            };
+            html += '</div>';
+            html += '<div class="col-xs-7">';
+            html += 'Bonuses:<br />';
+            for (var stat in heroRace) {
+                if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) != -1) {
+                    var string = stat.substring('race'.length);
+                    if (stat === "raceAccuracy" && heroRace[stat]() < 111) {
+                        html += 'Never Miss<br />';
+                    }
+                    else if (stat === "raceEvasion" && heroRace[stat]() === "Can't evade") {
+                        html += "Can't Evade";
+                    }
+                    else {
+                        html += string.replace(/([a-z])([A-Z])/g, '$1 $2') + ': ';
+                        if (heroRace[stat]() > 0) {
+                            html += '+';
+                        };
+                        html += heroRace[stat]() + '%' + '<br />'
+                    }
+                }
+            }
+            html += '<br /><img src="images/races/' + heroRace.image() + '.png">';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="row">';
+            html += '<div class="col-xs-10 col-xs-offset-1">';
+            html += '<br /><font color="#CC6633">' + heroRace.lore() + '</font>';
+            html += '</div>' + '</div>' +
             '</span>' + '</a>';
         };
     };
+    document.getElementById("characterRace").innerHTML = html;
+    raceStats(); // Function which add all bonuses from races to player properties.
 };
 
 function removeStartingScreen() {
@@ -749,31 +868,38 @@ function primaryStatUpdate() {
         var currentBonus = primaryStatInfo[key];
         var statInfo = primaryStatInfo[key].info;
         var statDisplay2 = primaryStatInfo[key].type;
+        var short = primaryStatInfo[key].short;
         if (currentBonus.type === "Damage") {
-            var statDisplay = player.functions.minDamage().toFixed(0) + "-" + player.functions.maxDamage().toFixed(0);
+            var statDisplay = '<span id="' + statInfo + '"></span>';
         }
         else if (currentBonus.type === "Mana") {
-            var statDisplay = player.properties.mana.toFixed(0) + "/" + player.functions.maxMana().toFixed(0);
+            var statDisplay = '<span id="' + statInfo + '"></span>';
         }
         else {
             var itemBonus = currentBonus.item;
-            var statDisplay = player.functions[statInfo]() + '(<font color="blue">' + player.functions[itemBonus]() + '</font>)' +
-                '<input id="' + currentBonus.type + '" type="image" src="images/plus.jpg" alt="Sign Me Up!" onclick="upgrade' + currentBonus.type + '(event);">'
-        }
+            var statDisplay = '<span id="' + statInfo + '"></span>' +
+                '<span id="' + currentBonus.type.capitalizeFirstLetter() + '" style="cursor:pointer" onclick="upgrade' + currentBonus.type.capitalizeFirstLetter() + '(event);" data-toggle="tooltip" data-placement="right" title="Increase ' + currentBonus.type + '">' +
+                '<span class="glyphicon glyphicon-plus unselectable"></span></span>';
+        };
         html += '<div class="col-xs-12">';
         html += '<div class="row">';
         html += '<div class="col-xs-6">';
-        html += statDisplay2 + ":";
+        var statDisplay3 = statDisplay2.capitalizeFirstLetter();
+        if ('Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Damage, Mana'.indexOf(statDisplay3) != -1) {
+            var tooltip = primaryStatInfo[key].tooltip;
+            html += '<span data-toggle="tooltip" data-placement="right" title="' + tooltip + '"><img src="images/stat/' + statDisplay2 + '.png"></span>';
+            html += short;
+        };
         html += '</div>';
         html += '<div class="col-xs-6 rightAlign">';
-        html += statDisplay;
+        html += statDisplay + ' ';
         html += '</div>';
         html += '</div>';
         html += '</div>';
     }
     html += '</div>';
     document.getElementById("primaryStat").innerHTML = html;
-
+    updateHtml();
 };
 function secondaryStatUpdate(){
     var html = '';
@@ -787,14 +913,14 @@ function secondaryStatUpdate(){
         }
         else {
             var statDisplay = player.functions[statInfo]();
-        }
+        };
         var statDisplay2 = secondaryStatInfo[key].type;
         if (number === 1) {
             var background = "darkBackground";
         }
         else if (number === 2) {
             var background = "background";
-        }
+        };
         html += '<div class="col-xs-12 ' + background + '">';
         html += '<div class="row">';
         html += '<div class="col-xs-6 ' + background + '">';
@@ -804,6 +930,12 @@ function secondaryStatUpdate(){
         if (currentBonus.type === "Magic find" || currentBonus.type === "Gold drop" || currentBonus.type === "Experience rate") {
             html += ((statDisplay - 1) * 100).toFixed(0);
         }
+        else if (currentBonus.type === "Accuracy" && player.functions.accuracy() > 111) {
+            html += "Never Miss";
+        }
+        else if (currentBonus.type === "Evasion" && player.functions.evasion() === 0) {
+            html += "Can't evade";
+        }
         else if (currentBonus.type === "Stats" || currentBonus.type === "Skill points") {
             html += statDisplay.toFixed(0);
         }
@@ -812,8 +944,11 @@ function secondaryStatUpdate(){
         }
         else {
             html += statDisplay.toFixed(2);
-        }
-        if (currentBonus.isPercent === true) {
+        };
+        if (currentBonus.type === "Accuracy" && player.functions.accuracy() < 111 || currentBonus.type === "Evasion" && player.functions.evasion() > 0) {
+            html += '%';
+        };
+        if (currentBonus.isPercent === true && currentBonus.type !== "Accuracy" && currentBonus.type !== "Evasion") {
             html += '%';
         };
         html += '</div>';
@@ -915,7 +1050,7 @@ function checkEquippedItemType(newItem, check) {
         else {
             html += '<img class="' + itemType.subType;
         }
-        html += '"' + 'src="images/items/' + itemType.subType + "/" + itemType.image + '.png" id="' + itemType.itemRarity + '"onclick="unequipItem' + "(" + itemType.id + ', ' + "'solo'" + ")" + '" />';
+        html += '"' + 'src="images/items/' + itemType.subType + "/" + itemType.image + '.png" onclick="unequipItem' + "(" + itemType.id + ', ' + "'solo'" + ")" + '" />';
         html += '<span style="width:200px;">';
         html += '<div class="row">';
         html += '<div class="col-xs-12">';
@@ -957,13 +1092,6 @@ function checkEquippedItemType(newItem, check) {
     return html;
 };
 
-function equipAndSellItem() {
-    var html = '';
-    html += '<br /><button type="button" class="equip" onclick="itemSell' + "(" + checkedItem + ")" + '">Sell</button>';
-    html += '<button type="button" class="equip" onclick="equipItem' + "(" + checkedItem + ")" + '">Equip</button>';
-
-    $('.itemEquipAndSell').empty().append(html);
-};
 
 function saveGameSlot() {
     var html = '';
@@ -1068,7 +1196,7 @@ function displayShopItems(type) {
                 else {
                     html += '<img class="' + ItemDisplay.subType;
                 }
-                html += '"' + 'src="images/items/' + ItemDisplay.subType + "/" + ItemDisplay.image + '.png" id="' + ItemDisplay.itemRarity + '"/>';
+                html += '"' + 'src="images/items/' + ItemDisplay.subType + "/" + ItemDisplay.image + '.png"/>';
                 html += '</label>';
                 if (itemStat.hasOwnProperty('itemType')) {
                     html += '<span>';
@@ -1141,7 +1269,7 @@ function displayShopItems(type) {
                 html += "Value: " + ItemDisplay.Value + " gold<br />";
                 html += '<font color="#CC6633">' + ItemDisplay.lore + '</font>';
                 html += '</div>';
-                html += '<strong>Left-Click to select</strong>';
+                html += '<strong>Left-Click to equip</strong>';
                 html += '</div></div>';
                 html += '</div>';
                 if (itemStat.hasOwnProperty('itemType')) {
@@ -1307,4 +1435,43 @@ var shopOtherList = [
         type2: "buySuperPotion",
         type3: 'superPotionStatus',
     }
-]
+];
+setTimeout(function () { testss(); }, 3000);
+function testss() {
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+};
+
+var raceAgeArray = [
+    "Adulthood",
+    "Middle Age",
+    "Old",
+    "Venerable",
+];
+
+    $(function () {
+        $("#slider-range-min").slider({
+            value: 0,
+            min: 0,
+            max: 3,
+            step: 1,
+            slide: function (event, ui) {
+                $("#amount").val(raceAgeArray[ui.value]);
+                getAge();
+                characterCreationHtml();
+            }
+        });
+        $("#amount").val(raceAgeArray[$("#slider-range-min").slider("value")]);
+    });
+function getAge() {
+    var test = document.getElementById('amount').value;
+    characterRaces.human.raceAge = test;
+    characterRaces.halfElf.raceAge = test;
+    characterRaces.dwarf.raceAge = test;
+    characterRaces.orc.raceAge = test;
+    characterRaces.elf.raceAge = test;
+    characterRaces.halfing.raceAge = test;
+    characterRaces.sylph.raceAge = test;
+    characterRaces.giant.raceAge = test;
+};

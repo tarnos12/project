@@ -41,7 +41,6 @@ function quest() {
             '"You just beat up a bunch of potential recruits and think that you are some tough guy now, well let us show you what tough guys get around here."' + '<br /><br />' +
             'All you do in response is walk towards them and start the battle.</p>';
             document.getElementById("varik").innerHTML += varikElement;
-            $("#storyLog").prepend(varikElement);
         };
         monsterUnlock.VarikSoldier = true;
     };
@@ -57,7 +56,7 @@ function quest() {
           'Another marksmen stands behind the one who fired at the now dead soldier.' +
           'They laugh at the dead and attack comrades, and they just continue to make things worse for themselves.</p>';
          document.getElementById("varik").innerHTML += varikElement;
-         $("#storyLog").prepend(varikElement);
+ 
         };
         monsterUnlock.VarikMarksmen = true;
     };
@@ -72,7 +71,7 @@ function quest() {
             'You don\'t care do you? Well come here, I\'m gonna teach about the wonderful ways of pain."' + '<br /><br />' +
             'As stoic as ever you handle the words without a grimace and charge at the murderer.</p>';
             document.getElementById("varik").innerHTML += varikElement;
-            $("#storyLog").prepend(varikElement);
+    
         };
         monsterUnlock.VarikVulture = true;
     };
@@ -90,7 +89,7 @@ function quest() {
             'What makes it think you can fight a Lich? Anyway, better move forward.' + '<br /><br />' +
             'The knife was just a little too slow and you ducked out of the way.' + '<br /><br />' +
             '"Good you aren\'t dead yet. Let us put you to rest, Immortal."</p>';
-            $("#storyLog").prepend(varikElement);
+    
             document.getElementById("varik").innerHTML += varikElement;
         };
         monsterUnlock.VarikEvader = true;
@@ -107,7 +106,7 @@ function quest() {
             'This one seems weak, but don\'t let your eyes deceive you.' +
             'The Liar is known as one of the best illusionist in the Seven Cities.' +
             'He could end up slowing you down to the point where you just give up. So watch him and don\'t get distracted.</p>';
-            $("#storyLog").prepend(varikElement);
+    
             document.getElementById("varik").innerHTML += varikElement;
         };
         monsterUnlock.VariksLiar = true;
@@ -127,7 +126,7 @@ function quest() {
             'You just barely duck under her swing and she yells out.' +
             '"Well, fight me or better yet, just stand there and die!"' + '<br /><br />' +
             'No time to think, another battle has begun.</p>';
-            $("#storyLog").prepend(varikElement);
+    
             document.getElementById("varik").innerHTML += varikElement;
         };
         monsterUnlock.VariksQueen = true;
@@ -150,7 +149,7 @@ function quest() {
             '"Really? Well, you can have your fight, you animal. I will show why they call me LORD!"' +
             'He is glowing and wields a spear fashioned of a green tassel and a bronze metal.' +
             'He lunges at you and the battle begins.</p>';
-            $("#storyLog").prepend(varikElement);
+    
             document.getElementById("varik").innerHTML += varikElement;
         };
         monsterUnlock.LordVarik = true;
@@ -175,7 +174,7 @@ function quest() {
             'Now is not the time for introspection though, you need to feel battle again and the next viable place is the Forest of Narsus.' + '<br />' +
             'After that comes Old Crones Mountain and then... just maybe you can rest.</p><br />';
 
-            $("#storyLog").prepend(varikElement);
+    
             document.getElementById("varik").innerHTML += varikElement;
 
             var forestElement = '<p class="story">You stand at the edge of the forest. This is it, the point of no return. ' +
@@ -193,7 +192,6 @@ function quest() {
 
             'Voice: "Why are you fighting flies? Get a move on already! I want to see something more impressive than flies."</p>';
 
-            $("#storyLog").prepend(forestElement);
             document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.ToxicFlies = true;
@@ -209,7 +207,7 @@ function quest() {
                 'It howled and the sound was like a groan from a far larger creature.  It dashed off into the woods but common sense tells you that it is still around.' + '<br /><br />' +
 
                 'But just as you think it left, it comes dashing from your right and attempts to tackle you and the fight for survival has begun.</p>';
-            $("#storyLog").prepend(forestElement);
+ 
             document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.Stalker = true;
@@ -235,7 +233,7 @@ function quest() {
                 'Voice: "YOU HAVE TO TAME THAT!"<br /><br />' +
 
                 'You ignore the Voice again and focus on the battle.</p>';
-            $("#storyLog").prepend(forestElement);
+ 
             document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.AlphaStalker = true;
@@ -252,7 +250,7 @@ function quest() {
                 'Voice: "Well, good luck, see you in the morning!"<br /><br />' +
 
                 'Suddenly, Stalkers were everywhere snarling, barking, and snapping at you.  It is going to be a very long night.</p>';
-            $("#storyLog").prepend(forestElement);
+ 
             document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.StalkerPack = true;
@@ -275,7 +273,7 @@ function quest() {
                 'Voice: "Well, I am going back to bed. Wake me when you done with your friends."<br /><br />' +
 
                 'You charge and the battle begins.</p>';
-            $("#storyLog").prepend(forestElement);
+ 
             document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.JumpingSpider = true;
@@ -303,7 +301,7 @@ function quest() {
                 'You ignore the fact that every creature here has attacked you first because you did come here looking for a fight.<br /><br />' +
 
                 'It lifted its leg off of you and proceeded to bite you, but being a trained warrior you rolled out of the way and started the counterattack.</p>';
-            $("#storyLog").prepend(forestElement);
+ 
             document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.SpiderBeast = true;
@@ -352,7 +350,7 @@ function quest() {
                 '"Hold on-"<br /><br />' +
 
                 'She started weaving a web and covering the area making it hard to move.  The fight has begun and nothing can stop it.</p>';
-            $("#storyLog").prepend(forestElement);
+ 
             document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.Narsus = true;
@@ -383,7 +381,7 @@ function quest() {
                 'The sound was deafening and a red light shot into the air.  "Now they know you are here, have fun."<br /><br />' +
 
                 'You respond by attacking him and starting a battle.</p>';
-            $("#storyLog").prepend(forestElement);
+ 
             document.getElementById("forestOfNarsus").innerHTML += forestElement;
         };
         monsterUnlock.JotunnScout = true;
@@ -438,7 +436,7 @@ function quest() {
 
              'It looks like another fight has begun, best of luck to you.</p>';
 
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.JotnarAmbushSquad = true;
@@ -465,7 +463,7 @@ function quest() {
             'Voice: "All these new weapons, how did the trolls learn to make these?"<br /><br />' +
 
             'You wince at the racist comment and quickly shoot off, "Hey, don\'t be racist." Then continued running towards battle.</p>';
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.LongRangeExterminationSquad = true;
@@ -500,7 +498,7 @@ function quest() {
             'You: "It is nice to speak with someone before they try to kill but I am itching to fight so lets get this show on the road."<br /><br />' +
 
             'Weg: "With pleasure." He then unsheathed a massive great sword and started roaring. You were eager to start the battle and began charging him.</p><br /><br />';
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.BerserkerShockSquad = true;
@@ -526,7 +524,7 @@ function quest() {
             'Voice: "ASMODEUS BLESS, WHAT IN THE WORLD WAS THAT?"<br /><br />' +
 
             'You quickly get up, still dazed and rocked, but ready.  Rend is already in front of you and wheeling his fist back. Good Luck.</p>';
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.BerserkerShockSquadCaptainRendGrest = true;
@@ -562,7 +560,7 @@ function quest() {
  
             'In a huge crater you see nine groups of four Jottun surrounding their own machines.<br />' +
             'They see you and start firing their elongated pipes at you.  The fight has started.</p>';
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.ArtillerySquad = true;
@@ -591,7 +589,7 @@ function quest() {
             'After a few hours of walking you begin to hear the telltale clang of an army and the tunnel opens up and you walk into a massive cavern.<br />' +
             'It is hundreds of feet long and you can just barely see the ceiling looming over you, but more alarmingly is what is in front of you.<br />' +
             'Hundreds of Jotnar preparing for war and you seem to be their target.  When one set his eyes on you, he yelled for the alarm and the battle begun.</p>';
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
 
             };
@@ -617,7 +615,7 @@ function quest() {
             'You have been here long enough to learn to kick things they throw away.<br />' +
             'It soared away and exploded against the cavern wall causing a series of tremors.<br />' +
             'She doesn\'t stop for a second and continues her battle with you.</p>';
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
 
             };
@@ -646,7 +644,7 @@ function quest() {
               'He charged with as much ferocity as the regent but this time he was too fast for you.  No matter, you have dealt with fast fighters before.<br />' +
             'He isn\'t just trying to wear you down though, you get tossed around like a sack of rice.<br />' +
             'You are patient and take your time understanding his movements and then you struck.</p>';
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
 
         };
@@ -695,7 +693,7 @@ function quest() {
                 'As she finished talking you walked into a cavern with a metal door at the other end.<br />' +
                 '"This is where I leave, remember what I said. If you fail, I will find someway to make your eternal life as miserable as possible."<br />' +
                 'With her kind words she walked away and left you with the tall steel door.</p>';
-            $("#storyLog").prepend(ozJotnarElement);
+            
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
         monsterUnlock.Zombie = true;

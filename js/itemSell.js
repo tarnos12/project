@@ -65,6 +65,24 @@ function sellAllEpic(itemType) {
         total = 0;
     };
 };
+function sellAllLegendary(itemType) {
+    if (confirm("Are you sure?") == true) {
+        var playerInventoryNew = [];
+
+        for (var i = 0; i < playerInventory.length; i++) {
+            if (playerInventory[i].itemRarity === "Legendary" && playerInventory[i].itemType === itemType) {
+                total += playerInventory[i].Value << 0;
+            } else {
+                playerInventoryNew.push(playerInventory[i]);
+            };
+        };
+        player.properties.gold += total;
+        playerInventory = playerInventoryNew;
+        CreateInventoryWeaponHtml();
+        document.getElementById("gold").innerHTML = player.properties.gold;
+        total = 0;
+    };
+};
 //Single item sell
 function itemSell(id) {
     var item = playerInventory.filter(function (obj) {

@@ -12,8 +12,16 @@
     <link href="css/tooltip.css" rel="stylesheet" type="text/css">
     <link href="css/icons.css" rel="stylesheet" type="text/css">
     <link href="css/button.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="jquery/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
     <style type="text/css">
         body {
             background-image: url("images/bg.jpg");
@@ -40,33 +48,51 @@
         }
     </style>
     <style type="text/css">
-        img#Common {
-            outline: 2px solid gray;
-        }
-
-        img#Uncommon {
-            outline: 2px solid green;
-        }
-
-        img#Rare {
-            outline: 2px solid blue;
-        }
-
-        img#Epic {
-            outline: 2px solid orange;
-        }
-
-        img#Legendary {
-            outline: 2px solid red;
+        a{
+            margin-top:5px;
+            margin-bottom:5px;
         }
         .rightAlign {
             text-align: right;
         }
+        h3{
+            text-align:center;
+        }
         div.simpleBorder {
-            border: 2px solid gray;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border: 1px solid gray;
+        }
+        div.borderTop{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-top: 1px solid gray;
+        }
+        div.borderBottom{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-bottom: 1px solid gray;
+        }
+        div.borderRight{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-right: 1px solid gray;
+        }
+        div.borderLeft{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border-left: 1px solid gray;
         }
         .passiveMargin{
             margin-bottom:15px;
+        }
+        img.skillBorder{
+            outline: 1px solid gray;
         }
         .bold {
             font-weight: bold;
@@ -124,13 +150,23 @@
         }
         .buttonDisable{
             pointer-events:none;
-  filter: alpha(opacity=65);
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  opacity: .65;
+            filter: alpha(opacity=65);
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            opacity: .65;
         }
         h1{
             text-align:center;
+        }
+        
+        .unselectable {
+          -webkit-user-select: none;  /* Chrome all / Safari all */
+          -moz-user-select: none;     /* Firefox all */
+          -ms-user-select: none;      /* IE 10+ */
+
+          /* No support for these yet, use at own risk */
+          -o-user-select: none;
+          user-select: none;
         }
     </style>
     <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
@@ -148,7 +184,7 @@
         ga('send', 'pageview');
 
     </script>
-    <div class="container-fluid">
+    <div class="container-fluid darkBackground">
         <div id="loadingContainer" class="loadingContainer">
         </div>
         <div class="startingGameContainer" id="startingGameContainer">
@@ -158,14 +194,21 @@
             </div>
             <div id="raceDiv" style="display:none;">
                 <div class="raceText" id="raceText"></div>
-                <div class="raceCreation" id="raceCreation"></div> <!--Style set for "none" so it wont override starting screen an "invisible wall"...-->
+                <div class="sliderDiv" id="sliderDivID" style="display:none">
+                    <p>
+                        <label for="amount">Choose your age:</label>
+                        <input type="text" id="amount" readonly style="border:0; font-weight:bold;">
+                    </p>
+                    <div id="slider-range-min"></div>
+                </div>
+                <div class="raceCreation" id="raceCreation"></div>
             </div>
         </div>
 
         <!--First Row-->
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-                <div class="row c4">
+                <div class="row c4" style="border:1px solid;">
                     <div class="col-sm-4 background">
                         <div class="row topBar">
                             Level
@@ -208,20 +251,19 @@
         <!--Second Row-->
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-                <div class="row c4">
-                    <div class="col-sm-5 col-md-4" style="border:1px solid;">
-                        <div class="row c4">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_a" data-toggle="tab"><span class="icons playerStats"></span></a></li>
-                                <li><a href="#tab_b" data-toggle="tab"><span class="icons help"></span></a></li>
-                                <li><a href="#tab_c" data-toggle="tab"><span class="icons gameStory"></span></a></li>
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" style="padding-right:25px;">
+                        <div class="row c4" style="border:1px solid;">
+                            <ul class=" nav nav-tabs">
+                                <li class="active"><a href="#tab_a" data-toggle="tab"><span class="icons playerStats" data-toggle="tooltip" data-placement="top" title="Player Stats"></span></a></li>
+                                <li><a href="#tab_b" data-toggle="tab"><span class="icons help" data-toggle="tooltip" data-placement="top" title="Help/Tutorial"></span></a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="col-sm-12 tab-pane active c2" id="tab_a">
                                     <div class="c3">
                                         <h4>Player Stats</h4>
                                     </div>
-                                    <div class=" col-xs-12">
+                                    <div class=" col-xs-4 col-xs-offset-4">
                                         <div id="characterRace"></div>
                                     </div>
                                     <div id="primaryStat"></div>
@@ -235,10 +277,10 @@
                                         <h4>Game Tutorial</h4><br />
                                     </div>
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#tab_za" data-toggle="tab"><span class="icons fighting"></span></a></li>
-                                        <li><a href="#tab_zb" data-toggle="tab"><span class="icons items"></span></a></li>
-                                        <li><a href="#tab_zc" data-toggle="tab"><span class="icons potions"></span></a></li>
-                                        <li><a href="#tab_zd" data-toggle="tab"><span class="icons stats"></span></a></li>
+                                        <li class="active"><a href="#tab_za" data-toggle="tab"><span class="icons fighting" data-toggle="tooltip" data-placement="top" title="Fighting"></span></a></li>
+                                        <li><a href="#tab_zb" data-toggle="tab"><span class="icons items" data-toggle="tooltip" data-placement="top" title="Equipment"></span></a></li>
+                                        <li><a href="#tab_zc" data-toggle="tab"><span class="icons potions" data-toggle="tooltip" data-placement="top" title="Potions"></span></a></li>
+                                        <li><a href="#tab_zd" data-toggle="tab"><span class="icons stats" data-toggle="tooltip" data-placement="top" title="Stats"></span></a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="col-sm-12 tab-pane active" id="tab_za">
@@ -367,140 +409,165 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tab_c">
-                                    <div class="col-sm-12">
-                                        <ul class="nav nav-tabs">
-                                            <li role="presentation" class="active"><a href="#tab_prologue" data-toggle="tab">Prologue</a></li>
-                                            <li role="presentation"><a href="#tab_varik" data-toggle="tab">Varik's Hideout</a></li>
-                                            <li role="presentation"><a href="#tab_forest" data-toggle="tab">Forest of Narus</a></li>
-                                            <li role="presentation"><a href="#tab_ozJotnar" data-toggle="tab">Oz Jotnar</a></li>
-                                            <li role="presentation"><a href="#tab_twistedMarrow" data-toggle="tab">Twisted Marrow</a></li>
-                                        </ul>
-                                        <div class="tab-content">
-
-                                            <div class="tab-pane active" id="tab_prologue">
-                                                <div class="story" id="story">
-                                                    <h1><b>Prologue</b></h1><br /><br />
-                                                    <p class="story">
-                                                        The dead stay dead, but in your case that isn't true.
-                                                        You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
-                                                        On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
-                                                        It speaks to you and it desires only one thing: Battle.<br /><br />
-                                                        "Become the Legend I was and help me feel alive again."<br /><br />
-                                                        You respond by opening your door and taking the first steps towards a new life.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="tab_varik">
-                                                <div class="story" id="varik">
-                                                    <h1><b>Varik's Hideout</b></h1><br />
-                                                    <h3><b>Varik Grunts</b></h3><br />
-                                                    <p class="story">
-                                                        Of course, you have to start somewhere.
-                                                        You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
-                                                        Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
-                                                        So, you go stir up some trouble with the Varik Grunts and hope someone notices.
-                                                        Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
-                                                        You started trouble with them by breaking a bottle over one of their heads.
-                                                    </p>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="tab_forest">
-                                                <div class="story" id="forestOfNarsus">
-                                                    <h1><b>Forest of Narsus</b></h1><br />
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="tab_ozJotnar">
-                                                <div class="story" id="ozJotnar">
-                                                    <h1><b>Oz Jotnar</b></h1><br />
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane" id="tab_twistedMarrow">
-                                                <div class="story" id="twistedMarrow">
-                                                    <h1><b>Twisted Marrow</b></h1><br />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                             <!-- tab content -->
                         </div>
                         <!-- end of container -->
                     </div>
-                    <div class="col-sm-3 col-md-5 c4">
-                        <div class="row c4">
+                    <div class="col-md-4 col-lg-5" style="padding-right:25px;">
+                        <div class="row c4" style="border:1px solid;">
                             <div id="monsterTabs">
                             </div>
                             <!-- tab content -->
-                        </div> <!--move this div below "logConsole table" to stick log console with monsters...-->
-                        <div id="hotBar" class="c4"></div> <!--Add margin top/bottom for better look ._.-->
-                        <div class="row">
-                            <div class="col-xs-10 col-xs-offset-1">
+                            <div id="hotBar"></div> <!--Add margin top/bottom for better look ._.-->
+                        </div>
+                        <div class="row c4" style="border:1px solid;margin-top:10px;margin-bottom:10px;">
+                            <div class="col-xs-10 col-xs-offset-1 c4">
                                 <div class="row">
-                                    <div class="col-xs-8 col-xs-offset-2">
+                                    <div class="col-xs-10 col-xs-offset-1">
 
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#tab_log" data-toggle="tab">Combat Log</a></li>
-                                            <li><a href="#tab_storyLog" data-toggle="tab">Story Log</a></li>
+                                            <li class="active"><a href="#tab_log" data-toggle="tab">Combat</a></li>
+                                            <li><a href="#tab_storyLog" data-toggle="tab">Story</a></li>
                                         </ul>
 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_log">
-                                <div class="scroll c4 c3" id="logConsole" style="border:2px solid; overflow-y: auto;">
+                                <div class="scroll c4 c3" id="logConsole" style="border:1px solid; overflow-y: auto;">
                                 </div>
                             </div>
 
-                            <div class="tab-pane" id="tab_storyLog">
-                                <div class="scroll c4 c3" id="storyLog" style="border:2px solid; overflow-y: auto;">
+                            <div class="tab-pane c4" id="tab_storyLog" style="border:1px solid;">
+                                <ul class=" nav nav-tabs">
+                                    <li role="presentation" class="active"><a href="#tab_prologue" data-toggle="tab">Prologue</a></li>
+                                    <li role="presentation"><a href="#tab_varik" data-toggle="tab">Varik's Hideout</a></li>
+                                    <li role="presentation"><a href="#tab_forest" data-toggle="tab">Forest of Narus</a></li>
+                                    <li role="presentation"><a href="#tab_ozJotnar" data-toggle="tab">Oz Jotnar</a></li>
+                                    <li role="presentation"><a href="#tab_twistedMarrow" data-toggle="tab">Twisted Marrow</a></li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <div class="tab-pane active" id="tab_prologue">
+                                        <div class="story c4" id="story" style="border:1px solid;">
+                                            <h1><b>Prologue</b></h1><br /><br />
+                                            <p class="story">
+                                                The dead stay dead, but in your case that isn't true.
+                                                You have experienced death and discovered that your life is as infinite as the heavens, but nothing good comes without a price.
+                                                On your first death the soul of a long dead warrior attempted to possess your body, but due to your "uniqueness" it failed and is now fused with your being.
+                                                It speaks to you and it desires only one thing: Battle.<br /><br />
+                                                "Become the Legend I was and help me feel alive again."<br /><br />
+                                                You respond by opening your door and taking the first steps towards a new life.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_varik">
+                                        <div class="story c4" id="varik" style="border:1px solid;">
+                                            <h1><b>Varik's Hideout</b></h1><br />
+                                            <h3><b>Varik Grunts</b></h3><br />
+                                            <p class="story">
+                                                Of course, you have to start somewhere.
+                                                You can't just go gallivanting into the Forest of Narsus and expect to come back not in a body bag.
+                                                Instead, you start simple:  A group of bandits under the name of Variks Avarice have been terrorizing your town of Old Hemlock for a few months now.
+                                                So, you go stir up some trouble with the Varik Grunts and hope someone notices.
+                                                Their hideout is very easy to find because they just don't care about hiding it or they are kind of stupid.
+                                                You started trouble with them by breaking a bottle over one of their heads.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_forest" style="border:1px solid;">
+                                        <div class="story c4" id="forestOfNarsus">
+                                            <h1><b>Forest of Narsus</b></h1><br />
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_ozJotnar" style="border:1px solid;">
+                                        <div class="story c4" id="ozJotnar">
+                                            <h1><b>Oz Jotnar</b></h1><br />
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab_twistedMarrow" style="border:1px solid;">
+                                        <div class="story c4" id="twistedMarrow">
+                                            <h1><b>Twisted Marrow</b></h1><br />
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- end of container -->
                     </div>
-                    <div class="col-sm-4 col-md-3">
+                    <div class="col-md-4 col-lg-3" style="border:1px solid;">
                         <div class="row c4">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab_a2" data-toggle="tab"><span class="icons playerInventory"></span></a></li>
-                                <li><a href="#tab_b2" data-toggle="tab"><span class="icons weaponSkills"></span></a></li>
-                                <li><a href="#tab_c2" data-toggle="tab"><span class="icons shop"></span></a></li>
-                                <li><a href="#tab_d2" data-toggle="tab"><span class="icons options"></span></a></li>
-                                <li><a href="#tab_e2" data-toggle="tab"><span class="icons credits"></span></a></li>
+                                <li class="active"><a href="#tab_a2" data-toggle="tab"><span class="icons playerInventory" data-toggle="tooltip" data-placement="top" title="Inventory"></span></a></li>
+                                <li><a href="#tab_b2" data-toggle="tab"><span class="icons spells" data-toggle="tooltip" data-placement="top" title="Skills"></span></a></li>
+                                <li><a href="#tab_d2" data-toggle="tab"><span class="icons options" data-toggle="tooltip" data-placement="top" title="Options"></span></a></li>
+                                <li><a href="#tab_e2" data-toggle="tab"><span class="icons credits" data-toggle="tooltip" data-placement="top" title="Credits"></span></a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_a2">
-                                    <div class="c3">
-                                        <h4>Player Inventory</h4>
-                                    </div>
+                                    <div id="equipHtml"> </div>
 
                                     <ul class="nav nav-tabs">
-                                        <li><a href="#tab_f2" data-toggle="tab"><span class="icons equipment"></span></a></li>
-                                        <li><a href="#tab_f3" data-toggle="tab"><span class="icons playerInventory" id="playerInventory"></span></a></li>
-                                        <li><a href="#tab_f4" data-toggle="tab"><span class="icons spells"></span></a></li>
+                                        <li class="active"><a href="#tab_inventory" data-toggle="tab"><span class="icons playerInventory" data-toggle="tooltip" data-placement="top" title="Inventory"></span></a></li>
+
+                                        <li><a href="#tab_shop" data-toggle="tab"><span class="icons shop" data-toggle="tooltip" data-placement="top" title="Shop"></span></a></li>
                                     </ul>
-
-
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="tab_f2">
-
-                                            <div class="c3">
-                                                <h4>Equipment</h4>
-                                            </div>
-                                            <div id="equipHtml"> </div>
-
-                                        </div>
-                                        <div class="tab-pane " id="tab_f3">
+                                        <div class="tab-pane active" id="tab_inventory">
                                             <div class="inventory" id="inventory"></div>
+                                        </div>
+                                        <div class="tab-pane" id="tab_shop">
+                                            <div class="c3">
+                                                <h4>Shop</h4>
+                                            </div>
+                                            <ul class="nav nav-tabs">
+                                                <li><a href="#tab_shopWeapon" data-toggle="tab"><span class="icons weapon" data-toggle="tooltip" data-placement="top" title="Weapons"></span></a></li>
+                                                <li><a href="#tab_shopArmor" data-toggle="tab"><span class="icons armor" data-toggle="tooltip" data-placement="top" title="Armor"></span></a></li>
+                                                <li><a href="#tab_shopAccessory" data-toggle="tab"><span class="icons accessory" data-toggle="tooltip" data-placement="top" title="Accessory"></span></a>
+                                                <li><a href="#tab_shopOther" data-toggle="tab"><span class="icons items" data-toggle="tooltip" data-placement="top" title="Other/Potions"></span></a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab_shopWeapon">
+                                                    <div id="shopWeapon"></div>
+                                                </div>
 
+                                                <div class="tab-pane" id="tab_shopArmor">
+                                                    <div id="shopArmor"></div>
+                                                </div>
+
+                                                <div class="tab-pane" id="tab_shopAccessory">
+                                                    <div id="shopAccessory"></div>
+                                                </div>
+
+                                                <div class="tab-pane" id="tab_shopOther">
+                                                    <div id="shopOther"></div>
+                                                </div>
+                                            </div>
 
                                         </div>
-                                        <div class="tab-pane" id="tab_f4">
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="tab_b2">
+                                    <div class="c3">
+                                        <h4>Weapon Skills and Passives</h4>
+                                    </div>
+                                    <ul class="nav nav-tabs">
+                                        <li><a href="#tab_weaponSkillsShow" data-toggle="tab"><span class="icons weapon" data-toggle="tooltip" data-placement="top" title="Weapon Skills"></span></a></li>
+                                        <li><a href="#tab_passiveSkillsShow" data-toggle="tab"><span class="icons staff" data-toggle="tooltip" data-placement="top" title="Passive Skills"></span></a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_weaponSkillsShow">
+                                            <div class="c3">
+                                                <h4>Weapon Skills</h4>
+                                            </div>
+                                            <div id="weaponSkill"></div>
+                                        </div>
+                                        <div class="tab-pane" id="tab_passiveSkillsShow">
                                             <div class="c3">
                                                 <h4>Passive skills</h4>
                                             </div>
@@ -508,97 +575,62 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tab_b2">
+
+
+                                <div class="tab-pane" id="tab_d2">
                                     <div class="c3">
-                                        <h4>Weapon Skills</h4>
+                                        <h4>Save & Options</h4>
                                     </div>
-                                    <div id="weaponSkill"></div>
+                                    <div class="col-sm-12">
+                                        <div id="saveGameSlot"></div>
+                                        <div id="saveTime"></div>
+                                        <br /><br />
 
+                                        <div class="scroll c4 c3 col-xs-10" id="saveExport" style="height:100px; word-wrap: break-word;"></div><br />
+                                        <button type="button" class="btn btn-sm btn-default" onclick="selectText('saveExport')">
+                                            Select all text
+                                        </button>
+                                        <button type="button" class="btn btn-sm btn-default" onclick="importSave()">
+                                            Import
+                                        </button>
+                                        <textarea class="scroll c4 c3 col-xs-10" id="saveImport" rows="6" style="word-wrap: break-word;"></textarea><br />
+
+
+                                        <a href="updates.html" target="_blank">Changelog</a><br />
+                                        <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
+                                        <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
+                                        <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="uncommon" onclick='handleClick();'>Destroy all Uncommon</label></div>
+                                        <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="rare" onclick='handleClick();'>Destroy all Rare</label></div>
+                                        <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="epic" onclick='handleClick();'>Destroy all Epic</label></div><br />
+                                        <div class="c3">
+                                            <b>Game is free, but donations are always welcome.</b>
+                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+                                                <input type="hidden" name="cmd" value="_s-xclick">
+                                                <input type="hidden" name="hosted_button_id" value="A9UAZH8H9XHFQ">
+                                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                                <img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="tab-pane" id="tab_c2">
+                                <div class="tab-pane" id="tab_e2">
                                     <div class="c3">
-                                        <h4>Shop</h4>
+                                        <h4>Credits</h4>
                                     </div>
-                                    <ul class="nav nav-tabs">
-                                        <li><a href="#tab_shopWeapon" data-toggle="tab"><span class="icons weapon"></span></a></li>
-                                        <li><a href="#tab_shopArmor" data-toggle="tab"><span class="icons armor"></span></a></li>
-                                        <li><a href="#tab_shopAccessory" data-toggle="tab"><span class="icons accessory"></span></a>
-                                        <li><a href="#tab_shopOther" data-toggle="tab"><span class="icons items"></span></a></li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="tab_shopWeapon">
-                                            <div id="shopWeapon"></div>
-                                        </div>
-
-                                        <div class="tab-pane" id="tab_shopArmor">
-                                            <div id="shopArmor"></div>
-                                        </div>
-
-                                        <div class="tab-pane" id="tab_shopAccessory">
-                                            <div id="shopAccessory"></div>
-                                        </div>
-
-                                        <div class="tab-pane" id="tab_shopOther">
-                                            <div id="shopOther"></div>
-                                        </div>
-                                        </div>
-                                            
-                                        </div>
-
-                                        <div class="tab-pane" id="tab_d2">
-                                            <div class="c3">
-                                                <h4>Save & Options</h4>
-                                            </div>
-                                            <div class="col-sm-12">
-                                                <div id="saveGameSlot"></div>
-                                                <div id="saveTime"></div>
-                                                <br /><br />
-                                                
-                                                <div class="scroll c4 c3 col-xs-10" id="saveExport" style="height:100px; word-wrap: break-word;"></div><br />
-                                                <button type="button" class="btn btn-sm btn-default" onclick="selectText('saveExport')">
-                                                    Select all text
-                                                </button>
-                                                <button type="button" class="btn btn-sm btn-default" onclick="importSave()">
-                                                    Import
-                                                </button>
-                                                <textarea class="scroll c4 c3 col-xs-10" id="saveImport" rows="6" style="word-wrap: break-word;"></textarea><br />
-
-
-                                                <a href="updates.html" target="_blank">Changelog</a><br />
-                                                <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
-                                                <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
-                                                <div><label><input style ="visibility:visible; position:relative;" type='checkbox' id="uncommon" onclick='handleClick();'>Destroy all Uncommon</label></div>
-                                                <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="rare" onclick='handleClick();'>Destroy all Rare</label></div>
-                                                <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="epic" onclick='handleClick();'>Destroy all Epic</label></div><br />
-                                                <div class="c3">
-                                                    <b>Game is free, but donations are always welcome.</b>
-                                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-                                                        <input type="hidden" name="cmd" value="_s-xclick">
-                                                        <input type="hidden" name="hosted_button_id" value="A9UAZH8H9XHFQ">
-                                                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                                                        <img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane" id="tab_e2">
-                                            <div class="c3">
-                                                <h4>Credits</h4>
-                                            </div>
-                                            <div class="centerText">
-                                                <b>Tarnos - Main developer</b><p><a href="http://www.reddit.com/user/tarnos12/" target="_blank">Reddit profile</a></p>
-                                                <b>Rohan Jain - Help with the code/development</b><p><a href="http://www.reddit.com/user/ArjaaAine" target="_blank">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078" target="_blank">LinkedIn profile</a></p>
-                                                <b>Darkshadow44 - Help with game code</b><p><a href="http://steamcommunity.com/profiles/76561198036405586/" target="_blank">Steam profile</a></p>
-                                                <b>Jason Lee - Story</b><p><a href="http://www.reddit.com/user/ParanoiDoom" target="_blank">Reddit profile</a></p>
-                                                <b>Reddit users - Feedback</b><p><a href="http://www.reddit.com/r/incremental_games/" target="_blank">Incremental Reddit</a></p>
-                                                <b>David E. Gervais - Monster images</b><p><a href="http://pousse.rapiere.free.fr/tome/" target="_blank">http://pousse.rapiere.free.fr/tome/</a><br />Published under the Creative Commons licence.</p>
-                                                <b>Music by Eric Matyas</b><p><a href="www.soundimage.org" target="_blank">www.soundimage.org</a></p>
-                                            </div>
-                                        </div>
-                                        <!-- tab content -->
+                                    <div class="centerText">
+                                        <b>Tarnos - Main developer</b><p><a href="http://www.reddit.com/user/tarnos12/" target="_blank">Reddit profile</a></p>
+                                        <b>Rohan Jain - Help with the code/development</b><p><a href="http://www.reddit.com/user/ArjaaAine" target="_blank">Reddit profile</a> - <a href="https://www.linkedin.com/profile/view?id=174286078" target="_blank">LinkedIn profile</a></p>
+                                        <b>Darkshadow44 - Help with game code</b><p><a href="http://steamcommunity.com/profiles/76561198036405586/" target="_blank">Steam profile</a></p>
+                                        <b>Jason Lee - Story</b><p><a href="http://www.reddit.com/user/ParanoiDoom" target="_blank">Reddit profile</a></p>
+                                        <b>Reddit users - Feedback</b><p><a href="http://www.reddit.com/r/incremental_games/" target="_blank">Incremental Reddit</a></p>
+                                        <b>David E. Gervais - Monster images</b><p><a href="http://pousse.rapiere.free.fr/tome/" target="_blank">http://pousse.rapiere.free.fr/tome/</a><br />Published under the Creative Commons licence.</p>
+                                        <b>Music by Eric Matyas</b><p><a href="www.soundimage.org" target="_blank">www.soundimage.org</a></p>
                                     </div>
-                                    <!-- end of container -->
                                 </div>
+                                <!-- tab content -->
+                            </div>
+                            <!-- end of container -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -618,6 +650,7 @@
     <script type="text/javascript" src="js/save.js"></script>
     <script type="text/javascript" src="js/shop.js"></script>
     <script type="text/javascript" src="js/stats.js"></script>
+    <script type="text/javascript" src="js/professions.js"></script>
 
     <script id="cid0020000089850597842" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 200px;height: 300px;">{"handle":"lotfw","arch":"js","styles":{"a":"cc9933","b":100,"c":"000000","d":"000000","k":"cc9933","l":"cc9933","m":"cc9933","p":"10","q":"cc9933","r":100,"pos":"br","cv":1,"cvbg":"cc9933","cvfg":"000000","cvw":75,"cvh":30,"ticker":1,"fwtickm":1}}</script>
 

@@ -58,6 +58,8 @@
     -ms-user-select: none; /* IE10+ */
     /* Rules below not implemented in browsers yet */
     -o-user-select: none;
+    background:none;
+    background-color:none;
     user-select: none;
     cursor: url(images/icon.png), auto;
 }
@@ -77,4 +79,7 @@
 .shopButton{
     width: 100px;
     margin-right: 5px;
+}
+.inventorySell{
+    width: 50px;
 }

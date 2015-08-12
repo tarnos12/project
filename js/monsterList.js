@@ -37,6 +37,15 @@ var SkeletonHealer = {};
 var Wraith = {};
 var LichKing = {};
 
+var Ore = {};
+var ore2 = {};
+var ore3 = {};
+var ore4 = {};
+var ore5 = {};
+var ore6 = {};
+var ore7 = {};
+var ore8 = {};
+
 function MakeMonsterList() {
     VarikGrunt.Stats = {
         hp: 75,
@@ -678,5 +687,25 @@ function MakeMonsterList() {
         manaCost: 320
     };
     monsterList.LichKing = LichKing;
+    /*Ore.Stats = {
+        hp: 100,
+        maxHp: 100,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 0,
+        acc: 0,
+        eva: 100,
+        name: "Ore", // Must equal object name Ore = Ore...
+        displayName: "Ore",
+        type: "mining",
+        id: 33,
+        level: 1,
+        area: "Mining",
+        isShown: true,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.Ore = Ore;*/
 };
 MakeMonsterList();
