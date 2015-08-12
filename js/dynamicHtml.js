@@ -84,7 +84,7 @@ function CreateMonsterHtml() {
         else {
             html += '<li onClick = changedTabmonster(' + k + ')>';
         };
-        html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab"><span class="icons ' + monsterAreas[k].icon + '"></span>' + '</a></li>';
+        html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab"><span class="icons ' + monsterAreas[k].icon + '" data-toggle="tooltip" data-placement="right" title="' + monsterAreas[k].displayName + '"></span>' + '</a></li>';
     };
     html += '</ul>';
     html += '<div class="tab-content">';
@@ -96,9 +96,13 @@ function CreateMonsterHtml() {
             html += '<div class="tab-pane" ';
         };
         html += 'id="tab_' + monsterAreas[j].type + '">' +
+            '<div class="panel panel-default">' +
+            '<div class="panel-heading">' +
             '<div class="c3">' +
-            '<h4>' + monsterAreas[j].displayName + '</h4>' + '<br />' +
-            '</div>';
+            '<h3 class="panel-title">' + monsterAreas[j].displayName + '</h3>' +
+            '</div>' +
+            '</div>' +
+            '<div class="panel-body">';
         for (var key in monsterList) {
             if (monsterList.hasOwnProperty(key)) {
                 var monster = monsterList[key];
@@ -131,6 +135,8 @@ function CreateMonsterHtml() {
                 };
             };
         };
+        html += '</div>';
+        html += '</div>';
         html += '</div>';
     };
     html += '</div>';
@@ -459,7 +465,7 @@ function CreatePlayerSkillsHtml() {
 
 function CreatePlayerHotBar() {
     var html = '';
-    html += '<div class="row c4">';
+    html += '<div class="row" style="margin-top:10px;margin-bottom:10px;">';
     html += '<div class="col-xs-10 col-xs-offset-1">';
     html += '<div class="row" style="border:2px solid;">';
     html += '<div class="col-xs-4">';
@@ -770,7 +776,7 @@ function checkHeroRace() {
             '</span>' + '</a>';
         };
     };
-    raceStats();
+    raceStats(); // Function which add all bonuses from races to player properties.
 };
 
 function removeStartingScreen() {
@@ -804,36 +810,38 @@ function primaryStatUpdate() {
         var currentBonus = primaryStatInfo[key];
         var statInfo = primaryStatInfo[key].info;
         var statDisplay2 = primaryStatInfo[key].type;
+        var short = primaryStatInfo[key].short;
         if (currentBonus.type === "Damage") {
-            var statDisplay = player.functions.minDamage().toFixed(0) + "-" + player.functions.maxDamage().toFixed(0);
+            var statDisplay = '<span id="' + statInfo + '"></span>';
         }
         else if (currentBonus.type === "Mana") {
-            var statDisplay = player.properties.mana.toFixed(0) + "/" + player.functions.maxMana().toFixed(0);
+            var statDisplay = '<span id="' + statInfo + '"></span>';
         }
         else {
             var itemBonus = currentBonus.item;
-            var statDisplay = player.functions[statInfo]() + '(<font color="blue">' + player.functions[itemBonus]() + '</font>)' +
-                '<span id="' + currentBonus.type + '" style="cursor:pointer" onclick="upgrade' + currentBonus.type + '(event);">' +
-                '<span class="glyphicon glyphicon-plus unselectable"></span></span>'
-        }
+            var statDisplay = '<span id="' + statInfo + '"></span>' +
+                '<span id="' + currentBonus.type.capitalizeFirstLetter() + '" style="cursor:pointer" onclick="upgrade' + currentBonus.type.capitalizeFirstLetter() + '(event);" data-toggle="tooltip" data-placement="right" title="Increase ' + currentBonus.type + '">' +
+                '<span class="glyphicon glyphicon-plus unselectable"></span></span>';
+        };
         html += '<div class="col-xs-12">';
         html += '<div class="row">';
         html += '<div class="col-xs-6">';
-        html += statDisplay2;
-        if ('Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck'.indexOf(statDisplay2) != -1) {
+        var statDisplay3 = statDisplay2.capitalizeFirstLetter();
+        if ('Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Damage, Mana'.indexOf(statDisplay3) != -1) {
             var tooltip = primaryStatInfo[key].tooltip;
-            html += '<span data-toggle="tooltip" data-placement="left" title="' + tooltip + '"><span class="glyphicon glyphicon-info-sign"></span></span>';
-        }
+            html += '<span data-toggle="tooltip" data-placement="right" title="' + tooltip + '"><img src="images/stat/' + statDisplay2 + '.png"></span>';
+            html += short;
+        };
         html += '</div>';
         html += '<div class="col-xs-6 rightAlign">';
-        html += statDisplay;
+        html += statDisplay + ' ';
         html += '</div>';
         html += '</div>';
         html += '</div>';
     }
     html += '</div>';
     document.getElementById("primaryStat").innerHTML = html;
-
+    updateHtml();
 };
 function secondaryStatUpdate(){
     var html = '';
@@ -847,14 +855,14 @@ function secondaryStatUpdate(){
         }
         else {
             var statDisplay = player.functions[statInfo]();
-        }
+        };
         var statDisplay2 = secondaryStatInfo[key].type;
         if (number === 1) {
             var background = "darkBackground";
         }
         else if (number === 2) {
             var background = "background";
-        }
+        };
         html += '<div class="col-xs-12 ' + background + '">';
         html += '<div class="row">';
         html += '<div class="col-xs-6 ' + background + '">';
@@ -878,13 +886,13 @@ function secondaryStatUpdate(){
         }
         else {
             html += statDisplay.toFixed(2);
-        }
+        };
         if (currentBonus.type === "Accuracy" && player.functions.accuracy() < 111 || currentBonus.type === "Evasion" && player.functions.evasion() > 0) {
             html += '%';
-        }
+        };
         if (currentBonus.isPercent === true && currentBonus.type !== "Accuracy" && currentBonus.type !== "Evasion") {
             html += '%';
-        }
+        };
         html += '</div>';
         html += '</div>';
         html += '</div>';
@@ -1369,4 +1377,10 @@ var shopOtherList = [
         type2: "buySuperPotion",
         type3: 'superPotionStatus',
     }
-]
+];
+setTimeout(function () { testss(); }, 3000);
+function testss() {
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+};

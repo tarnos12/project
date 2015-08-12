@@ -22,45 +22,109 @@
     var gold;
     var buyBackpack;
     var buyStat;
+    var strength;
+    var endurance;
+    var agility;
+    var dexterity;
+    var wisdom;
+    var intelligence;
+    var luck;
+    var damage;
+
+    strength = document.getElementById('totalStrength');
+    endurance = document.getElementById('totalEndurance');
+    agility = document.getElementById('totalAgility');
+    dexterity = document.getElementById('totalDexterity');
+    wisdom = document.getElementById('totalWisdom');
+    intelligence = document.getElementById('totalIntelligence');
+    luck = document.getElementById('totalLuck');
+    damage = document.getElementById('damage');
+
+  
+
+    strength.innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Strength">' + player.functions.totalStrength() + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Base: ' + player.properties.baseStrength +
+        '<br />Equipment: ' + player.functions.totalStrengthBonus() +
+        '<br />Multiplier: ' + ((player.functions.masteryStrength() + (player.properties.raceAllStats / 100)) * 100).toFixed(0) + '%' + '</span></a> ';
+
+    endurance.innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Endurance">' + player.functions.totalEndurance() + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Base: ' + player.properties.baseEndurance +
+        '<br />Equipment: ' + player.functions.totalEnduranceBonus() +
+        '<br />Multiplier: ' + ((player.functions.masteryEndurance() + (player.properties.raceAllStats / 100)) * 100).toFixed(0) + '%' + '</span></a> ';
+
+    agility.innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Agility">' + player.functions.totalAgility() + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Base: ' + player.properties.baseAgility +
+        '<br />Equipment: ' + player.functions.totalAgilityBonus() +
+        '<br />Multiplier: ' + ((player.functions.masteryAgility() + (player.properties.raceAllStats / 100)) * 100).toFixed(0) + '%' + '</span></a> ';
+
+    dexterity.innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Dexterity">' + player.functions.totalDexterity() + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Base: ' + player.properties.baseDexterity +
+        '<br />Equipment: ' + player.functions.totalDexterityBonus() +
+        '<br />Multiplier: ' + ((player.functions.masteryDexterity() + (player.properties.raceAllStats / 100)) * 100).toFixed(0) + '%' + '</span></a> ';
+
+    wisdom.innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Wisdom">' + player.functions.totalWisdom() + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Base: ' + player.properties.baseWisdom +
+        '<br />Equipment: ' + player.functions.totalWisdomBonus() +
+        '<br />Multiplier: ' + ((player.functions.masteryWisdom() + (player.properties.raceAllStats / 100)) * 100).toFixed(0) + '%' + '</span></a> ';
+
+    intelligence.innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Intelligence">' + player.functions.totalIntelligence() + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Base: ' + player.properties.baseIntelligence +
+        '<br />Equipment: ' + player.functions.totalIntelligenceBonus() +
+        '<br />Multiplier: ' + ((player.functions.masteryIntelligence() + (player.properties.raceAllStats / 100)) * 100).toFixed(0) + '%' + '</span></a> ';
+
+    luck.innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Luck">' + player.functions.totalLuck() + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Base: ' + player.properties.baseLuck +
+        '<br />Equipment: ' + player.functions.totalLuckBonus() +
+        '<br />Multiplier: ' + ((1 + (player.properties.raceAllStats / 100)) * 100).toFixed(0) + '%' + '</span></a> ';
+
+    damage.innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Damage">' 
+        + player.functions.minDamage().toFixed(0) + '-' + player.functions.maxDamage().toFixed(0) + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Multiplier: ' + (player.functions.bonusDamage() + player.properties.raceDamage) + '%</span></a> ';
+  
 
     level = document.getElementById("level");
     maxExperience = document.getElementById("maxexperience");
     experience = document.getElementById("experience");
     gold = document.getElementById("gold");
+
     level.innerHTML = player.properties.level;
     maxExperience.innerHTML = player.properties.maxExperience;
     experience.innerHTML = player.properties.experience;
     gold.innerHTML = player.properties.gold.toFixed(0);
-    primaryStatUpdate();
+
+   //primaryStatUpdate();
     secondaryStatUpdate();
     CreatePlayerHotBar();
     CreateWeaponSkillHtml();
 };
 
-window.setInterval(function () {
+function expPercent () {
     var exppercent = 0; //Player experience in % values at the top bar
     exppercent = (Math.floor((player.properties.experience / player.properties.maxExperience) * 100));
     var divArray = document.getElementById('progressBar');
     divArray.style.width = ((exppercent) + '%');
     document.getElementById("exppercent").innerHTML = exppercent + "%";
-}, 100);
-window.setInterval(function () {
+};
+function healthPercent() {
     var healthPercent = (Math.floor((player.properties.health / player.functions.maxhealth()) * 100));
     var divArray = document.getElementById('progressBar2');
     divArray.style.width = ((healthPercent) + '%');
-}, 100);
-window.setInterval(function () { //Health regen
+};
+function healthRegen() { //Health regen
     if (player.properties.isDead == false) {
         if (player.properties.health < player.functions.maxhealth()) player.properties.health += player.functions.hpregen();
         if (player.properties.health > player.functions.maxhealth()) player.properties.health = player.functions.maxhealth();
-    }
+    };
     document.getElementById('health').innerHTML = player.properties.health + "/" + player.functions.maxhealth();
-}, 1000);
-window.setInterval(function () { //Mana regen
+};
+function manaRegen() { //Mana regen
     if (player.properties.mana < player.functions.maxMana()) player.properties.mana += player.functions.manaRegen();
     if (player.properties.mana > player.functions.maxMana()) player.properties.mana = player.functions.maxMana();
-    primaryStatUpdate();
-}, 1000);
+    document.getElementById('mana').innerHTML = '<span data-toggle="tooltip" data-placement="top" title="Total Mana">'
+        + (player.properties.mana).toFixed(0) + '/' + (player.functions.maxMana()).toFixed(0) + '</span>' +
+        '<a class="tooltipA">' + '<p class="glyphicon glyphicon-info-sign"></p>' + '<span style="text-align:left">' + 'Multiplier: ' + (player.functions.bonusMana() + player.properties.raceMaxMana) + '%</span></a> ';
+      
+};
 
 function levelUp() {
     for (var hero in characterRaces) {

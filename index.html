@@ -45,6 +45,10 @@
         }
     </style>
     <style type="text/css">
+        a{
+            margin-top:5px;
+            margin-bottom:5px;
+        }
         .rightAlign {
             text-align: right;
         }
@@ -151,6 +155,7 @@
         h1{
             text-align:center;
         }
+        
         .unselectable {
   -webkit-user-select: none;  /* Chrome all / Safari all */
   -moz-user-select: none;     /* Firefox all */
@@ -176,7 +181,7 @@
         ga('send', 'pageview');
 
     </script>
-    <div class="container-fluid c4">
+    <div class="container-fluid darkBackground">
         <div id="loadingContainer" class="loadingContainer">
         </div>
         <div class="startingGameContainer" id="startingGameContainer">
@@ -193,7 +198,7 @@
         <!--First Row-->
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-                <div class="row c4">
+                <div class="row c4" style="border:1px solid;">
                     <div class="col-sm-4 background">
                         <div class="row topBar">
                             Level
@@ -236,10 +241,10 @@
         <!--Second Row-->
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-                <div class="row c4">
-                    <div class="col-sm-5 col-md-4" style="border:1px solid;">
-                        <div class="row c4">
-                            <ul class="nav nav-tabs">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4" style="padding-right:25px;">
+                        <div class="row c4" style="border:1px solid;">
+                            <ul class=" nav nav-tabs">
                                 <li class="active"><a href="#tab_a" data-toggle="tab"><span class="icons playerStats" data-toggle="tooltip" data-placement="top" title="Player Stats"></span></a></li>
                                 <li><a href="#tab_b" data-toggle="tab"><span class="icons help" data-toggle="tooltip" data-placement="top" title="Help/Tutorial"></span></a></li>
                             </ul>
@@ -399,21 +404,22 @@
                         </div>
                         <!-- end of container -->
                     </div>
-                    <div class="col-sm-3 col-md-5 c4">
-                        <div class="row c4">
+                    <div class="col-md-4 col-lg-5" style="padding-right:25px;">
+                        <div class="row c4" style="border:1px solid;">
                             <div id="monsterTabs">
                             </div>
                             <!-- tab content -->
-                        </div> <!--move this div below "logConsole table" to stick log console with monsters...-->
-                        <div id="hotBar" class="c4"></div> <!--Add margin top/bottom for better look ._.-->
-                        <div class="row">
-                            <div class="col-xs-10 col-xs-offset-1">
+                            <div id="hotBar"></div> <!--Add margin top/bottom for better look ._.-->
+                        </div>
+                        
+                        <div class="row c4" style="border:1px solid;margin-top:10px;margin-bottom:10px;">
+                            <div class="col-xs-10 col-xs-offset-1 c4">
                                 <div class="row">
-                                    <div class="col-xs-8 col-xs-offset-2">
+                                    <div class="col-xs-10 col-xs-offset-1">
 
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#tab_log" data-toggle="tab">Combat Log</a></li>
-                                            <li><a href="#tab_storyLog" data-toggle="tab">Story Log</a></li>
+                                            <li class="active"><a href="#tab_log" data-toggle="tab">Combat</a></li>
+                                            <li><a href="#tab_storyLog" data-toggle="tab">Story</a></li>
                                         </ul>
 
                                     </div>
@@ -427,18 +433,18 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane" id="tab_storyLog">
-                                <ul class="nav nav-tabs">
-                                    <li role="presentation" class="active"><a href="#tab_prologue" data-toggle="tab">Prologue</a></li>
-                                    <li role="presentation"><a href="#tab_varik" data-toggle="tab">Varik's Hideout</a></li>
-                                    <li role="presentation"><a href="#tab_forest" data-toggle="tab">Forest of Narus</a></li>
-                                    <li role="presentation"><a href="#tab_ozJotnar" data-toggle="tab">Oz Jotnar</a></li>
-                                    <li role="presentation"><a href="#tab_twistedMarrow" data-toggle="tab">Twisted Marrow</a></li>
+                            <div class="tab-pane c4" id="tab_storyLog" style="border:1px solid;">
+                                <ul class=" nav nav-tabs">
+                                <li role="presentation" class="active"><a href="#tab_prologue" data-toggle="tab">Prologue</a></li>
+                                <li role="presentation"><a href="#tab_varik" data-toggle="tab">Varik's Hideout</a></li>
+                                <li role="presentation"><a href="#tab_forest" data-toggle="tab">Forest of Narus</a></li>
+                                <li role="presentation"><a href="#tab_ozJotnar" data-toggle="tab">Oz Jotnar</a></li>
+                                <li role="presentation"><a href="#tab_twistedMarrow" data-toggle="tab">Twisted Marrow</a></li>
                                 </ul>
                                 <div class="tab-content">
 
                                     <div class="tab-pane active" id="tab_prologue">
-                                        <div class="story" id="story" style="border:1px solid;">
+                                        <div class="story c4" id="story" style="border:1px solid;">
                                             <h1><b>Prologue</b></h1><br /><br />
                                             <p class="story">
                                                 The dead stay dead, but in your case that isn't true.
@@ -451,7 +457,7 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab_varik">
-                                        <div class="story" id="varik" style="border:1px solid;">
+                                        <div class="story c4" id="varik" style="border:1px solid;">
                                             <h1><b>Varik's Hideout</b></h1><br />
                                             <h3><b>Varik Grunts</b></h3><br />
                                             <p class="story">
@@ -465,17 +471,17 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab_forest" style="border:1px solid;">
-                                        <div class="story" id="forestOfNarsus">
+                                        <div class="story c4" id="forestOfNarsus">
                                             <h1><b>Forest of Narsus</b></h1><br />
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab_ozJotnar" style="border:1px solid;">
-                                        <div class="story" id="ozJotnar">
+                                        <div class="story c4" id="ozJotnar">
                                             <h1><b>Oz Jotnar</b></h1><br />
                                         </div>
                                     </div>
                                     <div class="tab-pane" id="tab_twistedMarrow" style="border:1px solid;">
-                                        <div class="story" id="twistedMarrow">
+                                        <div class="story c4" id="twistedMarrow">
                                             <h1><b>Twisted Marrow</b></h1><br />
                                         </div>
                                     </div>
@@ -485,25 +491,57 @@
 
                         <!-- end of container -->
                     </div>
-                    <div class="col-sm-4 col-md-3">
+                    <div class="col-md-4 col-lg-3" style="border:1px solid;">
                         <div class="row c4">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#tab_a2" data-toggle="tab"><span class="icons playerInventory" data-toggle="tooltip" data-placement="top" title="Inventory"></span></a></li>
                                 <li><a href="#tab_b2" data-toggle="tab"><span class="icons spells" data-toggle="tooltip" data-placement="top" title="Skills"></span></a></li>
-                                <li><a href="#tab_c2" data-toggle="tab"><span class="icons shop" data-toggle="tooltip" data-placement="top" title="Shop"></span></a></li>
                                 <li><a href="#tab_d2" data-toggle="tab"><span class="icons options" data-toggle="tooltip" data-placement="top" title="Options"></span></a></li>
                                 <li><a href="#tab_e2" data-toggle="tab"><span class="icons credits" data-toggle="tooltip" data-placement="top" title="Credits"></span></a></li>
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_a2">
-                                    <div class="c3">
-                                        <h4>Player Inventory</h4>
-                                    </div>
-                                    <div class="c3">
-                                        <h4>Equipment</h4>
-                                    </div>
                                     <div id="equipHtml"> </div>
-                                    <div class="inventory" id="inventory"></div>
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#tab_inventory" data-toggle="tab"><span class="icons playerInventory" data-toggle="tooltip" data-placement="top" title="Inventory"></span></a></li>
+
+                                        <li><a href="#tab_shop" data-toggle="tab"><span class="icons shop" data-toggle="tooltip" data-placement="top" title="Shop"></span></a></li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="tab_inventory">
+                                            <div class="inventory" id="inventory"></div>
+                                        </div>
+                                        <div class="tab-pane" id="tab_shop">
+                                            <div class="c3">
+                                                <h4>Shop</h4>
+                                            </div>
+                                            <ul class="nav nav-tabs">
+                                                <li><a href="#tab_shopWeapon" data-toggle="tab"><span class="icons weapon" data-toggle="tooltip" data-placement="top" title="Weapons"></span></a></li>
+                                                <li><a href="#tab_shopArmor" data-toggle="tab"><span class="icons armor" data-toggle="tooltip" data-placement="top" title="Armor"></span></a></li>
+                                                <li><a href="#tab_shopAccessory" data-toggle="tab"><span class="icons accessory" data-toggle="tooltip" data-placement="top" title="Accessory"></span></a>
+                                                <li><a href="#tab_shopOther" data-toggle="tab"><span class="icons items" data-toggle="tooltip" data-placement="top" title="Other/Potions"></span></a></li>
+                                            </ul>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="tab_shopWeapon">
+                                                    <div id="shopWeapon"></div>
+                                                </div>
+
+                                                <div class="tab-pane" id="tab_shopArmor">
+                                                    <div id="shopArmor"></div>
+                                                </div>
+
+                                                <div class="tab-pane" id="tab_shopAccessory">
+                                                    <div id="shopAccessory"></div>
+                                                </div>
+
+                                                <div class="tab-pane" id="tab_shopOther">
+                                                    <div id="shopOther"></div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="tab-pane" id="tab_b2">
                                     <div class="c3">
@@ -528,35 +566,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tab_c2">
-                                    <div class="c3">
-                                        <h4>Shop</h4>
-                                    </div>
-                                    <ul class="nav nav-tabs">
-                                        <li><a href="#tab_shopWeapon" data-toggle="tab"><span class="icons weapon" data-toggle="tooltip" data-placement="top" title="Weapons"></span></a></li>
-                                        <li><a href="#tab_shopArmor" data-toggle="tab"><span class="icons armor" data-toggle="tooltip" data-placement="top" title="Armor"></span></a></li>
-                                        <li><a href="#tab_shopAccessory" data-toggle="tab"><span class="icons accessory" data-toggle="tooltip" data-placement="top" title="Accessory"></span></a>
-                                        <li><a href="#tab_shopOther" data-toggle="tab"><span class="icons items" data-toggle="tooltip" data-placement="top" title="Other/Potions"></span></a></li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div class="tab-pane active" id="tab_shopWeapon">
-                                            <div id="shopWeapon"></div>
-                                        </div>
 
-                                        <div class="tab-pane" id="tab_shopArmor">
-                                            <div id="shopArmor"></div>
-                                        </div>
-
-                                        <div class="tab-pane" id="tab_shopAccessory">
-                                            <div id="shopAccessory"></div>
-                                        </div>
-
-                                        <div class="tab-pane" id="tab_shopOther">
-                                            <div id="shopOther"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
 
                                 <div class="tab-pane" id="tab_d2">
                                     <div class="c3">
