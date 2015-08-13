@@ -442,7 +442,7 @@ frenzy.description = function () {
 var hammerTime = new weaponSkillDamage(5, "Hammer Time", "HammerTime", "damage", "physical", 3);
 var dominatingSlam = new weaponSkillDamage(10, "Dominating Slam", "DominatingSlam", "damage", "physical", 8);
 var gash = new weaponSkillDamage(15, "Gash", "Gash", "damage", "physical", 13);
-var overbearingWallop = new weaponSkillDamage(20, "Overbearing Wallop", "OverbearingWallop", "damage", "physical", 18);
+var overbearingWallop = new weaponSkillDamage(20, "Overbearing Wallop", "OverBearingWallop", "damage", "physical", 18);
 var tremor = new weaponSkillDamage(25, "Tremor", "Tremor", "damage", "physical", 23);
 
 //MACE DAMAGE/BUFF/BLOCK ETC.
