@@ -728,7 +728,7 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
                     var skillDamage = weaponSkillStat[skill];
                     if (skillDamage.charge >= 1) {
                         if (skillDamage.type == "damage") {
-                            if (skillDamage.type2 == "physycal") {
+                            if (skillDamage.type2 == "physical") {
                                 damage += skillDamage.damage();
                                 skillDamage.charge -= 1;
                             }
