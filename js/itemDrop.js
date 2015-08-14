@@ -240,63 +240,63 @@ function getBonusItemMod(monster, dropItem, isDrop) {
             dropItem.image += 25;
         }
         else if (itemLevel <= 34) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level40;
             dropItem.image += 30;
         }
         else if (itemLevel <= 39) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level40;
             dropItem.image += 35;
         }
         else if (itemLevel <= 44) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 40;
         }
         else if (itemLevel <= 49) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 45;
         }
         else if (itemLevel <= 54) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 50;
         }
         else if (itemLevel <= 59) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 55;
         }
         else if (itemLevel <= 64) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 60;
         }
         else if (itemLevel <= 69) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 65;
         }
         else if (itemLevel <= 74) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 70;
         }
         else if (itemLevel <= 79) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 75;
         }
         else if (itemLevel <= 84) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 80;
         }
         else if (itemLevel <= 89) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 85;
         }
         else if (itemLevel <= 94) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 90;
         }
         else if (itemLevel <= 99) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 95;
         }
         else if (itemLevel <= 104) {
-            var itemModLevel = itemModifiers.level30;
+            var itemModLevel = itemModifiers.level50;
             dropItem.image += 100;
         }
     }
@@ -307,10 +307,25 @@ function getBonusItemMod(monster, dropItem, isDrop) {
         else if (itemLevel <= 20) {
             var itemModLevel = itemModifiers.level20;
         }
-        else {
+        else if (itemLevel <= 30) {
             var itemModLevel = itemModifiers.level30;
         }
-    }
+        else if (itemLevel <= 40) {
+            var itemModLevel = itemModifiers.level40;
+        }
+        else if (itemLevel <= 50) {
+            var itemModLevel = itemModifiers.level50;
+        }
+        else if (itemLevel <= 60) {
+            var itemModLevel = itemModifiers.level50;
+        }
+        else if (itemLevel <= 70) {
+            var itemModLevel = itemModifiers.level50;
+        }
+        else {
+            var itemModLevel = itemModifiers.level50;
+        };
+    };
     var itemModLevelLength = itemModLevel.length;
     var randomModAmount = Math.floor(Math.random() * (maxMods - minMods + 1)) + minMods; //Random value between min/max(both inclusive !important)
     newArray = itemModLevel.slice(); // Copy an array so we can remove array values so we dont get double of the same bonus on the item

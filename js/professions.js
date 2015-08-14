@@ -1,5 +1,6 @@
 ﻿(function () {
     var newProfession = function (name, image) { //default spell object constructor
+        this.level = 1;
         this.maxLevel = 100;
         this.name = name;
         this.image = image;
@@ -12,10 +13,10 @@
     var alchemy = new newProfession("Alchemy", "Alchemy");
 
     mining.damage = function () {
-        return this.level;
+        return ((1 - player.properties.level) + this.level) * 2;
     };
     herbalism.damage = function () {
-        return this.level;
+        return ((1 - player.properties.level) + this.level) * 2;
     };
     mining.description = function () {
         return "Can mine ores for resources used in crafting.";

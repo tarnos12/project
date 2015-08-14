@@ -521,11 +521,11 @@ var player = {
                 return 0;
             }
             else {
-                if ((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance()))) > 20) * (1 + (player.functions.bonusEvasion() / 100))) {
+                if (((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100))) >= 20) {
                     return 20;
                 }
                 else {
-                    return (((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance()))) * (1 + (player.functions.bonusEvasion() / 100)));
+                    return ((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100)));
                 }
             };
         },
