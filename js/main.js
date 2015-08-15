@@ -20,9 +20,22 @@ function Log(data) {
 };
 
 var currentGameVersion = 1.5;
+var defaultValues = {
+    properties: {
+        
+    },
+};
 //PLAYER STATS
 var player = {
     properties: {
+        //Minerals
+        Thaumerite: 0,
+        LiteCyan: 0,
+        OhmStone: 0,
+        Techtite: 0,
+        XilBond: 0,
+        VulcanatedIron: 0,
+        //Other
         raceAllStats: 0,
         raceGoldDrop: 0,
         raceExpRate: 0,
@@ -832,7 +845,6 @@ function playerDead(monsterStat, monsterStats) {
         player.properties.gold = Math.floor(player.properties.gold / 1.2);
         expLost = Math.floor(player.properties.experience - (player.properties.experience / 1.2));
         player.properties.experience = Math.floor(player.properties.experience / 1.2);
-        //monsterStats.hp = monsterStats.maxHp;
         document.getElementById("health").innerHTML = player.properties.health;
         document.getElementById("gold").innerHTML = player.properties.gold;
         document.getElementById("experience").innerHTML = player.properties.experience;
@@ -1645,3 +1657,12 @@ function raceStats() {
     };
     secondaryStatUpdate();
 };
+
+function copyPlayerProperties() {
+    var playerDefault = defaultValues.properties;
+    var playerProperties = player.properties;
+    for (var key in playerProperties) {
+        playerDefault[key] = playerProperties[key];
+    };
+};
+copyPlayerProperties();

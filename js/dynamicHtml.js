@@ -117,6 +117,7 @@ function CreateMonsterHtml() {
                     else if (monster.Stats.type === "mining") {
                         var onclickevent = 'mine(' + monster.Stats.name + ');';
                     }
+                    
                     html += '<div class="col-xs-6 col-lg-3"">' +
                         '<div class="row">' +
                         '<div class="col-xs-10 col-xs-offset-1" style="width:85%;">' +
@@ -124,12 +125,14 @@ function CreateMonsterHtml() {
                         '<a href="#" class="tooltipA" id="monsterButton">' +
                         '<img class="monster" src="images/' + "monster" + monster.Stats.id + '.png" alt="' + monster.Stats.displayName + '" onclick="' + onclickevent + '">' +
                         '<span>' +
-                        '<b>' + monster.Stats.displayName + '</b>' +
-                        '<br />' +
+                        '<b>' + monster.Stats.displayName + '</b>';
+                    if (monster.Stats.type !== "mining") {
+                        html += '<br />' +
                         'Dmg:' + monster.Stats.minDmg + "-" + monster.Stats.maxDmg +
                         '<br />' +
-                        'Def:' + monster.Stats.def +
-                        '</span></a>' +
+                        'Def:' + monster.Stats.def;
+                    };
+                    html += '</span></a>' +
                         '<br /></div>';
                     html += '<div class="progress">';
                     html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.Stats.name + "1" + '">';
@@ -160,7 +163,7 @@ function CreateInventoryWeaponHtml() {
     var itemStat;
     html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length + "/" + player.functions.inventory() + '</div>';
     html += '<ul class="nav nav-tabs">';
-    for (var k = 0; k < 3; k++) {
+    for (var k = 0; k < InventoryItemTypes.length; k++) {
         if (k === inventoryTabActiveNum) {
             html += '<li class="active" onClick = changedTabInventory(' + k + ')>';
         }
@@ -230,7 +233,7 @@ function CreateInventoryWeaponHtml() {
                     itemStat = equippedItems.talisman;
                 }
                 html += '<div class="col-xs-12 col-lg-6 c8"' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + '>';
-                html += '<a class="tooltips" style="cursor:pointer;">';
+                html += '<a class="tooltips2" style="cursor:pointer;">';
                 if (playerInventory[i].itemType === "weapon"){
                     html += '<img class="' + playerInventory[i].itemType;
                 }
@@ -698,7 +701,7 @@ function characterCreationHtml() {
             html += '<img src="images/races/' + heroRace.image() + '.png">';
             html += heroRace.name + " ";
             html += '<a class="tooltips">' + '<p class="glyphicon glyphicon-info-sign" style="color:black"></p>' +
-                    '<span style="width:350px; right: 10%; bottom:30px; text-align:left;">' +
+                    '<span style="width:350px; left: 110px; bottom:-30px; text-align:left;">' +
                     '<div class="row">' +
                     '<div class="col-xs-10 col-xs-offset-1">' +
                     heroRace.name +
@@ -1474,4 +1477,69 @@ function getAge() {
     characterRaces.halfing.raceAge = test;
     characterRaces.sylph.raceAge = test;
     characterRaces.giant.raceAge = test;
+};
+
+function playerProfessionHtml() {
+    var html = '';
+    html += '<div class="row">';
+    html += '<div class="col-xs-10 col-xs-offset-1">';
+    html += '<div class="row">';
+    html += '<h3>Your professions: <br /></h3>';
+    for (var key in playerProfession) {
+        var profession = playerProfession[key];
+        html += '<div class="col-xs-1 col-xs-offset-1">';
+        html += '<img src="images/profession/' + profession.name + '.png" data-toggle="tooltip" data-placement="top" title="' + profession.name.capitalizeFirstLetter() + ' level:' + profession.level + '">';
+        html += '</div>';
+    };
+    html += '</div>';
+    html += '<div class="row">';
+    html += '<h3>Your resources: <br /></h3>';
+    for (var i = 0; i < mineralList.length; i++) {
+        var mineral = mineralList[i].name;
+        var displayName = mineralList[i].displayName;
+        var playerMineral = player.properties[mineral];
+        html += '<div class="col-xs-5 col-xs-offset-1">';
+        html += '<img src="images/mineral/' + mineral + '.png" data-toggle="tooltip" data-placement="right" title="' + displayName + '">';
+        html += ' ' + playerMineral + '<br />';
+        html += '</div>';
+    };
+    html += '</div></div></div>';
+    document.getElementById('playerProfessions').innerHTML = html;
+    testss();
+};
+var craftedItemHolder = [];
+function craftingHtml() {
+    var html = '';
+    var crafting = playerProfession.crafting;
+    var craftingLevel = crafting.level;
+    html += '<div class="row">';
+    html += '<div class="col-xs-10 col-xs-offset-1">';
+    html += '<div class="row">';
+    html += '<h3>Crafting </h3>';
+    html += '<img src="images/profession/' + crafting.name + '.png" data-toggle="tooltip" data-placement="top" title="' + crafting.name.capitalizeFirstLetter() + ' level: ' + crafting.level + '">';
+
+    html += '<div class="row">';
+    for (var key in craftItemTypes) {
+        var itemType = craftItemTypes[key].type;
+
+        html += '<div class="col-xs-10 col-xs-offset-1">';
+        html += '<button type="button" class="btn btn-default border" ' +  'onclick="craftItem(' + "'" + itemType + "'" + ')"' + '>' + 'Craft ' + itemType.capitalizeFirstLetter() + '</button>';
+        html += '</div>';
+    }
+    html += '</div>';
+    html += '</div></div></div>';
+    document.getElementById('crafting').innerHTML = html;
+    testss();
+};
+
+function craftItem(itemType) {
+    var crafting = playerProfession.crafting;
+    var craftingLevel = crafting.level;
+    getItemType(craftingLevel, false, itemType);
+    crafting.experience += 1;
+    if (crafting.experience >= crafting.maxExperience) {
+        crafting.level += 1;
+        crafting.experience = 0;
+        crafting.maxExperience *= 1.1;
+    };
 };

@@ -14,28 +14,6 @@ a.tooltips > span {
   visibility: hidden;
   border-radius: 8px;
 }
-a.tooltips > span:before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 30%;
-  margin-left: -12px;
-  width: 0; height: 0;
-  border-top: 12px solid #B3AB86;
-  border-right: 12px solid transparent;
-  border-left: 12px solid transparent;
-}
-a.tooltips > span:after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 30%;
-  margin-left: -8px;
-  width: 0; height: 0;
-  border-top: 8px solid #000000;
-  border-right: 8px solid transparent;
-  border-left: 8px solid transparent;
-}
 a.tooltips:hover > span {
   visibility: visible;
   opacity: 1;
@@ -45,10 +23,32 @@ a.tooltips:hover > span {
   z-index: 999;
 }
 
-.tooltipsHover:hover {
-  bottom: 30px;
-  right: 10%;
+a.tooltips2 {
+  position: relative;
+  display: inline;
 }
+a.tooltips2 > span {
+  position: absolute;
+  width:450px;
+  right: 40%;
+  bottom: 10%;
+  color: #FFFFFF;
+  background: #000000;
+  border: 2px solid #B3AB86;
+  text-align: center;
+  visibility: hidden;
+  border-radius: 8px;
+}
+a.tooltips2:hover > span {
+  visibility: visible;
+  opacity: 1;
+  bottom: 10px;/* Tooltip Position */
+  right: 180%; /* Tooltip Position */
+  margin-left: -76px;
+  z-index: 999;
+}
+
+
 .tooltipA {
   position: relative;
   cursor: auto;
@@ -85,24 +85,7 @@ a.tooltips:hover > span {
   visibility: visible;
 }
 
-.tooltipA span:before,
-.tooltipA span:after {
-  content: "";
-  position: absolute;
-  z-index: 1000;
-  bottom: -7px;
-  left: 50%;
-  margin-left: -8px;  
-  border-top: 8px solid #ddd;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;        
-  border-bottom: 0;  
-}
 
-.tooltipA span:before {
-  border-top-color: #ccc;
-  bottom: -8px;
-}
     
 
 /*Tooltip B*/

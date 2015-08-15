@@ -14,18 +14,21 @@
         };
     };
     Log('<span id=\"itemDropNew\" class =\"bold\" style=\"color:orange; display:none;\">You found ' + (itemDropNumber) + " items! <br />" + "</span>");
-
+   
     itemDropLog();
     CreateInventoryWeaponHtml();
 };
 
-function getItemType(monster, isDrop) { //isDrop will check if generated item is monster drop or item sold in shop
+function getItemType(monster, isDrop, craftItemType) { //isDrop will check if generated item is monster drop or item sold in shop
     var monsterStats = monster;
     var dropItem = {};
     var totalChance = 0;
     var randomNumber = 0;
     var itemLevel = 0;
     var itemChanceTotal = itemTypes[itemTypes.length - 1]; // Gets the value "chance" of last index in my object array. I wont need to edit functions in the future if I add more stuff.
+    if (craftItemType !== undefined) {
+        dropItem['isCrafted'] = true;
+    }
     totalChance = itemChanceTotal.chance;
     randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
     if (monsterStats <= 10) {
@@ -37,13 +40,18 @@ function getItemType(monster, isDrop) { //isDrop will check if generated item is
     };
     dropItem["iLvl"] = itemLevel;
     dropItem["id"] = player.properties.itemIdNumber;
-    for (var itemType in itemTypes) {
-        var itemChance = itemTypes[itemType].chance; // Get item type: weapon/armor/accessory/ other in the future...
-        var itemType = itemTypes[itemType].type;
-        if (randomNumber <= itemChance) {
-            dropItem["itemType"] = itemType;
-            break;
+    if (craftItemType === undefined) {
+        for (var itemType in itemTypes) {
+            var itemChance = itemTypes[itemType].chance; // Get item type: weapon/armor/accessory/ other in the future...
+            var itemType = itemTypes[itemType].type;
+            if (randomNumber <= itemChance) {
+                dropItem["itemType"] = itemType;
+                break;
+            };
         };
+    }
+    else {
+        dropItem["itemType"] = craftItemType
     };
     getItemSubType(monster, dropItem, isDrop)
 };
@@ -141,7 +149,7 @@ function getItemPower(monster, dropItem, isDrop) {
                 dropItem["itemQuality"] = itemPowerType;
             }
             else if (itemPowerType === "Superior") {
-                if (dropItem.itemRarity !== "Epic" || dropItem.itemRarity !== "Legendary") {
+                if (dropItem.itemRarity !== "Epic" && dropItem.itemRarity !== "Legendary") {
                     dropItem.power += 3;
                 }
                 else if (dropItem.itemRarity === "Epic") {
@@ -161,6 +169,11 @@ function getItemPower(monster, dropItem, isDrop) {
 function getItemBaseStats(monster, dropItem, isDrop) {
     var minDmg = dropItem.iLvl * dropItem.power;
     var maxDmg = dropItem.iLvl * (dropItem.power * 2);
+    dropItem['name'] = '';
+    if (dropItem.isCrafted === true) {
+        dropItem.name = 'Crafted ';
+        dropItem.color = '#FF00FF';
+    };
     dropItem['Value'] = 0;
     if (dropItem.itemType === "weapon") {
         var randomNumber = Math.floor(Math.random() * (maxDmg - minDmg + 1)) + minDmg;
@@ -174,10 +187,10 @@ function getItemBaseStats(monster, dropItem, isDrop) {
         dropItem.Value += dropItem.defense * 10;
     };
     if (dropItem.itemQuality !== "Normal"){
-        dropItem["name"] = dropItem.itemQuality + ' ' + dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
+        dropItem.name += dropItem.itemQuality + ' ' + dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
         }
     else{
-        dropItem["name"] = dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
+        dropItem.name += dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
     }
     getBaseItemMod(monster, dropItem, isDrop);
 };
@@ -299,6 +312,10 @@ function getBonusItemMod(monster, dropItem, isDrop) {
             var itemModLevel = itemModifiers.level50;
             dropItem.image += 100;
         }
+        else {
+            var itemModLevel = itemModifiers.level50;
+            dropItem.image += 100;
+        };
     }
     else {
         if (itemLevel <= 10) {
@@ -396,64 +413,76 @@ function getBonusItemMod(monster, dropItem, isDrop) {
         dropItem.Value += (dropItem['Block chance'] * 5 + dropItem['Block amount'] * 5);
     };
     if (dropItem.Value > 0) {
-        if (isDrop === true) {
-            if (dropItem.itemRarity === 'Common' && checkBoxCommon === false ||
-                                dropItem.itemRarity === 'Uncommon' && checkBoxUncommon === false ||
-                                dropItem.itemRarity === 'Rare' && checkBoxRare === false ||
-                                dropItem.itemRarity === 'Epic' && checkBoxEpic === false ||
-                                dropItem.itemRarity === 'Legendary') {
+        if (dropItem.isCrafted === undefined) {
+            if (isDrop === true) {
+                if (dropItem.itemRarity === 'Common' && checkBoxCommon === false ||
+                                    dropItem.itemRarity === 'Uncommon' && checkBoxUncommon === false ||
+                                    dropItem.itemRarity === 'Rare' && checkBoxRare === false ||
+                                    dropItem.itemRarity === 'Epic' && checkBoxEpic === false ||
+                                    dropItem.itemRarity === 'Legendary') {
 
-                var itemHolder = [];
-                itemHolder.push(dropItem);
-                playerInventory.push.apply(
-                    playerInventory,
-                    JSON.parse(JSON.stringify(itemHolder))
-                    );
-                player.properties.itemIdNumber += 1;
+                    var itemHolder = [];
+                    itemHolder.push(dropItem);
+                    playerInventory.push.apply(
+                        playerInventory,
+                        JSON.parse(JSON.stringify(itemHolder))
+                        );
+                    player.properties.itemIdNumber += 1;
+                }
+                else {
+                    player.properties.gold += Math.floor(dropItem.Value * 0.2);
+                    updateHtml();
+                };
             }
             else {
-                player.properties.gold += Math.floor(dropItem.Value * 0.2);
-                updateHtml();
+                if (accessoryAmount < 10 && dropItem.itemType === "accessory" ||
+                    weaponAmount < 10 && dropItem.itemType === "weapon" ||
+                    armorAmount < 10 && dropItem.itemType === "armor") {
+                    if (dropItem.itemType === "accessory") {
+                        accessoryAmount += 1;
+                        dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
+                        var itemHolder = [];
+                        itemHolder.push(dropItem);
+                        itemShopAccessory.push.apply(
+                            itemShopAccessory,
+                            JSON.parse(JSON.stringify(itemHolder))
+                            );
+                        player.properties.itemIdNumber += 1;
+                    }
+                    else if (dropItem.itemType === "weapon") {
+                        weaponAmount += 1;
+                        dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
+                        var itemHolder = [];
+                        itemHolder.push(dropItem);
+                        itemShopWeapon.push.apply(
+                            itemShopWeapon,
+                            JSON.parse(JSON.stringify(itemHolder))
+                            );
+                        player.properties.itemIdNumber += 1;
+                    }
+                    else if (dropItem.itemType === "armor") {
+                        armorAmount += 1;
+                        dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
+                        var itemHolder = [];
+                        itemHolder.push(dropItem);
+                        itemShopArmor.push.apply(
+                            itemShopArmor,
+                            JSON.parse(JSON.stringify(itemHolder))
+                            );
+                        player.properties.itemIdNumber += 1;
+                    };
+                };
             };
         }
         else {
-            if (accessoryAmount < 10 && dropItem.itemType === "accessory" ||
-                weaponAmount < 10 && dropItem.itemType === "weapon" ||
-                armorAmount < 10 && dropItem.itemType === "armor") {
-                if (dropItem.itemType === "accessory") {
-                    accessoryAmount += 1;
-                    dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
-                    var itemHolder = [];
-                    itemHolder.push(dropItem);
-                    itemShopAccessory.push.apply(
-                        itemShopAccessory,
-                        JSON.parse(JSON.stringify(itemHolder))
-                        );
-                    player.properties.itemIdNumber += 1;
-                }
-                else if (dropItem.itemType === "weapon") {
-                    weaponAmount += 1;
-                    dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
-                    var itemHolder = [];
-                    itemHolder.push(dropItem);
-                    itemShopWeapon.push.apply(
-                        itemShopWeapon,
-                        JSON.parse(JSON.stringify(itemHolder))
-                        );
-                    player.properties.itemIdNumber += 1;
-                }
-                else if (dropItem.itemType === "armor") {
-                    armorAmount += 1;
-                    dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
-                    var itemHolder = [];
-                    itemHolder.push(dropItem);
-                    itemShopArmor.push.apply(
-                        itemShopArmor,
-                        JSON.parse(JSON.stringify(itemHolder))
-                        );
-                    player.properties.itemIdNumber += 1;
-                };
-            };
+            var itemHolder = [];
+            itemHolder.push(dropItem);
+            playerInventory.push.apply(
+                playerInventory,
+                JSON.parse(JSON.stringify(itemHolder))
+                );
+            player.properties.itemIdNumber += 1;
+            CreateInventoryWeaponHtml();
         };
     };
 };

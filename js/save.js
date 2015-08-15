@@ -162,6 +162,13 @@ function load(slot) {
     };
     if (savegame !== undefined) {
         if (typeof savegame.playerProperties !== "undefined") player.properties = savegame.playerProperties;
+        //Check if player object is missing any properties. It will add them with default values if they are missing(In case of an old save which didnt have certain properties)
+        var playerDefault = defaultValues.properties;
+        for (var key in playerDefault) {
+            if (savegame.playerProperties[key] === undefined) {
+                savegame.playerProperties[key] = playerDefault[key];
+            };
+        };
         if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
         if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
         if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.experience = savegame.SwordExp;

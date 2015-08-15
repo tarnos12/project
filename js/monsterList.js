@@ -37,14 +37,12 @@ var SkeletonHealer = {};
 var Wraith = {};
 var LichKing = {};
 
-var Ore = {};
-var ore2 = {};
-var ore3 = {};
-var ore4 = {};
-var ore5 = {};
-var ore6 = {};
-var ore7 = {};
-var ore8 = {};
+var Thaumerite = {};
+var LiteCyan = {};
+var OhmStone = {};
+var Techtite = {};
+var XilBond = {};
+var VulcanatedIron = {};
 
 function MakeMonsterList() {
     VarikGrunt.Stats = {
@@ -687,17 +685,17 @@ function MakeMonsterList() {
         manaCost: 320
     };
     monsterList.LichKing = LichKing;
-    /*Ore.Stats = {
+    Thaumerite.Stats = {
         hp: 100,
         maxHp: 100,
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 0,
+        baseExp: 1,
         acc: 0,
         eva: 100,
-        name: "Ore", // Must equal object name Ore = Ore...
-        displayName: "Ore",
+        name: "Thaumerite", // Must equal object name Ore = Ore...
+        displayName: "Thaumerite",
         type: "mining",
         id: 33,
         level: 1,
@@ -706,6 +704,111 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 9999
     };
-    monsterList.Ore = Ore;*/
+    monsterList.Thaumerite = Thaumerite;
+
+    LiteCyan.Stats = {
+        hp: 200,
+        maxHp: 200,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 5,
+        acc: 0,
+        eva: 100,
+        name: "LiteCyan", // Must equal object name Ore = Ore...
+        displayName: "Lite Cyan",
+        type: "mining",
+        id: 34,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.LiteCyan = LiteCyan;
+
+    OhmStone.Stats = {
+        hp: 400,
+        maxHp: 400,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 20,
+        acc: 0,
+        eva: 100,
+        name: "OhmStone", // Must equal object name Ore = Ore...
+        displayName: "Ohm Stone",
+        type: "mining",
+        id: 35,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.OhmStone = OhmStone;
+
+    Techtite.Stats = {
+        hp: 750,
+        maxHp: 750,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 50,
+        acc: 0,
+        eva: 100,
+        name: "Techtite", // Must equal object name Ore = Ore...
+        displayName: "Techtite",
+        type: "mining",
+        id: 36,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.Techtite = Techtite;
+
+    XilBond.Stats = {
+        hp: 1337,
+        maxHp: 1337,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 100,
+        acc: 0,
+        eva: 100,
+        name: "XilBond", // Must equal object name Ore = Ore...
+        displayName: "Xil Bond",
+        type: "mining",
+        id: 37,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.XilBond = XilBond;
+
+    VulcanatedIron.Stats = {
+        hp: 3000,
+        maxHp: 3000,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 200,
+        acc: 0,
+        eva: 100,
+        name: "VulcanatedIron", // Must equal object name Ore = Ore...
+        displayName: "Vulcanated Iron",
+        type: "mining",
+        id: 38,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.VulcanatedIron = VulcanatedIron;
 };
 MakeMonsterList();

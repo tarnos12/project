@@ -252,7 +252,7 @@
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
                 <div class="row">
-                    <div class="col-md-4 col-lg-4" style="padding-right:25px;">
+                    <div id="firstDiv" class="col-md-4 col-lg-4" style="padding-right:25px;">
                         <div class="row c4" style="border:1px solid;">
                             <ul class=" nav nav-tabs">
                                 <li class="active"><a href="#tab_a" data-toggle="tab"><span class="icons playerStats" data-toggle="tooltip" data-placement="top" title="Player Stats"></span></a></li>
@@ -414,7 +414,7 @@
                         </div>
                         <!-- end of container -->
                     </div>
-                    <div class="col-md-4 col-lg-5" style="padding-right:25px;">
+                    <div id="secondDiv" class="col-md-4 col-lg-5" style="padding-right:25px;">
                         <div class="row c4" style="border:1px solid;">
                             <div id="monsterTabs">
                             </div>
@@ -500,7 +500,7 @@
 
                         <!-- end of container -->
                     </div>
-                    <div class="col-md-4 col-lg-3" style="border:1px solid;">
+                    <div id="thirdDiv" class="col-md-4 col-lg-3" style="border:1px solid;">
                         <div class="row c4">
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#tab_a2" data-toggle="tab"><span class="icons playerInventory" data-toggle="tooltip" data-placement="top" title="Inventory"></span></a></li>
@@ -514,8 +514,8 @@
 
                                     <ul class="nav nav-tabs">
                                         <li class="active"><a href="#tab_inventory" data-toggle="tab"><span class="icons playerInventory" data-toggle="tooltip" data-placement="top" title="Inventory"></span></a></li>
-
                                         <li><a href="#tab_shop" data-toggle="tab"><span class="icons shop" data-toggle="tooltip" data-placement="top" title="Shop"></span></a></li>
+                                        <li><a href="#tab_crafting" data-toggle="tab"><span class="icons crafting" data-toggle="tooltip" data-placement="top" title="Crafting"></span></a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab_inventory">
@@ -550,7 +550,10 @@
                                             </div>
 
                                         </div>
-                                    </div>
+                                        <div class="tab-pane" id="tab_crafting">
+                                            <div id="crafting"></div>
+                                            </div>
+                                        </div>
                                 </div>
                                 <div class="tab-pane" id="tab_b2">
                                     <div class="c3">
@@ -559,6 +562,7 @@
                                     <ul class="nav nav-tabs">
                                         <li><a href="#tab_weaponSkillsShow" data-toggle="tab"><span class="icons weapon" data-toggle="tooltip" data-placement="top" title="Weapon Skills"></span></a></li>
                                         <li><a href="#tab_passiveSkillsShow" data-toggle="tab"><span class="icons staff" data-toggle="tooltip" data-placement="top" title="Passive Skills"></span></a></li>
+                                        <li><a href="#tab_Professions" data-toggle="tab"><span class="icons profession" data-toggle="tooltip" data-placement="top" title="Professions"></span></a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="tab_weaponSkillsShow">
@@ -572,6 +576,9 @@
                                                 <h4>Passive skills</h4>
                                             </div>
                                             <div id="playerSkills"></div>
+                                        </div>
+                                        <div class="tab-pane" id="tab_Professions">
+                                            <div id="playerProfessions"></div>
                                         </div>
                                     </div>
                                 </div>

@@ -682,6 +682,17 @@ var itemPower = [
     },
 ];
 
+var craftItemTypes = [
+    {
+        type: 'weapon',
+    },
+    {
+        type: 'armor',
+    },
+    {
+        type: 'accessory',
+    },
+];
 var itemRarity = [
 {
     type: 'Legendary',
@@ -1544,6 +1555,33 @@ var InventoryItemTypes = [
       },*/
 ];
 
+var mineralList = [
+    {
+        name: 'Thaumerite',
+        displayName: 'Thaumerite',
+    },
+    {
+        name: 'LiteCyan',
+        displayName: 'Lite Cyan',
+    },
+    {
+        name: 'OhmStone',
+        displayName: 'Ohm Stone',
+    },
+    {
+        name: 'Techtite',
+        displayName: 'Techtite',
+    },
+    {
+        name: 'XilBond',
+        displayName: 'Xil Bond',
+    },
+    {
+        name: 'VulcanatedIron',
+        displayName: 'Vulcanated Iron',
+    },
+];
+
 var monsterAreas = [
     {
         type: 'BanditHideout',
@@ -1565,11 +1603,11 @@ var monsterAreas = [
            displayName: 'Twisted Marrow',
            icon: 'twistedMarrow'
        },
-       /*{
+       {
            type: 'Mining',
            displayName: 'Mining Cave',
            icon: 'twistedMarrow',
-       },*/
+       },
 ];
 var weaponTypeObject = [
     {
