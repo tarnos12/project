@@ -811,4 +811,5 @@ function MakeMonsterList() {
     };
     monsterList.VulcanatedIron = VulcanatedIron;
 };
+
 MakeMonsterList();
