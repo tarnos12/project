@@ -17,7 +17,7 @@ a.tooltips > span {
 a.tooltips:hover > span {
   visibility: visible;
   opacity: 1;
-  bottom: -80px;/* Tooltip Position */
+  bottom: -160px;/* Tooltip Position */
   right: 180%; /* Tooltip Position */
   margin-left: -76px;
   z-index: 999;

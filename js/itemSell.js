@@ -48,7 +48,7 @@ function sellAllRare(itemType) {
     total = 0;
 };
 function sellAllEpic(itemType) {
-    if (confirm("Are you sure?") == true) {
+    if (confirm("Are you sure?") === true) {
         var playerInventoryNew = [];
 
         for (var i = 0; i < playerInventory.length; i++) {
@@ -66,7 +66,7 @@ function sellAllEpic(itemType) {
     };
 };
 function sellAllLegendary(itemType) {
-    if (confirm("Are you sure?") == true) {
+    if (confirm("Are you sure?") === true) {
         var playerInventoryNew = [];
 
         for (var i = 0; i < playerInventory.length; i++) {
@@ -86,7 +86,7 @@ function sellAllLegendary(itemType) {
 //Single item sell
 function itemSell(id) {
     var item = playerInventory.filter(function (obj) {
-        return obj.id === id
+        return obj.id === id;
     })[0];
     var index = playerInventory.indexOf(item);
     if (index > -1) {

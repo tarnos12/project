@@ -62,7 +62,29 @@
         //Other
         backpackStatus: backpackStatus,
         statStatus: statStatus,
-    }
+        //Race Age
+        humanAge: characterRaces.human.raceAge,
+        halfElfAge: characterRaces.halfElf.raceAge,
+        dwarfAge: characterRaces.dwarf.raceAge,
+        orcAge: characterRaces.orc.raceAge,
+        elfAge: characterRaces.elf.raceAge,
+        halfingAge: characterRaces.halfing.raceAge,
+        sylphAge: characterRaces.sylph.raceAge,
+        giantAge: characterRaces.giant.raceAge,
+        //Profession info
+        MiningLevel: playerProfession.mining.level,
+        MiningExp: playerProfession.mining.experience,
+        MiningMaxExp: playerProfession.mining.maxExperience,
+        CraftingLevel: playerProfession.crafting.level,
+        CraftingExp: playerProfession.crafting.experience,
+        CraftingMaxExp: playerProfession.crafting.maxExperience,
+        HerbalismLevel: playerProfession.herbalism.level,
+        HerbalismExp: playerProfession.herbalism.experience,
+        HerbalismMaxExp: playerProfession.herbalism.maxExperience,
+        AlchemyLevel: playerProfession.alchemy.level,
+        AlchemyExp: playerProfession.alchemy.experience,
+        AlchemyMaxExp: playerProfession.alchemy.maxExperience
+    };
     if (saveType === 'autoSave') {
         if (slot === 0) {
             localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
@@ -165,8 +187,10 @@ function load(slot) {
         //Check if player object is missing any properties. It will add them with default values if they are missing(In case of an old save which didnt have certain properties)
         var playerDefault = defaultValues.properties;
         for (var key in playerDefault) {
-            if (savegame.playerProperties[key] === undefined) {
-                savegame.playerProperties[key] = playerDefault[key];
+            if (playerDefault.hasOwnProperty(key)) {
+                if (savegame.playerProperties[key] === undefined) {
+                    savegame.playerProperties[key] = playerDefault[key];
+                };
             };
         };
         if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
@@ -204,9 +228,6 @@ function load(slot) {
         if (typeof savegame.BalancedWarrior !== "undefined") playerPassive.balancedWarrior.level = savegame.BalancedWarrior;
         if (typeof savegame.MentalMastery !== "undefined") playerPassive.mentalMastery.level = savegame.MentalMastery;
         //Other
-        if (typeof savegame.pot !== "undefined") pot = savegame.pot;
-        if (typeof savegame.spot !== "undefined") spot = savegame.spot;
-        if (typeof savegame.mpot !== "undefined") mpot = savegame.mpot;
         if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
         if (typeof savegame.playerShield !== "undefined") equippedItems.shield = savegame.playerShield;
         if (typeof savegame.playerChest !== "undefined") equippedItems.chest = savegame.playerChest;
@@ -217,6 +238,33 @@ function load(slot) {
         if (typeof savegame.playerAmulet !== "undefined") equippedItems.amulet = savegame.playerAmulet;
         if (typeof savegame.playerTalisman !== "undefined") equippedItems.talisman = savegame.playerTalisman;
         if (typeof savegame.inventory !== "undefined") playerInventory = savegame.inventory;
+        //Race Age
+        if (typeof savegame.humanAge !== "undefined") characterRaces.human.raceAge = savegame.humanAge;
+        if (typeof savegame.halfElfAge !== "undefined") characterRaces.halfElf.raceAge = savegame.halfElfAge;
+        if (typeof savegame.dwarfAge !== "undefined") characterRaces.dwarf.raceAge = savegame.dwarfAge;
+        if (typeof savegame.orcAge !== "undefined") characterRaces.orc.raceAge = savegame.orcAge;
+        if (typeof savegame.elfAge !== "undefined") characterRaces.elf.raceAge = savegame.elfAge;
+        if (typeof savegame.halfingAge !== "undefined") characterRaces.halfing.raceAge = savegame.halfingAge;
+        if (typeof savegame.sylphAge !== "undefined") characterRaces.sylph.raceAge = savegame.sylphAge;
+        if (typeof savegame.giantAge !== "undefined") characterRaces.giant.raceAge = savegame.giantAge;
+        //Professions
+        if (typeof savegame.MiningLevel !== "undefined") playerProfession.mining.level = savegame.MiningLevel;
+        if (typeof savegame.MiningExp !== "undefined") playerProfession.mining.experience = savegame.MiningExp;
+        if (typeof savegame.MiningMaxExp !== "undefined") playerProfession.mining.maxExperience = savegame.MiningMaxExp;
+
+        if (typeof savegame.CraftingLevel !== "undefined") playerProfession.crafting.level = savegame.CraftingLevel;
+        if (typeof savegame.CraftingExp !== "undefined") playerProfession.crafting.experience = savegame.CraftingExp;
+        if (typeof savegame.CraftingMaxExp !== "undefined") playerProfession.crafting.maxExperience = savegame.CraftingMaxExp;
+
+        if (typeof savegame.HerbalismLevel !== "undefined") playerProfession.herbalism.level = savegame.HerbalismLevel;
+        if (typeof savegame.HerbalismExp !== "undefined") playerProfession.herbalism.experience = savegame.HerbalismExp;
+        if (typeof savegame.HerbalismMaxExp !== "undefined") playerProfession.herbalism.maxExperience = savegame.HerbalismMaxExp;
+
+        if (typeof savegame.AlchemyLevel !== "undefined") playerProfession.alchemy.level = savegame.AlchemyLevel;
+        if (typeof savegame.AlchemyExp !== "undefined") playerProfession.alchemy.experience = savegame.AlchemyExp;
+        if (typeof savegame.AlchemyMaxExp !== "undefined") playerProfession.alchemy.maxExperience = savegame.AlchemyMaxExp;
+
+
         document.getElementById("gold").innerHTML = player.properties.gold;
         loadIsEquipped();
         CreateWeaponSkillHtml();
@@ -238,6 +286,8 @@ function load(slot) {
         CreatePlayerHotBar();
         saveGameSlot();
         shopOther();
+        craftingHtml();
+        playerProfessionHtml();
     }
     else {
         if (confirm("Do you want to start a new game?") === true) {

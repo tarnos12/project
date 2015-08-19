@@ -52,12 +52,11 @@ function mine(monsterStat) {
             mining.level += 1;
             mining.experience = 0;
             mining.maxExperience *= 1.1;
-        }
+        };
     };
     playerProfessionHtml();
     craftingHtml();
     unlockMineral();
-    console.log(monsterStats.displayName)
 };
 
 function unlockMineral() {
@@ -79,6 +78,4 @@ function unlockMineral() {
     };
     CreateMonsterHtml();
 };
-
 playerProfessionHtml();
-craftingHtml();

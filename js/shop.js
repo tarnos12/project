@@ -8,11 +8,9 @@ superPotionStatus.price = 500;
 function potionBuy(type, count) {
     var priceTemp = type.price;
     var priceToPay = 0;
-    for (i = 0; i < count; i++) {
+    for (var i = 0; i < count; i++) {
         priceToPay += priceTemp;
-        priceTemp = priceTemp;
     };
-
     if (player.properties.gold >= priceToPay) {
         type.price = priceTemp;
         player.properties.gold -= priceToPay;
@@ -25,7 +23,7 @@ function potionBuy(type, count) {
 //Buy potions
 function buySmallPotion(count) {
     if (potionBuy(potionStatus, count)) {
-        player.properties.smallPotion += count
+        player.properties.smallPotion += count;
         updateHtml();
         var potionType = "Potions";
         Log('<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : ' + count + " " + potionType + ".<br />" + "</span>");
@@ -36,7 +34,7 @@ function buySmallPotion(count) {
 //Buy Super potions
 function buyMediumPotion(count) {
     if (potionBuy(mediumPotionStatus, count)) {
-        player.properties.mediumPotion += count
+        player.properties.mediumPotion += count;
         updateHtml();
         var potionType = "Medium Potions";
         Log('<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : ' + count + " " + potionType + ".<br />" + "</span>");
@@ -47,7 +45,7 @@ function buyMediumPotion(count) {
 //Buy Mega potions
 function buySuperPotion(count) {
     if (potionBuy(superPotionStatus, count)) {
-        player.properties.superPotion += count
+        player.properties.superPotion += count;
         updateHtml();
         var potionType = "Super Potions";
         Log('<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : ' + count + " " + potionType + ".<br />" + "</span>");
@@ -68,7 +66,7 @@ statStatus.multiplier = 1.01;
 function buyStuff(type, count) {
     var priceTemp = type.price;
     var priceToPay = 0;
-    for (i = 0; i < count; i++) {
+    for (var i = 0; i < count; i++) {
         priceToPay += priceTemp;
         priceTemp = Math.round(priceTemp * type.multiplier);
     };

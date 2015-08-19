@@ -1,7 +1,7 @@
 ﻿window.setInterval(function () {
     var hppercent = 100; //This function heal player automatically using potions.
     hppercent = (Math.floor((player.properties.health / player.functions.maxhealth()) * 100));
-    if (player.functions.maxhealth() >= 500 & player.properties.superPotion >= 1 & player.properties.isDead == false) {
+    if (player.functions.maxhealth() >= 500 & player.properties.superPotion >= 1 & player.properties.isDead === false) {
         if (hppercent <= 30) {
             if (player.properties.health + 500 >= player.functions.maxhealth()) {
                 player.properties.health = player.functions.maxhealth();
@@ -17,7 +17,7 @@
             }
         }
     }
-    else if (player.functions.maxhealth() >= 300 & player.properties.mediumPotion >= 1 & player.properties.isDead == false) {
+    else if (player.functions.maxhealth() >= 300 & player.properties.mediumPotion >= 1 & player.properties.isDead === false) {
         if (hppercent <= 30) {
             if (player.properties.health + 100 >= player.functions.maxhealth()) {
                 player.properties.health = player.functions.maxhealth();
@@ -33,7 +33,7 @@
             }
         }
     }
-    else if (player.properties.smallPotion >= 1 & player.properties.isDead == false) {
+    else if (player.properties.smallPotion >= 1 & player.properties.isDead === false) {
         if (hppercent <= 30) {
             if (player.properties.health + 20 >= player.functions.maxhealth()) {
                 player.properties.health = player.functions.maxhealth();
@@ -54,7 +54,7 @@
 
 //Using potions
 function useSmallPotion() {
-    if (player.properties.health == player.functions.maxhealth()) {
+    if (player.properties.health === player.functions.maxhealth()) {
         Log("Your health is full!");
     } else if (player.properties.health + 20 >= player.functions.maxhealth() & player.properties.smallPotion >= 1) {
         player.properties.smallPotion = player.properties.smallPotion - 1;
@@ -71,7 +71,7 @@ function useSmallPotion() {
 };
 
 function useMediumPotion() {
-    if (player.properties.health == player.functions.maxhealth()) {
+    if (player.properties.health === player.functions.maxhealth()) {
         Log("Your health is full!");
     } else if (player.properties.health + 100 >= player.functions.maxhealth() & player.properties.mediumPotion >= 1) {
         player.properties.mediumPotion = player.properties.mediumPotion - 1;
@@ -88,7 +88,7 @@ function useMediumPotion() {
 };
 
 function useSuperPotion() {
-    if (player.properties.health == player.functions.maxhealth()) {
+    if (player.properties.health === player.functions.maxhealth()) {
         Log("Your health is full!");
     } else if (player.properties.health + 500 >= player.functions.maxhealth() & player.properties.superPotion >= 1) {
         player.properties.superPotion = player.properties.superPotion - 1;

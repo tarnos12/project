@@ -1,40 +1,44 @@
 ﻿h1 {
-	font-family: Century Gothic, sans-serif;
-	font-size: 23px;
-	font-style: italic;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 25.3px;
+    font-family: Century Gothic, sans-serif;
+    font-size: 23px;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 25.3px;
 }
+
 h3 {
-	font-family: Century Gothic, sans-serif;
-	font-size: 20px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 700;
-	line-height: 18.7px;
+    font-family: Century Gothic, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 18.7px;
 }
+
 p.story {
-	font-family: Century Gothic, sans-serif;
-	font-size: 16px;
-	font-style: italic;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 20.4px;
+    font-family: Century Gothic, sans-serif;
+    font-size: 16px;
+    font-style: italic;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 20.4px;
 }
+
 blockquote {
-	font-family: Century Gothic, sans-serif;
-	font-size: 17px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 23px;
+    font-family: Century Gothic, sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 23px;
 }
+
 pre {
-	font-family: Century Gothic, sans-serif;
-	font-size: 12px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 400;
-	line-height: 13.2px;
+    font-family: Century Gothic, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 13.2px;
 }

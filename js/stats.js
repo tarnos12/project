@@ -20,8 +20,6 @@
     var maxExperience;
     var experience;
     var gold;
-    var buyBackpack;
-    var buyStat;
     var strength;
     var endurance;
     var agility;
@@ -99,19 +97,18 @@
 };
 
 function expPercent () {
-    var exppercent = 0; //Player experience in % values at the top bar
-    exppercent = (Math.floor((player.properties.experience / player.properties.maxExperience) * 100));
+    var exppercent = (Math.floor((player.properties.experience / player.properties.maxExperience) * 100)); //Player experience in % values at the top bar
     var divArray = document.getElementById('progressBar');
     divArray.style.width = ((exppercent) + '%');
     document.getElementById("exppercent").innerHTML = exppercent + "%";
 };
 function healthPercent() {
-    var healthPercent = (Math.floor((player.properties.health / player.functions.maxhealth()) * 100));
+    var healthPercentValue = (Math.floor((player.properties.health / player.functions.maxhealth()) * 100));
     var divArray = document.getElementById('progressBar2');
-    divArray.style.width = ((healthPercent) + '%');
+    divArray.style.width = ((healthPercentValue) + '%');
 };
 function healthRegen() { //Health regen
-    if (player.properties.isDead == false) {
+    if (player.properties.isDead === false) {
         if (player.properties.health < player.functions.maxhealth()) player.properties.health += player.functions.hpregen();
         if (player.properties.health > player.functions.maxhealth()) player.properties.health = player.functions.maxhealth();
     };
@@ -128,16 +125,18 @@ function manaRegen() { //Mana regen
 
 function levelUp() {
     for (var hero in characterRaces) {
-        var heroRace = characterRaces[hero];
-        if (player.properties.heroRace === heroRace.name) {
-            player.properties.baseStrength += heroRace.strength();
-            player.properties.baseEndurance += heroRace.endurance();
-            player.properties.baseAgility += heroRace.agility();
-            player.properties.baseDexterity += heroRace.dexterity();
-            player.properties.baseWisdom += heroRace.wisdom();
-            player.properties.baseIntelligence += heroRace.intelligence();
-            player.properties.baseLuck += heroRace.luck();
-            player.properties.skillPoints += 1;
+        if (characterRaces.hasOwnProperty(hero)) {
+            var heroRace = characterRaces[hero];
+            if (player.properties.heroRace === heroRace.name) {
+                player.properties.baseStrength += heroRace.strength();
+                player.properties.baseEndurance += heroRace.endurance();
+                player.properties.baseAgility += heroRace.agility();
+                player.properties.baseDexterity += heroRace.dexterity();
+                player.properties.baseWisdom += heroRace.wisdom();
+                player.properties.baseIntelligence += heroRace.intelligence();
+                player.properties.baseLuck += heroRace.luck();
+                player.properties.skillPoints += 1;
+            };
         };
     };
     quest();
@@ -336,17 +335,16 @@ function upgradeLuck(event) {
     updateHtml();
 };
 function autoAttack(monster, monsterStats) {
-    var ManaCost = monster.Stats.manaCost;
-    var autoBattle = window.setInterval(function () {
-        if (player.properties.mana >= ManaCost && player.properties.autoBattle == true) {
-            player.properties.mana -= ManaCost;
-            attack(monster, monsterStats)
-        }
-        else if (player.properties.autoBattle == false) {
+    var manaCost = monster.Stats.manaCost;
+    var autoBattle = window.setInterval(function() {
+        if (player.properties.mana >= manaCost && player.properties.autoBattle === true) {
+            player.properties.mana -= manaCost;
+            attack(monster, monsterStats);
+        } else if (player.properties.autoBattle === false) {
             clearInterval(autoBattle);
             player.properties.isAuto = false;
         };
-    }, 10000)
+    }, 10000);
 };
 
 
@@ -376,8 +374,7 @@ function upgradePassive(skillName) {
         }
         else {
             Log('<span id=\"skillLog\" class =\"bold\" style=\"color:blue; display:none;\">' + "Skill has reached max level." + "<br />" + "</span>");
-        }
-        
+        };
     };
     skillLog();
     CreatePlayerSkillsHtml();
