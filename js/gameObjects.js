@@ -1537,9 +1537,24 @@ var monsterAreas = [
            icon: 'twistedMarrow'
        },
        {
+           type: 'KharmSheath',
+           displayName: 'Kharm Sheath',
+           icon: 'kharmSheath'
+       },
+       {
+           type: 'FrigidAberration',
+           displayName: 'Frigid Aberration',
+           icon: 'frigidAberration'
+       },
+       {
+           type: 'Zyzx',
+           displayName: 'Capital of Zyzx',
+           icon: 'zyzx'
+       },
+       {
            type: 'Mining',
            displayName: 'Mining Cave',
-           icon: 'twistedMarrow'
+           icon: 'mining'
        }
 ];
 var weaponTypeObject = [

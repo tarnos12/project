@@ -305,6 +305,14 @@ function resetCheck() {
         reset(slot);
     };
 };
+function resetallSavesCheck() {
+    if (confirm("Do you want to remove all saves? Do it if your game breaks etc.") === true) {
+        reset(0)
+        reset(1)
+        reset(2)
+        reset(3)
+    };
+};
 function reset(slot) {
     if (slot === 0) {
         localStorage.removeItem("EncodedSaveGame");

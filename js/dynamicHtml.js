@@ -133,7 +133,7 @@ function CreateMonsterHtml() {
                         '<div class="col-xs-10 col-xs-offset-1" style="width:85%;">' +
                         '<div id="' + monster.Stats.id + '">' +
                         '<a href="#" class="tooltipA" id="monsterButton">' +
-                        '<img class="monster" src="images/' + "monster" + monster.Stats.id + '.png" alt="' + monster.Stats.displayName + '" onclick="' + onclickevent + '">' +
+                        '<img class="monster" src="images/monsters/' + monster.Stats.name + '.png" alt="' + monster.Stats.displayName + '" onclick="' + onclickevent + '">' +
                         '<span>' +
                         '<b>' + monster.Stats.displayName + '</b>';
                     if (monster.Stats.type !== "mining") {
@@ -455,13 +455,15 @@ function startingScreen() {
     var html = '';
     var newGame = "newGameSlot();"; // might pass value to pick a slot for new game
     var loadGame = "loadGameSlot();"; // later on might need to pass some value when loading, once I add more save slots...
+    var reset = "resetallSavesCheck();";
     var muteSound = "muteAudio();";
     var myAudio = document.getElementById('myAudio');
     html += '<div class="row">';
     html += '<div class ="col-xs-12 newGameButton">';
     html += '<div class="btn-group-vertical" role="group" aria-label="New game, load game">';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + newGame + '">New Game</button>';
-    html += '<button type="button" class="btn btn-default border" onclick="' + loadGame + '">Load</button>';
+    html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + loadGame + '">Load</button>';
+    html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + reset + '">Reset all saves</button>';
     html += '<label><input type="checkbox" id="hardcoreMode" style ="visibility:visible; position:relative;" onclick="handleClick();">Hardcore Mode?</label>';
     html += '</div>';
     html += '</div></div>';
@@ -572,27 +574,30 @@ function loadGameSlot() {
         saveInfo0 = JSON.parse(atob(localStorage['EncodedSaveGame']));
         displayInfo0 = "Level - " + saveInfo0.playerProperties.level + ' Race: ' + saveInfo0.playerProperties.heroRace;
     }
+    else {
+        displayInfo0 = "Empty Slot";
+    };
     if (localStorage['EncodedSaveGame1']) {
         saveInfo1 = JSON.parse(atob(localStorage['EncodedSaveGame1']));
         displayInfo = "Level - " + saveInfo1.playerProperties.level + ' Race: ' + saveInfo1.playerProperties.heroRace;
     }
     else {
         displayInfo = "Empty Slot";
-    }
+    };
     if (localStorage['EncodedSaveGame2']) {
         saveInfo2 = JSON.parse(atob(localStorage['EncodedSaveGame2']));
         displayInfo2 = "Level - " + saveInfo2.playerProperties.level + ' Race: ' + saveInfo2.playerProperties.heroRace;
     }
     else {
         displayInfo2 = "Empty Slot";
-    }
+    };
     if (localStorage['EncodedSaveGame3']) {
         saveInfo3 = JSON.parse(atob(localStorage['EncodedSaveGame3']));
         displayInfo3 = "Level - " + saveInfo3.playerProperties.level + ' Race: ' + saveInfo3.playerProperties.heroRace;
     }
     else {
         displayInfo3 = "Empty Slot";
-    }
+    };
 
     html += '<div class="row">';
     html += '<div class ="col-xs-12 newGameButton">';

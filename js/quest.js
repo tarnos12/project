@@ -25,8 +25,41 @@
     RegentCairLorn: false,
     DeepKingTarNuk: false,
 
-    Zombie: false,
+    DepthCrawler: false,
+    FadingGoblins: false,
+    StarBriteGolems: false,
+    Bannecs: false,
+    Kholders: false,
+    LivingWalls: false,
+    Keeper: false,
+    LegendoftheAncientDreamer: false,
 
+    BabyDuneDigger: false,
+    CamelSpiderHerds: false,
+    WasteEagle: false,
+    GrelTribeGuard: false,
+    GrelWarriors: false,
+    GrelSpitters: false,
+    GrelChief: false,
+    MommaDuneDiggerSheila: false,
+
+    CrystalFloater: false,
+    SnowWatcher: false,
+    CannibalTribeTrachid: false,
+    LegendoftheRageCalm: false,
+    IceGiantKing: false,
+    FrightGolem: false,
+    FrightGolemArmy: false,
+    LegendoftheRageFullPower: false,
+
+    LegionofDreadWallGuards: false,
+    Dreadnaughts: false,
+    DreadnaughtElite: false,
+    EmaciatedMagi: false,
+    MagiThunderCallers: false,
+    FalseDragonSlayers: false,
+    TorturedBeholder: false,
+    KingoftheLegionGrantBannecs: false,
 };
 
 function quest() {
@@ -535,8 +568,8 @@ function quest() {
         monsterUnlock.DeepKingTarNuk = true;
     };
     if (player.properties.level >= 25) {
-        monsterList.Zombie.Stats.isShown = true;
-        if (monsterUnlock.Zombie === false) {
+        monsterList.DepthCrawler.Stats.isShown = true;
+        if (monsterUnlock.DepthCrawler === false) {
             ozJotnarElement = "<h1><b>Oz Jotnar Epilogue</b></h1><br />" +
                 "<p class=\"story\">The Voice:  \"I have never seen a troll fight like that," +
                 "I wonder where he learned that from?\" Its voice rung like a bell within your head, is it getting stronger?<br /><br />" +
@@ -570,28 +603,100 @@ function quest() {
 
             document.getElementById("ozJotnar").innerHTML += ozJotnarElement;
         };
-        monsterUnlock.Zombie = true;
+        monsterUnlock.DepthCrawler = true;
     };
     if (player.properties.level >= 26) {
-        monsterList.Skeleton.Stats.isShown = true;
+        monsterList.FadingGoblins.Stats.isShown = true;
     };
     if (player.properties.level >= 27) {
-        monsterList.SkeletonSoldier.Stats.isShown = true;
+        monsterList.StarBriteGolems.Stats.isShown = true;
     };
     if (player.properties.level >= 28) {
-        monsterList.SkeletonArcher.Stats.isShown = true;
+        monsterList.Bannecs.Stats.isShown = true;
     };
     if (player.properties.level >= 29) {
-        monsterList.SkeletonMage.Stats.isShown = true;
+        monsterList.Kholders.Stats.isShown = true;
     };
     if (player.properties.level >= 30) {
-        monsterList.SkeletonHealer.Stats.isShown = true;
+        monsterList.LivingWalls.Stats.isShown = true;
     };
     if (player.properties.level >= 31) {
-        monsterList.Wraith.Stats.isShown = true;
+        monsterList.Keeper.Stats.isShown = true;
     };
     if (player.properties.level >= 32) {
-        monsterList.LichKing.Stats.isShown = true;
+        monsterList.LegendoftheAncientDreamer.Stats.isShown = true;
+    };
+    if (player.properties.level >= 33) {
+        monsterList.BabyDuneDigger.Stats.isShown = true;
+    };
+    if (player.properties.level >= 34) {
+        monsterList.CamelSpiderHerds.Stats.isShown = true;
+    };
+    if (player.properties.level >= 35) {
+        monsterList.WasteEagle.Stats.isShown = true;
+    };
+    if (player.properties.level >= 36) {
+        monsterList.GrelTribeGuard.Stats.isShown = true;
+    };
+    if (player.properties.level >= 37) {
+        monsterList.GrelWarriors.Stats.isShown = true;
+    };
+    if (player.properties.level >= 38) {
+        monsterList.GrelSpitters.Stats.isShown = true;
+    };
+    if (player.properties.level >= 39) {
+        monsterList.GrelChief.Stats.isShown = true;
+    };
+    if (player.properties.level >= 40) {
+        monsterList.MommaDuneDiggerSheila.Stats.isShown = true;
+    };
+    if (player.properties.level >= 41) {
+        monsterList.CrystalFloater.Stats.isShown = true;
+    };
+    if (player.properties.level >= 42) {
+        monsterList.SnowWatcher.Stats.isShown = true;
+    };
+    if (player.properties.level >= 43) {
+        monsterList.CannibalTribeTrachid.Stats.isShown = true;
+    };
+    if (player.properties.level >= 44) {
+        monsterList.LegendoftheRageCalm.Stats.isShown = true;
+    };
+    if (player.properties.level >= 45) {
+        monsterList.IceGiantKing.Stats.isShown = true;
+    };
+    if (player.properties.level >= 46) {
+        monsterList.FrightGolem.Stats.isShown = true;
+    };
+    if (player.properties.level >= 47) {
+        monsterList.FrightGolemArmy.Stats.isShown = true;
+    };
+    if (player.properties.level >= 48) {
+        monsterList.LegendoftheRageFullPower.Stats.isShown = true;
+    };
+    if (player.properties.level >= 49) {
+        monsterList.LegionofDreadWallGuards.Stats.isShown = true;
+    };
+    if (player.properties.level >= 50) {
+        monsterList.Dreadnaughts.Stats.isShown = true;
+    };
+    if (player.properties.level >= 51) {
+        monsterList.DreadnaughtElite.Stats.isShown = true;
+    };
+    if (player.properties.level >= 52) {
+        monsterList.EmaciatedMagi.Stats.isShown = true;
+    };
+    if (player.properties.level >= 53) {
+        monsterList.MagiThunderCallers.Stats.isShown = true;
+    };
+    if (player.properties.level >= 54) {
+        monsterList.FalseDragonSlayers.Stats.isShown = true;
+    };
+    if (player.properties.level >= 55) {
+        monsterList.TorturedBeholder.Stats.isShown = true;
+    };
+    if (player.properties.level >= 56) {
+        monsterList.KingoftheLegionGrantBannecs.Stats.isShown = true;
     };
     CreateMonsterHtml();
 };
