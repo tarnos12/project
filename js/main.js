@@ -570,8 +570,8 @@ var player = {
                 return 0;
             }
             else {
-                if (((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100))) >= 20) {
-                    return 20;
+                if (((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100))) >= 75) {
+                    return 75;
                 }
                 else {
                     return ((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100)));
@@ -579,11 +579,11 @@ var player = {
             };
         },
         criticalChance: function () {
-            if (((10 + player.functions.totalCriticalChance() + (player.properties.raceCriticalChance) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01))) > 50) {
-                return 50 + weaponSkillList.ranged.archerFocus.damage();
+            if (((10 + player.functions.totalCriticalChance() + (player.properties.raceCriticalChance) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01))) > 75) {
+                return 75 + weaponSkillList.ranged.archerFocus.damage();
             }
             else {
-                return ((10 + player.functions.totalCriticalChance() + (player.properties.raceCriticalChance) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)));
+                return ((10 + weaponSkillList.ranged.archerFocus.damage() + player.functions.totalCriticalChance() + (player.properties.raceCriticalChance) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)));
             }
         },
         criticalDamage: function () {
