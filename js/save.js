@@ -15,6 +15,7 @@
     document.getElementById("saveTime").innerHTML = "Last saved: " + hour + ":" + minute + ":" + second;
     var saveGame = {
         playerProperties: player.properties,
+        hotBar: hotBarItem,
         //Equipped Items
         playerWeapon: equippedItems.weapon,
         playerShield: equippedItems.shield,
@@ -194,6 +195,7 @@ function load(slot) {
             };
         };
         if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
+        if (typeof savegame.hotBar !== "undefined") hotBarItem = savegame.hotBar;
         if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
         if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.experience = savegame.SwordExp;
         if (typeof savegame.SwordMaxExp !== "undefined") weaponMastery.sword.maxExperience = savegame.SwordMaxExp;

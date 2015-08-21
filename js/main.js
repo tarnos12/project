@@ -27,6 +27,32 @@ var defaultValues = {
 //PLAYER STATS
 var player = {
     properties: {
+        potionInventory: [
+            {
+                type: 'smallPotion',
+                displayName: 'Small Potion',
+                use: 'useSmallPotion',
+                amount: 0,
+                effect: 'healing',
+                healAmount: 100
+            },
+            {
+                type: 'mediumPotion',
+                displayName: 'Medium Potion',
+                use: 'useMediumPotion',
+                amount: 0,
+                effect: 'healing',
+                healAmount: 500
+            },
+            {
+                type: 'superPotion',
+                displayName: 'Super Potion',
+                use: 'useSuperPotion',
+                amount: 0,
+                effect: 'healing',
+                healAmount: 1000
+            }
+        ],
         //Minerals
         Thaumerite: 0,
         LiteCyan: 0,
@@ -1034,7 +1060,7 @@ function displayLogInfo() {
     updateHtml();
     mainLog();
     CreateMonsterHtml();
-    setTimeout(disableButtons, 3000); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
+    setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
 };
 function potionBuyLog() {
     $("#potionBuy").delay(200).fadeIn().delay(3000).fadeOut(5000, function () { $(this).remove(); });
@@ -1692,23 +1718,3 @@ function copyPlayerProperties() {
 };
 copyPlayerProperties();
 
-function addHotBarPotion(type, name, use) {
-    var hotBarValue = document.getElementsByName('hotBarValue');
-
-    for (var i = 0, length = hotBarValue.length; i < length; i++) {
-        if (hotBarValue[i].checked) {
-            // do whatever you want with the checked radio
-            hotBarValue = hotBarValue[i].value;
-
-            // only one radio can be logically checked, don't check the rest
-            break;
-        }
-    }
-    if (hotBarValue <= 8) {
-        hotBarValue-- //Decrease value by 1, so it fits 'array'
-        hotBarItem[hotBarValue].type = type;
-        hotBarItem[hotBarValue].displayName = name;
-        hotBarItem[hotBarValue].use = use;
-    };
-    CreatePlayerHotBar();
-};

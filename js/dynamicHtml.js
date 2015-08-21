@@ -324,34 +324,18 @@ function CreateInventoryWeaponHtml() {
             html += 'Choose hot bar slot, then press a button next to a potion.';
             html += '<form role="form">';
             html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="1" checked="checked">1</input></label>'
-            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="2" checked="checked">2</input></label>'
-            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="3" checked="checked">3</input></label>'
-            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="4" checked="checked">4</input></label>'
-            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="5" checked="checked">5</input></label>'
-            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="6" checked="checked">6</input></label>'
-            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="7" checked="checked">7</input></label>'
-            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="8" checked="checked">8</input></label>'
+            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="2">2</input></label>'
+            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="3">3</input></label>'
+            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="4">4</input></label>'
+            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="5">5</input></label>'
+            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="6">6</input></label>'
+            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="7">7</input></label>'
+            html += '<label class="radio-inline"><input class="visibilityLabel" type="radio" name="hotBarValue" value="8">8</input></label>'
             html += '</form>';
             html += '</div>';
             html += '</div>';
-            for (var item in playerPotionList) {
-                if (playerPotionList.hasOwnProperty(item)) {
-                    var potion = hotBarItem[item];
-                    var potionType = potion.type
-                    var displayName = potion.displayName;
-                    var potionUse = potion.use;
-                    var potionName = potion.type.capitalizeFirstLetter();
-                    html += '<div class="row">';
-                    html += '<div class="col-xs-6">';
-                    html += '<img src="images/' + potionName + '.png" onclick="use' + potionName + '();" alt="' + potionName + '">';
-                    html += player.properties[potionType];
-                    html += '</div>';
-                    html += '<div class="col-xs-6">';
-                    html += '<button type="button" class="inventoryOther" onclick="addHotBarPotion(' + "'" + potionType + "', " + "'" + displayName + "', " + "'" + potionUse + "'" + ')' + '">Hot Bar</button>';
-                    html += '</div>';
-                    html += '</div>';
-                };
-            };
+            html += '<div id="potionInventory">';
+           
         };
         html += '</div>';
         html += '</div>';
@@ -455,29 +439,6 @@ function CreatePlayerSkillsHtml() {
     html += '</div>';
     html += '</div>';
     document.getElementById("playerSkills").innerHTML = html;
-};
-
-function CreatePlayerHotBar() {
-    var html = '';
-    html += '<div class="row" style="margin-top:10px;margin-bottom:10px;">';
-    html += '<div class="col-xs-10 col-xs-offset-1">';
-    html += '<div class="row" style="border:2px solid;">';
-    for (var item in hotBarItem) {
-        if (hotBarItem.hasOwnProperty(item)) {
-            var potion = hotBarItem[item];
-            var potionName = potion.type.capitalizeFirstLetter();
-            var displayName = potion.displayName;
-            if (potion.type !== 'Empty') {
-                html += '<div class="col-xs-1">';
-                html += '<img src="images/' + potionName + '.png" onclick="use' + potionName + '();" alt="' + displayName + '">' + player.properties[potion.type] + '<br />';
-                html += '</div>';
-            };
-        };
-    };
-    html += '</div>';
-    html += '</div>';
-    html += '</div>';
-    document.getElementById("hotBar").innerHTML = html;
 };
 
 //Adds a logo to the starting screen

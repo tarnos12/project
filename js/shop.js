@@ -25,37 +25,40 @@ function potionBuy(type, count) {
 //Buy potions
 function buySmallPotion(count) {
     if (potionBuy(potionStatus, count)) {
-        player.properties.smallPotion += count;
+        player.properties.potionInventory[0].amount += count;
         updateHtml();
         var potionType = "Potions";
         Log("<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : " + count + " " + potionType + ".<br />" + "</span>");
         potionBuyLog();
     };
     shopOther();
+    createPotionInventory()
 };
 
 //Buy Super potions
 function buyMediumPotion(count) {
     if (potionBuy(mediumPotionStatus, count)) {
-        player.properties.mediumPotion += count;
+        player.properties.potionInventory[1].amount += count;
         updateHtml();
         var potionType = "Medium Potions";
         Log("<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : " + count + " " + potionType + ".<br />" + "</span>");
         potionBuyLog();
     };
     shopOther();
+    createPotionInventory()
 };
 
 //Buy Mega potions
 function buySuperPotion(count) {
     if (potionBuy(superPotionStatus, count)) {
-        player.properties.superPotion += count;
+        player.properties.potionInventory[2].amount += count;
         updateHtml();
         var potionType = "Super Potions";
         Log("<span id=\"potionBuy\" class =\"bold\" style=\"color:green; display:none;\">You bought : " + count + " " + potionType + ".<br />" + "</span>");
         potionBuyLog();
     };
     shopOther();
+    createPotionInventory()
 };
 
 var backpackStatus = {};
