@@ -193,10 +193,10 @@ var craftItemTypes = [
         this.experience = 0;
         this.maxExperience = 100;
     };
-    var mining = new newProfession("Mining", "Mining");
-    var herbalism = new newProfession("Herbalism", "Herbalism");
-    var crafting = new newProfession("Crafting", "Crafting");
-    var alchemy = new newProfession("Alchemy", "Alchemy");
+    var mining = new newProfession("Mining", "mining");
+    var herbalism = new newProfession("Herbalism", "herbalism");
+    var crafting = new newProfession("Crafting", "crafting");
+    var alchemy = new newProfession("Alchemy", "alchemy");
 
     mining.damage = function () {
         return ((player.properties.level - 1) + this.level) * 2;
