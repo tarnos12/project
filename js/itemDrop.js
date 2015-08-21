@@ -19,7 +19,7 @@
     CreateInventoryWeaponHtml();
 };
 
-function getItemType(monster, isDrop, craftItemType, craftitemSubType, craftitemLevel) { //isDrop will check if generated item is monster drop or item sold in shop
+function getItemType(monster, isDrop, craftItemType, craftitemSubType, craftitemLevel, craftItemRarity) { //isDrop will check if generated item is monster drop or item sold in shop/crafted
     var monsterStats = monster;
     var dropItem = {};
     var totalChance = 0;
@@ -38,7 +38,12 @@ function getItemType(monster, isDrop, craftItemType, craftitemSubType, craftitem
         var monsterMinLevel = monsterStats - 5;
         itemLevel = Math.floor(Math.random() * (monsterStats - monsterMinLevel + 1)) + monsterMinLevel; // get itemLevel based on monster level / 2 and monster level.
     };
-    dropItem["iLvl"] = itemLevel;
+    if (craftitemLevel !== undefined) {
+        dropItem["iLvl"] = craftitemLevel;
+    }
+    else {
+        dropItem["iLvl"] = itemLevel;
+    }
     dropItem["id"] = player.properties.itemIdNumber;
     if (craftItemType === undefined) {
         for (var itemType in itemTypes) {
@@ -55,10 +60,10 @@ function getItemType(monster, isDrop, craftItemType, craftitemSubType, craftitem
     else {
         dropItem["itemType"] = craftItemType;
     };
-    getItemSubType(monster, dropItem, isDrop, craftitemSubType);
+    getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemRarity);
 };
 
-function getItemSubType(monster, dropItem, isDrop, craftitemSubType) {
+function getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemRarity) {
     var totalChance = 0;
     var randomNumber = 0;
     var itemChanceTotal = "";
@@ -133,13 +138,16 @@ function getItemSubType(monster, dropItem, isDrop, craftitemSubType) {
             };
         };
     };
-    getItemRarity(monster, dropItem, isDrop);
+    getItemRarity(monster, dropItem, isDrop, craftItemRarity);
 };
 
-function getItemRarity(monster, dropItem, isDrop) {
+function getItemRarity(monster, dropItem, isDrop, craftItemRarity) {
     var totalChance = 0;
     var randomNumber = 0;
-    var itemChanceTotal = itemRarity[itemRarity.length - 1];
+    var itemChanceTotal = itemRarity[itemRarity.length - 1]; // last array element
+    if (craftItemRarity !== undefined) {
+        itemChanceTotal = itemRarity[craftItemRarity]; //Based on crafter button you press, will pick an array position.
+    };
     totalChance = itemChanceTotal.chance;
     randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
     for (var itemType in itemRarity) {

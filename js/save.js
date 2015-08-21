@@ -290,6 +290,7 @@ function load(slot) {
         shopOther();
         craftingHtml();
         playerProfessionHtml();
+        createPotionInventory();
     }
     else {
         if (confirm("Do you want to start a new game?") === true) {

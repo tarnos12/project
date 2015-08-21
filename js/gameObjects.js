@@ -1,124 +1,6 @@
 ﻿
 
 
-var craftCost = [
-    {
-        type: 'Common',
-        levelReq: 1,
-        costTypeAmount: 1,
-        costType: [
-            {
-                type: 'Thaumerite',
-                cost: 10
-            }
-        ],
-        displayName:[
-            {
-                name: 'Thaumerite'
-            }
-        ],
-    },
-    {
-        type: 'Uncommon',
-        levelReq: 5,
-        costTypeAmount: 2,
-        costType: [
-            {
-                type: 'Thaumerite',
-                cost: 10
-            },
-            {
-                type: 'LiteCyan',
-                cost: 10
-            }
-        ],
-        displayName: [
-            {
-                name: 'Thaumerite'
-            },
-            {
-                name: 'Lite Cyan'
-            }
-        ],
-    },
-    {
-        type: 'Rare',
-        levelReq: 10,
-        costTypeAmount: 2,
-        costType: [
-            {
-                type: 'LiteCyan',
-                cost: 10
-            },
-            {
-                type: 'OhmStone',
-                cost: 10
-            },
-        ],
-        displayName: [
-            {
-                name: 'Lite Cyan'
-            },
-            {
-                name: 'Ohm Stone'
-            }
-        ],
-    },
-    {
-        type: 'Epic',
-        levelReq: 15,
-        costTypeAmount: 2,
-        costType: [
-            {
-                type: 'OhmStone',
-                cost: 10
-            },
-            {
-                type: 'Techtite',
-                cost: 10
-            }
-        ],
-        displayName: [
-            {
-                name: 'Ohm Stone'
-            },
-            {
-                name: 'Techtite'
-            }
-        ]
-    },
-    {
-        type: 'Legendary',
-        levelReq: 20,
-        costTypeAmount: 3,
-        costType: [
-            {
-                type: 'Techtite',
-                cost: 10
-            },
-            {
-                type: 'XilBond',
-                cost: 10
-            },
-            {
-                type: 'VulcanatedIron',
-                cost: 10
-            }
-        ],
-        displayName: [
-            {
-                name: 'Techtite'
-            },
-            {
-                name: 'Xil Bond'
-            },
-            {
-                name: 'Vulcanated Iron'
-            }
-        ]
-    }
-];
-
 var secondaryStatInfo = [
      {
          type: 'Stats',
@@ -803,17 +685,7 @@ var itemPower = [
     }
 ];
 
-var craftItemTypes = [
-    {
-        type: 'weapon'
-    },
-    {
-        type: 'armor'
-    },
-    {
-        type: 'accessory'
-    }
-];
+
 var itemRarity = [
 {
     type: 'Legendary',
@@ -1637,66 +1509,11 @@ var InventoryItemTypes = [
      },
       {
           type: 'other',
-          displayName: 'Other'
+          displayName: 'Other',
+          icon: 'potions'
       }
 ];
 
-var mineralList = [
-    //Ore
-    {
-        name: 'Thaumerite',
-        displayName: 'Thaumerite'
-    },
-    {
-        name: 'LiteCyan',
-        displayName: 'Lite Cyan'
-    },
-    {
-        name: 'OhmStone',
-        displayName: 'Ohm Stone'
-    },
-    {
-        name: 'Techtite',
-        displayName: 'Techtite'
-    },
-    {
-        name: 'XilBond',
-        displayName: 'Xil Bond'
-    },
-    {
-        name: 'VulcanatedIron',
-        displayName: 'Vulcanated Iron'
-    },
-    //Herbs
-    {
-        name: 'RusinsSinew',
-        displayName: 'Rusins Sinew'
-    },
-    {
-        name: 'EssenceofWillow',
-        displayName: 'Essence of Willow'
-    },
-    {
-        name: 'SinnersDelight',
-        displayName: 'Sinners Delight'
-    },
-    {
-        name: 'BarletBark',
-        displayName: 'Barlet Bark'
-    },
-    {
-        name: 'Vystim',
-        displayName: 'Vystim'
-    },
-    {
-        name: 'ThistleWart',
-        displayName: 'Thistle Wart'
-    },
-    {
-        name: 'LillyWisp',
-        displayName: 'Lilly wisp'
-    }
-];
 
 var monsterAreas = [
     {

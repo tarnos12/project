@@ -52,14 +52,15 @@ function createPotionInventory() {
             var potionAmount = potion.amount;
             var potionName = potion.type.capitalizeFirstLetter();
             var potionEffect = potion.effect;
+            var potionHeal = potion.bonus;
             var index = item;
             html += '<div class="row">';
             html += '<div class="col-xs-6">';
-            html += '<img src="images/' + potionName + '.png" onclick="usePotion(' + index + ", " + "'" + potionEffect + "'" + ');" alt="' + potionName + '">';
+            html += '<img src="images/' + potionName + '.png" onclick="usePotion(' + index + ", " + "'" + potionEffect + "'" + ');" alt="' + potionName + '" data-toggle="tooltip" data-placement="top" title="' + displayName + '"></span>';
             html += potionAmount;
             html += '</div>';
             html += '<div class="col-xs-6">';
-            html += '<button type="button" class="inventoryOther" onclick="addHotBarPotion(' + "'" + potionType + "', " + "'" + displayName + "', " + "'" + potionUse + "', " + potionAmount + ", '" + potionEffect + "', " + item + ')' + '">Hot Bar</button>';
+            html += '<button type="button" class="inventoryOther" onclick="addHotBarPotion(' + "'" + potionType + "', " + "'" + displayName + "', " + "'" + potionUse + "', " + potionAmount + ", '" + potionEffect + "', " + item + ", '" + potionHeal + "'" + ')' + '">Hot Bar</button>';
             html += '</div>';
             html += '</div>';
         };
@@ -82,7 +83,7 @@ function CreatePlayerHotBar() {
             if (potion.type !== 'Empty') {
                 var playerAmount = player.properties.potionInventory[index].amount;
                 html += '<div class="col-xs-1">';
-                html += '<img style="cursor:pointer;" src="images/' + potionName + '.png" onclick="usePotion(' + index + ');" alt="' + displayName + '">[' + playerAmount + ']';
+                html += '<img style="cursor:pointer;" src="images/' + potionName + '.png" onclick="usePotion(' + index + ');" alt="' + displayName + '" data-toggle="tooltip" data-placement="top" title="' + displayName + " " + potion.bonus + ' hp">[' + playerAmount + ']';
                 html += '</div>';
             }
         };
@@ -91,9 +92,10 @@ function CreatePlayerHotBar() {
     html += '</div>';
     html += '</div>';
     document.getElementById("hotBar").innerHTML = html;
+    testss();
 };
 
-function addHotBarPotion(type, name, use, amount, effect, index) { //Effect = healing/stat bonus
+function addHotBarPotion(type, name, use, amount, effect, index, bonus) { //Effect = healing/stat bonus
     var hotBarValue = document.getElementsByName('hotBarValue');
     for (var i = 0, length = hotBarValue.length; i < length; i++) {
         if (hotBarValue[i].checked) {
@@ -112,6 +114,7 @@ function addHotBarPotion(type, name, use, amount, effect, index) { //Effect = he
         hotBarItem[hotBarValue].amount = amount;
         hotBarItem[hotBarValue].effect = effect;
         hotBarItem[hotBarValue].index = index;
+        hotBarItem[hotBarValue].bonus = bonus;
     };
     CreatePlayerHotBar();
 };
@@ -121,7 +124,7 @@ function usePotion(index) {
     var effect = potion.effect;
     if (effect === 'healing' && potion.amount > 0) {
         if (player.properties.health < player.functions.maxhealth()) {
-            player.properties.health += potion.healAmount;
+            player.properties.health += potion.bonus;
             potion.amount--;
         };
         if (player.properties.health > player.functions.maxhealth()) {

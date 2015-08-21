@@ -34,7 +34,7 @@ var player = {
                 use: 'useSmallPotion',
                 amount: 0,
                 effect: 'healing',
-                healAmount: 100
+                bonus: 100
             },
             {
                 type: 'mediumPotion',
@@ -42,7 +42,7 @@ var player = {
                 use: 'useMediumPotion',
                 amount: 0,
                 effect: 'healing',
-                healAmount: 500
+                bonus: 500
             },
             {
                 type: 'superPotion',
@@ -50,7 +50,7 @@ var player = {
                 use: 'useSuperPotion',
                 amount: 0,
                 effect: 'healing',
-                healAmount: 1000
+                bonus: 1000
             }
         ],
         //Minerals
@@ -144,6 +144,9 @@ var player = {
         mana: 10
     },
     functions: {
+        maxBattleTurns: function(){
+            return Math.floor(10 + (player.functions.totalEndurance() / 10) + (player.functions.totalAgility() / 10) + (player.functions.totalDexterity() / 10))
+        },
         weapon: '',
         shield: '',
         chest: '',
@@ -685,7 +688,7 @@ function disableButtons() {
 function attack(monsterStat) {
     battleTurn = 1;
     var monsterStats = monsterStat.Stats;
-    while (battleTurn > 0 && battleTurn <= 20) {
+    while (battleTurn > 0 && battleTurn <= player.functions.maxBattleTurns()) {
         if (monsterStats.hp >= 1 && player.properties.isDead === false) {
             playerAttack(monsterStat, monsterStats);
             if (monsterStats.hp < 1) {
@@ -707,7 +710,7 @@ function attack(monsterStat) {
 };
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
 function DrawBattle() {
-    if (battleTurn === 21) {
+    if (battleTurn === (player.functions.maxBattleTurns() + 1)) {
         displayLogInfo();
         battleTurn = -1;
     };
@@ -1033,8 +1036,8 @@ function monsterGold(monsterStat, monsterStats) {
 };
 
 function displayLogInfo() {
-    if (battleTurn > 20) {
-        battleTurn = 20;
+    if (battleTurn > player.functions.maxBattleTurns()) {
+        battleTurn = player.functions.maxBattleTurns();
     };
     Log('<span id=\"test1\" class =\"bold\" style=\"color:#FF8000; display:none;\">Critical Rating: ' + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%" + "<br />" + "</span>");
     Log('<span id=\"test2\" class =\"bold\" style=\"color:red; display:none;\">Enemy dealt: ' + damageTaken + " " + "damage." + "<br />" + "</span>");
@@ -1052,7 +1055,7 @@ function displayLogInfo() {
     enemyBlock = 0;
     accuracyRate = 0;
     monsterDamage = 0;
-    if (battleTurn >= 20) {
+    if (battleTurn >= player.functions.maxBattleTurns()) {
         Log('<span id=\"draw\" class =\"bold\" style=\"color:blue; display:none;\">' + "Draw" + "<br />" + "</span>");
         drawLog();
     };
