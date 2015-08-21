@@ -28,15 +28,43 @@ var JottunMainInfantry = {};
 var RegentCairLorn = {};
 var DeepKingTarNuk = {};
 
-var Zombie = {};
-var Skeleton = {};
-var SkeletonSoldier = {};
-var SkeletonArcher = {};
-var SkeletonMage = {};
-var SkeletonHealer = {};
-var Wraith = {};
-var LichKing = {};
+var DepthCrawler = {};
+var FadingGoblins = {};
+var StarBriteGolems = {};
+var Bannecs = {};
+var Kholders = {};
+var LivingWalls = {};
+var Keeper = {};
+var LegendoftheAncientDreamer = {};
 
+var BabyDuneDigger = {};
+var CamelSpiderHerds = {};
+var WasteEagle = {};
+var GrelTribeGuard = {};
+var GrelWarriors = {};
+var GrelSpitters = {};
+var GrelChief = {};
+var MommaDuneDiggerSheila = {};
+
+var CrystalFloater = {};
+var SnowWatcher = {};
+var CannibalTribeTrachid = {};
+var LegendoftheRageCalm = {};
+var IceGiantKing = {};
+var FrightGolem = {};
+var FrightGolemArmy = {};
+var LegendoftheRageFullPower = {};
+
+var LegionofDreadWallGuards = {};
+var Dreadnaughts = {};
+var DreadnaughtElite = {};
+var EmaciatedMagi = {};
+var MagiThunderCallers = {};
+var FalseDragonSlayers = {};
+var TorturedBeholder = {};
+var KingoftheLegionGrantBannecs = {};
+
+//Minerals
 var Thaumerite = {};
 var LiteCyan = {};
 var OhmStone = {};
@@ -525,7 +553,7 @@ function MakeMonsterList() {
         manaCost: 240
     };
     monsterList.DeepKingTarNuk = DeepKingTarNuk;
-    Zombie.Stats = {
+    DepthCrawler.Stats = {
         hp: 35000,
         maxHp: 35000,
         def: 160,
@@ -534,8 +562,8 @@ function MakeMonsterList() {
         baseExp: 45000,
         acc: 95,
         eva: 5,
-        name: "Zombie",
-        displayName: "Zombie",
+        name: "DepthCrawler",
+        displayName: "Depth Crawler",
         type: "boss",
         id: 25,
         level: 72,
@@ -544,8 +572,8 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 250
     };
-    monsterList.Zombie = Zombie;
-    Skeleton.Stats = {
+    monsterList.DepthCrawler = DepthCrawler;
+    FadingGoblins.Stats = {
         hp: 40000,
         maxHp: 40000,
         def: 170,
@@ -554,8 +582,8 @@ function MakeMonsterList() {
         baseExp: 55000,
         acc: 95,
         eva: 5,
-        name: "Skeleton",
-        displayName: "Skeleton",
+        name: "FadingGoblins",
+        displayName: "Fading Goblins",
         type: "boss",
         id: 26,
         level: 74,
@@ -564,8 +592,8 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 260
     };
-    monsterList.Skeleton = Skeleton;
-    SkeletonSoldier.Stats = {
+    monsterList.FadingGoblins = FadingGoblins;
+    StarBriteGolems.Stats = {
         hp: 50000,
         maxHp: 50000,
         def: 180,
@@ -574,8 +602,8 @@ function MakeMonsterList() {
         baseExp: 65000,
         acc: 95,
         eva: 5,
-        name: "SkeletonSoldier",
-        displayName: "Skeleton Soldier",
+        name: "StarBriteGolems",
+        displayName: "Star-Brite Golems",
         type: "boss",
         id: 27,
         level: 76,
@@ -584,18 +612,18 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 270
     };
-    monsterList.SkeletonSoldier = SkeletonSoldier;
-    SkeletonArcher.Stats = {
+    monsterList.StarBriteGolems = StarBriteGolems;
+    Bannecs.Stats = {
         hp: 60000,
         maxHp: 60000,
         def: 190,
         minDmg: 800,
         maxDmg: 900,
-        baseExp: 80000,
+        baseExp: 75000,
         acc: 95,
         eva: 5,
-        name: "SkeletonArcher",
-        displayName: "Skeleton Archer",
+        name: "Bannecs",
+        displayName: "Bannecs",
         type: "boss",
         id: 28,
         level: 78,
@@ -604,18 +632,18 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 280
     };
-    monsterList.SkeletonArcher = SkeletonArcher;
-    SkeletonMage.Stats = {
+    monsterList.Bannecs = Bannecs;
+    Kholders.Stats = {
         hp: 75000,
         maxHp: 75000,
         def: 200,
         minDmg: 900,
         maxDmg: 1000,
-        baseExp: 100000,
+        baseExp: 85000,
         acc: 95,
         eva: 5,
-        name: "SkeletonMage",
-        displayName: "Skeleton Mage",
+        name: "Kholders",
+        displayName: "Kholders",
         type: "boss",
         id: 29,
         level: 80,
@@ -624,18 +652,18 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 290
     };
-    monsterList.SkeletonMage = SkeletonMage;
-    SkeletonHealer.Stats = {
+    monsterList.Kholders = Kholders;
+    LivingWalls.Stats = {
         hp: 90000,
         maxHp: 90000,
         def: 210,
         minDmg: 1000,
         maxDmg: 1100,
-        baseExp: 120000,
+        baseExp: 100000,
         acc: 95,
         eva: 5,
-        name: "SkeletonHealer",
-        displayName: "Skeleton Healer",
+        name: "LivingWalls",
+        displayName: "Living Walls",
         type: "boss",
         id: 30,
         level: 85,
@@ -644,18 +672,18 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 300
     };
-    monsterList.SkeletonHealer = SkeletonHealer;
-    Wraith.Stats = {
+    monsterList.LivingWalls = LivingWalls;
+    Keeper.Stats = {
         hp: 110000,
         maxHp: 110000,
         def: 220,
         minDmg: 1100,
         maxDmg: 1250,
-        baseExp: 150000,
+        baseExp: 115000,
         acc: 95,
         eva: 5,
-        name: "Wraith",
-        displayName: "Wraith(ELITE)",
+        name: "Keeper",
+        displayName: "Keeper(ELITE)",
         type: "boss",
         id: 31,
         level: 90,
@@ -664,18 +692,18 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 310
     };
-    monsterList.Wraith = Wraith;
-    LichKing.Stats = {
+    monsterList.Keeper = Keeper;
+    LegendoftheAncientDreamer.Stats = {
         hp: 133700,
         maxHp: 133700,
         def: 230,
         minDmg: 1337,
         maxDmg: 1337,
-        baseExp: 250000,
+        baseExp: 130000,
         acc: 95,
         eva: 5,
-        name: "LichKing",
-        displayName: "Lich King(BOSS)",
+        name: "LegendoftheAncientDreamer",
+        displayName: "Legend of the Ancient Dreamer(BOSS)",
         type: "boss",
         id: 32,
         level: 100,
@@ -684,7 +712,491 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 320
     };
-    monsterList.LichKing = LichKing;
+    monsterList.LegendoftheAncientDreamer = LegendoftheAncientDreamer;
+    BabyDuneDigger.Stats = {
+        hp: 160000,
+        maxHp: 160000,
+        def: 240,
+        minDmg: 1400,
+        maxDmg: 1500,
+        baseExp: 150000,
+        acc: 95,
+        eva: 5,
+        name: "BabyDuneDigger",
+        displayName: "Baby Dune Digger",
+        type: "boss",
+        id: 33,
+        level: 105,
+        area: "KharmSheath",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.BabyDuneDigger = BabyDuneDigger;
+    CamelSpiderHerds.Stats = {
+        hp: 185000,
+        maxHp: 185000,
+        def: 250,
+        minDmg: 1600,
+        maxDmg: 1800,
+        baseExp: 175000,
+        acc: 95,
+        eva: 5,
+        name: "CamelSpiderHerds",
+        displayName: "Camel Spider Herds",
+        type: "boss",
+        id: 34,
+        level: 110,
+        area: "KharmSheath",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.CamelSpiderHerds = CamelSpiderHerds;
+    WasteEagle.Stats = {
+        hp: 200000,
+        maxHp: 200000,
+        def: 260,
+        minDmg: 1800,
+        maxDmg: 2000,
+        baseExp: 200000,
+        acc: 95,
+        eva: 5,
+        name: "WasteEagle",
+        displayName: "Waste Eagle",
+        type: "boss",
+        id: 35,
+        level: 115,
+        area: "KharmSheath",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.WasteEagle = WasteEagle;
+    GrelTribeGuard.Stats = {
+        hp: 220000,
+        maxHp: 220000,
+        def: 270,
+        minDmg: 2000,
+        maxDmg: 2200,
+        baseExp: 220000,
+        acc: 95,
+        eva: 5,
+        name: "GrelTribeGuard",
+        displayName: "Grel Tribe Guard",
+        type: "boss",
+        id: 36,
+        level: 120,
+        area: "KharmSheath",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.GrelTribeGuard = GrelTribeGuard;
+    GrelWarriors.Stats = {
+        hp: 240000,
+        maxHp: 240000,
+        def: 280,
+        minDmg: 2200,
+        maxDmg: 2400,
+        baseExp: 250000,
+        acc: 95,
+        eva: 5,
+        name: "GrelWarriors",
+        displayName: "Grel Warriors",
+        type: "boss",
+        id: 37,
+        level: 125,
+        area: "KharmSheath",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.GrelWarriors = GrelWarriors;
+    GrelSpitters.Stats = {
+        hp: 260000,
+        maxHp: 260000,
+        def: 290,
+        minDmg: 2400,
+        maxDmg: 2600,
+        baseExp: 270000,
+        acc: 95,
+        eva: 5,
+        name: "GrelSpitters",
+        displayName: "Grel Spitters",
+        type: "boss",
+        id: 38,
+        level: 130,
+        area: "KharmSheath",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.GrelSpitters = GrelSpitters;
+    GrelChief.Stats = {
+        hp: 280000,
+        maxHp: 280000,
+        def: 300,
+        minDmg: 2600,
+        maxDmg: 2800,
+        baseExp: 300000,
+        acc: 95,
+        eva: 5,
+        name: "GrelChief",
+        displayName: "Grel Chief",
+        type: "boss",
+        id: 39,
+        level: 135,
+        area: "KharmSheath",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.GrelChief = GrelChief;
+    MommaDuneDiggerSheila.Stats = {
+        hp: 300000,
+        maxHp: 300000,
+        def: 310,
+        minDmg: 3000,
+        maxDmg: 3200,
+        baseExp: 320000,
+        acc: 95,
+        eva: 5,
+        name: "MommaDuneDiggerSheila",
+        displayName: "Momma Dune Digger, Sheila",
+        type: "boss",
+        id: 40,
+        level: 140,
+        area: "KharmSheath",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.MommaDuneDiggerSheila = MommaDuneDiggerSheila;
+    CrystalFloater.Stats = {
+        hp: 320000,
+        maxHp: 320000,
+        def: 320,
+        minDmg: 3200,
+        maxDmg: 3400,
+        baseExp: 340000,
+        acc: 95,
+        eva: 5,
+        name: "CrystalFloater",
+        displayName: "Crystal Floater",
+        type: "boss",
+        id: 41,
+        level: 145,
+        area: "FrigidAberration",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.CrystalFloater = CrystalFloater;
+    SnowWatcher.Stats = {
+        hp: 340000,
+        maxHp: 340000,
+        def: 330,
+        minDmg: 3400,
+        maxDmg: 3600,
+        baseExp: 360000,
+        acc: 95,
+        eva: 5,
+        name: "SnowWatcher",
+        displayName: "Snow Watcher",
+        type: "boss",
+        id: 42,
+        level: 150,
+        area: "FrigidAberration",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.SnowWatcher = SnowWatcher;
+    CannibalTribeTrachid.Stats = {
+        hp: 360000,
+        maxHp: 360000,
+        def: 340,
+        minDmg: 3600,
+        maxDmg: 3800,
+        baseExp: 380000,
+        acc: 95,
+        eva: 5,
+        name: "CannibalTribeTrachid",
+        displayName: "Cannibal Tribe, Trachid",
+        type: "boss",
+        id: 43,
+        level: 155,
+        area: "FrigidAberration",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.CannibalTribeTrachid = CannibalTribeTrachid;
+    LegendoftheRageCalm.Stats = {
+        hp: 380000,
+        maxHp: 380000,
+        def: 350,
+        minDmg: 3800,
+        maxDmg: 4000,
+        baseExp: 400000,
+        acc: 95,
+        eva: 5,
+        name: "LegendoftheRageCalm",
+        displayName: "Legend of the Rage, Calm",
+        type: "boss",
+        id: 44,
+        level: 160,
+        area: "FrigidAberration",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.LegendoftheRageCalm = LegendoftheRageCalm;
+    IceGiantKing.Stats = {
+        hp: 400000,
+        maxHp: 400000,
+        def: 360,
+        minDmg: 4000,
+        maxDmg: 4200,
+        baseExp: 430000,
+        acc: 95,
+        eva: 5,
+        name: "IceGiantKing",
+        displayName: "Ice Giant King",
+        type: "boss",
+        id: 45,
+        level: 165,
+        area: "FrigidAberration",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.IceGiantKing = IceGiantKing;
+    FrightGolem.Stats = {
+        hp: 420000,
+        maxHp: 420000,
+        def: 370,
+        minDmg: 4200,
+        maxDmg: 4400,
+        baseExp: 450000,
+        acc: 95,
+        eva: 5,
+        name: "FrightGolem",
+        displayName: "Fright Golem",
+        type: "boss",
+        id: 46,
+        level: 170,
+        area: "FrigidAberration",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.FrightGolem = FrightGolem;
+    FrightGolemArmy.Stats = {
+        hp: 440000,
+        maxHp: 440000,
+        def: 380,
+        minDmg: 4400,
+        maxDmg: 4600,
+        baseExp: 470000,
+        acc: 95,
+        eva: 5,
+        name: "FrightGolemArmy",
+        displayName: "Fright Golem Army",
+        type: "boss",
+        id: 47,
+        level: 175,
+        area: "FrigidAberration",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.FrightGolemArmy = FrightGolemArmy;
+    LegendoftheRageFullPower.Stats = {
+        hp: 460000,
+        maxHp: 460000,
+        def: 390,
+        minDmg: 4600,
+        maxDmg: 4800,
+        baseExp: 500000,
+        acc: 95,
+        eva: 5,
+        name: "LegendoftheRageFullPower",
+        displayName: "Legend of the Rage, Full Power",
+        type: "boss",
+        id: 48,
+        level: 180,
+        area: "FrigidAberration",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.LegendoftheRageFullPower = LegendoftheRageFullPower;
+    LegionofDreadWallGuards.Stats = {
+        hp: 480000,
+        maxHp: 480000,
+        def: 400,
+        minDmg: 4800,
+        maxDmg: 5000,
+        baseExp: 550000,
+        acc: 95,
+        eva: 5,
+        name: "LegionofDreadWallGuards",
+        displayName: "Legion of Dread, Wall Guards",
+        type: "boss",
+        id: 49,
+        level: 185,
+        area: "Zyzx",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.LegionofDreadWallGuards = LegionofDreadWallGuards;
+    Dreadnaughts.Stats = {
+        hp: 500000,
+        maxHp: 500000,
+        def: 420,
+        minDmg: 5000,
+        maxDmg: 5500,
+        baseExp: 600000,
+        acc: 95,
+        eva: 5,
+        name: "Dreadnaughts",
+        displayName: "Dreadnaughts",
+        type: "boss",
+        id: 50,
+        level: 190,
+        area: "Zyzx",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.Dreadnaughts = Dreadnaughts;
+    DreadnaughtElite.Stats = {
+        hp: 550000,
+        maxHp: 550000,
+        def: 440,
+        minDmg: 5500,
+        maxDmg: 6000,
+        baseExp: 700000,
+        acc: 95,
+        eva: 5,
+        name: "DreadnaughtElite",
+        displayName: "Dreadnaught Elite",
+        type: "boss",
+        id: 51,
+        level: 195,
+        area: "Zyzx",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.DreadnaughtElite = DreadnaughtElite;
+    EmaciatedMagi.Stats = {
+        hp: 600000,
+        maxHp: 600000,
+        def: 460,
+        minDmg: 6000,
+        maxDmg: 6500,
+        baseExp: 800000,
+        acc: 95,
+        eva: 5,
+        name: "EmaciatedMagi",
+        displayName: "Emaciated Magi",
+        type: "boss",
+        id: 52,
+        level: 200,
+        area: "Zyzx",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.EmaciatedMagi = EmaciatedMagi;
+    MagiThunderCallers.Stats = {
+        hp: 650000,
+        maxHp: 650000,
+        def: 480,
+        minDmg: 6500,
+        maxDmg: 7000,
+        baseExp: 900000,
+        acc: 95,
+        eva: 5,
+        name: "MagiThunderCallers",
+        displayName: "Magi Thunder Callers",
+        type: "boss",
+        id: 53,
+        level: 210,
+        area: "Zyzx",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.MagiThunderCallers = MagiThunderCallers;
+    FalseDragonSlayers.Stats = {
+        hp: 777777,
+        maxHp: 777777,
+        def: 500,
+        minDmg: 7777,
+        maxDmg: 7777,
+        baseExp: 1000000,
+        acc: 95,
+        eva: 5,
+        name: "FalseDragonSlayers",
+        displayName: "False Dragon Slayers",
+        type: "boss",
+        id: 54,
+        level: 220,
+        area: "Zyzx",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.FalseDragonSlayers = FalseDragonSlayers;
+    TorturedBeholder.Stats = {
+        hp: 888888,
+        maxHp: 888888,
+        def: 520,
+        minDmg: 8888,
+        maxDmg: 8888,
+        baseExp: 1100000,
+        acc: 95,
+        eva: 5,
+        name: "TorturedBeholder",
+        displayName: "Tortured Beholder",
+        type: "boss",
+        id: 55,
+        level: 230,
+        area: "Zyzx",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.TorturedBeholder = TorturedBeholder;
+    KingoftheLegionGrantBannecs.Stats = {
+        hp: 999999,
+        maxHp: 999999,
+        def: 555,
+        minDmg: 9999,
+        maxDmg: 9999,
+        baseExp: 1200000,
+        acc: 95,
+        eva: 5,
+        name: "KingoftheLegionGrantBannecs",
+        displayName: "King of the Legion, Grant Bannecs",
+        type: "boss",
+        id: 56,
+        level: 240,
+        area: "Zyzx",
+        isShown: false,
+        killCount: 0,
+        manaCost: 320
+    };
+    monsterList.KingoftheLegionGrantBannecs = KingoftheLegionGrantBannecs;
+
+
+
+    //Minerals
     Thaumerite.Stats = {
         hp: 10,
         maxHp: 10,
@@ -697,7 +1209,7 @@ function MakeMonsterList() {
         name: "Thaumerite", // Must equal object name Ore = Ore...
         displayName: "Thaumerite",
         type: "mining",
-        id: 33,
+        id: 95,
         level: 1,
         area: "Mining",
         isShown: true,
@@ -718,7 +1230,7 @@ function MakeMonsterList() {
         name: "LiteCyan", // Must equal object name Ore = Ore...
         displayName: "Lite Cyan",
         type: "mining",
-        id: 34,
+        id: 96,
         level: 1,
         area: "Mining",
         isShown: false,
@@ -739,7 +1251,7 @@ function MakeMonsterList() {
         name: "OhmStone", // Must equal object name Ore = Ore...
         displayName: "Ohm Stone",
         type: "mining",
-        id: 35,
+        id: 97,
         level: 1,
         area: "Mining",
         isShown: false,
@@ -760,7 +1272,7 @@ function MakeMonsterList() {
         name: "Techtite", // Must equal object name Ore = Ore...
         displayName: "Techtite",
         type: "mining",
-        id: 36,
+        id: 98,
         level: 1,
         area: "Mining",
         isShown: false,
@@ -781,7 +1293,7 @@ function MakeMonsterList() {
         name: "XilBond", // Must equal object name Ore = Ore...
         displayName: "Xil Bond",
         type: "mining",
-        id: 37,
+        id: 99,
         level: 1,
         area: "Mining",
         isShown: false,
@@ -802,7 +1314,7 @@ function MakeMonsterList() {
         name: "VulcanatedIron", // Must equal object name Ore = Ore...
         displayName: "Vulcanated Iron",
         type: "mining",
-        id: 38,
+        id: 100,
         level: 1,
         area: "Mining",
         isShown: false,
