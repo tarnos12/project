@@ -1,4 +1,4 @@
-﻿ItemList = {};
+﻿/*ItemList = {};
 function MakeItemList() {
     Weapons = {};
     //Weapons
@@ -4235,4 +4235,4 @@ function MakeItemList() {
         
     };
     ItemList.Accessory = Accessory;
-};
+};*/

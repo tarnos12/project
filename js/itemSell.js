@@ -1,4 +1,5 @@
 ﻿var total = 0;
+
 function sellAllCommon(itemType) {
     var playerInventoryNew = [];
 
@@ -15,6 +16,7 @@ function sellAllCommon(itemType) {
     document.getElementById("gold").innerHTML = player.properties.gold;
     total = 0;
 };
+
 function sellAllUncommon(itemType) {
     var playerInventoryNew = [];
 
@@ -31,6 +33,7 @@ function sellAllUncommon(itemType) {
     document.getElementById("gold").innerHTML = player.properties.gold;
     total = 0;
 };
+
 function sellAllRare(itemType) {
     var playerInventoryNew = [];
 
@@ -47,8 +50,9 @@ function sellAllRare(itemType) {
     document.getElementById("gold").innerHTML = player.properties.gold;
     total = 0;
 };
+
 function sellAllEpic(itemType) {
-    if (confirm("Are you sure?") == true) {
+    if (confirm("Are you sure?") === true) {
         var playerInventoryNew = [];
 
         for (var i = 0; i < playerInventory.length; i++) {
@@ -65,8 +69,9 @@ function sellAllEpic(itemType) {
         total = 0;
     };
 };
+
 function sellAllLegendary(itemType) {
-    if (confirm("Are you sure?") == true) {
+    if (confirm("Are you sure?") === true) {
         var playerInventoryNew = [];
 
         for (var i = 0; i < playerInventory.length; i++) {
@@ -83,10 +88,11 @@ function sellAllLegendary(itemType) {
         total = 0;
     };
 };
+
 //Single item sell
 function itemSell(id) {
-    var item = playerInventory.filter(function (obj) {
-        return obj.id === id
+    var item = playerInventory.filter(function(obj) {
+        return obj.id === id;
     })[0];
     var index = playerInventory.indexOf(item);
     if (index > -1) {

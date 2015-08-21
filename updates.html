@@ -2,318 +2,377 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <title>Legend of the Fallen Warrior</title>
     <link rel="Shortcut icon" href="images/icon.png">
     <style type="text/css">
-        body{
-            background-color:#a89b6e;
-        }
-        .bigFont{
-            font-size:x-large;
-        }
-        h4.green{
-            color:green;
-        }
-        h4.orange{
-            color:orange;
-        }
-        h4.red{
-            color:red;
-        }
-        li{
-            font-weight:600;
-        }
+        body { background-color: #a89b6e; }
+
+        .bigFont { font-size: x-large; }
+
+        h4.green { color: green; }
+
+        h4.orange { color: orange; }
+
+        h4.red { color: red; }
+
+        li { font-weight: 600; }
     </style>
 </head>
 <body>
-    <script>
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                (i[r].q = i[r].q || []).push(arguments)
-            }, i[r].l = 1 * new Date(); a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+<script>
+    (function(i, s, o, g, r, a, m) {
+        i["GoogleAnalyticsObject"] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments);
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m);
+    })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
 
-        ga('create', 'UA-57991038-2', 'auto');
-        ga('send', 'pageview');
+    ga("create", "UA-57991038-2", "auto");
+    ga("send", "pageview");
 
-    </script>
-    <!--
-        
-        <h3>Patch notes 1.6.1</h3>
-                        <h4 class="green">Additions</h4>
-                        <ul>
-                            <li>
-                               
-                            </li>
-                        </ul>
-                        <h4 class="orange">Changes</h4>
-                        <ul>
-                            <li>
-                                
-                            </li>
-                        </ul>
-                        <h4 class="red">Bug Fixes</h4>
-                        <ul>
-                            <li>
-                               
-                            </li>
-                        </ul>
+</script>
+<!--
 
-    -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12">
-                <div class="row">
-                    <div class="col-xs-8 col-xs-offset-2">
-                        <div class="bigFont"><strong>Changelog</strong></div><br>
+<h3>Patch notes 1.6.1</h3>
+<h4 class="green">Additions</h4>
+<ul>
+    <li>
 
-                        <h3>Patch notes 1.6.4</h3>
-                        <h4 class="green">Additions</h4>
-                        <ul>
-                            <li>
-                                More races: Human, Half-Elf, Elf, Dwarf, Halfing, Orc, Sylph, Giant.
-                            </li>
-                            <li>
-                                Each race has different bonuses.
-                            </li>
-                            <li>
-                                You can pick race age, which will determine stat gain per level.
-                            </li>
-                            <li>
-                                Added tooltips everywhere telling you what each specific stat/tab represent.
-                            </li>
-                            <li>
-                                Added borders, everywhere, to make it easier to distinguish each part of the UI.
-                            </li>
-                            <li>
-                                Sell button added to inventory items, for quick selling single items.
-                            </li>
-                            <li>
-                                Equip items with a single click on the item image.
-                            </li>
-                            <li>
-                                Added icons for player stats, race.
-                            </li>
-                            <li>
-                                You can hover over player stats, for more info.
-                            </li>
-                            <li>
-                                Added sell all legendary button.
-                            </li>
-                            <li>
-                                Added background color in monster tabs.
-                            </li>
-                        </ul>
-                        <h4 class="orange">Changes</h4>
-                        <ul>
-                            <li>
-                                Monsters display health bar together with a number value.
-                            </li>
-                            <li>
-                                Updated monster Icons, including transparent background.
-                            </li>
-                            <li>
-                                When your attack is on cooldown, your cursor will change.
-                            </li>
-                            <li>
-                                You gain weapon skill experience based on monster level compared to player level.
-                            </li>
-                            <li>
-                                All item icons are changed, they are bigger too.
-                            </li>
-                            <li>
-                                Moved some tabs around, combining inventory + equipped items. Added shop next to inventory tab.
-                            </li>
-                            <li>
-                                Weapon skills moved to a single tab, displaying images which you can hover over for more info.
-                            </li>
-                        </ul>
-                        <h4 class="red">Bug Fixes</h4>
-                        <ul>
-                            <li>
-                                Fixed an error where weapon skills current experience/experience needed for next level, were not saved.
-                            </li>
-                        </ul>
+    </li>
+</ul>
+<h4 class="orange">Changes</h4>
+<ul>
+    <li>
 
-                        <h3>Patch notes 1.6.3</h3>
-                        <h4 class="green">Additions</h4>
-                        <ul>
-                            <li>
-                                Added shop with items. Shop includes sort by value/rarity and refresh option, prices are 10x higher than actual item value.
-                            </li>
-                            <li>
-                                Item Quality: Inferior(40%), Normal(50%), Superior(10%) chance to roll. Each gives more or less bonuses to an item.
-                            </li>
-                            <li>
-                                Multiple saves support, including basic info about current save on each save slot displaying player level and race + Hardcore(if available).
-                            </li>
-                            <li>
-                                Added New game confirmation, so you won't overwrite your old save by mistake.
-                            </li>
-                        </ul>
-                        <h4 class="orange">Changes</h4>
-                        <ul>
-                            <li>
-                                Sell All button in player inventory, now sells only items from currently opened tab.
-                            </li>
-                            <li>
-                                Auto Battle works once every 10 seconds(tho it is still bugged and is being worked on)
-                            </li>
-                            <li>
-                                To equip/sell/buy an item, you need to left click on it to "check it" then press corresponding button.
-                            </li>
-                            <li>
-                                Changed position of item tooltip
-                            </li>
-                        </ul>
-                        <h4 class="red">Bug Fixes</h4>
-                        <ul>
-                            <li>
-                                Temporary fix for player log display, everything should fade out after few seconds.
-                            </li>
-                        </ul>
+    </li>
+</ul>
+<h4 class="red">Bug Fixes</h4>
+<ul>
+    <li>
 
+    </li>
+</ul>
 
-                        <h3>Patch notes 1.6.2</h3>
-                        <h4 class="green">Additions</h4>
-                        <ul>
-                            <li>
-                                New passive skills.
-                            </li>
-                            <li>
-                                Reset option for passive skills.
-                            </li>
-                            <li>
-                                Easy item comparison. 
-                            </li>
-                            <li>
-                                Added some "lore" to the items, just some random sentences. Will be improved in the future.
-                            </li>
-                            <li>
-                                Improved combat log section, including "story log", it is a quick access to the story, which you can already read on the tab above player stats.
-                            </li>
-                        </ul>
-                        <h4 class="orange">Changes</h4>
-                        <ul>
-                            <li>
-                                Updated a tooltip, to make it look better(hopefully).
-                            </li>
-                            <li>
-                                New bonus when choosing a race.
-                            </li>
-                            <li>
-                                Updated a whole page background color to fill all the gaps.
-                            </li>
-                            <li>
-                                Changed combat log, added borders, removed table structure which caused it to create a white border around it.
-                            </li>
-                        </ul>
-                        <h4 class="red">Bug Fixes</h4>
-                        <ul>
-                            <li>
-                                Fixed a bug when passive skills were not saved.
-                            </li>
-                        </ul>
+-->
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+<div class="row">
+<div class="col-xs-8 col-xs-offset-2">
+<div class="bigFont">
+    <strong>Changelog</strong>
+</div><br>
 
-                        <h3>Patch notes 1.6.1</h3>
-                        <h4 class="green">Additions</h4>
-                        <ul>
-                            <li>
-                                Added Passive skill tree.
-                            </li>
-                            <li>
-                                Added Changelog shortcut, at the top right side.
-                            </li>
-                        </ul>
-                        <h4 class="orange">Changes</h4>
-                        <ul>
-                            <li>
-                                Removed spells from the game.
-                            </li>
-                            <li>
-                                Changed potion icons, and moved them to the hot bar, below monsters for quick use.
-                            </li>
-                        </ul>
-                        <h4 class="red">Bug Fixes</h4>
-                        <ul>
-                            <li>
-                                Potions now work.
-                            </li>
-                            <li>
-                                Shop fixed, after last update it did not work properly.
-                            </li>
-                            <li>
-                                Some numbers did not display correctly, fixed.
-                            </li>
-                        </ul>
+    <h3>Patch notes 1.6.5</h3>
+    <h4 class="green">Additions</h4>
+    <ul>
+        <li>
+            Mining, Crafting basic code finished.
+        </li>
+        <li>
+            Added item level display on item tooltip.
+        </li>
+        <li>
+            Monster level displayed on monster tooltip.
+        </li>
+        <li>
+           Sort inventory by item level, damage(only weapons).
+        </li>
+        <li>
+            Inventory potion(Later potions made with alchemy will be stored here) with hotbar selection.
+        </li>
+        <li>
+            You can craft each type of item, higher crafting level let you craft an item with a better chance of higher rarity.
+        </li>
+        <li>
+            Crafted item level is based on player level and crafting level, which means that crafting should be good even if you dont focus on it early in the game(it will fall off later unless you level crafting up).
+        </li>
+    </ul>
+    <h4 class="orange">Changes</h4>
+    <ul>
+        <li>
+            Only weapons give you critical chance, and it's based on weapon type(Axe have more crit than a Staff)
+        </li>
+        <li>
+            Updated monster levels, allowing you to obtain better items fighting "weaker" monsters. First boss, drop items up to level 20, unlike before you had to kill 20th monster to drop those items.
+        </li>
+        <li>
+            Evasion cap changed from 20% to 75%.
+        </li>
+        <li>
+            Critical chance cap changed from 50% to 75%.(You can go over 75% with certain weapon skills).
+        </li>
+        <li>
+            Max battle turns, are determined by Endurance/Agility/Dexterity
+        </li>
+        <li>
+            Changed attack delay from ~3s, to ~1.5s
+        </li>
+        <li>
+            Changed part of the code which should prevent you from losing your save due to new update.(except this one)
+        </li>
+    </ul>
+    <h4 class="red">Bug Fixes</h4>
+    <ul>
+        <li>
+            Fixed a bug where race age would not be saved
+        </li>
+        <li>
+            Fixed evasion value formula, it went way too high with single item bonus.
+        </li>
+    </ul>
+
+<h3>Patch notes 1.6.4</h3>
+<h4 class="green">Additions</h4>
+<ul>
+    <li>
+        More races: Human, Half-Elf, Elf, Dwarf, Halfing, Orc, Sylph, Giant.
+    </li>
+    <li>
+        Each race has different bonuses.
+    </li>
+    <li>
+        You can pick race age, which will determine stat gain per level.
+    </li>
+    <li>
+        Added tooltips everywhere telling you what each specific stat/tab represent.
+    </li>
+    <li>
+        Added borders, everywhere, to make it easier to distinguish each part of the UI.
+    </li>
+    <li>
+        Sell button added to inventory items, for quick selling single items.
+    </li>
+    <li>
+        Equip items with a single click on the item image.
+    </li>
+    <li>
+        Added icons for player stats, race.
+    </li>
+    <li>
+        You can hover over player stats, for more info.
+    </li>
+    <li>
+        Added sell all legendary button.
+    </li>
+    <li>
+        Added background color in monster tabs.
+    </li>
+</ul>
+<h4 class="orange">Changes</h4>
+<ul>
+    <li>
+        Monsters display health bar together with a number value.
+    </li>
+    <li>
+        Updated monster Icons, including transparent background.
+    </li>
+    <li>
+        When your attack is on cooldown, your cursor will change.
+    </li>
+    <li>
+        You gain weapon skill experience based on monster level compared to player level.
+    </li>
+    <li>
+        All item icons are changed, they are bigger too.
+    </li>
+    <li>
+        Moved some tabs around, combining inventory + equipped items. Added shop next to inventory tab.
+    </li>
+    <li>
+        Weapon skills moved to a single tab, displaying images which you can hover over for more info.
+    </li>
+</ul>
+<h4 class="red">Bug Fixes</h4>
+<ul>
+    <li>
+        Fixed an error where weapon skills current experience/experience needed for next level, were not saved.
+    </li>
+</ul>
+
+<h3>Patch notes 1.6.3</h3>
+<h4 class="green">Additions</h4>
+<ul>
+    <li>
+        Added shop with items. Shop includes sort by value/rarity and refresh option, prices are 10x higher than actual item value.
+    </li>
+    <li>
+        Item Quality: Inferior(40%), Normal(50%), Superior(10%) chance to roll. Each gives more or less bonuses to an item.
+    </li>
+    <li>
+        Multiple saves support, including basic info about current save on each save slot displaying player level and race + Hardcore(if available).
+    </li>
+    <li>
+        Added New game confirmation, so you won't overwrite your old save by mistake.
+    </li>
+</ul>
+<h4 class="orange">Changes</h4>
+<ul>
+    <li>
+        Sell All button in player inventory, now sells only items from currently opened tab.
+    </li>
+    <li>
+        Auto Battle works once every 10 seconds(tho it is still bugged and is being worked on)
+    </li>
+    <li>
+        To equip/sell/buy an item, you need to left click on it to "check it" then press corresponding button.
+    </li>
+    <li>
+        Changed position of item tooltip
+    </li>
+</ul>
+<h4 class="red">Bug Fixes</h4>
+<ul>
+    <li>
+        Temporary fix for player log display, everything should fade out after few seconds.
+    </li>
+</ul>
 
 
-                        <h3>Patch notes 1.6.0</h3>
-                        <h4 class="green">Additions</h4>
-                        <ul>
-                            <li>
-                                Battle log text display effects.
-                            </li>
-                            <li>
-                                Added sorting function for items by Rarity/Value.
-                            </li>
-                            <li>
-                                New item types! Chest/Helmet/Legs/Boots. Changed off-hand to Shield.
-                            </li>
-                            <li>
-                                Each weapon and armor have a 50% chance to drop with a bonus damage/armor.(This bonus is basic, it does not change amount of bonuses you gain from item drop.)
-                            </li>
-                            <li>
-                                Added more secondary stats: Block/Counter/Life on hit. All bonuses can be obtained with items. Some of them can roll on a certain piece of equipment, for example "Block" can be found only on shields.
-                            </li>
-                        </ul>
-                        <h4 class="orange">Changes</h4>
-                        <ul>
-                            <li>
-                                Changed all weapon masteries to give you % bonus instead of flat.
-                            </li>
+<h3>Patch notes 1.6.2</h3>
+<h4 class="green">Additions</h4>
+<ul>
+    <li>
+        New passive skills.
+    </li>
+    <li>
+        Reset option for passive skills.
+    </li>
+    <li>
+        Easy item comparison.
+    </li>
+    <li>
+        Added some "lore" to the items, just some random sentences. Will be improved in the future.
+    </li>
+    <li>
+        Improved combat log section, including "story log", it is a quick access to the story, which you can already read on the tab above player stats.
+    </li>
+</ul>
+<h4 class="orange">Changes</h4>
+<ul>
+    <li>
+        Updated a tooltip, to make it look better(hopefully).
+    </li>
+    <li>
+        New bonus when choosing a race.
+    </li>
+    <li>
+        Updated a whole page background color to fill all the gaps.
+    </li>
+    <li>
+        Changed combat log, added borders, removed table structure which caused it to create a white border around it.
+    </li>
+</ul>
+<h4 class="red">Bug Fixes</h4>
+<ul>
+    <li>
+        Fixed a bug when passive skills were not saved.
+    </li>
+</ul>
 
-                            <li>
-                                Battle will take ~3 seconds, in that time, battle log will be displayed.
-                            </li>
-                            <li>
-                                Merged off-hand and armor tab in inventory together.
-                            </li>
-                            <li>
-                                Redesigned item loot, each item can gain different amount of bonuses based on its rarity: Common(1-2), Uncommon(2-3), Rare(3-4), Epic(4-6), Legendary(6-7).
-                            </li>
-                            <li>
-                                Changed item drop mechanics... You can drop betweem 1-5 items, for each monster kill as long as you have enough inventory space. You will make a roll for each item, and if its successful, you will drop an item.
-                            </li>
-                            <li>
-                                Magic find increase odds of finding an item(it will increase a chance of a good "roll" which means you can drop items more often). It does not increase item rarity chance.
-                            </li>
-                            <li>
-                                Removed equip/unequip/attack buttons. Instead click on item/monster image.
-                            </li>
-                            <li>
-                                Removed item "levels", you can no longer level up your weapon. (Might change in future).
-                            </li>
-                        </ul>
-                        <h4 class="red">Bug Fixes</h4>
-                        <ul>
-                            <li>
-                                Fixed a bug when saving a dead character would result in being dead forever
-                            </li>
-                        </ul>
+<h3>Patch notes 1.6.1</h3>
+<h4 class="green">Additions</h4>
+<ul>
+    <li>
+        Added Passive skill tree.
+    </li>
+    <li>
+        Added Changelog shortcut, at the top right side.
+    </li>
+</ul>
+<h4 class="orange">Changes</h4>
+<ul>
+    <li>
+        Removed spells from the game.
+    </li>
+    <li>
+        Changed potion icons, and moved them to the hot bar, below monsters for quick use.
+    </li>
+</ul>
+<h4 class="red">Bug Fixes</h4>
+<ul>
+    <li>
+        Potions now work.
+    </li>
+    <li>
+        Shop fixed, after last update it did not work properly.
+    </li>
+    <li>
+        Some numbers did not display correctly, fixed.
+    </li>
+</ul>
 
-                        <a href="updates.txt" target="_blank">Old Changelog</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <script src="jquery/jquery-1.11.3.min.js"></script>
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+<h3>Patch notes 1.6.0</h3>
+<h4 class="green">Additions</h4>
+<ul>
+    <li>
+        Battle log text display effects.
+    </li>
+    <li>
+        Added sorting function for items by Rarity/Value.
+    </li>
+    <li>
+        New item types! Chest/Helmet/Legs/Boots. Changed off-hand to Shield.
+    </li>
+    <li>
+        Each weapon and armor have a 50% chance to drop with a bonus damage/armor.(This bonus is basic, it does not change amount of bonuses you gain from item drop.)
+    </li>
+    <li>
+        Added more secondary stats: Block/Counter/Life on hit. All bonuses can be obtained with items. Some of them can roll on a certain piece of equipment, for example "Block" can be found only on shields.
+    </li>
+</ul>
+<h4 class="orange">Changes</h4>
+<ul>
+    <li>
+        Changed all weapon masteries to give you % bonus instead of flat.
+    </li>
+
+    <li>
+        Battle will take ~3 seconds, in that time, battle log will be displayed.
+    </li>
+    <li>
+        Merged off-hand and armor tab in inventory together.
+    </li>
+    <li>
+        Redesigned item loot, each item can gain different amount of bonuses based on its rarity: Common(1-2), Uncommon(2-3), Rare(3-4), Epic(4-6), Legendary(6-7).
+    </li>
+    <li>
+        Changed item drop mechanics... You can drop betweem 1-5 items, for each monster kill as long as you have enough inventory space. You will make a roll for each item, and if its successful, you will drop an item.
+    </li>
+    <li>
+        Magic find increase odds of finding an item(it will increase a chance of a good "roll" which means you can drop items more often). It does not increase item rarity chance.
+    </li>
+    <li>
+        Removed equip/unequip/attack buttons. Instead click on item/monster image.
+    </li>
+    <li>
+        Removed item "levels", you can no longer level up your weapon. (Might change in future).
+    </li>
+</ul>
+<h4 class="red">Bug Fixes</h4>
+<ul>
+    <li>
+        Fixed a bug when saving a dead character would result in being dead forever
+    </li>
+</ul>
+
+<a href="updates.txt" target="_blank">Old Changelog</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<script src="jquery/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js" type="text/javascript"></script>
 </body>
 </html>

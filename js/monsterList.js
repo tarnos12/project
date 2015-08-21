@@ -37,14 +37,12 @@ var SkeletonHealer = {};
 var Wraith = {};
 var LichKing = {};
 
-var Ore = {};
-var ore2 = {};
-var ore3 = {};
-var ore4 = {};
-var ore5 = {};
-var ore6 = {};
-var ore7 = {};
-var ore8 = {};
+var Thaumerite = {};
+var LiteCyan = {};
+var OhmStone = {};
+var Techtite = {};
+var XilBond = {};
+var VulcanatedIron = {};
 
 function MakeMonsterList() {
     VarikGrunt.Stats = {
@@ -80,7 +78,7 @@ function MakeMonsterList() {
         displayName: "Varik Soldier",
         type: "weak",
         id: 2,
-        level: 2,
+        level: 3,
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
@@ -100,7 +98,7 @@ function MakeMonsterList() {
         displayName: "Varik Marksmen",
         type: "weak",
         id: 3,
-        level: 3,
+        level: 5,
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
@@ -120,7 +118,7 @@ function MakeMonsterList() {
         displayName: "Varik Vulture",
         type: "weak",
         id: 4,
-        level: 4,
+        level: 7,
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
@@ -140,7 +138,7 @@ function MakeMonsterList() {
         displayName: "Varik Evader",
         type: "weak",
         id: 5,
-        level: 5,
+        level: 9,
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
@@ -160,7 +158,7 @@ function MakeMonsterList() {
         displayName: "Variks Liar",
         type: "weak",
         id: 6,
-        level: 6,
+        level: 11,
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
@@ -180,7 +178,7 @@ function MakeMonsterList() {
         displayName: "Variks Queen(ELITE)",
         type: "weak",
         id: 7,
-        level: 7,
+        level: 15,
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
@@ -200,7 +198,7 @@ function MakeMonsterList() {
         displayName: "Lord Varik(BOSS)",
         type: "weak",
         id: 8,
-        level: 8,
+        level: 20,
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
@@ -220,7 +218,7 @@ function MakeMonsterList() {
         displayName: "Toxic Flies",
         type: "average",
         id: 9,
-        level: 9,
+        level: 22,
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
@@ -240,7 +238,7 @@ function MakeMonsterList() {
         displayName: "Stalker",
         type: "average",
         id: 10,
-        level: 10,
+        level: 24,
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
@@ -260,7 +258,7 @@ function MakeMonsterList() {
         displayName: "Alpha Stalker",
         type: "average",
         id: 11,
-        level: 11,
+        level: 26,
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
@@ -280,7 +278,7 @@ function MakeMonsterList() {
         displayName: "Stalker Pack",
         type: "average",
         id: 12,
-        level: 12,
+        level: 28,
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
@@ -300,7 +298,7 @@ function MakeMonsterList() {
         displayName: "Jumping Spider",
         type: "average",
         id: 13,
-        level: 13,
+        level: 30,
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
@@ -320,7 +318,7 @@ function MakeMonsterList() {
         displayName: "Spider Beast(ELITE)",
         type: "average",
         id: 14,
-        level: 14,
+        level: 35,
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
@@ -340,7 +338,7 @@ function MakeMonsterList() {
         displayName: "Narsus(BOSS)",
         type: "average",
         id: 15,
-        level: 15,
+        level: 40,
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
@@ -360,7 +358,7 @@ function MakeMonsterList() {
         displayName: "Jotunn Scout",
         type: "average",
         id: 16,
-        level: 16,
+        level: 42,
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
@@ -380,7 +378,7 @@ function MakeMonsterList() {
         displayName: "Jotnar Ambush Squad",
         type: "strong",
         id: 17,
-        level: 17,
+        level: 44,
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
@@ -400,7 +398,7 @@ function MakeMonsterList() {
         displayName: "Long Range Extermination Squad",
         type: "strong",
         id: 18,
-        level: 18,
+        level: 46,
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
@@ -420,7 +418,7 @@ function MakeMonsterList() {
         displayName: "Berserker Shock Squad",
         type: "strong",
         id: 19,
-        level: 19,
+        level: 48,
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
@@ -440,7 +438,7 @@ function MakeMonsterList() {
         displayName: "Berserker ShockSquad Captain, Rend Grest",
         type: "strong",
         id: 20,
-        level: 20,
+        level: 50,
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
@@ -460,7 +458,7 @@ function MakeMonsterList() {
         displayName: "Artillery Squad #1-9",
         type: "strong",
         id: 21,
-        level: 21,
+        level: 52,
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
@@ -480,7 +478,7 @@ function MakeMonsterList() {
         displayName: "Jottun Main Infantry",
         type: "strong",
         id: 22,
-        level: 22,
+        level: 54,
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
@@ -500,7 +498,7 @@ function MakeMonsterList() {
         displayName: "Regent Cair Lorn(ELITE)",
         type: "strong",
         id: 23,
-        level: 23,
+        level: 60,
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
@@ -520,7 +518,7 @@ function MakeMonsterList() {
         displayName: "Deep King Tar Nuk(BOSS)",
         type: "strong",
         id: 24,
-        level: 24,
+        level: 70,
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
@@ -540,7 +538,7 @@ function MakeMonsterList() {
         displayName: "Zombie",
         type: "boss",
         id: 25,
-        level: 25,
+        level: 72,
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
@@ -560,7 +558,7 @@ function MakeMonsterList() {
         displayName: "Skeleton",
         type: "boss",
         id: 26,
-        level: 26,
+        level: 74,
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
@@ -580,7 +578,7 @@ function MakeMonsterList() {
         displayName: "Skeleton Soldier",
         type: "boss",
         id: 27,
-        level: 27,
+        level: 76,
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
@@ -600,7 +598,7 @@ function MakeMonsterList() {
         displayName: "Skeleton Archer",
         type: "boss",
         id: 28,
-        level: 28,
+        level: 78,
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
@@ -620,7 +618,7 @@ function MakeMonsterList() {
         displayName: "Skeleton Mage",
         type: "boss",
         id: 29,
-        level: 29,
+        level: 80,
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
@@ -640,7 +638,7 @@ function MakeMonsterList() {
         displayName: "Skeleton Healer",
         type: "boss",
         id: 30,
-        level: 30,
+        level: 85,
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
@@ -660,7 +658,7 @@ function MakeMonsterList() {
         displayName: "Wraith(ELITE)",
         type: "boss",
         id: 31,
-        level: 31,
+        level: 90,
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
@@ -680,24 +678,24 @@ function MakeMonsterList() {
         displayName: "Lich King(BOSS)",
         type: "boss",
         id: 32,
-        level: 32,
+        level: 100,
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
         manaCost: 320
     };
     monsterList.LichKing = LichKing;
-    /*Ore.Stats = {
-        hp: 100,
-        maxHp: 100,
+    Thaumerite.Stats = {
+        hp: 10,
+        maxHp: 10,
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 0,
+        baseExp: 1,
         acc: 0,
         eva: 100,
-        name: "Ore", // Must equal object name Ore = Ore...
-        displayName: "Ore",
+        name: "Thaumerite", // Must equal object name Ore = Ore...
+        displayName: "Thaumerite",
         type: "mining",
         id: 33,
         level: 1,
@@ -706,6 +704,112 @@ function MakeMonsterList() {
         killCount: 0,
         manaCost: 9999
     };
-    monsterList.Ore = Ore;*/
+    monsterList.Thaumerite = Thaumerite;
+
+    LiteCyan.Stats = {
+        hp: 100,
+        maxHp: 100,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 5,
+        acc: 0,
+        eva: 100,
+        name: "LiteCyan", // Must equal object name Ore = Ore...
+        displayName: "Lite Cyan",
+        type: "mining",
+        id: 34,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.LiteCyan = LiteCyan;
+
+    OhmStone.Stats = {
+        hp: 200,
+        maxHp: 200,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 20,
+        acc: 0,
+        eva: 100,
+        name: "OhmStone", // Must equal object name Ore = Ore...
+        displayName: "Ohm Stone",
+        type: "mining",
+        id: 35,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.OhmStone = OhmStone;
+
+    Techtite.Stats = {
+        hp: 500,
+        maxHp: 500,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 50,
+        acc: 0,
+        eva: 100,
+        name: "Techtite", // Must equal object name Ore = Ore...
+        displayName: "Techtite",
+        type: "mining",
+        id: 36,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.Techtite = Techtite;
+
+    XilBond.Stats = {
+        hp: 1337,
+        maxHp: 1337,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 100,
+        acc: 0,
+        eva: 100,
+        name: "XilBond", // Must equal object name Ore = Ore...
+        displayName: "Xil Bond",
+        type: "mining",
+        id: 37,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.XilBond = XilBond;
+
+    VulcanatedIron.Stats = {
+        hp: 3000,
+        maxHp: 3000,
+        def: 0,
+        minDmg: 0,
+        maxDmg: 0,
+        baseExp: 200,
+        acc: 0,
+        eva: 100,
+        name: "VulcanatedIron", // Must equal object name Ore = Ore...
+        displayName: "Vulcanated Iron",
+        type: "mining",
+        id: 38,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+        manaCost: 9999
+    };
+    monsterList.VulcanatedIron = VulcanatedIron;
 };
+
 MakeMonsterList();

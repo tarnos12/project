@@ -1,85 +1,88 @@
 ﻿.buy, .attack, .equip, .sell {
-    -webkit-user-select: none; /* Chrome/Safari */        
+    -moz-border-radius-bottomleft: 0px;
+    -moz-border-radius-bottomright: 0px;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright: 0px;
+    -moz-box-shadow: inset 0px 0px 0px 1px #ffffff;
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
     /* Rules below not implemented in browsers yet */
     -o-user-select: none;
+    -webkit-border-bottom-left-radius: 0px;
+    -webkit-border-bottom-right-radius: 0px;
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    -webkit-box-shadow: inset 0px 0px 0px 1px #ffffff;
+    -webkit-user-select: none; /* Chrome/Safari */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+    background: -moz-linear-gradient(center top, #ededed 5%, #dfdfdf 100%);
+    background-color: #ededed;
+    border: 1px solid #dcdcdc;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: inset 0px 0px 0px 1px #ffffff;
+    color: #777777;
+    display: inline-block;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+    font-family: Verdana;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: bold;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0px;
+    text-shadow: 1px 1px 0px #ffffff;
     user-select: none;
-	-moz-box-shadow:inset 0px 0px 0px 1px #ffffff;
-	-webkit-box-shadow:inset 0px 0px 0px 1px #ffffff;
-	box-shadow:inset 0px 0px 0px 1px #ffffff;
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
-	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
-	background-color:#ededed;
-	-webkit-border-top-left-radius:0px;
-	-moz-border-radius-topleft:0px;
-	border-top-left-radius:0px;
-	-webkit-border-top-right-radius:0px;
-	-moz-border-radius-topright:0px;
-	border-top-right-radius:0px;
-	-webkit-border-bottom-right-radius:0px;
-	-moz-border-radius-bottomright:0px;
-	border-bottom-right-radius:0px;
-	-webkit-border-bottom-left-radius:0px;
-	-moz-border-radius-bottomleft:0px;
-	border-bottom-left-radius:0px;
-	text-indent:0px;
-	border:1px solid #dcdcdc;
-	display:inline-block;
-	color:#777777;
-	font-family:Verdana;
-	font-size:12px;
-	font-weight:bold;
-	font-style:normal;
-	height:25px;
-	line-height:25px;
-	width:80px;
-	text-decoration:none;
-	text-align:center;
-	text-shadow:1px 1px 0px #ffffff;
+    width: 80px;
 }
+
 .buy, .monster, .equip, .sell:hover {
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
-	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
-	background-color:#dfdfdf;
-    cursor:pointer;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+    background: -moz-linear-gradient(center top, #dfdfdf 5%, #ededed 100%);
+    background-color: #dfdfdf;
+    cursor: pointer;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
 }
+
 .buy, .monster, .equip, .sell:active {
-        position: relative;
-        top: 1px;
-    }
+    position: relative;
+    top: 1px;
+}
+
 /* This button was generated using CSSButtonGenerator.com */
 
 .monster {
-    -webkit-user-select: none; /* Chrome/Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
     /* Rules below not implemented in browsers yet */
     -o-user-select: none;
-    background:none;
-    background-color:none;
+    -webkit-user-select: none; /* Chrome/Safari */
+    background: none;
+    background-color: none;
+    cursor: url(images/icon.png), auto;
     user-select: none;
-    cursor: url(images/icon.png), auto;
 }
-.monster:active{
-    cursor: url(images/icon-active.png), auto;
-}
-.monster:disabled{
-    cursor: url(images/icon.png), auto;
-}
-.equip{
+
+.monster:active { cursor: url(images/icon-active.png), auto; }
+
+.monster:disabled { cursor: url(images/icon.png), auto; }
+
+.equip { width: 100px; }
+
+.sell {
+    margin-bottom: 5px;
     width: 100px;
 }
-.sell{
-    width: 100px;
-    margin-bottom:5px;
-}
-.shopButton{
-    width: 100px;
+
+.shopButton {
     margin-right: 5px;
+    width: 100px;
 }
-.inventorySell{
-    width: 50px;
-}
+
+.inventorySell { width: 50px; }
+
+.inventoryOther { width: 70px; }

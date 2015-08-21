@@ -1,115 +1,114 @@
 ﻿//Updating monster hp
-document.getElementById(monster.id).getElementsByClassName('hp')[0].innerHTML = monster.hp; //Inside attack function when monster lose hp
+document.getElementById(monster.id).getElementsByClassName("hp")[0].innerHTML = monster.hp; //Inside attack function when monster lose hp
 
 //Inside dynamic html to display hp
-'<span class="hp">' + monsters[i].hp + '</span>' + "/" + monsters[i].maxHp
-
+"<span class=\"hp\">" + monsters[i].hp + "</span>" + "/" + monsters[i].maxHp;
 var monsterTypes = [
     {
-        type: 'weak',
-        displayName: 'Weak',
+        type: "weak",
+        displayName: "Weak",
         //out of 100, should add upto 100
         itemQualityChance: [
             {
-                type: 'Legendary',
+                type: "Legendary",
                 chance: 1,
 
             },
-             {
-                 type: 'Epic',
-                 chance: 15,
-             },
             {
-                type: 'Rare',
+                type: "Epic",
+                chance: 15,
+            },
+            {
+                type: "Rare",
                 chance: 50,
             },
             {
-                type: 'Uncommon',
+                type: "Uncommon",
                 chance: 334,
             },
             {
-                type: 'Common',
+                type: "Common",
                 chance: 600,
             }
         ]
     },
     {
-        type: 'average',
-        displayName: 'Average',
+        type: "average",
+        displayName: "Average",
         //out of 100, should add upto 100
         itemQualityChance: [
-             {
-                 type: 'Legendary',
-                 chance: 2,
-             },
             {
-                type: 'Epic',
+                type: "Legendary",
+                chance: 2,
+            },
+            {
+                type: "Epic",
                 chance: 28,
             },
             {
-                type: 'Rare',
+                type: "Rare",
                 chance: 100,
             },
             {
-                type: 'Uncommon',
+                type: "Uncommon",
                 chance: 400,
             },
             {
-                type: 'Common',
+                type: "Common",
                 chance: 470,
             }
         ]
     },
     {
-        type: 'strong',
-        displayName: 'Strong',
+        type: "strong",
+        displayName: "Strong",
         //out of 100, should add upto 100
         itemQualityChance: [
-             {
-                 type: 'Legendary',
-                 chance: 3,
-             },
             {
-                type: 'Epic',
+                type: "Legendary",
+                chance: 3,
+            },
+            {
+                type: "Epic",
                 chance: 97,
             },
             {
-                type: 'Rare',
+                type: "Rare",
                 chance: 200,
             },
             {
-                type: 'Uncommon',
+                type: "Uncommon",
                 chance: 500,
             },
             {
-                type: 'Common',
+                type: "Common",
                 chance: 200,
             }
         ]
     },
     {
-        type: 'boss',
-        displayName: 'Boss',
+        type: "boss",
+        displayName: "Boss",
         //out of 100, should add upto 100
         itemQualityChance: [
-             {
-                 type: 'Legendary',
-                 chance: 5,
-             },
             {
-                type: 'Epic',
+                type: "Legendary",
+                chance: 5,
+            },
+            {
+                type: "Epic",
                 chance: 145,
             },
             {
-                type: 'Rare',
+                type: "Rare",
                 chance: 350,
             },
             {
-                type: 'Uncommon',
+                type: "Uncommon",
                 chance: 400,
             },
             {
-                type: 'Common',
+                type: "Common",
                 chance: 100,
             }
         ]
@@ -202,179 +201,178 @@ var itemTypes = [
     {
         type: "Armor",
         itemSubTypes: [
-         {
-             type: "Cloth Armor",
-             //Out of 10
-             strengthMultiplier: 1,
-             enduranceMultiplier: 1,
-             agilityMultiplier: 6,
-             dexterityMultiplier: 6,
-             wisdomMultiplier: 8,
-             intelligenceMultiplier: 8,
-             luckMultiplier: 0
-         },
-         {
-             type: "Leather Armor",
-             //Out of 10
-             strengthMultiplier: 3,
-             enduranceMultiplier: 3,
-             agilityMultiplier: 10,
-             dexterityMultiplier: 6,
-             wisdomMultiplier: 6,
-             intelligenceMultiplier: 2,
-             luckMultiplier: 0
-         },
-         {
-             type: "Medium Armor",
-             //Out of 10
-             strengthMultiplier: 5,
-             enduranceMultiplier: 5,
-             agilityMultiplier: 5,
-             dexterityMultiplier: 5,
-             wisdomMultiplier: 8,
-             intelligenceMultiplier: 2,
-             luckMultiplier: 0
-         },
-         {
-             type: "Heavy Armor",
-             //Out of 10
-             strengthMultiplier: 10,
-             enduranceMultiplier: 10,
-             agilityMultiplier: 2,
-             dexterityMultiplier: 2,
-             wisdomMultiplier: 5,
-             intelligenceMultiplier: 1,
-             luckMultiplier: 0
-         }
+            {
+                type: "Cloth Armor",
+                //Out of 10
+                strengthMultiplier: 1,
+                enduranceMultiplier: 1,
+                agilityMultiplier: 6,
+                dexterityMultiplier: 6,
+                wisdomMultiplier: 8,
+                intelligenceMultiplier: 8,
+                luckMultiplier: 0
+            },
+            {
+                type: "Leather Armor",
+                //Out of 10
+                strengthMultiplier: 3,
+                enduranceMultiplier: 3,
+                agilityMultiplier: 10,
+                dexterityMultiplier: 6,
+                wisdomMultiplier: 6,
+                intelligenceMultiplier: 2,
+                luckMultiplier: 0
+            },
+            {
+                type: "Medium Armor",
+                //Out of 10
+                strengthMultiplier: 5,
+                enduranceMultiplier: 5,
+                agilityMultiplier: 5,
+                dexterityMultiplier: 5,
+                wisdomMultiplier: 8,
+                intelligenceMultiplier: 2,
+                luckMultiplier: 0
+            },
+            {
+                type: "Heavy Armor",
+                //Out of 10
+                strengthMultiplier: 10,
+                enduranceMultiplier: 10,
+                agilityMultiplier: 2,
+                dexterityMultiplier: 2,
+                wisdomMultiplier: 5,
+                intelligenceMultiplier: 1,
+                luckMultiplier: 0
+            }
         ]
     },
     {
         type: "Accessory",
         itemSubTypes: [
-         {
-             type: "Ring",
-             //Out of 10
-             strengthMultiplier: 5,
-             enduranceMultiplier: 5,
-             agilityMultiplier: 5,
-             dexterityMultiplier: 5,
-             wisdomMultiplier: 5,
-             intelligenceMultiplier: 5,
-             luckMultiplier: 10
-         },
-         {
-             type: "Amulet",
-             //Out of 10
-             strengthMultiplier: 5,
-             enduranceMultiplier: 5,
-             agilityMultiplier: 5,
-             dexterityMultiplier: 5,
-             wisdomMultiplier: 5,
-             intelligenceMultiplier: 5,
-             luckMultiplier: 10
-         },
-         {
-             type: "Talisman",
-             //Out of 10
-             strengthMultiplier: 5,
-             enduranceMultiplier: 5,
-             agilityMultiplier: 5,
-             dexterityMultiplier: 5,
-             wisdomMultiplier: 5,
-             intelligenceMultiplier: 5,
-             luckMultiplier: 10
-         }
+            {
+                type: "Ring",
+                //Out of 10
+                strengthMultiplier: 5,
+                enduranceMultiplier: 5,
+                agilityMultiplier: 5,
+                dexterityMultiplier: 5,
+                wisdomMultiplier: 5,
+                intelligenceMultiplier: 5,
+                luckMultiplier: 10
+            },
+            {
+                type: "Amulet",
+                //Out of 10
+                strengthMultiplier: 5,
+                enduranceMultiplier: 5,
+                agilityMultiplier: 5,
+                dexterityMultiplier: 5,
+                wisdomMultiplier: 5,
+                intelligenceMultiplier: 5,
+                luckMultiplier: 10
+            },
+            {
+                type: "Talisman",
+                //Out of 10
+                strengthMultiplier: 5,
+                enduranceMultiplier: 5,
+                agilityMultiplier: 5,
+                dexterityMultiplier: 5,
+                wisdomMultiplier: 5,
+                intelligenceMultiplier: 5,
+                luckMultiplier: 10
+            }
         ]
     },
-      {
-          type: "OffHand",
-          itemSubTypes: [
-           {
-               type: "Shield",
-               //Out of 10
-               strengthMultiplier: 7,
-               enduranceMultiplier: 10,
-               agilityMultiplier: 3,
-               dexterityMultiplier: 5,
-               wisdomMultiplier: 2,
-               intelligenceMultiplier: 2,
-               luckMultiplier: 0
-           },
-           {
-               type: "Book",
-               //Out of 10
-               strengthMultiplier: 2,
-               enduranceMultiplier: 3,
-               agilityMultiplier: 6,
-               dexterityMultiplier: 3,
-               wisdomMultiplier: 10,
-               intelligenceMultiplier: 6,
-               luckMultiplier: 0
-           },
-           {
-               type: "OffHandDagger",
-               //Out of 10
-               strengthMultiplier: 3,
-               enduranceMultiplier: 3,
-               agilityMultiplier: 10,
-               dexterityMultiplier: 5,
-               wisdomMultiplier: 5,
-               intelligenceMultiplier: 4,
-               luckMultiplier: 0
-           },
-           {
-               type: "ThrowingWeapon",
-               //Out of 10
-               strengthMultiplier: 6,
-               enduranceMultiplier: 2,
-               agilityMultiplier: 5,
-               dexterityMultiplier: 10,
-               wisdomMultiplier: 3,
-               intelligenceMultiplier: 4,
-               luckMultiplier: 0
-           },
-           {
-               type: "OffHandOrb",
-               //Out of 10
-               strengthMultiplier: 2,
-               enduranceMultiplier: 4,
-               agilityMultiplier: 4,
-               dexterityMultiplier: 5,
-               wisdomMultiplier: 5,
-               intelligenceMultiplier: 10,
-               luckMultiplier: 0
-           }
-          ]
-      }
+    {
+        type: "OffHand",
+        itemSubTypes: [
+            {
+                type: "Shield",
+                //Out of 10
+                strengthMultiplier: 7,
+                enduranceMultiplier: 10,
+                agilityMultiplier: 3,
+                dexterityMultiplier: 5,
+                wisdomMultiplier: 2,
+                intelligenceMultiplier: 2,
+                luckMultiplier: 0
+            },
+            {
+                type: "Book",
+                //Out of 10
+                strengthMultiplier: 2,
+                enduranceMultiplier: 3,
+                agilityMultiplier: 6,
+                dexterityMultiplier: 3,
+                wisdomMultiplier: 10,
+                intelligenceMultiplier: 6,
+                luckMultiplier: 0
+            },
+            {
+                type: "OffHandDagger",
+                //Out of 10
+                strengthMultiplier: 3,
+                enduranceMultiplier: 3,
+                agilityMultiplier: 10,
+                dexterityMultiplier: 5,
+                wisdomMultiplier: 5,
+                intelligenceMultiplier: 4,
+                luckMultiplier: 0
+            },
+            {
+                type: "ThrowingWeapon",
+                //Out of 10
+                strengthMultiplier: 6,
+                enduranceMultiplier: 2,
+                agilityMultiplier: 5,
+                dexterityMultiplier: 10,
+                wisdomMultiplier: 3,
+                intelligenceMultiplier: 4,
+                luckMultiplier: 0
+            },
+            {
+                type: "OffHandOrb",
+                //Out of 10
+                strengthMultiplier: 2,
+                enduranceMultiplier: 4,
+                agilityMultiplier: 4,
+                dexterityMultiplier: 5,
+                wisdomMultiplier: 5,
+                intelligenceMultiplier: 10,
+                luckMultiplier: 0
+            }
+        ]
+    }
 ];
 var itemQualities = [
     {
         type: "Legendary",
         qualityMultiplier: 10,
-        color: 'purple'
+        color: "purple"
     },
     {
         type: "Epic",
         qualityMultiplier: 6,
-        color: 'orange'
+        color: "orange"
     },
     {
         type: "Rare",
         qualityMultiplier: 4,
-        color: 'blue'
+        color: "blue"
     },
     {
         type: "Uncommon",
         qualityMultiplier: 2,
-        color: 'green'
+        color: "green"
     },
     {
         type: "Common",
         qualityMultiplier: 1,
-        color: 'black'
+        color: "black"
     }
 ];
-
 
 
 //TEST TEST TEST TEST :)
@@ -410,7 +408,7 @@ function monsterItemDrop(monster) {
                         var randomStat = Math.floor(Math.random() * ((monster.level + 2) - monster.level + 1) + monster.level);
                         var multiplier = randomStat * itemQuality.qualityMultiplier;
                         //Calculate each stat
-                        stats[stat] = Math.floor(multiplier * itemSubType[stat + 'Multiplier'] / 10);
+                        stats[stat] = Math.floor(multiplier * itemSubType[stat + "Multiplier"] / 10);
                         stats[stat] = Math.floor(Math.random() * ((stats[stat] * 2)) - stats[stat] / 10 + stats[stat]);
                     }
                 };
@@ -437,8 +435,7 @@ function monsterItemDrop(monster) {
                 };
                 playerInventory.push(newItem);
 
-                CreateInventoryWeaponHtml()
-
+                CreateInventoryWeaponHtml();
                 Log("<span style=\"color:orange\">You found an item! </span>");
             }
         } else {
@@ -449,7 +446,7 @@ function monsterItemDrop(monster) {
 
 //New Drop function monster type<group>
 function getMonsterType(monster) {
-    var monsterType = monsterTypes.filter(function (obj) {
+    var monsterType = monsterTypes.filter(function(obj) {
         return obj.type === monster.type;
     })[0]; //Doing [0] because it returns an array, but since we know it has only 1 object, we can use 0.
     return monsterType;
@@ -464,7 +461,7 @@ function getItemQuality(randomItemQuality, monsterType) {
         //This is used to add up the previous quality chance to the next because all of them have to add up to 100. They are inclusive, not exclusive.
         chance = monsterType.itemQualityChance[i].chance;
         if (randomItemQuality <= chance * player.dropRate()) {
-            itemQuality = itemQualities.filter(function (obj) {
+            itemQuality = itemQualities.filter(function(obj) {
 
                 return obj.type === monsterType.itemQualityChance[i].type;
             })[0];
@@ -474,4 +471,3 @@ function getItemQuality(randomItemQuality, monsterType) {
 
     return itemQuality;
 }
-

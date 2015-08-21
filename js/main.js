@@ -20,9 +20,55 @@ function Log(data) {
 };
 
 var currentGameVersion = 1.5;
+var defaultValues = {
+    properties: {
+    }
+};
 //PLAYER STATS
 var player = {
     properties: {
+        potionInventory: [
+            {
+                type: 'smallPotion',
+                displayName: 'Small Potion',
+                use: 'useSmallPotion',
+                amount: 0,
+                effect: 'healing',
+                bonus: 100
+            },
+            {
+                type: 'mediumPotion',
+                displayName: 'Medium Potion',
+                use: 'useMediumPotion',
+                amount: 0,
+                effect: 'healing',
+                bonus: 500
+            },
+            {
+                type: 'superPotion',
+                displayName: 'Super Potion',
+                use: 'useSuperPotion',
+                amount: 0,
+                effect: 'healing',
+                bonus: 1000
+            }
+        ],
+        //Minerals
+        Thaumerite: 0,
+        LiteCyan: 0,
+        OhmStone: 0,
+        Techtite: 0,
+        XilBond: 0,
+        VulcanatedIron: 0,
+        //Herbs
+        LillyWisp: 0,
+        RusinsSinew: 0,
+        EssenceofWillow: 0,
+        SinnersDelight: 0,
+        BarletBark: 0,
+        ThistleWart: 0,
+        Vystim: 0,
+        //Other
         raceAllStats: 0,
         raceGoldDrop: 0,
         raceExpRate: 0,
@@ -95,9 +141,12 @@ var player = {
         health: 500,
 
         //Mana
-        mana: 10,
+        mana: 10
     },
     functions: {
+        maxBattleTurns: function(){
+            return Math.floor(10 + (player.functions.totalEndurance() / 10) + (player.functions.totalAgility() / 10) + (player.functions.totalDexterity() / 10))
+        },
         weapon: '',
         shield: '',
         chest: '',
@@ -521,20 +570,20 @@ var player = {
                 return 0;
             }
             else {
-                if ((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance()))) > 20) * (1 + (player.functions.bonusEvasion() / 100))) {
-                    return 20;
+                if (((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100))) >= 75) {
+                    return 75;
                 }
                 else {
-                    return (((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance()))) * (1 + (player.functions.bonusEvasion() / 100)));
+                    return ((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100)));
                 }
             };
         },
         criticalChance: function () {
-            if (((10 + (player.properties.raceCriticalChance) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance() / 10))) > 50) {
-                return 50 + weaponSkillList.ranged.archerFocus.damage();
+            if (((10 + player.functions.totalCriticalChance() + (player.properties.raceCriticalChance) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01))) > 75) {
+                return 75 + weaponSkillList.ranged.archerFocus.damage();
             }
             else {
-                return ((10 + (player.properties.raceCriticalChance) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalCriticalChance() / 10)));
+                return ((10 + weaponSkillList.ranged.archerFocus.damage() + player.functions.totalCriticalChance() + (player.properties.raceCriticalChance) + (player.functions.totalDexterity() * 0.03 + player.functions.totalLuck() * 0.01)));
             }
         },
         criticalDamage: function () {
@@ -555,53 +604,53 @@ var player = {
         lifeSteal: function () {
             return Math.floor(weaponSkillList.sword.savageStrike.lifeStealAmount() + player.functions.totalLifeGainOnHit());
         },
-    },
+    }
 };
 
 //Equipped items object, storing 0 values, so all player stats will work at the beginning of the game
 var equippedItems = {};
 function createEquippedItemsObject(typeOfTheItem) {
     for (var key in loadingEquippedItems) {
-        var itemKey = loadingEquippedItems[key];
-        if (itemKey.hasOwnProperty("type")) {
-            if (typeOfTheItem === itemKey.type || typeOfTheItem === "all") {
-                var itemType = itemKey.type;
-                if (equippedItems[itemType] === undefined || equippedItems[itemType].isEquipped === false) {
-                    equippedItems[itemType] = {};
-                    equippedItems[itemType]["All attributes"] = 0;
-                    equippedItems[itemType]["Strength"] = 0;
-                    equippedItems[itemType]["Endurance"] = 0;
-                    equippedItems[itemType]["Agility"] = 0;
-                    equippedItems[itemType]["Dexterity"] = 0;
-                    equippedItems[itemType]["Wisdom"] = 0;
-                    equippedItems[itemType]["Intelligence"] = 0;
-                    equippedItems[itemType]["Luck"] = 0;
-                    equippedItems[itemType]["Evasion"] = 0;
-                    equippedItems[itemType]["Bonus life"] = 0;
-                    equippedItems[itemType]["Bonus mana"] = 0;
-                    equippedItems[itemType]["Health regen"] = 0;
-                    equippedItems[itemType]["Mana regen"] = 0;
-                    equippedItems[itemType]["Magic find"] = 0;
-                    equippedItems[itemType]["Gold drop"] = 0;
-                    equippedItems[itemType]["Experience rate"] = 0;
-                    equippedItems[itemType]["isEquipped"] = false;
-                    if (itemType === "shield") {
-                        equippedItems[itemType]["Block chance"] = 0;
-                        equippedItems[itemType]["Block amount"] = 0;
-                        equippedItems[itemType]["Bonus armor"] = 0;
-                        equippedItems[itemType]["defense"] = 0;
-                    }
-                    else if (itemType === "chest" || itemType === "helmet" || itemType === "legs" || itemType === "boots") {
-                        equippedItems[itemType]["Bonus armor"] = 0;
-                        equippedItems[itemType]["defense"] = 0;
-                    }
-                    else if (itemType === "weapon") {
-                        equippedItems[itemType]["Life gain on hit"] = 0;
-                        equippedItems[itemType]["Critical damage"] = 0;
-                        equippedItems[itemType]["Critical chance"] = 0;
-                        equippedItems[itemType]["Bonus damage"] = 0;
-                        equippedItems[itemType]["MinDamage"] = 0;
-                        equippedItems[itemType]["MaxDamage"] = 0;
+        if (loadingEquippedItems.hasOwnProperty(key)) {
+            var itemKey = loadingEquippedItems[key];
+            if (itemKey.hasOwnProperty("type")) {
+                if (typeOfTheItem === itemKey.type || typeOfTheItem === "all") {
+                    var itemType = itemKey.type;
+                    if (equippedItems[itemType] === undefined || equippedItems[itemType].isEquipped === false) {
+                        equippedItems[itemType] = {};
+                        equippedItems[itemType]["All attributes"] = 0;
+                        equippedItems[itemType]["Strength"] = 0;
+                        equippedItems[itemType]["Endurance"] = 0;
+                        equippedItems[itemType]["Agility"] = 0;
+                        equippedItems[itemType]["Dexterity"] = 0;
+                        equippedItems[itemType]["Wisdom"] = 0;
+                        equippedItems[itemType]["Intelligence"] = 0;
+                        equippedItems[itemType]["Luck"] = 0;
+                        equippedItems[itemType]["Evasion"] = 0;
+                        equippedItems[itemType]["Bonus life"] = 0;
+                        equippedItems[itemType]["Bonus mana"] = 0;
+                        equippedItems[itemType]["Health regen"] = 0;
+                        equippedItems[itemType]["Mana regen"] = 0;
+                        equippedItems[itemType]["Magic find"] = 0;
+                        equippedItems[itemType]["Gold drop"] = 0;
+                        equippedItems[itemType]["Experience rate"] = 0;
+                        equippedItems[itemType]["isEquipped"] = false;
+                        if (itemType === "shield") {
+                            equippedItems[itemType]["Block chance"] = 0;
+                            equippedItems[itemType]["Block amount"] = 0;
+                            equippedItems[itemType]["Bonus armor"] = 0;
+                            equippedItems[itemType]["defense"] = 0;
+                        } else if (itemType === "chest" || itemType === "helmet" || itemType === "legs" || itemType === "boots") {
+                            equippedItems[itemType]["Bonus armor"] = 0;
+                            equippedItems[itemType]["defense"] = 0;
+                        } else if (itemType === "weapon") {
+                            equippedItems[itemType]["Life gain on hit"] = 0;
+                            equippedItems[itemType]["Critical damage"] = 0;
+                            equippedItems[itemType]["Critical chance"] = 0;
+                            equippedItems[itemType]["Bonus damage"] = 0;
+                            equippedItems[itemType]["MinDamage"] = 0;
+                            equippedItems[itemType]["MaxDamage"] = 0;
+                        };
                     };
                 };
             };
@@ -639,8 +688,8 @@ function disableButtons() {
 function attack(monsterStat) {
     battleTurn = 1;
     var monsterStats = monsterStat.Stats;
-    while (battleTurn > 0 && battleTurn <= 20) {
-        if (monsterStats.hp >= 1 && player.properties.isDead == false) {
+    while (battleTurn > 0 && battleTurn <= player.functions.maxBattleTurns()) {
+        if (monsterStats.hp >= 1 && player.properties.isDead === false) {
             playerAttack(monsterStat, monsterStats);
             if (monsterStats.hp < 1) {
                 monsterKilled(monsterStat, monsterStats);
@@ -661,7 +710,7 @@ function attack(monsterStat) {
 };
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
 function DrawBattle() {
-    if (battleTurn === 21) {
+    if (battleTurn === (player.functions.maxBattleTurns() + 1)) {
         displayLogInfo();
         battleTurn = -1;
     };
@@ -671,7 +720,7 @@ function DrawBattle() {
 function playerAttack(monsterStat, monsterStats) {
     CreateMonsterHtml()
     document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
-    if (player.properties.autoBattle == true && player.properties.isAuto == false) {
+    if (player.properties.autoBattle === true && player.properties.isAuto === false) {
         player.isAuto = true;
         autoAttack(monsterStat, monsterStats);
     };
@@ -727,30 +776,30 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
                 if (weaponSkillStat.hasOwnProperty(skill)) {
                     var skillDamage = weaponSkillStat[skill];
                     if (skillDamage.charge >= 1) {
-                        if (skillDamage.type == "damage") {
-                            if (skillDamage.type2 == "physycal") {
+                        if (skillDamage.type === "damage") {
+                            if (skillDamage.type2 === "physical") {
                                 damage += skillDamage.damage();
                                 skillDamage.charge -= 1;
                             }
-                            else if (skillDamage.type2 == "magical") {
+                            else if (skillDamage.type2 === "magical") {
                                 magicDamage += skillDamage.damage();
                                 skillDamage.charge -= 1;
                             }
                         };
-                        if (skillDamage.type == "magicDamageBuff") {
+                        if (skillDamage.type === "magicDamageBuff") {
                             var randomChance = Math.floor((Math.random() * 100) + 1);
                             if (randomChance < skillDamage.chance()) {
-                                magicDamage += skillDamage.damage()
+                                magicDamage += skillDamage.damage();
                             }
                         }
-                        if (skillDamage.type == "buff") {
+                        if (skillDamage.type === "buff") {
                             damage += skillDamage.damage();
                             skillDamage.charge -= 1;
                         };
+                    }
+                    else if (skillDamage.charge < 1) {
+                        skillDamage.charge += skillDamage.cooldown;
                     };
-                };
-                if (skillDamage.charge < 1) {
-                    skillDamage.charge += skillDamage.cooldown;
                 };
             };
         };
@@ -767,6 +816,7 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
     magicDamageDealt += magicDamage;
     magicDamage = 0;
     damageDealt += damage;
+    weaponSkill(monsterStat, monsterStats);
     //document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     //Add more stuff like "bonus elemental damage from passive skills or bonus weapon damage
 };
@@ -832,7 +882,6 @@ function playerDead(monsterStat, monsterStats) {
         player.properties.gold = Math.floor(player.properties.gold / 1.2);
         expLost = Math.floor(player.properties.experience - (player.properties.experience / 1.2));
         player.properties.experience = Math.floor(player.properties.experience / 1.2);
-        //monsterStats.hp = monsterStats.maxHp;
         document.getElementById("health").innerHTML = player.properties.health;
         document.getElementById("gold").innerHTML = player.properties.gold;
         document.getElementById("experience").innerHTML = player.properties.experience;
@@ -858,7 +907,6 @@ function playerDead(monsterStat, monsterStats) {
 function monsterKilled(monsterStat, monsterStats) {
     monsterStats.hp = monsterStats.maxHp;
     monsterExperience(monsterStat, monsterStats);
-    weaponSkill(monsterStat, monsterStats);
     monsterStats.killCount++;
     displayLogInfo();
     battleTurn = -1;
@@ -870,7 +918,7 @@ function monsterKilled(monsterStat, monsterStats) {
 //Weapon skill experience
 function weaponSkill(monsterStat, monsterStats) {
     // if (monsterStat.type === boss){ give x5 experience} else if normal {x1 exp}
-    if (monsterStat.level > player.properties.level) {
+    if (monsterStat.Stats.level > player.properties.level) {
         var expgain = 3;
     }
     else if (monsterStat.level === player.properties.level) {
@@ -988,8 +1036,8 @@ function monsterGold(monsterStat, monsterStats) {
 };
 
 function displayLogInfo() {
-    if (battleTurn > 20) {
-        battleTurn = 20;
+    if (battleTurn > player.functions.maxBattleTurns()) {
+        battleTurn = player.functions.maxBattleTurns();
     };
     Log('<span id=\"test1\" class =\"bold\" style=\"color:#FF8000; display:none;\">Critical Rating: ' + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%" + "<br />" + "</span>");
     Log('<span id=\"test2\" class =\"bold\" style=\"color:red; display:none;\">Enemy dealt: ' + damageTaken + " " + "damage." + "<br />" + "</span>");
@@ -1007,7 +1055,7 @@ function displayLogInfo() {
     enemyBlock = 0;
     accuracyRate = 0;
     monsterDamage = 0;
-    if (battleTurn >= 20) {
+    if (battleTurn >= player.functions.maxBattleTurns()) {
         Log('<span id=\"draw\" class =\"bold\" style=\"color:blue; display:none;\">' + "Draw" + "<br />" + "</span>");
         drawLog();
     };
@@ -1015,7 +1063,7 @@ function displayLogInfo() {
     updateHtml();
     mainLog();
     CreateMonsterHtml();
-    setTimeout(disableButtons, 3000); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
+    setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
 };
 function potionBuyLog() {
     $("#potionBuy").delay(200).fadeIn().delay(3000).fadeOut(5000, function () { $(this).remove(); });
@@ -1578,21 +1626,33 @@ function showNumber() {
 
 function sortInventory(type) {
     if (type === "Value") {
-        playerInventory.sort(function (a, b) {
+        playerInventory.sort(function(a, b) {
             return b.Value - a.Value
-        })
+        });
     }
     else if (type === "Rarity") {
-        playerInventory.sort(function (a, b) {
+        playerInventory.sort(function(a, b) {
             return b.rarityValue - a.rarityValue
-        })
+        });
     }
+    else if (type === "Damage") {
+        playerInventory.sort(function(a, b) {
+            return b.AverageDamage - a.AverageDamage;
+        });
+    }
+    else if (type === "iLvl") {
+        playerInventory.sort(function(a, b) {
+            return b.iLvl - a.iLvl;
+        });
+    };
     CreateInventoryWeaponHtml();
 };
 
 function resetPassiveSkills() {
         for (var key in playerPassive) {
-            playerPassive[key].level = 0;
+            if (playerPassive.hasOwnProperty(key)) {
+                playerPassive[key].level = 0;
+            }
         };
         player.properties.skillPoints = player.properties.level - 1;
         CreatePlayerSkillsHtml();
@@ -1616,17 +1676,17 @@ function sortShop(type, itemType) {
     }
     else if (itemType === "Accessory") {
         itemSort = itemShopAccessory;
-    }
+    };
     if (type === "Value") {
-        itemSort.sort(function (a, b) {
+        itemSort.sort(function(a, b) {
             return b.shopPrice - a.shopPrice;
-        })
+        });
     }
     else if (type === "Rarity") {
-        itemSort.sort(function (a, b) {
+        itemSort.sort(function(a, b) {
             return b.rarityValue - a.rarityValue;
-        })
-    }
+        });
+    };
     displayShopItems(itemShopWeapon);
     displayShopItems(itemShopArmor);
     displayShopItems(itemShopAccessory);
@@ -1634,14 +1694,30 @@ function sortShop(type, itemType) {
 
 function raceStats() {
     for (var race in characterRaces) {
-        var currentRace = characterRaces[race];
-        if (player.properties.heroRace === currentRace.name) {
-            for (var stat in currentRace) {
-                if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) != -1) {
-                    player.properties[stat] = currentRace[stat]();
+        if (characterRaces.hasOwnProperty(race)) {
+            var currentRace = characterRaces[race];
+            if (player.properties.heroRace === currentRace.name) {
+                for (var stat in currentRace) {
+                    if (currentRace.hasOwnProperty(stat)) {
+                        if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) !== -1) {
+                            player.properties[stat] = currentRace[stat]();
+                        };
+                    };
                 };
             };
         };
     };
     secondaryStatUpdate();
 };
+
+function copyPlayerProperties() {
+    var playerDefault = defaultValues.properties;
+    var playerProperties = player.properties;
+    for (var key in playerProperties) {
+        if (playerProperties.hasOwnProperty(key)) {
+            playerDefault[key] = playerProperties[key];
+        };
+    };
+};
+copyPlayerProperties();
+
