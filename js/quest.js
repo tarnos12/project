@@ -190,6 +190,7 @@ function quest() {
     };
     if (player.properties.level >= 9) {
         monsterList.ToxicFlies.Stats.isShown = true;
+        monsterAreas[1].isUnlocked = true;
         if (monsterUnlock.ToxicFlies === false) {
             varikElement = "<h3><b>The End of Lord Varik</b></h3><br />" +
                 "<p class=\"story\">Just like the rest of his gang, he lay there bleeding and feeling woefully mortal." +
@@ -372,6 +373,7 @@ function quest() {
     };
     if (player.properties.level >= 17) {
         monsterList.JotnarAmbushSquad.Stats.isShown = true;
+        monsterAreas[2].isUnlocked = true;
         if (monsterUnlock.JotnarAmbushSquad === false) {
             ozJotnarElement = "<p class=\"story\">Why is that wherever you go someone wants to kill you?" +
                 "To be fair, you started the fight with bandits, and you were on forbidden territory in the forest, but this time it isn't even your fault." +
@@ -569,6 +571,7 @@ function quest() {
     };
     if (player.properties.level >= 25) {
         monsterList.DepthCrawler.Stats.isShown = true;
+        monsterAreas[3].isUnlocked = true;
         if (monsterUnlock.DepthCrawler === false) {
             ozJotnarElement = "<h1><b>Oz Jotnar Epilogue</b></h1><br />" +
                 "<p class=\"story\">The Voice:  \"I have never seen a troll fight like that," +
@@ -628,6 +631,7 @@ function quest() {
     };
     if (player.properties.level >= 33) {
         monsterList.BabyDuneDigger.Stats.isShown = true;
+        monsterAreas[4].isUnlocked = true;
     };
     if (player.properties.level >= 34) {
         monsterList.CamelSpiderHerds.Stats.isShown = true;
@@ -652,6 +656,7 @@ function quest() {
     };
     if (player.properties.level >= 41) {
         monsterList.CrystalFloater.Stats.isShown = true;
+        monsterAreas[5].isUnlocked = true;
     };
     if (player.properties.level >= 42) {
         monsterList.SnowWatcher.Stats.isShown = true;
@@ -676,6 +681,7 @@ function quest() {
     };
     if (player.properties.level >= 49) {
         monsterList.LegionofDreadWallGuards.Stats.isShown = true;
+        monsterAreas[6].isUnlocked = true;
     };
     if (player.properties.level >= 50) {
         monsterList.Dreadnaughts.Stats.isShown = true;

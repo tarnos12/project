@@ -442,11 +442,11 @@ function craftItem(itemType, itemSubType, rarity) {
         var crafting = playerProfession.crafting;
         var craftingLevel = crafting.level;
         getItemType(craftingLevel, false, craftItemType, itemSubType, itemLevel, craftItemRarity);
-        crafting.experience += 1;
+        crafting.experience += craftExp;
         if (crafting.experience >= crafting.maxExperience) {
             crafting.level += 1;
-            crafting.experience = craftExp;
-            crafting.maxExperience *= 1.1;
+            crafting.experience = crafting.experience - crafting.maxExperience;
+            crafting.maxExperience = Math.floor(crafting.maxExperience * 1.1);
         };
     }
     else {
