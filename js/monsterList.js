@@ -1203,7 +1203,7 @@ function MakeMonsterList() {
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 1,
+        baseExp: 5,
         acc: 0,
         eva: 100,
         name: "Thaumerite", // Must equal object name Ore = Ore...
@@ -1224,7 +1224,7 @@ function MakeMonsterList() {
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 5,
+        baseExp: 10,
         acc: 0,
         eva: 100,
         name: "LiteCyan", // Must equal object name Ore = Ore...
