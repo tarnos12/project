@@ -1519,42 +1519,50 @@ var monsterAreas = [
     {
         type: 'BanditHideout',
         displayName: 'Varik\'s Hideout',
-        icon: 'banditHideout'
+        icon: 'banditHideout',
+        isUnlocked: true
     },
      {
          type: 'ForestofNarsus',
          displayName: 'Forest of Narsus',
-         icon: 'forestOfNarsus'
+         icon: 'forestOfNarsus',
+         isUnlocked: false
      },
       {
           type: 'OzJotnar',
           displayName: 'Oz Jotnar',
-          icon: 'ozJotnar'
+          icon: 'ozJotnar',
+          isUnlocked: false
       },
        {
            type: 'TwistedMarrow',
            displayName: 'Twisted Marrow',
-           icon: 'twistedMarrow'
+           icon: 'twistedMarrow',
+           isUnlocked: false
        },
        {
            type: 'KharmSheath',
            displayName: 'Kharm Sheath',
-           icon: 'kharmSheath'
+           icon: 'kharmSheath',
+           isUnlocked: false
        },
        {
            type: 'FrigidAberration',
            displayName: 'Frigid Aberration',
-           icon: 'frigidAberration'
+           icon: 'frigidAberration',
+           isUnlocked: false
        },
        {
            type: 'Zyzx',
            displayName: 'Capital of Zyzx',
-           icon: 'zyzx'
+           icon: 'zyzx',
+           isUnlocked: false
        },
        {
            type: 'Mining',
            displayName: 'Mining Cave',
-           icon: 'mining'
+           icon: 'mining',
+           isUnlocked: true
        }
 ];
 var weaponTypeObject = [

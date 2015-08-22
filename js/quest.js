@@ -190,6 +190,7 @@ function quest() {
     };
     if (player.properties.level >= 9) {
         monsterList.ToxicFlies.Stats.isShown = true;
+        monsterAreas[1].isUnlocked = true;
         if (monsterUnlock.ToxicFlies === false) {
             varikElement = "<h3><b>The End of Lord Varik</b></h3><br />" +
                 "<p class=\"story\">Just like the rest of his gang, he lay there bleeding and feeling woefully mortal." +

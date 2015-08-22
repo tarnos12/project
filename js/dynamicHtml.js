@@ -88,78 +88,82 @@ function CreateMonsterHtml() {
     var html = '';
     html += '<ul class="nav nav-tabs">';
     for (var k = 0; k < monsterAreas.length; k++) {
-        if (k === monsterTabActiveNum) {
-            html += '<li class="active" onClick = changedTabmonster(' + k + ')>';
-        }
-        else {
-            html += '<li onClick = changedTabmonster(' + k + ')>';
+        if (monsterAreas[k].isUnlocked === true) {
+            if (k === monsterTabActiveNum) {
+                html += '<li class="active" onClick = changedTabmonster(' + k + ')>';
+            }
+            else {
+                html += '<li onClick = changedTabmonster(' + k + ')>';
+            };
+            html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab"><span class="icons ' + monsterAreas[k].icon + '" data-toggle="tooltip" data-placement="right" title="' + monsterAreas[k].displayName + '"></span>' + '</a></li>';
         };
-        html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab"><span class="icons ' + monsterAreas[k].icon + '" data-toggle="tooltip" data-placement="right" title="' + monsterAreas[k].displayName + '"></span>' + '</a></li>';
     };
     html += '</ul>';
     html += '<div class="tab-content">';
     for (var j = 0; j < monsterAreas.length; j++) {
-        if (j === monsterTabActiveNum) {
-            html += '<div class="tab-pane active" ';
-        }
-        else {
-            html += '<div class="tab-pane" ';
-        };
-        html += 'id="tab_' + monsterAreas[j].type + '">' +
-            '<div class="panel panel-default">' +
-            '<div class="panel-heading" style="background-color:green;">' +
-            
-            '<h3 class="panel-title c3" >' + monsterAreas[j].displayName + '</h3>' +
-            
-            '</div>' +
-            '<div class="panel-body" style="background-color:green;">';
-        html += '<div class="row">';
-        for (var key in monsterList) {
-            if (monsterList.hasOwnProperty(key)) {
-                var monster = monsterList[key];
-                var area = monster.Stats.area;
+        if (monsterAreas[j].isUnlocked === true) {
+            if (j === monsterTabActiveNum) {
+                html += '<div class="tab-pane active" ';
+            }
+            else {
+                html += '<div class="tab-pane" ';
             };
-            if (area === monsterAreas[j].type) {
-                if (monster.Stats.isShown === true) {
-                    var monsterPercent = ((monster.Stats.hp / monster.Stats.maxHp) * 100);
-                    if (monster.Stats.type !== "mining") {
-                        var onclickevent = 'attack(' + monster.Stats.name + ');';
-                    }
-                    else if (monster.Stats.type === "mining") {
-                        var onclickevent = 'mine(' + monster.Stats.name + ');';
-                    }
-                    html += '<div class="col-xs-6 col-lg-3"">' +
-                        '<div class="row">' +
-                        '<div class="col-xs-10 col-xs-offset-1" style="width:85%;">' +
-                        '<div id="' + monster.Stats.id + '">' +
-                        '<a href="#" class="tooltipA" id="monsterButton">' +
-                        '<img class="monster" src="images/monsters/' + monster.Stats.name + '.png" alt="' + monster.Stats.displayName + '" onclick="' + onclickevent + '">' +
-                        '<span>' +
-                        '<b>' + monster.Stats.displayName + '</b>';
-                    if (monster.Stats.type !== "mining") {
-                        html += '<br />' +
-                        'Level: ' + monster.Stats.level +
-                        '<br />' +
-                        'Dmg:' + monster.Stats.minDmg + "-" + monster.Stats.maxDmg +
-                        '<br />' +
-                        'Def:' + monster.Stats.def;
+            html += 'id="tab_' + monsterAreas[j].type + '">' +
+                '<div class="panel panel-default">' +
+                '<div class="panel-heading" style="background-color:green;">' +
+
+                '<h3 class="panel-title c3" >' + monsterAreas[j].displayName + '</h3>' +
+
+                '</div>' +
+                '<div class="panel-body" style="background-color:green;">';
+            html += '<div class="row">';
+            for (var key in monsterList) {
+                if (monsterList.hasOwnProperty(key)) {
+                    var monster = monsterList[key];
+                    var area = monster.Stats.area;
+                };
+                if (area === monsterAreas[j].type) {
+                    if (monster.Stats.isShown === true) {
+                        var monsterPercent = ((monster.Stats.hp / monster.Stats.maxHp) * 100);
+                        if (monster.Stats.type !== "mining") {
+                            var onclickevent = 'attack(' + monster.Stats.name + ');';
+                        }
+                        else if (monster.Stats.type === "mining") {
+                            var onclickevent = 'mine(' + monster.Stats.name + ');';
+                        }
+                        html += '<div class="col-xs-6 col-lg-3"">' +
+                            '<div class="row">' +
+                            '<div class="col-xs-10 col-xs-offset-1" style="width:85%;">' +
+                            '<div id="' + monster.Stats.id + '">' +
+                            '<a href="#" class="tooltipA" id="monsterButton">' +
+                            '<img class="monster" src="images/monsters/' + monster.Stats.name + '.png" alt="' + monster.Stats.displayName + '" onclick="' + onclickevent + '">' +
+                            '<span>' +
+                            '<b>' + monster.Stats.displayName + '</b>';
+                        if (monster.Stats.type !== "mining") {
+                            html += '<br />' +
+                            'Level: ' + monster.Stats.level +
+                            '<br />' +
+                            'Dmg:' + monster.Stats.minDmg + "-" + monster.Stats.maxDmg +
+                            '<br />' +
+                            'Def:' + monster.Stats.def;
+                        };
+                        html += '</span></a>' +
+                            '<br /></div>';
+                        html += '<div class="progress">';
+                        html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.Stats.name + "1" + '">';
+                        html += '<span style="font-size:16px;">' + monster.Stats.hp + ' HP</span>' + '</div></div>';
+                        html += '</div>';
+
+
+                        html += '</div></div>';
                     };
-                    html += '</span></a>' +
-                        '<br /></div>';
-                    html += '<div class="progress">';
-                    html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.Stats.name + "1" + '">';
-                    html += '<span style="font-size:16px;">' + monster.Stats.hp + ' HP</span>' + '</div></div>';
-                    html += '</div>';
-                    
-                   
-                    html += '</div></div>';
                 };
             };
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
         };
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
-        html += '</div>';
     };
     html += '</div>';
 
