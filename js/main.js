@@ -722,8 +722,13 @@ function DrawBattle() {
 function playerAttack(monsterStat, monsterStats) {
     document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/10s";
     if (player.autoBattle.autoBattle === true && player.autoBattle.isAuto === false) {
-        player.autoBattle.isAuto = true;
-        autoAttack(monsterStat, monsterStats);
+        if (player.functions.maxMana() >= monsterStats.manaCost) {
+            player.autoBattle.isAuto = true;
+            autoAttack(monsterStat, monsterStats);
+        }
+        else {
+            document.getElementById("manaCost").innerHTML = "You don't have enough mana. You need: " + monsterStats.manaCost + " mana.";
+        }
     };
         var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
         var randomHitChance = Math.random();
