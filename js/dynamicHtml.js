@@ -642,6 +642,7 @@ function newGame(slot) {
         shopOther();
         craftingHtml();
         createPotionInventory();
+        unlockMineral();
     };
 };
 

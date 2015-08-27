@@ -90,7 +90,7 @@ function MakeMonsterList() {
         area: "BanditHideout",
         isShown: true,
         killCount: 0,
-        manaCost: 10
+        manaCost: 100
     };
     monsterList.VarikGrunt = VarikGrunt;
     VarikSoldier.Stats = {
@@ -110,7 +110,7 @@ function MakeMonsterList() {
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
-        manaCost: 20
+        manaCost: 150
     };
     monsterList.VarikSoldier = VarikSoldier;
     VarikMarksmen.Stats = {
@@ -130,7 +130,7 @@ function MakeMonsterList() {
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
-        manaCost: 30
+        manaCost: 200
     };
     monsterList.VarikMarksmen = VarikMarksmen;
     VarikVulture.Stats = {
@@ -150,7 +150,7 @@ function MakeMonsterList() {
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
-        manaCost: 40
+        manaCost: 250
     };
     monsterList.VarikVulture = VarikVulture;
     VarikEvader.Stats = {
@@ -170,7 +170,7 @@ function MakeMonsterList() {
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
-        manaCost: 50
+        manaCost: 300
     };
     monsterList.VarikEvader = VarikEvader;
     VariksLiar.Stats = {
@@ -190,7 +190,7 @@ function MakeMonsterList() {
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
-        manaCost: 60
+        manaCost: 350
     };
     monsterList.VariksLiar = VariksLiar;
     VariksQueen.Stats = {
@@ -210,7 +210,7 @@ function MakeMonsterList() {
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
-        manaCost: 70
+        manaCost: 400
     };
     monsterList.VariksQueen = VariksQueen;
     LordVarik.Stats = {
@@ -230,7 +230,7 @@ function MakeMonsterList() {
         area: "BanditHideout",
         isShown: false,
         killCount: 0,
-        manaCost: 80
+        manaCost: 450
     };
     monsterList.LordVarik = LordVarik;
     ToxicFlies.Stats = {
@@ -250,7 +250,7 @@ function MakeMonsterList() {
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
-        manaCost: 90
+        manaCost: 500
     };
     monsterList.ToxicFlies = ToxicFlies;
     Stalker.Stats = {
@@ -270,7 +270,7 @@ function MakeMonsterList() {
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
-        manaCost: 100
+        manaCost: 550
     };
     monsterList.Stalker = Stalker;
     AlphaStalker.Stats = {
@@ -290,7 +290,7 @@ function MakeMonsterList() {
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
-        manaCost: 110
+        manaCost: 600
     };
     monsterList.AlphaStalker = AlphaStalker;
     StalkerPack.Stats = {
@@ -310,7 +310,7 @@ function MakeMonsterList() {
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
-        manaCost: 120
+        manaCost: 650
     };
     monsterList.StalkerPack = StalkerPack;
     JumpingSpider.Stats = {
@@ -330,7 +330,7 @@ function MakeMonsterList() {
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
-        manaCost: 130
+        manaCost: 700
     };
     monsterList.JumpingSpider = JumpingSpider;
     SpiderBeast.Stats = {
@@ -350,7 +350,7 @@ function MakeMonsterList() {
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
-        manaCost: 140
+        manaCost: 750
     };
     monsterList.SpiderBeast = SpiderBeast;
     Narsus.Stats = {
@@ -370,7 +370,7 @@ function MakeMonsterList() {
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
-        manaCost: 150
+        manaCost: 800
     };
     monsterList.Narsus = Narsus;
     JotunnScout.Stats = {
@@ -390,7 +390,7 @@ function MakeMonsterList() {
         area: "ForestofNarsus",
         isShown: false,
         killCount: 0,
-        manaCost: 160
+        manaCost: 850
     };
     monsterList.JotunnScout = JotunnScout;
     JotnarAmbushSquad.Stats = {
@@ -410,7 +410,7 @@ function MakeMonsterList() {
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
-        manaCost: 170
+        manaCost: 900
     };
     monsterList.JotnarAmbushSquad = JotnarAmbushSquad;
     LongRangeExterminationSquad.Stats = {
@@ -430,7 +430,7 @@ function MakeMonsterList() {
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
-        manaCost: 180
+        manaCost: 950
     };
     monsterList.LongRangeExterminationSquad = LongRangeExterminationSquad;
     BerserkerShockSquad.Stats = {
@@ -450,7 +450,7 @@ function MakeMonsterList() {
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
-        manaCost: 190
+        manaCost: 1000
     };
     monsterList.BerserkerShockSquad = BerserkerShockSquad;
     BerserkerShockSquadCaptainRendGrest.Stats = {
@@ -470,7 +470,7 @@ function MakeMonsterList() {
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
-        manaCost: 200
+        manaCost: 1100
     };
     monsterList.BerserkerShockSquadCaptainRendGrest = BerserkerShockSquadCaptainRendGrest;
     ArtillerySquad.Stats = {
@@ -490,7 +490,7 @@ function MakeMonsterList() {
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
-        manaCost: 210
+        manaCost: 1200
     };
     monsterList.ArtillerySquad = ArtillerySquad;
     JottunMainInfantry.Stats = {
@@ -510,7 +510,7 @@ function MakeMonsterList() {
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
-        manaCost: 220
+        manaCost: 1300
     };
     monsterList.JottunMainInfantry = JottunMainInfantry;
     RegentCairLorn.Stats = {
@@ -530,7 +530,7 @@ function MakeMonsterList() {
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
-        manaCost: 230
+        manaCost: 1400
     };
     monsterList.RegentCairLorn = RegentCairLorn;
     DeepKingTarNuk.Stats = {
@@ -550,7 +550,7 @@ function MakeMonsterList() {
         area: "OzJotnar",
         isShown: false,
         killCount: 0,
-        manaCost: 240
+        manaCost: 1500
     };
     monsterList.DeepKingTarNuk = DeepKingTarNuk;
     DepthCrawler.Stats = {
@@ -570,7 +570,7 @@ function MakeMonsterList() {
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
-        manaCost: 250
+        manaCost: 1600
     };
     monsterList.DepthCrawler = DepthCrawler;
     FadingGoblins.Stats = {
@@ -590,7 +590,7 @@ function MakeMonsterList() {
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
-        manaCost: 260
+        manaCost: 1700
     };
     monsterList.FadingGoblins = FadingGoblins;
     StarBriteGolems.Stats = {
@@ -610,7 +610,7 @@ function MakeMonsterList() {
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
-        manaCost: 270
+        manaCost: 1800
     };
     monsterList.StarBriteGolems = StarBriteGolems;
     Bannecs.Stats = {
@@ -630,7 +630,7 @@ function MakeMonsterList() {
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
-        manaCost: 280
+        manaCost: 1900
     };
     monsterList.Bannecs = Bannecs;
     Kholders.Stats = {
@@ -650,7 +650,7 @@ function MakeMonsterList() {
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
-        manaCost: 290
+        manaCost: 2000
     };
     monsterList.Kholders = Kholders;
     LivingWalls.Stats = {
@@ -670,7 +670,7 @@ function MakeMonsterList() {
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
-        manaCost: 300
+        manaCost: 2200
     };
     monsterList.LivingWalls = LivingWalls;
     Keeper.Stats = {
@@ -690,7 +690,7 @@ function MakeMonsterList() {
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
-        manaCost: 310
+        manaCost: 2400
     };
     monsterList.Keeper = Keeper;
     LegendoftheAncientDreamer.Stats = {
@@ -710,7 +710,7 @@ function MakeMonsterList() {
         area: "TwistedMarrow",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 2600
     };
     monsterList.LegendoftheAncientDreamer = LegendoftheAncientDreamer;
     BabyDuneDigger.Stats = {
@@ -730,7 +730,7 @@ function MakeMonsterList() {
         area: "KharmSheath",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 2800
     };
     monsterList.BabyDuneDigger = BabyDuneDigger;
     CamelSpiderHerds.Stats = {
@@ -750,7 +750,7 @@ function MakeMonsterList() {
         area: "KharmSheath",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 3000
     };
     monsterList.CamelSpiderHerds = CamelSpiderHerds;
     WasteEagle.Stats = {
@@ -770,7 +770,7 @@ function MakeMonsterList() {
         area: "KharmSheath",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 3200
     };
     monsterList.WasteEagle = WasteEagle;
     GrelTribeGuard.Stats = {
@@ -790,7 +790,7 @@ function MakeMonsterList() {
         area: "KharmSheath",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 3400
     };
     monsterList.GrelTribeGuard = GrelTribeGuard;
     GrelWarriors.Stats = {
@@ -810,7 +810,7 @@ function MakeMonsterList() {
         area: "KharmSheath",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 3600
     };
     monsterList.GrelWarriors = GrelWarriors;
     GrelSpitters.Stats = {
@@ -830,7 +830,7 @@ function MakeMonsterList() {
         area: "KharmSheath",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 3800
     };
     monsterList.GrelSpitters = GrelSpitters;
     GrelChief.Stats = {
@@ -850,7 +850,7 @@ function MakeMonsterList() {
         area: "KharmSheath",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 4000
     };
     monsterList.GrelChief = GrelChief;
     MommaDuneDiggerSheila.Stats = {
@@ -870,7 +870,7 @@ function MakeMonsterList() {
         area: "KharmSheath",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 4200
     };
     monsterList.MommaDuneDiggerSheila = MommaDuneDiggerSheila;
     CrystalFloater.Stats = {
@@ -890,7 +890,7 @@ function MakeMonsterList() {
         area: "FrigidAberration",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 4400
     };
     monsterList.CrystalFloater = CrystalFloater;
     SnowWatcher.Stats = {
@@ -910,7 +910,7 @@ function MakeMonsterList() {
         area: "FrigidAberration",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 4600
     };
     monsterList.SnowWatcher = SnowWatcher;
     CannibalTribeTrachid.Stats = {
@@ -930,7 +930,7 @@ function MakeMonsterList() {
         area: "FrigidAberration",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 4800
     };
     monsterList.CannibalTribeTrachid = CannibalTribeTrachid;
     LegendoftheRageCalm.Stats = {
@@ -950,7 +950,7 @@ function MakeMonsterList() {
         area: "FrigidAberration",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 5000
     };
     monsterList.LegendoftheRageCalm = LegendoftheRageCalm;
     IceGiantKing.Stats = {
@@ -970,7 +970,7 @@ function MakeMonsterList() {
         area: "FrigidAberration",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 5200
     };
     monsterList.IceGiantKing = IceGiantKing;
     FrightGolem.Stats = {
@@ -990,7 +990,7 @@ function MakeMonsterList() {
         area: "FrigidAberration",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 5400
     };
     monsterList.FrightGolem = FrightGolem;
     FrightGolemArmy.Stats = {
@@ -1010,7 +1010,7 @@ function MakeMonsterList() {
         area: "FrigidAberration",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 5600
     };
     monsterList.FrightGolemArmy = FrightGolemArmy;
     LegendoftheRageFullPower.Stats = {
@@ -1030,7 +1030,7 @@ function MakeMonsterList() {
         area: "FrigidAberration",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 5800
     };
     monsterList.LegendoftheRageFullPower = LegendoftheRageFullPower;
     LegionofDreadWallGuards.Stats = {
@@ -1050,7 +1050,7 @@ function MakeMonsterList() {
         area: "Zyzx",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 6000
     };
     monsterList.LegionofDreadWallGuards = LegionofDreadWallGuards;
     Dreadnaughts.Stats = {
@@ -1070,7 +1070,7 @@ function MakeMonsterList() {
         area: "Zyzx",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 6200
     };
     monsterList.Dreadnaughts = Dreadnaughts;
     DreadnaughtElite.Stats = {
@@ -1090,7 +1090,7 @@ function MakeMonsterList() {
         area: "Zyzx",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 6400
     };
     monsterList.DreadnaughtElite = DreadnaughtElite;
     EmaciatedMagi.Stats = {
@@ -1110,7 +1110,7 @@ function MakeMonsterList() {
         area: "Zyzx",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 6600
     };
     monsterList.EmaciatedMagi = EmaciatedMagi;
     MagiThunderCallers.Stats = {
@@ -1130,7 +1130,7 @@ function MakeMonsterList() {
         area: "Zyzx",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 6800
     };
     monsterList.MagiThunderCallers = MagiThunderCallers;
     FalseDragonSlayers.Stats = {
@@ -1150,7 +1150,7 @@ function MakeMonsterList() {
         area: "Zyzx",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 7000
     };
     monsterList.FalseDragonSlayers = FalseDragonSlayers;
     TorturedBeholder.Stats = {
@@ -1170,7 +1170,7 @@ function MakeMonsterList() {
         area: "Zyzx",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 7200
     };
     monsterList.TorturedBeholder = TorturedBeholder;
     KingoftheLegionGrantBannecs.Stats = {
@@ -1190,7 +1190,7 @@ function MakeMonsterList() {
         area: "Zyzx",
         isShown: false,
         killCount: 0,
-        manaCost: 320
+        manaCost: 7777
     };
     monsterList.KingoftheLegionGrantBannecs = KingoftheLegionGrantBannecs;
 

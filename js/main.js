@@ -26,6 +26,10 @@ var defaultValues = {
 };
 //PLAYER STATS
 var player = {
+    autoBattle:{
+        isAuto: false,
+        autoBattle: false, // testing
+    },
     properties: {
         potionInventory: [
             {
@@ -94,7 +98,6 @@ var player = {
         isLoading: true,
         isDead: false,
         runOnce: false,
-        isAuto: false,
         isSword: false,
         isAxe: false,
         isMace: false,
@@ -104,7 +107,6 @@ var player = {
         stats: 0,
         skillPoints: 0,
         gold: 0,
-        autoBattle: false, // testing
         level: 1,
         experience: 0,
         maxExperience: 100,
@@ -534,7 +536,7 @@ var player = {
         maxMana: function () {
             return Math.floor(((7 +
                 player.functions.totalManaBonus() +
-                player.functions.totalWisdom() * 0.5 +
+                player.functions.totalWisdom() * 5 +
                 player.functions.totalIntelligence() * 0.1) * (1 + (player.functions.bonusMana() / 100))) * (1 + (player.properties.raceMaxMana / 100)));
         },
         manaRegen: function () {
@@ -718,10 +720,9 @@ function DrawBattle() {
 
 //Player miss/hit chance
 function playerAttack(monsterStat, monsterStats) {
-    CreateMonsterHtml()
-    document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
-    if (player.properties.autoBattle === true && player.properties.isAuto === false) {
-        player.isAuto = true;
+    document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/10s";
+    if (player.autoBattle.autoBattle === true && player.autoBattle.isAuto === false) {
+        player.autoBattle.isAuto = true;
         autoAttack(monsterStat, monsterStats);
     };
         var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
@@ -1063,7 +1064,9 @@ function displayLogInfo() {
     updateHtml();
     mainLog();
     CreateMonsterHtml();
-    setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
+    if (player.autoBattle.isAuto === false) {
+        setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
+    };
 };
 function potionBuyLog() {
     $("#potionBuy").delay(200).fadeIn().delay(3000).fadeOut(5000, function () { $(this).remove(); });
@@ -1517,7 +1520,7 @@ function handleClick() {
     checkBoxRare = document.getElementById("rare").checked;
     checkBoxEpic = document.getElementById("epic").checked;
     hardcoreMode = document.getElementById("hardcoreMode").checked;
-    player.properties.autoBattle = document.getElementById("autoBattle").checked;
+    player.autoBattle.autoBattle = document.getElementById("autoBattle").checked;
 };
 var eventDay = '';
 var bonusExp = 1;
