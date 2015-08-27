@@ -334,6 +334,7 @@ function upgradeLuck(event) {
 };
 
 function autoAttack(monster, monsterStats) {
+    disableButtons();
     var manaCost = monster.Stats.manaCost;
     var autoBattle = window.setInterval(function() {
         if (player.properties.mana >= manaCost && player.properties.autoBattle === true) {

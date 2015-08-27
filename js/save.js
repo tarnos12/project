@@ -291,6 +291,7 @@ function load(slot) {
         craftingHtml();
         playerProfessionHtml();
         createPotionInventory();
+        unlockMineral();
     }
     else {
         if (confirm("Do you want to start a new game?") === true) {

@@ -17,6 +17,28 @@
     <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
     <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
+    <script type="text/javascript">
+    // Called when the API is finished loading
+    function onLoadCompleted(){
+        // Get a global reference to the kongregate API. This way, pages included in the
+        // iframe can access it by using "parent.kongregate"
+        kongregate = kongregateAPI.getAPI();
+
+        // Embed the game into the "contentdiv" div, which is defined below. You can also
+        // manually create your own iframe, this function is just for convenience.
+        // This example also passes along the kongregate user_id and game_auth_token so
+        // that the page can use them for authentication.
+        var params = "kongregate_user_id=" + kongregate.services.getUserId() +
+                   "&kongregate_game_auth_token=" + kongregate.services.getGameAuthToken() +
+                   "&random=" + (Math.random() * 1000000000);
+        kongregateAPI.embedFrame("game.html?" + params);
+    }
+
+    // Begin the process of loading the Kongregate API:
+    kongregateAPI.loadAPI(onLoadCompleted);
+    </script>
+
     <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
@@ -172,7 +194,6 @@
           user-select: none;
         }
     </style>
-    <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
 </head>
 <body>
     <script>
@@ -533,6 +554,7 @@
                                             <li class="active"><a href="#tab_inventory" data-toggle="tab"><span class="icons playerInventory" data-toggle="tooltip" data-placement="top" title="Inventory"></span></a></li>
                                             <li><a href="#tab_shop" data-toggle="tab"><span class="icons shop" data-toggle="tooltip" data-placement="top" title="Shop"></span></a></li>
                                             <li><a href="#tab_crafting" data-toggle="tab"><span class="icons crafting" data-toggle="tooltip" data-placement="top" title="Crafting"></span></a></li>
+                                            <li><a href="#tab_alchemy" data-toggle="tab"><span class="icons alchemy" data-toggle="tooltip" data-placement="top" title="Alchemy"></span></a></li>
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="tab_inventory">
@@ -569,6 +591,9 @@
                                             </div>
                                             <div class="tab-pane" id="tab_crafting">
                                                 <div id="crafting"></div>
+                                            </div>
+                                            <div class="tab-pane" id="tab_alchemy">
+                                                <div id="alchemy"></div>
                                             </div>
                                         </div>
                                     </div>

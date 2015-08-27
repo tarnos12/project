@@ -718,10 +718,9 @@ function DrawBattle() {
 
 //Player miss/hit chance
 function playerAttack(monsterStat, monsterStats) {
-    CreateMonsterHtml()
     document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/s";
     if (player.properties.autoBattle === true && player.properties.isAuto === false) {
-        player.isAuto = true;
+        player.properties.isAuto = true;
         autoAttack(monsterStat, monsterStats);
     };
         var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
@@ -1063,7 +1062,9 @@ function displayLogInfo() {
     updateHtml();
     mainLog();
     CreateMonsterHtml();
-    setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
+    if (player.properties.isAuto === false) {
+        setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
+    };
 };
 function potionBuyLog() {
     $("#potionBuy").delay(200).fadeIn().delay(3000).fadeOut(5000, function () { $(this).remove(); });

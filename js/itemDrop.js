@@ -73,67 +73,79 @@ function getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemRa
     var randomLoreArray = "";
     var randomLore = "";
     if (dropItem.itemType === "weapon") {
-        itemChanceTotal = itemWeaponSubType[itemWeaponSubType.length - 1];
-        totalChance = itemChanceTotal.chance;
-        randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
-        for (itemType in itemWeaponSubType) {
-            if (itemWeaponSubType.hasOwnProperty(itemType)) {
-                itemChance = itemWeaponSubType[itemType].chance;
-                itemType2 = itemWeaponSubType[itemType].type;
-                if (randomNumber <= itemChance) {
-                    randomLoreArray = itemWeaponSubType[itemType].lore;
-                    randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
-                    dropItem["lore"] = randomLore.text;
-                    if (dropItem.isCrafted === true) {
-                        dropItem["subType"] = craftitemSubType;
-                    } else {
+        if (dropItem.isCrafted === true) {
+            dropItem["subType"] = itemWeaponSubType[craftitemSubType].type;
+            randomLoreArray = itemWeaponSubType[craftitemSubType].lore;
+            randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+            dropItem["lore"] = randomLore.text;
+        }
+        else {
+            itemChanceTotal = itemWeaponSubType[itemWeaponSubType.length - 1];
+            totalChance = itemChanceTotal.chance;
+            randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
+            for (itemType in itemWeaponSubType) {
+                if (itemWeaponSubType.hasOwnProperty(itemType)) {
+                    itemChance = itemWeaponSubType[itemType].chance;
+                    itemType2 = itemWeaponSubType[itemType].type;
+                    if (randomNumber <= itemChance) {
+                        randomLoreArray = itemWeaponSubType[itemType].lore;
+                        randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+                        dropItem["lore"] = randomLore.text;
                         dropItem["subType"] = itemType2;
-                    }
-                    break;
+                        break;
+                    };
                 };
             };
-        };
+        }
     }
     else if (dropItem.itemType === "armor") {
-        itemChanceTotal = itemArmorSubType[itemArmorSubType.length - 1];
-        totalChance = itemChanceTotal.chance;
-        randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
-        for (itemType in itemArmorSubType) {
-            if (itemArmorSubType.hasOwnProperty(itemType)) {
-                itemChance = itemArmorSubType[itemType].chance;
-                itemType2 = itemArmorSubType[itemType].type;
-                if (randomNumber <= itemChance) {
-                    randomLoreArray = itemArmorSubType[itemType].lore;
-                    randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
-                    dropItem["lore"] = randomLore.text;
-                    if (dropItem.isCrafted === true) {
-                        dropItem["subType"] = craftitemSubType;
-                    } else {
+        if (dropItem.isCrafted === true) {
+            dropItem["subType"] = itemArmorSubType[craftitemSubType].type;
+            randomLoreArray = itemArmorSubType[craftitemSubType].lore;
+            randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+            dropItem["lore"] = randomLore.text;
+        }
+        else {
+            itemChanceTotal = itemArmorSubType[itemArmorSubType.length - 1];
+            totalChance = itemChanceTotal.chance;
+            randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
+            for (itemType in itemArmorSubType) {
+                if (itemArmorSubType.hasOwnProperty(itemType)) {
+                    itemChance = itemArmorSubType[itemType].chance;
+                    itemType2 = itemArmorSubType[itemType].type;
+                    if (randomNumber <= itemChance) {
+                        randomLoreArray = itemArmorSubType[itemType].lore;
+                        randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+                        dropItem["lore"] = randomLore.text;
                         dropItem["subType"] = itemType2;
-                    }
-                    break;
+                        break;
+                    };
                 };
             };
         };
     }
     else if (dropItem.itemType === "accessory") {
-        itemChanceTotal = itemAccessorySubType[itemAccessorySubType.length - 1];
-        totalChance = itemChanceTotal.chance;
-        randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
-        for (itemType in itemAccessorySubType) {
-            if (itemAccessorySubType.hasOwnProperty(itemType)) {
-                itemChance = itemAccessorySubType[itemType].chance;
-                itemType2 = itemAccessorySubType[itemType].type;
-                if (randomNumber <= itemChance) {
-                    randomLoreArray = itemAccessorySubType[itemType].lore;
-                    randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
-                    dropItem["lore"] = randomLore.text;
-                    if (dropItem.isCrafted === true) {
-                        dropItem["subType"] = craftitemSubType;
-                    } else {
+        if (dropItem.isCrafted === true) {
+            dropItem["subType"] = itemAccessorySubType[craftitemSubType].type;
+            randomLoreArray = itemAccessorySubType[craftitemSubType].lore;
+            randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+            dropItem["lore"] = randomLore.text;
+        }
+        else {
+            itemChanceTotal = itemAccessorySubType[itemAccessorySubType.length - 1];
+            totalChance = itemChanceTotal.chance;
+            randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
+            for (itemType in itemAccessorySubType) {
+                if (itemAccessorySubType.hasOwnProperty(itemType)) {
+                    itemChance = itemAccessorySubType[itemType].chance;
+                    itemType2 = itemAccessorySubType[itemType].type;
+                    if (randomNumber <= itemChance) {
+                        randomLoreArray = itemAccessorySubType[itemType].lore;
+                        randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
+                        dropItem["lore"] = randomLore.text;
                         dropItem["subType"] = itemType2;
-                    }
-                    break;
+                        break;
+                    };
                 };
             };
         };

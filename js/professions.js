@@ -225,6 +225,18 @@ var craftItemTypes = [
 
 })();
 
+
+/*------------------------------------------------------------------------------------------------
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *                                        MINING                                                 |
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *------------------------------------------------------------------------------------------------
+ */
+
 function mine(monsterStat) {
     var monsterStats = monsterStat.Stats;
     var name = monsterStats.name;
@@ -236,7 +248,7 @@ function mine(monsterStat) {
         player.properties[name] += 1;
         if (mining.experience >= mining.maxExperience) {
             mining.level += 1;
-            mining.experience = 0;
+            mining.experience = mining.experience - mining.maxExperience;
             mining.maxExperience *= 1.1;
         };
     };
@@ -244,7 +256,6 @@ function mine(monsterStat) {
     craftingHtml();
     unlockMineral();
 };
-
 function unlockMineral() {
     var miningLevel = playerProfession.mining.level;
     if (miningLevel >= 5) {
@@ -266,6 +277,16 @@ function unlockMineral() {
 };
 playerProfessionHtml();
 
+/*------------------------------------------------------------------------------------------------
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *                                        CRAFTING                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *------------------------------------------------------------------------------------------------
+ */
 var craftedItemHolder = [];
 var itemTypeTab = 'weapon';
 var itemSubTypeTab = 'sword';
@@ -325,7 +346,7 @@ function craftingHtml() {
 
         html += '<ul class="nav nav-tabs">';
         if (itemType3 === 'weapon') {
-            itemTypeObject = weaponTypeObject;
+            itemTypeObject = itemWeaponSubType;
         } else if (itemType3 === 'armor') {
             itemTypeObject = itemArmorSubType;
         } else if (itemType3 === 'accessory') {
@@ -346,6 +367,7 @@ function craftingHtml() {
         html += '<div class="tab-content">';
         for (key in itemTypeObject) {
             if (itemTypeObject.hasOwnProperty(key)) {
+                var itemType6 = key
                 var itemType5 = itemTypeObject[key].type;
                 if (itemType5 === itemSubTypeTab) {
                     html += '<div class="tab-pane active" ';
@@ -357,7 +379,7 @@ function craftingHtml() {
                 for (var i = 0; i < craftCost.length; i++) {
                     html += '<button type="button" class="sell"';
                     if (playerProfession.crafting.level >= craftCost[i].levelReq) {
-                        html += ' onclick="craftItem(' + "'" + itemType3 + "', " + "'" + itemType5 + "', " + "'" + craftCost[i].type + "'" + ');">'
+                        html += ' onclick="craftItem(' + "'" + itemType3 + "', " + itemType6 + ", " + "'" + craftCost[i].type + "'" + ');">'
                         html += craftCost[i].type + '</button><br />';
                     } else {
                         html += 'disabled style="cursor:not-allowed;">Level ' + craftCost[i].levelReq + '+' + '</button><br />';
@@ -455,3 +477,65 @@ function craftItem(itemType, itemSubType, rarity) {
     craftingHtml();
     playerProfessionHtml();
 };
+
+
+/*------------------------------------------------------------------------------------------------
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *                                        HERBALISM                                              |
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *------------------------------------------------------------------------------------------------
+ */
+
+
+
+
+/*------------------------------------------------------------------------------------------------
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *                                        ALCHEMY                                                |
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *------------------------------------------------------------------------------------------------
+ */
+var testtest = [
+    {
+        type: 'smallPotion',
+        displayName: 'Small Potion',
+        use: 'useSmallPotion',
+        amount: 0,
+        effect: 'healing',
+        bonus: 100
+    }
+]
+var alchemyPotions = [
+    {
+        type: 'healing',
+        baseBonus: 200, //Base amount heal
+        multiplier: 100 //Base amount + (multiplier * alchemy level)
+    }
+];
+function createAlchemyHtml() {
+    var html = '';
+    var alchemy = playerProfession.alchemy;
+    var alchemyLevel = alchemy.level;
+    var potion = {};
+    html += '<div class="row">';
+    html += '<div class="col-xs-10 col-xs-offset-1 c3">';
+    html += '<h3>Alchemy</h3>';
+    html += 'Alchemy Level: ' + alchemyLevel + '<br />';
+    html += 'Alchemy exp: ' + alchemy.experience + '/' + alchemy.maxExperience + '<br />';
+
+    html += 
+
+    html += '</div>';
+    html += '</div>';
+
+    document.getElementById('alchemy').innerHTML = html;
+};
+createAlchemyHtml();
