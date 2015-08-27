@@ -1,4 +1,5 @@
-﻿function updateHtml() {
+﻿"use strict";
+function updateHtml() {
     if (player.properties.stats >= 1) { // Show "plus" image when player level up
         document.getElementById("Strength").style.visibility = "visible";
         document.getElementById("Endurance").style.visibility = "visible";

@@ -1,4 +1,5 @@
-﻿var total = 0;
+﻿"use strict";
+var total = 0;
 
 function sellAllCommon(itemType) {
     var playerInventoryNew = [];

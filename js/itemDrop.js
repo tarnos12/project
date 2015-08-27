@@ -1,4 +1,5 @@
-﻿function monsterItemDrop(monster) {
+﻿"use strict";
+function monsterItemDrop(monster) {
     var itemDropNumber = 0;
     var randomItemAmount = Math.floor(Math.random() * 3) + 1; // 1-5 item drop per monster kill
     for (var i = 0; i < randomItemAmount; i++) {

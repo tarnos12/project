@@ -1,4 +1,19 @@
-﻿//Skills
+﻿"use strict";
+//Spells
+(function () {
+    var weaponSpells = function (name, weaponRarity) {
+        this.name = name;
+        this.rarity = weaponRarity;
+    };
+
+    var fireBall = new weaponSpells("FireBall", "Common");
+
+    fireBall.damage = function () {
+        return player.functions.totalIntelligence() * 2;
+    };
+
+})();
+//Skills
 (function() {
     var newPassive = function(level, maxLevel, id, levelReq, name, image, bonus) { //default spell object constructor
         this.id = id;

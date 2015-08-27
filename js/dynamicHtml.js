@@ -1,3 +1,4 @@
+"use strict";
 //Create player Weapon skill html
 var weaponTabActive = 'swordTest';
 function changeTabWeapon(index) {
@@ -151,7 +152,7 @@ function CreateMonsterHtml() {
                             '<br /></div>';
                         html += '<div class="progress">';
                         html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.Stats.name + "1" + '">';
-                        html += '<span style="font-size:16px;">' + monster.Stats.hp + ' HP</span>' + '</div></div>';
+                        html += '<span style="font-size:13px;">' + monster.Stats.hp + ' HP</span>' + '</div></div>';
                         html += '</div>';
 
 
@@ -425,14 +426,17 @@ function CreatePlayerSkillsHtml() {
             } else {
                 html += '<div class="col-xs-4">';
             }
+            html += '<div class="col-xs-12">';
             html += '<a class="tooltips">';
-            html += '<img class="passiveMargin"' + 'onclick="' + onclickevent + '"' + 'src="images/passive/' + passive.image + '.png">';
+            html += '<img onclick="' + onclickevent + '"' + 'src="images/passive/' + passive.image + '.png"">';
             html += '<span>';
             html += passive.name + '<br />';
             html += passive.description();
             html += '<br />Level: ' + passive.levelReq;
             html += '<br />Level: ' + passive.level + '/' + passive.maxLevel;
             html += '</span></a>';
+            html += '<div class="centerText passiveMargin">' + passive.level + '/' + passive.maxLevel + '</div>';
+            html += '</div>';
             html += '</div>';
             if (passive.lastRow === true) {
                 html += '</div>';

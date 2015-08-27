@@ -1,4 +1,5 @@
-﻿var hotBarItem = [
+﻿"use strict";
+var hotBarItem = [
     {
         type: 'Empty',
         displayName: 'Small Potion',

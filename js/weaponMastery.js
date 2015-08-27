@@ -1,4 +1,5 @@
-﻿(function() {
+﻿"use strict";
+(function () {
     var weaponSkillType = function(level, experience, maxExperience, image, name) {
         this.level = level;
         this.experience = experience;

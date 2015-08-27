@@ -1,4 +1,4 @@
-﻿
+﻿"use strict";
 var craftCost = [
     {
         type: 'Common',

@@ -1,4 +1,5 @@
-﻿function saveGameFunction(saveType, slot) {
+﻿"use strict";
+function saveGameFunction(saveType, slot) {
     var d = new Date();
     var hour = d.getHours();
     var minute = d.getMinutes();
