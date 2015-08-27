@@ -1,5 +1,4 @@
-﻿
-
+﻿"use strict";
 
 var secondaryStatInfo = [
      {
@@ -718,7 +717,7 @@ var itemRarity = [
     type: 'Uncommon',
     minMods: 2,
     maxMods: 3,
-    chance: 400,
+    chance: 1000,
     color: '#00CC33',
     power: 2,
     rarityValue: 2
@@ -727,7 +726,7 @@ var itemRarity = [
     type: 'Common',
     minMods: 1,
     maxMods: 2,
-    chance: 600,
+    chance: 5000,
     color: 'white',
     power: 1,
     rarityValue: 1

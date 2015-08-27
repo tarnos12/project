@@ -1,4 +1,5 @@
-﻿window.setInterval(function() {
+﻿"use strict";
+window.setInterval(function () {
     var hppercent = 100; //This function heal player automatically using potions.
     hppercent = (Math.floor((player.properties.health / player.functions.maxhealth()) * 100));
     if (player.functions.maxhealth() >= 500 & player.properties.superPotion >= 1 & player.properties.isDead === false) {

@@ -1,4 +1,5 @@
-﻿// chance out of 10000, 1 = 0.01%, 10 = 0.1%, 100 = 1%, 1000 = 10%...
+﻿"use strict";
+// chance out of 10000, 1 = 0.01%, 10 = 0.1%, 100 = 1%, 1000 = 10%...
 var monsterList = {};
 
 var VarikGrunt = {};

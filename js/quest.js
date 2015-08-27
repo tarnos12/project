@@ -1,4 +1,5 @@
-﻿var monsterUnlock = {
+﻿"use strict";
+var monsterUnlock = {
     VarikSoldier: false,
     VarikMarksmen: false,
     VarikVulture: false,

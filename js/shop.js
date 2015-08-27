@@ -1,4 +1,5 @@
-﻿var potionStatus = {};
+﻿"use strict";
+var potionStatus = {};
 potionStatus.price = 20;
 var mediumPotionStatus = {};
 mediumPotionStatus.price = 100;
