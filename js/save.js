@@ -293,6 +293,7 @@ function load(slot) {
         playerProfessionHtml();
         createPotionInventory();
         unlockMineral();
+        checkBoxHtml();
     }
     else {
         if (confirm("Do you want to start a new game?") === true) {

@@ -218,12 +218,11 @@
             </div>
             <div id="raceDiv" style="display:none;">
                 <div class="raceText" id="raceText"></div>
-                <div class="sliderDiv" id="sliderDivID" style="display:none">
-                    <p>
-                        <label for="amount">Choose your age:</label>
-                        <input type="text" id="amount" readonly style="border:0; font-weight:bold;">
-                    </p>
-                    <div id="slider-range-min"></div>
+                <div id="sliderDivID" class="sliderDiv" style="display:none;">
+                    <label><input id="Adulthood" type="radio" name="raceAge" value="Adulthood" style="visibility: visible;" onclick="getAgeButton()" checked><span style="margin-left:20px;">Adulthood</span></label>
+                    <label><input id="Middle Age" type="radio" name="raceAge" value="Middle Age" style="visibility: visible;" onclick="getAgeButton()"><span style="margin-left:20px;">Middle Age</span></label>
+                    <label><input id="Old" type="radio" name="raceAge" value="Old" style="visibility: visible;" onclick="getAgeButton()"><span style="margin-left:20px;">Old</span></label>
+                    <label><input id="Venerable" type="radio" name="raceAge" value="Venerable" style="visibility: visible;" onclick="getAgeButton()"><span style="margin-left:20px;">Venerable</span></label>
                 </div>
                 <div class="raceCreation" id="raceCreation"></div>
             </div>
@@ -554,6 +553,7 @@
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="tab_inventory">
+                                                <div id="checkBoxHtml"></div>
                                                 <div class="inventory" id="inventory"></div>
                                             </div>
                                             <div class="tab-pane" id="tab_shop">
@@ -642,11 +642,7 @@
 
 
                                             <a href="updates.html" target="_blank">Changelog</a><br />
-                                            <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br /><br />
-                                            <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="common" onclick='handleClick();'>Destroy all Common</label></div>
-                                            <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="uncommon" onclick='handleClick();'>Destroy all Uncommon</label></div>
-                                            <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="rare" onclick='handleClick();'>Destroy all Rare</label></div>
-                                            <div><label><input style="visibility:visible; position:relative;" type='checkbox' id="epic" onclick='handleClick();'>Destroy all Epic</label></div><br />
+                                            <a href="http://www.reddit.com/r/LoFW/" target="_blank">Subreddit</a><br />
                                             <div class="c3">
                                                 <b>Game is free, but donations are always welcome.</b>
                                                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">

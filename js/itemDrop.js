@@ -227,7 +227,9 @@ function getItemBaseStats(monster, dropItem, isDrop) {
         dropItem.Value += (dropItem.MinDamage + dropItem.MaxDamage) * 5;
     }
     else if (dropItem.itemType === "armor") {
-        randomNumber = Math.floor(Math.random() * (dropItem.iLvl - 1 + 1)) + 1;
+        var minDefense = 5 + (dropItem.iLvl * 0.3);
+        var maxDefense = 10 + (dropItem.iLvl * 0.7);
+        randomNumber = Math.floor((Math.random() * (maxDefense - minDefense + 1)) + minDefense);
         dropItem["defense"] = randomNumber;
         dropItem.Value += dropItem.defense * 10;
     };
@@ -427,12 +429,12 @@ function getBonusItemMod(monster, dropItem, isDrop) {
                 randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
                 dropItem[randomMod.type] = randomModValue;
                 dropItem.Value += randomMod.baseValue * randomModValue;
-                dropItem.defense += randomModValue;
+                dropItem.defense *= (1 +(randomModValue / 100));
                 arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
                 newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
                 currentMods += 1;
             }
-            else if (randomMod.type !== "Block chance" && randomMod.type !== "Bonus damage" && randomMod.type !== "Bonus armor" && randomMod.type !== "Life gain on hit" && randomMod.type !== "Critical damage") {
+            else if (randomMod.type !== "Bonus damage" && randomMod.type !== "Bonus armor" && randomMod.type !== "Life gain on hit" && randomMod.type !== "Critical damage") {
                 randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
                 dropItem[randomMod.type] = randomModValue;
                 dropItem.Value += randomMod.baseValue * randomModValue;
@@ -457,7 +459,7 @@ function getBonusItemMod(monster, dropItem, isDrop) {
     };
     if (dropItem.subType === "shield") {
         dropItem['Block chance'] = dropItem.power * dropItem.rarityValue;
-        dropItem['Block amount'] = (dropItem.power * dropItem.rarityValue) * 10;
+        dropItem['Block amount'] = (dropItem.power * dropItem.rarityValue) * 5;
         dropItem.Value += (dropItem['Block chance'] * 5 + dropItem['Block amount'] * 5);
     };
     if (dropItem.itemType === 'weapon') {
