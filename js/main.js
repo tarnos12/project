@@ -592,7 +592,12 @@ var player = {
             return ((1.1 + (player.functions.totalDexterity()) * 0.005) + player.functions.totalCriticalDamage());
         },
         blockChance: function () {
-            return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance());
+            if (Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance()) >= 75) {
+                return 75;
+            }
+            else {
+                return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance());
+            }
         },
         blockAmount: function () {
             return Math.floor(weaponSkillList.sword.parryAndRiposte.blockAmount() + player.functions.totalBlockAmount());
@@ -767,7 +772,7 @@ function playerCriticalDamage(monsterStat, monsterStats) {
 //player normal damage calculation
 function playerDamage(monsterStat, monsterStats) {
     var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * (10 / (10 + monsterStats.def)));
+    damage = Math.floor(damage * (100 / (100 + monsterStats.def)));
     if (damage >= 1) {
         playerDamageDeal(damage, monsterStat, monsterStats);
     };
@@ -811,8 +816,9 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
         };
     };
     if (player.functions.lifeSteal() > 0) {
-        var lifeSteal = Math.floor(damage * (player.functions.lifeSteal() / 100));
+        var lifeSteal = Math.floor(damage * (player.functions.lifeSteal() / 1000));
         lifeStealAmount += lifeSteal;
+        console.log("OverHeal " + (lifeSteal - (player.functions.maxhealth() - player.properties.health)))
         player.properties.health += lifeSteal;
         if (player.properties.health > player.functions.maxhealth()) {
             player.properties.health = player.functions.maxhealth();
@@ -839,7 +845,7 @@ function monsterAttack(monsterStat, monsterStats) {
 //monster damage calculation
 function monsterDmg(monsterStat, monsterStats) {
     monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg - monsterStats.minDmg + 1)) + monsterStats.minDmg;
-    monsterDamage = Math.floor(monsterDamage * (30 / (30 + player.functions.defense())));
+    monsterDamage = Math.floor(monsterDamage * (100 / (100 + player.functions.defense())));
     if (monsterDamage >= 1) {
         monsterDamageDeal(monsterDamage, monsterStat, monsterStats);
     };
@@ -1518,12 +1524,14 @@ var checkBoxCommon = false;
 var checkBoxUncommon = false;
 var checkBoxRare = false;
 var checkBoxEpic = false;
+var checkBoxLegendary = false;
 var hardcoreMode = false;
 function handleClick() {
     checkBoxCommon = document.getElementById("common").checked;
     checkBoxUncommon = document.getElementById("uncommon").checked;
     checkBoxRare = document.getElementById("rare").checked;
     checkBoxEpic = document.getElementById("epic").checked;
+    checkBoxLegendary = document.getElementById("legendary").checked;
     hardcoreMode = document.getElementById("hardcoreMode").checked;
     player.autoBattle.autoBattle = document.getElementById("autoBattle").checked;
 };

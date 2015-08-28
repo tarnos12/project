@@ -102,7 +102,7 @@ span.profession {
 .logo { z-index: 2; }
 
 .loadingContainer {
-    background-color: #EEDFA6;
+    background-color:#EEDFA6;
     height: 100%;
     left: 0%;
     position: absolute;
@@ -155,7 +155,7 @@ span.profession {
 
 .raceText {
     height: 50%;
-    left: 10%;
+    left: 15%;
     position: absolute;
     top: 25%;
     width: 70%;
@@ -167,7 +167,7 @@ span.profession {
     left: 30%;
     position: absolute;
     top: 28%;
-    width: 20%;
+    width: 60%;
     z-index: 2;
 }
 

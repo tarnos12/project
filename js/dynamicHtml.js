@@ -172,6 +172,44 @@ function CreateMonsterHtml() {
     testss();
 };
 
+function checkBoxHtml() {
+    var html = "";
+
+    html += '<div class="centerText">';
+    html += '<strong>Select items to sell. Selecting will also prevent you from dropping items with that rarity.</strong>';
+    html += '<br /><label><input style="visibility:visible; position:relative;" type="checkbox" id="common" onclick="handleClick();"'
+    if (checkBoxCommon === true) {
+        html += "checked";
+    }
+    html += '><span style="background-color:gray; width:10px;height:10px;" data-toggle="tooltip" data-placement="top" title="Common">__</span></label>';
+
+    html += '<label><input style="visibility:visible; position:relative;" type="checkbox" id="uncommon" onclick="handleClick();"'
+    if (checkBoxUncommon === true) {
+        html += "checked";
+    }
+    html += '><span style="background-color:green; width:10px;height:10px;" data-toggle="tooltip" data-placement="top" title="Uncommon">__</span></label>';
+
+    html += '<label><input style="visibility:visible; position:relative;" type="checkbox" id="rare" onclick="handleClick();"'
+    if (checkBoxRare === true) {
+        html += "checked";
+    }
+    html += '><span style="background-color:blue; width:10px;height:10px;" data-toggle="tooltip" data-placement="top" title="Rare">__</span></label>';
+
+    html += '<label><input style="visibility:visible; position:relative;" type="checkbox" id="epic" onclick="handleClick();"'
+    if (checkBoxEpic === true) {
+        html += "checked";
+    }
+    html += '><span style="background-color:orange; width:10px;height:10px;" data-toggle="tooltip" data-placement="top" title="Epic">__</span></label>';
+
+    html += '<label><input style="visibility:visible; position:relative;" type="checkbox" id="legendary" onclick="handleClick();"'
+    if (checkBoxLegendary === true) {
+        html += "checked";
+    }
+    html += '><span style="background-color:red; width:10px;height:10px;" data-toggle="tooltip" data-placement="top" title="Legendary">__</span></label><br />';
+
+    html += '</div>';
+    document.getElementById('checkBoxHtml').innerHTML = html;
+};
 var inventoryTabActiveNum = 0;
 function changedTabInventory(index) {
     inventoryTabActiveNum = index;
@@ -215,17 +253,9 @@ function CreateInventoryWeaponHtml() {
         html += '<div class="c3"><h4>Inventory</h4>';
         if (InventoryItemTypes[j].type !== 'other') {
             html += '<div class="centerText">';
-            html += '<strong>Sell All(Current tab)</strong>';
-            var sellAllCommon = "sellAllCommon('" + InventoryItemTypes[j].type + "');";
-            var sellAllUncommon = "sellAllUncommon('" + InventoryItemTypes[j].type + "');";
-            var sellAllRare = "sellAllRare('" + InventoryItemTypes[j].type + "');";
-            var sellAllEpic = "sellAllEpic('" + InventoryItemTypes[j].type + "');";
-            var sellAllLegendary = "sellAllLegendary('" + InventoryItemTypes[j].type + "');";
-            html += '<br /><button type="button" class="sell" onclick=' + sellAllCommon + '>Common</button>';
-            html += '<button type="button" class="sell" onclick=' + sellAllUncommon + '>Uncommon</button>';
-            html += '<button type="button" class="sell" onclick=' + sellAllRare + '>Rare</button>';
-            html += '<button type="button" class="sell" onclick=' + sellAllEpic + '>Epic</button>';
-            html += '<button type="button" class="sell" onclick=' + sellAllLegendary + '>Legendary</button>';
+            html += '<strong>Sell items(Current tab)</strong>';
+            var sellAll = "sellAllItems('" + InventoryItemTypes[j].type + "');";
+            html += '<br /><button type="button" class="sell" onclick=' + sellAll + '>Sell all</button>';
             html += '</div>';
             html += '<div class="c3">Sort by:</div>';
             var sortItemValue = 'onclick="sortInventory' + "(" + "'Value'" + ")"
@@ -647,6 +677,7 @@ function newGame(slot) {
         craftingHtml();
         createPotionInventory();
         unlockMineral();
+        checkBoxHtml();
     };
 };
 
@@ -907,9 +938,12 @@ function secondaryStatUpdate(){
         html += '<div class="col-xs-12 ' + background + '">';
         html += '<div class="row">';
         html += '<div class="col-xs-6 ' + background + '">';
+        html += '<span data-toggle="tooltip" data-placement="right" title="' + currentBonus.tooltip() + '">';
         html += statDisplay2 + ":";
+        html += '</span>';
         html += '</div>';
-        html += '<div class="col-xs-6 rightAlign '  + background + '">';
+        html += '<div class="col-xs-6 rightAlign ' + background + '">';
+        html += '<span data-toggle="tooltip" data-placement="right" title="' + currentBonus.tooltip() + '">';
         if (currentBonus.type === "Magic find" || currentBonus.type === "Gold drop" || currentBonus.type === "Experience rate") {
             html += ((statDisplay - 1) * 100).toFixed(0);
         }
@@ -919,14 +953,11 @@ function secondaryStatUpdate(){
         else if (currentBonus.type === "Evasion" && player.functions.evasion() === 0) {
             html += "Can't evade";
         }
-        else if (currentBonus.type === "Stats" || currentBonus.type === "Skill points") {
-            html += statDisplay.toFixed(0);
-        }
         else if (currentBonus.type === "Crit damage") {
             html += (statDisplay * 100).toFixed(0);
         }
         else {
-            html += statDisplay.toFixed(2);
+            html += statDisplay.toFixed(0);
         };
         if (currentBonus.type === "Accuracy" && player.functions.accuracy() < 111 || currentBonus.type === "Evasion" && player.functions.evasion() > 0) {
             html += '%';
@@ -934,6 +965,7 @@ function secondaryStatUpdate(){
         if (currentBonus.isPercent === true && currentBonus.type !== "Accuracy" && currentBonus.type !== "Evasion") {
             html += '%';
         };
+        html += '</span>';
         html += '</div>';
         html += '</div>';
         html += '</div>';
@@ -1359,40 +1391,32 @@ function testss() {
     });
 };
 
-var raceAgeArray = [
-    "Adulthood",
-    "Middle Age",
-    "Old",
-    "Venerable"
-];
-
-    $(function () {
-        $("#slider-range-min").slider({
-            value: 0,
-            min: 0,
-            max: 3,
-            step: 1,
-            slide: function (event, ui) {
-                $("#amount").val(raceAgeArray[ui.value]);
-                getAge();
-                characterCreationHtml();
-            }
-        });
-        $("#amount").val(raceAgeArray[$("#slider-range-min").slider("value")]);
-    });
-
-
-    
+var raceSelect = "Adulthood";
+    function getAgeButton() {
+        if (document.getElementById("Adulthood").checked === true) {
+            raceSelect = "Adulthood";
+        }
+        else if (document.getElementById("Middle Age").checked === true) {
+            raceSelect = "Middle Age";
+        }
+        else if (document.getElementById("Old").checked === true) {
+            raceSelect = "Old";
+        }
+        else if (document.getElementById("Venerable").checked === true) {
+            raceSelect = "Venerable";
+        };
+        getAge();
+        characterCreationHtml();
+    };
 function getAge() {
-    var test = document.getElementById('amount').value;
-    characterRaces.human.raceAge = test;
-    characterRaces.halfElf.raceAge = test;
-    characterRaces.dwarf.raceAge = test;
-    characterRaces.orc.raceAge = test;
-    characterRaces.elf.raceAge = test;
-    characterRaces.halfing.raceAge = test;
-    characterRaces.sylph.raceAge = test;
-    characterRaces.giant.raceAge = test;
+    characterRaces.human.raceAge = raceSelect;
+    characterRaces.halfElf.raceAge = raceSelect;
+    characterRaces.dwarf.raceAge = raceSelect;
+    characterRaces.orc.raceAge = raceSelect;
+    characterRaces.elf.raceAge = raceSelect;
+    characterRaces.halfing.raceAge = raceSelect;
+    characterRaces.sylph.raceAge = raceSelect;
+    characterRaces.giant.raceAge = raceSelect;
 };
 
 function playerProfessionHtml() {
@@ -1452,7 +1476,7 @@ function itemTooltipTest(item) {
     };
     if (item.itemType === "armor") {
         if (item['Bonus armor'] > 0) {
-            html += '<div style="border-top: 1px solid;border-bottom: 1px solid;"><strong><font color="#1e69c3">Defense: ' + item.defense + "</font></strong></div>";
+            html += '<div style="border-top: 1px solid;border-bottom: 1px solid;"><strong><font color="#1e69c3">Defense: ' + item.defense.toFixed(0) + "</font></strong></div>";
         } else {
             html += '<div style="border-top: 1px solid;border-bottom: 1px solid;">Defense: ' + item.defense + " </div>";
         };
@@ -1460,8 +1484,9 @@ function itemTooltipTest(item) {
             html += '<div style="border-top: 1px solid;border-bottom: 1px solid;">Chance to Block: ' + item['Block chance'] + '%' + " </div>";
         };
         if (item['Bonus armor'] > 0) {
-            html += '<strong><font color="7FCC7F">' + 'Bonus armor' + ": " + item['Bonus armor'] + '</font></strong>' + '<br />';
+            html += '<strong><font color="7FCC7F">' + 'Bonus armor' + ": " + item['Bonus armor'] + "%" + '</font></strong>' + '<br />';
         };
+        html += 'Damage reduction: ' + ((100 - (100 / (100 + (player.functions.defense() + (item.defense - equippedItems[item.subType].defense)))) * 100) - (100 - (100 / (100 + player.functions.defense())) * 100)).toFixed(2) + "%" + '<br />';
     };
     for (var statName in item) { //Here stat will become the word Defense
         if (item.hasOwnProperty(statName)) {

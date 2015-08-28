@@ -5,103 +5,154 @@ var secondaryStatInfo = [
          type: 'Stats',
          info: 'stats',
          isPercent: false,
-         number: 1
+         number: 1,
+         tooltip: function () {
+             return "Used to increase your stats(strength etc.)";
+         }
      },
      {
          type: 'Skill points',
          info: 'skillPoints',
          isPercent: false,
-         number: 2
+         number: 2,
+         tooltip: function () {
+             return "Total skill points.";
+         }
      },
     {
         type: 'Hp /s',
         info: 'hpregen',
         isPercent: false,
-        number: 1
+        number: 1,
+        tooltip: function () {
+            return "Health gain per second.";
+        }
     },
     {
         type: 'Mana /s',
         info: 'manaRegen',
         isPercent: false,
-        number: 2
+        number: 2,
+        tooltip: function () {
+            return "Mana gain per second.";
+        }
     },
     {
         type: 'Defense',
         info: 'defense',
         isPercent: false,
-        number: 1
+        number: 1,
+        tooltip: function () {
+            return "Damage reduction:" + (100 - (100 / (100 + player.functions.defense())) * 100).toFixed(2) + "%";
+        }
     },
     {
         type: 'Accuracy',
         info: 'accuracy',
         isPercent: true,
-        number: 2
+        number: 2,
+        tooltip: function () {
+            return "Your chance to hit enemy.";
+        }
     },
     {
         type: 'Evasion',
         info: 'evasion',
         isPercent: true,
-        number: 1
+        number: 1,
+        tooltip: function () {
+            return "Your chance to evade enemy attack.";
+        }
     },
     {
         type: 'Life on hit',
         info: 'lifeSteal',
         isPercent: true,
-        number: 2
+        number: 2,
+        tooltip: function () {
+            return "Your percentage amount of health gained from attacking.";
+        }
     },
     {
         type: 'Counter chance',
         info: 'counterChance',
         isPercent: true,
-        number: 1
+        number: 1,
+        tooltip: function () {
+            return "Chance to counter enemy attacks.";
+        }
     },
     {
         type: 'Counter dmg',
         info: 'counterDamage',
         isPercent: false,
-        number: 2
+        number: 2,
+        tooltip: function () {
+            return "Amount of damage dealt by a successful counter.";
+        }
     },
     {
         type: 'Block chance',
         info: 'blockChance',
         isPercent: true,
-        number: 1
+        number: 1,
+        tooltip: function () {
+            return "Chance to block incoming attacks.";
+        }
     },
     {
         type: 'Block amount',
         info: 'blockAmount',
         isPercent: false,
-        number: 2
+        number: 2,
+        tooltip: function () {
+            return "Amount of reduced damage when block is successful.";
+        }
     },
     {
         type: 'Crit chance',
         info: 'criticalChance',
         isPercent: true,
-        number: 1
+        number: 1,
+        tooltip: function () {
+            return "Chance for critical strike, dealing more damage.";
+        }
     },
     {
         type: 'Crit damage',
         info: 'criticalDamage',
         isPercent: true,
-        number: 2
+        number: 2,
+        tooltip: function () {
+            return "Critical strike multiplier";
+        }
     },
     {
         type: 'Magic find',
         info: 'dropRate',
         isPercent: true,
-        number: 1
+        number: 1,
+        tooltip: function () {
+            return "Increase chance to find an item after defeating enemy.";
+        }
     },
     {
         type: 'Gold drop',
         info: 'goldRate',
         isPercent: true,
-        number: 2
+        number: 2,
+        tooltip: function () {
+            return "More gold per enemy defeat.";
+        }
     },
     {
         type: 'Experience rate',
         info: 'expRate',
         isPercent: true,
-        number: 1
+        number: 1,
+        tooltip: function () {
+            return "More experience for each enemy defeated.";
+        }
     }
 ];
 var primaryStatInfo = [
