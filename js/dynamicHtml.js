@@ -217,6 +217,7 @@ function checkBoxHtml() {
     html += '</div>';
     html += '</div>';
     document.getElementById('checkBoxHtml').innerHTML = html;
+    testss();
 };
 var inventoryTabActiveNum = 0;
 function changedTabInventory(index) {
