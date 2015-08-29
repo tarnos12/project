@@ -3,6 +3,7 @@
 var secondaryStatInfo = [
      {
          type: 'Stats',
+         displayName: 'Stats',
          info: 'stats',
          isPercent: false,
          number: 1,
@@ -12,24 +13,27 @@ var secondaryStatInfo = [
      },
      {
          type: 'Skill points',
+         displayName: 'Skill pts',
          info: 'skillPoints',
          isPercent: false,
-         number: 2,
+         number: 1,
          tooltip: function () {
              return "Total skill points.";
          }
      },
     {
         type: 'Hp /s',
+        displayName: 'Hp /s',
         info: 'hpregen',
         isPercent: false,
-        number: 1,
+        number: 2,
         tooltip: function () {
             return "Health gain per second.";
         }
     },
     {
         type: 'Mana /s',
+        displayName: 'Mp /s',
         info: 'manaRegen',
         isPercent: false,
         number: 2,
@@ -39,6 +43,7 @@ var secondaryStatInfo = [
     },
     {
         type: 'Defense',
+        displayName: 'Def',
         info: 'defense',
         isPercent: false,
         number: 1,
@@ -48,24 +53,27 @@ var secondaryStatInfo = [
     },
     {
         type: 'Accuracy',
+        displayName: 'Acc',
         info: 'accuracy',
         isPercent: true,
-        number: 2,
+        number: 1,
         tooltip: function () {
             return "Your chance to hit enemy.";
         }
     },
     {
         type: 'Evasion',
+        displayName: 'Eva',
         info: 'evasion',
         isPercent: true,
-        number: 1,
+        number: 2,
         tooltip: function () {
             return "Your chance to evade enemy attack.";
         }
     },
     {
         type: 'Life on hit',
+        displayName: 'Life /hit',
         info: 'lifeSteal',
         isPercent: true,
         number: 2,
@@ -75,6 +83,7 @@ var secondaryStatInfo = [
     },
     {
         type: 'Counter chance',
+        displayName: 'Counter %',
         info: 'counterChance',
         isPercent: true,
         number: 1,
@@ -84,24 +93,27 @@ var secondaryStatInfo = [
     },
     {
         type: 'Counter dmg',
+        displayName: 'Damage',
         info: 'counterDamage',
         isPercent: false,
-        number: 2,
+        number: 1,
         tooltip: function () {
             return "Amount of damage dealt by a successful counter.";
         }
     },
     {
         type: 'Block chance',
+        displayName: 'Block %',
         info: 'blockChance',
         isPercent: true,
-        number: 1,
+        number: 2,
         tooltip: function () {
             return "Chance to block incoming attacks.";
         }
     },
     {
         type: 'Block amount',
+        displayName: 'Amount',
         info: 'blockAmount',
         isPercent: false,
         number: 2,
@@ -111,6 +123,7 @@ var secondaryStatInfo = [
     },
     {
         type: 'Crit chance',
+        displayName: 'Crit %',
         info: 'criticalChance',
         isPercent: true,
         number: 1,
@@ -120,24 +133,27 @@ var secondaryStatInfo = [
     },
     {
         type: 'Crit damage',
+        displayName: 'Multiplier',
         info: 'criticalDamage',
         isPercent: true,
-        number: 2,
+        number: 1,
         tooltip: function () {
             return "Critical strike multiplier";
         }
     },
     {
         type: 'Magic find',
+        displayName: 'Drop %',
         info: 'dropRate',
         isPercent: true,
-        number: 1,
+        number: 2,
         tooltip: function () {
             return "Increase chance to find an item after defeating enemy.";
         }
     },
     {
         type: 'Gold drop',
+        displayName: 'Gold %',
         info: 'goldRate',
         isPercent: true,
         number: 2,
@@ -147,6 +163,7 @@ var secondaryStatInfo = [
     },
     {
         type: 'Experience rate',
+        displayName: 'Exp %',
         info: 'expRate',
         isPercent: true,
         number: 1,
@@ -160,62 +177,71 @@ var primaryStatInfo = [
         type: 'damage',
         shortNameDisplay: 'Dmg',
         info: 'damage',
-        tooltip: 'Damage dealt.'
+        tooltip: 'Damage dealt.',
+        number: 1
     },
     {
         type: 'mana',
         shortNameDisplay: 'MP',
         info: 'mana',
-        tooltip: 'Your mana.'
+        tooltip: 'Your mana.',
+        number: 2
     },
     {
         type: 'strength',
         shortNameDisplay: 'Str',
         info: 'totalStrength',
         item: 'itemStrength',
-        tooltip: 'Increase damage, inventory capacity.'
+        tooltip: 'Increase damage, inventory capacity.',
+        number: 1
     },
     {
         type: 'endurance',
         shortNameDisplay: 'End',
         info: 'totalEndurance',
         item: 'itemEndurance',
-        tooltip: 'Increase health, health regen.'
+        tooltip: 'Increase health, health regen.',
+        number: 1
     },
     {
         type: 'agility',
         shortNameDisplay: 'Agi',
         info: 'totalAgility',
         item: 'itemAgility',
-        tooltip: 'Increase accuracy, evasion, defense.'
+        tooltip: 'Increase accuracy, evasion, defense.',
+        number: 2
     },
     {
         type: 'dexterity',
         shortNameDisplay: 'Dex',
         info: 'totalDexterity',
         item: 'itemDexterity',
-        tooltip: 'Increase critical chance, critical damage.'
+        tooltip: 'Increase critical chance, critical damage.',
+        number: 2
     },
     {
         type: 'wisdom',
         shortNameDisplay: 'Wis',
         info: 'totalWisdom',
         item: 'itemWisdom',
-        tooltip: 'Increase mana, mana regen.'
+        tooltip: 'Increase mana, mana regen.',
+        number: 1
     },
     {
         type: 'intelligence',
         shortNameDisplay: 'Int',
         info: 'totalIntelligence',
         item: 'itemIntelligence',
-        tooltip: 'Increase mana.'
+        tooltip: 'Increase mana.',
+        number: 1
     },
     {
         type: 'luck',
         shortNameDisplay: 'Luk',
         info: 'totalLuck',
         item: 'itemLuck',
-        tooltip: 'Increase magic find, critical chance, evasion.'
+        tooltip: 'Increase magic find, critical chance, evasion.',
+        number: 2
     }
 ];
 
