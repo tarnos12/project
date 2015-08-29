@@ -34,12 +34,12 @@
         };
     };
     //lvl/maxLvl/ID/Req/Name/Image/bonus
-    var brawler = new newPassive(0, 5, 1, 1, "Brawler", "DmgUp", 5);
-    var vitality = new newPassive(0, 5, 2, 1, "Vitality", "HpUp", 5);
-    var looter = new newPassive(0, 5, 3, 1, "Looter", "MfUp", 10);
-    var overpower = new newPassive(0, 1, 4, 5, "Overpower", "DmgUp2", 25);
-    var fortitude = new newPassive(0, 1, 5, 5, "Fortitude", "HpUp2", 20);
-    var explorer = new newPassive(0, 1, 6, 5, "Explorer", "MfUp2", 50);
+    var brawler = new newPassive(0, 5, 1, 1, "Brawler", "Brawler", 5);
+    var vitality = new newPassive(0, 5, 2, 1, "Vitality", "Vitality", 5);
+    var looter = new newPassive(0, 5, 3, 1, "Looter", "Looter", 10);
+    var overpower = new newPassive(0, 1, 4, 5, "Overpower", "Overpower", 25);
+    var fortitude = new newPassive(0, 1, 5, 5, "Fortitude", "Fortitude", 20);
+    var explorer = new newPassive(0, 1, 6, 5, "Explorer", "Explorer", 50);
     var sixthSense = new newPassive(0, 5, 7, 10, "Sixth Sense", "SixthSense", 10);
     var spiritualAttunement = new newPassive(0, 5, 8, 10, "Spiritual Attunement", "Spiritual", 20);
     var mighty = new newPassive(0, 5, 9, 15, "Mighty", "Mighty", 10);
@@ -72,10 +72,10 @@
     overpower.newRow = true;
     overpower.description = function() {
         return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br /> " +
-            brawler.name + " level " + brawler.maxLevel;
+            brawler.name;
     };
     overpower.requirements = function() {
-        if (brawler.level === brawler.maxLevel) {
+        if (brawler.level >= 1) {
             return true;
         } else {
             return false;
@@ -86,10 +86,10 @@
     };
     fortitude.description = function() {
         return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br /> " +
-            vitality.name + " level " + vitality.maxLevel;
+            vitality.name;
     };
     fortitude.requirements = function() {
-        if (vitality.level === vitality.maxLevel) {
+        if (vitality.level >= 1) {
             return true;
         } else {
             return false;
@@ -100,10 +100,10 @@
     };
     explorer.description = function() {
         return "Increase magic find by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% magic find. <br /><br />Requires: <br /> " +
-            looter.name + " level " + looter.maxLevel;
+            looter.name;
     };
     explorer.requirements = function() {
-        if (looter.level === looter.maxLevel) {
+        if (looter.level >= 1) {
             return true;
         } else {
             return false;
@@ -112,11 +112,11 @@
 
     sixthSense.description = function() {
         return "Increase total Evasion by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% Evasion. <br /><br />Requires: <br /> " +
-            overpower.name + " level " + overpower.maxLevel + "<br />" + fortitude.name + " level " + fortitude.maxLevel;
+            overpower.name + "<br />" + fortitude.name;
     };
     sixthSense.type = "Double";
     sixthSense.requirements = function() {
-        if (overpower.level === overpower.maxLevel && fortitude.level === fortitude.maxLevel) {
+        if (overpower.level >= 1 && fortitude.level >= 1) {
             return true;
         } else {
             return false;
@@ -124,11 +124,11 @@
     };
     spiritualAttunement.description = function() {
         return "Increase mana by " + this.bonus + " <br /> Currently grants: " + this.bonusTotal() + " maximum mana. <br /><br />Requires: <br /> " +
-            fortitude.name + " level " + fortitude.maxLevel + "<br />" + explorer.name + " level " + explorer.maxLevel;
+            fortitude.name + "<br />" + explorer.name;
     };
     spiritualAttunement.type = "Double";
     spiritualAttunement.requirements = function() {
-        if (fortitude.level === fortitude.maxLevel && explorer.level === explorer.maxLevel) {
+        if (fortitude.level >= 1 && explorer.level >= 1) {
             return true;
         } else {
             return false;
@@ -136,10 +136,10 @@
     };
     mighty.description = function() {
         return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br /> " +
-            overpower.name + " level " + overpower.maxLevel;
+            overpower.name;
     };
     mighty.requirements = function() {
-        if (overpower.level === overpower.maxLevel) {
+        if (overpower.level >= 1) {
             return true;
         } else {
             return false;
@@ -147,10 +147,10 @@
     };
     constitution.description = function() {
         return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br /> " +
-            fortitude.name + " level " + fortitude.maxLevel;
+            fortitude.name;
     };
     constitution.requirements = function() {
-        if (fortitude.level === fortitude.maxLevel) {
+        if (fortitude.level >= 1) {
             return true;
         } else {
             return false;
@@ -158,10 +158,10 @@
     };
     curiosity.description = function() {
         return "Increase experience rate by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus experience rate. <br /><br />Requires: <br /> " +
-            explorer.name + " level " + explorer.maxLevel;
+            explorer.name;
     };
     curiosity.requirements = function() {
-        if (explorer.level === explorer.maxLevel) {
+        if (explorer.level >= 1) {
             return true;
         } else {
             return false;
@@ -170,10 +170,10 @@
 
     masterofArms.description = function() {
         return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage.<br /><br />Requires: <br /> " +
-            mighty.name + " level " + mighty.maxLevel;
+            mighty.name;
     };
     masterofArms.requirements = function() {
-        if (mighty.level === mighty.maxLevel) {
+        if (mighty.level >= 1) {
             return true;
         } else {
             return false;
@@ -181,10 +181,10 @@
     };
     robust.description = function() {
         return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus health.<br /><br />Requires: <br /> " +
-            constitution.name + " level " + constitution.maxLevel;
+            constitution.name;
     };
     robust.requirements = function() {
-        if (constitution.level === constitution.maxLevel) {
+        if (constitution.level >= 1) {
             return true;
         } else {
             return false;
@@ -193,10 +193,10 @@
 
     ancientKnowledge.description = function() {
         return "Increase gold/exp/drop rates by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus gold/exp/drop rate.<br /><br />Requires: <br /> " +
-            curiosity.name + " level " + curiosity.maxLevel;
+            curiosity.name;
     };
     ancientKnowledge.requirements = function() {
-        if (curiosity.level === curiosity.maxLevel) {
+        if (curiosity.level >= 1) {
             return true;
         } else {
             return false;
@@ -205,10 +205,10 @@
     balancedWarrior.type = "Double";
     balancedWarrior.description = function() {
         return "Increase damage and health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage and health. <br /><br />Requires: <br /> " +
-            sixthSense.name + " level " + sixthSense.maxLevel;
+            sixthSense.name;
     };
     balancedWarrior.requirements = function() {
-        if (sixthSense.level === sixthSense.maxLevel) {
+        if (sixthSense.level >= 1) {
             return true;
         } else {
             return false;
@@ -217,10 +217,10 @@
     mentalMastery.type = "Double";
     mentalMastery.description = function() {
         return "Increase max mana by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% max mana. <br /><br />Requires: <br /> " +
-            spiritualAttunement.name + " level " + spiritualAttunement.maxLevel;
+            spiritualAttunement.name;
     };
     mentalMastery.requirements = function() {
-        if (spiritualAttunement.level === spiritualAttunement.maxLevel) {
+        if (spiritualAttunement.level >= 1) {
             return true;
         } else {
             return false;
