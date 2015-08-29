@@ -432,16 +432,18 @@ function unequipItemLoad() { // Create a variable inside player.properties which
         };
     };
 };
+
 function CreatePlayerSkillsHtml() {
     var html = '';
     html += '<div class="row">';
-    html += '<div class="col-xs-10 col-xs-offset-1">';
+    html += '<div class="col-xs-12">';
     html += '<div class="row">';
     html += '<div class="col-xs-4 col-xs-offset-4">';
     html += '<button type="button" class="passiveMargin" onclick="resetPassiveSkills();">Reset</button>';
     html += '</div>';
     html += '</div>';
     html += '<div class="row">';
+    html += '<div class="talent-tree">';
     for (var passiveSkill in playerPassive) {
         if (playerPassive.hasOwnProperty(passiveSkill)) {
             var passive = playerPassive[passiveSkill];
@@ -456,23 +458,52 @@ function CreatePlayerSkillsHtml() {
             } else {
                 html += '<div class="col-xs-4">';
             }
-            html += '<div class="col-xs-12">';
-            html += '<a class="tooltips">';
-            html += '<img onclick="' + onclickevent + '"' + 'src="images/passive/' + passive.image + '.png"">';
-            html += '<span>';
+            html += '<div class="col-xs-12">';//Opening Div for skill image
+            html += '<div class="skill ';//Open first div
+            if (passive.requirements() === true) {
+                if (passive.level === 0) {
+                    html += "can-add-points ";
+                }
+                if (passive.level > 0 && passive.level < passive.maxLevel) {
+                    html += "can-add-points has-points ";
+                }
+                if (passive.level === passive.maxLevel) {
+                    html += "has-points has-max-points";
+                }
+            }
+            html += '">';
+            //Start of icon div's
+            html += '<div class="icon-container">';
+            html += '<div class="icon">';
+            html += '<img src="images/passive/' + passive.image + '.png"">';
+            html += '</div></div>';
+            //End of icon div's
+            //Start of div Frame
+            html += '<div class="frame" onclick="' + onclickevent + '">';
+            html += '<a class="tooltips" style="position:absolute; width:80px; height:80px;">';
+            html += '<span style="bottom:10px; right:140%;">';
             html += passive.name + '<br />';
             html += passive.description();
             html += '<br />Level: ' + passive.levelReq;
             html += '<br />Level: ' + passive.level + '/' + passive.maxLevel;
             html += '</span></a>';
-            html += '<div class="centerText passiveMargin">' + passive.level + '/' + passive.maxLevel + '</div>';
+            html += '<div class="skill-points">';
+            html += passive.level + '/' + passive.maxLevel;
             html += '</div>';
+            html += '</div>';
+            //End of div Frame
+            html += '</div>';//Close first Div
+            
+            // html += '<div class="centerText passiveMargin">' + passive.level + '/' + passive.maxLevel + '</div>';
+
+            html += '</div>';//Closing div for skill image
             html += '</div>';
             if (passive.lastRow === true) {
                 html += '</div>';
             };
         };
     };
+    html += '</div>';
     html += '</div>';
     html += '</div>';
     html += '</div>';
@@ -780,7 +811,6 @@ function characterCreationHtml() {
     var divStyle2 = document.getElementById('sliderDivID');
     divStyle2.style.display = "block";
     checkHeroRace();
-    getAge();
 };
 function checkHeroRace() {
     var html = '';
@@ -1391,8 +1421,8 @@ function testss() {
     });
 };
 
-var raceSelect = "Adulthood";
-    function getAgeButton() {
+function getAgeButton() {
+    var raceSelect = "Adulthood";
         if (document.getElementById("Adulthood").checked === true) {
             raceSelect = "Adulthood";
         }
@@ -1405,10 +1435,10 @@ var raceSelect = "Adulthood";
         else if (document.getElementById("Venerable").checked === true) {
             raceSelect = "Venerable";
         };
-        getAge();
+        getAge(raceSelect);
         characterCreationHtml();
     };
-function getAge() {
+function getAge(raceSelect) {
     characterRaces.human.raceAge = raceSelect;
     characterRaces.halfElf.raceAge = raceSelect;
     characterRaces.dwarf.raceAge = raceSelect;
