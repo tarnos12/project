@@ -1,7 +1,7 @@
 ﻿"use strict";
 var total = 0;
 
-function sellAllItems(itemType) {
+function sellAllItems() {
     var canSell = false;
     if (checkBoxEpic === true || checkBoxLegendary === true) {
         if (confirm("You are going to sell Epic and/or Legendary items, are you sure?") === true) {
@@ -26,7 +26,7 @@ function sellAllItems(itemType) {
                 playerInventory[i].itemRarity === 'Epic' && checkBoxEpic === true ||
                 playerInventory[i].itemRarity === 'Rare' && checkBoxRare === true ||
                 playerInventory[i].itemRarity === 'Uncommon' && checkBoxUncommon === true ||
-                playerInventory[i].itemRarity === 'Common' && checkBoxCommon === true) && playerInventory[i].itemType === itemType) {
+                playerInventory[i].itemRarity === 'Common' && checkBoxCommon === true)) {
                     total += playerInventory[i].Value << 0;
             } else {
                 playerInventoryNew.push(playerInventory[i]);

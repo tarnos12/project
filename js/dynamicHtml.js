@@ -132,7 +132,7 @@ function CreateMonsterHtml() {
                         else if (monster.Stats.type === "mining") {
                             var onclickevent = 'mine(' + monster.Stats.name + ');';
                         }
-                        html += '<div class="col-xs-6 col-lg-3"">' +
+                        html += '<div class="col-xs-6 col-lg-3">' +
                             '<div class="row">' +
                             '<div class="col-xs-10 col-xs-offset-1" style="width:85%;">' +
                             '<div id="' + monster.Stats.id + '">' +
@@ -174,7 +174,8 @@ function CreateMonsterHtml() {
 
 function checkBoxHtml() {
     var html = "";
-
+    html += '<div class="row" style="border-top:1px solid; border-bottom:1px solid;">';
+    html += '<div class="col-xs-10 col-xs-offset-1">';
     html += '<div class="centerText">';
     html += '<strong>Select items to sell. Selecting will also prevent you from dropping items with that rarity.</strong>';
     html += '<br /><label><input style="visibility:visible; position:relative;" type="checkbox" id="common" onclick="handleClick();"'
@@ -207,6 +208,13 @@ function checkBoxHtml() {
     }
     html += '><span style="background-color:red; width:10px;height:10px;" data-toggle="tooltip" data-placement="top" title="Legendary">__</span></label><br />';
 
+    html += '</div>';
+    html += '<div class="centerText">';
+    html += '<strong>Sell items(All tabs)</strong>';
+    var sellAll = "sellAllItems();";
+    html += '<br /><button type="button" class="sell" onclick=' + sellAll + '>Sell all</button>';
+    html += '</div>';
+    html += '</div>';
     html += '</div>';
     document.getElementById('checkBoxHtml').innerHTML = html;
 };
@@ -250,13 +258,8 @@ function CreateInventoryWeaponHtml() {
         };
         html += 'id="tab_' + InventoryItemTypes[j].type + '">';
         html += '<div class="row" id="' + "inventorySpace" + InventoryItemTypes[j].type + '"' + '>';
-        html += '<div class="c3"><h4>Inventory</h4>';
+        html += '<div class="c3" style="margin-bottom:10px;"><h4>Inventory</h4>';
         if (InventoryItemTypes[j].type !== 'other') {
-            html += '<div class="centerText">';
-            html += '<strong>Sell items(Current tab)</strong>';
-            var sellAll = "sellAllItems('" + InventoryItemTypes[j].type + "');";
-            html += '<br /><button type="button" class="sell" onclick=' + sellAll + '>Sell all</button>';
-            html += '</div>';
             html += '<div class="c3">Sort by:</div>';
             var sortItemValue = 'onclick="sortInventory' + "(" + "'Value'" + ")"
             var sortItemRarity = 'onclick="sortInventory' + "(" + "'Rarity'" + ")"
@@ -299,13 +302,13 @@ function CreateInventoryWeaponHtml() {
                 else if (playerInventory[i].subType === "talisman") {
                     itemStat = equippedItems.talisman;
                 }
-                html += '<div class="col-xs-6 col-sm-3 col-md-6 col-lg-3 c8"' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + '>';
+                html += '<div class="col-xs-6 col-sm-3 col-md-6 col-lg-3 c8" style="margin-top:5px;" ' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + '>';
                 html += '<a class="tooltips2" style="cursor:pointer;">';
                 if (playerInventory[i].itemType === "weapon") {
-                    html += '<img class="' + playerInventory[i].itemType;
+                    html += '<img class="' + playerInventory[i].itemType + ", " + playerInventory[i].itemRarity;
                 }
                 else {
-                    html += '<img class="' + playerInventory[i].subType;
+                    html += '<img class="' + playerInventory[i].subType + ", " + playerInventory[i].itemRarity;
                 }
                 html += '"' + 'src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png"' + 'onclick="equipItem' + "(" + playerInventory[i].id + ")" + '"/>';
 
@@ -347,7 +350,7 @@ function CreateInventoryWeaponHtml() {
                     html += '</div>';
                 }
                 html += '</span>' + '</a>'
-                html += '<button type="button" class="inventorySell" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>';
+                html += '<button type="button" style="margin-top:5px;" class="inventorySell" onclick="itemSell' + "(" + playerInventory[i].id + ")" + '">Sell</button>';
                 html += '</div>';
             };
         };
@@ -909,6 +912,8 @@ function primaryStatUpdate() {
     for (var key in primaryStatInfo) {
         var currentBonus = primaryStatInfo[key];
         var statInfo = primaryStatInfo[key].info;
+        var number = primaryStatInfo[key].number;
+        var background = "";
         var statDisplay2 = primaryStatInfo[key].type;
         var shortNameDisplay = primaryStatInfo[key].shortNameDisplay;
         var statDisplay = "";
@@ -923,17 +928,41 @@ function primaryStatUpdate() {
                 '<span id="' + currentBonus.type.capitalizeFirstLetter() + '" style="cursor:pointer" onclick="upgrade' + currentBonus.type.capitalizeFirstLetter() + '(event);" data-toggle="tooltip" data-placement="right" title="Increase ' + currentBonus.type + '">' +
                 '<span class="glyphicon glyphicon-plus unselectable"></span></span>';
         };
-        html += '<div class="col-xs-12">';
-        html += '<div class="row">';
-        html += '<div class="col-xs-6">';
+        if (number === 1) {
+            background = "darkBackground";
+        }
+        else if (number === 2) {
+            background = "darkBackground";
+        };
+        if (currentBonus.type === "damage" || currentBonus.type === "mana") {
+            html += '<div class="col-xs-12 primaryStatsMargin border darkBackground">';
+            html += '<div class="row">';
+            html += '<div class="col-xs-6">';
+        }
+        else if (currentBonus.type === "luck") {
+            html += '<div class="col-xs-6 col-xs-offset-3 primaryStatsMargin border darkBackground">';
+            html += '<div class="row">';
+            html += '<div class="col-xs-4">';
+        }
+        else {
+            html += '<div class="col-xs-6 primaryStatsMargin border darkBackground">';
+            html += '<div class="row">';
+            html += '<div class="col-xs-4">';
+        }
         var statDisplay3 = statDisplay2.capitalizeFirstLetter();
         if ('Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Damage, Mana'.indexOf(statDisplay3) != -1) {
             var tooltip = primaryStatInfo[key].tooltip;
-            html += '<span data-toggle="tooltip" data-placement="right" title="' + tooltip + '"><img src="images/stat/' + statDisplay2 + '.png"></span>';
+            html += '<span data-toggle="tooltip" data-placement="right" title="' + tooltip + '"><img src="images/stat/' + statDisplay2 + '.png"></span><br />';
             html += shortNameDisplay;
         };
         html += '</div>';
-        html += '<div class="col-xs-6 rightAlign">';
+        
+        if (currentBonus.type === "damage" || currentBonus.type === "mana") {
+            html += '<div class="col-xs-6 rightAlign primaryNumberMargin">';
+        }
+        else {
+            html += '<div class="col-xs-8 rightAlign primaryNumberMargin darkBackground">';
+        }
         html += statDisplay + ' ';
         html += '</div>';
         html += '</div>';
@@ -946,6 +975,7 @@ function primaryStatUpdate() {
 function secondaryStatUpdate(){
     var html = '';
     html += '<div class="row">';
+    html += '<div class="centerText"><h4>Secondary Stats</h4></div>';
     for (var key in secondaryStatInfo) {
         var currentBonus = secondaryStatInfo[key];
         var statInfo = secondaryStatInfo[key].info;
@@ -958,30 +988,30 @@ function secondaryStatUpdate(){
         else {
              statDisplay = player.functions[statInfo]();
         };
-        var statDisplay2 = secondaryStatInfo[key].type;
+        var statDisplay2 = secondaryStatInfo[key].displayName;
         if (number === 1) {
              background = "darkBackground";
         }
         else if (number === 2) {
              background = "background";
         };
-        html += '<div class="col-xs-12 ' + background + '">';
+        html += '<div class="col-xs-6 primaryStatsMargin border ' + background + '" style="height:40px;">';
         html += '<div class="row">';
-        html += '<div class="col-xs-6 ' + background + '">';
+        html += '<div class="col-xs-8 secondaryStatMargin">';
         html += '<span data-toggle="tooltip" data-placement="right" title="' + currentBonus.tooltip() + '">';
         html += statDisplay2 + ":";
         html += '</span>';
         html += '</div>';
-        html += '<div class="col-xs-6 rightAlign ' + background + '">';
+        html += '<div class="col-xs-4 rightAlign secondaryStatMargin">';
         html += '<span data-toggle="tooltip" data-placement="right" title="' + currentBonus.tooltip() + '">';
         if (currentBonus.type === "Magic find" || currentBonus.type === "Gold drop" || currentBonus.type === "Experience rate") {
             html += ((statDisplay - 1) * 100).toFixed(0);
         }
         else if (currentBonus.type === "Accuracy" && player.functions.accuracy() > 111) {
-            html += "Never Miss";
+            html += "Max";
         }
         else if (currentBonus.type === "Evasion" && player.functions.evasion() === 0) {
-            html += "Can't evade";
+            html += "None";
         }
         else if (currentBonus.type === "Crit damage") {
             html += (statDisplay * 100).toFixed(0);
@@ -1002,11 +1032,13 @@ function secondaryStatUpdate(){
     };
     html += '</div>';
     document.getElementById("secondaryStat").innerHTML = html;
+    testss();
 };
 
 function EquippedItemsEmpty() {
     var html = '';
-    html += '<div class="row">';
+    html += '<div class="row" style="border-bottom: 1px solid; border-top: 1px solid; padding-top: 5px; padding-bottom: 10px;">';
+    html += '<div class="centerText"><h4>Equipped Items</h4></div>';
     for (var itemType in emptyItemSlotInfo) {
         if (emptyItemSlotInfo.hasOwnProperty(itemType)) {
             var item = emptyItemSlotInfo[itemType].type;
@@ -1214,10 +1246,10 @@ function displayShopItems(type) {
                 html += '<a class="tooltips" style="cursor:pointer;">';
                 html += '<label> <input type="radio" name="shopItem" value=' + itemDisplay.id + '>';
                 if (itemDisplay.itemType === "weapon") {
-                    html += '<img class="' + itemDisplay.itemType;
+                    html += '<img class="' + itemDisplay.itemType + ", " + itemDisplay.itemRarity;
                 }
                 else {
-                    html += '<img class="' + itemDisplay.subType;
+                    html += '<img class="' + itemDisplay.subType + ", " + itemDisplay.itemRarity;
                 }
                 html += '"' + 'src="images/items/' + itemDisplay.subType + "/" + itemDisplay.image + '.png"/>';
                 html += '</label>';
