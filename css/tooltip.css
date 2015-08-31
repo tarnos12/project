@@ -14,6 +14,7 @@ a.tooltips > span {
     text-align: center;
     visibility: hidden;
     width: 450px;
+    pointer-events:none;
 }
 
 a.tooltips:hover > span {
@@ -41,6 +42,7 @@ a.tooltips2 > span {
     text-align: center;
     visibility: hidden;
     width: 450px;
+    pointer-events:none;
 }
 
 a.tooltips2:hover > span {
@@ -79,6 +81,7 @@ a.tooltips2:hover > span {
     visibility: hidden;
     width: 230px;
     z-index: 999;
+    pointer-events:none;
 }
 
 .tooltipA:hover {
@@ -118,6 +121,7 @@ a.tooltips2:hover > span {
     visibility: hidden;
     width: 230px;
     z-index: 999;
+    pointer-events:none;
 }
 
 .tooltipB:hover {

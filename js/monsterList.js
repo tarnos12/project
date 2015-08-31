@@ -1210,7 +1210,7 @@ function MakeMonsterList() {
         name: "Thaumerite", // Must equal object name Ore = Ore...
         displayName: "Thaumerite",
         type: "mining",
-        id: 95,
+        id: 57,
         level: 1,
         area: "Mining",
         isShown: true,
@@ -1231,7 +1231,7 @@ function MakeMonsterList() {
         name: "LiteCyan", // Must equal object name Ore = Ore...
         displayName: "Lite Cyan",
         type: "mining",
-        id: 96,
+        id: 58,
         level: 1,
         area: "Mining",
         isShown: false,
@@ -1252,7 +1252,7 @@ function MakeMonsterList() {
         name: "OhmStone", // Must equal object name Ore = Ore...
         displayName: "Ohm Stone",
         type: "mining",
-        id: 97,
+        id: 59,
         level: 1,
         area: "Mining",
         isShown: false,
@@ -1273,7 +1273,7 @@ function MakeMonsterList() {
         name: "Techtite", // Must equal object name Ore = Ore...
         displayName: "Techtite",
         type: "mining",
-        id: 98,
+        id: 60,
         level: 1,
         area: "Mining",
         isShown: false,
@@ -1294,7 +1294,7 @@ function MakeMonsterList() {
         name: "XilBond", // Must equal object name Ore = Ore...
         displayName: "Xil Bond",
         type: "mining",
-        id: 99,
+        id: 61,
         level: 1,
         area: "Mining",
         isShown: false,
@@ -1315,7 +1315,7 @@ function MakeMonsterList() {
         name: "VulcanatedIron", // Must equal object name Ore = Ore...
         displayName: "Vulcanated Iron",
         type: "mining",
-        id: 100,
+        id: 62,
         level: 1,
         area: "Mining",
         isShown: false,

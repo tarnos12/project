@@ -1,26 +1,6 @@
 ﻿"use strict";
 
 var secondaryStatInfo = [
-     {
-         type: 'Stats',
-         displayName: 'Stats',
-         info: 'stats',
-         isPercent: false,
-         number: 1,
-         tooltip: function () {
-             return "Used to increase your stats(strength etc.)";
-         }
-     },
-     {
-         type: 'Skill points',
-         displayName: 'Skill pts',
-         info: 'skillPoints',
-         isPercent: false,
-         number: 1,
-         tooltip: function () {
-             return "Total skill points.";
-         }
-     },
     {
         type: 'Hp /s',
         displayName: 'Hp /s',
@@ -191,7 +171,6 @@ var primaryStatInfo = [
         type: 'strength',
         shortNameDisplay: 'Str',
         info: 'totalStrength',
-        item: 'itemStrength',
         tooltip: 'Increase damage, inventory capacity.',
         number: 1
     },
@@ -199,7 +178,6 @@ var primaryStatInfo = [
         type: 'endurance',
         shortNameDisplay: 'End',
         info: 'totalEndurance',
-        item: 'itemEndurance',
         tooltip: 'Increase health, health regen.',
         number: 1
     },
@@ -207,7 +185,6 @@ var primaryStatInfo = [
         type: 'agility',
         shortNameDisplay: 'Agi',
         info: 'totalAgility',
-        item: 'itemAgility',
         tooltip: 'Increase accuracy, evasion, defense.',
         number: 2
     },
@@ -215,7 +192,6 @@ var primaryStatInfo = [
         type: 'dexterity',
         shortNameDisplay: 'Dex',
         info: 'totalDexterity',
-        item: 'itemDexterity',
         tooltip: 'Increase critical chance, critical damage.',
         number: 2
     },
@@ -223,7 +199,6 @@ var primaryStatInfo = [
         type: 'wisdom',
         shortNameDisplay: 'Wis',
         info: 'totalWisdom',
-        item: 'itemWisdom',
         tooltip: 'Increase mana, mana regen.',
         number: 1
     },
@@ -231,7 +206,6 @@ var primaryStatInfo = [
         type: 'intelligence',
         shortNameDisplay: 'Int',
         info: 'totalIntelligence',
-        item: 'itemIntelligence',
         tooltip: 'Increase mana.',
         number: 1
     },
@@ -239,10 +213,16 @@ var primaryStatInfo = [
         type: 'luck',
         shortNameDisplay: 'Luk',
         info: 'totalLuck',
-        item: 'itemLuck',
         tooltip: 'Increase magic find, critical chance, evasion.',
         number: 2
-    }
+    },
+    {
+        type: 'Stats',
+        shortNameDisplay: 'Stats',
+        info: 'stats',
+        tooltip: 'Your total Stat points.',
+        number: 2
+    },
 ];
 
 var loadingEquippedItems = [

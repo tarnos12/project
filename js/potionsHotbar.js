@@ -73,7 +73,7 @@ function CreatePlayerHotBar() {
     var html = '';
     html += '<div class="row" style="margin-top:10px;margin-bottom:10px;">';
     html += '<div class="col-xs-12">';
-    html += '<div class="row" style="border:2px solid;">';
+    html += '<div class="row borderTop borderBottom">';
     for (var item in hotBarItem) {
         if (hotBarItem.hasOwnProperty(item)) {
             var potion = hotBarItem[item];

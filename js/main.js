@@ -686,10 +686,18 @@ var enemyBlock = 0;
 var accuracyRate = 0;
 var monsterDamage = 0;
 
-
+var number = 1;
 function disableButtons() {
-    $("img.monster").toggleClass("buttonDisable");
-    $("a#monsterButton").css('cursor','not-allowed');
+    if (number === 1) {
+        $('a#monsterButton').css('cursor', 'not-allowed');
+        $("img.monster").toggleClass("buttonDisable");
+        number = 2;
+    }
+    else {
+        $('a#monsterButton').css('cursor', 'pointer');
+        $("img.monster").toggleClass("buttonDisable");
+        number = 1;
+    }
 };
 
 function attack(monsterStat) {
@@ -707,12 +715,14 @@ function attack(monsterStat) {
         else {
             Log("<span id=\"isDead\" class =\"bold\" style=\"color:red; display:none;\">You can not fight whilst you are dead." + "<br />" + "</span>");
             isDeadLog();
+            console.log('dead')
             disableButtons();
             break;
         };
         battleTurn += 1;
     };
     DrawBattle();
+    console.log('draw')
     disableButtons();
 };
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
@@ -1076,7 +1086,8 @@ function displayLogInfo() {
     mainLog();
     CreateMonsterHtml();
     if (player.autoBattle.isAuto === false) {
-        setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~3 seconds so other animations/effects can end
+        console.log(2);
+        setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~1.5 seconds
     };
 };
 function potionBuyLog() {
@@ -1737,3 +1748,24 @@ function copyPlayerProperties() {
 };
 copyPlayerProperties();
 
+function changeGameStyling(style) {
+    if (style === "basic") {
+        $("div.c4").css("background-color", "#EDD26E");
+        $(".background").css("background-color", "#EEDFA6");
+        $(".darkBackground").css("background-color", "#baa65a");
+        $(".border").css("border", "1px solid black");
+        $(".borderBottom").css("border-bottom", "1px solid black");
+        $(".borderTop").css("border-top", "1px solid black");
+    }
+    else if (style === 2) {
+        $("div.c4").css("background-color", "red");
+        $(".background").css("background-color", "green");
+        $(".darkBackground").css("background-color", "blue");
+        $(".border").css("border", "1px solid purple");
+        $(".borderBottom").css("border-bottom", "1px solid purple");
+        $(".borderTop").css("border-top", "1px solid purple");
+    }
+    else if (style === 3) {
+
+    }
+}
