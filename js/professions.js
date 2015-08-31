@@ -539,3 +539,43 @@ function createAlchemyHtml() {
     document.getElementById('alchemy').innerHTML = html;
 };
 createAlchemyHtml();
+
+function playerProfessionHtml() {
+    var html = "";
+    html += '<div class="row">';
+    html += '<div class="col-xs-10 col-xs-offset-1">';
+    html += '<div class="row">';
+    html += '<h3>Your professions: <br /></h3>';
+    for (var key in playerProfession) {
+        if (playerProfession.hasOwnProperty(key)) {
+            var profession = playerProfession[key];
+            html += '<div class="col-xs-10 col-xs-offset-1">';
+            html += '<img src="images/profession/' + profession.image + '.png" data-toggle="tooltip" data-placement="top" title="' + profession.name.capitalizeFirstLetter() + ' level:' + profession.level + '">';
+
+            html += ' level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0)
+            html += '</div>';
+        };
+    };
+    html += '</div>';
+    html += '<div class="row">';
+    html += '<div class="col-xs-10 col-xs-offset-1">';
+    html += '<h3>Your minerals: <br /></h3>';
+    html += '</div>';
+    for (var i = 0; i < mineralList.length; i++) {
+        var mineral = mineralList[i].name;
+        var displayName = mineralList[i].displayName;
+        var playerMineral = player.properties[mineral];
+        html += '<div class="col-xs-5 col-xs-offset-1">';
+        html += '<img src="images/mineral/' + mineral + '.png" data-toggle="tooltip" data-placement="right" title="' + displayName + '">';
+        html += ' ' + playerMineral + '<br />';
+        html += '</div>';
+        if (mineral === 'VulcanatedIron') {
+            html += '<div class="col-xs-10 col-xs-offset-1">';
+            html += '<h3>Your Herbs : <br /></h3>';
+            html += '</div>';
+        };
+    };
+    html += '</div></div></div>';
+    document.getElementById('playerProfessions').innerHTML = html;
+    testss();
+};

@@ -23,6 +23,8 @@ p.story {
     font-variant: normal;
     font-weight: 400;
     line-height: 20.4px;
+    margin-left:7%;
+    margin-right:7%;
 }
 
 blockquote {

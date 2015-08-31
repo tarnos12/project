@@ -29,6 +29,7 @@ function updateHtml() {
     var intelligence;
     var luck;
     var damage;
+    var stats;
 
     strength = document.getElementById("totalStrength");
     endurance = document.getElementById("totalEndurance");
@@ -38,6 +39,7 @@ function updateHtml() {
     intelligence = document.getElementById("totalIntelligence");
     luck = document.getElementById("totalLuck");
     damage = document.getElementById("damage");
+    stats = document.getElementById("stats");
 
 
     strength.innerHTML = "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Strength\">" + player.functions.totalStrength() + "</span>" +
@@ -78,6 +80,9 @@ function updateHtml() {
     damage.innerHTML = "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Damage\">"
         + player.functions.minDamage().toFixed(0) + "-" + player.functions.maxDamage().toFixed(0) + "</span>" +
         "<a class=\"tooltipA\">" + "<p class=\"glyphicon glyphicon-info-sign\"></p>" + "<span style=\"text-align:left\">" + "Multiplier: " + (player.functions.bonusDamage() + player.properties.raceDamage) + "%</span></a> ";
+
+    stats.innerHTML = "<span style='margin-right:20px;' data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Stat Points\">"
+        + player.properties.stats + "</span>";
 
 
     level = document.getElementById("level");

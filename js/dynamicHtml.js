@@ -18,7 +18,7 @@ function CreateWeaponSkillHtml() {
             html += '<div class="col-xs-2 passiveMargin">';
             html += '<a class="tooltips">';
             html += '<img class="skillBorder" src="images/skills/' + item.type + '.png">';
-            html += '<span>';
+            html += '<span style="width:200px; bottom:30px; right:-100px;">';
             html += '<div class="row">';
             html += '<div class="col-xs-12">';
             html += item.displayName + ' skill progress:<br />';
@@ -53,7 +53,7 @@ function CreateWeaponSkillHtml() {
                     html += '<div class="col-xs-12 passiveMargin">';
                     html += '<a class="tooltips">';
                     html += '<img class="skillBorder" src="images/skills/' + weaponSkill.image + '.png">';
-                    html += '<span>';
+                    html += '<span style="width:200px; bottom:30px; right:-100px;">';
                     html += weaponSkill.name + '<br />';
                     html += 'Weapon skill required: ' + weaponSkill.levelReq + '<br />';
                     html += weaponSkill.description();
@@ -84,8 +84,305 @@ String.prototype.capitalizeFirstLetter = function () {
 var monsterTabActiveNum = 0;
 function changedTabmonster(index) {
     monsterTabActiveNum = index;
+    currentMonster = index + (index * 7);//Display first monster of each area when changing tab
+    CreateMonsterHtml();
 };
+var currentMonster = 0; //Save current monster number, so I can pick it from array.
 function CreateMonsterHtml() {
+    var html = '';
+    html += '<ul class="nav nav-tabs">';
+    for (var k = 0; k < monsterAreas.length; k++) {
+        if (monsterAreas[k].isUnlocked === true) {
+            if (k === monsterTabActiveNum) {
+                html += '<li class="active" onClick = changedTabmonster(' + k + ')>';
+            }
+            else {
+                html += '<li onClick = changedTabmonster(' + k + ')>';
+            };
+            html += '<a href="#tab_' + monsterAreas[k].type + '" data-toggle="tab"><span class="icons ' + monsterAreas[k].icon + '" data-toggle="tooltip" data-placement="right" title="' + monsterAreas[k].displayName + '"></span>' + '</a></li>';
+        };
+    };
+    html += '</ul>';
+    html += '<div class="tab-content">';
+    for (var j = 0; j < monsterAreas.length; j++) {
+        if (monsterAreas[j].isUnlocked === true) {
+            if (j === monsterTabActiveNum) {
+                html += '<div class="tab-pane active" ';
+            }
+            else {
+                html += '<div class="tab-pane" ';
+            };
+            html += 'id="tab_' + monsterAreas[j].type + '">' +
+                '<div class="panel panel-default">' +
+                '<div class="panel-heading" style="background-color:green;">' +
+
+                '<h3 class="panel-title c3" >' + monsterAreas[j].displayName + '</h3>' +
+
+                '</div>' +
+                '<div class="panel-body" style="background-color:green;">';
+            html += '<div class="row">';
+            var monsterNum = newTest[currentMonster].name;
+            var monster = monsterList[monsterNum].Stats;
+            var area = monster.area;
+            html += '<div class="col-xs-12 c3">';
+            for (var key in monsterList) {
+                var monsterNumber = monsterList[key].Stats.id - 1;
+                var monsterNumberDisplay = monsterList[key].Stats.id;
+                var monsterArea = monsterList[key].Stats.area;
+                var monsterShow = monsterList[key].Stats;
+                if (monsterArea === monsterAreas[j].type) {
+                    if (monsterShow.isShown === true) {
+                        html += '<button ';
+                        if (currentMonster === monsterNumber) {
+                            html += 'class="buttonSelected" ';
+                        }
+                            html += 'style="margin-left:8px;" type="button" onclick="changeMonsterPage(' + monsterNumber + ')">' + monsterNumberDisplay + '</button>';
+                    };
+                }
+            }
+            html += '</div>';
+                if (area === monsterAreas[j].type) {
+                    var monsterPercent = ((monster.hp / monster.maxHp) * 100);
+                    if (monster.type !== "mining") {
+                        var onclickevent = 'attack(' + monster.name + ');';
+                    }
+                    else if (monster.type === "mining") {
+                        var onclickevent = 'mine(' + monster.name + ');';
+                    }
+                    html += '<div class="col-xs-10 col-xs-offset-1">' +//First Div
+                        '<div class="row">' +//First Row
+                        '<div class="col-xs-4 col-xs-offset-4 c3">' +//Second Div
+                        '<div id="' + monster.id + '">' +
+                        '<a href="#" class="tooltipA centerText" id="monsterButton">' +
+                        '<img class="monster" src="images/monsters/' + monster.name + '.png" alt="' + monster.displayName + '" onclick="' + onclickevent + '">' +
+                        '<span style="bottom:140px; left:-100px; pointer-events:none;">' +
+                        '<b>' + monster.displayName + '</b>';
+                    if (monster.type !== "mining") {
+                        html += '<br />' +
+                        'Level: ' + monster.level +
+                        '<br />' +
+                        'Dmg:' + monster.minDmg + "-" + monster.maxDmg +
+                        '<br />' +
+                        'Def:' + monster.def;
+                    };
+                    html += '</span></a>' +
+                        '<br /></div>';
+                    html += '</div>';//Close second Div
+
+
+                    html += '</div>';//Close first Row
+
+                    html += '<div class="progress" style="width:80%; margin-left:10%;">';
+                    html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.name + "1" + '">';
+                    html += '<span style="font-size:13px;">' + monster.hp + ' HP</span>' + '</div></div>';
+                        html += '</div>';//Close First Div
+                };
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+            html += '</div>';
+        };
+    };
+    html += '</div>';
+
+    document.getElementById("monsterTabs").innerHTML = html;
+    testss();
+};
+function changeMonsterPage(id) {
+    currentMonster = id;
+    CreateMonsterHtml();
+}
+var newTest = [
+    {
+        name: "VarikGrunt",
+    },
+    {
+        name: "VarikSoldier",
+    },
+    {
+        name: "VarikMarksmen",
+    },
+    {
+        name: "VarikVulture",
+    },
+    {
+        name: "VarikEvader",
+    },
+    {
+        name: "VariksLiar",
+    },
+    {
+        name: "VariksQueen",
+    },
+    {
+        name: "LordVarik",
+    },
+    {
+        name: "ToxicFlies",
+    },
+    {
+        name: "Stalker",
+    },
+    {
+        name: "AlphaStalker",
+    },
+    {
+        name: "StalkerPack",
+    },
+    {
+        name: "JumpingSpider",
+    },
+    {
+        name: "SpiderBeast",
+    },
+    {
+        name: "Narsus",
+    },
+    {
+        name: "JotunnScout",
+    },
+    {
+        name: "JotnarAmbushSquad",
+    },
+    {
+        name: "LongRangeExterminationSquad",
+    },
+    {
+        name: "BerserkerShockSquad",
+    },
+    {
+        name: "BerserkerShockSquadCaptainRendGrest",
+    },
+    {
+        name: "ArtillerySquad",
+    },
+    {
+        name: "JottunMainInfantry",
+    },
+    {
+        name: "RegentCairLorn",
+    },
+    {
+        name: "DeepKingTarNuk",
+    },
+    {
+        name: "DepthCrawler",
+    },
+    {
+        name: "FadingGoblins",
+    },
+    {
+        name: "StarBriteGolems",
+    },
+    {
+        name: "Bannecs",
+    },
+    {
+        name: "Kholders",
+    },
+    {
+        name: "LivingWalls",
+    },
+    {
+        name: "Keeper",
+    },
+    {
+        name: "LegendoftheAncientDreamer",
+    },
+    {
+        name: "BabyDuneDigger",
+    },
+    {
+        name: "CamelSpiderHerds",
+    },
+    {
+        name: "WasteEagle",
+    },
+    {
+        name: "GrelTribeGuard",
+    },
+    {
+        name: "GrelWarriors",
+    },
+    {
+        name: "GrelSpitters",
+    },
+    {
+        name: "GrelChief",
+    },
+    {
+        name: "MommaDuneDiggerSheila",
+    },
+    {
+        name: "CrystalFloater",
+    },
+    {
+        name: "SnowWatcher",
+    },
+    {
+        name: "CannibalTribeTrachid",
+    },
+    {
+        name: "LegendoftheRageCalm",
+    },
+    {
+        name: "IceGiantKing",
+    },
+    {
+        name: "FrightGolem",
+    },
+    {
+        name: "FrightGolemArmy",
+    },
+    {
+        name: "LegendoftheRageFullPower",
+    },
+    {
+        name: "LegionofDreadWallGuards",
+    },
+    {
+        name: "Dreadnaughts",
+    },
+    {
+        name: "DreadnaughtElite",
+    },
+    {
+        name: "EmaciatedMagi",
+    },
+    {
+        name: "MagiThunderCallers",
+    },
+    {
+        name: "FalseDragonSlayers",
+    },
+    {
+        name: "TorturedBeholder",
+    },
+    {
+        name: "KingoftheLegionGrantBannecs",
+    },
+    {
+        name: "Thaumerite",
+    },
+    {
+        name: "LiteCyan",
+    },
+    {
+        name: "OhmStone",
+    },
+    {
+        name: "Techtite",
+    },
+    {
+        name: "XilBond",
+    },
+    {
+        name: "VulcanatedIron",
+    },
+];
+
+
+/*function CreateMonsterHtml() {
     var html = '';
     html += '<ul class="nav nav-tabs">';
     for (var k = 0; k < monsterAreas.length; k++) {
@@ -138,7 +435,7 @@ function CreateMonsterHtml() {
                             '<div id="' + monster.Stats.id + '">' +
                             '<a href="#" class="tooltipA" id="monsterButton">' +
                             '<img class="monster" src="images/monsters/' + monster.Stats.name + '.png" alt="' + monster.Stats.displayName + '" onclick="' + onclickevent + '">' +
-                            '<span>' +
+                            '<span style="bottom:120px; left:-100px; pointer-events:none;">' +
                             '<b>' + monster.Stats.displayName + '</b>';
                         if (monster.Stats.type !== "mining") {
                             html += '<br />' +
@@ -170,14 +467,18 @@ function CreateMonsterHtml() {
 
     document.getElementById("monsterTabs").innerHTML = html;
     testss();
-};
+};*/
+
+
+
+
+
 
 function checkBoxHtml() {
     var html = "";
-    html += '<div class="row" style="border-top:1px solid; border-bottom:1px solid;">';
+    html += '<div class="row borderBottom borderTop">';
     html += '<div class="col-xs-10 col-xs-offset-1">';
     html += '<div class="centerText">';
-    html += '<strong>Select items to sell. Selecting will also prevent you from dropping items with that rarity.</strong>';
     html += '<br /><label><input style="visibility:visible; position:relative;" type="checkbox" id="common" onclick="handleClick();"'
     if (checkBoxCommon === true) {
         html += "checked";
@@ -210,7 +511,7 @@ function checkBoxHtml() {
 
     html += '</div>';
     html += '<div class="centerText">';
-    html += '<strong>Sell items(All tabs)</strong>';
+    html += '<strong>Sell all items by selected rarity(All tabs)</strong>';
     var sellAll = "sellAllItems();";
     html += '<br /><button type="button" class="sell" onclick=' + sellAll + '>Sell all</button>';
     html += '</div>';
@@ -314,7 +615,7 @@ function CreateInventoryWeaponHtml() {
                 html += '"' + 'src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png"' + 'onclick="equipItem' + "(" + playerInventory[i].id + ")" + '"/>';
 
                 if (itemStat.hasOwnProperty('itemType')) {
-                    html += '<span>';
+                    html += '<span style="pointer-events:none;">';
                 }
                 else {
                     html += '<span style="width:300px;">';
@@ -440,10 +741,11 @@ function unequipItemLoad() { // Create a variable inside player.properties which
 function CreatePlayerSkillsHtml() {
     var html = '';
     html += '<div class="row">';
-    html += '<div class="col-xs-12">';
+    html += '<div class="col-xs-10 col-xs-offset-1">';
     html += '<div class="row">';
-    html += '<div class="col-xs-4 col-xs-offset-4">';
-    html += '<button type="button" class="passiveMargin" onclick="resetPassiveSkills();">Reset</button>';
+    html += '<div class="col-xs-6 col-xs-offset-3 c3">';
+    html += '<button type="button" onclick="resetPassiveSkills();">Reset</button>';
+    html += '<div class="fontSize">Skill points remaining: ' + player.properties.skillPoints + '</div>';
     html += '</div>';
     html += '</div>';
     html += '<div class="row">';
@@ -485,7 +787,7 @@ function CreatePlayerSkillsHtml() {
             //Start of div Frame
             html += '<div class="frame" onclick="' + onclickevent + '">';
             html += '<a class="tooltips" style="position:absolute; width:80px; height:80px;">';
-            html += '<span style="bottom:10px; right:140%;">';
+            html += '<span style="bottom:110px; right:-100px; width:250px;">';
             html += passive.name + '<br />';
             html += passive.description();
             html += '<br />Level: ' + passive.levelReq;
@@ -539,8 +841,9 @@ function startingScreen() {
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + reset + '">Reset all saves</button>';
     html += '<label><input type="checkbox" id="hardcoreMode" style ="visibility:visible; position:relative;" onclick="handleClick();">Hardcore Mode?</label>';
     html += '</div>';
-    html += '</div></div>';
+    html += '</div>';
     html += '<button type="button" class="btn btn-default musicDiv" onclick="' + muteSound + 'changeMusicImage();""><span id="musicImage" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>';
+    html += '</div>';
     document.getElementById("buttonDiv").innerHTML = html;
     myAudio.volume = 0.1;
     myAudio.play();
@@ -549,6 +852,7 @@ startingScreen();
 startLogo();
 
 function newGameSlot() {
+    changeMusicImage();
     characterCreationCreateBackground();
     var html = '';
     var newGameSlot0 = "newGame(0);";
@@ -622,7 +926,9 @@ function newGameSlot() {
     html += '<div class ="col-xs-12">';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + newGameSlot0 + '">New game 0</button> ' + displayInfo0;
     html += '</div>';
-    html += '</div></div></div></div>';
+    html += '</div></div>';
+    html += '<button type="button" class="btn btn-default border startBackButtonMargin" onclick="backToStartingScreen()">Go Back</button>';
+    html += '</div></div>';
     
     document.getElementById("raceCreation").innerHTML = html;
     //document.getElementById("raceText").innerHTML = html2
@@ -688,7 +994,9 @@ function loadGameSlot() {
     html += '<div class ="col-xs-12">';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + loadGameSlot0 + '">Load Game 0</button> ' + displayInfo0;
     html += '</div>';
-    html += '</div></div></div></div>';
+    html += '</div></div>';
+    html += '<button type="button" class="btn btn-default border startBackButtonMargin" onclick="backToStartingScreen()">Go Back</button>';
+    html +='</div></div>';
 
     document.getElementById("raceCreation").innerHTML = html;
 };
@@ -716,7 +1024,28 @@ function newGame(slot) {
     };
 };
 
+function backToStartingScreen() {
+    var divStyle4 = document.getElementById('raceDiv'); // Race select screen
+    divStyle4.style.display = "none";
+    var divStyle3 = document.getElementById('startingScreen'); // Starting buttons: new game/ load game/ sound button etc
+    divStyle3.style.display = "block"; // none = not displayed
+    startingScreen();
+    changeMusicImage();
+};
+
 function characterCreationCreateBackground() {
+    var divStyle = document.getElementById('loadingContainer'); // Whole background of starting screen "a container"
+    divStyle.style.display = "block"; //block = display it
+    var divStyle3 = document.getElementById('startingScreen'); // Starting buttons: new game/ load game/ sound button etc
+    divStyle3.style.display = "none"; // none = not displayed
+    var divStyle4 = document.getElementById('raceDiv'); // Race select screen
+    divStyle4.style.display = "block";
+    var divStyle5 = document.getElementById('sliderDivID'); // Race select screen
+    divStyle5.style.display = "none";
+    var divStyle6 = document.getElementById('raceText'); // Race select screen
+    divStyle6.style.display = "none";
+};
+function characterCreationCreateBackground2() {
     var divStyle = document.getElementById('loadingContainer'); // Whole background of starting screen "a container"
     divStyle.style.display = "block"; //block = display it
     var divStyle3 = document.getElementById('startingScreen'); // Starting buttons: new game/ load game/ sound button etc
@@ -725,8 +1054,14 @@ function characterCreationCreateBackground() {
     divStyle4.style.display = "block";
 };
 
+function removeStartingScreen() {
+    var divStyle = document.getElementById('loadingContainer');
+    divStyle.style.display = "none";
+    var divStyle2 = document.getElementById('startingGameContainer');
+    divStyle2.style.display = "none";
+};
 function characterCreationHtml() {
-    characterCreationCreateBackground();
+    characterCreationCreateBackground2();
     if (player.properties.heroRace === '') { // If you press "New game" race property will be empty, allowing you to pick a race, otherwise you will load a game with a race already picked :)
         var html = '';
         var html2 = '';
@@ -804,8 +1139,14 @@ function characterCreationHtml() {
                 html += '<div class="col-xs-2">';
                 html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" class="' + heroRace.name + '" onclick="' + onclickevent + '">Choose</button>' //changeRace function ._.
                 html += '</div>';
+
             };
         };
+        html += '<div class="row">'
+        html += '<div class="col-xs-2 col-xs-offset-5">';
+        html += '<button type="button" class="btn btn-default border startBackButtonMargin" onclick="newGameSlot()">Go Back</button>';
+        html += '</div>';
+        html += '</div>';
         html += '</div>';
         html += '</div>';
         html += '</div>';
@@ -883,12 +1224,6 @@ function checkHeroRace() {
     raceStats(); // Function which add all bonuses from races to player properties.
 };
 
-function removeStartingScreen() {
-    var divStyle = document.getElementById('loadingContainer');
-    divStyle.style.display = "none";
-    var divStyle2 = document.getElementById('startingGameContainer');
-    divStyle2.style.display = "none";
-};
 
 function changeMusicImage() {
     var musicImage = document.getElementById('musicImage');
@@ -918,10 +1253,7 @@ function primaryStatUpdate() {
         var statDisplay2 = primaryStatInfo[key].type;
         var shortNameDisplay = primaryStatInfo[key].shortNameDisplay;
         var statDisplay = "";
-        if (currentBonus.type === "damage") {
-             statDisplay = '<span id="' + statInfo + '"></span>';
-        }
-        else if (currentBonus.type === "mana") {
+        if (currentBonus.type === "damage" || currentBonus.type === "Stats" || currentBonus.type === "mana") {
              statDisplay = '<span id="' + statInfo + '"></span>';
         }
         else {
@@ -940,18 +1272,13 @@ function primaryStatUpdate() {
             html += '<div class="row">';
             html += '<div class="col-xs-6">';
         }
-        else if (currentBonus.type === "luck") {
-            html += '<div class="col-xs-6 col-xs-offset-3 primaryStatsMargin border darkBackground">';
-            html += '<div class="row">';
-            html += '<div class="col-xs-4">';
-        }
         else {
             html += '<div class="col-xs-6 primaryStatsMargin border darkBackground">';
             html += '<div class="row">';
             html += '<div class="col-xs-4">';
         }
         var statDisplay3 = statDisplay2.capitalizeFirstLetter();
-        if ('Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Damage, Mana'.indexOf(statDisplay3) != -1) {
+        if ('Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Damage, Mana, Stats'.indexOf(statDisplay3) != -1) {
             var tooltip = primaryStatInfo[key].tooltip;
             html += '<span data-toggle="tooltip" data-placement="right" title="' + tooltip + '"><img src="images/stat/' + statDisplay2 + '.png"></span><br />';
             html += shortNameDisplay;
@@ -1038,7 +1365,7 @@ function secondaryStatUpdate(){
 
 function EquippedItemsEmpty() {
     var html = '';
-    html += '<div class="row" style="border-bottom: 1px solid; border-top: 1px solid; padding-top: 5px; padding-bottom: 10px;">';
+    html += '<div class="row" style="padding-top: 5px; padding-bottom: 10px;">';
     html += '<div class="centerText"><h4>Equipped Items</h4></div>';
     for (var itemType in emptyItemSlotInfo) {
         if (emptyItemSlotInfo.hasOwnProperty(itemType)) {
@@ -1162,6 +1489,7 @@ function saveGameSlot() {
     document.getElementById('saveGameSlot').innerHTML = html;
 };
 
+
 var itemShopWeapon = [];
 var itemShopArmor = [];
 var itemShopAccessory = [];
@@ -1169,22 +1497,79 @@ var weaponAmount = 0;
 var armorAmount = 0;
 var accessoryAmount = 0;
 function getShopItem() {
-    var shopItemAmount = 50;
+    var shopItemAmount = 100;
     var shopItemLevel = player.properties.level;
     var weaponLevelBonus = 5;
     var armorLevelBonus = 5;
     for (var i = 0; i < shopItemAmount; i++) {
-        if (itemShopWeapon.length < 10 || itemShopArmor.length < 10 || itemShopAccessory.length < 10) {
+        if (itemShopWeapon.length < 20 || itemShopArmor.length < 20 || itemShopAccessory.length < 20) {
             getItemType(shopItemLevel, false);
         }
         else {
             break;
         }
     };
+    createShopTabs();
     displayShopItems(itemShopWeapon);
     displayShopItems(itemShopArmor);
     displayShopItems(itemShopAccessory);
+    shopOther();
 };
+var shopItemTabs = [
+    {
+        name: "shopWeapon",
+        type: "weapon"
+    },
+    {
+        name: "shopArmor",
+        type: "armor"
+    },
+    {
+        name: "shopAccessory",
+        type: "accessory"
+    },
+    {
+        name: "shopOther",
+        type: "items"
+    }
+];
+
+                                       
+
+function createShopTabs() {
+    var html = "";
+    html += '<ul class="nav nav-tabs">';
+
+    for (var i = 0; i < 4; i++) {
+        if (i === 0) {
+            html += '<li class="active">';
+        }
+        else {
+            html += '<li>';
+        }
+        html += '<a href="#tab_' + shopItemTabs[i].name + '" data-toggle="tab"><span class="icons ' + shopItemTabs[i].type + '" data-toggle="tooltip" data-placement="top" title="' + shopItemTabs[i].name.capitalizeFirstLetter() + '"></span>';
+        html += '</li>';
+    }
+
+    html += '</ul>';
+    html += '<div class="tab-content">';
+    
+    for (var i = 0; i < 4; i++){
+        html += '<div class="tab-pane ';
+        if (i === 0){
+            html += 'active" ';
+        }
+        else {
+            html += '" ';
+        }
+        html += 'id="tab_' + shopItemTabs[i].name + '">';
+        html += '<div id="' + shopItemTabs[i].name + '"></div>';
+        html += '</div>';
+    }
+    html += '</div>';
+
+    $('#shopTabs').empty().append(html);
+}
 
 function displayShopItems(type) {
     var html = '';
@@ -1243,7 +1628,7 @@ function displayShopItems(type) {
         else if (itemDisplay.subType === "talisman") {
                     itemStat = equippedItems.talisman;
                 }
-                html += '<div class="col-xs-6">';
+                html += '<div class="col-xs-3">';
                 html += '<a class="tooltips" style="cursor:pointer;">';
                 html += '<label> <input type="radio" name="shopItem" value=' + itemDisplay.id + '>';
                 if (itemDisplay.itemType === "weapon") {
@@ -1255,7 +1640,7 @@ function displayShopItems(type) {
                 html += '"' + 'src="images/items/' + itemDisplay.subType + "/" + itemDisplay.image + '.png"/>';
                 html += '</label>';
                 if (itemStat.hasOwnProperty('itemType')) {
-                    html += '<span>';
+                    html += '<span style="left:10px; bottom:40px;">';
                 }
                 else {
                     html += '<span style="width:300px;">';
@@ -1306,8 +1691,12 @@ function displayShopItems(type) {
 
 function ShopBuyButtons() {
     var html = '';
-    html += '<br /><button type="button" class="shopButton" onclick="itemBuy' + "(" + checkedShopItem + ")" + '">Buy</button>';
+    html += '<div class="row">';
+    html += '<div class="col-xs-4 col-xs-offset-4">';
+    html += '<button type="button" class="shopButton" onclick="itemBuy' + "(" + checkedShopItem + ")" + '">Buy</button>';
     html += '<button type="button" class="shopButton" onclick="rerollShopItems()">Refresh</button>';
+    html += '</div>';
+    html += '</div>';
     $('.shopItemBuy').empty().append(html);
 };
 
@@ -1402,11 +1791,11 @@ function shopOther() {
             html += '<div class="col-xs-12">';
             html += '<div class="c3">';
             html += '<img src=' + itemType.image + ' alt="Buy"><br />';
-            html += itemType.type + ' - ' + window[itemTypePrice].price + ' Gold';
-            html += '</div>';
+            html += itemType.type + ' - ' + window[itemTypePrice].price + ' Gold<br />';
             html += '<button type="button" class="buy" onclick="' + itemType.type2 + "(" + 1 + ")" + '">' + "Buy" + '</button>';
             html += '<button type="button" class="buy" onclick="' + itemType.type2 + "(" + 10 + ")" + '">' + "Buy 10" + '</button>';
             html += '<button type="button" class="buy" onclick="' + itemType.type2 + "(" + 100 + ")" + '">' + "Buy 100" + '</button>';
+            html += '</div>';
             html += '</div>';
         };
     };
@@ -1482,69 +1871,28 @@ function getAge(raceSelect) {
     characterRaces.giant.raceAge = raceSelect;
 };
 
-function playerProfessionHtml() {
-    var html = '';
-    html += '<div class="row">';
-    html += '<div class="col-xs-10 col-xs-offset-1">';
-    html += '<div class="row">';
-    html += '<h3>Your professions: <br /></h3>';
-    for (var key in playerProfession) {
-        if (playerProfession.hasOwnProperty(key)) {
-            var profession = playerProfession[key];
-            html += '<div class="col-xs-10 col-xs-offset-1">';
-            html += '<img src="images/profession/' + profession.image + '.png" data-toggle="tooltip" data-placement="top" title="' + profession.name.capitalizeFirstLetter() + ' level:' + profession.level + '">';
-
-            html += ' level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0)
-            html += '</div>';
-        };
-    };
-    html += '</div>';
-    html += '<div class="row">';
-
-    html += '<div class="col-xs-10 col-xs-offset-1">';
-    html += '<h3>Your minerals: <br /></h3>';
-    html += '</div>';
-    for (var i = 0; i < mineralList.length; i++) {
-        var mineral = mineralList[i].name;
-        var displayName = mineralList[i].displayName;
-        var playerMineral = player.properties[mineral];
-        html += '<div class="col-xs-5 col-xs-offset-1">';
-        html += '<img src="images/mineral/' + mineral + '.png" data-toggle="tooltip" data-placement="right" title="' + displayName + '">';
-        html += ' ' + playerMineral + '<br />';
-        html += '</div>';
-        if (mineral === 'VulcanatedIron') {
-            html += '<div class="col-xs-10 col-xs-offset-1">';
-            html += '<h3>Your Herbs : <br /></h3>';
-            html += '</div>';
-        };
-    };
-    html += '</div></div></div>';
-    document.getElementById('playerProfessions').innerHTML = html;
-    testss();
-};
-
 
 function itemTooltipTest(item) {
     var html = '';
     html += '<font color="' + item.color + '"><strong>' + item.name + '</strong></font>' + '<br />';
     if (item.itemType === "weapon") {
-        html += '<div  style="border-top: 1px solid;border-bottom: 1px solid;">Weapon class: ' + item.subType.capitalizeFirstLetter() + '<br />';
+        html += '<div class="borderBottom borderTop">Weapon class: ' + item.subType.capitalizeFirstLetter() + '<br />';
         if (item['Bonus damage'] > 0) {
             html += '<strong><font color="2175D9">' + 'Damage: ' + item.MinDamage + " to " + item.MaxDamage + '</font></strong>' + '</div>';
         }
         else {
             html += 'Damage: ' + item.MinDamage + " to " + item.MaxDamage + '</div>';
         };
-        html += '<div  style="border-bottom: 1px solid;">Critical Chance: ' + item['Critical chance'] + '%' + '</div>';
+        html += '<div class="borderBottom borderTop">Critical Chance: ' + item['Critical chance'] + '%' + '</div>';
     };
     if (item.itemType === "armor") {
         if (item['Bonus armor'] > 0) {
-            html += '<div style="border-top: 1px solid;border-bottom: 1px solid;"><strong><font color="#1e69c3">Defense: ' + item.defense.toFixed(0) + "</font></strong></div>";
+            html += '<div class="borderBottom borderTop"><strong><font color="#1e69c3">Defense: ' + item.defense.toFixed(0) + "</font></strong></div>";
         } else {
-            html += '<div style="border-top: 1px solid;border-bottom: 1px solid;">Defense: ' + item.defense + " </div>";
+            html += '<div class="borderBottom borderTop">Defense: ' + item.defense + " </div>";
         };
         if (item.subType === "shield") {
-            html += '<div style="border-top: 1px solid;border-bottom: 1px solid;">Chance to Block: ' + item['Block chance'] + '%' + " </div>";
+            html += '<div class="borderBottom borderTop">Chance to Block: ' + item['Block chance'] + '%' + " </div>";
         };
         if (item['Bonus armor'] > 0) {
             html += '<strong><font color="7FCC7F">' + 'Bonus armor' + ": " + item['Bonus armor'] + "%" + '</font></strong>' + '<br />';
@@ -1564,7 +1912,7 @@ function itemTooltipTest(item) {
             };
         };
     };
-    html += '<div style="border-top: 1px solid; border-bottom: 1px solid;">';
+    html += '<div class="borderBottom borderTop">';
     html += "Value: " + item.Value + " gold<br />";
     html += 'Item level: ' + item.iLvl + '<br />';
     html += '<font color="#CC6633">' + item.lore + '</font>';

@@ -146,10 +146,10 @@ span.profession {
 .musicDiv {
     border: 1px solid black;
     height: 20%;
-    left: 80%;
+    left: 60%;
     position: absolute;
     top: 100%;
-    width: 20%;
+    width:100px;
     z-index: 2;
 }
 

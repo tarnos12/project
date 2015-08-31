@@ -510,9 +510,9 @@ function getBonusItemMod(monster, dropItem, isDrop) {
                 };
             }
             else {
-                if (accessoryAmount < 10 && dropItem.itemType === "accessory" ||
-                    weaponAmount < 10 && dropItem.itemType === "weapon" ||
-                    armorAmount < 10 && dropItem.itemType === "armor") {
+                if (accessoryAmount < 20 && dropItem.itemType === "accessory" ||
+                    weaponAmount < 20 && dropItem.itemType === "weapon" ||
+                    armorAmount < 20 && dropItem.itemType === "armor") {
                     if (dropItem.itemType === "accessory") {
                         accessoryAmount += 1;
                         dropItem["shopPrice"] = dropItem.Value * 10 * dropItem.power;
