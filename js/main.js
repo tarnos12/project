@@ -933,7 +933,6 @@ function monsterKilled(monsterStat, monsterStats) {
     displayLogInfo();
     battleTurn = -1;
     skillReCharge();
-    updateHtml();
     //document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
 };
 
@@ -1021,7 +1020,6 @@ function monsterExperience(monsterStat, monsterStats) {
         Log('<span id=\"expGain\" class =\"bold\" style=\"display:none;\">You gain:' + Math.floor(expGain) + " experience!" + "<br />" + "</span>");
     }
     player.properties.expGain = expGain;
-    updateHtml();
     monsterGold(monsterStat, monsterStats);
 };
 
@@ -1081,8 +1079,6 @@ function displayLogInfo() {
         Log('<span id=\"draw\" class =\"bold\" style=\"color:blue; display:none;\">' + "Draw" + "<br />" + "</span>");
         drawLog();
     };
-    skillReCharge();
-    updateHtml();
     mainLog();
     CreateMonsterHtml();
     if (player.autoBattle.isAuto === false) {
@@ -1111,25 +1107,30 @@ function levelUpLog() {
 };
 function mainLog() {
     if (player.properties.isDead === false) {
-        $("#test1").delay(1600).fadeIn().delay(3000).fadeOut(5000, function () { $(this).remove(); });
-        $("#test2").delay(1400).fadeIn().delay(3000).fadeOut(5200, function () { $(this).remove(); });
-        $("#test3").delay(1200).fadeIn().delay(3000).fadeOut(5400, function () { $(this).remove(); });
-        $("#test4").delay(1000).fadeIn().delay(3000).fadeOut(5600, function () { $(this).remove(); });
-        $("#test5").delay(800).fadeIn().delay(3000).fadeOut(5800, function () { $(this).remove(); });
+        $(document).ready(function () {
+            $("#test1").delay(1600).fadeIn().delay(3000).fadeOut(5000, function () { $(this).remove(); });
+            $("#test2").delay(1400).fadeIn().delay(3000).fadeOut(5200, function () { $(this).remove(); });
+            $("#test3").delay(1200).fadeIn().delay(3000).fadeOut(5400, function () { $(this).remove(); });
+            $("#test4").delay(1000).fadeIn().delay(3000).fadeOut(5600, function () { $(this).remove(); });
+            $("#test5").delay(800).fadeIn().delay(3000).fadeOut(5800, function () { $(this).remove(); });
+        })
+       
     };
     logData = {
         length: 0
     };
 };
 function deathLog() {
-    $("#playerDead").delay(200)
-       .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
-    $("#playerDead2").delay(100)
-    .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
-    $("#goldLost").delay(400)
-    .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
-    $("#expLost").delay(400)
-    .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
+    $(document).ready(function () {
+        $("#playerDead").delay(200)
+           .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
+        $("#playerDead2").delay(100)
+        .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
+        $("#goldLost").delay(400)
+        .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
+        $("#expLost").delay(400)
+        .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
+    })
 
 };
 function drawLog() {
@@ -1142,10 +1143,13 @@ function masteryLog() {
 
 };
 function dropLog() {
-    $("#goldDrop").delay(200)
-            .fadeIn(1500).delay(3000).fadeOut(2000, function () { $(this).remove(); });
-    $("#expGain").delay(200)
-            .fadeIn(1500).delay(3000).fadeOut(2000, function () { $(this).remove(); });
+    $(document).ready(function () {
+        $("#goldDrop").delay(200)
+                .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
+        $("#expGain").delay(200)
+                .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
+        console.log("TESTESTES")
+    })
 };
 
 //Equip item function

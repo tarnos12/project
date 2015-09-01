@@ -15,7 +15,6 @@ function monsterItemDrop(monster) {
         };
     };
     Log('<span id=\"itemDropNew\" class =\"bold\" style=\"color:orange; display:none;\">You found ' + (itemDropNumber) + " items! <br />" + "</span>");
-   
     itemDropLog();
     CreateInventoryWeaponHtml();
 };
@@ -557,7 +556,6 @@ function getBonusItemMod(monster, dropItem, isDrop) {
                 JSON.parse(JSON.stringify(itemHolder))
                 );
             player.properties.itemIdNumber += 1;
-            CreateInventoryWeaponHtml();
         };
     };
 };

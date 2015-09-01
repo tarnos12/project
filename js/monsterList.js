@@ -1204,7 +1204,7 @@ function MakeMonsterList() {
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 5,
+        baseExp: 25,
         acc: 0,
         eva: 100,
         name: "Thaumerite", // Must equal object name Ore = Ore...
@@ -1225,7 +1225,7 @@ function MakeMonsterList() {
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 10,
+        baseExp: 50,
         acc: 0,
         eva: 100,
         name: "LiteCyan", // Must equal object name Ore = Ore...
@@ -1246,7 +1246,7 @@ function MakeMonsterList() {
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 20,
+        baseExp: 100,
         acc: 0,
         eva: 100,
         name: "OhmStone", // Must equal object name Ore = Ore...
@@ -1267,7 +1267,7 @@ function MakeMonsterList() {
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 50,
+        baseExp: 200,
         acc: 0,
         eva: 100,
         name: "Techtite", // Must equal object name Ore = Ore...
@@ -1288,7 +1288,7 @@ function MakeMonsterList() {
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 100,
+        baseExp: 500,
         acc: 0,
         eva: 100,
         name: "XilBond", // Must equal object name Ore = Ore...
@@ -1309,7 +1309,7 @@ function MakeMonsterList() {
         def: 0,
         minDmg: 0,
         maxDmg: 0,
-        baseExp: 200,
+        baseExp: 1000,
         acc: 0,
         eva: 100,
         name: "VulcanatedIron", // Must equal object name Ore = Ore...
