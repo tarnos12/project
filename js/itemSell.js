@@ -20,21 +20,24 @@ function sellAllItems() {
         canSell = true;
     }
     if (canSell === true) {
-        var playerInventoryNew = [];
         for (var i = 0; i < playerInventory.length; i++) {
             if ((playerInventory[i].itemRarity === 'Legendary' && checkBoxLegendary === true ||
                 playerInventory[i].itemRarity === 'Epic' && checkBoxEpic === true ||
                 playerInventory[i].itemRarity === 'Rare' && checkBoxRare === true ||
                 playerInventory[i].itemRarity === 'Uncommon' && checkBoxUncommon === true ||
                 playerInventory[i].itemRarity === 'Common' && checkBoxCommon === true)) {
-                    total += playerInventory[i].Value << 0;
-            } else {
-                playerInventoryNew.push(playerInventory[i]);
-            }
+                total += playerInventory[i].Value << 0;
+                var item = "testingItem" + playerInventory[i].id;
+                $('#' + item).remove();
+                var itemId = playerInventory[i];
+                var index = playerInventory.indexOf(itemId);
+                if (index > -1) {
+                    playerInventory.splice(index, 1);
+                }
+                updateInventory();
+            } 
         }
         player.properties.gold += total;
-        playerInventory = playerInventoryNew;
-        CreateInventoryWeaponHtml();
         document.getElementById("gold").innerHTML = player.properties.gold;
         total = 0;
     };
@@ -48,10 +51,17 @@ function itemSell(id) {
     var index = playerInventory.indexOf(item);
     if (index > -1) {
         playerInventory.splice(index, 1);
+        var itemToRemove = "testingItem" + item.id;
+        console.log(item.id);
+        $('#' + itemToRemove).remove();
+        updateInventory();
     }
     if (item !== undefined) {
         player.properties.gold += item.Value;
-        CreateInventoryWeaponHtml();
         document.getElementById("gold").innerHTML = player.properties.gold;
     };
+};
+
+function updateInventory() {
+    $('#updateInventorySlots').empty().append("Inventory Slots: " + playerInventory.length + "/" + player.functions.inventory())
 };

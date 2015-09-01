@@ -1532,8 +1532,6 @@ function unequipItem(id, type) {
 
 
 
-CreateWeaponSkillHtml();
-CreateInventoryWeaponHtml();
 
 var checkBoxCommon = false;
 var checkBoxUncommon = false;
@@ -1772,4 +1770,4 @@ function changeGameStyling(style) {
     else if (style === 3) {
 
     }
-}
+};

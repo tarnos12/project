@@ -97,7 +97,6 @@ function updateHtml() {
 
     //primaryStatUpdate();
     secondaryStatUpdate();
-    CreatePlayerHotBar();
     CreateWeaponSkillHtml();
 };
 
