@@ -52,7 +52,6 @@ function itemSell(id) {
     if (index > -1) {
         playerInventory.splice(index, 1);
         var itemToRemove = "testingItem" + item.id;
-        console.log(item.id);
         $('#' + itemToRemove).remove();
         updateInventory();
     }

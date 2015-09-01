@@ -110,22 +110,18 @@ function saveGameFunction(saveType, slot) {
         if (slot === 0) {
             localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
             document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame'];
-            console.log(localStorage['EncodedSaveGame'].length)
         }
         if (slot === 1) {
             localStorage['EncodedSaveGame1'] = btoa(JSON.stringify(saveGame));
             document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame1'];
-            console.log(localStorage['EncodedSaveGame1'].length)
         }
         else if (slot === 2) {
             localStorage['EncodedSaveGame2'] = btoa(JSON.stringify(saveGame));
             document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame2'];
-            console.log(localStorage['EncodedSaveGame2'].length)
         }
         else if (slot === 3) {
             localStorage['EncodedSaveGame3'] = btoa(JSON.stringify(saveGame));
             document.getElementById('saveExport').innerHTML = localStorage['EncodedSaveGame3'];
-            console.log(localStorage['EncodedSaveGame3'].length)
         };
     };
     executeIntervalFunctionsOnce();
@@ -348,19 +344,15 @@ function importSave() {
     savegame.playerProperties.saveSlot = slot;
     if (slot === 1) {
         localStorage['EncodedSaveGame1'] = btoa(JSON.stringify(savegame));
-        console.log(localStorage['EncodedSaveGame1'].length)
     }
     else if (slot === 0) {
         localStorage['EncodedSaveGame'] = btoa(JSON.stringify(savegame));
-        console.log(localStorage['EncodedSaveGame'].length)
     }
     else if (slot === 2) {
         localStorage['EncodedSaveGame2'] = btoa(JSON.stringify(savegame));
-        console.log(localStorage['EncodedSaveGame2'].length)
     }
     else if (slot === 3) {
         localStorage['EncodedSaveGame3'] = btoa(JSON.stringify(savegame));
-        console.log(localStorage['EncodedSaveGame3'].length)
     }
     load(slot);
 };

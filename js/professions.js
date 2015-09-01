@@ -456,7 +456,7 @@ function craftItem(itemType, itemSubType, rarity) {
     }
     else {
         canCraft = false;
-        console.log('not enough resources');
+       // console.log('not enough resources');
     }
     if (canCraft === true) {
         var crafting = playerProfession.crafting;

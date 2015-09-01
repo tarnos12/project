@@ -683,7 +683,6 @@ function CreateInventoryWeaponHtml() {
     html += '</div>';
     document.getElementById("inventory").innerHTML = html;
     testss();
-    console.log("LOOOOOOOOOOOL")
 };
 
 function unequipItemLoad() { // Create a variable inside player.properties which store currently equipped item, for easy access...
