@@ -476,7 +476,7 @@ var newTest = [
 
 function checkBoxHtml() {
     var html = "";
-    html += '<div class="row borderBottom borderTop">';
+    html += '<div class="row">';
     html += '<div class="col-xs-10 col-xs-offset-1">';
     html += '<div class="centerText">';
     html += '<br /><label><input style="visibility:visible; position:relative;" type="checkbox" id="common" onclick="handleClick();"'
@@ -528,7 +528,7 @@ function CreateInventoryWeaponHtml() {
     var html = '';
     var itemStat;
     html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length + "/" + player.functions.inventory() + '</div>';
-    html += '<ul class="nav nav-tabs">';
+    html += '<ul class="nav nav-tabs draggable">';
     for (var k = 0; k < InventoryItemTypes.length; k++) {
         if (k === inventoryTabActiveNum) {
             html += '<li class="active" onClick = changedTabInventory(' + k + ')>';
@@ -543,19 +543,19 @@ function CreateInventoryWeaponHtml() {
     for (var j = 0; j < InventoryItemTypes.length; j++) {
         if (j === inventoryTabActiveNum) {
             if (InventoryItemTypes[j].type === 'other') {
-                html += '<div class="col-xs-12 tab-pane active"';
+                html += '<div class="col-xs-12 tab-pane active marginBottom"';
             }
             else {
-                html += '<div class="col-xs-10 col-xs-offset-1 tab-pane active"';
+                html += '<div class="col-xs-10 col-xs-offset-1 tab-pane active marginBottom"';
             };
         }
         else {
             if (InventoryItemTypes[j].type === 'other') {
 
-                html += '<div class="col-xs-12 tab-pane"';
+                html += '<div class="col-xs-12 tab-pane marginBottom"';
             }
             else {
-                html += '<div class="col-xs-10 col-xs-offset-1 tab-pane"';
+                html += '<div class="col-xs-10 col-xs-offset-1 tab-pane marginBottom"';
             };
         };
         html += 'id="tab_' + InventoryItemTypes[j].type + '">';
@@ -604,7 +604,7 @@ function CreateInventoryWeaponHtml() {
                 else if (playerInventory[i].subType === "talisman") {
                     itemStat = equippedItems.talisman;
                 }
-                html += '<div class="col-xs-6 col-sm-3 col-md-6 col-lg-3 c8" style="margin-top:5px;" ' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + '>';
+                html += '<div class="col-xs-4 col-sm-2 col-md-2 col-lg-1 c8" style="margin-top:5px;" ' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + '>';
                 html += '<a class="tooltips2" style="cursor:pointer;">';
                 if (playerInventory[i].itemType === "weapon") {
                     html += '<img class="' + playerInventory[i].itemType + ", " + playerInventory[i].itemRarity;
@@ -615,10 +615,10 @@ function CreateInventoryWeaponHtml() {
                 html += '"' + 'src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png"' + 'onclick="equipItem' + "(" + playerInventory[i].id + ")" + '"/>';
 
                 if (itemStat.hasOwnProperty('itemType')) {
-                    html += '<span style="pointer-events:none;">';
+                    html += '<span style="pointer-events:none; right:-180px; bottom:40px;">';
                 }
                 else {
-                    html += '<span style="width:300px;">';
+                    html += '<span style="width:300px; right:-180px; bottom:40px;">';
                 }
                 html += '<div class="row">';
                 html += '<div class="col-xs-12">';
@@ -628,7 +628,7 @@ function CreateInventoryWeaponHtml() {
                     var equippedItemDisplay = itemStat;
 
                     html += '<div class="row">';
-                    html += '<div class="col-xs-6">';
+                    html += '<div class="col-xs-6 borderRight">';
 
                     html += itemTooltipTest(equippedItemDisplay);
 
@@ -1373,7 +1373,7 @@ function EquippedItemsEmpty() {
             var itemEmpty = item + "Empty";
             if (item === "talisman" || item === "helmet" || item === "amulet") {
                 if (item === "talisman") {
-                    html += '<div class="col-xs-6 col-xs-offset-3">';
+                    html += '<div class="col-xs-10 col-xs-offset-1">';
                     html += '<div class="row">';
                 }
                 html += '<div class="col-xs-4 marginTest"' + 'id="' + itemEmpty + '">';
@@ -1385,7 +1385,7 @@ function EquippedItemsEmpty() {
                 };
             } else if (item === "weapon" || item === "chest" || item === "shield") {
                 if (item === "weapon") {
-                    html += '<div class="col-xs-6 col-xs-offset-3">';
+                    html += '<div class="col-xs-10 col-xs-offset-1">';
                     html += '<div class="row">';
                 }
                 html += '<div class="col-xs-4 marginTest"' + 'id="' + itemEmpty + '">';
@@ -1398,7 +1398,7 @@ function EquippedItemsEmpty() {
                 }
             } else if (item === "legs" || item === "ring") {
                 if (item === "legs") {
-                    html += '<div class="col-xs-6 col-xs-offset-3">';
+                    html += '<div class="col-xs-10 col-xs-offset-1">';
                     html += '<div class="row">';
                     html += '<div class="col-xs-4 marginTest">';
                     html += '</div>';
@@ -1411,7 +1411,7 @@ function EquippedItemsEmpty() {
                     html += '</div>';
                 }
             } else if (item === "boots") {
-                html += '<div class="col-xs-6 col-xs-offset-3">';
+                html += '<div class="col-xs-10 col-xs-offset-1">';
                 html += '<div class="row">';
                 html += '<div class="col-xs-4 col-xs-offset-4"' + 'id="' + itemEmpty + '">';
                 html += '<img src=images/' + itemEmpty + '.png>';
@@ -1454,7 +1454,7 @@ function checkEquippedItemType(newItem, check) {
             html += '<img class="' + itemType.subType;
         }
         html += '"' + 'src="images/items/' + itemType.subType + "/" + itemType.image + '.png" onclick="unequipItem' + "(" + itemType.id + ', ' + "'solo'" + ")" + '" />';
-        html += '<span style="width:200px;">';
+        html += '<span style="width:200px; right:-80px; bottom:50px;">';
         html += '<div class="row">';
         html += '<div class="col-xs-12">';
 

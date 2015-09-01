@@ -252,8 +252,6 @@ function mine(monsterStat) {
             mining.maxExperience *= 1.1;
         };
     };
-    playerProfessionHtml();
-    craftingHtml();
     unlockMineral();
 };
 function unlockMineral() {
@@ -419,7 +417,7 @@ function craftItem(itemType, itemSubType, rarity) {
     if (rarity === 'Legendary' && mineral06 >= 10 && mineral05 >= 10 && mineral04 >= 10) {
         craftItemType = itemType;
         craftItemRarity = 0,//index of legendary when picking a rarity...
-        craftExp = 100;
+        craftExp = 1000;
         canCraft = true;
         player.properties.VulcanatedIron -= 10;
         player.properties.XilBond -= 10;
@@ -428,7 +426,7 @@ function craftItem(itemType, itemSubType, rarity) {
     else if (rarity === 'Epic' && mineral04 >= 10 && mineral03 >= 10) {
         craftItemType = itemType;
         craftItemRarity = 1,
-        craftExp = 50;
+        craftExp = 500;
         canCraft = true;
         player.properties.Techtite -= 10;
         player.properties.OhmStone -= 10;
@@ -436,7 +434,7 @@ function craftItem(itemType, itemSubType, rarity) {
     else if (rarity === 'Rare' && mineral03 >= 10 && mineral02 >= 10) {
         craftItemType = itemType;
         craftItemRarity = 2,
-        craftExp = 25;
+        craftExp = 350;
         canCraft = true;
         player.properties.LiteCyan -= 10;
         player.properties.OhmStone -= 10;
@@ -444,7 +442,7 @@ function craftItem(itemType, itemSubType, rarity) {
     else if (rarity === 'Uncommon' && mineral02 >= 10 && mineral01 >= 10) {
         craftItemType = itemType;
         craftItemRarity = 3,
-        craftExp = 15;
+        craftExp = 150;
         canCraft = true;
         player.properties.LiteCyan -= 10;
         player.properties.Thaumerite -= 10;
@@ -452,7 +450,7 @@ function craftItem(itemType, itemSubType, rarity) {
     else if (rarity === 'Common' && mineral01 >= 10) {
         craftItemType = itemType;
         craftItemRarity = 4,
-        craftExp = 5;
+        craftExp = 50;
         canCraft = true;
         player.properties.Thaumerite -= 10;
     }
