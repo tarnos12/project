@@ -715,14 +715,12 @@ function attack(monsterStat) {
         else {
             Log("<span id=\"isDead\" class =\"bold\" style=\"color:red; display:none;\">You can not fight whilst you are dead." + "<br />" + "</span>");
             isDeadLog();
-            console.log('dead')
             disableButtons();
             break;
         };
         battleTurn += 1;
     };
     DrawBattle();
-    console.log('draw')
     disableButtons();
 };
 //There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
@@ -828,7 +826,6 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
     if (player.functions.lifeSteal() > 0) {
         var lifeSteal = Math.floor(damage * (player.functions.lifeSteal() / 1000));
         lifeStealAmount += lifeSteal;
-        console.log("OverHeal " + (lifeSteal - (player.functions.maxhealth() - player.properties.health)))
         player.properties.health += lifeSteal;
         if (player.properties.health > player.functions.maxhealth()) {
             player.properties.health = player.functions.maxhealth();
@@ -1082,7 +1079,6 @@ function displayLogInfo() {
     mainLog();
     CreateMonsterHtml();
     if (player.autoBattle.isAuto === false) {
-        console.log(2);
         setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~1.5 seconds
     };
 };
@@ -1148,7 +1144,6 @@ function dropLog() {
                 .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
         $("#expGain").delay(200)
                 .fadeIn().delay(3000).fadeOut(2000, function () { $(this).remove(); });
-        console.log("TESTESTES")
     })
 };
 
