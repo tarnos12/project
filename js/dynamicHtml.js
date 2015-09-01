@@ -527,7 +527,7 @@ function changedTabInventory(index) {
 function CreateInventoryWeaponHtml() {
     var html = '';
     var itemStat;
-    html += '<div class="c3">' + "Inventory Slots: " + playerInventory.length + "/" + player.functions.inventory() + '</div>';
+    html += '<div class="c3" id="updateInventorySlots">' + "Inventory Slots: " + playerInventory.length + "/" + player.functions.inventory() + '</div>';
     html += '<ul class="nav nav-tabs draggable">';
     for (var k = 0; k < InventoryItemTypes.length; k++) {
         if (k === inventoryTabActiveNum) {
@@ -683,6 +683,7 @@ function CreateInventoryWeaponHtml() {
     html += '</div>';
     document.getElementById("inventory").innerHTML = html;
     testss();
+    console.log("LOOOOOOOOOOOL")
 };
 
 function unequipItemLoad() { // Create a variable inside player.properties which store currently equipped item, for easy access...
@@ -1018,6 +1019,7 @@ function newGame(slot) {
         refillShopInterval();
         shopOther();
         craftingHtml();
+        CreateInventoryWeaponHtml();
         createPotionInventory();
         unlockMineral();
         checkBoxHtml();
@@ -1757,7 +1759,6 @@ function itemBuy(id) {
             player.properties.gold -= item.shopPrice;
             document.getElementById("gold").innerHTML = player.properties.gold;
         };
-        CreateInventoryWeaponHtml();
     
 };
 
