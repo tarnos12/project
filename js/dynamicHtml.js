@@ -870,6 +870,10 @@ function newGameSlot() {
 
     if (localStorage['EncodedSaveGame']) {
         saveInfo0 = JSON.parse(atob(localStorage['EncodedSaveGame']));
+        if (saveInfo0.playerProperties.level === undefined || saveInfo0.playerProperties.heroRace === undefined) {
+            localStorage.removeItem("EncodedSaveGame");
+            pageReload();
+        }
         displayInfo0 = "Current save: Level - " + saveInfo0.playerProperties.level + ' Race: ' + saveInfo0.playerProperties.heroRace;
         if (saveInfo0.playerProperties.hardcoreMode === true) {
             displayInfo0 += " <strong>Hardcore</strong>"
@@ -951,6 +955,10 @@ function loadGameSlot() {
     var saveInfo3 = "";
     if (localStorage['EncodedSaveGame']) {
         saveInfo0 = JSON.parse(atob(localStorage['EncodedSaveGame']));
+        if (saveInfo0.playerProperties.level === undefined || saveInfo0.playerProperties.heroRace === undefined) {
+            localStorage.removeItem("EncodedSaveGame");
+            pageReload();
+        }
         displayInfo0 = "Level - " + saveInfo0.playerProperties.level + ' Race: ' + saveInfo0.playerProperties.heroRace;
     }
     else {
