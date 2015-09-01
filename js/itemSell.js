@@ -1,6 +1,6 @@
 ﻿"use strict";
 var total = 0;
-
+var inventoryId = [];
 function sellAllItems() {
     var canSell = false;
     if (checkBoxEpic === true || checkBoxLegendary === true) {
@@ -30,17 +30,22 @@ function sellAllItems() {
                 var item = "testingItem" + playerInventory[i].id;
                 $('#' + item).remove();
                 var itemId = playerInventory[i];
-                var index = playerInventory.indexOf(itemId);
-                if (index > -1) {
-                    playerInventory.splice(index, 1);
-                }
-                updateInventory();
-            } 
+                inventoryId.push(itemId);
+            }
         }
         player.properties.gold += total;
         document.getElementById("gold").innerHTML = player.properties.gold;
         total = 0;
     };
+    for (var j = 0; j < inventoryId.length; j++) {
+        var itemRemove = inventoryId[j];
+        var index = playerInventory.indexOf(itemRemove);
+        if (index > -1) {
+            playerInventory.splice(index, 1);
+        }
+        updateInventory();
+    };
+    inventoryId = [];
 };
 
 //Single item sell
