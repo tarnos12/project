@@ -1758,6 +1758,7 @@ function itemBuy(id) {
             player.properties.gold -= item.shopPrice;
             document.getElementById("gold").innerHTML = player.properties.gold;
         };
+        CreateInventoryWeaponHtml();
     
 };
 
