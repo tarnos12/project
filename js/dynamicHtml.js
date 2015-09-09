@@ -1801,19 +1801,19 @@ var shopOtherList = [
     },
     {
         type: "Small Potion",
-        image: "images/smPotion.png",
+        image: "images/smallPotion.png",
         type2: "buySmallPotion",
         type3: "potionStatus"
     },
     {
         type: "Medium Potion",
-        image: "images/medPotion.png",
+        image: "images/mediumPotion.png",
         type2: "buyMediumPotion",
         type3: "mediumPotionStatus"
     },
     {
         type: "Super Potion",
-        image: "images/supPotion.png",
+        image: "images/superPotion.png",
         type2: "buySuperPotion",
         type3: "superPotionStatus"
     }

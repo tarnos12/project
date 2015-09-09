@@ -16,11 +16,11 @@
         };
 
     var smallPotion =
-       new newPotion(1, 150, 'healing', 'smPotion', 'Small Potion of Life', 'health', 0, 'Health', 10);
+       new newPotion(1, 150, 'healing', 'smallPotion', 'Small Potion of Life', 'health', 0, 'Health', 10);
     var mediumPotion =
-       new newPotion(5, 500, 'healing', 'medPotion', 'Medium Potion of Life', 'health', 0, 'Health', 30);
+       new newPotion(5, 500, 'healing', 'mediumPotion', 'Medium Potion of Life', 'health', 0, 'Health', 30);
     var superPotion =
-       new newPotion(15, 2000, 'healing', 'supPotion', 'Super Potion of Life', 'health', 0, 'Health', 70);
+       new newPotion(15, 2000, 'healing', 'superPotion', 'Super Potion of Life', 'health', 0, 'Health', 70);
     var potionofStrength =
        new newPotion(5, 20, 'buff', 'potionofStrength', 'Potion of Strength', 'Strength', 10, 'Strength', 20);
     var potionofEndurance =
