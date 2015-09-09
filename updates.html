@@ -69,7 +69,61 @@
 <div class="col-xs-8 col-xs-offset-2">
 <div class="bigFont">
     <strong>Changelog</strong>
-</div><br>
+</div>
+    <a href="updates.txt" target="_blank">Old Changelog</a><br>
+
+    <h3>Patch notes 1.7.0</h3>
+    <h4 class="green">Additions</h4>
+    <ul>
+        <li>
+            Herbalism + Alchemy added.
+        </li>
+        <li>
+            Crafting an item will grant experience based on each resource used in crafting.
+        </li>
+        <li>
+            Crafted item level is based on player level and crafting level.
+        </li>
+        <li>
+            Mining/herbalism damage dealt is based on player level and gathering profession level.
+        </li>
+        <li>
+            Potions created with Alchemy can be used to boost stats, experience gain, item drop etc. Added buff image below monsters. Each buff last 10 battles.
+        </li>
+    </ul>
+    <h4 class="orange">Changes</h4>
+    <ul>
+        <li>
+            Hot bar is working
+        </li>
+        <li>
+            Moved mining to profession tab.
+        </li>
+        <li>
+            Removed draggable windows(except combat log), might add them back in the future.
+        </li>
+        <li>
+            Changed all item bonuses, other stats should be more useful, for example instead of + 40 max health on item, you will get + 400.
+        </li>
+        <li>
+            Reworked crafting window, it will be updated even further soon.
+        </li>
+        <li>
+            Changed professions experience needed for next level.
+        </li>
+        <li>
+            Gathering minerals/herbs will yield between 1 up to (profession level), so if you have mining level 40, you will get 1-40 resources each time you mine.
+        </li>
+    </ul>
+    <h4 class="red">Bug Fixes</h4>
+    <ul>
+        <li>
+            Fixed a bug with auto battle, where you could switch between monsters and attack them manually while auto battling.
+        </li>
+        <li>
+            Fixed hotbar bug, potions will also appear in inventory, and dissapear if you reach 0(it will also dissapear from hotbar).
+        </li>
+    </ul>
 
     <h3>Patch notes 1.6.9</h3>
     <h4 class="green">Additions</h4>
@@ -86,6 +140,9 @@
         <li>
             Mining and Crafting give much more experience making it easier to 
         </li>
+        <li>
+            Experience bar will display 2 digits below 0. For example: 25.45%.
+        </li>
     </ul>
     <h4 class="red">Bug Fixes</h4>
     <ul>
@@ -94,6 +151,9 @@
         </li>
         <li>
             Optimized the game, there should be less or even none memory problems, game should not crash anymore.
+        </li>
+        <li>
+            Fixed a bug with selling all items, even if you choose "No/Cancel" when a confirmation window would appear, when selling epic/legendary items.
         </li>
     </ul>
 
@@ -545,7 +605,6 @@
     </li>
 </ul>
 
-<a href="updates.txt" target="_blank">Old Changelog</a>
 </div>
 </div>
 </div>

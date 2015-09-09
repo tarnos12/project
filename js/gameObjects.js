@@ -1,5 +1,27 @@
 ﻿"use strict";
-
+var itemToCraft = [
+{
+    weapon: [
+    'sword',
+    'axe',
+    'mace',
+    'staff',
+    'ranged'
+    ],
+    armor: [
+    'helmet',
+    'chest',
+    'legs',
+    'boots',
+    'shield'
+    ],
+    accessory: [
+    'ring',
+    'amulet',
+    'talisman'
+    ]
+}
+];
 var secondaryStatInfo = [
     {
         type: 'Hp /s',
@@ -808,57 +830,57 @@ var itemModifiers = {
     level10: [
 		{
 		    type: "All attributes",
-		    minValue: 1,
-		    maxValue: 4,
+		    minValue: 5,
+		    maxValue: 10,
 		    chance: 10,
             baseValue: 10
 		},
         {
             type: "Strength",
-            minValue: 8,
-            maxValue: 12,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Endurance",
-            minValue: 8,
-            maxValue: 12,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Agility",
-            minValue: 8,
-            maxValue: 12,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Dexterity",
-            minValue: 8,
-            maxValue: 12,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Wisdom",
-            minValue: 8,
-            maxValue: 12,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Intelligence",
-            minValue: 8,
-            maxValue: 12,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Luck",
-            minValue: 8,
-            maxValue: 12,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 2
         },
@@ -871,64 +893,64 @@ var itemModifiers = {
         },
         {
             type: "Bonus damage",
-            minValue: 20,
-            maxValue: 49,
+            minValue: 10,
+            maxValue: 25,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus armor",
-            minValue: 3,
-            maxValue: 10,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus life",
-            minValue: 10,
-            maxValue: 19,
+            minValue: 50,
+            maxValue: 100,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus mana",
-            minValue: 15,
-            maxValue: 19,
+            minValue: 20,
+            maxValue: 50,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Health regen",
-            minValue: 1,
-            maxValue: 2,
+            minValue: 5,
+            maxValue: 10,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Mana regen",
             minValue: 10,
-            maxValue: 19,
+            maxValue: 30,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Magic find",
-            minValue: 6,
-            maxValue: 12,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Gold drop",
             minValue: 10,
-            maxValue: 15,
+            maxValue: 20,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Experience rate",
-            minValue: 5,
-            maxValue: 10,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 5
         },
@@ -950,57 +972,57 @@ var itemModifiers = {
     level20: [
 		{
 		    type: "All attributes",
-		    minValue: 5,
-		    maxValue: 8,
+		    minValue: 10,
+		    maxValue: 20,
 		    chance: 10,
 		    baseValue: 10
 		},
         {
             type: "Strength",
-            minValue: 13,
-            maxValue: 17,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Endurance",
-            minValue: 13,
-            maxValue: 17,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Agility",
-            minValue: 13,
-            maxValue: 17,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Dexterity",
-            minValue: 13,
-            maxValue: 17,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Wisdom",
-            minValue: 13,
-            maxValue: 17,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Intelligence",
-            minValue: 13,
-            maxValue: 17,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Luck",
-            minValue: 13,
-            maxValue: 17,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 2
         },
@@ -1013,64 +1035,64 @@ var itemModifiers = {
         },
         {
             type: "Bonus damage",
-            minValue: 50,
-            maxValue: 69,
+            minValue: 25,
+            maxValue: 50,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus armor",
-            minValue: 11,
-            maxValue: 28,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus life",
-            minValue: 19,
-            maxValue: 29,
+            minValue: 150,
+            maxValue: 500,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus mana",
-            minValue: 20,
-            maxValue: 24,
+            minValue: 50,
+            maxValue: 150,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Health regen",
-            minValue: 2,
-            maxValue: 3,
+            minValue: 10,
+            maxValue: 20,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Mana regen",
-            minValue: 20,
-            maxValue: 29,
+            minValue: 30,
+            maxValue: 50,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Magic find",
-            minValue: 13,
-            maxValue: 18,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Gold drop",
-            minValue: 16,
-            maxValue: 24,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Experience rate",
-            minValue: 11,
-            maxValue: 16,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 5
         },
@@ -1092,141 +1114,141 @@ var itemModifiers = {
     level30: [
 		{
 		    type: "All attributes",
-		    minValue: 9,
-		    maxValue: 12,
+		    minValue: 20,
+		    maxValue: 40,
 		    chance: 10,
 		    baseValue: 10
 		},
         {
             type: "Strength",
-            minValue: 18,
-            maxValue: 22,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Endurance",
-            minValue: 18,
-            maxValue: 22,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Agility",
-            minValue: 18,
-            maxValue: 22,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Dexterity",
-            minValue: 18,
-            maxValue: 22,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Wisdom",
-            minValue: 18,
-            maxValue: 22,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Intelligence",
-            minValue: 18,
-            maxValue: 22,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Luck",
-            minValue: 18,
-            maxValue: 22,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Evasion",
-            minValue: 8,
-            maxValue: 10,
+            minValue: 5,
+            maxValue: 7,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Bonus damage",
-            minValue: 70,
-            maxValue: 89,
+            minValue: 50,
+            maxValue: 75,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus armor",
-            minValue: 29,
-            maxValue: 46,
+            minValue: 40,
+            maxValue: 60,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus life",
-            minValue: 30,
-            maxValue: 39,
+            minValue: 250,
+            maxValue: 1000,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus mana",
-            minValue: 25,
-            maxValue: 29,
+            minValue: 150,
+            maxValue: 300,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Health regen",
-            minValue: 3,
-            maxValue: 4,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Mana regen",
-            minValue: 30,
-            maxValue: 39,
+            minValue: 50,
+            maxValue: 80,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Magic find",
-            minValue: 19,
-            maxValue: 26,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Gold drop",
-            minValue: 25,
-            maxValue: 30,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Experience rate",
-            minValue: 17,
-            maxValue: 23,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Life gain on hit",
-            minValue: 8,
-            maxValue: 12,
+            minValue: 7,
+            maxValue: 15,
             chance: 10,
             baseValue: 7
         },
         {
             type: "Critical damage",
-            minValue: 22,
-            maxValue: 27,
+            minValue: 21,
+            maxValue: 28,
             chance: 10,
             baseValue: 7
         }
@@ -1234,141 +1256,141 @@ var itemModifiers = {
     level40: [
 		{
 		    type: "All attributes",
-		    minValue: 13,
-		    maxValue: 16,
+		    minValue: 40,
+		    maxValue: 80,
 		    chance: 10,
 		    baseValue: 10
 		},
         {
             type: "Strength",
-            minValue: 23,
-            maxValue: 27,
+            minValue: 80,
+            maxValue: 150,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Endurance",
-            minValue: 23,
-            maxValue: 27,
+            minValue: 80,
+            maxValue: 150,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Agility",
-            minValue: 23,
-            maxValue: 27,
+            minValue: 80,
+            maxValue: 150,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Dexterity",
-            minValue: 23,
-            maxValue: 27,
+            minValue: 80,
+            maxValue: 150,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Wisdom",
-            minValue: 23,
-            maxValue: 27,
+            minValue: 80,
+            maxValue: 150,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Intelligence",
-            minValue: 23,
-            maxValue: 27,
+            minValue: 80,
+            maxValue: 150,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Luck",
-            minValue: 23,
-            maxValue: 27,
+            minValue: 80,
+            maxValue: 150,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Evasion",
-            minValue: 11,
-            maxValue: 13,
+            minValue: 7,
+            maxValue: 15,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Bonus damage",
-            minValue: 90,
-            maxValue: 109,
+            minValue: 75,
+            maxValue: 100,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus armor",
-            minValue: 47,
-            maxValue: 64,
+            minValue: 60,
+            maxValue: 100,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus life",
-            minValue: 40,
-            maxValue: 49,
+            minValue: 1000,
+            maxValue: 2500,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus mana",
-            minValue: 30,
-            maxValue: 34,
+            minValue: 300,
+            maxValue: 750,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Health regen",
-            minValue: 4,
-            maxValue: 5,
+            minValue: 40,
+            maxValue: 80,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Mana regen",
-            minValue: 40,
-            maxValue: 49,
+            minValue: 80,
+            maxValue: 120,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Magic find",
-            minValue: 27,
-            maxValue: 33,
+            minValue: 80,
+            maxValue: 120,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Gold drop",
-            minValue: 31,
-            maxValue: 36,
+            minValue: 80,
+            maxValue: 120,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Experience rate",
-            minValue: 24,
-            maxValue: 30,
+            minValue: 80,
+            maxValue: 120,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Life gain on hit",
-            minValue: 13,
-            maxValue: 17,
+            minValue: 25,
+            maxValue: 50,
             chance: 10,
             baseValue: 7
         },
         {
             type: "Critical damage",
-            minValue: 28,
-            maxValue: 33,
+            minValue: 40,
+            maxValue: 60,
             chance: 10,
             baseValue: 7
         }
@@ -1376,141 +1398,141 @@ var itemModifiers = {
     level50: [
 		{
 		    type: "All attributes",
-		    minValue: 17,
-		    maxValue: 20,
+		    minValue: 100,
+		    maxValue: 200,
 		    chance: 10,
 		    baseValue: 10
 		},
         {
             type: "Strength",
-            minValue: 28,
-            maxValue: 32,
+            minValue: 200,
+            maxValue: 400,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Endurance",
-            minValue: 28,
-            maxValue: 32,
+            minValue: 200,
+            maxValue: 400,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Agility",
-            minValue: 28,
-            maxValue: 32,
+            minValue: 200,
+            maxValue: 400,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Dexterity",
-            minValue: 28,
-            maxValue: 32,
+            minValue: 200,
+            maxValue: 400,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Wisdom",
-            minValue: 28,
-            maxValue: 32,
+            minValue: 200,
+            maxValue: 400,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Intelligence",
-            minValue: 28,
-            maxValue: 32,
+            minValue: 200,
+            maxValue: 400,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Luck",
-            minValue: 28,
-            maxValue: 32,
+            minValue: 200,
+            maxValue: 400,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Evasion",
-            minValue: 14,
-            maxValue: 16,
+            minValue: 20,
+            maxValue: 40,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Bonus damage",
-            minValue: 110,
-            maxValue: 129,
+            minValue: 100,
+            maxValue: 200,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus armor",
-            minValue: 65,
-            maxValue: 82,
+            minValue: 100,
+            maxValue: 200,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus life",
-            minValue: 50,
-            maxValue: 59,
+            minValue: 2500,
+            maxValue: 10000,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Bonus mana",
-            minValue: 35,
-            maxValue: 39,
+            minValue: 750,
+            maxValue: 2000,
             chance: 10,
             baseValue: 2
         },
         {
             type: "Health regen",
-            minValue: 5,
-            maxValue: 6,
+            minValue: 100,
+            maxValue: 200,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Mana regen",
-            minValue: 50,
-            maxValue: 59,
+            minValue: 120,
+            maxValue: 300,
             chance: 10,
             baseValue: 1
         },
         {
             type: "Magic find",
-            minValue: 34,
-            maxValue: 40,
+            minValue: 120,
+            maxValue: 250,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Gold drop",
-            minValue: 37,
-            maxValue: 42,
+            minValue: 120,
+            maxValue: 250,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Experience rate",
-            minValue: 31,
-            maxValue: 36,
+            minValue: 120,
+            maxValue: 250,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Life gain on hit",
-            minValue: 18,
-            maxValue: 22,
+            minValue: 50,
+            maxValue: 75,
             chance: 10,
             baseValue: 7
         },
         {
             type: "Critical damage",
-            minValue: 34,
-            maxValue: 40,
+            minValue: 80,
+            maxValue: 150,
             chance: 10,
             baseValue: 7
         }
@@ -1551,7 +1573,8 @@ var InventoryItemTypes = [
     {
         type: 'weapon',
         displayName: 'Weapon',
-        icon: 'weapon'
+        icon: 'weapon',
+        
     },
     {
         type: 'armor',
@@ -1613,12 +1636,6 @@ var monsterAreas = [
            displayName: 'Capital of Zyzx',
            icon: 'zyzx',
            isUnlocked: false
-       },
-       {
-           type: 'Mining',
-           displayName: 'Mining Cave',
-           icon: 'mining',
-           isUnlocked: true
        }
 ];
 var weaponTypeObject = [

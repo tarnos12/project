@@ -79,7 +79,27 @@ function quest() {
                 "\"You just beat up a bunch of potential recruits and think that you are some tough guy now, well let us show you what tough guys get around here.\"" + "<br /><br />" +
                 "All you do in response is walk towards them and start the battle.</p>";
             document.getElementById("varik").innerHTML += varikElement;
+
+            /* 
+            $('#dialogTest').empty().append(varikElement); //Add text to the dialog box
+            var wWidth = $(window).width();//Get window width
+            var wHeight = $(window).height();//Get window height
+            var dWidth = wWidth * 1; //this will make the dialog 100% width
+            var dHeight = wHeight * 1; //this will make the dialog 100% height
+            $('#dialogTest').dialog({
+                width: dWidth,// 100 = 100px
+                height: dHeight,
+                draggable: false,
+                resizable: false,
+                position: { //if using dWidth/dHeight, remove position, so its centered automatically...
+                    my: 'center',
+                    at: 'center',
+                    of: $('#1')
+                }
+            })  
+        */
         };
+        //$('#dialogTest').dialog('open');//Open the dialog...
         monsterUnlock.VarikSoldier = true;
     };
     if (player.properties.level >= 3) {

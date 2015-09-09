@@ -16,7 +16,6 @@ function saveGameFunction(saveType, slot) {
     document.getElementById("saveTime").innerHTML = "Last saved: " + hour + ":" + minute + ":" + second;
     var saveGame = {
         playerProperties: player.properties,
-        hotBar: hotBarItem,
         //Equipped Items
         playerWeapon: equippedItems.weapon,
         playerShield: equippedItems.shield,
@@ -155,6 +154,32 @@ function autoSave() {
     setTimeout(autoSave, 10000);
 };
 
+
+function newGame(slot) {
+    if (confirm("Are you sure?") === true) {
+        characterCreationHtml();
+        player.properties.saveSlot = slot;
+        if (hardcoreMode === true) {
+            player.properties.hardcoreMode = true;
+        };
+        autoSave();
+        EquippedItemsEmpty();
+        CreatePlayerHotBar();
+        CreatePlayerSkillsHtml();
+        primaryStatUpdate();
+        secondaryStatUpdate();
+        saveGameSlot();
+        refillShopInterval();
+        shopOther();
+        CreateInventoryWeaponHtml();
+        unlockMineral();
+        checkBoxHtml();
+        createAlchemyHtml();
+        createPotionInventory();
+        craftingHtml();
+    };
+};
+
 function load(slot) {
     if (slot === 1) {
         if (localStorage['EncodedSaveGame1']) {
@@ -192,7 +217,6 @@ function load(slot) {
             };
         };
         if (typeof savegame.backpackStatus !== "undefined") backpackStatus = savegame.backpackStatus;
-        if (typeof savegame.hotBar !== "undefined") hotBarItem = savegame.hotBar;
         if (typeof savegame.statStatus !== "undefined") statStatus = savegame.statStatus;
         if (typeof savegame.SwordExp !== "undefined") weaponMastery.sword.experience = savegame.SwordExp;
         if (typeof savegame.SwordMaxExp !== "undefined") weaponMastery.sword.maxExperience = savegame.SwordMaxExp;
@@ -285,11 +309,13 @@ function load(slot) {
         CreatePlayerHotBar();
         saveGameSlot();
         shopOther();
-        craftingHtml();
-        playerProfessionHtml();
         createPotionInventory();
         unlockMineral();
+        unlockHerb();
         checkBoxHtml();
+        playerProfessionHtml();
+        createAlchemyHtml();
+        craftingHtml();
     }
     else {
         if (confirm("Do you want to start a new game?") === true) {
