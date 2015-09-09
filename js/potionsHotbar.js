@@ -154,6 +154,7 @@ function CreatePlayerHotBar() {
     for (var i = 0; i < hotBarItem.length; i++) { // 8 = hotbar slots;
             var potionAmount = hotBarItem[i].amount;
             var potionName = hotBarItem[i].name;
+            var potionType = hotBarItem[i].type;
             var displayName = hotBarItem[i].displayName;
             var displayBonus = hotBarItem[i].displayBonus;
             var potionEffect = hotBarItem[i].effect;
@@ -165,7 +166,7 @@ function CreatePlayerHotBar() {
             };
             if (potionAmount > 0) {
                 html += '<div class="col-xs-1">';
-                html += '<img style="cursor:pointer;" src="images/' + potionName + '.png" onclick="usePotion(' + potionIndex + ');" alt="' + displayBonus + '" data-toggle="tooltip" data-placement="top" title="' + displayName + " " + potionEffect;
+                html += '<img style="cursor:pointer;" src="images/' + potionType + '.png" onclick="usePotion(' + potionIndex + ');" alt="' + displayBonus + '" data-toggle="tooltip" data-placement="top" title="' + displayName + " " + potionEffect;
                 if (potionBonus === "healing") {
                     html += ' hp';
                 }
