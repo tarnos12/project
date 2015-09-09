@@ -125,7 +125,7 @@ function createPotionInventory() {
             var index = item;
             html += '<div class="row">';
             html += '<div class="col-xs-6">';
-            html += '<img src="images/' + potionName + '.png" onclick="usePotion(' + index + ", " + "'" + potionEffect + "'" + ');" alt="' + potionName + '" data-toggle="tooltip" data-placement="top" title="' + displayName + '"></span>';
+            html += '<img src="images/' + potionType + '.png" onclick="usePotion(' + index + ", " + "'" + potionEffect + "'" + ');" alt="' + potionName + '" data-toggle="tooltip" data-placement="top" title="' + displayName + '"></span>';
             html += potionAmount;
             html += '</div>';
             html += '<div class="col-xs-6">';
