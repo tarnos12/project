@@ -5,16 +5,11 @@ function sellAllItems() {
     var canSell = false;
     if (checkBoxEpic === true || checkBoxLegendary === true) {
         if (confirm("You are going to sell Epic and/or Legendary items, are you sure?") === true) {
-
-        }
-    }
-    if (itemRarity === "Epic" || itemRarity === "Legendary") {
-        if (confirm("Are you sure?") === true) {
             canSell = true;
         }
         else {
             canSell = false;
-        };
+        }
     }
     else {
         canSell = true;

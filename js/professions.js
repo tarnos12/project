@@ -116,7 +116,7 @@ var craftCost = [
         ]
     }
 ];
-var mineralList = [
+var mineralListArray = [
     //Ore
     {
         name: 'Thaumerite',
@@ -169,7 +169,7 @@ var mineralList = [
     },
     {
         name: 'LillyWisp',
-        displayName: 'Lilly wisp'
+        displayName: 'Lilly Wisp'
     }
 ];
 var craftItemTypes = [
@@ -183,6 +183,214 @@ var craftItemTypes = [
         type: 'accessory'
     }
 ];
+var mineralList = {};
+//Minerals
+var Thaumerite = {};
+var LiteCyan = {};
+var OhmStone = {};
+var Techtite = {};
+var XilBond = {};
+var VulcanatedIron = {};
+
+var herbList = {};
+//Herbs
+var RusinsSinew = {};
+var EssenceofWillow = {};
+var SinnersDelight = {};
+var BarletBark = {};
+var Vystim = {};
+var ThistleWart = {};
+var LillyWisp = {};
+function createHerbs() {
+    //Herbs
+    RusinsSinew.Stats = {
+        hp: 10,
+        maxHp: 10,
+        baseExp: 15,
+        name: "RusinsSinew", // Must equal object name Ore = Ore...
+        displayName: "Rusins Sinew",
+        id: 1,
+        level: 1,
+        area: "Herbalism",
+        isShown: true,
+        killCount: 0,
+    };
+    herbList.RusinsSinew = RusinsSinew;
+
+    EssenceofWillow.Stats = {
+        hp: 50,
+        maxHp: 50,
+        baseExp: 30,
+        name: "EssenceofWillow", // Must equal object name Ore = Ore...
+        displayName: "Essence of Willow",
+        id: 2,
+        level: 1,
+        area: "Herbalism",
+        isShown: false,
+        killCount: 0,
+    };
+    herbList.EssenceofWillow = EssenceofWillow;
+
+    SinnersDelight.Stats = {
+        hp: 100,
+        maxHp: 100,
+        baseExp: 50,
+        name: "SinnersDelight", // Must equal object name Ore = Ore...
+        displayName: "Sinners Delight",
+        id: 3,
+        level: 1,
+        area: "Herbalism",
+        isShown: false,
+        killCount: 0,
+    };
+    herbList.SinnersDelight = SinnersDelight;
+
+    BarletBark.Stats = {
+        hp: 200,
+        maxHp: 200,
+        baseExp: 80,
+        name: "BarletBark", // Must equal object name Ore = Ore...
+        displayName: "Barlet Bark",
+        id: 4,
+        level: 1,
+        area: "Herbalism",
+        isShown: false,
+        killCount: 0,
+    };
+    herbList.BarletBark = BarletBark;
+
+    Vystim.Stats = {
+        hp: 400,
+        maxHp: 400,
+        baseExp: 120,
+        name: "Vystim", // Must equal object name Ore = Ore...
+        displayName: "Vystim",
+        id: 5,
+        level: 1,
+        area: "Herbalism",
+        isShown: false,
+        killCount: 0,
+    };
+    herbList.Vystim = Vystim;
+
+    ThistleWart.Stats = {
+        hp: 777,
+        maxHp: 777,
+        baseExp: 200,
+        name: "ThistleWart", // Must equal object name Ore = Ore...
+        displayName: "Thistle Wart",
+        id: 6,
+        level: 1,
+        area: "Herbalism",
+        isShown: false,
+        killCount: 0,
+    };
+    herbList.ThistleWart = ThistleWart;
+
+    LillyWisp.Stats = {
+        hp: 1337,
+        maxHp: 1337,
+        baseExp: 300,
+        name: "LillyWisp", // Must equal object name Ore = Ore...
+        displayName: "Lilly Wisp",
+        id: 7,
+        level: 1,
+        area: "Herbalism",
+        isShown: false,
+        killCount: 0,
+    };
+    herbList.LillyWisp = LillyWisp;
+}
+createHerbs();
+function createMinerals() {
+
+    //Minerals
+    Thaumerite.Stats = {
+        hp: 10,
+        maxHp: 10,
+        baseExp: 20,
+        name: "Thaumerite", // Must equal object name Ore = Ore...
+        displayName: "Thaumerite",
+        id: 1,
+        level: 1,
+        area: "Mining",
+        isShown: true,
+        killCount: 0,
+    };
+    mineralList.Thaumerite = Thaumerite;
+
+    LiteCyan.Stats = {
+        hp: 50,
+        maxHp: 50,
+        baseExp: 50,
+        name: "LiteCyan", // Must equal object name Ore = Ore...
+        displayName: "Lite Cyan",
+        id: 2,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+    };
+    mineralList.LiteCyan = LiteCyan;
+
+    OhmStone.Stats = {
+        hp: 100,
+        maxHp: 100,
+        baseExp: 100,
+        name: "OhmStone", // Must equal object name Ore = Ore...
+        displayName: "Ohm Stone",
+        id: 3,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+    };
+    mineralList.OhmStone = OhmStone;
+
+    Techtite.Stats = {
+        hp: 250,
+        maxHp: 250,
+        baseExp: 200,
+        name: "Techtite", // Must equal object name Ore = Ore...
+        displayName: "Techtite",
+        id: 4,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+    };
+    mineralList.Techtite = Techtite;
+
+    XilBond.Stats = {
+        hp: 777,
+        maxHp: 777,
+        baseExp: 400,
+        name: "XilBond", // Must equal object name Ore = Ore...
+        displayName: "Xil Bond",
+        id: 5,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+    };
+    mineralList.XilBond = XilBond;
+
+    VulcanatedIron.Stats = {
+        hp: 1337,
+        maxHp: 1337,
+        baseExp: 800,
+        name: "VulcanatedIron", // Must equal object name Ore = Ore...
+        displayName: "Vulcanated Iron",
+        id: 6,
+        level: 1,
+        area: "Mining",
+        isShown: false,
+        killCount: 0,
+    };
+    mineralList.VulcanatedIron = VulcanatedIron;
+};
+
+createMinerals();
 
 (function () {
     var newProfession = function (name, image) { //default spell object constructor
@@ -191,7 +399,7 @@ var craftItemTypes = [
         this.name = name;
         this.image = image;
         this.experience = 0;
-        this.maxExperience = 100;
+        this.maxExperience = 50;
     };
     var mining = new newProfession("Mining", "mining");
     var herbalism = new newProfession("Herbalism", "herbalism");
@@ -216,7 +424,47 @@ var craftItemTypes = [
     alchemy.description = function () {
         return "Create potions with herbs.";
     };
-
+   
+    crafting.Beginner = function () {
+        return [
+          {//Beginner crafting
+              text: 'Crafting range: Common - Rare',
+              type: ['Thaumerite', 'LiteCyan'],
+              experience: [3, 5],
+              weapon: [{ sword: [20, 15], axe: [30, 20], mace: [25, 15], staff: [10, 20], ranged: [10, 20] }],
+              armor: [{ helmet: [30, 20], chest: [50, 40], legs: [30, 20], boots: [20, 10], shield: [30, 20] }],
+              accessory: [{ ring: [20, 10], amulet: [20, 10], talisman: [20, 10] }]
+          }
+        ];
+    };
+    crafting.Intermediate = function () {
+        return [
+            {//Intermediate crafting
+            text: 'Crafting range: Common - Epic',
+            type: ['LiteCyan', 'OhmStone', 'Techtite'],
+            experience: [5, 8, 12],
+            weapon: [{ sword: [40, 30, 20], axe: [60, 40, 10], mace: [50, 20, 15], staff: [25, 20, 20], ranged: [30, 20, 20] }],
+            armor: [{ helmet: [40, 30, 20], chest: [70, 30, 30], legs: [40, 30, 30], boots: [30, 20, 20], shield: [35, 20, 20] }],
+            accessory: [{ ring: [20, 10, 5], amulet: [20, 10, 5], talisman: [20, 10, 5] }]
+            }
+        ];
+    };
+    crafting.Master = function () {
+        return [
+            {//Master crafting
+            text: 'Crafting range: Common - Legendary',
+            type: ['Techtite', 'XilBond', 'VulcanatedIron'],
+            experience: [12, 15, 20],
+            weapon: [{ sword: [30, 30, 30], axe: [50, 50, 50], mace: [40, 40, 40], staff: [30, 30, 60], ranged: [40, 10, 40] }],
+            armor: [{ helmet: [30, 30, 20], chest: [40, 40, 40], legs: [30, 20, 20], boots: [20, 20, 20], shield: [40, 40, 30] }],
+            accessory: [{ ring: [30, 30, 30], amulet: [30, 30, 30], talisman: [30, 30, 30] }]
+            }
+        ];
+    };
+    crafting.additionalButtons = function () {
+        return ['Beginner', 'Intermediate', 'Master'];
+    };
+     
     window.playerProfession = new Object();
     playerProfession.mining = mining;
     playerProfession.herbalism = herbalism;
@@ -237,43 +485,340 @@ var craftItemTypes = [
  *------------------------------------------------------------------------------------------------
  */
 
-function mine(monsterStat) {
+function gather(monsterStat, type) {
     var monsterStats = monsterStat.Stats;
     var name = monsterStats.name;
-    var mining = playerProfession.mining;
-    monsterStats.hp -= mining.damage();
+    var professionType = playerProfession[type];
+    var professionLevel = professionType.level;
+    var randomNumber = Math.floor(Math.random() * professionLevel) + 1;
+    monsterStats.hp -= professionType.damage();
     if (monsterStats.hp <= 0) {
         monsterStats.hp = monsterStats.maxHp;
-        mining.experience += monsterStats.baseExp;
-        player.properties[name] += 1;
-        if (mining.experience >= mining.maxExperience) {
-            mining.level += 1;
-            mining.experience = mining.experience - mining.maxExperience;
-            mining.maxExperience *= 1.1;
+        professionType.experience += monsterStats.baseExp;
+        player.properties[name] += randomNumber;
+        if (professionType.experience >= professionType.maxExperience) {
+            professionType.level += 1;
+            professionType.experience = professionType.experience - professionType.maxExperience;
+            professionType.maxExperience += 100
+            if (type === "mining") {
+                unlockMineral();
+            }
+            else if (type === "herbalism") {
+                unlockHerb();
+            }
         };
+        document.getElementById(name).innerHTML = player.properties[name];
     };
-    unlockMineral();
+    var profession = playerProfession[type];
+    document.getElementById("Profession_" + type).innerHTML = 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0)
+    professionGatherHtml();
+    
 };
 function unlockMineral() {
     var miningLevel = playerProfession.mining.level;
     if (miningLevel >= 5) {
-        monsterList.LiteCyan.Stats.isShown = true;
+        mineralList.LiteCyan.Stats.isShown = true;
     };
     if (miningLevel >= 10) {
-        monsterList.OhmStone.Stats.isShown = true;
+        mineralList.OhmStone.Stats.isShown = true;
+    };
+    if (miningLevel >= 15) {
+        mineralList.Techtite.Stats.isShown = true;
     };
     if (miningLevel >= 20) {
-        monsterList.Techtite.Stats.isShown = true;
+        mineralList.XilBond.Stats.isShown = true;
     };
-    if (miningLevel >= 35) {
-        monsterList.XilBond.Stats.isShown = true;
+    if (miningLevel >= 25) {
+        mineralList.VulcanatedIron.Stats.isShown = true;
     };
-    if (miningLevel >= 50) {
-        monsterList.VulcanatedIron.Stats.isShown = true;
+};
+
+function unlockHerb() {
+    var herbalismLevel = playerProfession.herbalism.level;
+    if (herbalismLevel >= 5) {
+        herbList.EssenceofWillow.Stats.isShown = true;
     };
-    CreateMonsterHtml();
+    if (herbalismLevel >= 10) {
+        herbList.SinnersDelight.Stats.isShown = true;
+    };
+    if (herbalismLevel >= 15) {
+        herbList.BarletBark.Stats.isShown = true;
+    };
+    if (herbalismLevel >= 20) {
+        herbList.Vystim.Stats.isShown = true;
+    };
+    if (herbalismLevel >= 25) {
+        herbList.ThistleWart.Stats.isShown = true;
+    };
+    if (herbalismLevel >= 30) {
+        herbList.LillyWisp.Stats.isShown = true;
+    };
 };
 playerProfessionHtml();
+
+
+/*------------------------------------------------------------------------------------------------
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *                                        HERBALISM                                              |
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *------------------------------------------------------------------------------------------------
+ */
+
+
+
+
+/*------------------------------------------------------------------------------------------------
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *                                        ALCHEMY                                                |
+ *                                                                                               |
+ *                                                                                               |
+ *                                                                                               |
+ *------------------------------------------------------------------------------------------------
+ */
+
+function createAlchemyHtml() {
+    var html = '';
+    var alchemy = playerProfession.alchemy;
+    var alchemyLevel = alchemy.level;
+    var potion = {};
+    html += '<div class="row">';
+    html += '<div class="col-xs-12 c3">';
+    html += '<h3>Alchemy</h3>';
+    html += '<div class="row">';
+    html += '<div class="col-xs-12">';
+    html += '<div class="row marginBottom marginRight borderLeft borderTop">';
+    for (var key in potionList) {
+        if (potionList.hasOwnProperty(key)) {
+            var potionInfo = potionList[key];
+            html += '<div class="col-xs-12 col-md-6 col-lg-6 borderRight borderBottom"';
+            if (potionInfo.levelReq > playerProfession.alchemy.level) {
+                html += ' style="background-color:#DD4747;">' + 'Requires ' + potionInfo.levelReq + ' Alchemy level';
+            }
+            else {
+                html += '>' + potionInfo.effect;
+                if (potionInfo.bonus === "healing") {
+                    html += ' ' + potionInfo.displayBonus;
+                }
+                else if (potionInfo.bonus === "buff") {
+                    html += '% ' + potionInfo.displayBonus;
+                };
+            };
+                
+            html += '<div class="col-xs-1 col-sm-1 col-md-12 col-lg-12">';
+            var potion = potionList[key];
+            var potionRequirements = potion.requirements();
+            html += '<img src="images/' + potion.name + '.png" style="cursor:pointer;" type="button" id="' + potion.name + '"';
+            html += ' data-toggle="tooltip" data-placement="top" title="' + potion.displayName + '"';
+            if (potion.levelReq <= playerProfession.alchemy.level) {
+                html += '>';
+            }
+            else {
+                html += 'disabled style="cursor:not-allowed;">';
+            }
+            html += '</div>';
+            html += '<div class="col-xs-1 col-sm-1 col-md-12 col-lg-12">';
+            html += '<button onclick="createPotion(' + "'" + potion.name + "'" + ')">Brew</button>';
+            html += '</div>';
+            html += '<div class="col-xs-10 col-sm-10 col-md-12 col-lg-12">';
+            for (var i = 0; i < potionRequirements.length; i++) {
+                html += '<img src="images/mineral/' + potionRequirements[i].type + '.png">';
+                html += potionRequirements[i].amount;
+            }
+            html += '</div>';
+            html += '</div>';
+        }
+    }
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+
+    document.getElementById('alchemy').innerHTML = html;
+};
+
+function createPotion(type) {
+    var potionInventory = player.properties.potionInventory;
+    var potionRequirements = potionList[type].requirements();
+    var canCraft = false;
+    var profession = playerProfession.alchemy;
+    var requirementsArray = [];
+    for (var i = 0; i < potionRequirements.length; i++) {
+        var requiredHerb = potionRequirements[i].type;
+        if (player.properties[requiredHerb] >= potionRequirements[i].amount) {
+            requirementsArray.push(potionRequirements[i]);
+            if (i === potionRequirements.length - 1) {
+                for (var j = 0; j < requirementsArray.length; j++) {
+                    var requiredHerb = requirementsArray[j].type;
+                    var requiredAmount = requirementsArray[j].amount;
+                    player.properties[requiredHerb] -= requiredAmount;
+                    document.getElementById(requiredHerb).innerHTML = player.properties[requiredHerb];
+                };
+                canCraft = true;
+                profession.experience += potionList[type].experienceGain;
+                if (profession.experience >= profession.maxExperience) {
+                    profession.experience = (profession.experience - profession.maxExperience);
+                    profession.level++;
+                    profession.maxExperience += 100;
+                    createAlchemyHtml();
+                };
+                document.getElementById("Profession_alchemy").innerHTML = 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0);
+            };
+        }
+        else {
+            canCraft = false;
+            break;
+        };
+    };
+    if (canCraft === true) {
+        if (potionInventory.length < 1) {
+            potionInventory.push(potionList[type]);
+        };
+        for (var i = 0; i < potionInventory.length; i++) {
+            if (potionInventory[i].name === type) {
+                potionInventory[i].amount += 1;
+                break;
+            }
+            else if (i === potionInventory.length - 1) {
+                potionInventory.push(potionList[type]);
+                potionInventory[i + 1].amount += 1;
+                break;
+            };
+        };
+    };
+};
+
+function playerProfessionHtml() {
+    var html = "";
+    html += '<div class="row border c4 marginBottom">';
+    html += '<div class="col-xs-12">'
+    html += '<div class="row">';;
+    html += '<div class="col-sm-4 marginTop marginBottom border">';
+    html += '<h3>Your professions: <br /></h3>';
+    html += '<div class="row borderBottom">';
+    for (var key in playerProfession) {
+        if (playerProfession.hasOwnProperty(key)) {
+            var profession = playerProfession[key];
+            html += '<div class="col-sm-12 col-sm-offset-0 col-xs-6 col-xs-offset-3">';
+            html += '<img src="images/profession/' + profession.image + '.png" data-toggle="tooltip" data-placement="top" title="' + profession.name.capitalizeFirstLetter() + ' level:' + profession.level + '">';
+
+            html += ' <span id="Profession_' + profession.image + '">' + 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0) + '</span>';
+            html += '</div>';
+        };
+    };
+    html += '</div>';
+    html += '<div class="row">';
+    html += '<div class="col-sm-12">';
+    html += '<h3>Your minerals: <br /></h3>';
+    html += '</div>';
+    for (var i = 0; i < mineralListArray.length; i++) {
+        var mineral = mineralListArray[i].name;
+        var displayName = mineralListArray[i].displayName;
+        var playerMineral = player.properties[mineral];
+        html += '<div class="col-xs-3 col-sm-6">';
+        html += '<img src="images/mineral/' + mineral + '.png" data-toggle="tooltip" data-placement="right" title="' + displayName + '">';
+        html += ' ' + '<span id="' + mineral + '">' + playerMineral + '</span>' + '<br />';
+        html += '</div>';
+        if (mineral === 'VulcanatedIron') {
+            html += '<div class="col-xs-12 borderTop">';
+            html += '<h3>Your Herbs : <br /></h3>';
+            html += '</div>';
+        };
+    };
+    html += '</div></div>'
+
+    html += '<div class="col-sm-7 marginTop border">'
+
+    html += '<ul class="nav nav-tabs">';
+    html += '<li class="active"><a href="#tab_gathering" data-toggle="tab"><span data-toggle="tooltip" data-placement="top" title="Gather">Gather</span></a></li>';
+    html += '<li onclick="displayCraftedItem();"><a href="#tab_crafting" data-toggle="tab"><span data-toggle="tooltip" data-placement="top" title="Crafting">Crafting</span></a></li>';
+    html += '<li><a href="#tab_alchemy" data-toggle="tab"><span data-toggle="tooltip" data-placement="top" title="Alchemy">Alchemy</span></a></li>';
+    html += '<ul>';
+    html += '<div class="tab-content">'
+    html += '<div class="tab-pane active" id="tab_gathering">';
+    html += '<div id="professionGatherArea"></div>';                
+    html += '</div>';
+    html += '<div class="tab-pane" id="tab_crafting">';
+    html += '<div id="crafting"></div>';
+    html += '</div>';
+    html += '<div class="tab-pane" id="tab_alchemy">';
+    html += '<div id="alchemy"></div>';
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';//End of first ROW
+    html += '</div>';
+    html += '</div>';
+    document.getElementById('playerProfessions').innerHTML = html;
+    professionGatherHtml();
+    testss();
+};
+
+function professionGatherHtml() {
+    var html = "";
+
+    html += '<div class="row">';//Open row for mining
+    html += '<div class="col-sm-10 col-sm-offset-1">';
+    html += '<div class="row">';
+    html += '<h4>Player level and profession level determine your damage on mineral/herb. If it\'s too hard, then come back later when you level up some more.</h4>';
+    html += '<h3>Gol-Ghuls Tunnel</h3>';
+    for (var mineral in mineralList) {
+        var displayMineral = mineralList[mineral].Stats;
+        var onclickEvent = 'gather(' + displayMineral.name + ", " + "'mining'" + ');';
+        if (displayMineral.isShown === true) {
+            html += '<div class="col-xs-4">';
+            var monsterPercent = ((displayMineral.hp / displayMineral.maxHp) * 100);
+            html += '<div class="row">';
+            html += '<div class="col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3">';
+            html += '<img src="images/mineral/' + displayMineral.name + '.png" onclick="' + onclickEvent + '">';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="progress">';
+            html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + displayMineral.name + '">';
+            html += '<span style="font-size:13px;">' + displayMineral.hp + ' HP</span>' + '</div></div>';
+            html += '</div>';
+        };
+    };
+    html += '</div>';
+    html += '</div>';
+
+    html += '</div>';//Close mining row
+
+    html += '<div class="row">';//Open row for herbalism
+
+    html += '<div class="col-sm-10 col-sm-offset-1">';
+    html += '<div class="row">';
+    html += '<h3>Emonds Valley</h3>';
+    for (var herb in herbList) {
+        var displayHerb = herbList[herb].Stats;
+        var onclickEvent = 'gather(' + displayHerb.name + ", " + "'herbalism'" + ');';
+        if (displayHerb.isShown === true) {
+            html += '<div class="col-xs-4">';
+            var monsterPercent = ((displayHerb.hp / displayHerb.maxHp) * 100);
+
+            html += '<div class="row">';
+            html += '<div class="col-xs-4 col-xs-offset-4 col-sm-6 col-sm-offset-3">';
+            html += '<img src="images/mineral/' + displayHerb.name + '.png" onclick="' + onclickEvent + '">';
+            html += '</div>';
+            html += '</div>';
+            html += '<div class="progress">';
+            html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + displayMineral.name + '">';
+            html += '<span style="font-size:13px;">' + displayHerb.hp + ' HP</span>' + '</div></div>';
+            html += '</div>';
+        };
+    };
+    html += '</div>';
+    html += '</div>';
+
+    html += '</div>';//Close herbalism row
+    document.getElementById('professionGatherArea').innerHTML = html;
+};
 
 /*------------------------------------------------------------------------------------------------
  *                                                                                               |
@@ -287,35 +832,257 @@ playerProfessionHtml();
  */
 var craftedItemHolder = [];
 var itemTypeTab = 'weapon';
-var itemSubTypeTab = 'sword';
-function changeItemTypeTab(index) {
+function changeItemType(index) {
     itemTypeTab = index;
-    if (index === 'weapon') {
-        itemSubTypeTab = 'sword';
-    }
-    else if (index === 'armor') {
-        itemSubTypeTab = 'chest';
-    }
-    else if (index === 'accessory') {
-        itemSubTypeTab = 'ring';
-    }
 };
 
-function changeItemSubType(index) {
-    itemSubTypeTab = index;
+var itemBonusTab = 'Beginner';
+function changeItemBonus(index) {
+    itemBonusTab = index;
 };
 function craftingHtml() {
+    var html = "";
+    var crafting = playerProfession.crafting;
+
+    html += '<div class="row">';
+    html += '<div class="col-xs-12 border marginBottom" style="margin-left:-20px;">';
+    
+
+    html += '<div id="craftingHtmlButtons">';
+    html += '</div>';
+
+
+    html += '</div>';
+    html += '</div>';
+
+    document.getElementById('crafting').innerHTML = html;
+    craftingHtmlButtons();
+    testss();
+};
+var currentItemToCraft = "weapon";
+var currentItemQualityToCraft = "Beginner";
+var craftingLevelReq = "";
+var totalCraftingLevelReq = "";
+function craftingHtmlButtons() {
+    var html = "";
+    var profession = playerProfession.crafting;
+    
+    html += '<form role="form">';
+    html += '<label class="radio-inline"><input onclick="craftItemQuality();changeItemType(' + "'weapon'" + ');" class="visibilityLabel" type="radio" name="craftingItem" value="weapon"';
+        if (itemTypeTab === "weapon") {
+            html += 'checked = "checked"';
+        }
+        html += '</input>Weapon</label>';
+    if (profession.level >= 5) {
+        html += '<label class="radio-inline"><input onclick="craftItemQuality();;changeItemType(' + "'armor'" + ');" class="visibilityLabel" type="radio" name="craftingItem" value="armor"';
+        if (itemTypeTab === "armor") {
+            html += 'checked = "checked"';
+        }
+        html += '</input>Armor</label>';
+    }
+    else {
+        html += '<span class="marginLeft" style="color:#DD4747;">Crafting lvl 5</span>';
+    }
+    if (profession.level >= 10) {
+        html += '<label class="radio-inline"><input onclick="craftItemQuality();;changeItemType(' + "'accessory'" + ');" class="visibilityLabel" type="radio" name="craftingItem" value="accessory"';
+        if (itemTypeTab === "accessory") {
+            html += 'checked = "checked"';
+        }
+        html +='</input>Accessory</label>';
+    }
+    else {
+        html += '<span class="marginLeft" style="color:#DD4747;">Crafting lvl 10</span>';
+    }
+    html += '</form>';
+
+    html += '</form>';
+    html += '<div id="craftItemQualityHtml">';
+    html += '</div>';
+    document.getElementById('craftingHtmlButtons').innerHTML = html;
+    craftItemQuality();
+};
+function craftItemQuality() {
+    var html = "";
+   
+    html += '<form role="form">';
+
+    html += '<label class="radio-inline"><input onclick="displayCraftedItem();changeItemBonus(' + "'Beginner'" + ');" class="visibilityLabel" type="radio" name="craftingBonus" value="Beginner"';
+    if (itemBonusTab === "Beginner") {
+        html += 'checked="checked"';
+    }
+        html += '</input>Beginner</label>';
+        html += '<label class="radio-inline"><input onclick="displayCraftedItem();changeItemBonus(' + "'Intermediate'" + ');" class="visibilityLabel" type="radio" name="craftingBonus" value="Intermediate"'
+        if (itemBonusTab === "Intermediate") {
+            html += 'checked="checked"';
+        }
+        html += '</input>Intermediate</label>';
+        html += '<label class="radio-inline"><input onclick="displayCraftedItem();changeItemBonus(' + "'Master'" + ');" class="visibilityLabel" type="radio" name="craftingBonus" value="Master"'
+        if (itemBonusTab === "Master") {
+            html += 'checked="checked"';
+        }
+        html += '</input>Master</label>';
+
+    html += '</form>';
+
+    html += '<div id="displayCraftedItemHtml">';
+    html += '</div>';
+    document.getElementById('craftItemQualityHtml').innerHTML = html;
+    displayCraftedItem();
+};
+//       LEGEND >_<
+//var currentItemToCraft = ""; //Weapon/Armor/Accessory
+//var currentItemQualityToCraft = ""; //Beginner/Intermediate/Master
+//var craftingLevelReq = "";
+//var totalCraftingLevelReq = "";
+var itemSubTypeArrayCss = [];
+function displayCraftedItem() {
+    var html = "";
+    var itemLevel = player.properties.level + playerProfession.crafting.level;
+    var craftingBonus = document.getElementsByName('craftingBonus');
+    var craftingItemType = document.getElementsByName('craftingItem');
+    var profession = playerProfession.crafting;
+    var currentBonus = 0;
+    var currentCraftingType = "";
+    var mineralType = "";
+    var mineralAmount = "";
+    var craftLevel = (player.properties.level + profession.level);
+    for (var x = 0; x < craftingItemType.length; x++) {
+        if (craftingItemType[x].checked === true) {
+            currentItemToCraft = craftingItemType[x].value;
+        }
+    };
+    if (currentItemToCraft === "weapon") {
+        craftingLevelReq = 0;
+    }
+    else if (currentItemToCraft === "armor") {
+        craftingLevelReq = 5;
+    }
+    else if (currentItemToCraft === "accessory") {
+        craftingLevelReq = 10;
+    };
+    for (var i = 0; i < craftingBonus.length; i++) {
+        if (craftingBonus[i].checked === true) {
+            currentItemQualityToCraft = craftingBonus[i].value;
+            if (currentItemQualityToCraft === "Intermediate") {
+                craftingLevelReq += 10;
+            }
+           else if (currentItemQualityToCraft === "Master") {
+               craftingLevelReq += 20;
+            }
+            break;
+        };
+    };
+    currentCraftingType = profession[currentItemQualityToCraft]();
+    html += '<div class="row">';
+    html += '<div class="col-xs-6 col-xs-offset-3">';
+    html += '<h3>You need crafting level ' + craftingLevelReq + '</h3>';
+    html += '<h4>' + currentCraftingType[0].text + '</h4>';
+    html += '</div>';
+    html += '</div>';
+    html += '<div class="row margin borderLeft borderTop">';
+    //itemToCraft global array object...
+    for (var p = 0; p < itemToCraft[0][currentItemToCraft].length; p++) {
+        var currentItemSubType = itemToCraft[0][currentItemToCraft][p];
+        // p == item subtype array index, used in itemDrop to determine item subtype lore and other stats !Important
+        var canCraft = true;
+        var noMinerals = false;
+        html += '<div class="col-xs-12 col-md-6 col-lg-6 borderRight borderBottom">';
+        html += currentItemSubType.capitalizeFirstLetter() + '<br />';
+        if (currentItemSubType === "helmet" || currentItemSubType === "chest" || currentItemSubType === "legs" || currentItemSubType === "boots" || currentItemToCraft === "accessory") {
+            itemLevelImage = "";
+        }
+        else {
+            var itemLevelImage = getNumberMultiplierofFive(itemLevel);
+        }
+        html += '<div class="row">';
+        html += '<div class="col-xs-12">';
+        html += '<img src="images/items/' + currentItemSubType + '/' + (currentItemSubType + 'Common' + itemLevelImage) + '.png">';
+        html += '</div>';
+        html += '</div>';
+        for (var k = 0; k < currentCraftingType[0].type.length; k++) {
+            mineralType = currentCraftingType[0].type[k];
+            mineralAmount = currentCraftingType[0][currentItemToCraft][0][currentItemSubType][k];
+
+            html += '<img src="images/mineral/' + mineralType + '.png">' + ' ' + mineralAmount;
+
+            if (player.properties[mineralType] >= mineralAmount) {
+                canCraft = true;
+            }
+            else {
+                noMinerals = true;
+            };
+        };
+        html += '<div class="row">';
+        html += '<div class="col-xs-12">';
+        html += '<button onclick="craftItem(' + "'" + currentItemToCraft + "', " + "'" + currentItemSubType + "', " + "'" + currentItemQualityToCraft + "'" + ')" id="' + currentItemSubType + '"';
+        if (canCraft === true && noMinerals === false && profession.level >= craftingLevelReq) {
+            html += '>Craft</button>';
+            var position = itemSubTypeArrayCss.indexOf(currentItemSubType)
+            itemSubTypeArrayCss.splice(position, 1);
+        }
+        else {
+            html += 'disabled="disabled" style="cursor:not-allowed;">Craft</button>';
+            itemSubTypeArrayCss.push(currentItemSubType);
+        };
+        html += '</div>';
+        html += '</div>';
+        html += '</div>';
+    };
+
+    canCraft = false;
+    noMinerals = false;
+    html += '</div>';
+
+    document.getElementById('displayCraftedItemHtml').innerHTML = html;
+    craftingBackground();
+};
+
+function craftingBackground() {
+    for (var i = 0; i < itemSubTypeArrayCss.length; i++) {
+        $("#" + itemSubTypeArrayCss[i]).parents().eq(2).addClass('backgroundRed');
+    }
+    itemSubTypeArrayCss = [];
+};
+
+function craftItem(itemType, itemSubType, itemQuality) {
+    var profession = playerProfession.crafting;
+    var itemLevel = player.properties.level + playerProfession.crafting.level;
+    for (var i = 0; i < profession[itemQuality]()[0].type.length; i++) {
+        var mineralType = profession[itemQuality]()[0].type[i];
+        var mineralCost = profession[itemQuality]()[0][itemType][0][itemSubType][i];
+        var experience = (profession[itemQuality]()[0].experience[i] * mineralCost);
+        profession.experience += experience;;
+        if (profession.experience >= profession.maxExperience) {
+            profession.level++;
+            profession.experience -= profession.maxExperience;
+            profession.maxExperience += 100;
+        }
+        document.getElementById("Profession_crafting").innerHTML = 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0);
+        player.properties[mineralType] -= mineralCost;
+        document.getElementById(mineralType).innerHTML = player.properties[mineralType];
+    }
+        getItemType(itemLevel, false, itemType, itemSubType, itemQuality);
+       
+        document.getElementById('VulcanatedIron').innerHTML = player.properties['VulcanatedIron'];
+        document.getElementById('XilBond').innerHTML = player.properties['XilBond'];
+        document.getElementById('Techtite').innerHTML = player.properties['Techtite'];
+        document.getElementById('OhmStone').innerHTML = player.properties['OhmStone'];
+        document.getElementById('LiteCyan').innerHTML = player.properties['LiteCyan'];
+        document.getElementById('Thaumerite').innerHTML = player.properties['Thaumerite'];
+        document.getElementById('Profession_crafting').innerHTML = 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0)
+        craftingHtml();
+        testss();
+};
+
+
+function craftingHtml2() {
     var html = '';
     var crafting = playerProfession.crafting;
     var craftingLevel = crafting.level;
     var itemTypeObject = {};
     html += '<div class="row">';
-    html += '<div class="col-xs-10 col-xs-offset-1">';
+    html += '<div class="col-xs-12">';
     html += '<h3>Crafting </h3>';
-    html += '<div class="col-xs-10 col-xs-offset-1">';
-    html += 'Crafting level: ' + craftingLevel + '<br />';
-    html += 'Crafting exp: ' + crafting.experience + '/' + crafting.maxExperience + '<br />';
-    html += '</div>';
 
     html += '<div class="row">';
     html += '<div class="col-xs-12">';
@@ -383,7 +1150,7 @@ function craftingHtml() {
                         html += 'disabled style="cursor:not-allowed;">Level ' + craftCost[i].levelReq + '+' + '</button><br />';
                     };
                     for (var j = 0; j < craftCost[i].costTypeAmount; j++) {
-                        html += player.properties[craftCost[i].costType[j].type] + '/' + craftCost[i].costType[j].cost;
+                        html += craftCost[i].costType[j].cost;
                         html += '<img src="images/mineral/' + craftCost[i].costType[j].type + '.png" data-toggle="tooltip" data-placement="top" title="' + craftCost[i].displayName[j].name + '">';
                     };
                     html += '<br />';
@@ -398,182 +1165,5 @@ function craftingHtml() {
     html += '</div>';
     html += '</div></div>';
     document.getElementById('crafting').innerHTML = html;
-    testss();
-};
-
-function craftItem(itemType, itemSubType, rarity) {
-    var itemRarity = rarity;
-    var canCraft = false;
-    var itemLevel = player.properties.level + playerProfession.crafting.level;
-    var mineral01 = player.properties.Thaumerite;
-    var mineral02 = player.properties.LiteCyan;
-    var mineral03 = player.properties.OhmStone;
-    var mineral04 = player.properties.Techtite;
-    var mineral05 = player.properties.XilBond;
-    var mineral06 = player.properties.VulcanatedIron;
-    var craftItemType = "";
-    var craftItemRarity = "";
-    var craftExp = 0;
-    if (rarity === 'Legendary' && mineral06 >= 10 && mineral05 >= 10 && mineral04 >= 10) {
-        craftItemType = itemType;
-        craftItemRarity = 0,//index of legendary when picking a rarity...
-        craftExp = 1000;
-        canCraft = true;
-        player.properties.VulcanatedIron -= 10;
-        player.properties.XilBond -= 10;
-        player.properties.Techtite -= 10;
-    }
-    else if (rarity === 'Epic' && mineral04 >= 10 && mineral03 >= 10) {
-        craftItemType = itemType;
-        craftItemRarity = 1,
-        craftExp = 500;
-        canCraft = true;
-        player.properties.Techtite -= 10;
-        player.properties.OhmStone -= 10;
-    }
-    else if (rarity === 'Rare' && mineral03 >= 10 && mineral02 >= 10) {
-        craftItemType = itemType;
-        craftItemRarity = 2,
-        craftExp = 350;
-        canCraft = true;
-        player.properties.LiteCyan -= 10;
-        player.properties.OhmStone -= 10;
-    }
-    else if (rarity === 'Uncommon' && mineral02 >= 10 && mineral01 >= 10) {
-        craftItemType = itemType;
-        craftItemRarity = 3,
-        craftExp = 150;
-        canCraft = true;
-        player.properties.LiteCyan -= 10;
-        player.properties.Thaumerite -= 10;
-    }
-    else if (rarity === 'Common' && mineral01 >= 10) {
-        craftItemType = itemType;
-        craftItemRarity = 4,
-        craftExp = 50;
-        canCraft = true;
-        player.properties.Thaumerite -= 10;
-    }
-    else {
-        canCraft = false;
-       // console.log('not enough resources');
-    }
-    if (canCraft === true) {
-        var crafting = playerProfession.crafting;
-        var craftingLevel = crafting.level;
-        getItemType(craftingLevel, false, craftItemType, itemSubType, itemLevel, craftItemRarity);
-        crafting.experience += craftExp;
-        if (crafting.experience >= crafting.maxExperience) {
-            crafting.level += 1;
-            crafting.experience = crafting.experience - crafting.maxExperience;
-            crafting.maxExperience = Math.floor(crafting.maxExperience * 1.1);
-        };
-    }
-    else {
-        //Add log info...
-    }
-    craftingHtml();
-    playerProfessionHtml();
-};
-
-
-/*------------------------------------------------------------------------------------------------
- *                                                                                               |
- *                                                                                               |
- *                                                                                               |
- *                                        HERBALISM                                              |
- *                                                                                               |
- *                                                                                               |
- *                                                                                               |
- *------------------------------------------------------------------------------------------------
- */
-
-
-
-
-/*------------------------------------------------------------------------------------------------
- *                                                                                               |
- *                                                                                               |
- *                                                                                               |
- *                                        ALCHEMY                                                |
- *                                                                                               |
- *                                                                                               |
- *                                                                                               |
- *------------------------------------------------------------------------------------------------
- */
-var testtest = [
-    {
-        type: 'smallPotion',
-        displayName: 'Small Potion',
-        use: 'useSmallPotion',
-        amount: 0,
-        effect: 'healing',
-        bonus: 100
-    }
-]
-var alchemyPotions = [
-    {
-        type: 'healing',
-        baseBonus: 200, //Base amount heal
-        multiplier: 100 //Base amount + (multiplier * alchemy level)
-    }
-];
-function createAlchemyHtml() {
-    var html = '';
-    var alchemy = playerProfession.alchemy;
-    var alchemyLevel = alchemy.level;
-    var potion = {};
-    html += '<div class="row">';
-    html += '<div class="col-xs-10 col-xs-offset-1 c3">';
-    html += '<h3>Alchemy</h3>';
-    html += 'Alchemy Level: ' + alchemyLevel + '<br />';
-    html += 'Alchemy exp: ' + alchemy.experience + '/' + alchemy.maxExperience + '<br />';
-
-    html += 
-
-    html += '</div>';
-    html += '</div>';
-
-    document.getElementById('alchemy').innerHTML = html;
-};
-createAlchemyHtml();
-
-function playerProfessionHtml() {
-    var html = "";
-    html += '<div class="row">';
-    html += '<div class="col-xs-10 col-xs-offset-1">';
-    html += '<div class="row">';
-    html += '<h3>Your professions: <br /></h3>';
-    for (var key in playerProfession) {
-        if (playerProfession.hasOwnProperty(key)) {
-            var profession = playerProfession[key];
-            html += '<div class="col-xs-10 col-xs-offset-1">';
-            html += '<img src="images/profession/' + profession.image + '.png" data-toggle="tooltip" data-placement="top" title="' + profession.name.capitalizeFirstLetter() + ' level:' + profession.level + '">';
-
-            html += ' level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0)
-            html += '</div>';
-        };
-    };
-    html += '</div>';
-    html += '<div class="row">';
-    html += '<div class="col-xs-10 col-xs-offset-1">';
-    html += '<h3>Your minerals: <br /></h3>';
-    html += '</div>';
-    for (var i = 0; i < mineralList.length; i++) {
-        var mineral = mineralList[i].name;
-        var displayName = mineralList[i].displayName;
-        var playerMineral = player.properties[mineral];
-        html += '<div class="col-xs-5 col-xs-offset-1">';
-        html += '<img src="images/mineral/' + mineral + '.png" data-toggle="tooltip" data-placement="right" title="' + displayName + '">';
-        html += ' ' + playerMineral + '<br />';
-        html += '</div>';
-        if (mineral === 'VulcanatedIron') {
-            html += '<div class="col-xs-10 col-xs-offset-1">';
-            html += '<h3>Your Herbs : <br /></h3>';
-            html += '</div>';
-        };
-    };
-    html += '</div></div></div>';
-    document.getElementById('playerProfessions').innerHTML = html;
     testss();
 };

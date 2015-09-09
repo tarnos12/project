@@ -26,37 +26,25 @@ var defaultValues = {
 };
 //PLAYER STATS
 var player = {
+    buffs: {
+        Strength: { amount: 0, timer: 0 },
+        Endurance: { amount: 0, timer: 0 },
+        Agility: { amount: 0, timer: 0 },
+        Dexterity: { amount: 0, timer: 0 },
+        Wisdom: { amount: 0, timer: 0 },
+        Intelligence: { amount: 0, timer: 0 },
+        Luck: { amount: 0, timer: 0 },
+        AllStats: { amount: 0, timer: 0 },
+        ExpGain: { amount: 0, timer: 0 },
+        ItemDrop: { amount: 0, timer: 0 },
+        GoldDrop: { amount: 0, timer: 0 },
+    },
     autoBattle:{
         isAuto: false,
         autoBattle: false, // testing
     },
     properties: {
-        potionInventory: [
-            {
-                type: 'smallPotion',
-                displayName: 'Small Potion',
-                use: 'useSmallPotion',
-                amount: 0,
-                effect: 'healing',
-                bonus: 100
-            },
-            {
-                type: 'mediumPotion',
-                displayName: 'Medium Potion',
-                use: 'useMediumPotion',
-                amount: 0,
-                effect: 'healing',
-                bonus: 500
-            },
-            {
-                type: 'superPotion',
-                displayName: 'Super Potion',
-                use: 'useSuperPotion',
-                amount: 0,
-                effect: 'healing',
-                bonus: 1000
-            }
-        ],
+        potionInventory: [],
         //Minerals
         Thaumerite: 0,
         LiteCyan: 0,
@@ -115,9 +103,6 @@ var player = {
         expGain: 0,
         goldLost: 0,
         expLost: 0,
-        smallPotion: 0,
-        mediumPotion: 0,
-        superPotion: 0,
         //Strength
         baseStrength: 5,
 
@@ -449,15 +434,13 @@ var player = {
             return evasion;
         },
         dropRate: function () {
-            return (((1 + ((player.functions.totalLuck() / 500) + (1 + ((player.properties.raceDropRate +
-                player.functions.totalMagicFind() + 
-                player.functions.bonusMagicFind()))) / 100) * bonusDrop)));
+            return (1 + (((player.functions.totalLuck() / 5) + player.functions.totalMagicFind() + player.functions.bonusMagicFind() + player.properties.raceDropRate + player.buffs.ItemDrop.amount + bonusDrop) / 100));
         },
         expRate: function () {
-            return (((1 + (((player.functions.totalExperienceRate() + player.functions.bonusExpRate()) / 100)) * bonusExp)) * (1 + ((player.properties.raceExpRate) / 100)));
+            return (1 + ((player.functions.totalExperienceRate() + player.functions.bonusExpRate() + player.properties.raceExpRate + player.buffs.ExpGain.amount + bonusExp) / 100));
         },
         goldRate: function () {
-            return ((1 + (((player.functions.totalGoldDrop() + player.functions.bonusGoldDrop()) / 100) + (1 + ((player.properties.raceGoldDrop) / 100))) * bonusGold));
+            return (1 + ((player.functions.totalGoldDrop() + player.functions.bonusGoldDrop() + player.properties.raceGoldDrop + player.buffs.GoldDrop.amount + bonusGold) / 100));
         },
         inventory: function () {
             return Math.floor(30 + (player.functions.totalStrength() / 10) + player.properties.backpackUpgrade); //Add backpacks "new item type"
@@ -471,7 +454,7 @@ var player = {
             return Math.floor(
                 (player.properties.baseStrength +
                 player.functions.totalStrengthBonus()) *
-                (player.functions.masteryStrength() + (player.properties.raceAllStats / 100)));
+                (player.functions.masteryStrength() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Strength.amount + player.buffs.AllStats.amount))));
         },
         masteryEndurance: function () {
             return (weaponMastery.mace.maceEndurance() *
@@ -481,7 +464,7 @@ var player = {
             return Math.floor((
                 player.properties.baseEndurance +
                 player.functions.totalEnduranceBonus()) *
-                (player.functions.masteryEndurance() + (player.properties.raceAllStats / 100)));
+                (player.functions.masteryEndurance() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Endurance.amount + player.buffs.AllStats.amount))));
         },
         masteryAgility: function () {
             return (weaponMastery.sword.swordAgility());
@@ -490,7 +473,7 @@ var player = {
             return Math.floor((
                 player.properties.baseAgility +
                 player.functions.totalAgilityBonus()) *
-                (player.functions.masteryAgility() + (player.properties.raceAllStats / 100)));
+                (player.functions.masteryAgility() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Agility.amount + player.buffs.AllStats.amount))));
         },
         masteryDexterity: function () {
             return (weaponMastery.ranged.rangedDexterity());
@@ -499,7 +482,7 @@ var player = {
             return Math.floor((
                 player.properties.baseDexterity +
                 player.functions.totalDexterityBonus()) *
-                (player.functions.masteryDexterity() + (player.properties.raceAllStats / 100)));
+                (player.functions.masteryDexterity() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Dexterity.amount + player.buffs.AllStats.amount))));
         },
         masteryIntelligence: function () {
             return (weaponMastery.staff.staffIntelligence());
@@ -508,7 +491,7 @@ var player = {
             return Math.floor(((
                 (player.properties.baseIntelligence +
                 player.functions.totalIntelligenceBonus()) *
-                (player.functions.masteryIntelligence() + (player.properties.raceAllStats / 100))) *
+                (player.functions.masteryIntelligence() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Intelligence.amount + player.buffs.AllStats.amount)))) *
                 weaponSkillList.staff.spellSimulacrum.damage()) * bonusSpellDamage);
         },
         masteryWisdom: function () {
@@ -519,12 +502,12 @@ var player = {
             return Math.floor(((
                 player.properties.baseWisdom +
                 player.functions.totalWisdomBonus()) *
-                (player.functions.masteryWisdom() + (player.properties.raceAllStats / 100))) * bonusSpellDamage);
+                (player.functions.masteryWisdom() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Wisdom.amount + player.buffs.AllStats.amount)))) * bonusSpellDamage);
         },
         totalLuck: function () {
             return Math.floor((
                 player.properties.baseLuck +
-                player.functions.totalLuckBonus()) * (1 + (player.properties.raceAllStats / 100)));
+                player.functions.totalLuckBonus()) * (1 + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Luck.amount + player.buffs.AllStats.amount))));
         },
         maxhealth: function () {
             return Math.floor((((475 + player.functions.totalLifeBonus() + (player.functions.totalEndurance() * 5)) * (1 + (player.functions.bonusHealth() / 100)))) * (1 + (player.properties.raceHealth / 100)));
@@ -691,11 +674,17 @@ function disableButtons() {
     if (number === 1) {
         $('a#monsterButton').css('cursor', 'not-allowed');
         $("img.monster").toggleClass("buttonDisable");
+        $("button.monsterButtonDisable").toggleClass("buttonDisable").toggleClass("backgroundRed");
+        $("li.monsterNavBar").toggleClass("buttonDisable");
+        $("li.monsterNavBar > a").toggleClass("backgroundRed");
         number = 2;
     }
     else {
         $('a#monsterButton').css('cursor', 'pointer');
         $("img.monster").toggleClass("buttonDisable");
+        $("button.monsterButtonDisable").toggleClass("buttonDisable").toggleClass("backgroundRed");
+        $("li.monsterNavBar").toggleClass("buttonDisable");
+        $("li.monsterNavBar > a").toggleClass("backgroundRed");
         number = 1;
     }
 };
@@ -1056,6 +1045,18 @@ function displayLogInfo() {
     if (battleTurn > player.functions.maxBattleTurns()) {
         battleTurn = player.functions.maxBattleTurns();
     };
+    for (var key in player.buffs) {
+        if (player.buffs.hasOwnProperty(key)) {
+            var buff = player.buffs[key];
+            if (buff.timer > 0) {
+                buff.timer--;
+                if (buff.timer === 0) {
+                    buff.amount = 0;
+                };
+            };
+        };
+    };
+        activeBuffsHtml();
     Log('<span id=\"test1\" class =\"bold\" style=\"color:#FF8000; display:none;\">Critical Rating: ' + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%" + "<br />" + "</span>");
     Log('<span id=\"test2\" class =\"bold\" style=\"color:red; display:none;\">Enemy dealt: ' + damageTaken + " " + "damage." + "<br />" + "</span>");
     Log('<span id=\"test3\" class =\"bold\" style=\"color:blue; display:none;\">You dealt: ' + magicDamageDealt + " " + "magic damage total." + "<br />" + "</span>");
@@ -1766,3 +1767,15 @@ function changeGameStyling(style) {
 
     }
 };
+
+function getNumberMultiplierofFive(n) {
+    if (n > 100) {
+        return 100;
+    }
+    else if (n > 4)
+        return Math.ceil(n / 5.0) * 5;
+    else if (n < 0)
+        return Math.floor(n / 5.0) * 5;
+    else
+        return 1;
+}
