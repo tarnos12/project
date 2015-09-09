@@ -455,8 +455,8 @@ function getBonusItemMod(monster, dropItem, isDrop) {
         }
     };
     if (dropItem.subType === "shield") {
-        dropItem['Block chance'] = dropItem.power * dropItem.rarityValue;
-        dropItem['Block amount'] = (dropItem.power * dropItem.rarityValue) * 5;
+        dropItem['Block chance'] = Math.floor((dropItem.power + dropItem.rarityValue) + (dropItem.iLvl / 10));
+        dropItem['Block amount'] = (30 + (dropItem.power + dropItem.rarityValue) * 5 + (dropItem.iLvl * 2));
         dropItem.Value += (dropItem['Block chance'] * 5 + dropItem['Block amount'] * 5);
     };
     if (dropItem.itemType === 'weapon') {

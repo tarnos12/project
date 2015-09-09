@@ -50,7 +50,7 @@ var secondaryStatInfo = [
         isPercent: false,
         number: 1,
         tooltip: function () {
-            return "Damage reduction:" + (100 - (100 / (100 + player.functions.defense())) * 100).toFixed(2) + "%";
+            return "Damage reduction:" + (100 - (1000 / (1000 + player.functions.defense())) * 100).toFixed(2) + "%";
         }
     },
     {
@@ -77,10 +77,10 @@ var secondaryStatInfo = [
         type: 'Life on hit',
         displayName: 'Life /hit',
         info: 'lifeSteal',
-        isPercent: true,
+        isPercent: false,
         number: 2,
         tooltip: function () {
-            return "Your percentage amount of health gained from attacking.";
+            return "Your amount of health gained each turn.";
         }
     },
     {

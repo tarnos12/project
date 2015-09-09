@@ -575,8 +575,8 @@ var player = {
             return ((1.1 + (player.functions.totalDexterity()) * 0.005) + player.functions.totalCriticalDamage());
         },
         blockChance: function () {
-            if (Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance()) >= 75) {
-                return 75;
+            if (Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance()) >= 40) {
+                return 40;
             }
             else {
                 return Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance());
@@ -769,7 +769,7 @@ function playerCriticalDamage(monsterStat, monsterStats) {
 //player normal damage calculation
 function playerDamage(monsterStat, monsterStats) {
     var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * (100 / (100 + monsterStats.def)));
+    damage = Math.floor(damage * (1000 / (1000 + monsterStats.def)));
     if (damage >= 1) {
         playerDamageDeal(damage, monsterStat, monsterStats);
     };
@@ -813,7 +813,7 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
         };
     };
     if (player.functions.lifeSteal() > 0) {
-        var lifeSteal = Math.floor(damage * (player.functions.lifeSteal() / 1000));
+        var lifeSteal = player.functions.lifeSteal();
         lifeStealAmount += lifeSteal;
         player.properties.health += lifeSteal;
         if (player.properties.health > player.functions.maxhealth()) {
@@ -841,7 +841,7 @@ function monsterAttack(monsterStat, monsterStats) {
 //monster damage calculation
 function monsterDmg(monsterStat, monsterStats) {
     monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg - monsterStats.minDmg + 1)) + monsterStats.minDmg;
-    monsterDamage = Math.floor(monsterDamage * (100 / (100 + player.functions.defense())));
+    monsterDamage = Math.floor(monsterDamage * (1000 / (1000 + player.functions.defense())));
     if (monsterDamage >= 1) {
         monsterDamageDeal(monsterDamage, monsterStat, monsterStats);
     };
