@@ -31,7 +31,7 @@ function buySmallPotion(count) {
             potionInventory.push(potionList.smallPotion);
         }
         for (var i = 0; i < potionInventory.length; i++) {
-            if (potionInventory[i].name === 'smPotion') {
+            if (potionInventory[i].name === 'smallPotion') {
                 potionInventory[i].amount += count;
                 break;
             }
@@ -60,7 +60,7 @@ function buyMediumPotion(count) {
             potionInventory.push(potionList.mediumPotion);
         }
         for (var i = 0; i < potionInventory.length; i++) {
-            if (potionInventory[i].name === 'medPotion') {
+            if (potionInventory[i].name === 'mediumPotion') {
                 potionInventory[i].amount += count;
                 break;
             }
@@ -89,7 +89,7 @@ function buySuperPotion(count) {
             potionInventory.push(potionList.superPotion);
         }
         for (var i = 0; i < potionInventory.length; i++) {
-            if (potionInventory[i].name === 'supPotion') {
+            if (potionInventory[i].name === 'superPotion') {
                 potionInventory[i].amount += count;
                 break;
             }
