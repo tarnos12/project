@@ -1028,7 +1028,6 @@ function displayCraftedItem() {
         html += '</div>';
         html += '</div>';
     };
-
     canCraft = false;
     noMinerals = false;
     html += '</div>';

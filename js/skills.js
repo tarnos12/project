@@ -280,13 +280,19 @@
 
 //BLOCK
     parryAndRiposte.blockChanceDisplay = function() {
-        return Math.floor(10 + weaponMastery.sword.level + (0.03 * player.functions.totalAgility()));
+        if (Math.floor(10 + (weaponMastery.sword.level / 10)) >= 15) {
+            return 15;
+        }
+        else {
+           return Math.floor(10 + (weaponMastery.sword.level / 5));
+        };
+        
     };
     parryAndRiposte.blockChance = function() {
         return (player.properties.isSword && weaponMastery.sword.level >= 10) ? this.blockChanceDisplay() : 0;
     };
     parryAndRiposte.blockAmountDisplay = function() {
-        return Math.floor(weaponMastery.sword.level + (0.05 * player.functions.totalEndurance()));
+        return Math.floor(weaponMastery.sword.level * 4);
     };
     parryAndRiposte.blockAmount = function() {
         return (player.properties.isSword && weaponMastery.sword.level >= 10) ? this.blockAmountDisplay() : 0;
@@ -294,7 +300,12 @@
 
 //COUNTER
     parryAndRiposte.counterChanceDisplay = function() {
-        return Math.floor(weaponMastery.sword.level + (0.02 * player.functions.totalDexterity()));
+        if (Math.floor(weaponMastery.sword.level + (0.02 * player.functions.totalDexterity())) >= 50) {
+            return 50;
+        }
+        else {
+            return Math.floor(weaponMastery.sword.level + (0.02 * player.functions.totalDexterity()));
+        }
     };
     parryAndRiposte.counterChance = function() {
         return (player.properties.isSword && weaponMastery.sword.level >= 10) ? this.counterChanceDisplay() : 0;
@@ -318,7 +329,7 @@
     savageStrike.cooldown = 0.4;
 //LIFESTEAL
     savageStrike.lifeSteal = function() {
-        return Math.floor(weaponMastery.sword.level * 0.5);
+        return Math.floor(weaponMastery.sword.level);
     };
     savageStrike.lifeStealAmount = function() {
         return (player.properties.isSword && weaponMastery.sword.level >= 15) ? this.lifeSteal() : 0;
@@ -355,7 +366,7 @@
     };
     savageStrike.description = function() {
         return "Damage: " + this.damageDisplay() + "(Strength based).<br />" +
-            "Life steal: " + this.lifeSteal() + "% (damage from skills heals too).";
+            "Life steal: " + this.lifeSteal() + " each time you attack.";
     };
     sinisterSwing.description = function() {
         return "Damage: " + this.damageDisplay() + "(Min + Max damage).";
