@@ -86,6 +86,10 @@ function saveGameFunction(saveType, slot) {
         AlchemyExp: playerProfession.alchemy.experience,
         AlchemyMaxExp: playerProfession.alchemy.maxExperience
     };
+    for (var key in monsterList) {
+        var monsterKills = monsterList[key].killCount;
+        saveGame[key] = monsterKills;
+    };
     if (saveType === 'autoSave') {
         if (slot === 0) {
             localStorage['EncodedSaveGame'] = btoa(JSON.stringify(saveGame));
@@ -144,7 +148,6 @@ var executeIntervalFunctionsOnce = (function () {
 
 function loadGame(slot) {
     load(slot);
-    autoSave(slot);
     refillShopInterval();
 };
 
@@ -162,7 +165,6 @@ function newGame(slot) {
         if (hardcoreMode === true) {
             player.properties.hardcoreMode = true;
         };
-        autoSave();
         EquippedItemsEmpty();
         CreatePlayerHotBar();
         CreatePlayerSkillsHtml();
@@ -177,6 +179,9 @@ function newGame(slot) {
         createAlchemyHtml();
         createPotionInventory();
         craftingHtml();
+        MakeMonsterList();
+        CreateMonsterHtml();
+        autoSave();
     };
 };
 
@@ -289,11 +294,14 @@ function load(slot) {
 
 
         document.getElementById("gold").innerHTML = player.properties.gold;
+        MakeMonsterList();
+        for (var key in monsterList) {
+            if (typeof savegame[key] !== "undefined") monsterList[key].killCount = savegame[key];
+        };
         loadIsEquipped();
         CreateWeaponSkillHtml();
         quest();
         CreateMonsterHtml();
-        versionCheck();
         CreatePlayerSkillsHtml();
         updateBar();
         characterCreationHtml();
@@ -322,6 +330,8 @@ function load(slot) {
             newGame(slot);
         };
     };
+    autoSave(slot);
+    versionCheck(slot);
 };
 
 function resetCheck() {
@@ -351,15 +361,16 @@ function reset(slot) {
     else if (slot === 3) {
         localStorage.removeItem("EncodedSaveGame3");
     }
+    console.log('test')
     pageReload();
 };//test
 
 function pageReload() {
     location.reload();
 };
-function versionCheck() {
-    if (player.properties.gameVersion !== currentGameVersion && player.properties.gameVersion === null) {
-        reset();
+function versionCheck(slot) {
+    if (player.properties.gameVersion !== currentGameVersion) {
+        reset(slot);
     };
 };
 

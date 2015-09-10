@@ -18,7 +18,7 @@ function CreateWeaponSkillHtml() {
             html += '<div class="col-xs-2 passiveMargin">';
             html += '<a class="tooltips">';
             html += '<img class="skillBorder" src="images/skills/' + item.type + '.png">';
-            html += '<span style="width:200px; bottom:30px; right:-100px;">';
+            html += '<span style="width:300px; bottom:30px; right:-150px;">';
             html += '<div class="row">';
             html += '<div class="col-xs-12">';
             html += item.displayName + ' skill progress:<br />';
@@ -84,10 +84,15 @@ String.prototype.capitalizeFirstLetter = function () {
 var monsterTabActiveNum = 0;
 function changedTabmonster(index) {
     monsterTabActiveNum = index;
-    currentMonster = index + (index * 7);//Display first monster of each area when changing tab
+    if (index === 0 || (1 + (index + (index * 7))) < 10) {
+        currentMonster = 'monster00' + (1 + (index + (index * 7)));
+    }
+    else {
+        currentMonster = 'monster0' + (1 + (index + (index * 7)));
+    }
     CreateMonsterHtml();
 };
-var currentMonster = 0; //Save current monster number, so I can pick it from array.
+var currentMonster = 'monster001'; //Save current monster number, so I can pick it from array.
 function CreateMonsterHtml() {
     var html = '';
     html += '<ul class="nav nav-tabs">';
@@ -121,32 +126,30 @@ function CreateMonsterHtml() {
                 '</div>' +
                 '<div class="panel-body" style="background-color:green;">';
             html += '<div class="row">';
-            var monsterNum = newTest[currentMonster].name;
-            var monster = monsterList[monsterNum].Stats;
+            var monster = monsterList[currentMonster];
             var area = monster.area;
             html += '<div class="col-xs-12 c3">';
             for (var key in monsterList) {
-                var monsterNumber = monsterList[key].Stats.id - 1;
-                var monsterNumberDisplay = monsterList[key].Stats.id;
-                var monsterArea = monsterList[key].Stats.area;
-                var monsterShow = monsterList[key].Stats;
+                var monsterNumberDisplay = monsterList[key].id;
+                var monsterArea = monsterList[key].area;
+                var monsterShow = monsterList[key].isShown;
                 if (monsterArea === monsterAreas[j].type) {
-                    if (monsterShow.isShown === true) {
+                    if (monsterShow === true) {
                         html += '<button class="';
-                        if (currentMonster === monsterNumber) {
+                        if (currentMonster === key) {
                             html += 'buttonSelected ';
                         }
-                            html += 'monsterButtonDisable" style="margin-left:8px;" type="button" onclick="changeMonsterPage(' + monsterNumber + ')">' + monsterNumberDisplay + '</button>';
+                        html += 'monsterButtonDisable" style="margin-left:8px;" type="button" onclick="changeMonsterPage(' + "'" + key + "'" + ')">' + monsterNumberDisplay + '</button>';
                     };
                 }
             }
             html += '</div>';
                 if (area === monsterAreas[j].type) {
                     var monsterPercent = ((monster.hp / monster.maxHp) * 100);
-                        var onclickevent = 'attack(' + monster.name + ');';
+                    var onclickevent = 'attack(' + "'" + currentMonster + "'" + ');';
                     html += '<div class="col-xs-10 col-xs-offset-1">' +//First Div
                         '<div class="row">' +//First Row
-                        '<div class="col-xs-4 col-xs-offset-4 c3">' +//Second Div
+                        '<div class="col-xs-12 c3">' +//Second Div
                         '<div id="' + monster.id + '">' +
                         '<a href="#" class="tooltipA centerText" id="monsterButton">' +
                         '<img class="monster" src="images/monsters/' + monster.name + '.png" alt="' + monster.displayName + '" onclick="' + onclickevent + '">' +
@@ -155,19 +158,22 @@ function CreateMonsterHtml() {
                         html += '<br />' +
                         'Level: ' + monster.level +
                         '<br />' +
-                        'Dmg:' + monster.minDmg + "-" + monster.maxDmg +
+                        'Dmg:' + monster.minDmg() + "-" + monster.maxDmg() +
                         '<br />' +
-                        'Def:' + monster.def;
-                    html += '</span></a>' +
-                        '<br /></div>';
+                        'Def:' + monster.def();
+                        html += '</span></a>';
+                        html += '<div class="col-xs-12 c3">';
+                        html += '<h4>Killed: ' + monster.killCount + '</h4>';
+                        html += '</div>';
+                        html += '<br /></div>';
                     html += '</div>';//Close second Div
-
 
                     html += '</div>';//Close first Row
 
                     html += '<div class="progress" style="width:80%; margin-left:10%;">';
                     html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.name + "1" + '">';
                     html += '<span style="font-size:13px;">' + monster.hp + ' HP</span>' + '</div></div>';
+
                         html += '</div>';//Close First Div
                 };
             html += '</div>';
@@ -181,8 +187,8 @@ function CreateMonsterHtml() {
     document.getElementById("monsterTabs").innerHTML = html;
     testss();
 };
-function changeMonsterPage(id) {
-    currentMonster = id;
+function changeMonsterPage(name) {
+    currentMonster = name;
     CreateMonsterHtml();
 }
 var newTest = [
@@ -668,7 +674,6 @@ function CreateInventoryWeaponHtml() {
             html += '</div>';
             html += '</div>';
             html += '<div id="potionInventory">';
-            console.log("Potion inv div");
         };
         html += '</div>';
         html += '</div>';
@@ -828,15 +833,23 @@ function startingScreen() {
     var muteSound = "muteAudio();";
     var myAudio = document.getElementById('myAudio');
     html += '<div class="row">';
-    html += '<div class ="col-xs-12 newGameButton">';
+    html += '<div class="col-xs-6 col-xs-3">';
     html += '<div class="btn-group-vertical" role="group" aria-label="New game, load game">';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + newGame + '">New Game</button>';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + loadGame + '">Load</button>';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + reset + '">Reset all saves</button>';
     html += '<label><input type="checkbox" id="hardcoreMode" style ="visibility:visible; position:relative;" onclick="handleClick();">Hardcore Mode?</label>';
     html += '</div>';
+    html += '<button type="button" class="btn btn-default shopButton" onclick="' + muteSound + 'changeMusicImage();""><span id="musicImage" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>';
+
     html += '</div>';
-    html += '<button type="button" class="btn btn-default musicDiv" onclick="' + muteSound + 'changeMusicImage();""><span id="musicImage" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>';
+    html += '</div>';
+
+    html += '<div class="row" style="position:relative; left:-30%;">'
+    html += '<div class="col-xs-8 col-xs-offset-2">';
+    html += '<h4>If you are unable to start a game, use button above to reset all saves.' +
+    'If you see this message first time, then you should reset your save, since its a new update which change a lot.</h4>';
+    html += '</div>';
     html += '</div>';
     document.getElementById("buttonDiv").innerHTML = html;
     myAudio.volume = 0.1;
@@ -1095,7 +1108,7 @@ function characterCreationHtml() {
                     if (heroRace.hasOwnProperty(stat)) {
                         if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) != -1) {
                             var string = stat.substring('race'.length);
-                            if (stat === "raceAccuracy" && heroRace[stat]() < 111) {
+                            if (stat === "raceAccuracy" && heroRace[stat]() > 111) {
                                 html += 'Never Miss<br />';
                             } else if (stat === "raceEvasion" && heroRace[stat]() === "Can't evade") {
                                 html += "Can't Evade";
@@ -1879,7 +1892,7 @@ function itemTooltipTest(item) {
         if (item['Bonus armor'] > 0) {
             html += '<strong><font color="#7FCC7F">' + 'Bonus armor' + ": " + item['Bonus armor'] + "%" + '</font></strong>' + '<br />';
         };
-        html += 'Damage reduction: ' + ((100 - (1000 / (1000 + (player.functions.defense() + (item.defense - equippedItems[item.subType].defense)))) * 100) - (100 - (1000 / (1000 + player.functions.defense())) * 100)).toFixed(2) + "%" + '<br />';
+        html += 'Damage reduction: ' + ((100 - (500 / (500 + (player.functions.defense() + (item.defense - equippedItems[item.subType].defense)))) * 100) - (100 - (500 / (500 + player.functions.defense())) * 100)).toFixed(2) + "%" + '<br />';
     };
     for (var statName in item) { //Here stat will become the word Defense
         if (item.hasOwnProperty(statName)) {

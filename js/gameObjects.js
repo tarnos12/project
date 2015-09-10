@@ -50,7 +50,7 @@ var secondaryStatInfo = [
         isPercent: false,
         number: 1,
         tooltip: function () {
-            return "Damage reduction:" + (100 - (1000 / (1000 + player.functions.defense())) * 100).toFixed(2) + "%";
+            return "Damage reduction:" + (100 - (500 / (500 + player.functions.defense())) * 100).toFixed(2) + "%";
         }
     },
     {
@@ -221,14 +221,14 @@ var primaryStatInfo = [
         type: 'wisdom',
         shortNameDisplay: 'Wis',
         info: 'totalWisdom',
-        tooltip: 'Increase mana, mana regen.',
+        tooltip: 'Increase mana, mana regen, weapon skill damage',
         number: 1
     },
     {
         type: 'intelligence',
         shortNameDisplay: 'Int',
         info: 'totalIntelligence',
-        tooltip: 'Increase mana.',
+        tooltip: 'Increase mana, weapon skill damage.',
         number: 1
     },
     {
@@ -827,715 +827,119 @@ var itemBaseMod = [
 ];
 
 var itemModifiers = {
-    level10: [
+    modifier: [
 		{
 		    type: "All attributes",
-		    minValue: 5,
-		    maxValue: 10,
+		    minValue: 1,
+		    maxValue: 3,
 		    chance: 10,
-            baseValue: 10
+            baseValue: 50
 		},
         {
             type: "Strength",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 3,
+            maxValue: 8,
             chance: 10,
-            baseValue: 2
+            baseValue: 10
         },
         {
             type: "Endurance",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 3,
+            maxValue: 8,
             chance: 10,
-            baseValue: 2
+            baseValue: 10
         },
         {
             type: "Agility",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 3,
+            maxValue: 8,
             chance: 10,
-            baseValue: 2
+            baseValue: 10
         },
         {
             type: "Dexterity",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 3,
+            maxValue: 8,
             chance: 10,
-            baseValue: 2
+            baseValue: 10
         },
         {
             type: "Wisdom",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 3,
+            maxValue: 8,
             chance: 10,
-            baseValue: 2
+            baseValue: 10
         },
         {
             type: "Intelligence",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 3,
+            maxValue: 8,
             chance: 10,
-            baseValue: 2
+            baseValue: 10
         },
         {
             type: "Luck",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 3,
+            maxValue: 8,
             chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Evasion",
-            minValue: 2,
-            maxValue: 4,
-            chance: 10,
-            baseValue: 5
+            baseValue: 10
         },
         {
             type: "Bonus damage",
-            minValue: 10,
+            minValue: 20,
             maxValue: 25,
             chance: 10,
-            baseValue: 2
+            baseValue: 20
         },
         {
             type: "Bonus armor",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 7,
+            maxValue: 10,
             chance: 10,
-            baseValue: 2
+            baseValue: 20
         },
         {
             type: "Bonus life",
-            minValue: 50,
-            maxValue: 100,
+            minValue: 25,
+            maxValue: 35,
             chance: 10,
-            baseValue: 2
+            baseValue: 5
         },
         {
             type: "Bonus mana",
-            minValue: 20,
-            maxValue: 50,
+            minValue: 15,
+            maxValue: 25,
             chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Health regen",
-            minValue: 5,
-            maxValue: 10,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Mana regen",
-            minValue: 10,
-            maxValue: 30,
-            chance: 10,
-            baseValue: 1
+            baseValue: 3
         },
         {
             type: "Magic find",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 1,
+            maxValue: 5,
             chance: 10,
-            baseValue: 5
+            baseValue: 10
         },
         {
             type: "Gold drop",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 1,
+            maxValue: 5,
             chance: 10,
-            baseValue: 5
+            baseValue: 10
         },
         {
             type: "Experience rate",
-            minValue: 10,
-            maxValue: 20,
+            minValue: 1,
+            maxValue: 5,
             chance: 10,
-            baseValue: 5
+            baseValue: 10
         },
         {
             type: "Life gain on hit",
             minValue: 1,
-            maxValue: 3,
+            maxValue: 5,
             chance: 10,
-            baseValue: 7
+            baseValue: 15
         },
-        {
-            type: "Critical damage",
-            minValue: 10,
-            maxValue: 15,
-            chance: 10,
-            baseValue: 7
-        }
-    ],
-    level20: [
-		{
-		    type: "All attributes",
-		    minValue: 10,
-		    maxValue: 20,
-		    chance: 10,
-		    baseValue: 10
-		},
-        {
-            type: "Strength",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Endurance",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Agility",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Dexterity",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Wisdom",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Intelligence",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Luck",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Evasion",
-            minValue: 5,
-            maxValue: 7,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Bonus damage",
-            minValue: 25,
-            maxValue: 50,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus armor",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus life",
-            minValue: 150,
-            maxValue: 500,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus mana",
-            minValue: 50,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Health regen",
-            minValue: 10,
-            maxValue: 20,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Mana regen",
-            minValue: 30,
-            maxValue: 50,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Magic find",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Gold drop",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Experience rate",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Life gain on hit",
-            minValue: 4,
-            maxValue: 7,
-            chance: 10,
-            baseValue: 7
-        },
-        {
-            type: "Critical damage",
-            minValue: 16,
-            maxValue: 21,
-            chance: 10,
-            baseValue: 7
-        }
-    ],
-    level30: [
-		{
-		    type: "All attributes",
-		    minValue: 20,
-		    maxValue: 40,
-		    chance: 10,
-		    baseValue: 10
-		},
-        {
-            type: "Strength",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Endurance",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Agility",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Dexterity",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Wisdom",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Intelligence",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Luck",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Evasion",
-            minValue: 5,
-            maxValue: 7,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Bonus damage",
-            minValue: 50,
-            maxValue: 75,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus armor",
-            minValue: 40,
-            maxValue: 60,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus life",
-            minValue: 250,
-            maxValue: 1000,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus mana",
-            minValue: 150,
-            maxValue: 300,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Health regen",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Mana regen",
-            minValue: 50,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Magic find",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Gold drop",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Experience rate",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Life gain on hit",
-            minValue: 7,
-            maxValue: 15,
-            chance: 10,
-            baseValue: 7
-        },
-        {
-            type: "Critical damage",
-            minValue: 21,
-            maxValue: 28,
-            chance: 10,
-            baseValue: 7
-        }
-    ],
-    level40: [
-		{
-		    type: "All attributes",
-		    minValue: 40,
-		    maxValue: 80,
-		    chance: 10,
-		    baseValue: 10
-		},
-        {
-            type: "Strength",
-            minValue: 80,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Endurance",
-            minValue: 80,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Agility",
-            minValue: 80,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Dexterity",
-            minValue: 80,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Wisdom",
-            minValue: 80,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Intelligence",
-            minValue: 80,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Luck",
-            minValue: 80,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Evasion",
-            minValue: 7,
-            maxValue: 15,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Bonus damage",
-            minValue: 75,
-            maxValue: 100,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus armor",
-            minValue: 60,
-            maxValue: 100,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus life",
-            minValue: 1000,
-            maxValue: 2500,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus mana",
-            minValue: 300,
-            maxValue: 750,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Health regen",
-            minValue: 40,
-            maxValue: 80,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Mana regen",
-            minValue: 80,
-            maxValue: 120,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Magic find",
-            minValue: 80,
-            maxValue: 120,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Gold drop",
-            minValue: 80,
-            maxValue: 120,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Experience rate",
-            minValue: 80,
-            maxValue: 120,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Life gain on hit",
-            minValue: 25,
-            maxValue: 50,
-            chance: 10,
-            baseValue: 7
-        },
-        {
-            type: "Critical damage",
-            minValue: 40,
-            maxValue: 60,
-            chance: 10,
-            baseValue: 7
-        }
-    ],
-    level50: [
-		{
-		    type: "All attributes",
-		    minValue: 100,
-		    maxValue: 200,
-		    chance: 10,
-		    baseValue: 10
-		},
-        {
-            type: "Strength",
-            minValue: 200,
-            maxValue: 400,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Endurance",
-            minValue: 200,
-            maxValue: 400,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Agility",
-            minValue: 200,
-            maxValue: 400,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Dexterity",
-            minValue: 200,
-            maxValue: 400,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Wisdom",
-            minValue: 200,
-            maxValue: 400,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Intelligence",
-            minValue: 200,
-            maxValue: 400,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Luck",
-            minValue: 200,
-            maxValue: 400,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Evasion",
-            minValue: 20,
-            maxValue: 40,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Bonus damage",
-            minValue: 100,
-            maxValue: 200,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus armor",
-            minValue: 100,
-            maxValue: 200,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus life",
-            minValue: 2500,
-            maxValue: 10000,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Bonus mana",
-            minValue: 750,
-            maxValue: 2000,
-            chance: 10,
-            baseValue: 2
-        },
-        {
-            type: "Health regen",
-            minValue: 100,
-            maxValue: 200,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Mana regen",
-            minValue: 120,
-            maxValue: 300,
-            chance: 10,
-            baseValue: 1
-        },
-        {
-            type: "Magic find",
-            minValue: 120,
-            maxValue: 250,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Gold drop",
-            minValue: 120,
-            maxValue: 250,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Experience rate",
-            minValue: 120,
-            maxValue: 250,
-            chance: 10,
-            baseValue: 5
-        },
-        {
-            type: "Life gain on hit",
-            minValue: 50,
-            maxValue: 75,
-            chance: 10,
-            baseValue: 7
-        },
-        {
-            type: "Critical damage",
-            minValue: 80,
-            maxValue: 150,
-            chance: 10,
-            baseValue: 7
-        }
     ]
 };
 
@@ -2433,40 +1837,49 @@ giant.luck = function() {
 };
 
 human.raceAllStats = function() {
-    return 10;
+    return 20;
 };
 human.raceExpRate = function() {
-    return 20;
+    return 50;
 };
-human.raceDropRate = function() {
-    return 20;
+human.raceDropRate = function () {
+    return 50;
+};
+human.raceGoldDrop = function () {
+    return 50;
 };
 halfElf.raceAllStats = function() {
     return 10;
 };
 halfElf.raceGoldDrop = function() {
-    return 20;
+    return 30;
 };
-halfElf.raceDropRate = function() {
-    return 20;
+halfElf.raceDropRate = function () {
+    return 30;
 };
-dwarf.raceEvasion = function() {
+halfElf.raceExpRate = function () {
+    return 30;
+};
+halfElf.raceEvasion = function () {
     return 5;
 };
+dwarf.raceEvasion = function () {
+    return 5;
+};
+dwarf.raceDefense = function () {
+    return 20;
+};
 dwarf.raceGoldDrop = function() {
-    return 10;
+    return 100;
 };
 dwarf.raceDropRate = function() {
-    return 10;
+    return 50;
 };
 orc.raceDamage = function() {
     return 20;
 };
 orc.raceHealth = function() {
-    return 30;
-};
-orc.raceExpRate = function() {
-    return -50;
+    return 10;
 };
 elf.raceAccuracy = function() {
     return 100; //Never miss
@@ -2474,8 +1887,11 @@ elf.raceAccuracy = function() {
 elf.raceCriticalChance = function() {
     return 5;
 };
-elf.raceDamage = function() {
-    return -20;
+elf.raceEvasion = function () {
+    return 5;
+};
+elf.raceHealth = function () {
+    return -10;
 };
 halfing.raceEvasion = function() {
     return 10;
@@ -2483,23 +1899,32 @@ halfing.raceEvasion = function() {
 halfing.raceDamage = function() {
     return -10;
 };
-halfing.raceDefense = function() {
-    return -10;
+halfing.raceHealth = function () {
+    return -20;
+};
+halfing.raceCriticalChance = function () {
+    return 5;
 };
 sylph.raceManaRegen = function() {
     return 100;
 };
-sylph.raceMaxMana = function() {
+sylph.raceMaxMana = function () {
     return 50;
+};
+sylph.raceAllStats = function () {
+    return 30;
 };
 giant.raceDamage = function() {
-    return 50;
+    return 40;
 };
-giant.raceHealth = function() {
-    return 100;
+giant.raceHealth = function () {
+    return 30;
 };
-giant.raceEvasion = function() {
-    return "Can't evade";
+giant.raceMaxMana = function () {
+    return -50;
+};
+giant.raceAccuracy = function () {
+    return -25;
 };
 human.lore = function() {
     return '\"Humans possess exceptional drive and a great capacity to endure and expand, and as such are currently the dominant race in the world.\"';
@@ -2535,5 +1960,3 @@ characterRaces.halfing = halfing;
 characterRaces.sylph = sylph;
 characterRaces.giant = giant;
 
-
-CreateMonsterHtml();

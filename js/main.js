@@ -19,7 +19,7 @@ function Log(data) {
     document.getElementById('logConsole').innerHTML = logTemp;
 };
 
-var currentGameVersion = 1.5;
+var currentGameVersion = 1.7;
 var defaultValues = {
     properties: {
     }
@@ -44,6 +44,7 @@ var player = {
         autoBattle: false, // testing
     },
     properties: {
+        difficulty: 'Normal',
         potionInventory: [],
         //Minerals
         Thaumerite: 0,
@@ -79,7 +80,7 @@ var player = {
         staffSkill: 0,
         rangedSkill: 0,
         saveSlot: 0,
-        gameVersion: 1.5,
+        gameVersion: 1.7,
         heroRace: '',
         sound: 'off',
         hardcoreMode: false,
@@ -132,7 +133,7 @@ var player = {
     },
     functions: {
         maxBattleTurns: function(){
-            return Math.floor(10 + (player.functions.totalEndurance() / 10) + (player.functions.totalAgility() / 10) + (player.functions.totalDexterity() / 10))
+            return Math.floor(10 + (player.functions.totalEndurance() / 100) + (player.functions.totalAgility() / 100) + (player.functions.totalDexterity() / 100))
         },
         weapon: '',
         shield: '',
@@ -244,22 +245,8 @@ var player = {
         totalBlockAmount: function () {
             return (equippedItems.shield['Block amount']);
         },
-        totalEvasionChance: function () {
-            return (equippedItems.weapon['Evasion'] +
-                equippedItems.shield['Evasion'] +
-                equippedItems.chest['Evasion'] +
-                equippedItems.helmet['Evasion'] +
-                equippedItems.legs['Evasion'] +
-                equippedItems.boots['Evasion'] +
-                equippedItems.ring['Evasion'] +
-                equippedItems.amulet['Evasion'] +
-                equippedItems.talisman['Evasion']);
-        },
         totalLifeGainOnHit: function () {
             return (equippedItems.weapon['Life gain on hit']);
-        },
-        totalCriticalDamage: function () {
-            return (equippedItems.weapon['Critical damage']);
         },
         totalCriticalChance: function () {
             return (equippedItems.weapon['Critical chance']);
@@ -292,28 +279,6 @@ var player = {
                 equippedItems.ring['Bonus mana'] +
                 equippedItems.amulet['Bonus mana'] +
                 equippedItems.talisman['Bonus mana']);
-        },
-        totalHealthRegen: function () {
-            return (equippedItems.weapon['Health regen'] +
-                equippedItems.shield['Health regen'] +
-                equippedItems.chest['Health regen'] +
-                equippedItems.helmet['Health regen'] +
-                equippedItems.legs['Health regen'] +
-                equippedItems.boots['Health regen'] +
-                equippedItems.ring['Health regen'] +
-                equippedItems.amulet['Health regen'] +
-                equippedItems.talisman['Health regen']);
-        },
-        totalManaRegen: function () {
-            return (equippedItems.weapon['Mana regen'] +
-                equippedItems.shield['Mana regen'] +
-                equippedItems.chest['Mana regen'] +
-                equippedItems.helmet['Mana regen'] +
-                equippedItems.legs['Mana regen'] +
-                equippedItems.boots['Mana regen'] +
-                equippedItems.ring['Mana regen'] +
-                equippedItems.amulet['Mana regen'] +
-                equippedItems.talisman['Mana regen']);
         },
         totalMagicFind: function () {
             return (equippedItems.weapon['Magic find'] +
@@ -434,13 +399,13 @@ var player = {
             return evasion;
         },
         dropRate: function () {
-            return (1 + (((player.functions.totalLuck() / 5) + player.functions.totalMagicFind() + player.functions.bonusMagicFind() + player.properties.raceDropRate + player.buffs.ItemDrop.amount + bonusDrop) / 100));
+            return (1 + (((player.functions.totalLuck() / 5) + player.functions.totalMagicFind() + player.functions.bonusMagicFind() + player.properties.raceDropRate + player.buffs.ItemDrop.amount) / 100));
         },
         expRate: function () {
-            return (1 + ((player.functions.totalExperienceRate() + player.functions.bonusExpRate() + player.properties.raceExpRate + player.buffs.ExpGain.amount + bonusExp) / 100));
+            return (1 + ((player.functions.totalExperienceRate() + player.functions.bonusExpRate() + player.properties.raceExpRate + player.buffs.ExpGain.amount) / 100));
         },
         goldRate: function () {
-            return (1 + ((player.functions.totalGoldDrop() + player.functions.bonusGoldDrop() + player.properties.raceGoldDrop + player.buffs.GoldDrop.amount + bonusGold) / 100));
+            return (1 + ((player.functions.totalGoldDrop() + player.functions.bonusGoldDrop() + player.properties.raceGoldDrop + player.buffs.GoldDrop.amount) / 100));
         },
         inventory: function () {
             return Math.floor(30 + (player.functions.totalStrength() / 10) + player.properties.backpackUpgrade); //Add backpacks "new item type"
@@ -492,7 +457,7 @@ var player = {
                 (player.properties.baseIntelligence +
                 player.functions.totalIntelligenceBonus()) *
                 (player.functions.masteryIntelligence() + (player.properties.raceAllStats / 100) + ((player.buffs.Intelligence.amount + player.buffs.AllStats.amount)))) *
-                weaponSkillList.staff.spellSimulacrum.damage()) * bonusSpellDamage);
+                weaponSkillList.staff.spellSimulacrum.damage()));
         },
         masteryWisdom: function () {
             return (weaponMastery.staff.staffWisdom() *
@@ -502,7 +467,7 @@ var player = {
             return Math.floor(((
                 player.properties.baseWisdom +
                 player.functions.totalWisdomBonus()) *
-                (player.functions.masteryWisdom() + (player.properties.raceAllStats / 100) + ((player.buffs.Wisdom.amount + player.buffs.AllStats.amount)))) * bonusSpellDamage);
+                (player.functions.masteryWisdom() + (player.properties.raceAllStats / 100) + ((player.buffs.Wisdom.amount + player.buffs.AllStats.amount)))));
         },
         totalLuck: function () {
             return Math.floor((
@@ -513,7 +478,7 @@ var player = {
             return Math.floor((((475 + player.functions.totalLifeBonus() + (player.functions.totalEndurance() * 5)) * (1 + (player.functions.bonusHealth() / 100)))) * (1 + (player.properties.raceHealth / 100)));
         },
         hpregen: function () {
-            return Math.floor((20 + (player.functions.totalEndurance() / 3) + player.functions.totalHealthRegen()) * bonusRegen);
+            return Math.floor((20 + (player.functions.totalEndurance() / 3)));
         },
         //Mana
         maxMana: function () {
@@ -523,18 +488,18 @@ var player = {
                 player.functions.totalIntelligence() * 0.1) * (1 + (player.functions.bonusMana() / 100))) * (1 + (player.properties.raceMaxMana / 100)));
         },
         manaRegen: function () {
-            return (((((player.functions.totalWisdom() / 10)) * (1 + (player.functions.totalManaRegen() / 100))) * (1 + (player.properties.raceManaRegen) / 100)) * bonusRegen);
+            return (((((player.functions.totalWisdom() / 10))) * (1 + (player.properties.raceManaRegen) / 100)));
         },
         //Damage
         minDamage: function () {
             return Math.floor((((
-                3 + (player.functions.totalStrength() * 0.4) +
-                equippedItems.weapon.MinDamage + weaponSkillList.sword.swordFinesse.damage()) * (1 + (player.functions.bonusDamage() / 100))) * bonusDamage) * (1 + (player.properties.raceDamage / 100)));
+                5 + (player.functions.totalStrength() * 0.4) +
+                equippedItems.weapon.MinDamage + weaponSkillList.sword.swordFinesse.damage()) * (1 + (player.functions.bonusDamage() / 100)))) * (1 + (player.properties.raceDamage / 100)));
         },
         maxDamage: function () {
             return Math.floor((((
-                5 + (player.functions.totalStrength() * 0.6) +
-                equippedItems.weapon.MinDamage + weaponSkillList.sword.swordFinesse.damage()) * (1 + (player.functions.bonusDamage() / 100))) * bonusDamage) * (1 + (player.properties.raceDamage / 100)));
+                7 + (player.functions.totalStrength() * 0.6) +
+                equippedItems.weapon.MinDamage + weaponSkillList.sword.swordFinesse.damage()) * (1 + (player.functions.bonusDamage() / 100)))) * (1 + (player.properties.raceDamage / 100)));
         },
         //Secondary
         accuracy: function () {
@@ -542,7 +507,7 @@ var player = {
                 return 200;
             }
             else {
-                return Math.floor(95 + (player.functions.totalAgility() * 0.02 + player.functions.totalLuck() * 0.01));
+                return Math.floor((95 + player.properties.raceAccuracy) + (player.functions.totalAgility() * 0.02 + player.functions.totalLuck() * 0.01));
             }
         },
         defense: function () {
@@ -555,11 +520,11 @@ var player = {
                 return 0;
             }
             else {
-                if (((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100))) >= 75) {
+                if (((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)))) * (1 + (player.functions.bonusEvasion() / 100))) >= 75) {
                     return 75;
                 }
                 else {
-                    return ((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)) * (1 + (player.functions.totalEvasionChance() / 100)))) * (1 + (player.functions.bonusEvasion() / 100)));
+                    return ((((5 + (player.properties.raceEvasion) + (player.functions.totalAgility() * 0.03 + player.functions.totalLuck() * 0.01)))) * (1 + (player.functions.bonusEvasion() / 100)));
                 }
             };
         },
@@ -572,7 +537,7 @@ var player = {
             }
         },
         criticalDamage: function () {
-            return ((1.1 + (player.functions.totalDexterity()) * 0.005) + player.functions.totalCriticalDamage());
+            return ((1.1 + (player.functions.totalDexterity()) * 0.005) + (weaponSkillList.axe.butchersInsight.damage() / 100));
         },
         blockChance: function () {
             if (Math.floor(weaponSkillList.sword.parryAndRiposte.blockChance() + player.functions.totalBlockChance()) >= 40) {
@@ -616,11 +581,8 @@ function createEquippedItemsObject(typeOfTheItem) {
                         equippedItems[itemType]["Wisdom"] = 0;
                         equippedItems[itemType]["Intelligence"] = 0;
                         equippedItems[itemType]["Luck"] = 0;
-                        equippedItems[itemType]["Evasion"] = 0;
                         equippedItems[itemType]["Bonus life"] = 0;
                         equippedItems[itemType]["Bonus mana"] = 0;
-                        equippedItems[itemType]["Health regen"] = 0;
-                        equippedItems[itemType]["Mana regen"] = 0;
                         equippedItems[itemType]["Magic find"] = 0;
                         equippedItems[itemType]["Gold drop"] = 0;
                         equippedItems[itemType]["Experience rate"] = 0;
@@ -635,7 +597,6 @@ function createEquippedItemsObject(typeOfTheItem) {
                             equippedItems[itemType]["defense"] = 0;
                         } else if (itemType === "weapon") {
                             equippedItems[itemType]["Life gain on hit"] = 0;
-                            equippedItems[itemType]["Critical damage"] = 0;
                             equippedItems[itemType]["Critical chance"] = 0;
                             equippedItems[itemType]["Bonus damage"] = 0;
                             equippedItems[itemType]["MinDamage"] = 0;
@@ -689,16 +650,16 @@ function disableButtons() {
     }
 };
 
-function attack(monsterStat) {
+function attack(monster) {
     battleTurn = 1;
-    var monsterStats = monsterStat.Stats;
+    var monsterStats = monsterList[monster];
     while (battleTurn > 0 && battleTurn <= player.functions.maxBattleTurns()) {
         if (monsterStats.hp >= 1 && player.properties.isDead === false) {
-            playerAttack(monsterStat, monsterStats);
+            playerAttack(monsterStats, monster);
             if (monsterStats.hp < 1) {
-                monsterKilled(monsterStat, monsterStats);
+                monsterKilled(monsterStats);
             } else {
-                monsterAttack(monsterStat, monsterStats);
+                monsterAttack(monsterStats);
             };
         }
         else {
@@ -721,21 +682,21 @@ function DrawBattle() {
 };
 
 //Player miss/hit chance
-function playerAttack(monsterStat, monsterStats) {
-    document.getElementById("manaCost").innerHTML = monsterStats.manaCost + " Mana/10s";
+function playerAttack(monsterStats, monster) {
+    document.getElementById("manaCost").innerHTML = monsterStats.manaCost() + " Mana/10s";
     if (player.autoBattle.autoBattle === true && player.autoBattle.isAuto === false) {
-        if (player.functions.maxMana() >= monsterStats.manaCost) {
+        if (player.functions.maxMana() >= monsterStats.manaCost()) {
             player.autoBattle.isAuto = true;
-            autoAttack(monsterStat, monsterStats);
+            autoAttack(monster);
         }
         else {
-            document.getElementById("manaCost").innerHTML = "You don't have enough mana. You need: " + monsterStats.manaCost + " mana.";
+            document.getElementById("manaCost").innerHTML = "You don't have enough mana. You need: " + monsterStats.manaCost() + " mana.";
         }
     };
         var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
         var randomHitChance = Math.random();
         if (playerHitChance > randomHitChance) { // accuracy, if you miss then do "nothing" so it's "else { };"
-            playerCriticalChance(monsterStat, monsterStats);
+            playerCriticalChance(monsterStats);
             accuracyRate += 1;
         }
         else {
@@ -743,55 +704,52 @@ function playerAttack(monsterStat, monsterStats) {
 };
 
 //player critical chance
-function playerCriticalChance(monsterStat, monsterStats) {
+function playerCriticalChance(monsterStats) {
     var playerCriticalChance = player.functions.criticalChance() / 100;
 
     var randomCritChance = Math.random();
 
     if (playerCriticalChance > randomCritChance) {
-        playerCriticalDamage(monsterStat, monsterStats);
+        playerCriticalDamage(monsterStats);
         criticalRate += 1;
     }
     else {
-        playerDamage(monsterStat, monsterStats);
+        playerDamage(monsterStats);
     };
 };
 
 //player critical damage calculation
-function playerCriticalDamage(monsterStat, monsterStats) {
+function playerCriticalDamage(monsterStats) {
     var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * player.functions.criticalDamage() * (10 / (10 + monsterStats.def)));
+    damage = Math.floor(damage * player.functions.criticalDamage() * (500 / (500 + monsterStats.def())));
     if (damage >= 1) {
-        playerDamageDeal(damage, monsterStat, monsterStats);
+        playerDamageDeal(damage, monsterStats);
     };
 };
 
 //player normal damage calculation
-function playerDamage(monsterStat, monsterStats) {
+function playerDamage(monsterStats) {
     var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * (1000 / (1000 + monsterStats.def)));
+    damage = Math.floor(damage * (500 / (500 + monsterStats.def())));
     if (damage >= 1) {
-        playerDamageDeal(damage, monsterStat, monsterStats);
+        playerDamageDeal(damage, monsterStats);
     };
 };
 
 //player damage deal (base or critical)
-function playerDamageDeal(damage, monsterStat, monsterStats) {
+function playerDamageDeal(damage, monsterStats) {
     for (var weapon in weaponSkillList) {
         if (weaponSkillList.hasOwnProperty(weapon)) {
             var weaponSkillStat = weaponSkillList[weapon];
             for (var skill in weaponSkillStat) {
                 if (weaponSkillStat.hasOwnProperty(skill)) {
                     var skillDamage = weaponSkillStat[skill];
-                    if (skillDamage.charge >= 1) {
                         if (skillDamage.type === "damage") {
                             if (skillDamage.type2 === "physical") {
                                 damage += skillDamage.damage();
-                                skillDamage.charge -= 1;
                             }
                             else if (skillDamage.type2 === "magical") {
                                 magicDamage += skillDamage.damage();
-                                skillDamage.charge -= 1;
                             }
                         };
                         if (skillDamage.type === "magicDamageBuff") {
@@ -802,12 +760,7 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
                         }
                         if (skillDamage.type === "buff") {
                             damage += skillDamage.damage();
-                            skillDamage.charge -= 1;
                         };
-                    }
-                    else if (skillDamage.charge < 1) {
-                        skillDamage.charge += skillDamage.cooldown;
-                    };
                 };
             };
         };
@@ -824,31 +777,31 @@ function playerDamageDeal(damage, monsterStat, monsterStats) {
     magicDamageDealt += magicDamage;
     magicDamage = 0;
     damageDealt += damage;
-    weaponSkill(monsterStat, monsterStats);
+    weaponSkill(monsterStats);
     //document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     //Add more stuff like "bonus elemental damage from passive skills or bonus weapon damage
 };
 
 //monster hit chance
-function monsterAttack(monsterStat, monsterStats) {
+function monsterAttack(monsterStats) {
     var monsterHitChance = (monsterStats.acc - player.functions.evasion()) / 100;
     var randomHitChance = Math.random();
     if (monsterHitChance > randomHitChance) {
-        monsterDmg(monsterStat, monsterStats);
+        monsterDmg(monsterStats);
     };
 };
 
 //monster damage calculation
-function monsterDmg(monsterStat, monsterStats) {
-    monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg - monsterStats.minDmg + 1)) + monsterStats.minDmg;
-    monsterDamage = Math.floor(monsterDamage * (1000 / (1000 + player.functions.defense())));
+function monsterDmg(monsterStats) {
+    monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg() - monsterStats.minDmg() + 1)) + monsterStats.minDmg();
+    monsterDamage = Math.floor(monsterDamage * (500 / (500 + player.functions.defense())));
     if (monsterDamage >= 1) {
-        monsterDamageDeal(monsterDamage, monsterStat, monsterStats);
+        monsterDamageDeal(monsterDamage, monsterStats);
     };
 };
 
 //monster damage deal (base or critical)
-function monsterDamageDeal(monsterDamage, monsterStat, monsterStats) {
+function monsterDamageDeal(monsterDamage, monsterStats) {
     var randomCounterNumber = Math.floor((Math.random() * 100) + 1);
     var randomBlockNumber = Math.floor((Math.random() * 100) + 1);
     if (randomCounterNumber <= player.functions.counterChance()) {
@@ -871,15 +824,15 @@ function monsterDamageDeal(monsterDamage, monsterStat, monsterStats) {
     document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
     //document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     if (player.properties.health < 1) {
-        playerDead(monsterStat, monsterStats);
+        playerDead(monsterStats);
     };
     if (monsterStats.hp < 1) {
-        monsterKilled(monsterStat, monsterStats);
+        monsterKilled(monsterStats);
     };
 };
 
 //player dead function
-function playerDead(monsterStat, monsterStats) {
+function playerDead(monsterStats) {
     if (player.properties.hardcoreMode === false) {
         var goldLost = player.properties.goldLost;
         var expLost = player.properties.expLost;
@@ -898,7 +851,6 @@ function playerDead(monsterStat, monsterStats) {
         Log("<span id=\"playerDead\" class =\"bold\" style=\"color:red; display:none;\">You have died." + "<br />" + "</span>");
         Log("<span id=\"playerDead2\" class =\"bold\" style=\"color:red; display:none;\">You need to wait 5 seconds before you can fight again." + "<br />" + "</span>");
         battleTurn = -1;
-        skillReCharge();
         displayLogInfo();
         deathLog();
         updateHtml();
@@ -912,23 +864,22 @@ function playerDead(monsterStat, monsterStats) {
 };
 
 //monster kill function
-function monsterKilled(monsterStat, monsterStats) {
+function monsterKilled(monsterStats) {
     monsterStats.hp = monsterStats.maxHp;
-    monsterExperience(monsterStat, monsterStats);
+    monsterExperience(monsterStats);
     monsterStats.killCount++;
     displayLogInfo();
+    quest();
     battleTurn = -1;
-    skillReCharge();
-    //document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
 };
 
 //Weapon skill experience
-function weaponSkill(monsterStat, monsterStats) {
-    // if (monsterStat.type === boss){ give x5 experience} else if normal {x1 exp}
-    if (monsterStat.Stats.level > player.properties.level) {
+function weaponSkill(monsterStats) {
+    // if (monsterStats.type === boss){ give x5 experience} else if normal {x1 exp}
+    if (monsterStats.level > player.properties.level) {
         var expgain = 3;
     }
-    else if (monsterStat.level === player.properties.level) {
+    else if (monsterStats.level === player.properties.level) {
         var expgain = 2;
     }
     else {
@@ -982,14 +933,9 @@ function updateBar() {
 };
 
 //experience gained from killing a monster
-function monsterExperience(monsterStat, monsterStats) {
-    if (player.properties.level > monsterStats.level + 2) {
-        var expGain = player.properties.expGain;
-        expGain = ((monsterStats.baseExp / (player.properties.level / monsterStats.level)) * player.functions.expRate() / 2);
-    }
-    else {
-        expGain = (monsterStats.baseExp / (player.properties.level / monsterStats.level)) * player.functions.expRate();
-    };
+function monsterExperience(monsterStats) {
+    var expGain = monsterStats.baseExp();
+    var level = player.properties.level;
     if (player.properties.experience < player.properties.maxExperience) {
         player.properties.experience = Math.floor(player.properties.experience + expGain);
     };
@@ -998,35 +944,20 @@ function monsterExperience(monsterStat, monsterStats) {
         levelUp();
         player.properties.stats += 10;
         player.properties.experience = player.properties.experience - player.properties.maxExperience;
-        player.properties.maxExperience = Math.floor(player.properties.maxExperience * 1.5);
+        var maxExp = getTen(level);
+        player.properties.maxExperience += maxExp * 10;
         Log('<span id=\"levelUpLog\" style=\"color:blue; display:none;\" class =\"bold\">Level up!' + "<br />" + "</span>");
         levelUpLog();
     }
     else {
         Log('<span id=\"expGain\" class =\"bold\" style=\"display:none;\">You gain:' + Math.floor(expGain) + " experience!" + "<br />" + "</span>");
     }
-    player.properties.expGain = expGain;
-    monsterGold(monsterStat, monsterStats);
-};
-
-//Player skill recharge
-function skillReCharge() {
-    for (var weapon in weaponSkillList) {
-        if (weaponSkillList.hasOwnProperty(weapon)) {
-            var weaponSkill = weaponSkillList[weapon];
-            for (var skill in weaponSkill) {
-                if (weaponSkill.hasOwnProperty(skill)) {
-                    var rechargedSkill = weaponSkill[skill];
-                    rechargedSkill.charge = rechargedSkill.maxCharge;
-                };
-            };
-        };
-    };
+    monsterGold(monsterStats);
 };
 
 
 //gold gained from killing a monster
-function monsterGold(monsterStat, monsterStats) {
+function monsterGold(monsterStats) {
     var goldDrop = player.properties.goldDrop;
     var monsterLvl = monsterStats.level;
     goldDrop = 0;
@@ -1544,61 +1475,6 @@ function handleClick() {
     hardcoreMode = document.getElementById("hardcoreMode").checked;
     player.autoBattle.autoBattle = document.getElementById("autoBattle").checked;
 };
-var eventDay = '';
-var bonusExp = 1;
-var bonusGold = 1;
-var bonusDrop = 1;
-var bonusRegen = 1; //multiplier both health and mana
-var bonusDamage = 1; //Min and Max damage bonus ~50%...
-var bonusSpellDamage = 1; //Add spell power with 50% bonus, currently affect int/wis 20% bonus
-function weekDayEvent() {
-    var eventDate = new Date();
-    var day = eventDate.getDay();
-    var description = '';
-    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    if (day === 0) {
-        eventDay = days[day];
-        description = "base exp/gold/drop rate x2";
-        bonusExp = 2;
-        bonusGold = 2;
-        bonusDrop = 2;
-    }
-    else if (day === 1) {
-        eventDay = days[day];
-        description = "Hp/mana regen x2";
-        bonusRegen = 2;
-    }
-    else if (day === 2) {
-        eventDay = days[day];
-        description = "Damage 50%";
-        bonusDamage = 1.5;
-    }
-    else if (day === 3) {
-        eventDay = days[day];
-        description = "Int/Wis + 20%";
-        bonusSpellDamage = 1.2;
-    }
-    else if (day === 4) {
-        eventDay = days[day];
-        description = "Exp/Gold x2";
-        bonusExp = 2;
-        bonusGold = 2;
-    }
-    else if (day === 5) {
-        eventDay = days[day];
-        description = "Gold/Drop x2";
-        bonusGold = 2;
-        bonusDrop = 2;
-    }
-    else if (day === 6) {
-        eventDay = days[day];
-        description = "Drop/Exp x2";
-        bonusExp = 2;
-        bonusDrop = 2;
-    };
-    document.getElementById("date").innerHTML += eventDay + ": " + description;
-};
-weekDayEvent();
 
 function changeRace(raceName) {
     var characterRace = '';
@@ -1778,4 +1654,29 @@ function getNumberMultiplierofFive(n) {
         return Math.floor(n / 5.0) * 5;
     else
         return 1;
-}
+};
+
+function getTen(n) {
+    if (n > 8)
+        return Math.ceil(n / 8.0) * 10;
+    else if (n < 0)
+        return Math.floor(n / 8.0) * 10;
+    else
+        return 10;
+};
+var monsterKillCount = [];
+function changeDifficulty(type) {
+    for (var key in monsterList) {
+        var monster = monsterList[key];
+        monsterKillCount.push(monster.killCount);
+    }
+    player.properties.difficulty = type;
+    MakeMonsterList();
+    for (var key in monsterList) {
+        var monster = monsterList[key];
+        var monsterNumber = (monster.id - 1)
+        monster.killCount = monsterKillCount[monsterNumber];
+    };
+    CreateMonsterHtml();
+    document.getElementById('gameDifficulty').innerHTML = "Current Difficulty: " + type;
+};

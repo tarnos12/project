@@ -125,10 +125,10 @@ span.profession {
 
 .buttonDiv {
     height: 30%;
-    left: 30%;
+    left: 40%;
     position: absolute;
     top: 40%;
-    width: 30%;
+    width: 60%;
     z-index: 2;
 }
 

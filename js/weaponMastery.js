@@ -7,11 +7,11 @@
         this.image = image;
         this.name = name;
     };
-    var sword = new weaponSkillType(0, 0, 10, "sword", "Sword");
-    var axe = new weaponSkillType(0, 0, 10, "axe", "Axe");
-    var mace = new weaponSkillType(0, 0, 10, "mace", "Mace");
-    var staff = new weaponSkillType(0, 0, 10, "staff", "Staff");
-    var ranged = new weaponSkillType(0, 0, 10, "ranged", "Ranged");
+    var sword = new weaponSkillType(1, 0, 10, "sword", "Sword");
+    var axe = new weaponSkillType(1, 0, 10, "axe", "Axe");
+    var mace = new weaponSkillType(1, 0, 10, "mace", "Mace");
+    var staff = new weaponSkillType(1, 0, 10, "staff", "Staff");
+    var ranged = new weaponSkillType(1, 0, 10, "ranged", "Ranged");
 
     sword.strength = function() {
         return (1 + (this.level * 1.6) / 100);
