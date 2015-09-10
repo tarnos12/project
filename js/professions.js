@@ -1045,7 +1045,7 @@ function craftingBackground() {
 
 function craftItem(itemType, itemSubType, itemQuality) {
     var profession = playerProfession.crafting;
-    var itemLevel = player.properties.level + playerProfession.crafting.level;
+    var itemLevel = (player.properties.level + (playerProfession.crafting.level * 3));
     for (var i = 0; i < profession[itemQuality]()[0].type.length; i++) {
         var mineralType = profession[itemQuality]()[0].type[i];
         var mineralCost = profession[itemQuality]()[0][itemType][0][itemSubType][i];
