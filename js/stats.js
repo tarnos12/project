@@ -147,7 +147,6 @@ function levelUp() {
             };
         };
     };
-    quest();
     CreateMonsterHtml();
     updateHtml();
     CreatePlayerSkillsHtml();
@@ -339,13 +338,13 @@ function upgradeLuck(event) {
     updateHtml();
 };
 
-function autoAttack(monster, monsterStats) {
+function autoAttack(monster) {
     disableButtons();
-    var manaCost = monster.Stats.manaCost;
+    var manaCost = monsterList[monster].manaCost();
     var autoBattle = window.setInterval(function() {
         if (player.properties.mana >= manaCost && player.autoBattle.autoBattle === true) {
             player.properties.mana -= manaCost;
-            attack(monster, monsterStats);
+            attack(monster);
         } else if (player.autoBattle.autoBattle === false) {
             clearInterval(autoBattle);
             player.autoBattle.isAuto = false;

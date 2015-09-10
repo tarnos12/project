@@ -67,8 +67,8 @@ function quest() {
     var varikElement = "";
     var forestElement = "";
     var ozJotnarElement = "";
-    if (player.properties.level >= 2) {
-        monsterList.VarikSoldier.Stats.isShown = true;
+    if (monsterList.monster001.killCount >= 10) {
+        monsterList.monster002.isShown = true;
         if (monsterUnlock.VarikSoldier === false) {
             varikElement = "<h3><b>Varik Soldiers</b></h3><br />" +
                 "<p class=\"story\">After your victory over the grunts you notice another group approaching." +
@@ -102,8 +102,8 @@ function quest() {
         //$('#dialogTest').dialog('open');//Open the dialog...
         monsterUnlock.VarikSoldier = true;
     };
-    if (player.properties.level >= 3) {
-        monsterList.VarikMarksmen.Stats.isShown = true;
+    if (monsterList.monster002.killCount >= 10) {
+        monsterList.monster003.isShown = true;
         if (monsterUnlock.VarikMarksmen === false) {
             varikElement = "<h3><b>Varik Marksmen</b></h3><br />" +
                 "<p class=\"story\">\"What in the name Asmodeus are you? Why won't you die?\"" + "<br /><br />" +
@@ -118,8 +118,8 @@ function quest() {
         };
         monsterUnlock.VarikMarksmen = true;
     };
-    if (player.properties.level >= 4) {
-        monsterList.VarikVulture.Stats.isShown = true;
+    if (monsterList.monster003.killCount >= 10) {
+        monsterList.monster004.isShown = true;
         if (monsterUnlock.VarikVulture === false) {
             varikElement = "<h3><b>Varik Vulture</b></h3><br />" +
                 "<p class=\"story\">You might have been hit a few times but you are quickly discovering that immortality is a pretty huge advantage." +
@@ -133,8 +133,8 @@ function quest() {
         };
         monsterUnlock.VarikVulture = true;
     };
-    if (player.properties.level >= 5) {
-        monsterList.VarikEvader.Stats.isShown = true;
+    if (monsterList.monster004.killCount >= 10) {
+        monsterList.monster005.isShown = true;
         if (monsterUnlock.VarikEvader === false) {
             varikElement = "<h3><b>Varik Evader</b></h3><br />" +
                 "<p class=\"story\">\"Haha, that was fun, little pup. Go on and get killed already. Let me die alone!\"" + "<br /><br />" +
@@ -152,8 +152,8 @@ function quest() {
         };
         monsterUnlock.VarikEvader = true;
     };
-    if (player.properties.level >= 6) {
-        monsterList.VariksLiar.Stats.isShown = true;
+    if (monsterList.monster005.killCount >= 10) {
+        monsterList.monster006.isShown = true;
         if (monsterUnlock.VariksLiar === false) {
             varikElement = "<h3><b>Variks Liar</b></h3><br />" +
                 "<p class=\"story\">The Evader thought he had you but it seems that immortality isn't your only gift," +
@@ -169,8 +169,8 @@ function quest() {
         };
         monsterUnlock.VariksLiar = true;
     };
-    if (player.properties.level >= 7) {
-        monsterList.VariksQueen.Stats.isShown = true;
+    if (monsterList.monster006.killCount >= 10) {
+        monsterList.monster007.isShown = true;
         if (monsterUnlock.VariksQueen === false) {
             varikElement = "<h3><b>Variks Queen</b></h3><br />" +
                 "<p class=\"story\">The Liar had some nasty tricks up his sleeve," +
@@ -189,8 +189,8 @@ function quest() {
         };
         monsterUnlock.VariksQueen = true;
     };
-    if (player.properties.level >= 8) {
-        monsterList.LordVarik.Stats.isShown = true;
+    if (monsterList.monster007.killCount >= 1) {
+        monsterList.monster008.isShown = true;
         if (monsterUnlock.LordVarik === false) {
             varikElement = "<h3><b>Lord Varik</b></h3><br />" +
                 "<p class=\"story\">She lay there bleeding out, \"You are going to burn, even your immortality won't protect you from judgment.\"" +
@@ -209,8 +209,8 @@ function quest() {
         };
         monsterUnlock.LordVarik = true;
     };
-    if (player.properties.level >= 9) {
-        monsterList.ToxicFlies.Stats.isShown = true;
+    if (monsterList.monster008.killCount >= 1) {
+        monsterList.monster009.isShown = true;
         monsterAreas[1].isUnlocked = true;
         if (monsterUnlock.ToxicFlies === false) {
             varikElement = "<h3><b>The End of Lord Varik</b></h3><br />" +
@@ -245,8 +245,8 @@ function quest() {
         };
         monsterUnlock.ToxicFlies = true;
     };
-    if (player.properties.level >= 10) {
-        monsterList.Stalker.Stats.isShown = true;
+    if (monsterList.monster009.killCount >= 10) {
+        monsterList.monster010.isShown = true;
         if (monsterUnlock.Stalker === false) {
             forestElement = "<h3><b>Stalker</b></h3><br />" +
                 "<p class=\"story\">It took the rest of the day and part of the night to clear out the rest of the flies." +
@@ -260,8 +260,8 @@ function quest() {
         };
         monsterUnlock.Stalker = true;
     };
-    if (player.properties.level >= 11) {
-        monsterList.AlphaStalker.Stats.isShown = true;
+    if (monsterList.monster010.killCount >= 10) {
+        monsterList.monster011.isShown = true;
         if (monsterUnlock.AlphaStalker === false) {
             forestElement = "<h3><b>Alpha Stalker</b></h3><br />" +
                 "<p class=\"story\">Voice: \"What a poor doggy. Did you have to kill it? Try to tame the next one.\"<br /><br />" +
@@ -281,8 +281,8 @@ function quest() {
         };
         monsterUnlock.AlphaStalker = true;
     };
-    if (player.properties.level >= 12) {
-        monsterList.StalkerPack.Stats.isShown = true;
+    if (monsterList.monster011.killCount >= 10) {
+        monsterList.monster012.isShown = true;
         if (monsterUnlock.StalkerPack === false) {
             forestElement = "<h3><b>Stalker Pack</b></h3><br />" +
                 "<p class=\"story\">After you managed to put the beast down you can tell that the battle isn't over yet." +
@@ -295,8 +295,8 @@ function quest() {
         };
         monsterUnlock.StalkerPack = true;
     };
-    if (player.properties.level >= 13) {
-        monsterList.JumpingSpider.Stats.isShown = true;
+    if (monsterList.monster012.killCount >= 10) {
+        monsterList.monster013.isShown = true;
         if (monsterUnlock.JumpingSpider === false) {
             forestElement = "<h3><b>Jumping Spider</b></h3><br />" +
                 "<p class=\"story\">The sun has risen and you stand amongst the dead pack of Stalkers but just as you begin to rest another creature comes." +
@@ -313,8 +313,8 @@ function quest() {
         };
         monsterUnlock.JumpingSpider = true;
     };
-    if (player.properties.level >= 14) {
-        monsterList.SpiderBeast.Stats.isShown = true;
+    if (monsterList.monster013.killCount >= 10) {
+        monsterList.monster014.isShown = true;;
         if (monsterUnlock.SpiderBeast === false) {
             forestElement = "<h3><b>Spider Beast</b></h3><br />" +
                 "<p class=\"story\">Forget last night, today was unbearable." +
@@ -336,8 +336,8 @@ function quest() {
         };
         monsterUnlock.SpiderBeast = true;
     };
-    if (player.properties.level >= 15) {
-        monsterList.Narsus.Stats.isShown = true;
+    if (monsterList.monster014.killCount >= 10) {
+        monsterList.monster015.isShown = true;
         if (monsterUnlock.Narsus === false) {
             forestElement = "<h3><b>Narsus</b></h3><br />" +
                 "<p class=\"story\">That was a very angry spider and you are quite sure why." +
@@ -369,8 +369,8 @@ function quest() {
         };
         monsterUnlock.Narsus = true;
     };
-    if (player.properties.level >= 16) {
-        monsterList.JotunnScout.Stats.isShown = true;
+    if (monsterList.monster015.killCount >= 1) {
+        monsterList.monster016.isShown = true;
         if (monsterUnlock.JotunnScout === false) {
             forestElement = "<h3><b>Jotunn Scout</b></h3><br />" +
                 "<p class=\"story\">She just started laughing and didn't stop until her throat filled with blood, then she coughed it out and laughed some more." +
@@ -392,8 +392,8 @@ function quest() {
         };
         monsterUnlock.JotunnScout = true;
     };
-    if (player.properties.level >= 17) {
-        monsterList.JotnarAmbushSquad.Stats.isShown = true;
+    if (monsterList.monster016.killCount >= 1) {
+        monsterList.monster017.isShown = true;
         monsterAreas[2].isUnlocked = true;
         if (monsterUnlock.JotnarAmbushSquad === false) {
             ozJotnarElement = "<p class=\"story\">Why is that wherever you go someone wants to kill you?" +
@@ -430,8 +430,8 @@ function quest() {
         };
         monsterUnlock.JotnarAmbushSquad = true;
     };
-    if (player.properties.level >= 18) {
-        monsterList.LongRangeExterminationSquad.Stats.isShown = true;
+    if (monsterList.monster017.killCount >= 10) {
+        monsterList.monster018.isShown = true;
         if (monsterUnlock.LongRangeExterminationSquad === false) {
             ozJotnarElement = "<h3><b>Long Range Extermination Squad</b></h3><br />" +
                 "<p class=\"story\">After stepping on a hundred caltrops," +
@@ -451,8 +451,8 @@ function quest() {
         };
         monsterUnlock.LongRangeExterminationSquad = true;
     };
-    if (player.properties.level >= 19) {
-        monsterList.BerserkerShockSquad.Stats.isShown = true;
+    if (monsterList.monster018.killCount >= 10) {
+        monsterList.monster019.isShown = true;
         if (monsterUnlock.BerserkerShockSquad === false) {
             ozJotnarElement = "<h3><b>Berserker ShockSquad</b></h3><br />" +
                 "<p class=\"story\">They were pretty far away and you got hit a couple of times;<br />" +
@@ -475,8 +475,8 @@ function quest() {
         };
         monsterUnlock.BerserkerShockSquad = true;
     };
-    if (player.properties.level >= 20) {
-        monsterList.BerserkerShockSquadCaptainRendGrest.Stats.isShown = true;
+    if (monsterList.monster019.killCount >= 10) {
+        monsterList.monster020.isShown = true;
         if (monsterUnlock.BerserkerShockSquadCaptainRendGrest === false) {
             ozJotnarElement = "<h3><b>Berserker Shock Squad Captain, Rend Grest</b></h3><br />" +
                 "<p class=\"story\">They were strong like gorillas and fast like lightning but you are immortal and could taking a lot more damage than they could dish out.<br />" +
@@ -494,8 +494,8 @@ function quest() {
         };
         monsterUnlock.BerserkerShockSquadCaptainRendGrest = true;
     };
-    if (player.properties.level >= 21) {
-        monsterList.ArtillerySquad.Stats.isShown = true;
+    if (monsterList.monster020.killCount >= 10) {
+        monsterList.monster021.isShown = true;
         if (monsterUnlock.ArtillerySquad === false) {
             ozJotnarElement = "<h3><b>Artillery Squad #1-9</b></h3><br />" +
                 "<p class=\"story\">Five days. Five days to beat that monster.  He never tired, never stopped, and was always aggressive.<br />" +
@@ -520,8 +520,8 @@ function quest() {
         };
         monsterUnlock.ArtillerySquad = true;
     };
-    if (player.properties.level >= 22) {
-        monsterList.JottunMainInfantry.Stats.isShown = true;
+    if (monsterList.monster021.killCount >= 10) {
+        monsterList.monster022.isShown = true;
         if (monsterUnlock.JottunMainInfantry === false) {
             ozJotnarElement = "<h3><b>Jottun Main Infantry</b></h3><br />" +
                 "<p class=\"story\">Your body is pockmarked with dozens of holes from the weapons they were holding.<br />" +
@@ -544,8 +544,8 @@ function quest() {
         };
         monsterUnlock.JottunMainInfantry = true;
     };
-    if (player.properties.level >= 23) {
-        monsterList.RegentCairLorn.Stats.isShown = true;
+    if (monsterList.monster022.killCount >= 10) {
+        monsterList.monster023.isShown = true;
         if (monsterUnlock.RegentCairLorn === false) {
             ozJotnarElement = "<h3><b>Regent Cair Lorn</b></h3><br />" +
                 "<p class=\"story\">Voice: \"I can't believe you actually fought them all!\"<br /><br />" +
@@ -566,8 +566,8 @@ function quest() {
         };
         monsterUnlock.RegentCairLorn = true;
     };
-    if (player.properties.level >= 24) {
-        monsterList.DeepKingTarNuk.Stats.isShown = true;
+    if (monsterList.monster023.killCount >= 1) {
+        monsterList.monster024.isShown = true;
         if (monsterUnlock.DeepKingTarNuk === false) {
             ozJotnarElement = "<h3><b>Deep King Tar Nuk</b></h3><br />" +
                 "<p class=\"story\">Cair Lorn: \"Stop you win, follow me. Be quick about it!\"<br />" +
@@ -590,8 +590,8 @@ function quest() {
         };
         monsterUnlock.DeepKingTarNuk = true;
     };
-    if (player.properties.level >= 25) {
-        monsterList.DepthCrawler.Stats.isShown = true;
+    if (monsterList.monster024.killCount >= 1) {
+        monsterList.monster025.isShown = true;
         monsterAreas[3].isUnlocked = true;
         if (monsterUnlock.DepthCrawler === false) {
             ozJotnarElement = "<h1><b>Oz Jotnar Epilogue</b></h1><br />" +
@@ -629,101 +629,101 @@ function quest() {
         };
         monsterUnlock.DepthCrawler = true;
     };
-    if (player.properties.level >= 26) {
-        monsterList.FadingGoblins.Stats.isShown = true;
+    if (monsterList.monster025.killCount >= 10) {
+        monsterList.monster026.isShown = true;
     };
-    if (player.properties.level >= 27) {
-        monsterList.StarBriteGolems.Stats.isShown = true;
+    if (monsterList.monster026.killCount >= 10) {
+        monsterList.monster027.isShown = true;
     };
-    if (player.properties.level >= 28) {
-        monsterList.Bannecs.Stats.isShown = true;
+    if (monsterList.monster027.killCount >= 10) {
+        monsterList.monster028.isShown = true;
     };
-    if (player.properties.level >= 29) {
-        monsterList.Kholders.Stats.isShown = true;
+    if (monsterList.monster028.killCount >= 10) {
+        monsterList.monster029.isShown = true;
     };
-    if (player.properties.level >= 30) {
-        monsterList.LivingWalls.Stats.isShown = true;
+    if (monsterList.monster029.killCount >= 10) {
+        monsterList.monster030.isShown = true;
     };
-    if (player.properties.level >= 31) {
-        monsterList.Keeper.Stats.isShown = true;
+    if (monsterList.monster030.killCount >= 10) {
+        monsterList.monster031.isShown = true;
     };
-    if (player.properties.level >= 32) {
-        monsterList.LegendoftheAncientDreamer.Stats.isShown = true;
+    if (monsterList.monster031.killCount >= 1) {
+        monsterList.monster032.isShown = true;
     };
-    if (player.properties.level >= 33) {
-        monsterList.BabyDuneDigger.Stats.isShown = true;
+    if (monsterList.monster032.killCount >= 1) {
+        monsterList.monster033.isShown = true;
         monsterAreas[4].isUnlocked = true;
     };
-    if (player.properties.level >= 34) {
-        monsterList.CamelSpiderHerds.Stats.isShown = true;
+    if (monsterList.monster033.killCount >= 10) {
+        monsterList.monster034.isShown = true;
     };
-    if (player.properties.level >= 35) {
-        monsterList.WasteEagle.Stats.isShown = true;
+    if (monsterList.monster034.killCount >= 10) {
+        monsterList.monster035.isShown = true;
     };
-    if (player.properties.level >= 36) {
-        monsterList.GrelTribeGuard.Stats.isShown = true;
+    if (monsterList.monster035.killCount >= 10) {
+        monsterList.monster036.isShown = true;
     };
-    if (player.properties.level >= 37) {
-        monsterList.GrelWarriors.Stats.isShown = true;
+    if (monsterList.monster036.killCount >= 10) {
+        monsterList.monster037.isShown = true;
     };
-    if (player.properties.level >= 38) {
-        monsterList.GrelSpitters.Stats.isShown = true;
+    if (monsterList.monster037.killCount >= 10) {
+        monsterList.monster038.isShown = true;
     };
-    if (player.properties.level >= 39) {
-        monsterList.GrelChief.Stats.isShown = true;
+    if (monsterList.monster038.killCount >= 10) {
+        monsterList.monster039.isShown = true;
     };
-    if (player.properties.level >= 40) {
-        monsterList.MommaDuneDiggerSheila.Stats.isShown = true;
+    if (monsterList.monster039.killCount >= 1) {
+        monsterList.monster040.isShown = true;
     };
-    if (player.properties.level >= 41) {
-        monsterList.CrystalFloater.Stats.isShown = true;
+    if (monsterList.monster040.killCount >= 1) {
+        monsterList.monster041.isShown = true;
         monsterAreas[5].isUnlocked = true;
     };
-    if (player.properties.level >= 42) {
-        monsterList.SnowWatcher.Stats.isShown = true;
+    if (monsterList.monster041.killCount >= 10) {
+        monsterList.monster042.isShown = true;
     };
-    if (player.properties.level >= 43) {
-        monsterList.CannibalTribeTrachid.Stats.isShown = true;
+    if (monsterList.monster042.killCount >= 10) {
+        monsterList.monster043.isShown = true;
     };
-    if (player.properties.level >= 44) {
-        monsterList.LegendoftheRageCalm.Stats.isShown = true;
+    if (monsterList.monster043.killCount >= 10) {
+        monsterList.monster044.isShown = true;
     };
-    if (player.properties.level >= 45) {
-        monsterList.IceGiantKing.Stats.isShown = true;
+    if (monsterList.monster044.killCount >= 10) {
+        monsterList.monster045.isShown = true;
     };
-    if (player.properties.level >= 46) {
-        monsterList.FrightGolem.Stats.isShown = true;
+    if (monsterList.monster045.killCount >= 10) {
+        monsterList.monster046.isShown = true;
     };
-    if (player.properties.level >= 47) {
-        monsterList.FrightGolemArmy.Stats.isShown = true;
+    if (monsterList.monster046.killCount >= 10) {
+        monsterList.monster047.isShown = true;
     };
-    if (player.properties.level >= 48) {
-        monsterList.LegendoftheRageFullPower.Stats.isShown = true;
+    if (monsterList.monster047.killCount >= 1) {
+        monsterList.monster048.isShown = true;
     };
-    if (player.properties.level >= 49) {
-        monsterList.LegionofDreadWallGuards.Stats.isShown = true;
+    if (monsterList.monster048.killCount >= 1) {
+        monsterList.monster049.isShown = true;
         monsterAreas[6].isUnlocked = true;
     };
-    if (player.properties.level >= 50) {
-        monsterList.Dreadnaughts.Stats.isShown = true;
+    if (monsterList.monster049.killCount >= 10) {
+        monsterList.monster050.isShown = true;
     };
-    if (player.properties.level >= 51) {
-        monsterList.DreadnaughtElite.Stats.isShown = true;
+    if (monsterList.monster050.killCount >= 10) {
+        monsterList.monster051.isShown = true;
     };
-    if (player.properties.level >= 52) {
-        monsterList.EmaciatedMagi.Stats.isShown = true;
+    if (monsterList.monster051.killCount >= 10) {
+        monsterList.monster052.isShown = true;
     };
-    if (player.properties.level >= 53) {
-        monsterList.MagiThunderCallers.Stats.isShown = true;
+    if (monsterList.monster052.killCount >= 10) {
+        monsterList.monster053.isShown = true;
     };
-    if (player.properties.level >= 54) {
-        monsterList.FalseDragonSlayers.Stats.isShown = true;
+    if (monsterList.monster053.killCount >= 10) {
+        monsterList.monster054.isShown = true;
     };
-    if (player.properties.level >= 55) {
-        monsterList.TorturedBeholder.Stats.isShown = true;
+    if (monsterList.monster054.killCount >= 10) {
+        monsterList.monster055.isShown = true;
     };
-    if (player.properties.level >= 56) {
-        monsterList.KingoftheLegionGrantBannecs.Stats.isShown = true;
+    if (monsterList.monster055.killCount >= 1) {
+        monsterList.monster056.isShown = true;
     };
     CreateMonsterHtml();
 };

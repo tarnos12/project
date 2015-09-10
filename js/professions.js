@@ -941,6 +941,7 @@ function displayCraftedItem() {
     var craftingBonus = document.getElementsByName('craftingBonus');
     var craftingItemType = document.getElementsByName('craftingItem');
     var profession = playerProfession.crafting;
+    var craftedItemLevel = Math.floor(profession.level + (player.properties.level / 5));
     var currentBonus = 0;
     var currentCraftingType = "";
     var mineralType = "";
@@ -977,6 +978,7 @@ function displayCraftedItem() {
     html += '<div class="col-xs-6 col-xs-offset-3">';
     html += '<h3>You need crafting level ' + craftingLevelReq + '</h3>';
     html += '<h4>' + currentCraftingType[0].text + '</h4>';
+    html += '<h5>' + 'You will craft item level: ' + craftedItemLevel + '</h5>';
     html += '</div>';
     html += '</div>';
     html += '<div class="row margin borderLeft borderTop">';
@@ -1045,7 +1047,7 @@ function craftingBackground() {
 
 function craftItem(itemType, itemSubType, itemQuality) {
     var profession = playerProfession.crafting;
-    var itemLevel = (player.properties.level + (playerProfession.crafting.level * 3));
+    var itemLevel = Math.floor(profession.level + (player.properties.level / 5));
     for (var i = 0; i < profession[itemQuality]()[0].type.length; i++) {
         var mineralType = profession[itemQuality]()[0].type[i];
         var mineralCost = profession[itemQuality]()[0][itemType][0][itemSubType][i];
