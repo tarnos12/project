@@ -454,7 +454,7 @@ var player = {
             return Math.floor(
                 (player.properties.baseStrength +
                 player.functions.totalStrengthBonus()) *
-                (player.functions.masteryStrength() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Strength.amount + player.buffs.AllStats.amount))));
+                (player.functions.masteryStrength() + (player.properties.raceAllStats / 100) + ((player.buffs.Strength.amount + player.buffs.AllStats.amount))));
         },
         masteryEndurance: function () {
             return (weaponMastery.mace.maceEndurance() *
@@ -464,7 +464,7 @@ var player = {
             return Math.floor((
                 player.properties.baseEndurance +
                 player.functions.totalEnduranceBonus()) *
-                (player.functions.masteryEndurance() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Endurance.amount + player.buffs.AllStats.amount))));
+                (player.functions.masteryEndurance() + (player.properties.raceAllStats / 100) + ((player.buffs.Endurance.amount + player.buffs.AllStats.amount))));
         },
         masteryAgility: function () {
             return (weaponMastery.sword.swordAgility());
@@ -473,7 +473,7 @@ var player = {
             return Math.floor((
                 player.properties.baseAgility +
                 player.functions.totalAgilityBonus()) *
-                (player.functions.masteryAgility() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Agility.amount + player.buffs.AllStats.amount))));
+                (player.functions.masteryAgility() + (player.properties.raceAllStats / 100) + ((player.buffs.Agility.amount + player.buffs.AllStats.amount))));
         },
         masteryDexterity: function () {
             return (weaponMastery.ranged.rangedDexterity());
@@ -482,7 +482,7 @@ var player = {
             return Math.floor((
                 player.properties.baseDexterity +
                 player.functions.totalDexterityBonus()) *
-                (player.functions.masteryDexterity() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Dexterity.amount + player.buffs.AllStats.amount))));
+                (player.functions.masteryDexterity() + (player.properties.raceAllStats / 100) + ((player.buffs.Dexterity.amount + player.buffs.AllStats.amount))));
         },
         masteryIntelligence: function () {
             return (weaponMastery.staff.staffIntelligence());
@@ -491,7 +491,7 @@ var player = {
             return Math.floor(((
                 (player.properties.baseIntelligence +
                 player.functions.totalIntelligenceBonus()) *
-                (player.functions.masteryIntelligence() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Intelligence.amount + player.buffs.AllStats.amount)))) *
+                (player.functions.masteryIntelligence() + (player.properties.raceAllStats / 100) + ((player.buffs.Intelligence.amount + player.buffs.AllStats.amount)))) *
                 weaponSkillList.staff.spellSimulacrum.damage()) * bonusSpellDamage);
         },
         masteryWisdom: function () {
@@ -502,12 +502,12 @@ var player = {
             return Math.floor(((
                 player.properties.baseWisdom +
                 player.functions.totalWisdomBonus()) *
-                (player.functions.masteryWisdom() + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Wisdom.amount + player.buffs.AllStats.amount)))) * bonusSpellDamage);
+                (player.functions.masteryWisdom() + (player.properties.raceAllStats / 100) + ((player.buffs.Wisdom.amount + player.buffs.AllStats.amount)))) * bonusSpellDamage);
         },
         totalLuck: function () {
             return Math.floor((
                 player.properties.baseLuck +
-                player.functions.totalLuckBonus()) * (1 + (player.properties.raceAllStats / 100) + (1 + (player.buffs.Luck.amount + player.buffs.AllStats.amount))));
+                player.functions.totalLuckBonus()) * (1 + (player.properties.raceAllStats / 100) + ((player.buffs.Luck.amount + player.buffs.AllStats.amount))));
         },
         maxhealth: function () {
             return Math.floor((((475 + player.functions.totalLifeBonus() + (player.functions.totalEndurance() * 5)) * (1 + (player.functions.bonusHealth() / 100)))) * (1 + (player.properties.raceHealth / 100)));

@@ -186,7 +186,7 @@ function upgradeStrength(event) {
             player.properties.baseStrength += 100;
         };
     };
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.altKey) {
         if (player.properties.stats >= 10) {
             player.properties.stats = player.properties.stats - 10;
             player.properties.baseStrength += 10;
@@ -209,7 +209,7 @@ function upgradeEndurance(event) {
             player.properties.baseEndurance += 100;
         };
     };
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.altKey) {
         if (player.properties.stats >= 10) {
             player.properties.stats = player.properties.stats - 10;
             player.properties.baseEndurance += 10;
@@ -232,7 +232,7 @@ function upgradeAgility(event) {
             player.properties.baseAgility += 100;
         };
     };
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.altKey) {
         if (player.properties.stats >= 10) {
             player.properties.stats = player.properties.stats - 10;
             player.properties.baseAgility += 10;
@@ -255,7 +255,7 @@ function upgradeDexterity(event) {
             player.properties.baseDexterity += 100;
         };
     };
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.altKey) {
         if (player.properties.stats >= 10) {
             player.properties.stats = player.properties.stats - 10;
             player.properties.baseDexterity += 10;
@@ -278,7 +278,7 @@ function upgradeWisdom(event) {
             player.properties.baseWisdom += 100;
         };
     };
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.altKey) {
         if (player.properties.stats >= 10) {
             player.properties.stats = player.properties.stats - 10;
             player.properties.baseWisdom += 10;
@@ -301,7 +301,7 @@ function upgradeIntelligence(event) {
             player.properties.baseIntelligence += 100;
         };
     };
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.altKey) {
         if (player.properties.stats >= 10) {
             player.properties.stats = player.properties.stats - 10;
             player.properties.baseIntelligence += 10;
@@ -324,7 +324,7 @@ function upgradeLuck(event) {
             player.properties.baseLuck += 100;
         };
     };
-    if (event.ctrlKey) {
+    if (event.ctrlKey || event.altKey) {
         if (player.properties.stats >= 10) {
             player.properties.stats = player.properties.stats - 10;
             player.properties.baseLuck += 10;
