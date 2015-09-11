@@ -2,23 +2,28 @@
 function MakeMonsterList() {
     var newMonster = function (level, name, displayName, id, area) {
         this.difficultyMultiplier = function () {
-            if (player.properties.difficulty === "Very Easy") {
+            if (player.properties.difficulty === "Mortal") {
                 return 0.2;
             }
-            else if (player.properties.difficulty === "Easy") {
+            else if (player.properties.difficulty === "Ageless") {
                 return 0.5;
             }
-            else if (player.properties.difficulty === "Normal") {
+            else if (player.properties.difficulty === "Hero") {
                 return 1;
             }
-            else if (player.properties.difficulty === "Hard") {
+            else if (player.properties.difficulty === "Immortal") {
                 return 2;
             }
-            else if (player.properties.difficulty === "Impossible") {
+            else if (player.properties.difficulty === "Lich") {
                 return 3;
             }
             else if (player.properties.difficulty === "Legend") {
                 return 5;
+            }
+            else {
+                console.log('Difficulty settings changed');
+                player.properties.difficulty = "Hero";
+                return 1;
             };
         };
         this.level = level;

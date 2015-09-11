@@ -44,7 +44,7 @@ var player = {
         autoBattle: false, // testing
     },
     properties: {
-        difficulty: 'Normal',
+        difficulty: 'Hero',
         potionInventory: [],
         //Minerals
         Thaumerite: 0,
