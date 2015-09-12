@@ -93,7 +93,7 @@ function updateHtml() {
     level.innerHTML = player.properties.level;
     maxExperience.innerHTML = player.properties.maxExperience;
     experience.innerHTML = player.properties.experience;
-    gold.innerHTML = player.properties.gold.toFixed(0);
+    gold.innerHTML = getThousands(player.properties.gold.toFixed(0));
 
     //primaryStatUpdate();
     secondaryStatUpdate();

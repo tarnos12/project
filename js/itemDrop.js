@@ -1,8 +1,6 @@
 ﻿"use strict";
 function monsterItemDrop(monster) {
     var itemDropNumber = 0;
-    var randomItemAmount = Math.floor(Math.random() * 3) + 1; // 1-5 item drop per monster kill
-    for (var i = 0; i < randomItemAmount; i++) {
         var randomItemChance = Math.floor(Math.random() * (1000 - 1) + 1);
         if (randomItemChance * player.functions.dropRate() >= 500) {
             if (playerInventory.length <= player.functions.inventory()) {
@@ -13,7 +11,6 @@ function monsterItemDrop(monster) {
                 Log('<span id=\"inventoryFull\" style=\"color:red;\">' + "Your inventory is full.<br />" + "</span>");
             }
         };
-    };
     Log('<span id=\"itemDropNew\" class =\"bold\" style=\"color:orange; display:none;\">You found ' + (itemDropNumber) + " items! <br />" + "</span>");
     itemDropLog();
     CreateInventoryWeaponHtml();
@@ -28,7 +25,7 @@ function getItemType(monster, isDrop, craftItemType, craftitemSubType, craftItem
     var itemChanceTotal = itemTypes[itemTypes.length - 1]; // Gets the value "chance" of last index in my object array. I wont need to edit functions in the future if I add more stuff.
     if (craftItemType !== undefined) {
         dropItem['isCrafted'] = true;
-    }
+    };
     totalChance = itemChanceTotal.chance;
     randomNumber = Math.floor(Math.random() * (totalChance - 1) + 1);
     itemLevel = Math.floor(Math.random() * ((monsterStats + 2) - monsterStats + 1)) + monsterStats; // monster level - monster level + 10, || level 1 = range 1-11.
@@ -60,7 +57,7 @@ function getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemQu
     var itemChance = 0;
     var itemType2 = "";
     var randomLoreArray = "";
-    var randomLore = ""
+    var randomLore = "";
     if (dropItem.itemType === "weapon") {
         if (dropItem.isCrafted === true) {
             for (var i = 0; i < itemWeaponSubType.length; i++) {
@@ -70,8 +67,8 @@ function getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemQu
                     randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
                     dropItem["lore"] = randomLore.text;
                     break;
-                }
-            }
+                };
+            };
         }
         else {
             itemChanceTotal = itemWeaponSubType[itemWeaponSubType.length - 1];
@@ -90,7 +87,7 @@ function getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemQu
                     };
                 };
             };
-        }
+        };
     }
     else if (dropItem.itemType === "armor") {
         if (dropItem.isCrafted === true) {
@@ -101,8 +98,8 @@ function getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemQu
                     randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
                     dropItem["lore"] = randomLore.text;
                     break;
-                }
-            }
+                };
+            };
         }
         else {
             itemChanceTotal = itemArmorSubType[itemArmorSubType.length - 1];
@@ -124,7 +121,6 @@ function getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemQu
         };
     }
     else if (dropItem.itemType === "accessory") {
-       
         if (dropItem.isCrafted === true) {
             for (var i = 0; i < itemAccessorySubType.length; i++) {
                 if (itemAccessorySubType[i].type === craftitemSubType) {
@@ -133,8 +129,8 @@ function getItemSubType(monster, dropItem, isDrop, craftitemSubType, craftItemQu
                     randomLore = randomLoreArray[Math.floor(Math.random() * (randomLoreArray.length))];
                     dropItem["lore"] = randomLore.text;
                     break;
-                }
-            }
+                };
+            };
         }
         else {
             itemChanceTotal = itemAccessorySubType[itemAccessorySubType.length - 1];
@@ -233,28 +229,31 @@ function getItemBaseStats(monster, dropItem, isDrop, craftedBonus) {
         dropItem.name = 'Crafted ';
         dropItem.color = '#FF00FF';
     };
+    dropItem.power *= player.properties.prestigeMultiplier;
+    dropItem.rarityValue *= player.properties.prestigeMultiplier;
+    craftedBonus *= player.properties.prestigeMultiplier;
     var minDmg = (dropItem.iLvl + dropItem.power) * craftedBonus;
     var maxDmg = Math.floor(((dropItem.iLvl * 1.2) + (dropItem.power * 2)) * craftedBonus);
     var randomNumber = 0;
     dropItem['Value'] = 0;
     if (dropItem.itemType === "weapon") {
-        dropItem["MinDamage"] = minDmg;
-        dropItem["MaxDamage"] = maxDmg;
+        dropItem["MinDamage"] = minDmg * player.properties.prestigeMultiplier;
+        dropItem["MaxDamage"] = maxDmg * player.properties.prestigeMultiplier;
         dropItem.Value += (dropItem.MinDamage + dropItem.MaxDamage) * 5;
     }
     else if (dropItem.itemType === "armor") {
         var minDefense = 5 + (dropItem.iLvl * 0.3);
         var maxDefense = 10 + (dropItem.iLvl * 0.7);
         randomNumber = Math.floor((Math.random() * (maxDefense - minDefense + 1)) + minDefense);
-        dropItem["defense"] = randomNumber;
+        dropItem["defense"] = randomNumber * player.properties.prestigeMultiplier;
         dropItem.Value += dropItem.defense * 10;
     };
-    if (dropItem.itemQuality !== "Normal"){
+    if (dropItem.itemQuality !== "Normal") {
         dropItem.name += dropItem.itemQuality + ' ' + dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
-        }
-    else{
-        dropItem.name += dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
     }
+    else {
+        dropItem.name += dropItem.itemRarity + ' ' + dropItem.subType.capitalizeFirstLetter();
+    };
     getBaseItemMod(monster, dropItem, isDrop);
 };
 
@@ -296,7 +295,7 @@ function getBonusItemMod(monster, dropItem, isDrop) {
     if (dropItem.subType === "shield" || dropItem.itemType === "weapon") {
         var number = getNumberMultiplierofFive(itemLevel);
         dropItem.image += number;
-    }
+    };
     var itemModLevelLength = itemModLevel.length;
     var randomModAmount = Math.floor(Math.random() * (maxMods - minMods + 1)) + minMods; //Random value between min/max(both inclusive !important)
     newArray = itemModLevel.slice(); // Copy an array so we can remove array values so we dont get double of the same bonus on the item
@@ -307,16 +306,16 @@ function getBonusItemMod(monster, dropItem, isDrop) {
                 randomMod.type !== "Bonus damage" && randomMod.type !== "Bonus armor" && randomMod.type !== "Life gain on hit") {
                 // !== bonus damage/armor etc. so it won't be rolled on accessories/armor/weapon
                 randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                dropItem[randomMod.type] = randomModValue * dropItem.iLvl;
-                dropItem.Value += randomMod.baseValue * randomModValue;
+                dropItem[randomMod.type] = randomModValue * dropItem.iLvl * player.properties.prestigeMultiplier;
+                dropItem.Value += randomMod.baseValue * randomModValue * player.properties.prestigeMultiplier;
                 arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
                 newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
                 currentMods += 1;
             }
             else if (randomMod.type === "Bonus damage" && dropItem.itemType === "weapon") {
                 randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                dropItem[randomMod.type] = randomModValue + dropItem.iLvl;
-                dropItem.Value += randomMod.baseValue * randomModValue;
+                dropItem[randomMod.type] = randomModValue + dropItem.iLvl * player.properties.prestigeMultiplier;
+                dropItem.Value += randomMod.baseValue * randomModValue * player.properties.prestigeMultiplier;
                 dropItem.MinDamage = Math.floor(dropItem.MinDamage + (dropItem.MinDamage * randomModValue / 100));
                 dropItem.MaxDamage = Math.floor(dropItem.MaxDamage + (dropItem.MaxDamage * randomModValue / 100));
                 arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
@@ -325,8 +324,8 @@ function getBonusItemMod(monster, dropItem, isDrop) {
             }
             else if (randomMod.type === "Bonus armor" && dropItem.itemType === "armor") {
                 randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
-                dropItem[randomMod.type] = randomModValue + dropItem.iLvl;
-                dropItem.Value += randomMod.baseValue * randomModValue;
+                dropItem[randomMod.type] = randomModValue + dropItem.iLvl * player.properties.prestigeMultiplier;
+                dropItem.Value += randomMod.baseValue * randomModValue * player.properties.prestigeMultiplier;
                 dropItem.defense *= (1 +(randomModValue / 100));
                 arrayIndex = newArray.indexOf(randomMod); // Find out an index of our randomMod, so we can remove it( we dont want to get it multiple times...
                 newArray.splice(arrayIndex, 1) // Remove an itemMod from copied array...
@@ -348,9 +347,12 @@ function getBonusItemMod(monster, dropItem, isDrop) {
         }
     };
     if (dropItem.subType === "shield") {
-        dropItem['Block chance'] = Math.floor((dropItem.power + dropItem.rarityValue) + (dropItem.iLvl / 10));
-        dropItem['Block amount'] = (30 + (dropItem.power + dropItem.rarityValue) * 5 + (dropItem.iLvl * 2));
-        dropItem.Value += (dropItem['Block chance'] * 5 + dropItem['Block amount'] * 5);
+        dropItem['Block chance'] = Math.floor(10 + ((dropItem.power + dropItem.rarityValue) / 2) + (dropItem.iLvl / 20));
+        dropItem['Block amount'] = ((30 + (dropItem.power + dropItem.rarityValue) * 5 + (dropItem.iLvl * 2)) * player.properties.prestigeMultiplier);
+        if (dropItem['Block chance'] >= 40) {
+            dropItem['Block chance'] = 40;
+        };
+        dropItem.Value += ((dropItem['Block chance'] * 5 + dropItem['Block amount'] * 5) * player.properties.prestigeMultiplier);
     };
     if (dropItem.itemType === 'weapon') {
         var criticalValue = dropItem.power;
@@ -380,6 +382,7 @@ function getBonusItemMod(monster, dropItem, isDrop) {
             var staffCrit = Math.floor(Math.random() * (5 - 1 + 1) + 1); // Crit 1-5%
             dropItem['Critical chance'] = Math.floor(criticalValue + staffCrit + (dropItem.iLvl / 5));
         }
+        weaponBonusDamage *= player.properties.prestigeMultiplier;
         dropItem.MinDamage = Math.floor(1 + (dropItem.MinDamage * weaponBonusDamage));
         dropItem.MaxDamage = Math.floor(2 + (dropItem.MaxDamage * weaponBonusDamage));
         dropItem['AverageDamage'] = ((dropItem.MinDamage + dropItem.MaxDamage) / 2);

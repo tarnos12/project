@@ -26,34 +26,34 @@ function MakeMonsterList() {
                 return 1;
             };
         };
-        this.level = level;
+        this.level = level + player.properties.monsterLevel;
         this.name = name;
-        this.displayName = displayName;
+        this.displayName = displayName + player.properties.prestigeSuffix;
         this.id = id;
         this.area = area;
         this.monsterHealth = function () {
-            return this.level * 200 * this.difficultyMultiplier();
+            return this.level * 200 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.hp = this.monsterHealth();
         this.maxHp = this.hp;
         this.def = function () {
-            return this.level * 5 * this.difficultyMultiplier();
+            return this.level * 5 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.minDmg = function () {
-            return this.level * 15 * this.difficultyMultiplier();
+            return this.level * 15 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.maxDmg = function () {
-            return this.level * 20 * this.difficultyMultiplier();
+            return this.level * 20 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.baseExp = function () {
-            return this.level * 10 * this.difficultyMultiplier();
+            return this.level * 10 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.acc = 95;
         this.eva = 10;
         this.isShown = false;
         this.killCount = 0;
         this.manaCost = function () {
-            return this.level * 100 * this.difficultyMultiplier()
+            return this.level * 100 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
     };
     //Bandit Hideout
@@ -127,6 +127,8 @@ function MakeMonsterList() {
     var monster054 = new newMonster(66, "FalseDragonSlayers", "False Dragon Slayers", 54, "Zyzx");
     var monster055 = new newMonster(68, "TorturedBeholder", "Tortured Beholder", 55, "Zyzx");
     var monster056 = new newMonster(70, "KingoftheLegionGrantBannecs", "King of the Legion Grant Bannecs", 56, "Zyzx");
+
+    monster056.lastEnemy = true;
 
     window.monsterList = new Object();
     monsterList.monster001 = monster001;

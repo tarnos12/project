@@ -941,7 +941,7 @@ function displayCraftedItem() {
     var craftingBonus = document.getElementsByName('craftingBonus');
     var craftingItemType = document.getElementsByName('craftingItem');
     var profession = playerProfession.crafting;
-    var craftedItemLevel = Math.floor(profession.level + (player.properties.level / 5));
+    var craftedItemLevel = Math.floor((profession.level + (player.properties.level / 5)) * player.properties.prestigeMultiplier);
     var currentBonus = 0;
     var currentCraftingType = "";
     var mineralType = "";
@@ -1047,7 +1047,7 @@ function craftingBackground() {
 
 function craftItem(itemType, itemSubType, itemQuality) {
     var profession = playerProfession.crafting;
-    var itemLevel = Math.floor(profession.level + (player.properties.level / 5));
+    var itemLevel = Math.floor((profession.level + (player.properties.level / 5)) * player.properties.prestigeMultiplier);
     for (var i = 0; i < profession[itemQuality]()[0].type.length; i++) {
         var mineralType = profession[itemQuality]()[0].type[i];
         var mineralCost = profession[itemQuality]()[0][itemType][0][itemSubType][i];
