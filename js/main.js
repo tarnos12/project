@@ -44,7 +44,11 @@ var player = {
         autoBattle: false, // testing
     },
     properties: {
+        monsterBackground: "green",
+        prestigeMultiplier: 1,
+        prestigeSuffix: "",
         difficulty: 'Hero',
+        monsterLevel: 0, //Used when reset game i.e. prestige ( It will be set for highest monster which will determine first monster level after prestige)
         potionInventory: [],
         //Minerals
         Thaumerite: 0,
@@ -870,6 +874,9 @@ function monsterKilled(monsterStats) {
     monsterStats.killCount++;
     displayLogInfo();
     quest();
+    if (monsterStats.lastEnemy === true) {
+        rebirth(monsterStats.level);
+    };
     battleTurn = -1;
 };
 
@@ -934,7 +941,7 @@ function updateBar() {
 
 //experience gained from killing a monster
 function monsterExperience(monsterStats) {
-    var expGain = monsterStats.baseExp();
+    var expGain = monsterStats.baseExp() * player.functions.expRate();
     var level = player.properties.level;
     if (player.properties.experience < player.properties.maxExperience) {
         player.properties.experience = Math.floor(player.properties.experience + expGain);
@@ -1472,8 +1479,10 @@ function handleClick() {
     checkBoxRare = document.getElementById("rare").checked;
     checkBoxEpic = document.getElementById("epic").checked;
     checkBoxLegendary = document.getElementById("legendary").checked;
-    hardcoreMode = document.getElementById("hardcoreMode").checked;
     player.autoBattle.autoBattle = document.getElementById("autoBattle").checked;
+};
+function hardcoreModeCheck() {
+    hardcoreMode = document.getElementById("hardcoreMode").checked;
 };
 
 function changeRace(raceName) {
@@ -1664,6 +1673,17 @@ function getTen(n) {
     else
         return 10;
 };
+function getThousands(n) {
+    if (n > 9999 && n < 1000000) {
+        return (Math.floor(n / 1000) + "K");
+    }
+    else if (n > 999999) {
+        return (Math.floor(n / 1000000) + "M");
+    }
+    else {
+        return n;
+    };
+};
 var monsterKillCount = [];
 function changeDifficulty(type) {
     for (var key in monsterList) {
@@ -1677,6 +1697,20 @@ function changeDifficulty(type) {
         var monsterNumber = (monster.id - 1)
         monster.killCount = monsterKillCount[monsterNumber];
     };
+    monsterKillCount = [];
     CreateMonsterHtml();
+    quest();
     document.getElementById('gameDifficulty').innerHTML = "Current Difficulty: " + type;
+};
+
+function rebirth(level) {
+    player.properties.prestigeMultiplier++;
+    player.properties.prestigeSuffix = "(Warped)";
+    player.properties.monsterLevel = level;
+    player.properties.monsterBackground = "#DD4747";
+    for (var i = 1; i < monsterAreas.length; i++) { //Starts with i = 1, so it wont change first array value, which is needed to display first area.
+        monsterAreas[i].isUnlocked = false;
+    };
+    changeDifficulty("Hero");
+    changedTabmonster(0);
 };

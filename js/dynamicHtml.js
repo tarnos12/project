@@ -119,12 +119,12 @@ function CreateMonsterHtml() {
             };
             html += 'id="tab_' + monsterAreas[j].type + '">' +
                 '<div class="panel panel-default">' +
-                '<div class="panel-heading" style="background-color:green;">' +
+                '<div class="panel-heading" style="background-color:' + player.properties.monsterBackground + ';">' +
 
-                '<h3 class="panel-title c3" >' + monsterAreas[j].displayName + '</h3>' +
+                '<h3 class="panel-title c3" >' + monsterAreas[j].displayName + player.properties.prestigeSuffix + "[" + (player.properties.prestigeMultiplier - 1) + "]" + '</h3>' +
 
                 '</div>' +
-                '<div class="panel-body" style="background-color:green;">';
+                '<div class="panel-body" style="background-color:' + player.properties.monsterBackground + ';">';
             html += '<div class="row">';
             var monster = monsterList[currentMonster];
             var area = monster.area;
@@ -158,9 +158,9 @@ function CreateMonsterHtml() {
                         html += '<br />' +
                         'Level: ' + monster.level +
                         '<br />' +
-                        'Dmg:' + monster.minDmg() + "-" + monster.maxDmg() +
+                        'Dmg:' + getThousands(monster.minDmg()) + "-" + getThousands(monster.maxDmg()) +
                         '<br />' +
-                        'Def:' + monster.def();
+                        'Def:' + getThousands(monster.def());
                         html += '</span></a>';
                         html += '<div class="col-xs-12 c3">';
                         html += '<h4>Killed: ' + monster.killCount + '</h4>';
@@ -172,7 +172,7 @@ function CreateMonsterHtml() {
 
                     html += '<div class="progress" style="width:80%; margin-left:10%;">';
                     html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.name + "1" + '">';
-                    html += '<span style="font-size:13px;">' + monster.hp + ' HP</span>' + '</div></div>';
+                    html += '<span style="font-size:13px;">' + getThousands(monster.hp) + ' HP</span>' + '</div></div>';
 
                         html += '</div>';//Close First Div
                 };
@@ -190,196 +190,7 @@ function CreateMonsterHtml() {
 function changeMonsterPage(name) {
     currentMonster = name;
     CreateMonsterHtml();
-}
-var newTest = [
-    {
-        name: "VarikGrunt",
-    },
-    {
-        name: "VarikSoldier",
-    },
-    {
-        name: "VarikMarksmen",
-    },
-    {
-        name: "VarikVulture",
-    },
-    {
-        name: "VarikEvader",
-    },
-    {
-        name: "VariksLiar",
-    },
-    {
-        name: "VariksQueen",
-    },
-    {
-        name: "LordVarik",
-    },
-    {
-        name: "ToxicFlies",
-    },
-    {
-        name: "Stalker",
-    },
-    {
-        name: "AlphaStalker",
-    },
-    {
-        name: "StalkerPack",
-    },
-    {
-        name: "JumpingSpider",
-    },
-    {
-        name: "SpiderBeast",
-    },
-    {
-        name: "Narsus",
-    },
-    {
-        name: "JotunnScout",
-    },
-    {
-        name: "JotnarAmbushSquad",
-    },
-    {
-        name: "LongRangeExterminationSquad",
-    },
-    {
-        name: "BerserkerShockSquad",
-    },
-    {
-        name: "BerserkerShockSquadCaptainRendGrest",
-    },
-    {
-        name: "ArtillerySquad",
-    },
-    {
-        name: "JottunMainInfantry",
-    },
-    {
-        name: "RegentCairLorn",
-    },
-    {
-        name: "DeepKingTarNuk",
-    },
-    {
-        name: "DepthCrawler",
-    },
-    {
-        name: "FadingGoblins",
-    },
-    {
-        name: "StarBriteGolems",
-    },
-    {
-        name: "Bannecs",
-    },
-    {
-        name: "Kholders",
-    },
-    {
-        name: "LivingWalls",
-    },
-    {
-        name: "Keeper",
-    },
-    {
-        name: "LegendoftheAncientDreamer",
-    },
-    {
-        name: "BabyDuneDigger",
-    },
-    {
-        name: "CamelSpiderHerds",
-    },
-    {
-        name: "WasteEagle",
-    },
-    {
-        name: "GrelTribeGuard",
-    },
-    {
-        name: "GrelWarriors",
-    },
-    {
-        name: "GrelSpitters",
-    },
-    {
-        name: "GrelChief",
-    },
-    {
-        name: "MommaDuneDiggerSheila",
-    },
-    {
-        name: "CrystalFloater",
-    },
-    {
-        name: "SnowWatcher",
-    },
-    {
-        name: "CannibalTribeTrachid",
-    },
-    {
-        name: "LegendoftheRageCalm",
-    },
-    {
-        name: "IceGiantKing",
-    },
-    {
-        name: "FrightGolem",
-    },
-    {
-        name: "FrightGolemArmy",
-    },
-    {
-        name: "LegendoftheRageFullPower",
-    },
-    {
-        name: "LegionofDreadWallGuards",
-    },
-    {
-        name: "Dreadnaughts",
-    },
-    {
-        name: "DreadnaughtElite",
-    },
-    {
-        name: "EmaciatedMagi",
-    },
-    {
-        name: "MagiThunderCallers",
-    },
-    {
-        name: "FalseDragonSlayers",
-    },
-    {
-        name: "TorturedBeholder",
-    },
-    {
-        name: "KingoftheLegionGrantBannecs",
-    },
-    {
-        name: "Thaumerite",
-    },
-    {
-        name: "LiteCyan",
-    },
-    {
-        name: "OhmStone",
-    },
-    {
-        name: "Techtite",
-    },
-    {
-        name: "XilBond",
-    },
-    {
-        name: "VulcanatedIron",
-    },
-];
-
+};
 
 /*function CreateMonsterHtml() {
     var html = '';
@@ -838,7 +649,7 @@ function startingScreen() {
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + newGame + '">New Game</button>';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + loadGame + '">Load</button>';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + reset + '">Reset all saves</button>';
-    html += '<label><input type="checkbox" id="hardcoreMode" style ="visibility:visible; position:relative;" onclick="handleClick();">Hardcore Mode?</label>';
+    html += '<label><input type="checkbox" id="hardcoreMode" style ="visibility:visible; position:relative;" onclick="hardcoreModeCheck();">Hardcore Mode?</label>';
     html += '</div>';
     html += '<button type="button" class="btn btn-default shopButton" onclick="' + muteSound + 'changeMusicImage();""><span id="musicImage" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>';
 
@@ -969,6 +780,9 @@ function loadGameSlot() {
             pageReload();
         }
         displayInfo0 = "Level - " + saveInfo0.playerProperties.level + ' Race: ' + saveInfo0.playerProperties.heroRace;
+        if (saveInfo0.playerProperties.hardcoreMode === true) {
+            displayInfo0 += " <strong>Hardcore</strong>"
+        };
     }
     else {
         displayInfo0 = "Empty Slot";
@@ -976,6 +790,9 @@ function loadGameSlot() {
     if (localStorage['EncodedSaveGame1']) {
         saveInfo1 = JSON.parse(atob(localStorage['EncodedSaveGame1']));
         displayInfo = "Level - " + saveInfo1.playerProperties.level + ' Race: ' + saveInfo1.playerProperties.heroRace;
+        if (saveInfo1.playerProperties.hardcoreMode === true) {
+            displayInfo += " <strong>Hardcore</strong>"
+        };
     }
     else {
         displayInfo = "Empty Slot";
@@ -983,6 +800,9 @@ function loadGameSlot() {
     if (localStorage['EncodedSaveGame2']) {
         saveInfo2 = JSON.parse(atob(localStorage['EncodedSaveGame2']));
         displayInfo2 = "Level - " + saveInfo2.playerProperties.level + ' Race: ' + saveInfo2.playerProperties.heroRace;
+        if (saveInfo2.playerProperties.hardcoreMode === true) {
+            displayInfo2 += " <strong>Hardcore</strong>"
+        };
     }
     else {
         displayInfo2 = "Empty Slot";
@@ -990,6 +810,9 @@ function loadGameSlot() {
     if (localStorage['EncodedSaveGame3']) {
         saveInfo3 = JSON.parse(atob(localStorage['EncodedSaveGame3']));
         displayInfo3 = "Level - " + saveInfo3.playerProperties.level + ' Race: ' + saveInfo3.playerProperties.heroRace;
+        if (saveInfo3.playerProperties.hardcoreMode === true) {
+            displayInfo3 += " <strong>Hardcore</strong>"
+        };
     }
     else {
         displayInfo3 = "Empty Slot";
