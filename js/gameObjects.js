@@ -50,7 +50,7 @@ var secondaryStatInfo = [
         isPercent: false,
         number: 1,
         tooltip: function () {
-            return "Damage reduction:" + (100 - (500 / (500 + player.functions.defense())) * 100).toFixed(2) + "%";
+            return "Damage reduction:" + (100 - (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + player.functions.defense())) * 100).toFixed(2) + "%";
         }
     },
     {

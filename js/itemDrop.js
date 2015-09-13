@@ -229,11 +229,9 @@ function getItemBaseStats(monster, dropItem, isDrop, craftedBonus) {
         dropItem.name = 'Crafted ';
         dropItem.color = '#FF00FF';
     };
-    dropItem.power *= player.properties.prestigeMultiplier;
-    dropItem.rarityValue *= player.properties.prestigeMultiplier;
     craftedBonus *= player.properties.prestigeMultiplier;
     var minDmg = (dropItem.iLvl + dropItem.power) * craftedBonus;
-    var maxDmg = Math.floor(((dropItem.iLvl * 1.2) + (dropItem.power * 2)) * craftedBonus);
+    var maxDmg = Math.floor(((dropItem.iLvl * 1.1) + (dropItem.power * 1.1)) * craftedBonus);
     var randomNumber = 0;
     dropItem['Value'] = 0;
     if (dropItem.itemType === "weapon") {
@@ -315,6 +313,9 @@ function getBonusItemMod(monster, dropItem, isDrop) {
             else if (randomMod.type === "Bonus damage" && dropItem.itemType === "weapon") {
                 randomModValue = Math.floor(Math.random() * (randomMod.maxValue - randomMod.minValue + 1)) + randomMod.minValue;
                 dropItem[randomMod.type] = randomModValue + dropItem.iLvl * player.properties.prestigeMultiplier;
+                if (dropItem[randomMod.type] >= 1000) {
+                    dropItem[randomMod.type] = 1000;
+                };
                 dropItem.Value += randomMod.baseValue * randomModValue * player.properties.prestigeMultiplier;
                 dropItem.MinDamage = Math.floor(dropItem.MinDamage + (dropItem.MinDamage * randomModValue / 100));
                 dropItem.MaxDamage = Math.floor(dropItem.MaxDamage + (dropItem.MaxDamage * randomModValue / 100));
