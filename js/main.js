@@ -725,7 +725,7 @@ function playerCriticalChance(monsterStats) {
 //player critical damage calculation
 function playerCriticalDamage(monsterStats) {
     var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * player.functions.criticalDamage() * (500 / (500 + monsterStats.def())));
+    damage = Math.floor(damage * player.functions.criticalDamage() * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + monsterStats.def())));
     if (damage >= 1) {
         playerDamageDeal(damage, monsterStats);
     };
@@ -734,7 +734,7 @@ function playerCriticalDamage(monsterStats) {
 //player normal damage calculation
 function playerDamage(monsterStats) {
     var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * (500 / (500 + monsterStats.def())));
+    damage = Math.floor(damage * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + monsterStats.def())));
     if (damage >= 1) {
         playerDamageDeal(damage, monsterStats);
     };
@@ -798,7 +798,7 @@ function monsterAttack(monsterStats) {
 //monster damage calculation
 function monsterDmg(monsterStats) {
     monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg() - monsterStats.minDmg() + 1)) + monsterStats.minDmg();
-    monsterDamage = Math.floor(monsterDamage * (500 / (500 + player.functions.defense())));
+    monsterDamage = Math.floor(monsterDamage * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + player.functions.defense())));
     if (monsterDamage >= 1) {
         monsterDamageDeal(monsterDamage, monsterStats);
     };
@@ -875,7 +875,9 @@ function monsterKilled(monsterStats) {
     displayLogInfo();
     quest();
     if (monsterStats.lastEnemy === true) {
-        rebirth(monsterStats.level);
+        var monsterNumber = monsterStats.id; //Used to determine div which contain a monster
+        $("#" + monsterNumber).append("<button class='sell' onclick='rebirth(" + monsterStats.level + ")'>Warp</button>");
+        //rebirth(monsterStats.level);
     };
     battleTurn = -1;
 };
@@ -1685,17 +1687,19 @@ function getThousands(n) {
     };
 };
 var monsterKillCount = [];
-function changeDifficulty(type) {
+function changeDifficulty(type, rebirth) {
     for (var key in monsterList) {
         var monster = monsterList[key];
         monsterKillCount.push(monster.killCount);
     }
     player.properties.difficulty = type;
     MakeMonsterList();
-    for (var key in monsterList) {
-        var monster = monsterList[key];
-        var monsterNumber = (monster.id - 1)
-        monster.killCount = monsterKillCount[monsterNumber];
+    if (rebirth === undefined) {
+        for (var key in monsterList) {
+            var monster = monsterList[key];
+            var monsterNumber = (monster.id - 1)
+            monster.killCount = monsterKillCount[monsterNumber];
+        };
     };
     monsterKillCount = [];
     CreateMonsterHtml();
@@ -1704,13 +1708,13 @@ function changeDifficulty(type) {
 };
 
 function rebirth(level) {
-    player.properties.prestigeMultiplier++;
+    player.properties.prestigeMultiplier += 1.2;
     player.properties.prestigeSuffix = "(Warped)";
     player.properties.monsterLevel = level;
     player.properties.monsterBackground = "#DD4747";
     for (var i = 1; i < monsterAreas.length; i++) { //Starts with i = 1, so it wont change first array value, which is needed to display first area.
         monsterAreas[i].isUnlocked = false;
     };
-    changeDifficulty("Hero");
+    changeDifficulty("Hero", true);
     changedTabmonster(0);
 };

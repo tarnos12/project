@@ -1715,7 +1715,7 @@ function itemTooltipTest(item) {
         if (item['Bonus armor'] > 0) {
             html += '<strong><font color="#7FCC7F">' + 'Bonus armor' + ": " + item['Bonus armor'] + "%" + '</font></strong>' + '<br />';
         };
-        html += 'Damage reduction: ' + ((100 - (500 / (500 + (player.functions.defense() + (item.defense - equippedItems[item.subType].defense)))) * 100) - (100 - (500 / (500 + player.functions.defense())) * 100)).toFixed(2) + "%" + '<br />';
+        html += 'Damage reduction: ' + ((100 - (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + (player.functions.defense() + (item.defense - equippedItems[item.subType].defense)))) * 100) - (100 - (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + player.functions.defense())) * 100)).toFixed(2) + "%" + '<br />';
     };
     for (var statName in item) { //Here stat will become the word Defense
         if (item.hasOwnProperty(statName)) {
