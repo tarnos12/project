@@ -686,10 +686,10 @@ function newGameSlot() {
     var saveInfo2 = "";
     var saveInfo3 = "";
 
-    if (localStorage['EncodedSaveGame']) {
-        saveInfo0 = JSON.parse(atob(localStorage['EncodedSaveGame']));
+    if (localStorage['EncodedSave']) {
+        saveInfo0 = JSON.parse(atob(localStorage['EncodedSave']));
         if (saveInfo0.playerProperties.level === undefined || saveInfo0.playerProperties.heroRace === undefined) {
-            localStorage.removeItem("EncodedSaveGame");
+            localStorage.removeItem("EncodedSave");
             pageReload();
         }
         else {
@@ -703,8 +703,8 @@ function newGameSlot() {
         displayInfo0 = "Empty Slot";
     }
 
-    if (localStorage['EncodedSaveGame1']) {
-        saveInfo1 = JSON.parse(atob(localStorage['EncodedSaveGame1']));
+    if (localStorage['EncodedSave1']) {
+        saveInfo1 = JSON.parse(atob(localStorage['EncodedSave1']));
         displayInfo = "Current save: Level - " + saveInfo1.playerProperties.level + ' Race: ' + saveInfo1.playerProperties.heroRace;
         if (saveInfo1.playerProperties.hardcoreMode === true) {
             displayInfo += " <strong>Hardcore</strong>"
@@ -713,8 +713,8 @@ function newGameSlot() {
     else {
         displayInfo = "Empty Slot";
     }
-    if (localStorage['EncodedSaveGame2']) {
-        saveInfo2 = JSON.parse(atob(localStorage['EncodedSaveGame2']));
+    if (localStorage['EncodedSave2']) {
+        saveInfo2 = JSON.parse(atob(localStorage['EncodedSave2']));
         displayInfo2 = "Current save: Level - " + saveInfo2.playerProperties.level + ' Race: ' + saveInfo2.playerProperties.heroRace;
         if (saveInfo2.playerProperties.hardcoreMode === true) {
             displayInfo2 += " <strong>Hardcore</strong>"
@@ -723,8 +723,8 @@ function newGameSlot() {
     else {
         displayInfo2 = "Empty Slot";
     }
-    if (localStorage['EncodedSaveGame3']) {
-        saveInfo3 = JSON.parse(atob(localStorage['EncodedSaveGame3']));
+    if (localStorage['EncodedSave3']) {
+        saveInfo3 = JSON.parse(atob(localStorage['EncodedSave3']));
         displayInfo3 = "Current save: Level - " + saveInfo3.playerProperties.level + ' Race: ' + saveInfo3.playerProperties.heroRace;
         if (saveInfo3.playerProperties.hardcoreMode === true) {
             displayInfo3 += " <strong>Hardcore</strong>"
@@ -773,10 +773,10 @@ function loadGameSlot() {
     var saveInfo1 = "";
     var saveInfo2 = "";
     var saveInfo3 = "";
-    if (localStorage['EncodedSaveGame']) {
-        saveInfo0 = JSON.parse(atob(localStorage['EncodedSaveGame']));
+    if (localStorage['EncodedSave']) {
+        saveInfo0 = JSON.parse(atob(localStorage['EncodedSave']));
         if (saveInfo0.playerProperties.level === undefined || saveInfo0.playerProperties.heroRace === undefined) {
-            localStorage.removeItem("EncodedSaveGame");
+            localStorage.removeItem("EncodedSave");
             pageReload();
         }
         displayInfo0 = "Level - " + saveInfo0.playerProperties.level + ' Race: ' + saveInfo0.playerProperties.heroRace;
@@ -787,8 +787,8 @@ function loadGameSlot() {
     else {
         displayInfo0 = "Empty Slot";
     };
-    if (localStorage['EncodedSaveGame1']) {
-        saveInfo1 = JSON.parse(atob(localStorage['EncodedSaveGame1']));
+    if (localStorage['EncodedSave1']) {
+        saveInfo1 = JSON.parse(atob(localStorage['EncodedSave1']));
         displayInfo = "Level - " + saveInfo1.playerProperties.level + ' Race: ' + saveInfo1.playerProperties.heroRace;
         if (saveInfo1.playerProperties.hardcoreMode === true) {
             displayInfo += " <strong>Hardcore</strong>"
@@ -797,8 +797,8 @@ function loadGameSlot() {
     else {
         displayInfo = "Empty Slot";
     };
-    if (localStorage['EncodedSaveGame2']) {
-        saveInfo2 = JSON.parse(atob(localStorage['EncodedSaveGame2']));
+    if (localStorage['EncodedSave2']) {
+        saveInfo2 = JSON.parse(atob(localStorage['EncodedSave2']));
         displayInfo2 = "Level - " + saveInfo2.playerProperties.level + ' Race: ' + saveInfo2.playerProperties.heroRace;
         if (saveInfo2.playerProperties.hardcoreMode === true) {
             displayInfo2 += " <strong>Hardcore</strong>"
@@ -807,8 +807,8 @@ function loadGameSlot() {
     else {
         displayInfo2 = "Empty Slot";
     };
-    if (localStorage['EncodedSaveGame3']) {
-        saveInfo3 = JSON.parse(atob(localStorage['EncodedSaveGame3']));
+    if (localStorage['EncodedSave3']) {
+        saveInfo3 = JSON.parse(atob(localStorage['EncodedSave3']));
         displayInfo3 = "Level - " + saveInfo3.playerProperties.level + ' Race: ' + saveInfo3.playerProperties.heroRace;
         if (saveInfo3.playerProperties.hardcoreMode === true) {
             displayInfo3 += " <strong>Hardcore</strong>"
