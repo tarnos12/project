@@ -831,112 +831,112 @@ var itemModifiers = {
 		{
 		    type: "All attributes",
 		    minValue: 1,
-		    maxValue: 3,
+		    maxValue: 2,
 		    chance: 10,
             baseValue: 50
 		},
         {
             type: "Strength",
-            minValue: 3,
-            maxValue: 8,
+            minValue: 1,
+            maxValue: 4,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Endurance",
-            minValue: 3,
-            maxValue: 8,
+            minValue: 1,
+            maxValue: 4,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Agility",
-            minValue: 3,
-            maxValue: 8,
+            minValue: 1,
+            maxValue: 4,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Dexterity",
-            minValue: 3,
-            maxValue: 8,
+            minValue: 1,
+            maxValue: 4,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Wisdom",
-            minValue: 3,
-            maxValue: 8,
+            minValue: 1,
+            maxValue: 4,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Intelligence",
-            minValue: 3,
-            maxValue: 8,
+            minValue: 1,
+            maxValue: 4,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Luck",
-            minValue: 3,
-            maxValue: 8,
+            minValue: 1,
+            maxValue: 4,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Bonus damage",
-            minValue: 20,
-            maxValue: 25,
+            minValue: 5,
+            maxValue: 10,
             chance: 10,
             baseValue: 20
         },
         {
             type: "Bonus armor",
-            minValue: 7,
+            minValue: 5,
             maxValue: 10,
             chance: 10,
             baseValue: 20
         },
         {
             type: "Bonus life",
-            minValue: 25,
-            maxValue: 35,
+            minValue: 5,
+            maxValue: 10,
             chance: 10,
             baseValue: 5
         },
         {
             type: "Bonus mana",
-            minValue: 15,
-            maxValue: 25,
+            minValue: 5,
+            maxValue: 10,
             chance: 10,
             baseValue: 3
         },
         {
             type: "Magic find",
             minValue: 1,
-            maxValue: 5,
+            maxValue: 3,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Gold drop",
             minValue: 1,
-            maxValue: 5,
+            maxValue: 3,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Experience rate",
             minValue: 1,
-            maxValue: 5,
+            maxValue: 3,
             chance: 10,
             baseValue: 10
         },
         {
             type: "Life gain on hit",
             minValue: 1,
-            maxValue: 5,
+            maxValue: 2,
             chance: 10,
             baseValue: 15
         },

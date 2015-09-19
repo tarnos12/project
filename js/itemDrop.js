@@ -5,14 +5,14 @@ function monsterItemDrop(monster) {
         if (randomItemChance * player.functions.dropRate() >= 500) {
             if (playerInventory.length <= player.functions.inventory()) {
                 getItemType(monster, true); // Call getItemType(monster); several times, for multiple item drop per monster kill/ random amount of items per kill...
-                itemDropNumber += 1;
+                itemDropNumber += 1; 
+                Log('<span id=\"itemDropNew\" class =\"bold\" style=\"color:orange; display:none;\">You found ' + (itemDropNumber) + " items! <br />" + "</span>");
+                itemDropLog();
             }
             else {
                 Log('<span id=\"inventoryFull\" style=\"color:red;\">' + "Your inventory is full.<br />" + "</span>");
             }
         };
-    Log('<span id=\"itemDropNew\" class =\"bold\" style=\"color:orange; display:none;\">You found ' + (itemDropNumber) + " items! <br />" + "</span>");
-    itemDropLog();
     CreateInventoryWeaponHtml();
 };
 
@@ -198,24 +198,18 @@ function getItemPower(monster, dropItem, isDrop) {
             if (randomNumber <= itemPowerChance) {
                 if (itemPowerType === "Inferior") {
                     dropItem["itemQuality"] = itemPowerType;
-                    craftedBonus = 0.5;
+                    craftedBonus = 0.8;
+                    dropItem.power += 0.3;
                 } else if (itemPowerType === "Normal") {
-                    dropItem.power += 1;
                     craftedBonus = 1;
+                    dropItem.power += 0.4;
                     dropItem["itemQuality"] = itemPowerType;
                 } else if (itemPowerType === "Superior") {
-                    if (dropItem.itemRarity !== "Epic" && dropItem.itemRarity !== "Legendary") {
-                        dropItem.power += 3;
-                        craftedBonus = 1.2;
-                    } else if (dropItem.itemRarity === "Epic") {
-                        dropItem.power += 4;
-                        craftedBonus = 1.4;
-                    } else if (dropItem.itemRarity === "Legendary") {
-                        dropItem.power += 5;
-                        craftedBonus = 1.6;
-                    };
                     dropItem["itemQuality"] = itemPowerType;
+                    craftedBonus = 1.2
+                    dropItem.power += 0.5;
                 };
+                dropItem.power += craftedBonus;
                 break; //Break here so it will stop once it rolls an item quality...
             };
         };
@@ -223,15 +217,15 @@ function getItemPower(monster, dropItem, isDrop) {
     getItemBaseStats(monster, dropItem, isDrop, craftedBonus);
 };
 
-function getItemBaseStats(monster, dropItem, isDrop, craftedBonus) {
+function getItemBaseStats(monster, dropItem, isDrop) {
     dropItem['name'] = "";
+    dropItem.power *= player.properties.prestigeMultiplier;
     if (dropItem.isCrafted === true) {
         dropItem.name = 'Crafted ';
         dropItem.color = '#FF00FF';
     };
-    craftedBonus *= player.properties.prestigeMultiplier;
-    var minDmg = (dropItem.iLvl + dropItem.power) * craftedBonus;
-    var maxDmg = Math.floor(((dropItem.iLvl * 1.1) + (dropItem.power * 1.1)) * craftedBonus);
+    var minDmg = (dropItem.iLvl) * dropItem.power;
+    var maxDmg = Math.floor(dropItem.iLvl * 1.1 * dropItem.power);
     var randomNumber = 0;
     dropItem['Value'] = 0;
     if (dropItem.itemType === "weapon") {

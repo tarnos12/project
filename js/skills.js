@@ -254,23 +254,43 @@
         this.type = type;
         this.type2 = type2;
         this.id = id;
+        this.animation = function () {
+            return "slashAnimation";
+        };
     };
 //Level, name, image, type
 //SWORD SKILL
-    var swordFinesse = new weaponSkillDamage(1, "Sword Finesse", "SwordFinesse", "passive", "physical", 1);
-    var parryAndRiposte = new weaponSkillDamage(5, "Parry and Riposte", "ParryAndRiposte", "counter", "physical", 6);
-    var savageStrike = new weaponSkillDamage(10, "Savage Strike", "SavageStrike", "damage", "physical", 11);
+    var savageStrike = new weaponSkillDamage(1, "Savage Strike", "SavageStrike", "damage", "physical", 1);
+    var swordFinesse = new weaponSkillDamage(5, "Sword Finesse", "SwordFinesse", "passive", "physical", 6);
+    var parryAndRiposte = new weaponSkillDamage(10, "Parry and Riposte", "ParryAndRiposte", "counter", "physical", 11);
     var sinisterSwing = new weaponSkillDamage(15, "Sinister Swing", "SinisterSwing", "damage", "physical", 16);
     var rendingArc = new weaponSkillDamage(20, "Rending Arc", "RendingArc", "damage", "physical", 21);
 
 //SWORD DAMAGE/BUFF/BLOCK ETC.
+
+    //SAVAGE STRIKE
+
+    //DAMAGE
+    savageStrike.damageDisplay = function () {
+        return Math.floor(10 + (weaponMastery.sword.level * 2) + player.functions.totalStrength() * 0.5 + player.functions.totalAgility() * 0.5);
+    };
+    savageStrike.damage = function () {
+        return (player.properties.isSword && weaponMastery.sword.level >= this.levelReq) ? this.damageDisplay() : 0;
+    };
+    //LIFESTEAL
+    savageStrike.lifeSteal = function () {
+        return Math.floor(1 + weaponMastery.sword.level * 0.5);
+    };
+    savageStrike.lifeStealAmount = function () {
+        return (player.properties.isSword && weaponMastery.sword.level >= this.levelReq) ? this.lifeSteal() : 0;
+    };
 
 //SWORD FINESSE
     swordFinesse.damageDisplay = function() {
         return Math.floor(player.functions.totalAgility() * 0.2);
     };
     swordFinesse.damage = function() {
-        return (player.properties.isSword && weaponMastery.sword.level >= 1) ? this.damageDisplay() : 0;
+        return (player.properties.isSword && weaponMastery.sword.level >= this.levelReq) ? this.damageDisplay() : 0;
     };
 
 //PARRY AND RIPOSTE
@@ -313,28 +333,13 @@
         return (player.properties.isSword && weaponMastery.sword.level >= this.levelReq) ? this.counterDamageDisplay() : 0;
     };
 
-//SAVAGE STRIKE
 
-//DAMAGE
-    savageStrike.damageDisplay = function() {
-        return Math.floor(player.functions.totalStrength() * 0.3);
-    };
-    savageStrike.damage = function() {
-        return (player.properties.isSword && weaponMastery.sword.level >= this.levelReq) ? this.damageDisplay() : 0;
-    };
-//LIFESTEAL
-    savageStrike.lifeSteal = function() {
-        return Math.floor(weaponMastery.sword.level * 2);
-    };
-    savageStrike.lifeStealAmount = function() {
-        return (player.properties.isSword && weaponMastery.sword.level >= this.levelReq) ? this.lifeSteal() : 0;
-    };
 
 //SINISTER SWING
 
 //DAMAGE
     sinisterSwing.damageDisplay = function() {
-        return Math.floor((player.functions.minDamage() + player.functions.maxDamage()) * 0.5);
+        return Math.floor(30 + (weaponMastery.sword.level * 2) + player.functions.totalStrength() * 0.8 + player.functions.totalAgility() * 0.8);
     };
     sinisterSwing.damage = function() {
         return (player.properties.isSword && weaponMastery.sword.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -343,7 +348,7 @@
 
 //DAMAGE
     rendingArc.damageDisplay = function() {
-        return Math.floor(player.functions.minDamage() + player.functions.maxDamage());
+        return Math.floor(60 + (weaponMastery.sword.level * 2) + player.functions.totalStrength() * 1.2 + player.functions.totalAgility() * 1.2);
     };
     rendingArc.damage = function() {
         return (player.properties.isSword && weaponMastery.sword.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -358,42 +363,43 @@
             "Counter chance: " + this.counterChanceDisplay() + "%" + " for " + this.counterDamageDisplay() + " damage.<br />";
     };
     savageStrike.description = function() {
-        return "Damage: " + this.damageDisplay() + "(Strength based).<br />" +
+        return "Damage: " + this.damageDisplay() + "(Strength/Agility based).<br />" +
             "Life steal: " + this.lifeSteal() + " each time you attack.";
     };
     sinisterSwing.description = function() {
-        return "Damage: " + this.damageDisplay() + "(Min + Max damage).";
+        return "Damage: " + this.damageDisplay() + "(Strength/Agility based).";
     };
     rendingArc.description = function() {
-        return "Damage: " + this.damageDisplay() + "(Min + Max damage * 2).";
+        return "Damage: " + this.damageDisplay() + "(Strength/Agility based).";
     };
 
 //AXE SKILL
-    var butchersInsight = new weaponSkillDamage(1, "Butcher\'s Insight", "ButchersInsight", "passive", "physical", 2);
-    var hamstring = new weaponSkillDamage(5, "Hamstring", "Hamstring", "damage", "physical", 7);
+    var hamstring = new weaponSkillDamage(1, "Hamstring", "Hamstring", "damage", "physical", 2);
+    var butchersInsight = new weaponSkillDamage(5, "Butcher\'s Insight", "ButchersInsight", "passive", "physical", 7);
     var whirlwind = new weaponSkillDamage(10, "Whirlwind", "Whirlwind", "damage", "physical", 12);
     var flurry = new weaponSkillDamage(15, "Flurry", "Flurry", "damage", "physical", 17);
-    var frenzy = new weaponSkillDamage(20, "Frenzy", "Frenzy", "buff", "physical", 22);
+    var frenzy = new weaponSkillDamage(20, "Frenzy", "Frenzy", "damage", "physical", 22);
 
 //AXE DAMAGE/BUFF/BLOCK ETC.
 
-//BUTCHER'S INSIGHT
-
-//PASSIVE
-    butchersInsight.damageDisplay = function() {
-        return Math.floor(player.functions.totalIntelligence() * 0.5);
-    };
-    butchersInsight.damage = function() {
-        return (player.properties.isAxe && weaponMastery.axe.level >= this.levelReq) ? this.damageDisplay() : 0;
-    };
 
 //HAMSTRING
 
 //DAMAGE
     hamstring.damageDisplay = function() {
-        return Math.floor(player.functions.totalStrength());
+        return Math.floor(20 + (weaponMastery.axe.level * 4) + player.functions.totalStrength() * 0.6 + player.functions.totalEndurance() * 0.6);
     };
     hamstring.damage = function() {
+        return (player.properties.isAxe && weaponMastery.axe.level >= this.levelReq) ? this.damageDisplay() : 0;
+    };
+
+    //BUTCHER'S INSIGHT
+
+    //PASSIVE
+    butchersInsight.damageDisplay = function () {
+        return Math.floor(player.functions.totalIntelligence() * 0.5);
+    };
+    butchersInsight.damage = function () {
         return (player.properties.isAxe && weaponMastery.axe.level >= this.levelReq) ? this.damageDisplay() : 0;
     };
 
@@ -401,7 +407,7 @@
 
 //DAMAGE
     whirlwind.damageDisplay = function() {
-        return Math.floor(player.functions.totalStrength() * 1.5);
+        return Math.floor(40 + (weaponMastery.axe.level * 4) + player.functions.totalStrength() * 0.9 + player.functions.totalEndurance() * 0.9);
     };
     whirlwind.damage = function() {
         return (player.properties.isAxe && weaponMastery.axe.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -411,7 +417,7 @@
 
 //DAMAGE
     flurry.damageDisplay = function() {
-        return Math.floor(player.functions.totalStrength() * 2);
+        return Math.floor(70 + (weaponMastery.axe.level * 4) + player.functions.totalStrength() * 1.3 + player.functions.totalEndurance() * 1.3);
     };
     flurry.damage = function() {
         return (player.properties.isAxe && weaponMastery.axe.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -421,7 +427,7 @@
 
 //BUFF
     frenzy.damageDisplay = function() {
-        return Math.floor(player.functions.totalStrength());
+        return Math.floor(100 + (weaponMastery.axe.level * 4) + player.functions.totalStrength() * 1.5 + player.functions.totalEndurance() * 1.5);
     };
     frenzy.damage = function() {
         return (player.properties.isAxe && weaponMastery.axe.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -457,7 +463,7 @@
 
 //DAMAGE
     hammerTime.damageDisplay = function() {
-        return Math.floor(player.functions.totalStrength());
+        return Math.floor(15 + (weaponMastery.mace.level * 3) + player.functions.totalEndurance() * 0.4 + player.functions.totalWisdom() * 0.4);
     };
     hammerTime.damage = function() {
         return (player.properties.isMace && weaponMastery.mace.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -467,7 +473,7 @@
 
 //DAMAGE
     dominatingSlam.damageDisplay = function() {
-        return Math.floor(player.functions.totalWisdom() * 2 + player.functions.totalEndurance() * 2);
+        return Math.floor(25 + (weaponMastery.mace.level * 3) + player.functions.totalEndurance() * 0.7 + player.functions.totalWisdom() * 0.7);
     };
     dominatingSlam.damage = function() {
         return (player.properties.isMace && weaponMastery.mace.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -477,7 +483,7 @@
 
 //DAMAGE
     gash.damageDisplay = function() {
-        return Math.floor(player.functions.totalWisdom() * 3 + player.functions.totalEndurance() * 3);
+        return Math.floor(50 + (weaponMastery.mace.level * 3) + player.functions.totalEndurance() * 1.1 + player.functions.totalWisdom() * 1.1);
     };
     gash.damage = function() {
         return (player.properties.isMace && weaponMastery.mace.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -487,7 +493,7 @@
 
 //DAMAGE
     overbearingWallop.damageDisplay = function() {
-        return Math.floor(player.functions.totalEndurance() * 5);
+        return Math.floor(80 + (weaponMastery.mace.level * 3) + player.functions.totalEndurance() * 1.3 + player.functions.totalWisdom() * 1.3);
     };
     overbearingWallop.damage = function() {
         return (player.properties.isMace && weaponMastery.mace.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -497,7 +503,7 @@
 
 //DAMAGE
     tremor.damageDisplay = function() {
-        return Math.floor(player.functions.totalEndurance() * 5 + player.functions.totalWisdom() * 5);
+        return Math.floor(125 + (weaponMastery.mace.level * 3) + player.functions.totalEndurance() * 1.5 + player.functions.totalWisdom() * 1.5);
     };
     tremor.damage = function() {
         return (player.properties.isMace && weaponMastery.mace.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -520,9 +526,9 @@
         return "Damage:" + this.damageDisplay() + "(Endurance + Wisdom based).";
     };
 
-//STAFF SKILL
-    var intone = new weaponSkillDamage(1, "Intone", "Intone", "magicDamageBuff", "magical", 4);
-    var starlight = new weaponSkillDamage(5, "Starlight", "Starlight", "damage", "magical", 9);
+    //STAFF SKILL
+    var starlight = new weaponSkillDamage(1, "Starlight", "Starlight", "damage", "magical", 4);
+    var intone = new weaponSkillDamage(5, "Intone", "Intone", "magicDamageBuff", "magical", 9);
     var hateCannon = new weaponSkillDamage(10, "Hate Cannon", "HateCannon", "damage", "magical", 14);
     var beguilersOrb = new weaponSkillDamage(15, "Beguiler\'s Orb", "BeguilersOrb", "damage", "magical", 19);
     var spellSimulacrum = new weaponSkillDamage(20, "Spell Simulacrum", "SpellSimulacrum", "passive", "magical", 24);
@@ -533,7 +539,7 @@
 
 //BUFF
     intone.damageDisplay = function() {
-        return Math.floor(20 + player.functions.totalIntelligence() * 1.5);
+        return Math.floor(10 + player.functions.totalIntelligence() * 2);
     };
     intone.damage = function() {
         return (player.properties.isStaff && weaponMastery.staff.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -549,17 +555,20 @@
 
 //DAMAGE 
     starlight.damageDisplay = function() {
-        return Math.floor(player.functions.totalIntelligence() * 3 + player.functions.totalWisdom() * 2);
+        return Math.floor(30 + (weaponMastery.staff.level * 4) + player.functions.totalIntelligence() * 0.8 + player.functions.totalWisdom() * 0.8);
     };
     starlight.damage = function() {
         return (player.properties.isStaff && weaponMastery.staff.level >= this.levelReq) ? this.damageDisplay() : 0;
+    };
+    starlight.animation = function () {
+        return "thunder";
     };
 
 //HATE CANNON
 
 //DAMAGE 
     hateCannon.damageDisplay = function() {
-        return Math.floor(player.functions.totalIntelligence() * 5);
+        return Math.floor(50 + (weaponMastery.staff.level * 3) + player.functions.totalIntelligence() * 1.2 + player.functions.totalWisdom() * 1.2);
     };
     hateCannon.damage = function() {
         return (player.properties.isStaff && weaponMastery.staff.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -569,7 +578,7 @@
 
 //DAMAGE 
     beguilersOrb.damageDisplay = function() {
-        return Math.floor(player.functions.totalIntelligence() * 10 + player.functions.totalWisdom() * 5);
+        return Math.floor(100 + (weaponMastery.staff.level * 3) + player.functions.totalIntelligence() * 1.6 + player.functions.totalWisdom() * 1.6);
     };
     beguilersOrb.damage = function() {
         return (player.properties.isStaff && weaponMastery.staff.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -616,7 +625,7 @@
 
 //DAMAGE
     pierceTheVeil.damageDisplay = function() {
-        return Math.floor(player.functions.totalDexterity());
+        return Math.floor(30 + (weaponMastery.ranged.level * 3) + player.functions.totalDexterity() * 0.7 + player.functions.totalStrength() * 0.7);
     };
     pierceTheVeil.damage = function() {
         return (player.properties.isRanged && weaponMastery.ranged.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -626,7 +635,7 @@
 
 //DAMAGE
     skyCracker.damageDisplay = function() {
-        return Math.floor(player.functions.totalDexterity() * 2);
+        return Math.floor(50 + (weaponMastery.ranged.level * 3) + player.functions.totalDexterity() * 0.9 + player.functions.totalStrength() * 0.9);
     };
     skyCracker.damage = function() {
         return (player.properties.isRanged && weaponMastery.ranged.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -646,7 +655,7 @@
 
 //DAMAGE
     makeItRain.damageDisplay = function() {
-        return Math.floor(player.functions.totalDexterity() * 3 + player.functions.totalStrength() * 2);
+        return Math.floor(70 + (weaponMastery.ranged.level * 3) + player.functions.totalDexterity() * 1.1 + player.functions.totalStrength() * 1.1);
     };
     makeItRain.damage = function() {
         return (player.properties.isRanged && weaponMastery.ranged.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -656,7 +665,7 @@
 
 //DAMAGE
     rangersRevenge.damageDisplay = function() {
-        return Math.floor(player.functions.totalStrength() * 5 + player.functions.totalDexterity() * 5);
+        return Math.floor(90 + (weaponMastery.ranged.level * 3) + player.functions.totalDexterity() * 1.3 + player.functions.totalStrength() * 1.3);
     };
     rangersRevenge.damage = function() {
         return (player.properties.isRanged && weaponMastery.ranged.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -680,15 +689,15 @@
     };
 
     var sword = new Object();
+    sword.savageStrike = savageStrike;
     sword.swordFinesse = swordFinesse;
     sword.parryAndRiposte = parryAndRiposte;
-    sword.savageStrike = savageStrike;
     sword.sinisterSwing = sinisterSwing;
     sword.rendingArc = rendingArc;
 
     var axe = new Object();
-    axe.butchersInsight = butchersInsight;
     axe.hamstring = hamstring;
+    axe.butchersInsight = butchersInsight;
     axe.whirlwind = whirlwind;
     axe.flurry = flurry;
     axe.frenzy = frenzy;
@@ -702,8 +711,8 @@
     mace.tremor = tremor;
 
     var staff = new Object();
-    staff.intone = intone;
     staff.starlight = starlight;
+    staff.intone = intone;
     staff.hateCannon = hateCannon;
     staff.beguilersOrb = beguilersOrb;
     staff.spellSimulacrum = spellSimulacrum;

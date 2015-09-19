@@ -114,11 +114,7 @@ function healthPercent() {
     divArray.style.width = ((healthPercentValue) + "%");
 };
 
-function healthRegen() { //Health regen
-    if (player.properties.isDead === false) {
-        if (player.properties.health < player.functions.maxhealth()) player.properties.health += player.functions.hpregen();
-        if (player.properties.health > player.functions.maxhealth()) player.properties.health = player.functions.maxhealth();
-    };
+function playerHealthBar() {
     document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
 };
 
@@ -338,20 +334,6 @@ function upgradeLuck(event) {
     updateHtml();
 };
 
-function autoAttack(monster) {
-    disableButtons();
-    var manaCost = monsterList[monster].manaCost();
-    var autoBattle = window.setInterval(function() {
-        if (player.properties.mana >= manaCost && player.autoBattle.autoBattle === true) {
-            player.properties.mana -= manaCost;
-            attack(monster);
-        } else if (player.autoBattle.autoBattle === false) {
-            clearInterval(autoBattle);
-            player.autoBattle.isAuto = false;
-            disableButtons();
-        };
-    }, 10000);
-};
 
 
 function upgradePassive(skillName) {

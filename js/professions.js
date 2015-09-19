@@ -1100,7 +1100,7 @@ function craftingHtml2() {
     };
     html += '</ul>';
     html += '<div class="tab-content">';
-    for (key in InventoryItemTypes) {
+    for (var key in InventoryItemTypes) {
         var itemType3 = InventoryItemTypes[key].type;
         if (itemType3 === itemTypeTab) {
             html += '<div class="tab-pane active" ';
@@ -1118,7 +1118,7 @@ function craftingHtml2() {
         } else if (itemType3 === 'accessory') {
             itemTypeObject = itemAccessorySubType;
         }
-        for (key in itemTypeObject) {
+        for (var key in itemTypeObject) {
             if (itemTypeObject.hasOwnProperty(key)) {
                 var itemType4 = itemTypeObject[key].type;
                 if (itemType4 === itemSubTypeTab) {
@@ -1131,7 +1131,7 @@ function craftingHtml2() {
         };
         html += '</ul>';
         html += '<div class="tab-content">';
-        for (key in itemTypeObject) {
+        for (var key in itemTypeObject) {
             if (itemTypeObject.hasOwnProperty(key)) {
                 var itemType6 = key
                 var itemType5 = itemTypeObject[key].type;
