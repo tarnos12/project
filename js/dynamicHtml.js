@@ -124,7 +124,7 @@ function CreateMonsterHtml() {
                 '<h3 class="panel-title c3" >' + monsterAreas[j].displayName + player.properties.prestigeSuffix + "[" + (player.properties.prestigeMultiplier - 1) + "]" + '</h3>' +
 
                 '</div>' +
-                '<div class="panel-body" style="background-color:' + player.properties.monsterBackground + ';">';
+                '<div class="panel-body" id="' + monsterAreas[j].type + '" style="background-color:' + player.properties.monsterBackground + ';">';
             html += '<div class="row">';
             var monster = monsterList[currentMonster];
             var area = monster.area;
@@ -141,18 +141,18 @@ function CreateMonsterHtml() {
                         }
                         html += 'monsterButtonDisable" style="margin-left:8px;" type="button" onclick="changeMonsterPage(' + "'" + key + "'" + ')">' + monsterNumberDisplay + '</button>';
                     };
-                }
-            }
+                };
+            };
             html += '</div>';
                 if (area === monsterAreas[j].type) {
                     var monsterPercent = ((monster.hp / monster.maxHp) * 100);
-                    var onclickevent = 'attack(' + "'" + currentMonster + "'" + ');';
+                    var onclickevent = 'startBattle(' + "'" + currentMonster + "'" + ');';
                     html += '<div class="col-xs-10 col-xs-offset-1">' +//First Div
                         '<div class="row">' +//First Row
                         '<div class="col-xs-12 c3">' +//Second Div
                         '<div id="' + monster.id + '">' +
                         '<a href="#" class="tooltipA centerText" id="monsterButton">' +
-                        '<img class="monster" src="images/monsters/' + monster.name + '.png" alt="' + monster.displayName + '" onclick="' + onclickevent + '">' +
+                        '<img style="cursor:help;" src="images/monsters/' + monster.name + '.png" alt="' + monster.displayName + '">' +
                         '<span style="bottom:140px; left:-100px; pointer-events:none;">' +
                         '<b>' + monster.displayName + '</b>';
                         html += '<br />' +
@@ -162,6 +162,12 @@ function CreateMonsterHtml() {
                         '<br />' +
                         'Def:' + getThousands(monster.def());
                         html += '</span></a>';
+
+
+                        html += '<div class="progress" style="width:80%; margin-left:10%;">';
+                        html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.name + "1" + '">';
+                        html += '<span style="font-size:13px;">' + getThousands(monster.hp) + ' HP</span>' + '</div></div>';
+                        html += '<button id="monster' + monster.id + '"' + 'class="monster sell" onclick="' + onclickevent + ' disableButtons();">Fight</button>';
                         html += '<div class="col-xs-12 c3">';
                         html += '<h4>Killed: ' + monster.killCount + '</h4>';
                         html += '</div>';
@@ -169,11 +175,6 @@ function CreateMonsterHtml() {
                     html += '</div>';//Close second Div
 
                     html += '</div>';//Close first Row
-
-                    html += '<div class="progress" style="width:80%; margin-left:10%;">';
-                    html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.name + "1" + '">';
-                    html += '<span style="font-size:13px;">' + getThousands(monster.hp) + ' HP</span>' + '</div></div>';
-
                         html += '</div>';//Close First Div
                 };
             html += '</div>';
@@ -368,7 +369,7 @@ function CreateInventoryWeaponHtml() {
                 html += '<div class="col-xs-10 col-xs-offset-1 tab-pane marginBottom"';
             };
         };
-        html += 'id="tab_' + InventoryItemTypes[j].type + '">';
+        html += 'id="tab_' + InventoryItemTypes[j].type + '" style="height:400px;">';
         html += '<div class="row" id="' + "inventorySpace" + InventoryItemTypes[j].type + '"' + '>';
         html += '<div class="c3" style="margin-bottom:10px;"><h4>Inventory</h4>';
         if (InventoryItemTypes[j].type !== 'other') {
@@ -1272,7 +1273,7 @@ function checkEquippedItemType(newItem, check) {
             html += '<img class="' + itemType.subType;
         }
         html += '"' + 'src="images/items/' + itemType.subType + "/" + itemType.image + '.png" onclick="unequipItem' + "(" + itemType.id + ', ' + "'solo'" + ")" + '" />';
-        html += '<span style="width:200px; left:-50px; right:0px; bottom:50px;">';
+        html += '<span style="width:200px; left:50px; right:0px; bottom:50px;">';
         html += '<div class="row">';
         html += '<div class="col-xs-12">';
 
@@ -1418,34 +1419,6 @@ function displayShopItems(type) {
     html += '<div class="c3"><h3>Item Shop</h3></div></div>';
     for (var i = 0; i < itemTypeDisplay.length; i++) {
         var itemDisplay = itemTypeDisplay[i];
-        var itemStat = "";
-        if (itemDisplay.itemType === "weapon") {
-                    itemStat = equippedItems.weapon;
-                }
-        else if (itemDisplay.subType === "shield") {
-                    itemStat = equippedItems.shield;
-                }
-        else if (itemDisplay.subType === "chest") {
-                    itemStat = equippedItems.chest;
-                }
-        else if (itemDisplay.subType === "helmet") {
-                    itemStat = equippedItems.helmet;
-                }
-        else if (itemDisplay.subType === "legs") {
-                    itemStat = equippedItems.legs;
-                }
-        else if (itemDisplay.subType === "boots") {
-                    itemStat = equippedItems.boots;
-                }
-        else if (itemDisplay.subType === "ring") {
-                    itemStat = equippedItems.ring;
-                }
-        else if (itemDisplay.subType === "amulet") {
-                    itemStat = equippedItems.amulet;
-                }
-        else if (itemDisplay.subType === "talisman") {
-                    itemStat = equippedItems.talisman;
-                }
                 html += '<div class="col-xs-3">';
                 html += '<a class="tooltips" style="cursor:pointer;">';
                 html += '<label> <input type="radio" name="shopItem" value=' + itemDisplay.id + '>';
@@ -1457,36 +1430,12 @@ function displayShopItems(type) {
                 }
                 html += '"' + 'src="images/items/' + itemDisplay.subType + "/" + itemDisplay.image + '.png"/>';
                 html += '</label>';
-                if (itemStat.hasOwnProperty('itemType')) {
-                    html += '<span style="left:10px; bottom:40px;">';
-                }
-                else {
-                    html += '<span style="width:300px;left:10px; bottom:40px;">';
-                }
+                html += '<span style="width:300px;left:10px; bottom:40px;">';
                 html += '<div class="row">';
-                html += '<div class="col-xs-12">';
-
-                if (itemStat.hasOwnProperty('itemType')) {
-                    html += '<div class="row">';
-                    html += '<div class="col-xs-6">';
-                    html += itemTooltipTest(itemStat);
-                    html += '<strong>Currently equipped</strong>';
-                    html += '</div>';
-                };
-
-                if (itemStat.hasOwnProperty('itemType')) {
-                    html += '<div class="col-xs-6">';
-                }
-                else {
-                    html += '<div class="col-xs-10 col-xs-offset-1">';
-                }
+                html += '<div class="col-xs-10 col-xs-offset-1">';
                 html += itemTooltipTest(itemDisplay);
                 html += '<strong>Left-Click to equip</strong>';
                 html += '</div></div>';
-                html += '</div>';
-                if (itemStat.hasOwnProperty('itemType')) {
-                    html += '</div>';
-                }
                 html += '</span>' + '</a>';
                 html += '<br />' + itemDisplay.shopPrice + ' Gold';
                 html += '</div>';
@@ -1689,8 +1638,72 @@ function getAge(raceSelect) {
     characterRaces.giant.raceAge = raceSelect;
 };
 
-
 function itemTooltipTest(item) {
+    var html = "";
+    var equippedItemStat = equippedItems[item.subType];
+    if (item.itemType === "weapon") {
+        equippedItemStat = equippedItems[item.itemType];
+    };
+    html += '<font color="' + item.color + '"><strong>' + item.name + '</strong></font>' + '<br />';
+    if (item.itemType === "weapon") {
+        html += '<div class="borderBottom borderTop">Weapon class: ' + item.subType.capitalizeFirstLetter() + '<br />';
+        if (item['Bonus damage'] > 0) {
+            html += '<strong><font color="#2175D9">' + 'Damage: ' + item.MinDamage + " to " + item.MaxDamage + '</font></strong>' + '</div>';
+        }
+        else {
+            html += 'Damage: ' + item.MinDamage + " to " + item.MaxDamage + '</div>';
+        };
+        html += 'Average Damage: ' + compare(item.AverageDamage, equippedItemStat.AverageDamage, "");
+        html += '<div class="borderBottom borderTop">Critical Chance: ' + compare(item['Critical chance'], equippedItemStat['Critical chance'], "%") + '</div>';
+    };
+    if (item.itemType === "armor") {
+        if (item['Bonus armor'] > 0) {
+            html += '<div class="borderBottom borderTop"><strong><font color="#1e69c3">Defense: ' + compare(item.defense.toFixed(0), equippedItemStat.defense.toFixed(0), "") + "</font></strong></div>";
+        } else {
+            html += '<div class="borderBottom borderTop">Defense: ' + compare(item.defense, equippedItemStat.defense, "") + " </div>";
+        };
+        if (item.subType === "shield") {
+            html += '<div class="borderBottom borderTop">Chance to Block: ' + item['Block chance'] + '%' + " </div>";
+        };
+        if (item['Bonus armor'] > 0) {
+            html += '<strong><font color="#7FCC7F">' + 'Bonus armor' + ": " + compare(item['Bonus armor'], equippedItemStat['Bonus armor'], "%") + '</font></strong>' + '<br />';
+        };
+        html += 'Damage reduction: ' + ((100 - (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + (player.functions.defense() + (item.defense - equippedItems[item.subType].defense)))) * 100) - (100 - (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + player.functions.defense())) * 100)).toFixed(2) + "%" + '<br />';
+    };
+    for (var statName in item) { //Here stat will become the word Defense
+        if (item.hasOwnProperty(statName)) {
+            if ('All attributes, Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Evasion, Bonus damage, Bonus life, Bonus mana, Health regen, Mana regen, Magic find, Gold drop, Experience rate, Life gain on hit, Critical damage'.indexOf(statName) !== -1) {
+                //Getting the actual stat object from the word.
+                var selectedStat = item[statName];
+                var equippedItemTest = equippedItemStat[statName];
+                if (statName === "Bonus damage" || statName === "Magic find" || statName === "Gold drop" || statName === "Experience rate") {
+                    if (selectedStat > 0) {
+                        html += '<strong><font color="#0066FF">' + statName + ": " + compare(selectedStat, equippedItemTest, "%") + '</font></strong>' + '<br />';
+                    }
+                    if (selectedStat === 0 && equippedItemTest > 0) {
+                        html += '<strong><font color="#0066FF">' + statName + ": " + compare(selectedStat, equippedItemTest, "%") + '</font></strong>' + '<br />';
+                    }
+                }
+                else {
+                    if (selectedStat > 0) {
+                        html += '<strong><font color="#0066FF">' + statName + ": " + compare(selectedStat, equippedItemTest, "") + '</font></strong>' + '<br />';
+                    }
+                    if (selectedStat === 0 && equippedItemTest > 0) {
+                        html += '<strong><font color="#0066FF">' + statName + ": " + compare(selectedStat, equippedItemTest, "") + '</font></strong>' + '<br />';
+                    }
+                };
+            };
+        };
+    };
+    html += '<div class="borderBottom borderTop">';
+    html += "Value: " + item.Value + " gold<br />";
+    html += 'Item level: ' + item.iLvl + '<br />';
+    html += '<font color="#CC6633">' + item.lore + '</font>';
+    html += '</div>';
+    return html;
+};
+
+function itemTooltipTest2(item) {
     var html = '';
     html += '<font color="' + item.color + '"><strong>' + item.name + '</strong></font>' + '<br />';
     if (item.itemType === "weapon") {

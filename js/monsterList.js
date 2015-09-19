@@ -48,7 +48,7 @@ function MakeMonsterList() {
         this.baseExp = function () {
             return this.level * 10 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
-        this.acc = 95;
+        this.acc = 100;
         this.eva = 10;
         this.isShown = false;
         this.killCount = 0;

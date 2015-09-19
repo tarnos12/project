@@ -44,7 +44,6 @@
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
     background: -moz-linear-gradient(center top, #dfdfdf 5%, #ededed 100%);
     background-color: #dfdfdf;
-    cursor: pointer;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
 }
 
@@ -61,8 +60,6 @@
     /* Rules below not implemented in browsers yet */
     -o-user-select: none;
     -webkit-user-select: none; /* Chrome/Safari */
-    background: none;
-    background-color: none;
     cursor: url(images/icon.png), auto;
     user-select: none;
 }

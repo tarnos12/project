@@ -135,10 +135,8 @@ var executeIntervalFunctionsOnce = (function () {
         if (!executed) {
             executed = true;
             var manaRegen2;
-            var healthRegen2;
             var healthPercent2;
             var expPercent2;
-            healthRegen2 = setInterval(function () { healthRegen() }, 500);
             manaRegen2 = setInterval(function () { manaRegen() }, 500);
             healthPercent2 = setInterval(function () { healthPercent() }, 100);
             expPercent2 = setInterval(function () { expPercent() }, 100);
@@ -182,6 +180,7 @@ function newGame(slot) {
         MakeMonsterList();
         CreateMonsterHtml();
         autoSave();
+        playerHealthBar();
     };
 };
 
@@ -324,6 +323,7 @@ function load(slot) {
         playerProfessionHtml();
         createAlchemyHtml();
         craftingHtml();
+        playerHealthBar();
     }
     else {
         if (confirm("Do you want to start a new game?") === true) {

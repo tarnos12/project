@@ -39,10 +39,6 @@ var player = {
         ItemDrop: { amount: 0, timer: 0 },
         GoldDrop: { amount: 0, timer: 0 },
     },
-    autoBattle:{
-        isAuto: false,
-        autoBattle: false, // testing
-    },
     properties: {
         monsterBackground: "green",
         prestigeMultiplier: 1,
@@ -482,7 +478,7 @@ var player = {
             return Math.floor((((475 + player.functions.totalLifeBonus() + (player.functions.totalEndurance() * 5)) * (1 + (player.functions.bonusHealth() / 100)))) * (1 + (player.properties.raceHealth / 100)));
         },
         hpregen: function () {
-            return Math.floor((20 + (player.functions.totalEndurance() / 3)));
+            return Math.floor((2 + (player.functions.totalEndurance() / 10)));
         },
         //Mana
         maxMana: function () {
@@ -615,7 +611,7 @@ function createEquippedItemsObject(typeOfTheItem) {
 
 createEquippedItemsObject('all');
 
-var maxLogLines = 30;
+var maxLogLines = 12;
 var logData = {
     length: 0
 };
@@ -654,375 +650,6 @@ function disableButtons() {
     }
 };
 
-function attack(monster) {
-    battleTurn = 1;
-    var monsterStats = monsterList[monster];
-    while (battleTurn > 0 && battleTurn <= player.functions.maxBattleTurns()) {
-        if (monsterStats.hp >= 1 && player.properties.isDead === false) {
-            playerAttack(monsterStats, monster);
-            if (monsterStats.hp < 1) {
-                monsterKilled(monsterStats);
-            } else {
-                monsterAttack(monsterStats);
-            };
-        }
-        else {
-            Log("<span id=\"isDead\" class =\"bold\" style=\"color:red; display:none;\">You can not fight whilst you are dead." + "<br />" + "</span>");
-            isDeadLog();
-            disableButtons();
-            break;
-        };
-        battleTurn += 1;
-    };
-    DrawBattle();
-    disableButtons();
-};
-//There is a bug with Draw, displaying NaN critRate, and battleTurns 0...for some odd reason...
-function DrawBattle() {
-    if (battleTurn === (player.functions.maxBattleTurns() + 1)) {
-        displayLogInfo();
-        battleTurn = -1;
-    };
-};
-
-//Player miss/hit chance
-function playerAttack(monsterStats, monster) {
-    document.getElementById("manaCost").innerHTML = monsterStats.manaCost() + " Mana/10s";
-    if (player.autoBattle.autoBattle === true && player.autoBattle.isAuto === false) {
-        if (player.functions.maxMana() >= monsterStats.manaCost()) {
-            player.autoBattle.isAuto = true;
-            autoAttack(monster);
-        }
-        else {
-            document.getElementById("manaCost").innerHTML = "You don't have enough mana. You need: " + monsterStats.manaCost() + " mana.";
-        }
-    };
-        var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
-        var randomHitChance = Math.random();
-        if (playerHitChance > randomHitChance) { // accuracy, if you miss then do "nothing" so it's "else { };"
-            playerCriticalChance(monsterStats);
-            accuracyRate += 1;
-        }
-        else {
-        };
-};
-
-//player critical chance
-function playerCriticalChance(monsterStats) {
-    var playerCriticalChance = player.functions.criticalChance() / 100;
-
-    var randomCritChance = Math.random();
-
-    if (playerCriticalChance > randomCritChance) {
-        playerCriticalDamage(monsterStats);
-        criticalRate += 1;
-    }
-    else {
-        playerDamage(monsterStats);
-    };
-};
-
-//player critical damage calculation
-function playerCriticalDamage(monsterStats) {
-    var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * player.functions.criticalDamage() * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + monsterStats.def())));
-    if (damage >= 1) {
-        playerDamageDeal(damage, monsterStats);
-    };
-};
-
-//player normal damage calculation
-function playerDamage(monsterStats) {
-    var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + monsterStats.def())));
-    if (damage >= 1) {
-        playerDamageDeal(damage, monsterStats);
-    };
-};
-
-//player damage deal (base or critical)
-function playerDamageDeal(damage, monsterStats) {
-    for (var weapon in weaponSkillList) {
-        if (weaponSkillList.hasOwnProperty(weapon)) {
-            var weaponSkillStat = weaponSkillList[weapon];
-            for (var skill in weaponSkillStat) {
-                if (weaponSkillStat.hasOwnProperty(skill)) {
-                    var skillDamage = weaponSkillStat[skill];
-                        if (skillDamage.type === "damage") {
-                            if (skillDamage.type2 === "physical") {
-                                damage += skillDamage.damage();
-                            }
-                            else if (skillDamage.type2 === "magical") {
-                                magicDamage += skillDamage.damage();
-                            }
-                        };
-                        if (skillDamage.type === "magicDamageBuff") {
-                            var randomChance = Math.floor((Math.random() * 100) + 1);
-                            if (randomChance < skillDamage.chance()) {
-                                magicDamage += skillDamage.damage();
-                            }
-                        }
-                        if (skillDamage.type === "buff") {
-                            damage += skillDamage.damage();
-                        };
-                };
-            };
-        };
-    };
-    if (player.functions.lifeSteal() > 0) {
-        var lifeSteal = player.functions.lifeSteal();
-        lifeStealAmount += lifeSteal;
-        player.properties.health += lifeSteal;
-        if (player.properties.health > player.functions.maxhealth()) {
-            player.properties.health = player.functions.maxhealth();
-        };
-    };
-    monsterStats.hp -= damage + magicDamage;
-    magicDamageDealt += magicDamage;
-    magicDamage = 0;
-    damageDealt += damage;
-    weaponSkill(monsterStats);
-    //document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
-    //Add more stuff like "bonus elemental damage from passive skills or bonus weapon damage
-};
-
-//monster hit chance
-function monsterAttack(monsterStats) {
-    var monsterHitChance = (monsterStats.acc - player.functions.evasion()) / 100;
-    var randomHitChance = Math.random();
-    if (monsterHitChance > randomHitChance) {
-        monsterDmg(monsterStats);
-    };
-};
-
-//monster damage calculation
-function monsterDmg(monsterStats) {
-    monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg() - monsterStats.minDmg() + 1)) + monsterStats.minDmg();
-    monsterDamage = Math.floor(monsterDamage * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + player.functions.defense())));
-    if (monsterDamage >= 1) {
-        monsterDamageDeal(monsterDamage, monsterStats);
-    };
-};
-
-//monster damage deal (base or critical)
-function monsterDamageDeal(monsterDamage, monsterStats) {
-    var randomCounterNumber = Math.floor((Math.random() * 100) + 1);
-    var randomBlockNumber = Math.floor((Math.random() * 100) + 1);
-    if (randomCounterNumber <= player.functions.counterChance()) {
-        var counterDamageDealt = Math.floor(monsterDamage * (player.functions.counterDamage() / 100));
-        monsterStats.hp -= counterDamageDealt;
-        counterDamage += counterDamageDealt;
-    };
-    if (randomBlockNumber <= player.functions.blockChance()) {
-        if (monsterDamage >= player.functions.blockAmount()) {
-            monsterDamage -= player.functions.blockAmount();
-            blockRate += player.functions.blockAmount();
-        }
-        else if (monsterDamage < player.functions.blockAmount()) {
-            blockRate += monsterDamage;
-            monsterDamage = 0;
-        };
-    };
-    player.properties.health = player.properties.health - monsterDamage;
-    damageTaken += monsterDamage;
-    document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
-    //document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
-    if (player.properties.health < 1) {
-        playerDead(monsterStats);
-    };
-    if (monsterStats.hp < 1) {
-        monsterKilled(monsterStats);
-    };
-};
-
-//player dead function
-function playerDead(monsterStats) {
-    if (player.properties.hardcoreMode === false) {
-        var goldLost = player.properties.goldLost;
-        var expLost = player.properties.expLost;
-        player.properties.isDead = true;
-        player.properties.health = 0;
-        playerRevive();
-        goldLost = Math.floor(player.properties.gold - (player.properties.gold / 1.2));
-        player.properties.gold = Math.floor(player.properties.gold / 1.2);
-        expLost = Math.floor(player.properties.experience - (player.properties.experience / 1.2));
-        player.properties.experience = Math.floor(player.properties.experience / 1.2);
-        document.getElementById("health").innerHTML = player.properties.health;
-        document.getElementById("gold").innerHTML = player.properties.gold;
-        document.getElementById("experience").innerHTML = player.properties.experience;
-        Log("<span id=\"goldLost\" class =\"bold\" style=\"color:red; display:none;\">You lost " + goldLost + " gold." + "<br />" + "</span>");
-        Log("<span id=\"expLost\" class =\"bold\" style=\"color:red; display:none;\">You lost " + expLost + " experience." + "<br />" + "</span>");
-        Log("<span id=\"playerDead\" class =\"bold\" style=\"color:red; display:none;\">You have died." + "<br />" + "</span>");
-        Log("<span id=\"playerDead2\" class =\"bold\" style=\"color:red; display:none;\">You need to wait 5 seconds before you can fight again." + "<br />" + "</span>");
-        battleTurn = -1;
-        displayLogInfo();
-        deathLog();
-        updateHtml();
-        player.properties.goldLost = goldLost;
-        player.properties.expLost = expLost;
-    }
-    else {
-        reset();
-        pageReload();
-    };
-};
-
-//monster kill function
-function monsterKilled(monsterStats) {
-    monsterStats.hp = monsterStats.maxHp;
-    monsterExperience(monsterStats);
-    monsterStats.killCount++;
-    displayLogInfo();
-    quest();
-    if (monsterStats.lastEnemy === true) {
-        var monsterNumber = monsterStats.id; //Used to determine div which contain a monster
-        $("#" + monsterNumber).append("<button class='sell' onclick='rebirth(" + monsterStats.level + ")'>Warp</button>");
-        //rebirth(monsterStats.level);
-    };
-    battleTurn = -1;
-};
-
-//Weapon skill experience
-function weaponSkill(monsterStats) {
-    // if (monsterStats.type === boss){ give x5 experience} else if normal {x1 exp}
-    if (monsterStats.level > player.properties.level) {
-        var expgain = 3;
-    }
-    else if (monsterStats.level === player.properties.level) {
-        var expgain = 2;
-    }
-    else {
-        var expgain = 1;
-    };
-    var subType = equippedItems.weapon.subType;
-    var itemStat = weaponMastery[subType];
-    if (itemStat !== undefined) {
-        if (itemStat["experience"] < itemStat["maxExperience"]) {
-            itemStat["experience"] = Math.floor(itemStat["experience"] + expgain);
-        };
-        if (itemStat["experience"] >= itemStat["maxExperience"]) {
-            itemStat["level"] += 1;
-            itemStat["experience"] -= itemStat["maxExperience"];
-            itemStat["maxExperience"] = Math.floor(itemStat["maxExperience"] * 1.2);
-            Log("<span id=\"weaponMastery\" class =\"bold\" style=\"color:green; display:none;\">You gained level in " + itemStat.name + " Mastery!" + "<br />" + "</span>");
-            CreateWeaponSkillHtml();
-            masteryLog();
-        };
-    };
-    updateBar();
-};
-function updateBar() {
-    if (equippedItems.weapon.isEquipped === true) {
-        var subType = equippedItems.weapon.subType;
-        var itemStat = weaponMastery[subType];
-        var weaponExp = (Math.floor((itemStat.experience / itemStat.maxExperience) * 100));
-        var divArray = document.getElementById(subType + '1'); //Doing + 1 so I can use "subType" for a span, which let me center progress bar value.
-        divArray.style.width = ((weaponExp) + '%');
-        if (subType === "sword") {
-            $('#sword').empty().append(weaponExp + "%");
-            player.properties.swordSkill = weaponExp;
-        }
-        if (subType === "axe") {
-            $('#axe').empty().append(weaponExp + "%");
-            player.properties.axeSkill = weaponExp;
-        }
-        if (subType === "mace") {
-            $('#mace').empty().append(weaponExp + "%");
-            player.properties.maceSkill = weaponExp;
-        }
-        if (subType === "staff") {
-            $('#staff').empty().append(weaponExp + "%");
-            player.properties.staffSkill = weaponExp;
-        }
-        if (subType === "ranged") {
-            $('#ranged').empty().append(weaponExp + "%");
-            player.properties.rangedSkill = weaponExp;
-        };
-    }
-};
-
-//experience gained from killing a monster
-function monsterExperience(monsterStats) {
-    var expGain = monsterStats.baseExp() * player.functions.expRate();
-    var level = player.properties.level;
-    if (player.properties.experience < player.properties.maxExperience) {
-        player.properties.experience = Math.floor(player.properties.experience + expGain);
-    };
-    if (player.properties.experience >= player.properties.maxExperience) {
-        player.properties.level += 1;
-        levelUp();
-        player.properties.stats += 10;
-        player.properties.experience = player.properties.experience - player.properties.maxExperience;
-        var maxExp = getTen(level);
-        player.properties.maxExperience += maxExp * 10;
-        Log('<span id=\"levelUpLog\" style=\"color:blue; display:none;\" class =\"bold\">Level up!' + "<br />" + "</span>");
-        levelUpLog();
-    }
-    else {
-        Log('<span id=\"expGain\" class =\"bold\" style=\"display:none;\">You gain:' + Math.floor(expGain) + " experience!" + "<br />" + "</span>");
-    }
-    monsterGold(monsterStats);
-};
-
-
-//gold gained from killing a monster
-function monsterGold(monsterStats) {
-    var goldDrop = player.properties.goldDrop;
-    var monsterLvl = monsterStats.level;
-    goldDrop = 0;
-    var randomGold = Math.floor(Math.random() * ((monsterStats.level + 5) - monsterStats.level + 1) + monsterStats.level);
-    goldDrop = Math.floor(randomGold * player.functions.goldRate());
-    player.properties.gold += goldDrop;
-    Log('<span id=\"goldDrop\" class =\"bold\" style=\"display:none;\">You loot: ' + goldDrop + " gold!" + "<br />" + "</span>");
-    dropLog();
-    document.getElementById("gold").innerHTML = player.properties.gold;
-    player.properties.goldDrop = goldDrop;
-    monsterItemDrop(monsterLvl); // Call item drop function with monster level.
-    updateHtml();
-};
-
-function displayLogInfo() {
-    if (battleTurn > player.functions.maxBattleTurns()) {
-        battleTurn = player.functions.maxBattleTurns();
-    };
-    for (var key in player.buffs) {
-        if (player.buffs.hasOwnProperty(key)) {
-            var buff = player.buffs[key];
-            if (buff.timer > 0) {
-                buff.timer--;
-                if (buff.timer === 0) {
-                    buff.amount = 0;
-                };
-            };
-        };
-    };
-        activeBuffsHtml();
-    Log('<span id=\"test1\" class =\"bold\" style=\"color:#FF8000; display:none;\">Critical Rating: ' + ((criticalRate / battleTurn) * 100).toFixed(0) + " " + "%" + "<br />" + "</span>");
-    Log('<span id=\"test2\" class =\"bold\" style=\"color:red; display:none;\">Enemy dealt: ' + damageTaken + " " + "damage." + "<br />" + "</span>");
-    Log('<span id=\"test3\" class =\"bold\" style=\"color:blue; display:none;\">You dealt: ' + magicDamageDealt + " " + "magic damage total." + "<br />" + "</span>");
-    Log('<span id=\"test4\" class =\"bold\" style=\"color:red; display:none;\">You dealt: ' + damageDealt + " " + "physical damage total." + "<br />" + "</span>");
-    Log('<span id=\"test5\" class =\"bold\" style=\"color:blue; display:none;\">Turns: ' + (battleTurn) + "<br />" + "</span>");
-
-    damageDealt = 0;
-    magicDamageDealt = 0;
-    blockRate = 0;
-    lifeStealAmount = 0;
-    counterDamage = 0;
-    damageTaken = 0;
-    criticalRate = 0;
-    enemyBlock = 0;
-    accuracyRate = 0;
-    monsterDamage = 0;
-    if (battleTurn >= player.functions.maxBattleTurns()) {
-        Log('<span id=\"draw\" class =\"bold\" style=\"color:blue; display:none;\">' + "Draw" + "<br />" + "</span>");
-        drawLog();
-    };
-    mainLog();
-    CreateMonsterHtml();
-    if (player.autoBattle.isAuto === false) {
-        setTimeout(disableButtons, 1500); //disable all "attack" buttons for ~1.5 seconds
-    };
-};
 function potionBuyLog() {
     $("#potionBuy").delay(200).fadeIn().delay(3000).fadeOut(5000, function () { $(this).remove(); });
 }
@@ -1481,7 +1108,6 @@ function handleClick() {
     checkBoxRare = document.getElementById("rare").checked;
     checkBoxEpic = document.getElementById("epic").checked;
     checkBoxLegendary = document.getElementById("legendary").checked;
-    player.autoBattle.autoBattle = document.getElementById("autoBattle").checked;
 };
 function hardcoreModeCheck() {
     hardcoreMode = document.getElementById("hardcoreMode").checked;
@@ -1717,4 +1343,16 @@ function rebirth(level) {
     };
     changeDifficulty("Hero", true);
     changedTabmonster(0);
+};
+
+function compare(z, x, other) { //Other such as %...
+    if (z > x) {
+        return '<font color="#50bd27">+ ' + Math.floor(z - x) + other + '</font>';
+    }
+    else if (z < x) {
+        return '<font color="red">' + Math.floor(z - x) + other + '</font>';
+    }
+    else {
+        return Math.floor(z) + other;
+    };
 };
