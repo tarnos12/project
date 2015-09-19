@@ -2,8 +2,14 @@
     //Add buttons <Attack><Defense><Spell><Item><Run?> -->"Spell" change name based on character class later on: Spell/Skill/Runes/Combo/etc...
     //Display enemy at the top/or left/ AND  player at the bottom/or right side
     var monsterStats = monsterList[monster];
-    var image = player.properties.heroRace.toLowerCase();
-    var playerImage = characterRaces[image].raceAge;
+    for (var hero in characterRaces) {
+        if (characterRaces.hasOwnProperty(hero)) {
+            var heroRace = characterRaces[hero];
+            if (player.properties.heroRace === heroRace.name) {
+                var image = heroRace.image();
+            };
+        };
+    };
     var area = monsterStats.area;
     var html = "";
     html += '<div class="row">';
@@ -14,7 +20,7 @@
     html += '<img src="images/monsters/' + monsterStats.name + '.png" style="position:absolute; left:45%; top:50%;">';
     html += '</div>';
     html += '<div class="col-xs-12 c3" style="height:100px;">';
-    html += '<img src="images/races/' + playerImage + player.properties.heroRace + '.png" style="position:absolute; left:45%; bottom:10%;">';
+    html += '<img src="images/races/' + image + '.png" style="position:absolute; left:45%; bottom:10%;">';
     html += '</div>';
     html += '</div>';
     html += '<div class="row">';
