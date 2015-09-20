@@ -247,7 +247,7 @@
 
 //Weapon Skills
 
-    var weaponSkillDamage = function(levelReq, name, image, type, type2, id) { //default spell object constructor
+    var weaponSkillDamage = function(levelReq, name, image, type, type2, id, manaCost) { //default spell object constructor
         this.levelReq = levelReq;
         this.name = name;
         this.image = image;
@@ -257,14 +257,15 @@
         this.animation = function () {
             return "slashAnimation";
         };
+        this.manaCost = manaCost;
     };
 //Level, name, image, type
 //SWORD SKILL
-    var savageStrike = new weaponSkillDamage(1, "Savage Strike", "SavageStrike", "damage", "physical", 1);
-    var swordFinesse = new weaponSkillDamage(5, "Sword Finesse", "SwordFinesse", "passive", "physical", 6);
-    var parryAndRiposte = new weaponSkillDamage(10, "Parry and Riposte", "ParryAndRiposte", "counter", "physical", 11);
-    var sinisterSwing = new weaponSkillDamage(15, "Sinister Swing", "SinisterSwing", "damage", "physical", 16);
-    var rendingArc = new weaponSkillDamage(20, "Rending Arc", "RendingArc", "damage", "physical", 21);
+    var savageStrike = new weaponSkillDamage(1, "Savage Strike", "SavageStrike", "damage", "physical", 1, 20);
+    var swordFinesse = new weaponSkillDamage(5, "Sword Finesse", "SwordFinesse", "passive", "physical", 6, 20);
+    var parryAndRiposte = new weaponSkillDamage(10, "Parry and Riposte", "ParryAndRiposte", "counter", "physical", 11, 20);
+    var sinisterSwing = new weaponSkillDamage(15, "Sinister Swing", "SinisterSwing", "damage", "physical", 16, 50);
+    var rendingArc = new weaponSkillDamage(20, "Rending Arc", "RendingArc", "damage", "physical", 21, 100);
 
 //SWORD DAMAGE/BUFF/BLOCK ETC.
 
@@ -374,11 +375,11 @@
     };
 
 //AXE SKILL
-    var hamstring = new weaponSkillDamage(1, "Hamstring", "Hamstring", "damage", "physical", 2);
-    var butchersInsight = new weaponSkillDamage(5, "Butcher\'s Insight", "ButchersInsight", "passive", "physical", 7);
-    var whirlwind = new weaponSkillDamage(10, "Whirlwind", "Whirlwind", "damage", "physical", 12);
-    var flurry = new weaponSkillDamage(15, "Flurry", "Flurry", "damage", "physical", 17);
-    var frenzy = new weaponSkillDamage(20, "Frenzy", "Frenzy", "damage", "physical", 22);
+    var hamstring = new weaponSkillDamage(1, "Hamstring", "Hamstring", "damage", "physical", 2, 15);
+    var butchersInsight = new weaponSkillDamage(5, "Butcher\'s Insight", "ButchersInsight", "passive", "physical", 7, 20);
+    var whirlwind = new weaponSkillDamage(10, "Whirlwind", "Whirlwind", "damage", "physical", 12, 40);
+    var flurry = new weaponSkillDamage(15, "Flurry", "Flurry", "damage", "physical", 17, 70);
+    var frenzy = new weaponSkillDamage(20, "Frenzy", "Frenzy", "damage", "physical", 22, 120);
 
 //AXE DAMAGE/BUFF/BLOCK ETC.
 
@@ -451,11 +452,11 @@
     };
 
 //MACE SKILL
-    var hammerTime = new weaponSkillDamage(1, "Hammer Time", "HammerTime", "damage", "physical", 3);
-    var dominatingSlam = new weaponSkillDamage(5, "Dominating Slam", "DominatingSlam", "damage", "physical", 8);
-    var gash = new weaponSkillDamage(10, "Gash", "Gash", "damage", "physical", 13);
-    var overbearingWallop = new weaponSkillDamage(15, "Overbearing Wallop", "OverBearingWallop", "damage", "physical", 18);
-    var tremor = new weaponSkillDamage(20, "Tremor", "Tremor", "damage", "physical", 23);
+    var hammerTime = new weaponSkillDamage(1, "Hammer Time", "HammerTime", "damage", "physical", 3, 20);
+    var dominatingSlam = new weaponSkillDamage(5, "Dominating Slam", "DominatingSlam", "damage", "physical", 8, 40);
+    var gash = new weaponSkillDamage(10, "Gash", "Gash", "damage", "physical", 13, 80);
+    var overbearingWallop = new weaponSkillDamage(15, "Overbearing Wallop", "OverBearingWallop", "damage", "physical", 18, 120);
+    var tremor = new weaponSkillDamage(20, "Tremor", "Tremor", "damage", "physical", 2, 150);
 
 //MACE DAMAGE/BUFF/BLOCK ETC.
 
@@ -527,11 +528,11 @@
     };
 
     //STAFF SKILL
-    var starlight = new weaponSkillDamage(1, "Starlight", "Starlight", "damage", "magical", 4);
-    var intone = new weaponSkillDamage(5, "Intone", "Intone", "magicDamageBuff", "magical", 9);
-    var hateCannon = new weaponSkillDamage(10, "Hate Cannon", "HateCannon", "damage", "magical", 14);
-    var beguilersOrb = new weaponSkillDamage(15, "Beguiler\'s Orb", "BeguilersOrb", "damage", "magical", 19);
-    var spellSimulacrum = new weaponSkillDamage(20, "Spell Simulacrum", "SpellSimulacrum", "passive", "magical", 24);
+    var starlight = new weaponSkillDamage(1, "Starlight", "Starlight", "damage", "magical", 4, 30);
+    var intone = new weaponSkillDamage(5, "Intone", "Intone", "magicDamageBuff", "magical", 9, 30);
+    var hateCannon = new weaponSkillDamage(10, "Hate Cannon", "HateCannon", "damage", "magical", 14, 100);
+    var beguilersOrb = new weaponSkillDamage(15, "Beguiler\'s Orb", "BeguilersOrb", "damage", "magical", 19, 200);
+    var spellSimulacrum = new weaponSkillDamage(20, "Spell Simulacrum", "SpellSimulacrum", "passive", "magical", 24, 200);
 
 //STAFF DAMAGE/BUFF/BLOCK ETC.
 
@@ -613,11 +614,11 @@
     };
 
 //RANGED SKILL
-    var pierceTheVeil = new weaponSkillDamage(1, "Pierce the Veil", "PierceTheVeil", "damage", "physical", 5);
-    var skyCracker = new weaponSkillDamage(5, "Sky Cracker", "SkyCracker", "damage", "physical", 10);
-    var archerFocus = new weaponSkillDamage(10, "Archer Focus", "ArcherFocus", "passive", "physical", 15);
-    var makeItRain = new weaponSkillDamage(15, "Make it Rain", "MakeItRain", "damage", "physical", 20);
-    var rangersRevenge = new weaponSkillDamage(20, "Ranger\'s Revenge", "RangersRevenge", "damage", "physical", 25);
+    var pierceTheVeil = new weaponSkillDamage(1, "Pierce the Veil", "PierceTheVeil", "damage", "physical", 5, 15);
+    var skyCracker = new weaponSkillDamage(5, "Sky Cracker", "SkyCracker", "damage", "physical", 10, 35);
+    var archerFocus = new weaponSkillDamage(10, "Archer Focus", "ArcherFocus", "passive", "physical", 15, 20);
+    var makeItRain = new weaponSkillDamage(15, "Make it Rain", "MakeItRain", "damage", "physical", 20, 80);
+    var rangersRevenge = new weaponSkillDamage(20, "Ranger\'s Revenge", "RangersRevenge", "damage", "physical", 25, 120);
 
 //RANGED DAMAGE/BUFF/BLOCK ETC.
 
