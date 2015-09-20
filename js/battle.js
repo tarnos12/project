@@ -131,38 +131,43 @@ function playerSpellDamage(monster, weapon, name, type, skillKey) {
         length: 0
     };
     $("#logConsole").empty();
-    var bonusDamage = 0;
-    for (var skillKey2 in weaponSkillList[weapon]) {
-        var skill2 = weaponSkillList[weapon][skillKey2];
-        if (skill2.type === "magicDamageBuff" && skill2.type2 === "magical" && weapon === "staff") {
-            var randomNumber = Math.floor((Math.random() * 100) + 1);
-            if (randomNumber <= skill2.chance()) {
-                bonusDamage = skill2.damage();
-                type += " (" + skill2.name + ") ";
+    if (player.properties.mana >= weaponSkillList[weapon][skillKey].manaCost) {
+        var bonusDamage = 0;
+        for (var skillKey2 in weaponSkillList[weapon]) {
+            var skill2 = weaponSkillList[weapon][skillKey2];
+            if (skill2.type === "magicDamageBuff" && skill2.type2 === "magical" && weapon === "staff") {
+                var randomNumber = Math.floor((Math.random() * 100) + 1);
+                if (randomNumber <= skill2.chance()) {
+                    bonusDamage = skill2.damage();
+                    type += " (" + skill2.name + ") ";
+                };
             };
         };
-    };
 
-    var animationSrc = 'src="images/animations/' + weaponSkillList[weapon][skillKey].animation() + '.gif"';
-    $("#monsterImage").append('<img id="animation"' + animationSrc + 'style="position:absolute; left:45%; top:50%;">');
-    setTimeout(function () {
-        $('#animation').remove();
-    }, 350);
-    player.properties.mana -= weaponSkillList[weapon][skillKey].manaCost;
-    manaRegen();
-    var monsterStats = monsterList[monster];
-    var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
-    var randomHitChance = Math.random();
-    if (playerHitChance > randomHitChance) {
-        var skill = weaponSkillList[weapon][skillKey];
-        var damage = skill.damageDisplay() + bonusDamage;
-        playerDamage(monster, damage, name, type);
+        var animationSrc = 'src="images/animations/' + weaponSkillList[weapon][skillKey].animation() + '.gif"';
+        $("#monsterImage").append('<img id="animation"' + animationSrc + 'style="position:absolute; left:45%; top:50%;">');
+        setTimeout(function () {
+            $('#animation').remove();
+        }, 350);
+        var monsterStats = monsterList[monster];
+        var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
+        var randomHitChance = Math.random();
+        if (playerHitChance > randomHitChance) {
+            var skill = weaponSkillList[weapon][skillKey];
+            var damage = skill.damageDisplay() + bonusDamage;
+            playerDamage(monster, damage, name, type);
+        }
+        else {
+            Log("<span class =\"bold\" style=\"color:gray;\">You missed!" + "<br />" + "</span>");
+            Log("<span class =\"bold\" style=\"color:black; border-top:1px solid; border-bottom:1px solid;\">Player turn" + "<br />" + "</span>");
+            monsterAttack(monsterStats);
+            Log("<span class =\"bold\" style=\"color:black; border-top:1px solid; border-bottom:1px solid;\">Enemy turn" + "<br />" + "</span>");
+        };
+        player.properties.mana -= weaponSkillList[weapon][skillKey].manaCost;
+        manaRegen();
     }
     else {
-        Log("<span class =\"bold\" style=\"color:gray;\">You missed!" + "<br />" + "</span>");
-        Log("<span class =\"bold\" style=\"color:black; border-top:1px solid; border-bottom:1px solid;\">Player turn" + "<br />" + "</span>");
-        monsterAttack(monsterStats);
-        Log("<span class =\"bold\" style=\"color:black; border-top:1px solid; border-bottom:1px solid;\">Enemy turn" + "<br />" + "</span>");
+        Log("<span class=\"bold\" style=\"color:red;\">You need more mana." + "<br />" + "</span>");
     };
 };
 function playerDamage(monster, damage, name, type) {//damage can be from melee/spell
