@@ -44,6 +44,7 @@ var player = {
         prestigeMultiplier: 1,
         prestigeSuffix: "",
         difficulty: 'Hero',
+        lastEnemyLevel: 1, // Used for crafting, it will change based on highest enemy level killed.
         monsterLevel: 0, //Used when reset game i.e. prestige ( It will be set for highest monster which will determine first monster level after prestige)
         potionInventory: [],
         //Minerals
@@ -493,12 +494,12 @@ var player = {
         //Damage
         minDamage: function () {
             return Math.floor((((
-                5 + (player.functions.totalStrength() * 0.4) +
+                7 + (player.functions.totalStrength() * 0.6) +
                 equippedItems.weapon.MinDamage + weaponSkillList.sword.swordFinesse.damage()) * (1 + (player.functions.bonusDamage() / 100)))) * (1 + (player.properties.raceDamage / 100)));
         },
         maxDamage: function () {
             return Math.floor((((
-                7 + (player.functions.totalStrength() * 0.6) +
+                10 + (player.functions.totalStrength() * 0.6) +
                 equippedItems.weapon.MinDamage + weaponSkillList.sword.swordFinesse.damage()) * (1 + (player.functions.bonusDamage() / 100)))) * (1 + (player.properties.raceDamage / 100)));
         },
         //Secondary
@@ -507,7 +508,7 @@ var player = {
                 return 200;
             }
             else {
-                return Math.floor((95 + player.properties.raceAccuracy) + (player.functions.totalAgility() * 0.02 + player.functions.totalLuck() * 0.01));
+                return Math.floor((90 + player.properties.raceAccuracy) + (player.functions.totalAgility() * 0.02));
             }
         },
         defense: function () {
@@ -1113,12 +1114,14 @@ function hardcoreModeCheck() {
     hardcoreMode = document.getElementById("hardcoreMode").checked;
 };
 
-function changeRace(raceName) {
+function changeRace(raceName, race) {
     var characterRace = '';
+    var itemType = characterRaces[race].startingItem;
     characterRace = raceName;
     player.properties.heroRace = characterRace;
     removeStartingScreen();
     checkHeroRace();
+    getStartingItem(itemType);
 };
 //Set audio starting volume...
 function myAudio(sound) {
@@ -1355,4 +1358,10 @@ function compare(z, x, other) { //Other such as %...
     else {
         return Math.floor(z) + other;
     };
+};
+
+function getStartingItem(itemType) {
+    getItemType(1, false, "weapon", itemType, "Common");
+    var itemID = player.properties.itemIdNumber - 1;// -1 because "getItemType function finish before it changes ID of the item, so equip function is called, before item drop finishes I guess...not sure -_-
+    equipItem(itemID);
 };

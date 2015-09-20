@@ -1093,7 +1093,7 @@ var materiaType = [
     }
 ];
 
-var CharacterRace = function (name, baseStrength, baseEndurance, baseAgility, baseDexterity, baseIntelligence, baseWisdom, baseLuck, image) {
+var CharacterRace = function (name, baseStrength, baseEndurance, baseAgility, baseDexterity, baseIntelligence, baseWisdom, baseLuck, image, startingItem) {
     this.name = name;
     this.raceAge = "Adulthood";
     this.baseStrength = baseStrength;
@@ -1113,15 +1113,16 @@ var CharacterRace = function (name, baseStrength, baseEndurance, baseAgility, ba
     this.lore = function () {
         return 'test';
     };
+    this.startingItem = startingItem;
 };
-var human = new CharacterRace('Human', 3, 3, 3, 3, 3, 3, 3, "human");
-var halfElf = new CharacterRace('Half Elf', 3, 3, 3, 3, 3, 3, 3, "halfelf");
-var dwarf = new CharacterRace('Dwarf', 3, 5, 3, 1, 2, 4, 3, "dwarf");
-var orc = new CharacterRace('Orc', 6, 3, 4, 3, 1, 1, 3, "orc");
-var elf = new CharacterRace('Elf', 1, 1, 3, 6, 5, 2, 3, "elf");
-var halfing = new CharacterRace('Halfing', 1, 2, 3, 5, 3, 4, 3, "halfing");
-var sylph = new CharacterRace('Sylph', 2, 1, 2, 5, 6, 2, 3, "sylph");
-var giant = new CharacterRace('Giant', 6, 3, 1, 1, 1, 6, 3, "giant");
+var human = new CharacterRace('Human', 3, 3, 3, 3, 3, 3, 3, "human", "sword");
+var halfElf = new CharacterRace('Half Elf', 3, 3, 3, 3, 3, 3, 3, "halfelf", "ranged");
+var dwarf = new CharacterRace('Dwarf', 3, 5, 3, 1, 2, 4, 3, "dwarf", "axe");
+var orc = new CharacterRace('Orc', 6, 3, 4, 3, 1, 1, 3, "orc", "mace");
+var elf = new CharacterRace('Elf', 1, 1, 3, 6, 5, 2, 3, "elf", "staff");
+var halfing = new CharacterRace('Halfing', 1, 2, 3, 5, 3, 4, 3, "halfing", "sword");
+var sylph = new CharacterRace('Sylph', 2, 1, 2, 5, 6, 2, 3, "sylph", "staff");
+var giant = new CharacterRace('Giant', 6, 3, 1, 1, 1, 6, 3, "giant", "axe");
 
 //Human stats
 human.image = function() {
@@ -1882,7 +1883,7 @@ orc.raceHealth = function() {
     return 10;
 };
 elf.raceAccuracy = function() {
-    return 100; //Never miss
+    return 200; //Never miss
 };
 elf.raceCriticalChance = function() {
     return 5;

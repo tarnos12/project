@@ -64,7 +64,15 @@ function playerSpellDiv(monster) {
                     var name = "' " + skillName + ".'";
                     var type = "' " + skill.type2 + " damage'";
                     var displayName = skill.name; //add onclick + spell used
-                    html += '<button class="sell marginRight" style="width:auto;" onclick="playerSpellDamage(' + "'" + monster + "'" + ', ' + "'" + weapon + "'" + ', ' + name + ', ' + type + ', ' + "'" + skillKey + "'" + ');">' + displayName + "</button>";
+                    html += '<button class="sell marginRight" style="width:auto;';
+                    if (player.properties.mana <= skill.manaCost) {
+                        html += 'cursor:not-allowed;" disabled';
+                    }
+                    else {
+                        html += '"';
+                    }
+                    html += ' onclick="playerSpellDamage(' + "'" + monster + "'" + ', ' + "'" + weapon + "'" + ', ' + name + ', ' + type + ', ' + "'" + skillKey + "'" + ');">' + displayName + "</button>";
+                    html += 'Mana cost: ' + skill.manaCost + '<br />';
                 };
             };
         };
@@ -140,6 +148,8 @@ function playerSpellDamage(monster, weapon, name, type, skillKey) {
     setTimeout(function () {
         $('#animation').remove();
     }, 350);
+    player.properties.mana -= weaponSkillList[weapon][skillKey].manaCost;
+    manaRegen();
     var monsterStats = monsterList[monster];
     var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
     var randomHitChance = Math.random();
@@ -190,6 +200,7 @@ function monsterAttack(monsterStats) {
             player.properties.health = player.functions.maxhealth();
         };
     };
+    manaRegen(); //Mana regen
     var monsterHitChance = (monsterStats.acc - player.functions.evasion()) / 100;
     var randomHitChance = Math.random();
     if (monsterHitChance > randomHitChance) {
@@ -277,6 +288,7 @@ function monsterKilled(monsterStats) {
         $("#" + monsterNumber).append("<button class='sell' onclick='rebirth(" + monsterStats.level + ")'>Warp</button>");
         //rebirth(monsterStats.level);
     };
+    player.properties.lastEnemyLevel = monsterStats.level;
 };
 //Weapon skill experience
 function weaponSkill(monsterStats, monster) {
@@ -375,7 +387,9 @@ function monsterGold(monsterStats) {
 
 function displayLogInfo() {
     player.properties.health = player.functions.maxhealth();
+    player.properties.mana = player.functions.maxMana();
     document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
+    manaRegen(); //display mana value with tooltip.
     for (var key in player.buffs) {
         if (player.buffs.hasOwnProperty(key)) {
             var buff = player.buffs[key];

@@ -153,14 +153,8 @@ function CreateMonsterHtml() {
                         '<div id="' + monster.id + '">' +
                         '<a href="#" class="tooltipA centerText" id="monsterButton">' +
                         '<img style="cursor:help;" src="images/monsters/' + monster.name + '.png" alt="' + monster.displayName + '">' +
-                        '<span style="bottom:140px; left:-100px; pointer-events:none;">' +
-                        '<b>' + monster.displayName + '</b>';
-                        html += '<br />' +
-                        'Level: ' + monster.level +
-                        '<br />' +
-                        'Dmg:' + getThousands(monster.minDmg()) + "-" + getThousands(monster.maxDmg()) +
-                        '<br />' +
-                        'Def:' + getThousands(monster.def());
+                        '<span style="bottom:140px; left:-100px; pointer-events:none;">';
+                        html += getMonsterTooltip(monster);
                         html += '</span></a>';
 
 
@@ -894,7 +888,7 @@ function characterCreationHtml() {
         for (var hero in characterRaces) {
             if (characterRaces.hasOwnProperty(hero)) {
                 var heroRace = characterRaces[hero];
-                var onclickevent = "changeRace('" + heroRace.name + "');";
+                var onclickevent = "changeRace('" + heroRace.name + "', '" + hero + "');";
                 html += '<div class="col-xs-6 col-xs-offset-2">';
                 html += '<img src="images/races/' + heroRace.image() + '.png">';
                 html += heroRace.name + " ";
@@ -1014,7 +1008,7 @@ function checkHeroRace() {
             for (var stat in heroRace) {
                 if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) != -1) {
                     var string = stat.substring('race'.length);
-                    if (stat === "raceAccuracy" && heroRace[stat]() < 111) {
+                    if (stat === "raceAccuracy" && heroRace[stat]() > 111) {
                         html += 'Never Miss<br />';
                     }
                     else if (stat === "raceEvasion" && heroRace[stat]() === "Can't evade") {
@@ -1777,4 +1771,16 @@ function activeBuffsHtml() {
     html += '</div>';
     document.getElementById('activeBuffs').innerHTML = html;
     updateHtml();
+};
+
+function getMonsterTooltip(monster) {
+    var html = "";
+    html += '<b>' + monster.displayName + '</b>';
+    html += '<br />'
+    html += 'Level: ' + monster.level
+    html += '<br />'
+    html += 'Dmg:' + getThousands(monster.minDmg()) + "-" + getThousands(monster.maxDmg())
+    html += '<br />'
+    html += 'Def:' + getThousands(monster.def());
+    return html;
 };

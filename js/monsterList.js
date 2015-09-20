@@ -32,21 +32,21 @@ function MakeMonsterList() {
         this.id = id;
         this.area = area;
         this.monsterHealth = function () {
-            return this.level * 200 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
+            return this.level * 150 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.hp = this.monsterHealth();
         this.maxHp = this.hp;
         this.def = function () {
-            return this.level * 5 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
+            return this.level * 3 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.minDmg = function () {
-            return this.level * 15 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
+            return this.level * 22 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.maxDmg = function () {
-            return this.level * 20 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
+            return this.level * 27 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.baseExp = function () {
-            return this.level * 10 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
+            return this.level * 5 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
         };
         this.acc = 100;
         this.eva = 10;

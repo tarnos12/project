@@ -134,10 +134,8 @@ var executeIntervalFunctionsOnce = (function () {
     return function () {
         if (!executed) {
             executed = true;
-            var manaRegen2;
             var healthPercent2;
             var expPercent2;
-            manaRegen2 = setInterval(function () { manaRegen() }, 500);
             healthPercent2 = setInterval(function () { healthPercent() }, 100);
             expPercent2 = setInterval(function () { expPercent() }, 100);
         };
@@ -181,6 +179,7 @@ function newGame(slot) {
         CreateMonsterHtml();
         autoSave();
         playerHealthBar();
+        manaRegen();
     };
 };
 
@@ -324,6 +323,7 @@ function load(slot) {
         createAlchemyHtml();
         craftingHtml();
         playerHealthBar();
+        manaRegen();
     }
     else {
         if (confirm("Do you want to start a new game?") === true) {

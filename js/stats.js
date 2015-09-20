@@ -124,7 +124,6 @@ function manaRegen() { //Mana regen
     document.getElementById("mana").innerHTML = "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Mana\">"
         + (player.properties.mana).toFixed(0) + "/" + (player.functions.maxMana()).toFixed(0) + "</span>" +
         "<a class=\"tooltipA\">" + "<p class=\"glyphicon glyphicon-info-sign\"></p>" + "<span style=\"text-align:left;right:0;left:-160px;bottom:80px;width:200px;\">" + "Multiplier: " + (player.functions.bonusMana() + player.properties.raceMaxMana) + "%</span></a> ";
-
 };
 
 function levelUp() {
