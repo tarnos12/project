@@ -34,17 +34,17 @@
         };
     };
     //lvl/maxLvl/ID/Req/Name/Image/bonus
-    var brawler = new newPassive(0, 5, 1, 1, "Brawler", "Brawler", 5);
-    var vitality = new newPassive(0, 5, 2, 1, "Vitality", "Vitality", 5);
-    var looter = new newPassive(0, 5, 3, 1, "Looter", "Looter", 10);
+    var brawler = new newPassive(0, 10, 1, 1, "Brawler", "Brawler", 5);
+    var vitality = new newPassive(0, 10, 2, 1, "Vitality", "Vitality", 5);
+    var looter = new newPassive(0, 10, 3, 1, "Looter", "Looter", 10);
     var overpower = new newPassive(0, 1, 4, 5, "Overpower", "Overpower", 25);
-    var fortitude = new newPassive(0, 1, 5, 5, "Fortitude", "Fortitude", 20);
+    var fortitude = new newPassive(0, 5, 5, 5, "Fortitude", "Fortitude", 20);
     var explorer = new newPassive(0, 1, 6, 5, "Explorer", "Explorer", 50);
     var sixthSense = new newPassive(0, 5, 7, 10, "Sixth Sense", "SixthSense", 10);
-    var spiritualAttunement = new newPassive(0, 5, 8, 10, "Spiritual Attunement", "Spiritual", 20);
+    var spiritualAttunement = new newPassive(0, 10, 8, 10, "Spiritual Attunement", "Spiritual", 20);
     var mighty = new newPassive(0, 5, 9, 15, "Mighty", "Mighty", 10);
     var constitution = new newPassive(0, 5, 10, 15, "Constitution", "Constitution", 20);
-    var curiosity = new newPassive(0, 5, 11, 15, "Curiosity", "Curiosity", 20);
+    var curiosity = new newPassive(0, 10, 11, 15, "Curiosity", "Curiosity", 20);
     var masterofArms = new newPassive(0, 1, 12, 20, "Master of Arms", "MasterofArms", 50);
     var robust = new newPassive(0, 1, 13, 20, "Robust", "Robust", 100);
     var ancientKnowledge = new newPassive(0, 1, 14, 20, "Ancient Knowledge", "AncientKnowledge", 50);
