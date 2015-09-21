@@ -217,6 +217,7 @@ function monsterAttack(monsterStats) {
         };
     };
     manaRegen(); //Mana regen
+    updateHtml();
     var monsterHitChance = (monsterStats.acc - player.functions.evasion()) / 100;
     var randomHitChance = Math.random();
     if (monsterHitChance > randomHitChance) {
