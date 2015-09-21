@@ -183,6 +183,13 @@ var primaryStatInfo = [
         number: 1
     },
     {
+        type: 'spellPower',
+        shortNameDisplay: 'Spell Power',
+        info: 'spellPower',
+        tooltip: 'Spell power',
+        number: 1
+    },
+    {
         type: 'mana',
         shortNameDisplay: 'MP',
         info: 'mana',
@@ -1913,7 +1920,10 @@ sylph.raceMaxMana = function () {
     return 50;
 };
 sylph.raceAllStats = function () {
-    return 30;
+    return 15;
+};
+sylph.raceSpellPower = function () {
+    return 20;
 };
 giant.raceDamage = function() {
     return 40;
@@ -1961,3 +1971,21 @@ characterRaces.halfing = halfing;
 characterRaces.sylph = sylph;
 characterRaces.giant = giant;
 
+
+function raceStats() {
+    for (var race in characterRaces) {
+        if (characterRaces.hasOwnProperty(race)) {
+            var currentRace = characterRaces[race];
+            if (player.properties.heroRace === currentRace.name) {
+                for (var stat in currentRace) {
+                    if (currentRace.hasOwnProperty(stat)) {
+                        if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance, raceSpellPower'.indexOf(stat) !== -1) {
+                            player.properties[stat] = currentRace[stat]();
+                        };
+                    };
+                };
+            };
+        };
+    };
+    secondaryStatUpdate();
+};

@@ -121,7 +121,7 @@ function CreateMonsterHtml() {
                 '<div class="panel panel-default">' +
                 '<div class="panel-heading" style="background-color:' + player.properties.monsterBackground + ';">' +
 
-                '<h3 class="panel-title c3" >' + monsterAreas[j].displayName + player.properties.prestigeSuffix + "[" + (player.properties.prestigeMultiplier - 1) + "]" + '</h3>' +
+                '<h3 class="panel-title c3" >' + monsterAreas[j].displayName + player.properties.prestigeSuffix + "[" + (Math.floor(player.properties.prestigeMultiplier - 1)) + "]" + '</h3>' +
 
                 '</div>' +
                 '<div class="panel-body" id="' + monsterAreas[j].type + '" style="background-color:' + player.properties.monsterBackground + ';">';
@@ -160,7 +160,7 @@ function CreateMonsterHtml() {
 
                         html += '<div class="progress" style="width:80%; margin-left:10%;">';
                         html += '<div style="width:' + monsterPercent + "%" + ';" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar" id="' + monster.name + "1" + '">';
-                        html += '<span style="font-size:13px;">' + getThousands(monster.hp) + ' HP</span>' + '</div></div>';
+                        html += '<span style="font-size:13px;">' + monster.hp + ' HP</span>' + '</div></div>';
                         html += '<button id="monster' + monster.id + '"' + 'class="monster sell" onclick="' + onclickevent + ' disableButtons();">Fight</button>';
                         html += '<div class="col-xs-12 c3">';
                         html += '<h4>Killed: ' + monster.killCount + '</h4>';
@@ -560,18 +560,12 @@ function CreatePlayerSkillsHtml() {
             var passive = playerPassive[passiveSkill];
             var onclickevent = "upgradePassive('" + passiveSkill + "');";
 
-            if (passive.newRow === true) {
-                html += '<div class="row">';
+            if (passive.firstRow === true) {
+                html += '<div class="col-xs-4 col-md-1">';
             };
-            if (passive.type === "Double") {
-
-                html += '<div class="col-xs-2 col-xs-offset-2">';
-            } else {
-                html += '<div class="col-xs-4">';
-            }
             html += '<div class="col-xs-12">';//Opening Div for skill image
             html += '<div class="skill ';//Open first div
-            if (passive.requirements() === true) {
+            if (passive.levelReq <= player.properties.level) {
                 if (passive.level === 0) {
                     html += "can-add-points ";
                 }
@@ -591,7 +585,7 @@ function CreatePlayerSkillsHtml() {
             //End of icon div's
             //Start of div Frame
             html += '<div class="frame" onclick="' + onclickevent + '">';
-            html += '<a class="tooltips" style="position:absolute; width:80px; height:80px;">';
+            html += '<a class="tooltips" style="position:absolute; width:80px; height:80px; z-index:5;">';
             html += '<span style="bottom:110px; right:-100px; width:250px;">';
             html += passive.name + '<br />';
             html += passive.description();
@@ -608,7 +602,6 @@ function CreatePlayerSkillsHtml() {
             // html += '<div class="centerText passiveMargin">' + passive.level + '/' + passive.maxLevel + '</div>';
 
             html += '</div>';//Closing div for skill image
-            html += '</div>';
             if (passive.lastRow === true) {
                 html += '</div>';
             };
@@ -924,14 +917,14 @@ function characterCreationHtml() {
                 html += 'Bonuses:<br />';
                 for (stat in heroRace) { // var stat is being declared already, so this one is without a 'var'...
                     if (heroRace.hasOwnProperty(stat)) {
-                        if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) != -1) {
+                        if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance, raceSpellPower'.indexOf(stat) != -1) {
                             var string = stat.substring('race'.length);
                             if (stat === "raceAccuracy" && heroRace[stat]() > 111) {
                                 html += 'Never Miss<br />';
                             } else if (stat === "raceEvasion" && heroRace[stat]() === "Can't evade") {
                                 html += "Can't Evade";
                             } else {
-                                html += string.replace(/([a-z])([A-Z])/g, '$1 $2') + ': ';
+                                html += string.replace(/([a-z])([A-Z])/g, '$1 $2') + ': '; //remove part of the string which start from lower case "race", and add space before each upper case, changing raceMaxMana to "Max Mana"
                                 if (heroRace[stat]() > 0) {
                                     html += '+';
                                 };
@@ -1006,7 +999,7 @@ function checkHeroRace() {
             html += '<div class="col-xs-7">';
             html += 'Bonuses:<br />';
             for (var stat in heroRace) {
-                if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance'.indexOf(stat) != -1) {
+                if ('raceAllStats, raceGoldDrop, raceExpRate, raceDropRate, raceEvasion, raceDamage, raceHealth, raceAccuracy, raceDefense, raceManaRegen, raceMaxMana, raceCriticalChance, raceSpellPower'.indexOf(stat) != -1) {
                     var string = stat.substring('race'.length);
                     if (stat === "raceAccuracy" && heroRace[stat]() > 111) {
                         html += 'Never Miss<br />';
@@ -1066,7 +1059,7 @@ function primaryStatUpdate() {
         var statDisplay2 = primaryStatInfo[key].type;
         var shortNameDisplay = primaryStatInfo[key].shortNameDisplay;
         var statDisplay = "";
-        if (currentBonus.type === "damage" || currentBonus.type === "Stats" || currentBonus.type === "mana") {
+        if (currentBonus.type === "damage" || currentBonus.type === "Stats" || currentBonus.type === "mana" || currentBonus.type == "spellPower") {
              statDisplay = '<span id="' + statInfo + '"></span>';
         }
         else {
@@ -1080,7 +1073,7 @@ function primaryStatUpdate() {
         else if (number === 2) {
             background = "darkBackground";
         };
-        if (currentBonus.type === "damage" || currentBonus.type === "mana") {
+        if (currentBonus.type === "damage" || currentBonus.type === "mana" || currentBonus.type == "spellPower") {
             html += '<div class="col-xs-12 primaryStatsMargin border darkBackground">';
             html += '<div class="row">';
             html += '<div class="col-xs-6">';
@@ -1091,14 +1084,14 @@ function primaryStatUpdate() {
             html += '<div class="col-xs-4">';
         }
         var statDisplay3 = statDisplay2.capitalizeFirstLetter();
-        if ('Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Damage, Mana, Stats'.indexOf(statDisplay3) != -1) {
+        if ('Strength, Endurance, Agility, Dexterity, Wisdom, Intelligence, Luck, Damage, Mana, Stats, SpellPower'.indexOf(statDisplay3) != -1) {
             var tooltip = primaryStatInfo[key].tooltip;
             html += '<span data-toggle="tooltip" data-placement="top" title="' + tooltip + '"><img src="images/stat/' + statDisplay2 + '.png"></span><br />';
             html += shortNameDisplay;
         };
         html += '</div>';
         
-        if (currentBonus.type === "damage" || currentBonus.type === "mana") {
+        if (currentBonus.type === "damage" || currentBonus.type === "mana" || currentBonus.type == "spellPower") {
             html += '<div class="col-xs-6 rightAlign primaryNumberMargin">';
         }
         else {
@@ -1779,8 +1772,11 @@ function getMonsterTooltip(monster) {
     html += '<br />'
     html += 'Level: ' + monster.level
     html += '<br />'
-    html += 'Dmg:' + getThousands(monster.minDmg()) + "-" + getThousands(monster.maxDmg())
+    html += 'Dmg: ' + getThousands(monster.minDmg()) + " - " + getThousands(monster.maxDmg())
     html += '<br />'
-    html += 'Def:' + getThousands(monster.def());
+    html += 'Def: ' + getThousands((monster.def() * player.functions.ignoreDefense()));
+    if (player.functions.ignoreDefense() < 1) {
+        html += '(Ignored ' + (100 - (100 * player.functions.ignoreDefense())) + "%" + ')';
+    }
     return html;
 };

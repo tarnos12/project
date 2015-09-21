@@ -30,6 +30,8 @@ function updateHtml() {
     var luck;
     var damage;
     var stats;
+    var spellPower;
+    var mana
 
     strength = document.getElementById("totalStrength");
     endurance = document.getElementById("totalEndurance");
@@ -40,6 +42,8 @@ function updateHtml() {
     luck = document.getElementById("totalLuck");
     damage = document.getElementById("damage");
     stats = document.getElementById("stats");
+    spellPower = document.getElementById("spellPower");
+    mana = document.getElementById("mana");
 
 
     strength.innerHTML = "<span class='cursorHelp' data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Strength\">" + player.functions.totalStrength() + "</span>" +
@@ -84,6 +88,12 @@ function updateHtml() {
     stats.innerHTML = "<span class='cursorHelp' style='margin-right:20px;' data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Stat Points\">"
         + player.properties.stats + "</span>";
 
+    spellPower.innerHTML = "<span class='cursorHelp' data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Spell Power\">"
+        + player.functions.spellPower().toFixed(0) + "</span>" +
+        "<a class=\"tooltipA\">" + "<p class=\"glyphicon glyphicon-info-sign\"></p>" + "<span style=\"text-align:left;right:0;left:-160px;bottom:80px;width:200px;\">" + "(Int x 2) + (Wis x 0.5)<br />Base Bonus: " + player.functions.baseSpellPower() + "<br />" + "Multiplier: " + (player.functions.bonusSpellPower() * 100) + "%</span></a> ";
+    mana.innerHTML = "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Mana\">"
+        + (player.properties.mana).toFixed(0) + "/" + (player.functions.maxMana()).toFixed(0) + "</span>" +
+        "<a class=\"tooltipA\">" + "<p class=\"glyphicon glyphicon-info-sign\"></p>" + "<span style=\"text-align:left;right:0;left:-160px;bottom:80px;width:200px;\">" + "Multiplier: " + (player.functions.bonusMana() + player.properties.raceMaxMana) + "%</span></a> ";
 
     level = document.getElementById("level");
     maxExperience = document.getElementById("maxexperience");
@@ -98,6 +108,7 @@ function updateHtml() {
     //primaryStatUpdate();
     secondaryStatUpdate();
     CreateWeaponSkillHtml();
+    playerHealthBar();
 };
 
 function expPercent() {
@@ -121,9 +132,6 @@ function playerHealthBar() {
 function manaRegen() { //Mana regen
     if (player.properties.mana < player.functions.maxMana()) player.properties.mana += player.functions.manaRegen();
     if (player.properties.mana > player.functions.maxMana()) player.properties.mana = player.functions.maxMana();
-    document.getElementById("mana").innerHTML = "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Mana\">"
-        + (player.properties.mana).toFixed(0) + "/" + (player.functions.maxMana()).toFixed(0) + "</span>" +
-        "<a class=\"tooltipA\">" + "<p class=\"glyphicon glyphicon-info-sign\"></p>" + "<span style=\"text-align:left;right:0;left:-160px;bottom:80px;width:200px;\">" + "Multiplier: " + (player.functions.bonusMana() + player.properties.raceMaxMana) + "%</span></a> ";
 };
 
 function levelUp() {

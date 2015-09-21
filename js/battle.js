@@ -20,7 +20,7 @@
     html += '<img src="images/monsters/' + monsterStats.name + '.png" style="position:absolute; left:45%; top:50%;">';
     html += '</div>';
     html += '<div class="col-xs-12 c3" style="height:100px;">';
-    html += '<img src="images/races/' + image + '.png" style="position:absolute; left:45%; bottom:10%;">';
+    html += '<img id="playerAnimation" src="images/races/' + image + '.png" style="position:absolute; left:45%; bottom:10%;">';
     html += '</div>';
     html += '</div>';
     html += '<div class="row">';
@@ -99,8 +99,16 @@ function playerAttack(monster) {
     document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
     var playerHitChance = (player.functions.accuracy() - monsterStats.eva) / 100;
     var randomHitChance = Math.random();
+    var instantKillChance = Math.floor((Math.random() * 100) + 1);
     if (playerHitChance > randomHitChance) {
-        playerCritCheck(monster);
+        if (player.functions.instantKillChance() >= instantKillChance) {
+            monsterKilled(monsterStats);
+            Log("<span class =\"bold\" style=\"color:red;\">Instant Killed enemy!" + "<br />" + "</span>")
+        }
+        else{
+            playerCritCheck(monster);
+        }
+        
     }
     else {
         Log("<span class =\"bold\" style=\"color:gray;\">You missed!" + "<br />" + "</span>");
@@ -122,8 +130,7 @@ function playerCritCheck(monster) {
         damageType = " physical damage";
     };
     var damage = Math.floor(Math.random() * (player.functions.maxDamage() - player.functions.minDamage() + 1)) + player.functions.minDamage();
-    damage = Math.floor(damage * criticalDamage * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + monsterStats.def())));
-   
+    damage = Math.floor(damage * criticalDamage * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + (monsterStats.def() * player.functions.ignoreDefense()))));
     playerDamage(monster, damage, "basic attack.", damageType);
 };
 function playerSpellDamage(monster, weapon, name, type, skillKey) {
@@ -164,7 +171,7 @@ function playerSpellDamage(monster, weapon, name, type, skillKey) {
             Log("<span class =\"bold\" style=\"color:black; border-top:1px solid; border-bottom:1px solid;\">Enemy turn" + "<br />" + "</span>");
         };
         player.properties.mana -= weaponSkillList[weapon][skillKey].manaCost;
-        manaRegen();
+        updateHtml();
     }
     else {
         Log("<span class=\"bold\" style=\"color:red;\">You need more mana." + "<br />" + "</span>");
@@ -172,6 +179,10 @@ function playerSpellDamage(monster, weapon, name, type, skillKey) {
 };
 function playerDamage(monster, damage, name, type) {//damage can be from melee/spell
     var monsterStats = monsterList[monster];
+    $("#playerAnimation").css({ bottom: '30%' });
+    setTimeout(function () {
+        $('#playerAnimation').css({ bottom: '10%' });
+    }, 200);
     Log("<span class =\"bold\" style=\"color:red;\">You deal " + damage + type + " with " + name + "<br />" + "</span>");
     if (player.functions.lifeSteal() > 0) {
         var lifeSteal = player.functions.lifeSteal();
@@ -209,27 +220,49 @@ function monsterAttack(monsterStats) {
     var monsterHitChance = (monsterStats.acc - player.functions.evasion()) / 100;
     var randomHitChance = Math.random();
     if (monsterHitChance > randomHitChance) {
-        monsterDmg(monsterStats);
+        var randomNumber = Math.floor((Math.random() * 100) + 1);
+        if (player.functions.parryChance() > randomNumber) {
+            Log("<span class =\"bold\" style=\"color:purple;\">You parry enemy attack!" + "<br />" + "</span>");
+        }
+        else {
+            monsterDmg(monsterStats);
+        }
     }
     else {
         Log("<span class =\"bold\" style=\"color:purple;\">Enemy miss!" + "<br />" + "</span>");
     }
 };
 function monsterDmg(monsterStats) {
-    monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg() - monsterStats.minDmg() + 1)) + monsterStats.minDmg();
-    monsterDamage = Math.floor(monsterDamage * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + player.functions.defense())));
+    var monsterDamage = Math.floor(Math.random() * (monsterStats.maxDmg() - monsterStats.minDmg() + 1)) + monsterStats.minDmg();
+    var thornDamage = Math.floor(monsterDamage * (player.functions.thornAura() / 100));
+    if (thornDamage > 0) {
+        Log("<span class =\"bold\" style=\"color:green;\">You deal " + thornDamage + " thorn damage" + "<br />" + "</span>");
+    };
+    monsterStats.hp -= thornDamage;
+    monsterDamage = Math.floor((monsterDamage * (player.properties.prestigeMultiplier * 500 / (player.properties.prestigeMultiplier * 500 + player.functions.defense()))) - player.functions.ignoreDamage());
     if (monsterDamage >= 1) {
         monsterDamageDeal(monsterDamage, monsterStats);
-    };
+    }
+    else {
+        Log("<span class =\"bold\" style=\"color:green;\">Enemy deal 0 damage. A Legends power flows through you." + "<br />" + "</span>");
+    }
 };
 function monsterDamageDeal(monsterDamage, monsterStats) {
     var randomCounterNumber = Math.floor((Math.random() * 100) + 1);
     var randomBlockNumber = Math.floor((Math.random() * 100) + 1);
+    var randomReflectNumber = Math.floor((Math.random() * 100) + 1);
+    var text = " damage";
     if (randomCounterNumber <= player.functions.counterChance()) {
         var counterDamageDealt = Math.floor(monsterDamage * (player.functions.counterDamage() / 100));
         monsterStats.hp -= counterDamageDealt;
         Log("<span class =\"bold\" style=\"color:purple;\">You counter enemy for " + counterDamageDealt + "<br />" + "</span>");
     };
+    if (randomReflectNumber <= player.functions.reflect()) {
+        console.log(monsterDamage)
+        monsterDamage *= 0.5;
+        text += "(reflected 50% damage)";
+        console.log(monsterDamage)
+    }
     if (randomBlockNumber <= player.functions.blockChance()) {
         Log("<span class =\"bold\" style=\"color:blue;\">You block " + player.functions.blockAmount() + " damage!" + "<br />" + "</span>");
         if (monsterDamage >= player.functions.blockAmount()) {
@@ -242,7 +275,7 @@ function monsterDamageDeal(monsterDamage, monsterStats) {
     player.properties.health = player.properties.health - monsterDamage;
     damageTaken += monsterDamage;
 
-    Log("<span class =\"bold\" style=\"color:purple;\">Enemy hits you for " + monsterDamage + " damage." + "<br />" + "</span>");
+    Log("<span class =\"bold\" style=\"color:purple;\">Enemy hits you for " + monsterDamage + text + "." + "<br />" + "</span>");
     document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
     //document.getElementById(monsterStats.id).getElementsByClassName('hp')[0].innerHTML = monsterStats.hp;
     if (player.properties.health < 1) {
@@ -394,7 +427,6 @@ function displayLogInfo() {
     player.properties.health = player.functions.maxhealth();
     player.properties.mana = player.functions.maxMana();
     document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
-    manaRegen(); //display mana value with tooltip.
     for (var key in player.buffs) {
         if (player.buffs.hasOwnProperty(key)) {
             var buff = player.buffs[key];

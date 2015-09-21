@@ -43,23 +43,6 @@ function saveGameFunction(saveType, slot) {
         RangedExp: weaponMastery.ranged.experience,
         RangedMaxExp: weaponMastery.ranged.maxExperience,
         RangedLevel: weaponMastery.ranged.level,
-        //Passive Skill level
-        DamageBonus: playerPassive.brawler.level,
-        DamageBonus2: playerPassive.overpower.level,
-        HealthBonus: playerPassive.vitality.level,
-        HealthBonus2: playerPassive.fortitude.level,
-        MagicFindBonus: playerPassive.looter.level,
-        MagicFindBonus2: playerPassive.explorer.level,
-        SixthSenseBonus: playerPassive.sixthSense.level,
-        SpiritualAttunement: playerPassive.spiritualAttunement.level,
-        Mighty: playerPassive.mighty.level,
-        Constitution: playerPassive.constitution.level,
-        Curiosity: playerPassive.curiosity.level,
-        MasterofArms: playerPassive.masterofArms.level,
-        Robust: playerPassive.robust.level,
-        AncientKnowledge: playerPassive.ancientKnowledge.level,
-        BalancedWarrior: playerPassive.balancedWarrior.level,
-        MentalMastery: playerPassive.mentalMastery.level,
         //Other
         backpackStatus: backpackStatus,
         statStatus: statStatus,
@@ -89,6 +72,10 @@ function saveGameFunction(saveType, slot) {
     for (var key in monsterList) {
         var monsterKills = monsterList[key].killCount;
         saveGame[key] = monsterKills;
+    };
+    for (var key in playerPassive) {
+        var passive = playerPassive[key].level;
+        saveGame[key] = passive;
     };
     if (saveType === 'autoSave') {
         if (slot === 0) {
@@ -236,23 +223,6 @@ function load(slot) {
         if (typeof savegame.RangedExp !== "undefined") weaponMastery.ranged.experience = savegame.RangedExp;
         if (typeof savegame.RangedMaxExp !== "undefined") weaponMastery.ranged.maxExperience = savegame.RangedMaxExp;
         if (typeof savegame.RangedLevel !== "undefined") weaponMastery.ranged.level = savegame.RangedLevel;
-        //Passive Skills
-        if (typeof savegame.DamageBonus !== "undefined") playerPassive.brawler.level = savegame.DamageBonus;
-        if (typeof savegame.DamageBonus2 !== "undefined") playerPassive.overpower.level = savegame.DamageBonus2;
-        if (typeof savegame.HealthBonus !== "undefined") playerPassive.vitality.level = savegame.HealthBonus;
-        if (typeof savegame.HealthBonus2 !== "undefined") playerPassive.fortitude.level = savegame.HealthBonus2;
-        if (typeof savegame.MagicFindBonus !== "undefined") playerPassive.looter.level = savegame.MagicFindBonus;
-        if (typeof savegame.MagicFindBonus2 !== "undefined") playerPassive.explorer.level = savegame.MagicFindBonus2;
-        if (typeof savegame.SixthSenseBonus !== "undefined") playerPassive.sixthSense.level = savegame.SixthSenseBonus;
-        if (typeof savegame.SpiritualAttunement !== "undefined") playerPassive.spiritualAttunement.level = savegame.SpiritualAttunement;
-        if (typeof savegame.Mighty !== "undefined") playerPassive.mighty.level = savegame.Mighty;
-        if (typeof savegame.Constitution !== "undefined") playerPassive.constitution.level = savegame.Constitution;
-        if (typeof savegame.Curiosity !== "undefined") playerPassive.curiosity.level = savegame.Curiosity;
-        if (typeof savegame.MasterofArms !== "undefined") playerPassive.masterofArms.level = savegame.MasterofArms;
-        if (typeof savegame.Robust !== "undefined") playerPassive.robust.level = savegame.Robust;
-        if (typeof savegame.AncientKnowledge !== "undefined") playerPassive.ancientKnowledge.level = savegame.AncientKnowledge;
-        if (typeof savegame.BalancedWarrior !== "undefined") playerPassive.balancedWarrior.level = savegame.BalancedWarrior;
-        if (typeof savegame.MentalMastery !== "undefined") playerPassive.mentalMastery.level = savegame.MentalMastery;
         //Other
         if (typeof savegame.playerWeapon !== "undefined") equippedItems.weapon = savegame.playerWeapon;
         if (typeof savegame.playerShield !== "undefined") equippedItems.shield = savegame.playerShield;
@@ -296,6 +266,9 @@ function load(slot) {
         for (var key in monsterList) {
             if (typeof savegame[key] !== "undefined") monsterList[key].killCount = savegame[key];
         };
+        for (var key in playerPassive) {
+            if (typeof savegame[key] !== "undefined") playerPassive[key].level = savegame[key];
+        }
         loadIsEquipped();
         CreateWeaponSkillHtml();
         quest();

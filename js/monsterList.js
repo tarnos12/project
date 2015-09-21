@@ -32,7 +32,7 @@ function MakeMonsterList() {
         this.id = id;
         this.area = area;
         this.monsterHealth = function () {
-            return this.level * 150 * this.difficultyMultiplier() * player.properties.prestigeMultiplier;
+            return Math.floor(this.level * 150 * this.difficultyMultiplier() * player.properties.prestigeMultiplier);
         };
         this.hp = this.monsterHealth();
         this.maxHp = this.hp;
