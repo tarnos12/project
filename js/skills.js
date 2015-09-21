@@ -15,235 +15,146 @@
 })();
 //Skills
 (function() {
-    var newPassive = function(level, maxLevel, id, levelReq, name, image, bonus) { //default spell object constructor
-        this.id = id;
+    var newPassive = function(level, maxLevel, levelReq, name, image, bonus, bonusName, isPercentage) { //default spell object constructor
         this.level = level;
         this.maxLevel = maxLevel;
         this.levelReq = levelReq;
         this.name = name;
         this.image = image;
         this.bonus = bonus;
-        this.type = "Triple";
-        this.newRow = false;
-        this.lastRow = false;
+        this.bonusName = bonusName;
+        this.isPercentage = function () {
+            if (isPercentage === true) {
+                return "%";
+            }
+            else {
+                return "";
+            };
+        };
         this.bonusTotal = function() {
             return Math.floor(this.bonus * this.level);
         };
         this.requirements = function() {
             return true;
         };
+        this.description = function () {
+            return "Grants " + this.bonus + this.isPercentage() + " " + this.bonusName + " per level. <br /> Current bonus: " + this.bonusTotal() + this.isPercentage() + ". <br /><br />Requires:";
+        };
+        this.firstRow = false;
+        this.lastRow = false;
+        this.firstTree = false;
     };
     //lvl/maxLvl/ID/Req/Name/Image/bonus
-    var brawler = new newPassive(0, 10, 1, 1, "Brawler", "Brawler", 5);
-    var vitality = new newPassive(0, 10, 2, 1, "Vitality", "Vitality", 5);
-    var looter = new newPassive(0, 10, 3, 1, "Looter", "Looter", 10);
-    var overpower = new newPassive(0, 1, 4, 5, "Overpower", "Overpower", 25);
-    var fortitude = new newPassive(0, 5, 5, 5, "Fortitude", "Fortitude", 20);
-    var explorer = new newPassive(0, 1, 6, 5, "Explorer", "Explorer", 50);
-    var sixthSense = new newPassive(0, 5, 7, 10, "Sixth Sense", "SixthSense", 10);
-    var spiritualAttunement = new newPassive(0, 10, 8, 10, "Spiritual Attunement", "Spiritual", 20);
-    var mighty = new newPassive(0, 5, 9, 15, "Mighty", "Mighty", 10);
-    var constitution = new newPassive(0, 5, 10, 15, "Constitution", "Constitution", 20);
-    var curiosity = new newPassive(0, 10, 11, 15, "Curiosity", "Curiosity", 20);
-    var masterofArms = new newPassive(0, 1, 12, 20, "Master of Arms", "MasterofArms", 50);
-    var robust = new newPassive(0, 1, 13, 20, "Robust", "Robust", 100);
-    var ancientKnowledge = new newPassive(0, 1, 14, 20, "Ancient Knowledge", "AncientKnowledge", 50);
-    var balancedWarrior = new newPassive(0, 1, 15, 25, "Balanced Warrior", "BalancedWarrior", 50);
-    var mentalMastery = new newPassive(0, 1, 15, 25, "Mental Mastery", "MentalMastery", 50);
 
-    //Need this, for my html, to work properly...
-    looter.lastRow = true;
-    explorer.lastRow = true;
+    //                   |Offensive Tree|
+    var preciseAttack = new newPassive(0, 5, 1, "Precise Attack", "PreciseAttack", 1, "accuracy", true);
+    var piercingAttack = new newPassive(0, 5, 5, "Piercing Attack", "PiercingAttack", 5, "ignore defense bonus", true);
+    var assasination = new newPassive(0, 1, 10, "Assasination", "Assasination", 1, "to instant kill enemy", true);//Insta Kill
+    var reflex = new newPassive(0, 5, 15, "Reflex", "Reflex", 1, "critical chance", true);
+    var masterofArms = new newPassive(0, 5, 20, "Master of Arms", "MasterofArms", 5, "critical damage", true);
+
+    preciseAttack.firstRow = true;
+    masterofArms.lastRow = true;
+
+    var combatTraining = new newPassive(0, 5, 1, "Combat Training", "CombatTraining", 1, "base damage", true);
+    var combatMaster = new newPassive(0, 5, 5, "Combat Master", "CombatMaster", 5, "base damage", true);
+    var physicalExercise = new newPassive(0, 5, 10, "Physical Exercise", "PhysicalExercise", 1, "strength bonus", true);
+    var fierceImpact = new newPassive(0, 5, 15, "Fierce Impact", "FierceImpact", 5, "critical damage", true);
+    var brawler = new newPassive(0, 5, 20, "Brawler", "Brawler", 1, "base damage", true);
+    var mighty = new newPassive(0, 5, 25, "Mighty", "Mighty", 5, "base damage", true);
+
+    combatTraining.firstTree = true;//Offensive/Defensive/Utility
+    combatTraining.firstRow = true;
+    mighty.lastRow = true;
+
+    var elementalMastery = new newPassive(0, 5, 1, "Elemental Mastery", "ElementalMastery", 1, "spell power", true);
+    var MagicTraining = new newPassive(0, 5, 5, "Magic Training", "MagicTraining", 5, "spell power", true);
+    var manaEnchant = new newPassive(0, 5, 10, "Mana Enchant", "ManaEnchant", 5, "max mana", true);
+    var quickMeditation = new newPassive(0, 5, 15, "Quick Meditation", "QuickMeditation", 10, "mana regen", true);
+    var mentalMastery = new newPassive(0, 5, 20, "Mental Mastery", "MentalMastery", 5, "spell power", true);
+    var spiritualAttunement = new newPassive(0, 5, 25, "Spiritual Attunement", "Spiritual", 10, "spell power", true);
+
+    elementalMastery.firstRow = true;
     spiritualAttunement.lastRow = true;
-    curiosity.lastRow = true;
-    ancientKnowledge.lastRow = true;
-    mentalMastery.lastRow = true;
-    brawler.newRow = true;
-    overpower.newRow = true;
-    sixthSense.newRow = true;
-    mighty.newRow = true;
-    masterofArms.newRow = true;
-    balancedWarrior.newRow = true;
 
-    brawler.description = function() {
-        return "Increase damage by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires:";
-    };
-    brawler.newRow = true;
-    overpower.newRow = true;
-    overpower.description = function() {
-        return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br /> " +
-            brawler.name;
-    };
-    overpower.requirements = function() {
-        if (brawler.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    vitality.description = function() {
-        return "Increase health by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires:";
-    };
-    fortitude.description = function() {
-        return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br /> " +
-            vitality.name;
-    };
-    fortitude.requirements = function() {
-        if (vitality.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    looter.description = function() {
-        return "Increase magic find by " + this.bonus + "% per level. <br /> Currently grants: " + this.bonusTotal() + "% magic find. <br /><br />Requires:";
-    };
-    explorer.description = function() {
-        return "Increase magic find by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% magic find. <br /><br />Requires: <br /> " +
-            looter.name;
-    };
-    explorer.requirements = function() {
-        if (looter.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
+    //                  |Defensive Tree|
+    var armorProficiency = new newPassive(0, 5, 1, "Armor Proficiency", "ArmorProficiency", 1, "defense", true);
+    var parry = new newPassive(0, 5, 5, "Parry", "Parry", 1, "chance to parry an attack", true);
+    var ironSkin = new newPassive(0, 5, 10, "Iron Skin", "IronSkin", 2, "defense", true);
+    var thornAura = new newPassive(0, 5, 15, "Thorn Aura", "ThornAura", 1, " thorn damage(based on enemy damage, before any reductions)", true);
+    var stoneSkin = new newPassive(0, 5, 20, "Stone Skin", "StoneSkin", 10, "to ignore enemy damage", false);
+    
+    armorProficiency.firstRow = true;
+    stoneSkin.lastRow = true;
 
-    sixthSense.description = function() {
-        return "Increase total Evasion by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% Evasion. <br /><br />Requires: <br /> " +
-            overpower.name + "<br />" + fortitude.name;
-    };
-    sixthSense.type = "Double";
-    sixthSense.requirements = function() {
-        if (overpower.level >= 1 && fortitude.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    spiritualAttunement.description = function() {
-        return "Increase mana by " + this.bonus + " <br /> Currently grants: " + this.bonusTotal() + " maximum mana. <br /><br />Requires: <br /> " +
-            fortitude.name + "<br />" + explorer.name;
-    };
-    spiritualAttunement.type = "Double";
-    spiritualAttunement.requirements = function() {
-        if (fortitude.level >= 1 && explorer.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    mighty.description = function() {
-        return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage. <br /><br />Requires: <br /> " +
-            overpower.name;
-    };
-    mighty.requirements = function() {
-        if (overpower.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    constitution.description = function() {
-        return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% health. <br /><br />Requires: <br /> " +
-            fortitude.name;
-    };
-    constitution.requirements = function() {
-        if (fortitude.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    curiosity.description = function() {
-        return "Increase experience rate by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus experience rate. <br /><br />Requires: <br /> " +
-            explorer.name;
-    };
-    curiosity.requirements = function() {
-        if (explorer.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
+    var evasion = new newPassive(0, 5, 1, "Evasion", "Evasion", 1, "evasion", true);
+    var recovery = new newPassive(0, 5, 5, "Recovery", "Recovery", 5, "health regen", true);
+    var damageReflect = new newPassive(0, 5, 10, "Damage Reflect", "DamageReflect", 1, "to reflect 50% damage", true);
+    var sixthSense = new newPassive(0, 5, 15, "Sixth Sense", "SixthSense", 1, "agility bonus", true);
 
-    masterofArms.description = function() {
-        return "Increase damage by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage.<br /><br />Requires: <br /> " +
-            mighty.name;
-    };
-    masterofArms.requirements = function() {
-        if (mighty.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    robust.description = function() {
-        return "Increase health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus health.<br /><br />Requires: <br /> " +
-            constitution.name;
-    };
-    robust.requirements = function() {
-        if (constitution.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
+    evasion.firstTree = true;//Offensive/Defensive/Utility
+    evasion.firstRow = true;
+    sixthSense.lastRow = true;
 
-    ancientKnowledge.description = function() {
-        return "Increase gold/exp/drop rates by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus gold/exp/drop rate.<br /><br />Requires: <br /> " +
-            curiosity.name;
-    };
-    ancientKnowledge.requirements = function() {
-        if (curiosity.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    balancedWarrior.type = "Double";
-    balancedWarrior.description = function() {
-        return "Increase damage and health by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% bonus damage and health. <br /><br />Requires: <br /> " +
-            sixthSense.name;
-    };
-    balancedWarrior.requirements = function() {
-        if (sixthSense.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-    mentalMastery.type = "Double";
-    mentalMastery.description = function() {
-        return "Increase max mana by " + this.bonus + "% <br /> Currently grants: " + this.bonusTotal() + "% max mana. <br /><br />Requires: <br /> " +
-            spiritualAttunement.name;
-    };
-    mentalMastery.requirements = function() {
-        if (spiritualAttunement.level >= 1) {
-            return true;
-        } else {
-            return false;
-        }
-    };
+    var vitality = new newPassive(0, 5, 1, "Vitality", "Vitality", 1, "max health", true);
+    var fortitude = new newPassive(0, 5, 5, "Fortitude", "Fortitude", 5, "max health", true);
+    var constitution = new newPassive(0, 5, 10, "Constitution", "Constitution", 1, "endurance bonus", true);
+    var robust = new newPassive(0, 1, 15, "Robust", "Robust", 25, "health regen", true);
+
+    vitality.firstRow = true;
+    robust.lastRow = true;
+
+    //                  |Utility Tree|
+    var miningAmount = new newPassive(0, 5, 1, "Mining Amount", "MiningAmount", 1, "max amount you can mine at once", false);
+    var herbalismAmount = new newPassive(0, 5, 1, "Herbalism Amount", "HerbalismAmount", 1, "max amount you can gather at once", false);
+
+    miningAmount.firstTree = true;//Offensive/Defensive/Utility
+    miningAmount.firstRow = true;
+    herbalismAmount.lastRow = true;
+
+    var storage = new newPassive(0, 5, 1, "Storage", "Storage", 1000, "total storage for resources", false);
+    var herbalismCritical = new newPassive(0, 5, 5, "Prosperous grasp", "ProsperousGrasp", 1, "chance for critical gather, which gives much more herbs", true);
+    var miningCritical = new newPassive(0, 5, 10, "Cutting Technique", "CuttingTechnique", 1, "chance for critical mine, which gives much more ores", true);
+
+    storage.firstRow = true;
+    miningCritical.lastRow = true;
 
     window.playerPassive = new Object();
-    playerPassive.brawler = brawler;
-    playerPassive.vitality = vitality;
-    playerPassive.looter = looter;
-    playerPassive.overpower = overpower;
-    playerPassive.fortitude = fortitude;
-    playerPassive.explorer = explorer;
-    playerPassive.sixthSense = sixthSense;
-    playerPassive.spiritualAttunement = spiritualAttunement;
-    playerPassive.mighty = mighty;
-    playerPassive.constitution = constitution;
-    playerPassive.curiosity = curiosity;
+    playerPassive.preciseAttack = preciseAttack;
+    playerPassive.piercingAttack = piercingAttack;
+    playerPassive.assasination = assasination;
+    playerPassive.reflex = reflex;
     playerPassive.masterofArms = masterofArms;
-    playerPassive.robust = robust;
-    playerPassive.ancientKnowledge = ancientKnowledge;
-    playerPassive.balancedWarrior = balancedWarrior;
+    playerPassive.combatTraining = combatTraining;
+    playerPassive.combatMaster = combatMaster;
+    playerPassive.physicalExercise = physicalExercise;
+    playerPassive.fierceImpact = fierceImpact;
+    playerPassive.brawler = brawler;
+    playerPassive.mighty = mighty;
+    playerPassive.elementalMastery = elementalMastery;
+    playerPassive.magicTraining = MagicTraining;
+    playerPassive.manaEnchant = manaEnchant;
+    playerPassive.quickMeditation = quickMeditation;
     playerPassive.mentalMastery = mentalMastery;
+    playerPassive.spiritualAttunement = spiritualAttunement;
+    playerPassive.armorProficiency = armorProficiency;
+    playerPassive.parry = parry;
+    playerPassive.ironSkin = ironSkin;
+    playerPassive.thornAura = thornAura;
+    playerPassive.stoneSkin = stoneSkin;
+    playerPassive.evasion = evasion;
+    playerPassive.recovery = recovery;
+    playerPassive.damageReflect = damageReflect;
+    playerPassive.sixthSense = sixthSense;
+    playerPassive.vitality = vitality;
+    playerPassive.fortitude = fortitude;
+    playerPassive.constitution = constitution;
+    playerPassive.robust = robust;
+    playerPassive.miningAmount = miningAmount;
+    playerPassive.herbalismAmount = herbalismAmount;
+    playerPassive.storage = storage;
+    playerPassive.herbalismCritical = herbalismCritical;
+    playerPassive.miningCritical = miningCritical;
 
 //Weapon Skills
 
@@ -540,7 +451,7 @@
 
 //BUFF
     intone.damageDisplay = function() {
-        return Math.floor(10 + player.functions.totalIntelligence() * 2);
+        return Math.floor(player.functions.spellPower());
     };
     intone.damage = function() {
         return (player.properties.isStaff && weaponMastery.staff.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -556,7 +467,7 @@
 
 //DAMAGE 
     starlight.damageDisplay = function() {
-        return Math.floor(30 + (weaponMastery.staff.level * 4) + player.functions.totalIntelligence() * 0.8 + player.functions.totalWisdom() * 0.8);
+        return Math.floor(30 + (weaponMastery.staff.level * 4) + player.functions.spellPower() * 1.2);
     };
     starlight.damage = function() {
         return (player.properties.isStaff && weaponMastery.staff.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -569,7 +480,7 @@
 
 //DAMAGE 
     hateCannon.damageDisplay = function() {
-        return Math.floor(50 + (weaponMastery.staff.level * 3) + player.functions.totalIntelligence() * 1.2 + player.functions.totalWisdom() * 1.2);
+        return Math.floor(50 + (weaponMastery.staff.level * 3) + player.functions.spellPower() * 1.6);
     };
     hateCannon.damage = function() {
         return (player.properties.isStaff && weaponMastery.staff.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -579,7 +490,7 @@
 
 //DAMAGE 
     beguilersOrb.damageDisplay = function() {
-        return Math.floor(100 + (weaponMastery.staff.level * 3) + player.functions.totalIntelligence() * 1.6 + player.functions.totalWisdom() * 1.6);
+        return Math.floor(100 + (weaponMastery.staff.level * 3) + player.functions.spellPower() * 2);
     };
     beguilersOrb.damage = function() {
         return (player.properties.isStaff && weaponMastery.staff.level >= this.levelReq) ? this.damageDisplay() : 0;
@@ -610,7 +521,7 @@
         return "Damage:" + this.damageDisplay() + "(Intelligence + Wisdom based).";
     };
     spellSimulacrum.description = function() {
-        return "Increase your total intelligence(" + (this.damageDisplay() - 100) + "%)";
+        return "Increase your total spell power(" + (this.damageDisplay() - 100) + "%)";
     };
 
 //RANGED SKILL

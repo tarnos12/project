@@ -490,12 +490,24 @@ function gather(monsterStat, type) {
     var name = monsterStats.name;
     var professionType = playerProfession[type];
     var professionLevel = professionType.level;
-    var randomNumber = Math.floor(Math.random() * professionLevel) + 1;
+    var resourceGain = 1 + playerPassive[type + "Amount"].bonusTotal();
+    var maxResources = 1000 + playerPassive.storage.bonusTotal();
+    var criticalGather = Math.floor((Math.random() * 100) + 1);
+    if (criticalGather <= playerPassive[type + "Critical"].bonusTotal()) {
+        console.log(resourceGain)
+        resourceGain *= 5;
+        console.log(resourceGain)
+    };
     monsterStats.hp -= professionType.damage();
     if (monsterStats.hp <= 0) {
         monsterStats.hp = monsterStats.maxHp;
         professionType.experience += monsterStats.baseExp;
-        player.properties[name] += randomNumber;
+        if (maxResources >= player.properties[name]) {
+            player.properties[name] += resourceGain;
+            if (player.properties[name] > maxResources) {
+                player.properties[name] = maxResources;
+            }
+        }
         if (professionType.experience >= professionType.maxExperience) {
             professionType.level += 1;
             professionType.experience = professionType.experience - professionType.maxExperience;
@@ -507,7 +519,7 @@ function gather(monsterStat, type) {
                 unlockHerb();
             }
         };
-        document.getElementById(name).innerHTML = player.properties[name];
+        document.getElementById(name).innerHTML = player.properties[name] + "/" + maxResources;
     };
     var profession = playerProfession[type];
     document.getElementById("Profession_" + type).innerHTML = 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0)
@@ -657,8 +669,9 @@ function createPotion(type) {
                 for (var j = 0; j < requirementsArray.length; j++) {
                     var requiredHerb = requirementsArray[j].type;
                     var requiredAmount = requirementsArray[j].amount;
+                    var maxResources = 1000 + playerPassive.storage.bonusTotal();
                     player.properties[requiredHerb] -= requiredAmount;
-                    document.getElementById(requiredHerb).innerHTML = player.properties[requiredHerb];
+                    document.getElementById(requiredHerb).innerHTML = player.properties[requiredHerb] + "/" + maxResources;
                 };
                 canCraft = true;
                 profession.experience += potionList[type].experienceGain;
@@ -721,9 +734,10 @@ function playerProfessionHtml() {
         var mineral = mineralListArray[i].name;
         var displayName = mineralListArray[i].displayName;
         var playerMineral = player.properties[mineral];
+        var maxResources = 1000 + playerPassive.storage.bonusTotal();
         html += '<div class="col-xs-3 col-sm-6">';
         html += '<img src="images/mineral/' + mineral + '.png" data-toggle="tooltip" data-placement="right" title="' + displayName + '">';
-        html += ' ' + '<span id="' + mineral + '">' + playerMineral + '</span>' + '<br />';
+        html += ' ' + '<span id="' + mineral + '">' + playerMineral + "/" + maxResources + '</span>' + '<br />';
         html += '</div>';
         if (mineral === 'VulcanatedIron') {
             html += '<div class="col-xs-12 borderTop">';
@@ -1051,6 +1065,7 @@ function craftItem(itemType, itemSubType, itemQuality) {
         var mineralType = profession[itemQuality]()[0].type[i];
         var mineralCost = profession[itemQuality]()[0][itemType][0][itemSubType][i];
         var experience = (profession[itemQuality]()[0].experience[i] * mineralCost);
+        var maxResources = 1000 + playerPassive.storage.bonusTotal();
         profession.experience += experience;;
         if (profession.experience >= profession.maxExperience) {
             profession.level++;
@@ -1059,16 +1074,9 @@ function craftItem(itemType, itemSubType, itemQuality) {
         }
         document.getElementById("Profession_crafting").innerHTML = 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0);
         player.properties[mineralType] -= mineralCost;
-        document.getElementById(mineralType).innerHTML = player.properties[mineralType];
+        document.getElementById(mineralType).innerHTML = player.properties[mineralType] + "/" + maxResources;
     }
         getItemType(itemLevel, false, itemType, itemSubType, itemQuality);
-       
-        document.getElementById('VulcanatedIron').innerHTML = player.properties['VulcanatedIron'];
-        document.getElementById('XilBond').innerHTML = player.properties['XilBond'];
-        document.getElementById('Techtite').innerHTML = player.properties['Techtite'];
-        document.getElementById('OhmStone').innerHTML = player.properties['OhmStone'];
-        document.getElementById('LiteCyan').innerHTML = player.properties['LiteCyan'];
-        document.getElementById('Thaumerite').innerHTML = player.properties['Thaumerite'];
         document.getElementById('Profession_crafting').innerHTML = 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0)
         craftingHtml();
         testss();
