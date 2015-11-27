@@ -1,6 +1,6 @@
 "use strict";
 
-//Player log
+//Player log 
 function Log(data) {
     var i;
     if (logData.length < maxLogLines) {
