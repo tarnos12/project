@@ -1,0 +1,363 @@
+﻿
+body {
+	background-image: url("images/bg.jpg");
+	background-size: 100% auto;
+	background-color: #EDD26E;
+}
+
+.no-close .ui-dialog-titlebar-close {
+	display: none;
+}
+
+li.bold {
+	font-weight: bold;
+}
+
+.Common {
+	outline-style: solid;
+	outline-color: #d1d1d1;
+}
+
+.Uncommon {
+	outline-style: solid;
+	outline-color: green;
+}
+
+.Rare {
+	outline-style: solid;
+	outline-color: blue;
+}
+
+.Epic {
+	outline-style: solid;
+	outline-color: orange;
+}
+
+.Legendary {
+	outline-style: solid;
+	outline-color: red;
+}
+
+label > input { /* HIDE RADIO */
+	visibility: hidden; /* Makes input not-clickable */
+	position: absolute; /* Remove input from document flow */
+}
+
+	label > input + img { /* IMAGE STYLES */
+		cursor: pointer;
+		border: 2px solid transparent;
+	}
+
+	label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
+		border: 2px solid #f00;
+	}
+
+.visibilityLabel {
+	visibility: visible;
+}
+
+.talent-tree {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	padding-right: 30px;
+	margin-left: -10px;
+}
+
+.skill {
+	width: 80px;
+	height: 80px;
+	position: relative;
+}
+
+	.skill .icon-container {
+		position: absolute;
+		background: black;
+		width: 60px;
+		height: 60px;
+		padding: 4px;
+		top: 8px;
+		left: 9px;
+		-webkit-border-radius: 8px;
+		-moz-border-radius: 8px;
+		border-radius: 8px;
+		-webkit-box-shadow: 0 6px 11px #000000;
+		-moz-box-shadow: 0 6px 11px #000000;
+		box-shadow: 0 6px 11px #000000;
+		overflow: hidden;
+	}
+
+	.skill .icon {
+		width: 100%;
+		height: 100%;
+		-moz-opacity: 0.35;
+		-khtml-opacity: 0.35;
+		-webkit-opacity: 0.35;
+		opacity: 0.35;
+		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=35);
+		filter: alpha(opacity=35);
+		-webkit-transition: all 0.3s ease-out;
+		-moz-transition: all 0.3s ease-out;
+		-o-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+	}
+
+	.skill .frame {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQkAAABiBAMAAACxAjt6AAAALVBMVEUAAAAAAABOTk7//7n//5z//ok/Pz//9XbbqDc6OjojIyP82FXGkyIyMjJ/f39vm9b2AAAAAXRSTlMAQObYZgAAAplJREFUeF7t2bFu2zAQBuDyDXgW3MJwEcAZvBtCID9AgM6GIcBrM3gvPHAODAFcPSpAh47xltlZMluv0KEvkGcoBYKiVJJH1m2DDvev91v8omPgwe/CoVAgGJ7cSy6GAqPrUAafguw2FN2zxTKUIION5ttQ+gyWFSKUvP90Nt7IUG4CDAYKgTBsLxfB7HLoPXApg6nW4FXA9RbLzNghLwTCWPDugTcSSaWKnozUUXfX/szVyNizXJ11688nIezLyKSU69IftaoSvLeiPSmQVjgzt0IhQj01EwvzQKWoQsWxEq48Cphv72ahiwvvu5VAYd+6E/gghBnCRu5XwaJi6KGzkBl4+taop5k6B+kV3Urac5Di0rcS1ircsjNmrQLpZWKnx6xVIMWxrNwx039sMJ0iFzus1yHZUlZYUSNdxWe1J2wlWlGIL2ivMIqNvEeLG7nwKLCF6LlRoL2eIrQ5M1/9iWLxDxUPx0NcYT8cVzw3T39f8fX7Iaqwc1xh5m+pIAUpSEEKUpCCFKQgBSlIQQpSkIIUpCAFKUhBCgY2vK/AeojCKaYpXm1QRWmDKxqbdMUPMLlCFSswGeOKFzD5+P8qeKKCpyr4BYo6UbFOVZx+XzE5PkKKIpN7SFJMmzMkKmwmR70SVKF/q13wqEJl2tiVJCvgQb0MHlfAUu6BJyjguTkDjynci3GswZNfFGwpZe7rDRT6YjQnXxFVqJU81m4OfYX54bp0s3IUaiXnk5snv8KuxJdvA4VeiS/3Q4VeiS8vqIJN0hQsS1SwabrCBuqoQvfyuEIXTxcoGNTRe6F7Zfxe6OIpei98jNj/CNYbKLBiRBH/NsN6AwVWvEjxaoMqShtc0dikK8CGJ/eSi28dCoVCoVAoFArlJ5teHQfCZjbUAAAAAElFTkSuQmCC') /*images/sprite2.png*/ no-repeat top left;
+	}
+
+	.skill .hit-area {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+		z-index: 2;
+	}
+
+	.skill.can-add-points .frame {
+		background-position: -80px top;
+	}
+
+	.skill.has-points .icon {
+		-moz-opacity: 1;
+		-khtml-opacity: 1;
+		-webkit-opacity: 1;
+		opacity: 1;
+		-ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+		filter: alpha(opacity=100);
+	}
+
+	.skill.has-max-points .frame {
+		background-position: -160px top;
+	}
+
+	.skill .skill-points {
+		position: absolute;
+		z-index: 1;
+		bottom: 5px;
+		right: 5px;
+		color: white;
+		font-size: 11px;
+		line-height: 1em;
+		width: 19px;
+		text-align: center;
+	}
+
+
+a:active {
+	outline: none;
+}
+
+.ui-widget-content {
+	border: none;
+	background: none;
+}
+
+.buttonSelected {
+	background-color: orange;
+}
+
+.startBackButtonMargin {
+	margin-top: 50px;
+}
+
+a {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.rightAlign {
+	text-align: right;
+}
+
+.fontSize {
+	font-family: fantasy;
+	font-size: xx-large;
+}
+
+h3 {
+	text-align: center;
+}
+
+.backgroundRed {
+	background-color: #DD4747 !important;
+}
+
+.marginBottom {
+	margin-bottom: 10px;
+}
+
+.marginTop {
+	margin-top: 10px;
+}
+
+.marginLeft {
+	margin-left: 10px;
+}
+
+.marginRight {
+	margin-right: 10px;
+}
+
+.passiveMargin {
+	margin-bottom: 15px;
+}
+
+img.skillBorder {
+	outline: 1px solid gray;
+}
+
+.border {
+	border: 1px solid black;
+}
+
+.paddingBothSides {
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+.margin {
+	margin: 10px;
+}
+
+div.borderTop {
+	border-top: 1px solid;
+}
+
+div.borderBottom {
+	border-bottom: 1px solid;
+}
+
+div.borderRight {
+	border-right: 1px solid;
+}
+
+div.borderLeft {
+	border-left: 1px solid;
+}
+
+.bold {
+	font-weight: bold;
+	text-align: left;
+}
+
+div.c4 {
+	background-color: #EDD26E;
+}
+
+div.background {
+	background-color: #EEDFA6;
+}
+
+div.darkBackground {
+	background-color: #baa65a;
+}
+
+div.c3 {
+	text-align: center;
+}
+
+div.c2 {
+	text-align: left;
+}
+
+.primaryStatsMargin {
+	margin-bottom: 5px;
+}
+
+.primaryNumberMargin {
+	margin-top: 10px;
+}
+
+.secondaryStatMargin {
+	margin-top: 5px;
+}
+
+.marginBottomNav {
+	margin-bottom: 5px;
+}
+
+div.c11 {
+	height: 60px;
+}
+
+div.scroll {
+	display: block;
+	overflow: auto;
+	height: 400px;
+}
+
+.img-center {
+	margin: 0 auto;
+}
+
+div.marginTest {
+	margin-bottom: 5px;
+}
+
+.topBar {
+	font-size: 20px;
+	color: firebrick;
+	text-align: right;
+}
+
+#level {
+	display: inline-block;
+	margin-left: 5px;
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+	border: 2px solid blue;
+	text-align: center;
+	font-size: 30px;
+	margin-top: 5px;
+}
+
+.centerText {
+	text-align: center;
+}
+
+.buttonDisable {
+	pointer-events: none;
+	filter: alpha(opacity=65);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	opacity: .65;
+}
+
+h1 {
+	text-align: center;
+}
+
+.unselectable {
+	-webkit-user-select: none; /* Chrome all / Safari all */
+	-moz-user-select: none; /* Firefox all */
+	-ms-user-select: none; /* IE 10+ */
+	/* No support for these yet, use at own risk */
+	-o-user-select: none;
+	user-select: none;
+}
+
+.cursorHelp {
+	cursor: help;
+}
+
+.nav-tabs > li, .nav-pills > li {
+	float: none;
+	display: inline-block;
+	*display: inline; /* ie7 fix */
+	zoom: 1; /* hasLayout ie7 trigger */
+}
+
+.nav-tabs, .nav-pills {
+	text-align: center;
+}
+
+.dialogStyling {
+	background-color: #c49c05 !important;
+	border: 1px solid;
+}
