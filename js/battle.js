@@ -1,15 +1,17 @@
-﻿function startBattle(monster) {
+﻿//REWORKING IN PROGRESS
+function createBattleScreen(monster) {
+    var html = "";
+    var area = monster.area;
+
+}
+
+
+
+function startBattle(monster) {
     //Add buttons <Attack><Defense><Spell><Item><Run?> -->"Spell" change name based on character class later on: Spell/Skill/Runes/Combo/etc...
     //Display enemy at the top/or left/ AND  player at the bottom/or right side
     var monsterStats = monsterList[monster];
-    for (var hero in characterRaces) {
-        if (characterRaces.hasOwnProperty(hero)) {
-            var heroRace = characterRaces[hero];
-            if (player.properties.heroRace === heroRace.name) {
-                var image = heroRace.image();
-            };
-        };
-    };
+    var image = player.properties.raceAge + player.properties.raceImage;
     var area = monsterStats.area;
     var html = "";
     html += '<div class="row">';
@@ -115,7 +117,6 @@ function playerAttack(monster) {
         monsterAttack(monsterStats);
     };
 };
-
 function playerCritCheck(monster) {
     var monsterStats = monsterList[monster];
     var playerCriticalChance = player.functions.criticalChance() / 100;
@@ -408,8 +409,6 @@ function monsterExperience(monsterStats) {
     }
     monsterGold(monsterStats);
 };
-
-
 //gold gained from killing a monster
 function monsterGold(monsterStats) {
     var goldDrop = player.properties.goldDrop;

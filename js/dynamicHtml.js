@@ -409,21 +409,24 @@ function CreateInventoryWeaponHtml() {
                 else if (playerInventory[i].subType === "talisman") {
                     itemStat = equippedItems.talisman;
                 }
-                html += '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-2 c8" style="margin-top:5px;" ' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + '>';
-                html += '<a class="tooltips2" style="cursor:pointer;">';
+                html += '<div ' + 'id="' + 'testingItem' + playerInventory[i].id + '"' + ' class="col-xs-6 col-sm-4 col-md-4 col-lg-2 c8 inventoryBlock ';
                 if (playerInventory[i].itemType === "weapon") {
-                    html += '<img class="' + playerInventory[i].itemType + ", " + playerInventory[i].itemRarity;
+                    html += playerInventory[i].itemRarity + '">';
+                    html += '<a class="tooltips2" style="cursor:pointer;">';
+                    html += '<img class="' + playerInventory[i].itemType + " " + playerInventory[i].itemRarity;
                 }
                 else {
-                    html += '<img class="' + playerInventory[i].subType + ", " + playerInventory[i].itemRarity;
+                    html += playerInventory[i].itemRarity + '">';
+                    html += '<a class="tooltips2" style="cursor:pointer;">';
+                    html += '<img class="' + playerInventory[i].subType + " " + playerInventory[i].itemRarity;
                 }
                 html += '"' + 'src="images/items/' + playerInventory[i].subType + "/" + playerInventory[i].image + '.png"' + 'onclick="equipItem' + "(" + playerInventory[i].id + ")" + '"/>';
 
                 if (itemStat.hasOwnProperty('itemType')) {
-                    html += '<span style="pointer-events:none; left:-100px;right:0; bottom:100px; width:400px;">';
+                    html += '<span style="pointer-events:none; left:-100px;right:0; bottom:80px; width:400px;">';
                 }
                 else {
-                    html += '<span style="width:300px; left:80px;right:0; bottom:100px;">';
+                    html += '<span style="width:300px; left:80px;right:0; bottom:50px;">';
                 }
                 html += '<div class="row">';
                 html += '<div class="col-xs-12">';
@@ -542,7 +545,6 @@ function unequipItemLoad() { // Create a variable inside player.properties which
         };
     };
 };
-
 function CreatePlayerSkillsHtml() {
     var html = '';
     html += '<div class="row">';
@@ -555,64 +557,91 @@ function CreatePlayerSkillsHtml() {
     html += '</div>';
     html += '<div class="row">';
     html += '<div class="talent-tree">';
-    for (var passiveSkill in playerPassive) {
-        if (playerPassive.hasOwnProperty(passiveSkill)) {
-            var passive = playerPassive[passiveSkill];
-            var onclickevent = "upgradePassive('" + passiveSkill + "');";
-
-            if (passive.firstRow === true) {
-                html += '<div class="col-xs-4 col-md-1">';
-            };
-            html += '<div class="col-xs-12">';//Opening Div for skill image
-            html += '<div class="skill ';//Open first div
-            if (passive.levelReq <= player.properties.level) {
-                if (passive.level === 0) {
-                    html += "can-add-points ";
-                }
-                if (passive.level > 0 && passive.level < passive.maxLevel) {
-                    html += "can-add-points has-points ";
-                }
-                if (passive.level === passive.maxLevel) {
-                    html += "has-points has-max-points";
-                }
-            }
-            html += '">';
-            //Start of icon div's
-            html += '<div class="icon-container">';
-            html += '<div class="icon">';
-            html += '<img src="images/passive/' + passive.image + '.png"">';
-            html += '</div></div>';
-            //End of icon div's
-            //Start of div Frame
-            html += '<div class="frame" onclick="' + onclickevent + '">';
-            html += '<a class="tooltips" style="position:absolute; width:80px; height:80px; z-index:5;">';
-            html += '<span style="bottom:110px; right:-100px; width:250px;">';
-            html += passive.name + '<br />';
-            html += passive.description();
-            html += '<br />Level: ' + passive.levelReq;
-            html += '<br />Level: ' + passive.level + '/' + passive.maxLevel;
-            html += '</span></a>';
-            html += '<div class="skill-points">';
-            html += passive.level + '/' + passive.maxLevel;
+    for (var i = 0, j = 0; i < 26 && j < 6; i += 5, j++) {
+        if (i % 2 === 0) {//Get odd/even number and create 12 width column, which will store 2x 6width columns
+            html += '<div class="col-xs-12">';
+        };
+        html += '<div class="col-xs-6">';
+        html += '<center><button class="btn btn-default btn-lg btn-block" onclick="collapseWell(' + "'passiveSkillTree_" + i + "'" + ", '" + j + "'" + ')" ><strong>Level ' + i + '</strong></button>';
+        html += '</center>';
+        if ($('#passiveSkillTree_' + i + ':hidden').length > 0) {
+            html += '<div id="passiveSkillTree_' + i + '" class="' + j + '" style="display:none;"></div>';
+        }
+        else {
+            html += '<div id="passiveSkillTree_' + i + '" class="' + j + '" style="display:block;"></div>';
+        };
+        html += '</div>';
+        if (i % 2 !== 0) {
             html += '</div>';
-            html += '</div>';
-            //End of div Frame
-            html += '</div>';//Close first Div
-            
-            // html += '<div class="centerText passiveMargin">' + passive.level + '/' + passive.maxLevel + '</div>';
-
-            html += '</div>';//Closing div for skill image
-            if (passive.lastRow === true) {
-                html += '</div>';
-            };
         };
     };
     html += '</div>';
     html += '</div>';
     html += '</div>';
     html += '</div>';
+    //set overflow on playerSkills when height is higher than firstDiv, check with this code : $( "#firstDiv" ).height(); put inside a function and return true/false with comparison of both divs
     document.getElementById("playerSkills").innerHTML = html;
+    for (var passiveSkill in playerPassive) {
+        if (playerPassive.hasOwnProperty(passiveSkill)) {
+            var test = getPassiveSkill(playerPassive, passiveSkill); //This will return an array with 2 indexes, index 0 is html, index 1 is skill info like skill level etc...
+            document.getElementById('passiveSkillTree_' + test[1]).innerHTML += test[0];
+        };
+    };
 };
+
+function collapseWell(element, index) {
+    $('#' + element).toggle();
+};
+
+function getPassiveSkill(key, objectValue) {
+    var html = "";
+    var returnValues = [];
+    var passive = key[objectValue];
+    var onclickevent = "upgradePassive('" + objectValue + "');";
+
+    html += '<div class="col-xs-12 col-sm-6 col-lg-4">';//Opening Div for skill image
+    html += '<div class="skill ';//Open first div
+    if (passive.levelReq <= player.properties.level) {
+        if (passive.level === 0) {
+            html += "can-add-points ";
+        }
+        if (passive.level > 0 && passive.level < passive.maxLevel) {
+            html += "can-add-points has-points ";
+        }
+        if (passive.level === passive.maxLevel) {
+            html += "has-points has-max-points";
+        }
+    }
+    html += '">';
+    //Start of icon div's
+    html += '<div class="icon-container">';
+    html += '<div class="icon">';
+    html += '<img src="images/passive/' + passive.image + '.png"">';
+    html += '</div></div>';
+    //End of icon div's
+    //Start of div Frame
+    html += '<div class="frame" onclick="' + onclickevent + '">';
+    html += '<a class="tooltips" style="position:absolute; width:80px; height:80px; z-index:5;">';
+    html += '<span style="bottom:110px; right:-100px; width:250px;">';
+    html += passive.name + '<br />';
+    html += passive.description();
+    html += '<br />Level: ' + passive.levelReq;
+    html += '<br />Level: ' + passive.level + '/' + passive.maxLevel;
+    html += '</span></a>';
+    html += '<div class="skill-points">';
+    html += passive.level + '/' + passive.maxLevel;
+    html += '</div>';
+    html += '</div>';
+    //End of div Frame
+    html += '</div>';//Close first Div
+
+    // html += '<div class="centerText passiveMargin">' + passive.level + '/' + passive.maxLevel + '</div>';
+
+    html += '</div>';//Closing div for skill image
+   
+    returnValues = [html, passive.levelReq];
+    return returnValues;
+}
 
 //Adds a logo to the starting screen
 function startLogo() {
@@ -626,39 +655,42 @@ function startLogo() {
 //This screen shows up everytime you load a page...
 function startingScreen() {
     var html = '';
-    var newGame = "newGameSlot();"; // might pass value to pick a slot for new game
+    var newGame = "selectDifficulty();"; // might pass value to pick a slot for new game
     var loadGame = "loadGameSlot();"; // later on might need to pass some value when loading, once I add more save slots...
     var reset = "resetallSavesCheck();";
-    var muteSound = "muteAudio();";
-    var myAudio = document.getElementById('myAudio');
-    html += '<div class="row">';
-    html += '<div class="col-xs-6 col-xs-3">';
+    var myAudio = document.getElementById('myAudioStart');
     html += '<div class="btn-group-vertical" role="group" aria-label="New game, load game">';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + newGame + '">New Game</button>';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + loadGame + '">Load</button>';
     html += '<button type="button" style="margin-bottom:5px;" class="btn btn-default border" onclick="' + reset + '">Reset all saves</button>';
     html += '<label><input type="checkbox" id="hardcoreMode" style ="visibility:visible; position:relative;" onclick="hardcoreModeCheck();">Hardcore Mode?</label>';
     html += '</div>';
-    html += '<button type="button" class="btn btn-default shopButton" onclick="' + muteSound + 'changeMusicImage();""><span id="musicImage" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span></button>';
+    html += '<br />';
 
-    html += '</div>';
-    html += '</div>';
-
-    html += '<div class="row" style="position:relative; left:-30%;">'
-    html += '<div class="col-xs-8 col-xs-offset-2">';
-    html += '<h4>If you are unable to start a game, use button above to reset all saves.' +
-    'If you see this message first time, then you should reset your save, since its a new update which change a lot.</h4>';
-    html += '</div>';
-    html += '</div>';
     document.getElementById("buttonDiv").innerHTML = html;
     myAudio.volume = 0.1;
     myAudio.play();
 };
 startingScreen();
 startLogo();
-
+function selectDifficulty() {
+    var html = "";
+    var newGame = "newGameSlot();";
+    var difficulty = ["Mortal", "Ageless", "Hero", "Immortal", "Lich", "Legend"];
+    html += '<div class="c3" style="font-size:large;"><strong>Select difficulty</strong></div>';
+    html += '<div class="btn-group-horizontal" role="group" aria-label="Choose difficulty">';
+    for (var i = 0; i < difficulty.length; i++) {
+        html += '<button style="margin-left:5px;" class="btn btn-default btn-sm border" onclick="changeDifficulty(' + "'" + difficulty[i] + "'" + ')">' + difficulty[i] + '</button>';
+    }
+    html += '</div>';
+    html += '<div id="currentDifficulty">' + changeDifficulty() + '</div>';
+    html += '<div class="btn-group-horizontal" role="group" aria-label="New game, load game">';
+    html += '<button type="button" class="btn btn-default border" onclick="' + newGame + '">NewGame</button><br /><br />';
+    html += '<button type="button" class="btn btn-default border" onclick="backToStartingScreen()">Go Back</button>';
+    html += '</div>';
+    document.getElementById("buttonDiv").innerHTML = html;
+}
 function newGameSlot() {
-    changeMusicImage();
     characterCreationCreateBackground();
     var html = '';
     var newGameSlot0 = "newGame(0);";
@@ -836,7 +868,6 @@ function backToStartingScreen() {
     var divStyle3 = document.getElementById('startingScreen'); // Starting buttons: new game/ load game/ sound button etc
     divStyle3.style.display = "block"; // none = not displayed
     startingScreen();
-    changeMusicImage();
 };
 
 function characterCreationCreateBackground() {
@@ -865,6 +896,8 @@ function removeStartingScreen() {
     divStyle.style.display = "none";
     var divStyle2 = document.getElementById('startingGameContainer');
     divStyle2.style.display = "none";
+    var soundButton = document.getElementById('SoundButton');
+    soundButton.style.display = "none";
 };
 function characterCreationHtml() {
     characterCreationCreateBackground2();
@@ -1032,20 +1065,17 @@ function checkHeroRace() {
 
 
 function changeMusicImage() {
+    var test = muteAudio('test');
     var musicImage = document.getElementById('musicImage');
     var musicImage2 = document.getElementById('musicimage2');
-    if (musicImage.className === "glyphicon glyphicon-volume-off") {
+    if (test === false) {
         musicImage.className = "glyphicon glyphicon-volume-up";
-    }
-    else {
-        musicImage.className = "glyphicon glyphicon-volume-off";
-    };
-    if (musicImage2.className === "glyphicon glyphicon-volume-off") {
         musicImage2.className = "glyphicon glyphicon-volume-up";
     }
     else {
+        musicImage.className = "glyphicon glyphicon-volume-off";
         musicImage2.className = "glyphicon glyphicon-volume-off";
-    };
+    }
 };
 
 function primaryStatUpdate() {
@@ -1074,12 +1104,12 @@ function primaryStatUpdate() {
             background = "darkBackground";
         };
         if (currentBonus.type === "damage" || currentBonus.type === "mana" || currentBonus.type == "spellPower") {
-            html += '<div class="col-xs-12 primaryStatsMargin border darkBackground">';
+            html += '<div class="col-xs-12 col-sm-6 primaryStatsMargin border darkBackground">';
             html += '<div class="row">';
             html += '<div class="col-xs-6">';
         }
         else {
-            html += '<div class="col-xs-6 primaryStatsMargin border darkBackground">';
+            html += '<div class="col-xs-6 col-sm-3 col-md-6 primaryStatsMargin border darkBackground">';
             html += '<div class="row">';
             html += '<div class="col-xs-4">';
         }
@@ -1171,8 +1201,9 @@ function secondaryStatUpdate(){
 
 function EquippedItemsEmpty() {
     var html = '';
+    html += '<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3">';
     html += '<div class="row" style="padding-top: 5px; padding-bottom: 10px;">';
-    html += '<div class="centerText"><h4>Equipped Items</h4></div>';
+    html += '<div class="centerText" style="margin-right:20px;"><h4>Equipped Items</h4></div>';
     for (var itemType in emptyItemSlotInfo) {
         if (emptyItemSlotInfo.hasOwnProperty(itemType)) {
             var item = emptyItemSlotInfo[itemType].type;
@@ -1228,6 +1259,7 @@ function EquippedItemsEmpty() {
         };
     };
     html += '</div>';
+    html += '</div>';
     document.getElementById("equipHtml").innerHTML = html;
 };
 
@@ -1260,7 +1292,7 @@ function checkEquippedItemType(newItem, check) {
             html += '<img class="' + itemType.subType;
         }
         html += '"' + 'src="images/items/' + itemType.subType + "/" + itemType.image + '.png" onclick="unequipItem' + "(" + itemType.id + ', ' + "'solo'" + ")" + '" />';
-        html += '<span style="width:200px; left:50px; right:0px; bottom:50px;">';
+        html += '<span style="width:200px; left:150px; right:0px; bottom:-120px;">';
         html += '<div class="row">';
         html += '<div class="col-xs-12">';
 
@@ -1309,7 +1341,7 @@ function getShopItem() {
     var armorLevelBonus = 5;
     for (var i = 0; i < shopItemAmount; i++) {
         if (itemShopWeapon.length < 20 || itemShopArmor.length < 20 || itemShopAccessory.length < 20) {
-            getItemType(shopItemLevel, false);
+            getNewItem(shopItemLevel, false);
         }
         else {
             break;
@@ -1406,7 +1438,7 @@ function displayShopItems(type) {
     html += '<div class="c3"><h3>Item Shop</h3></div></div>';
     for (var i = 0; i < itemTypeDisplay.length; i++) {
         var itemDisplay = itemTypeDisplay[i];
-                html += '<div class="col-xs-3">';
+        html += '<div class="col-xs-2 inventoryBlock ' + itemDisplay.itemRarity + '">';
                 html += '<a class="tooltips" style="cursor:pointer;">';
                 html += '<label> <input type="radio" name="shopItem" value=' + itemDisplay.id + '>';
                 if (itemDisplay.itemType === "weapon") {
@@ -1599,17 +1631,22 @@ function testss() {
 
 function getAgeButton() {
     var raceSelect = "Adulthood";
+    player.properties.raceAge = raceSelect;
         if (document.getElementById("Adulthood").checked === true) {
             raceSelect = "Adulthood";
+            player.properties.raceAge = "Adulthood";
         }
         else if (document.getElementById("Middle Age").checked === true) {
             raceSelect = "Middle Age";
+            player.properties.raceAge = "Middle-Aged";
         }
         else if (document.getElementById("Old").checked === true) {
             raceSelect = "Old";
+            player.properties.raceAge = "Old";
         }
         else if (document.getElementById("Venerable").checked === true) {
             raceSelect = "Venerable";
+            player.properties.raceAge = "Venerable";
         };
         getAge(raceSelect);
         characterCreationHtml();

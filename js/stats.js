@@ -91,9 +91,9 @@ function updateHtml() {
     spellPower.innerHTML = "<span class='cursorHelp' data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Spell Power\">"
         + player.functions.spellPower().toFixed(0) + "</span>" +
         "<a class=\"tooltipA\">" + "<p class=\"glyphicon glyphicon-info-sign\"></p>" + "<span style=\"text-align:left;right:0;left:-160px;bottom:80px;width:200px;\">" + "(Int x 2) + (Wis x 0.5)<br />Base Bonus: " + player.functions.baseSpellPower() + "<br />" + "Multiplier: " + (player.functions.bonusSpellPower() * 100) + "%</span></a> ";
-    mana.innerHTML = "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Mana\">"
-        + (player.properties.mana).toFixed(0) + "/" + (player.functions.maxMana()).toFixed(0) + "</span>" +
-        "<a class=\"tooltipA\">" + "<p class=\"glyphicon glyphicon-info-sign\"></p>" + "<span style=\"text-align:left;right:0;left:-160px;bottom:80px;width:200px;\">" + "Multiplier: " + (player.functions.bonusMana() + player.properties.raceMaxMana) + "%</span></a> ";
+   // mana.innerHTML = "<span data-toggle=\"tooltip\" data-placement=\"top\" title=\"Total Mana\">"
+     //   + (player.properties.mana).toFixed(0) + "/" + (player.functions.maxMana()).toFixed(0) + "</span>" +
+       // "<a class=\"tooltipA\">" + "<p class=\"glyphicon glyphicon-info-sign\"></p>" + "<span style=\"text-align:left;right:0;left:-160px;bottom:80px;width:200px;\">" + "Multiplier: " + (player.functions.bonusMana() + player.properties.raceMaxMana) + "%</span></a> ";
 
     level = document.getElementById("level");
     maxExperience = document.getElementById("maxexperience");
@@ -109,6 +109,7 @@ function updateHtml() {
     secondaryStatUpdate();
     CreateWeaponSkillHtml();
     playerHealthBar();
+    playerManaBar();
 };
 
 function expPercent() {
@@ -129,9 +130,19 @@ function playerHealthBar() {
     document.getElementById("health").innerHTML = player.properties.health + "/" + player.functions.maxhealth();
 };
 
+function playerManaBar() {
+    document.getElementById("mana").innerHTML = Math.floor(player.properties.mana) + "/" + player.functions.maxMana();
+};
+
 function manaRegen() { //Mana regen
     if (player.properties.mana < player.functions.maxMana()) player.properties.mana += player.functions.manaRegen();
     if (player.properties.mana > player.functions.maxMana()) player.properties.mana = player.functions.maxMana();
+};
+
+function manaPerCent() {
+    var manaPercent = (Math.floor((player.properties.mana / player.functions.maxMana()) * 100));
+    var divArray = document.getElementById("progressBar3");
+    divArray.style.width = ((manaPercent) + "%");
 };
 
 function levelUp() {

@@ -1,6 +1,6 @@
 "use strict";
 
-//Player log 
+//Player log
 function Log(data) {
     var i;
     if (logData.length < maxLogLines) {
@@ -40,10 +40,13 @@ var player = {
         GoldDrop: { amount: 0, timer: 0 },
     },
     properties: {
+        audioVolume: 0.1,
+        newItems: 0,//Displayed on the inventory tab, to tell player that he got new items which he didnt see yet...This should be reset when player checks his inventory
         monsterBackground: "green",
         prestigeMultiplier: 1,
         prestigeSuffix: "",
         difficulty: 'Hero',
+        difficultyMultiplier: 1,
         lastEnemyLevel: 1, // Used for crafting, it will change based on highest enemy level killed.
         monsterLevel: 0, //Used when reset game i.e. prestige ( It will be set for highest monster which will determine first monster level after prestige)
         potionInventory: [],
@@ -84,6 +87,8 @@ var player = {
         saveSlot: 0,
         gameVersion: 1.8,
         heroRace: '',
+        raceImage: '',
+        raceAge: '',
         sound: 'off',
         hardcoreMode: false,
         isLoading: true,
@@ -801,11 +806,16 @@ function dropLog() {
     })
 };
 
+function filterItemId(obj, id) {
+    var item = obj.filter(function (e) {
+        return e.id === id;
+    })[0];
+    return item;
+};
+
 //Equip item function
 function equipItem(id) {
-    var item = playerInventory.filter(function (obj) {
-        return obj.id === id;
-    })[0];
+    var item = filterItemId(playerInventory, id);
     if (item !== undefined) {
         if (item.itemType === "weapon") {
             if (equippedItems.weapon.isEquipped === true) {
@@ -832,9 +842,7 @@ function equipItem(id) {
                 else if (equippedItems.weapon.subType === "ranged") {
                     player.properties.isRanged = true;
                 }
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -853,9 +861,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.shield = item;
                 equippedItems.shield.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -874,9 +880,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.chest = item;
                 equippedItems.chest.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -895,9 +899,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.helmet = item;
                 equippedItems.helmet.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -916,9 +918,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.legs = item;
                 equippedItems.legs.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -937,9 +937,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.boots = item;
                 equippedItems.boots.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -958,9 +956,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.ring = item;
                 equippedItems.ring.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -979,9 +975,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.amulet = item;
                 equippedItems.amulet.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -1000,9 +994,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.talisman = item;
                 equippedItems.talisman.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -1020,9 +1012,7 @@ function equipItem(id) {
             if (item.id === id) {
                 equippedItems.backpack = item;
                 equippedItems.backpack.isEquipped = true;
-                var item = playerInventory.filter(function (obj) {
-                    return obj.id === id;
-                })[0];
+                var item = filterItemId(playerInventory, id);
                 var index = playerInventory.indexOf(item, 0);
                 if (index > -1) {
                     playerInventory.splice(index, 1);
@@ -1075,7 +1065,7 @@ function unequipItem(id, type) {
         }
         $("#inventorySpaceweapon").append(player.functions.weapon);
         if (type === "solo") {
-            createEquippedItemsObject('weapon');
+            createEquippedItemsObject('weapon');//Overwrite current item slot with default values...
         };
         $("#equippedItem" + id).remove();
         updateHtml();
@@ -1197,16 +1187,18 @@ function handleClick() {
 };
 function hardcoreModeCheck() {
     hardcoreMode = document.getElementById("hardcoreMode").checked;
+    return hardcoreMode;
 };
 
 function changeRace(raceName, race) {
-    var characterRace = '';
-    var itemType = characterRaces[race].startingItem;
-    characterRace = raceName;
-    player.properties.heroRace = characterRace;
+    var weaponSubType = characterRaces[race].startingWeapon;
+    var armorSubType = characterRaces[race].startingArmorType;
+    player.properties.heroRace = raceName;
+    player.properties.raceImage = race;
     removeStartingScreen();
     checkHeroRace();
-    getStartingItem(itemType);
+    getStartingItem('weapon', weaponSubType);
+    getStartingItem('armor', armorSubType);
 };
 //Set audio starting volume...
 function myAudio(sound) {
@@ -1223,15 +1215,50 @@ function myAudio(sound) {
 
 };
 
-function muteAudio() {
+function muteAudio(callback) {
     var audio = document.getElementById("myAudio");
-    if (audio.muted === true) {
-        audio.muted = false;
+    var audio2 = document.getElementById("myAudioStart");
+    var test;
+    if (callback === undefined) {
+        if (audio.muted === true) {
+            audio.muted = false;
+            audio2.muted = false;
+        }
+        else if (audio.muted === false) {
+            audio.muted = true;
+            audio2.muted = true;
+        };
     }
-    else if (audio.muted === false) {
-        audio.muted = true;
-    };
+    return audio.muted;
 };
+function startAudio() {//This will start main music when playing the game, and it will stop starting screen song....
+    var myAudio = document.getElementById('myAudio');
+    var myAudioStart = document.getElementById('myAudioStart');
+    console.log('test');
+    myAudioStart.pause();
+    myAudioStart.currentTime = 0;
+    myAudio.volume = 0.1;
+    myAudio.play();
+};
+function audioVolume(value, load) {
+    var audio = document.getElementById('myAudio');
+    if (audio.volume + value < 1 && audio.volume + value > 0) {
+        audio.volume += value;
+        player.properties.audioVolume = audio.volume;
+    };
+    if (load !== undefined) {
+        audio.volume = player.properties.audioVolume;
+    }
+    document.getElementById('currentVolume').innerHTML = 'Current volume: ' + 100 * audio.volume.toFixed(1) + "%";
+}
+function volumeSettings() {
+    var html = "";
+    html += 'Music Volume: ';
+    html += '<button class="marginRight" onclick="(audioVolume(-0.1))">-</button>';
+    html += '<button onclick="(audioVolume(0.1))">+</button>';
+    document.getElementById('volumeSettings').innerHTML = html;
+};
+volumeSettings();
 function selectText(containerid) {
     if (document.selection) {
         var range = document.body.createTextRange();
@@ -1385,23 +1412,49 @@ function getThousands(n) {
 };
 var monsterKillCount = [];
 function changeDifficulty(type, rebirth) {
-    for (var key in monsterList) {
-        var monster = monsterList[key];
-        monsterKillCount.push(monster.killCount);
-    }
-    player.properties.difficulty = type;
     MakeMonsterList();
-    if (rebirth === undefined) {
+    if (type !== undefined) {
+        MakeMonsterList();
         for (var key in monsterList) {
             var monster = monsterList[key];
-            var monsterNumber = (monster.id - 1)
-            monster.killCount = monsterKillCount[monsterNumber];
+            monsterKillCount.push(monster.killCount);
+        }
+        player.properties.difficulty = type;
+        MakeMonsterList();
+        if (rebirth === undefined) {
+            for (var key in monsterList) {
+                var monster = monsterList[key];
+                var monsterNumber = (monster.id - 1)
+                monster.killCount = monsterKillCount[monsterNumber];
+            };
+        };
+        monsterKillCount = [];
+        CreateMonsterHtml();
+        quest();
+    };
+    var currentDifficulty = 'Current Difficulty: <strong>' + player.properties.difficulty + "</strong><br /> Monster strength: " + monsterList.monster001.difficultyMultiplier() * 100 + "%" + '<br /> ';
+    for (var i = itemRarity.length - 1; i >= 0; i--) {
+       
+        currentDifficulty += '<strong><font color="' + itemRarity[i].color + '">' + itemRarity[i].type + ": " + '</font></strong>';
+        var number = itemRarity[i].chance * player.properties.difficultyMultiplier;
+        number.toString();
+        if(Math.round(number) !== number) {
+             currentDifficulty += number.toFixed(3);
+         }
+         else{
+             currentDifficulty += number;
+         }
+         currentDifficulty += "%" + "<br />";
+    };
+        
+
+    document.getElementById('gameDifficulty').innerHTML = currentDifficulty;
+    if (type !== undefined) {
+        if ($('#currentDifficulty').length > 0) {
+            document.getElementById('currentDifficulty').innerHTML = currentDifficulty;
         };
     };
-    monsterKillCount = [];
-    CreateMonsterHtml();
-    quest();
-    document.getElementById('gameDifficulty').innerHTML = "Current Difficulty: " + type;
+    return currentDifficulty;
 };
 
 function rebirth(level) {
@@ -1412,6 +1465,7 @@ function rebirth(level) {
     for (var i = 1; i < monsterAreas.length; i++) { //Starts with i = 1, so it wont change first array value, which is needed to display first area.
         monsterAreas[i].isUnlocked = false;
     };
+    //Use cirremt dofficulty instead of changing it to "Hero" with each rebirth
     changeDifficulty("Hero", true);
     changedTabmonster(0);
 };
@@ -1428,8 +1482,12 @@ function compare(z, x, other) { //Other such as %...
     };
 };
 
-function getStartingItem(itemType) {
-    getItemType(1, false, "weapon", itemType, "Common");
-    var itemID = player.properties.itemIdNumber - 1;// -1 because "getItemType function finish before it changes ID of the item, so equip function is called, before item drop finishes I guess...not sure -_-
+function getStartingItem(itemType, itemSubType) {
+    getNewItem(1, false, itemType, itemSubType, "Common");
+    var itemID = player.properties.itemIdNumber - 1;// -1 because "getNewItem function finish before it changes ID of the item, so equip function is called, before item drop finishes I guess...not sure -_-
     equipItem(itemID);
 };
+function resetNewItemsNumberDisplay() {
+    var items = player.properties.newItems = 0;
+    document.getElementById('newItems').innerHTML = (items < 0) ? '' : items;
+}

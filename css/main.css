@@ -1,6 +1,6 @@
 ﻿
 body {
-	background-image: url("images/bg.jpg");
+	background-image: url("/images/bg.jpg");
 	background-size: 100% auto;
 	background-color: #EDD26E;
 }
@@ -11,31 +11,6 @@ body {
 
 li.bold {
 	font-weight: bold;
-}
-
-.Common {
-	outline-style: solid;
-	outline-color: #d1d1d1;
-}
-
-.Uncommon {
-	outline-style: solid;
-	outline-color: green;
-}
-
-.Rare {
-	outline-style: solid;
-	outline-color: blue;
-}
-
-.Epic {
-	outline-style: solid;
-	outline-color: orange;
-}
-
-.Legendary {
-	outline-style: solid;
-	outline-color: red;
 }
 
 label > input { /* HIDE RADIO */
@@ -49,7 +24,7 @@ label > input { /* HIDE RADIO */
 	}
 
 	label > input:checked + img { /* (RADIO CHECKED) IMAGE STYLES */
-		border: 2px solid #f00;
+		border: 2px solid #b200ff;
 	}
 
 .visibilityLabel {
@@ -220,6 +195,10 @@ img.skillBorder {
 	padding-right: 2%;
 }
 
+.containerPaddingTop{
+    padding-top:15px;
+}
+
 .margin {
 	margin: 10px;
 }
@@ -302,19 +281,18 @@ div.marginTest {
 .topBar {
 	font-size: 20px;
 	color: firebrick;
-	text-align: right;
+    padding-bottom:10px;
 }
 
 #level {
-	display: inline-block;
-	margin-left: 5px;
-	height: 50px;
-	width: 50px;
-	border-radius: 100%;
-	border: 2px solid blue;
 	text-align: center;
 	font-size: 30px;
-	margin-top: 5px;
+    background-image:url(images/round-star.png);
+    background-repeat:no-repeat;
+    padding-left: 23px;
+    padding-right: 25px;
+    padding-bottom: 25px;
+    padding-top: 18px;
 }
 
 .centerText {
@@ -360,4 +338,53 @@ h1 {
 .dialogStyling {
 	background-color: #c49c05 !important;
 	border: 1px solid;
+}
+.professionHeight{
+    height:200px;
+}
+
+.add-padding > #firstDiv{
+    padding-right:25px;
+}
+.add-padding >  #consoleDiv {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+@media (max-width: 991px) {
+    .add-padding > #firstDiv {
+        padding-right: 15px;
+    }
+}
+.inventoryBlock{
+    margin-top:5px;
+    margin-left:1px;
+    padding-left:30px;
+    padding-top:10px;
+    padding-bottom:5px;
+    border:1px solid;
+}
+
+    
+.inventoryBlock.Common {
+    background-color:#d1d1d1;
+}
+
+.inventoryBlock.Uncommon {
+    background-color:green;
+}
+
+.inventoryBlock.Rare {
+    background-color:blue;
+}
+
+.inventoryBlock.Epic {
+    background-color:orange;
+}
+
+.inventoryBlock.Legendary {
+    background-color:#ff0303;
+}
+.progress{
+    margin-bottom:12px;
 }

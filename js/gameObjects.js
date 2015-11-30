@@ -177,24 +177,17 @@ var secondaryStatInfo = [
 var primaryStatInfo = [
     {
         type: 'damage',
-        shortNameDisplay: 'Dmg',
+        shortNameDisplay: 'Weapon',
         info: 'damage',
         tooltip: 'Damage dealt.',
         number: 1
     },
     {
         type: 'spellPower',
-        shortNameDisplay: 'Spell Power',
+        shortNameDisplay: 'Spell',
         info: 'spellPower',
         tooltip: 'Spell power',
         number: 1
-    },
-    {
-        type: 'mana',
-        shortNameDisplay: 'MP',
-        info: 'mana',
-        tooltip: 'Your mana.',
-        number: 2
     },
     {
         type: 'strength',
@@ -776,7 +769,7 @@ var itemRarity = [
     type: 'Legendary',
     minMods: 6,
     maxMods: 7,
-    chance: 10,
+    chance: 1,
     color: 'red',
     power: 5,
     rarityValue: 5
@@ -785,7 +778,7 @@ var itemRarity = [
     type: 'Epic',
     minMods: 4,
     maxMods: 6,
-    chance: 50,
+    chance: 10,
     color: 'orange',
     power: 4,
     rarityValue: 4
@@ -794,7 +787,7 @@ var itemRarity = [
     type: 'Rare',
     minMods: 3,
     maxMods: 4,
-    chance: 200,
+    chance: 500,
     color: '#800080',
     power: 3,
     rarityValue: 3
@@ -803,7 +796,7 @@ var itemRarity = [
     type: 'Uncommon',
     minMods: 2,
     maxMods: 3,
-    chance: 1000,
+    chance: 2000,
     color: '#00CC33',
     power: 2,
     rarityValue: 2
@@ -812,7 +805,7 @@ var itemRarity = [
     type: 'Common',
     minMods: 1,
     maxMods: 2,
-    chance: 5000,
+    chance: 10000,
     color: 'white',
     power: 1,
     rarityValue: 1
@@ -1100,7 +1093,7 @@ var materiaType = [
     }
 ];
 
-var CharacterRace = function (name, baseStrength, baseEndurance, baseAgility, baseDexterity, baseIntelligence, baseWisdom, baseLuck, image, startingItem) {
+var CharacterRace = function (name, baseStrength, baseEndurance, baseAgility, baseDexterity, baseIntelligence, baseWisdom, baseLuck, image, startingWeapon, startingArmorType) {
     this.name = name;
     this.raceAge = "Adulthood";
     this.baseStrength = baseStrength;
@@ -1120,16 +1113,17 @@ var CharacterRace = function (name, baseStrength, baseEndurance, baseAgility, ba
     this.lore = function () {
         return 'test';
     };
-    this.startingItem = startingItem;
+    this.startingWeapon = startingWeapon;
+    this.startingArmorType = startingArmorType;
 };
-var human = new CharacterRace('Human', 3, 3, 3, 3, 3, 3, 3, "human", "sword");
-var halfElf = new CharacterRace('Half Elf', 3, 3, 3, 3, 3, 3, 3, "halfelf", "ranged");
-var dwarf = new CharacterRace('Dwarf', 3, 5, 3, 1, 2, 4, 3, "dwarf", "axe");
-var orc = new CharacterRace('Orc', 6, 3, 4, 3, 1, 1, 3, "orc", "mace");
-var elf = new CharacterRace('Elf', 1, 1, 3, 6, 5, 2, 3, "elf", "staff");
-var halfing = new CharacterRace('Halfing', 1, 2, 3, 5, 3, 4, 3, "halfing", "sword");
-var sylph = new CharacterRace('Sylph', 2, 1, 2, 5, 6, 2, 3, "sylph", "staff");
-var giant = new CharacterRace('Giant', 6, 3, 1, 1, 1, 6, 3, "giant", "axe");
+var human = new CharacterRace('Human', 3, 3, 3, 3, 3, 3, 3, "human", "sword", "chest");
+var halfElf = new CharacterRace('Half Elf', 3, 3, 3, 3, 3, 3, 3, "halfelf", "ranged", "boots");
+var dwarf = new CharacterRace('Dwarf', 3, 5, 3, 1, 2, 4, 3, "dwarf", "axe", "helmet");
+var orc = new CharacterRace('Orc', 6, 3, 4, 3, 1, 1, 3, "orc", "mace", "shield");
+var elf = new CharacterRace('Elf', 1, 1, 3, 6, 5, 2, 3, "elf", "staff", "chest");
+var halfing = new CharacterRace('Halfing', 1, 2, 3, 5, 3, 4, 3, "halfing", "sword", "boots");
+var sylph = new CharacterRace('Sylph', 2, 1, 2, 5, 6, 2, 3, "sylph", "staff", "legs");
+var giant = new CharacterRace('Giant', 6, 3, 1, 1, 1, 6, 3, "giant", "axe", "chest");
 
 //Human stats
 human.image = function() {

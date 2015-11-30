@@ -608,7 +608,7 @@ function createAlchemyHtml() {
     for (var key in potionList) {
         if (potionList.hasOwnProperty(key)) {
             var potionInfo = potionList[key];
-            html += '<div class="col-xs-12 col-md-6 col-lg-6 borderRight borderBottom"';
+            html += '<div class="col-xs-12 col-md-6 col-lg-6 borderRight borderBottom professionHeight"';
             if (potionInfo.levelReq > playerProfession.alchemy.level) {
                 html += ' style="background-color:#DD4747;">' + 'Requires ' + potionInfo.levelReq + ' Alchemy level';
             }
@@ -637,10 +637,12 @@ function createAlchemyHtml() {
             html += '<div class="col-xs-1 col-sm-1 col-md-12 col-lg-12">';
             html += '<button onclick="createPotion(' + "'" + potion.name + "'" + ')">Brew</button>';
             html += '</div>';
-            html += '<div class="col-xs-10 col-sm-10 col-md-12 col-lg-12">';
+            html += '<div class="row">';
             for (var i = 0; i < potionRequirements.length; i++) {
+                html += '<div class="col-xs-4 col-sm-6 col-md-6 col-lg-4">';
                 html += '<img src="images/mineral/' + potionRequirements[i].type + '.png">';
                 html += potionRequirements[i].amount;
+                html += '</div>';
             }
             html += '</div>';
             html += '</div>';
@@ -710,9 +712,9 @@ function createPotion(type) {
 function playerProfessionHtml() {
     var html = "";
     html += '<div class="row border c4 marginBottom">';
-    html += '<div class="col-xs-12">'
-    html += '<div class="row">';;
-    html += '<div class="col-sm-4 marginTop marginBottom border">';
+    html += '<div class="col-xs-12 marginLeft">';
+    html += '<div class="row">';
+    html += '<div class="col-sm-4 marginTop marginBottom border marginRight">';
     html += '<h3>Your professions: <br /></h3>';
     html += '<div class="row borderBottom">';
     for (var key in playerProfession) {
@@ -1001,7 +1003,7 @@ function displayCraftedItem() {
         // p == item subtype array index, used in itemDrop to determine item subtype lore and other stats !Important
         var canCraft = true;
         var noMinerals = false;
-        html += '<div class="col-xs-12 col-md-6 col-lg-6 borderRight borderBottom">';
+        html += '<div class="col-xs-12 col-md-6 col-lg-6 borderRight borderBottom professionHeight">';
         html += currentItemSubType.capitalizeFirstLetter() + '<br />';
         if (currentItemSubType === "helmet" || currentItemSubType === "chest" || currentItemSubType === "legs" || currentItemSubType === "boots" || currentItemToCraft === "accessory") {
             itemLevelImage = "";
@@ -1076,7 +1078,7 @@ function craftItem(itemType, itemSubType, itemQuality) {
         player.properties[mineralType] -= mineralCost;
         document.getElementById(mineralType).innerHTML = player.properties[mineralType] + "/" + maxResources;
     }
-        getItemType(itemLevel, false, itemType, itemSubType, itemQuality);
+        getNewItem(itemLevel, false, itemType, itemSubType, itemQuality);
         document.getElementById('Profession_crafting').innerHTML = 'level: ' + profession.level + ' | ' + profession.experience.toFixed(0) + '/' + profession.maxExperience.toFixed(0)
         craftingHtml();
         testss();

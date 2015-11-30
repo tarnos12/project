@@ -86,3 +86,10 @@
 .inventorySell { width: 50px; }
 
 .inventoryOther { width: 70px; }
+
+#SoundButton{
+    position:absolute;
+    top:60%;
+    left:70%;
+    z-index:10;
+}
